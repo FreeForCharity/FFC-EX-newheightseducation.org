@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'AAG Duffel Bag - New Heights Educational Group, Inc.',
-    description: 'SmallLength, in19.02Height, in9.49Width, in9.49Main strap length, in27.56Handle height, in10.99Handle width , in1.5Lightweight and durable, our custom-printed duffel bags are a great way to express yourself! Perfect for the gym, day-trip, or any other mobile storage need! Easy to carry with you in your hands or around your shoulders, these duffel bags are ready to go',
+    description:
+      'SmallLength, in19.02Height, in9.49Width, in9.49Main strap length, in27.56Handle height, in10.99Handle width , in1.5Lightweight and durable, our custom-printed duffel bags are a great way to express yourself! Perfect for the gym, day-trip, or any other mobile storage need! Easy to carry with you in your hands or around your shoulders, these duffel bags are ready to go',
     canonical: '/product/aag-duffel-bag/',
   }),
   title: { absolute: 'AAG Duffel Bag - New Heights Educational Group, Inc.' },

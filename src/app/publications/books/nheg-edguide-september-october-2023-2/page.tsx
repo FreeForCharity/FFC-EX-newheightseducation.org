@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG EDGuide September-October 2023 - NHEG',
-    description: 'September-October 2023, NHEG Ed Guide. See the latest news in education in the New Heights Educational Group Magazine.',
+    description:
+      'September-October 2023, NHEG Ed Guide. See the latest news in education in the New Heights Educational Group Magazine.',
     canonical: '/publications/books/nheg-edguide-september-october-2023-2/',
   }),
   title: { absolute: 'NHEG EDGuide September-October 2023 - NHEG' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular dflip-template-default single single-dflip postid-5879 wp-custom-logo wp-embed-responsive wp-theme-astra ast-desktop ast-separate-container ast-two-container ast-right-sidebar astra-4.13.12 ast-sticky-sidebar group-blog ast-blog-single-style-1 ast-custom-post-type ast-single-post ast-replace-site-logo-transparent ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header ast-normal-title-enabled elementor-default elementor-kit-5709"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('publications/books/nheg-edguide-september-october-2023-2') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('publications/books/nheg-edguide-september-october-2023-2'),
+      }}
     />
   )
 }

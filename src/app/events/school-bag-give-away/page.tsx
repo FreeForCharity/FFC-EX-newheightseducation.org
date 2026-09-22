@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'School Bag Giveaway - New Heights Educational Group, Inc.',
-    description: 'Before the school year begins, NHEG runs the School Bag Give Away a event to help local children get access to all the school supplies they will need.',
+    description:
+      'Before the school year begins, NHEG runs the School Bag Give Away a event to help local children get access to all the school supplies they will need.',
     canonical: '/events/school-bag-give-away/',
   }),
   title: { absolute: 'School Bag Giveaway - New Heights Educational Group, Inc.' },

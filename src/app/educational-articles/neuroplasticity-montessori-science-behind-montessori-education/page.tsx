@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Neuroplasticity in Montessori: The Science Behind Montessori Education - New Heights Educational Group, Inc.',
-    description: 'Neuroplasticity or brain plasticity is the ability the brain has to change according to each new experience. In practical ways, it is through neuroplasticity that the brain changes in structure and functionality as a result of new stimuli. These neural connections have a modeling function, which means that they modify and adapt themselves according to',
-    canonical: '/educational-articles/neuroplasticity-montessori-science-behind-montessori-education/',
+    title:
+      'Neuroplasticity in Montessori: The Science Behind Montessori Education - New Heights Educational Group, Inc.',
+    description:
+      'Neuroplasticity or brain plasticity is the ability the brain has to change according to each new experience. In practical ways, it is through neuroplasticity that the brain changes in structure and functionality as a result of new stimuli. These neural connections have a modeling function, which means that they modify and adapt themselves according to',
+    canonical:
+      '/educational-articles/neuroplasticity-montessori-science-behind-montessori-education/',
   }),
-  title: { absolute: 'Neuroplasticity in Montessori: The Science Behind Montessori Education - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Neuroplasticity in Montessori: The Science Behind Montessori Education - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5471 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/neuroplasticity-montessori-science-behind-montessori-education') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'educational-articles/neuroplasticity-montessori-science-behind-montessori-education'
+        ),
+      }}
     />
   )
 }

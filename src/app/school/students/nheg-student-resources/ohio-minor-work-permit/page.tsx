@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Ohio Minor Work Permit - NHEG Online Learning Annex',
-    description: 'Are you a student between the ages of 14 and 18, are living in Ohio and are looking to get a job? If so, you will need to get a Ohio Minor Work Permit. This includes filling out and submitting the the proper documents to the Department of Commerce and the school you are attending.',
+    description:
+      'Are you a student between the ages of 14 and 18, are living in Ohio and are looking to get a job? If so, you will need to get a Ohio Minor Work Permit. This includes filling out and submitting the the proper documents to the Department of Commerce and the school you are attending.',
     canonical: '/school/students/nheg-student-resources/ohio-minor-work-permit/',
   }),
   title: { absolute: 'Ohio Minor Work Permit - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-3081 page-child parent-pageid-641 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/nheg-student-resources/ohio-minor-work-permit') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/nheg-student-resources/ohio-minor-work-permit'),
+      }}
     />
   )
 }

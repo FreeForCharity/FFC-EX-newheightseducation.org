@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Online Learning Tips - New Heights Educational Group, Inc.',
-    description: 'Are you planning to take an online course or have you recently started with an online course or training? Before you begin, it is important to understand that online and face-to-face are entirely different learning environments. One aspect of online delivery, which can surpass a face-to-face classroom, is flexibility of time. Convenience of studying from',
+    description:
+      'Are you planning to take an online course or have you recently started with an online course or training? Before you begin, it is important to understand that online and face-to-face are entirely different learning environments. One aspect of online delivery, which can surpass a face-to-face classroom, is flexibility of time. Convenience of studying from',
     canonical: '/educational-articles/online-learning-tips/',
   }),
   title: { absolute: 'Online Learning Tips - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1369 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/online-learning-tips') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/online-learning-tips'),
+      }}
     />
   )
 }

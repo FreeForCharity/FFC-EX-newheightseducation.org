@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Prom Cruise Celebration - New Heights Educational Group, Inc.',
-    description: 'It’s a “Prom Cruise Celebration” Boat Prom is June 6, 2023 Homeschool Graduates and Undergraduates get ready for Dancing On The Water Homeschool Prom Cruise! Save by purchasing March tickets! https://boatprom.ticketspice.com/2023 Dancing On The Water Prom 2023 Get Tickets for Dancing On The Water Prom 2023. Ticket sales close June 1st 2023.',
+    description:
+      'It’s a “Prom Cruise Celebration” Boat Prom is June 6, 2023 Homeschool Graduates and Undergraduates get ready for Dancing On The Water Homeschool Prom Cruise! Save by purchasing March tickets! https://boatprom.ticketspice.com/2023 Dancing On The Water Prom 2023 Get Tickets for Dancing On The Water Prom 2023. Ticket sales close June 1st 2023.',
     canonical: '/nheg-news/prom-cruise-celebration/',
   }),
   title: { absolute: 'Prom Cruise Celebration - New Heights Educational Group, Inc.' },

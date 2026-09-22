@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk – NHEG Highlights & Updates - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/qQ8EPfroHQc In Today\'s episode titled "Pamela\'s Talk - Highlights & Updates" Pamela discusses current highlights and updates to New Heights Educational Group. Topics that Pamela covers in this episode include the following: Recognition Day NHEG Radio Radio Sponsors Anna Shi - New Radio Host NHEG School Bag Event NHEG Magzine',
+    description:
+      'https://youtu.be/qQ8EPfroHQc In Today\'s episode titled "Pamela\'s Talk - Highlights & Updates" Pamela discusses current highlights and updates to New Heights Educational Group. Topics that Pamela covers in this episode include the following: Recognition Day NHEG Radio Radio Sponsors Anna Shi - New Radio Host NHEG School Bag Event NHEG Magzine',
     canonical: '/pamelas-talk/pamelas-talk-highlights-updates/',
   }),
-  title: { absolute: 'Pamela’s Talk – NHEG Highlights & Updates - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Pamela’s Talk – NHEG Highlights & Updates - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6260 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('pamelas-talk/pamelas-talk-highlights-updates') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('pamelas-talk/pamelas-talk-highlights-updates'),
+      }}
     />
   )
 }

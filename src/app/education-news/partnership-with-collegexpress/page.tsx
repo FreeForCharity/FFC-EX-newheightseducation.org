@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with CollegeXpress - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) announces a new partnership with CollegeXpress. CollegeXpress has partnered with colleges and universities for over 30 years. Their mission is to help students find the right schools and schools find the right students. CollegeXpress provides the most comprehensive college search resources, from the traditional college and scholarship searches to',
+    description:
+      'The New Heights Educational Group (NHEG) announces a new partnership with CollegeXpress. CollegeXpress has partnered with colleges and universities for over 30 years. Their mission is to help students find the right schools and schools find the right students. CollegeXpress provides the most comprehensive college search resources, from the traditional college and scholarship searches to',
     canonical: '/education-news/partnership-with-collegexpress/',
   }),
   title: { absolute: 'Partnership with CollegeXpress - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9840 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('education-news/partnership-with-collegexpress') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('education-news/partnership-with-collegexpress'),
+      }}
     />
   )
 }

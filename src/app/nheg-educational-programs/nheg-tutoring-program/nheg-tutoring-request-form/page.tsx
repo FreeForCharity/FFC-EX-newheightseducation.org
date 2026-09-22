@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Tutoring Request Form - New Heights Educational Group, Inc.',
-    description: 'Please fill out this tutoring request form along with your parents, if required. Once we have received your form, someone from NHEG will contact you.',
+    description:
+      'Please fill out this tutoring request form along with your parents, if required. Once we have received your form, someone from NHEG will contact you.',
     canonical: '/nheg-educational-programs/nheg-tutoring-program/nheg-tutoring-request-form/',
   }),
   title: { absolute: 'Tutoring Request Form - New Heights Educational Group, Inc.' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6456 page-child parent-pageid-521 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-educational-programs/nheg-tutoring-program/nheg-tutoring-request-form') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'nheg-educational-programs/nheg-tutoring-program/nheg-tutoring-request-form'
+        ),
+      }}
     />
   )
 }

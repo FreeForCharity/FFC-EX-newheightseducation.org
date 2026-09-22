@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Online Raffle - New Heights Educational Group, Inc.',
-    description: 'Attention NW Ohio Residents. The New Heights Educational Group is holding an online raffle for the following prizes. Prize one: 4 Imagination Station Complimentary Visit Tickets (Expires 6/30/2020) Total value of $48.00 Each ticket is for one general admission to Imagination Station only. Normal Hours: Tuesday - Saturday 10 am - 5 pm Sunday 12',
+    description:
+      'Attention NW Ohio Residents. The New Heights Educational Group is holding an online raffle for the following prizes. Prize one: 4 Imagination Station Complimentary Visit Tickets (Expires 6/30/2020) Total value of $48.00 Each ticket is for one general admission to Imagination Station only. Normal Hours: Tuesday - Saturday 10 am - 5 pm Sunday 12',
     canonical: '/nheg-news/online-raffle/',
   }),
   title: { absolute: 'Online Raffle - New Heights Educational Group, Inc.' },

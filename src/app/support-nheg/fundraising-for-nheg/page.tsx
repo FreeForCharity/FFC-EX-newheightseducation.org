@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Fundraising for NHEG - New Heights Educational Group, Inc.',
-    description: 'Fundraising for NHEG earns money through various fundraising programs, so the more you participate, the more we earn for our student programs and services. We provide step-by-step instructions for participating in each program, especially if you have accounts with these partner websites already.',
+    description:
+      'Fundraising for NHEG earns money through various fundraising programs, so the more you participate, the more we earn for our student programs and services. We provide step-by-step instructions for participating in each program, especially if you have accounts with these partner websites already.',
     canonical: '/support-nheg/fundraising-for-nheg/',
   }),
   title: { absolute: 'Fundraising for NHEG - New Heights Educational Group, Inc.' },

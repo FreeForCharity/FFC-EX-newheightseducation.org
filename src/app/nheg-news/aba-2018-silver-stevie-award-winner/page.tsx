@@ -6,18 +6,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'American Business Awards 2018 Silver Stevie Award Winner - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group, Inc. was named the winner of a 2018 Silver Stevie® Award in the American Business Awards category in The 16th Annual American Business Awards® today. The American Business Awards are the U.S.A.’s premier business awards program. All organizations operating in the U.S.A. are eligible to submit nominations – public and private,',
+    title:
+      'American Business Awards 2018 Silver Stevie Award Winner - New Heights Educational Group, Inc.',
+    description:
+      'The New Heights Educational Group, Inc. was named the winner of a 2018 Silver Stevie® Award in the American Business Awards category in The 16th Annual American Business Awards® today. The American Business Awards are the U.S.A.’s premier business awards program. All organizations operating in the U.S.A. are eligible to submit nominations – public and private,',
     canonical: '/nheg-news/aba-2018-silver-stevie-award-winner/',
   }),
-  title: { absolute: 'American Business Awards 2018 Silver Stevie Award Winner - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'American Business Awards 2018 Silver Stevie Award Winner - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7295 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/aba-2018-silver-stevie-award-winner') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/aba-2018-silver-stevie-award-winner'),
+      }}
     />
   )
 }

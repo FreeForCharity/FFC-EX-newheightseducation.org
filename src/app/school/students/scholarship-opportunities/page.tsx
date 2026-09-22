@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Scholarship Opportunities and Information - NHEG Online Learning Annex',
-    description: 'Are you looking for scholarships to help pay for college? NHEG has develop this Scholarship Opportunities page to help make your search easier. If you don\'t find your course of study on this page, please contact us. We have many more resources in addition to those listed here.',
+    description:
+      "Are you looking for scholarships to help pay for college? NHEG has develop this Scholarship Opportunities page to help make your search easier. If you don't find your course of study on this page, please contact us. We have many more resources in addition to those listed here.",
     canonical: '/school/students/scholarship-opportunities/',
   }),
   title: { absolute: 'Scholarship Opportunities and Information - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-373 page-parent page-child parent-pageid-6467 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/scholarship-opportunities') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/scholarship-opportunities'),
+      }}
     />
   )
 }

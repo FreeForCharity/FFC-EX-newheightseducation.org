@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Footer area - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org | Home | Learning Annex | Programs | Support | Volunteer | Events…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org | Home | Learning Annex | Programs | Support | Volunteer | Events…',
     canonical: '/footer-area/',
   }),
   title: { absolute: 'Footer area - New Heights Educational Group, Inc.' },

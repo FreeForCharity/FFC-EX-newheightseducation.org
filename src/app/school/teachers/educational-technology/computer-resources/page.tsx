@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Computer Resources - NHEG Online Learning Annex',
-    description: 'This is a list of schools and organizations who provide computer resources to teachers and this includes training, classes, seminars and more.',
+    description:
+      'This is a list of schools and organizations who provide computer resources to teachers and this includes training, classes, seminars and more.',
     canonical: '/school/teachers/educational-technology/computer-resources/',
   }),
   title: { absolute: 'Computer Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6466 page-child parent-pageid-293 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/educational-technology/computer-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/educational-technology/computer-resources'),
+      }}
     />
   )
 }

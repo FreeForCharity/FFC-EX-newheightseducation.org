@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2017 Top-Rated Nonprofits Award - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group is proud to announce that we have been selected as 2017 Top-Rated Nonprofits Award from Great Nonprofits organization. “We are excited to be named a Top-Rated 2017 Nonprofit, this is the 5th year in a row and we are so honored,” says Pamela Clark, Executive Director of the New Heights Educational',
+    description:
+      'New Heights Educational Group is proud to announce that we have been selected as 2017 Top-Rated Nonprofits Award from Great Nonprofits organization. “We are excited to be named a Top-Rated 2017 Nonprofit, this is the 5th year in a row and we are so honored,” says Pamela Clark, Executive Director of the New Heights Educational',
     canonical: '/nheg-news/2017-top-rated-nonprofits-award/',
   }),
   title: { absolute: '2017 Top-Rated Nonprofits Award - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6483 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/2017-top-rated-nonprofits-award') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/2017-top-rated-nonprofits-award'),
+      }}
     />
   )
 }

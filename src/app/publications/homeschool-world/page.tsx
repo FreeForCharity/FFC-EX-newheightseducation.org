@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Homeschool World - NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
     canonical: '/publications/homeschool-world/',
   }),
   title: { absolute: 'Homeschool World - NHEG' },

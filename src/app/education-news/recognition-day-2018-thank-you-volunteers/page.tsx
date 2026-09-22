@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Recognition Day 2018 – Thank You Volunteers - New Heights Educational Group, Inc.',
-    description: 'Another great year for New Heights Education Group and a special thanks to all our volunteers for their hard work in helping bring educational support to the students and families in Ohio. The New Heights Educational Group announces special recognition of some of our fantastic volunteers: Priscilena Shearon is named Online Class Monitor of the',
+    description:
+      'Another great year for New Heights Education Group and a special thanks to all our volunteers for their hard work in helping bring educational support to the students and families in Ohio. The New Heights Educational Group announces special recognition of some of our fantastic volunteers: Priscilena Shearon is named Online Class Monitor of the',
     canonical: '/education-news/recognition-day-2018-thank-you-volunteers/',
   }),
-  title: { absolute: 'Recognition Day 2018 – Thank You Volunteers - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Recognition Day 2018 – Thank You Volunteers - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7514 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('education-news/recognition-day-2018-thank-you-volunteers') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('education-news/recognition-day-2018-thank-you-volunteers'),
+      }}
     />
   )
 }

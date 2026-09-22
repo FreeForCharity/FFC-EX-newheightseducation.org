@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Joins Voice America Talk Radio Network - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group announces it is moving forward in joining Voice America Talk Radio Network. The huge success of the New Heights Show on Education is credited in large part to our sponsors who lend their names and financial support to our show in exchange for valuable sponsorship benefits. We are seeking your support',
+    description:
+      'New Heights Educational Group announces it is moving forward in joining Voice America Talk Radio Network. The huge success of the New Heights Show on Education is credited in large part to our sponsors who lend their names and financial support to our show in exchange for valuable sponsorship benefits. We are seeking your support',
     canonical: '/nheg-news/nheg-joins-voice-america-talk-radio-network/',
   }),
-  title: { absolute: 'NHEG Joins Voice America Talk Radio Network - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'NHEG Joins Voice America Talk Radio Network - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8273 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-joins-voice-america-talk-radio-network') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-joins-voice-america-talk-radio-network'),
+      }}
     />
   )
 }

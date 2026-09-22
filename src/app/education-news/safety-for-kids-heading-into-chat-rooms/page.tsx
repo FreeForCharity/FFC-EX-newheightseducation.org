@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Safety For Kids Heading Into Chat Rooms - New Heights Educational Group, Inc.',
-    description: 'Are chat rooms bad for kids? What are the benefits of entering a chat room? What can a parent do if a child uses a chatroom? Chat rooms can be a great place to go to if one is being homeschooled or trying to make friends. This article will give advice to parents and guardians',
+    description:
+      'Are chat rooms bad for kids? What are the benefits of entering a chat room? What can a parent do if a child uses a chatroom? Chat rooms can be a great place to go to if one is being homeschooled or trying to make friends. This article will give advice to parents and guardians',
     canonical: '/education-news/safety-for-kids-heading-into-chat-rooms/',
   }),
-  title: { absolute: 'Safety For Kids Heading Into Chat Rooms - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Safety For Kids Heading Into Chat Rooms - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8216 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('education-news/safety-for-kids-heading-into-chat-rooms') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('education-news/safety-for-kids-heading-into-chat-rooms'),
+      }}
     />
   )
 }

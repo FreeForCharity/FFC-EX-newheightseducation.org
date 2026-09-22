@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Recognition Day 2022 - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group (NHEG) held its 2022 Annual Recognition Day on July 30, 2022. The event recognizes and celebrates volunteer impact and student success. Pamela Clark, Executive Director of NHEG, stated, "Our volunteers and students have an exceptional work ethic and positive behavior that has a direct impact on NHEG and our communities. I',
+    description:
+      'New Heights Educational Group (NHEG) held its 2022 Annual Recognition Day on July 30, 2022. The event recognizes and celebrates volunteer impact and student success. Pamela Clark, Executive Director of NHEG, stated, "Our volunteers and students have an exceptional work ethic and positive behavior that has a direct impact on NHEG and our communities. I',
     canonical: '/nheg-news/nheg-recognition-day-2022/',
   }),
   title: { absolute: 'NHEG Recognition Day 2022 - New Heights Educational Group, Inc.' },

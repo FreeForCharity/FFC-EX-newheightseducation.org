@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2020 Stevie Awards Winner - New Heights Educational Group, Inc.',
-    description: 'NHEG was presented with a Silver Stevie® Award for Ethics in Sales category in the 14th annual Stevie® Awards for Sales & Customer Service. The Stevie Awards for Sales & Customer Service are the world’s top honors for customer service, contact center, business development and sales professionals. The Stevie Awards organizes eight of the world’s',
+    description:
+      'NHEG was presented with a Silver Stevie® Award for Ethics in Sales category in the 14th annual Stevie® Awards for Sales & Customer Service. The Stevie Awards for Sales & Customer Service are the world’s top honors for customer service, contact center, business development and sales professionals. The Stevie Awards organizes eight of the world’s',
     canonical: '/nheg-news/2020-stevie-awards-winner/',
   }),
   title: { absolute: '2020 Stevie Awards Winner - New Heights Educational Group, Inc.' },

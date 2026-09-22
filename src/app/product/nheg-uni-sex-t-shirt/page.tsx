@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Uni-Sex T-Shirt - New Heights Educational Group, Inc.',
-    description: 'This updated unisex essential fits like a well-loved favorite. Super soft cotton and excellent quality print makes one toXSSMLXL2XL3XLWidth, in16.5182022.0124.0225.9928Length, in27.012829.023031.0332.0133Sleeve length, in8.638.99.189.459.731010.4 fall in love with it over and over again..: Retail fit.: 100% Soft cotton (fibre content may vary for different colors).: Light fabric (4.2 oz/yd² (142 g/m²)).: Tear away label.: Runs true',
+    description:
+      'This updated unisex essential fits like a well-loved favorite. Super soft cotton and excellent quality print makes one toXSSMLXL2XL3XLWidth, in16.5182022.0124.0225.9928Length, in27.012829.023031.0332.0133Sleeve length, in8.638.99.189.459.731010.4 fall in love with it over and over again..: Retail fit.: 100% Soft cotton (fibre content may vary for different colors).: Light fabric (4.2 oz/yd² (142 g/m²)).: Tear away label.: Runs true',
     canonical: '/product/nheg-uni-sex-t-shirt/',
   }),
   title: { absolute: 'NHEG Uni-Sex T-Shirt - New Heights Educational Group, Inc.' },

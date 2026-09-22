@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Show on Education Unisex Jersey Short Sleeve Tee - New Heights Educational Group, Inc.',
-    description: 'This updated unisex essential fits like a well-loved favorite. Super soft cotton and excellent quality print makes one to fall in love with it over and over again..: Retail fit.: 100% Soft cotton (fibre content may vary for different colors).: Light fabric (4.2 oz/yd² (142 g/m²)).: Tear away label.: Runs true to size',
+    description:
+      'This updated unisex essential fits like a well-loved favorite. Super soft cotton and excellent quality print makes one to fall in love with it over and over again..: Retail fit.: 100% Soft cotton (fibre content may vary for different colors).: Light fabric (4.2 oz/yd² (142 g/m²)).: Tear away label.: Runs true to size',
     canonical: '/product/show-on-education-unisex-jersey-short-sleeve-tee/',
   }),
-  title: { absolute: 'Show on Education Unisex Jersey Short Sleeve Tee - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Show on Education Unisex Jersey Short Sleeve Tee - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-12147 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/show-on-education-unisex-jersey-short-sleeve-tee') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/show-on-education-unisex-jersey-short-sleeve-tee'),
+      }}
     />
   )
 }

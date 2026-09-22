@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'College Entrance Exams - NHEG Online Learning Annex',
-    description: 'Many colleges and universities across the country use college entrance exams like the SATs to determine if they accept you into their school or not. These tests take on average three and a half hours, and so students and schools spend months preparing for these tests.',
+    description:
+      'Many colleges and universities across the country use college entrance exams like the SATs to determine if they accept you into their school or not. These tests take on average three and a half hours, and so students and schools spend months preparing for these tests.',
     canonical: '/school/students/college-entrance-exams/',
   }),
   title: { absolute: 'College Entrance Exams - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-379 page-parent page-child parent-pageid-6467 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/college-entrance-exams') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/college-entrance-exams'),
+      }}
     />
   )
 }

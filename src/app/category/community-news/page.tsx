@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Community News - New Heights Educational Group, Inc.',
-    description: 'Our community news articles are written to help recognize our students, staff and other members of the community in their achievements. Of course, we wish to mention various events that are happening in the many communities in the state of Ohio.',
+    description:
+      'Our community news articles are written to help recognize our students, staff and other members of the community in their achievements. Of course, we wish to mention various events that are happening in the many communities in the state of Ohio.',
     canonical: '/category/community-news/',
   }),
   title: { absolute: 'Community News - New Heights Educational Group, Inc.' },

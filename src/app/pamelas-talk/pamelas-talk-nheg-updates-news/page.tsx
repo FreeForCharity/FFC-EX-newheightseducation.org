@@ -17,7 +17,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8284 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('pamelas-talk/pamelas-talk-nheg-updates-news') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('pamelas-talk/pamelas-talk-nheg-updates-news'),
+      }}
     />
   )
 }

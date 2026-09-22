@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Join Us on Nov 27th 2018 for #GivingTuesday - New Heights Educational Group, Inc.',
-    description: '#GivingTuesday is a global day of giving that harnesses the collective power of individuals, communities and organizations to encourage philanthropy and celebrates generosity worldwide.',
+    description:
+      '#GivingTuesday is a global day of giving that harnesses the collective power of individuals, communities and organizations to encourage philanthropy and celebrates generosity worldwide.',
     canonical: '/support-nheg/giving-tuesday-november-27-2018/',
   }),
-  title: { absolute: 'Join Us on Nov 27th 2018 for #GivingTuesday - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Join Us on Nov 27th 2018 for #GivingTuesday - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-7753 page-child parent-pageid-1897 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('support-nheg/giving-tuesday-november-27-2018') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('support-nheg/giving-tuesday-november-27-2018'),
+      }}
     />
   )
 }

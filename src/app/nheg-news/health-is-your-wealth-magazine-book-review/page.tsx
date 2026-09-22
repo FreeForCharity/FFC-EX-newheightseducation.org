@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Health Is Your Wealth Book Review - New Heights Educational Group, Inc.',
-    description: 'NHEG\'s latest book, Unraveling Reading has been reviewed by Health is Your Wealth Magazine. A British publication for readers with a neurological condition. Written by Daniela Silva, "Unraveling Reading is a response to the needs and difficulties faced by parents, students and teachers with respect to literacy and education. It presents strategies and alternatives for developing reading',
+    description:
+      'NHEG\'s latest book, Unraveling Reading has been reviewed by Health is Your Wealth Magazine. A British publication for readers with a neurological condition. Written by Daniela Silva, "Unraveling Reading is a response to the needs and difficulties faced by parents, students and teachers with respect to literacy and education. It presents strategies and alternatives for developing reading',
     canonical: '/nheg-news/health-is-your-wealth-magazine-book-review/',
   }),
   title: { absolute: 'Health Is Your Wealth Book Review - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-4716 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/health-is-your-wealth-magazine-book-review') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/health-is-your-wealth-magazine-book-review'),
+      }}
     />
   )
 }

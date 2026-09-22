@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Programs - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group offers several educational programs and services to help home, charter and public school children become better students.',
+    description:
+      'New Heights Educational Group offers several educational programs and services to help home, charter and public school children become better students.',
     canonical: '/nheg-educational-programs/',
   }),
   title: { absolute: 'Programs - New Heights Educational Group, Inc.' },

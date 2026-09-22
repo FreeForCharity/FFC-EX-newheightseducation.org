@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2020 Customer Sales and Service World Awards - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group announced today that it has been named winner eight times and garnered Gold, Silver, and Bronze awards in the 7th Annual 2020 Customer Sales and Service World Awards. The world’s top achievement awards program for sales, service, support, and business development. The Customer Sales & Service World Awards® are an',
+    description:
+      'The New Heights Educational Group announced today that it has been named winner eight times and garnered Gold, Silver, and Bronze awards in the 7th Annual 2020 Customer Sales and Service World Awards. The world’s top achievement awards program for sales, service, support, and business development. The Customer Sales & Service World Awards® are an',
     canonical: '/nheg-news/2020-customer-sales-and-service-world-awards/',
   }),
-  title: { absolute: '2020 Customer Sales and Service World Awards - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: '2020 Customer Sales and Service World Awards - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9273 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/2020-customer-sales-and-service-world-awards') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/2020-customer-sales-and-service-world-awards'),
+      }}
     />
   )
 }

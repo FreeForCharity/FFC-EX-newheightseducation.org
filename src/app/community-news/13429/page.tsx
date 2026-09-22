@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Platinum Seal of Transparency 2024 - New Heights Educational Group, Inc.',
-    description: 'We’ve earned our Platinum Seal of Transparency with @CandidDotOrg! Get updates on our impact through our #NonprofitProfile NEW HEIGHTS EDUCATIONAL GROUP - GuideStar Profile',
+    description:
+      'We’ve earned our Platinum Seal of Transparency with @CandidDotOrg! Get updates on our impact through our #NonprofitProfile NEW HEIGHTS EDUCATIONAL GROUP - GuideStar Profile',
     canonical: '/community-news/13429/',
   }),
   title: { absolute: 'Platinum Seal of Transparency 2024 - New Heights Educational Group, Inc.' },

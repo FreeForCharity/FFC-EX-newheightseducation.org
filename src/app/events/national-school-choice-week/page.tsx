@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'National School Choice Week - New Heights Educational Group, Inc.',
-    description: 'Every January, National School Choice Week raises public awareness of the different K-12 education options available to children and families.',
+    description:
+      'Every January, National School Choice Week raises public awareness of the different K-12 education options available to children and families.',
     canonical: '/events/national-school-choice-week/',
   }),
   title: { absolute: 'National School Choice Week - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Weekender Bag - New Heights Educational Group, Inc.',
-    description: '24x13Length, in24.02Width, in13Depth, in5.52Handle height, in11.42Our oversized Weekender Tote is perfect for your weekend at the beach or in town. The wide-mouthed, durable bag holds a generous amount of personal items and is easily held by its thick rope handles..: 100% Spun Polyester.: T-bottom.: Laminated lining',
+    description:
+      '24x13Length, in24.02Width, in13Depth, in5.52Handle height, in11.42Our oversized Weekender Tote is perfect for your weekend at the beach or in town. The wide-mouthed, durable bag holds a generous amount of personal items and is easily held by its thick rope handles..: 100% Spun Polyester.: T-bottom.: Laminated lining',
     canonical: '/product/weekender-bag/',
   }),
   title: { absolute: 'Weekender Bag - New Heights Educational Group, Inc.' },

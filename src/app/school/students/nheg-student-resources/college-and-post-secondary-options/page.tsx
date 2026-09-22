@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'College and Postsecondary Options - NHEG Online Learning Annex',
-    description: 'NHEG has provided a list of college and post-secondary options and resources for students who are thinking about going to or getting read to go to college.',
+    description:
+      'NHEG has provided a list of college and post-secondary options and resources for students who are thinking about going to or getting read to go to college.',
     canonical: '/school/students/nheg-student-resources/college-and-post-secondary-options/',
   }),
   title: { absolute: 'College and Postsecondary Options - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-3133 page-child parent-pageid-641 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/nheg-student-resources/college-and-post-secondary-options') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/students/nheg-student-resources/college-and-post-secondary-options'
+        ),
+      }}
     />
   )
 }

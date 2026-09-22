@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk: Unraveling Reading - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/40i9WPnMra8 Today\'s episode titled Pamela\'s Talk - Unraveling Reading, Pamela Clark discusses the new book Unraveling Reading and the NHEG reading program.',
+    description:
+      "https://youtu.be/40i9WPnMra8 Today's episode titled Pamela's Talk - Unraveling Reading, Pamela Clark discusses the new book Unraveling Reading and the NHEG reading program.",
     canonical: '/pamelas-talk/pamelas-talk-unraveling-reading/',
   }),
   title: { absolute: 'Pamela’s Talk: Unraveling Reading - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-4493 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('pamelas-talk/pamelas-talk-unraveling-reading') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('pamelas-talk/pamelas-talk-unraveling-reading'),
+      }}
     />
   )
 }

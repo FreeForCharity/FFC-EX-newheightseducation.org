@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'What is Personalized eLearning Experience? - New Heights Educational Group, Inc.',
-    description: 'There is an ever increasing ocean of knowledge around us which calls for efficient and improved knowledge acquisition techniques so that maximum knowledge can be retained by the learners. Moreover, the dynamically changing business environment puts completely different challenges on learning process – fast, just-in-time, cheap and relevant learning. E-learning can be proved to be',
+    description:
+      'There is an ever increasing ocean of knowledge around us which calls for efficient and improved knowledge acquisition techniques so that maximum knowledge can be retained by the learners. Moreover, the dynamically changing business environment puts completely different challenges on learning process – fast, just-in-time, cheap and relevant learning. E-learning can be proved to be',
     canonical: '/educational-articles/what-is-personalized-elearning-experience/',
   }),
-  title: { absolute: 'What is Personalized eLearning Experience? - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'What is Personalized eLearning Experience? - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1398 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/what-is-personalized-elearning-experience') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/what-is-personalized-elearning-experience'),
+      }}
     />
   )
 }

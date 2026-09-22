@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Welcome Dr. Kristy Taylor - New Heights Educational Group, Inc.',
-    description: 'Please help us welcome Dr. Kristy Taylor, she will be working as an Assistant Education Director for the New Heights Educational Group. Dr. Kristy Taylor Bio Dr. Kristy Taylor, DHSc, MHS, is a professor at Palm Beach State College, and consultant with over 15 years of experience working in healthcare and education. She is a',
+    description:
+      'Please help us welcome Dr. Kristy Taylor, she will be working as an Assistant Education Director for the New Heights Educational Group. Dr. Kristy Taylor Bio Dr. Kristy Taylor, DHSc, MHS, is a professor at Palm Beach State College, and consultant with over 15 years of experience working in healthcare and education. She is a',
     canonical: '/nheg-news/welcome-dr-kristy-taylor/',
   }),
   title: { absolute: 'Welcome Dr. Kristy Taylor - New Heights Educational Group, Inc.' },

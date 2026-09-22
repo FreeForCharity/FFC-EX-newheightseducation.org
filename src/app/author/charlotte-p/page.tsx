@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Charlotte Picardo, Author at New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "Charlotte.p" Home » Archives for…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "Charlotte.p" Home » Archives for…',
     canonical: '/author/charlotte-p/',
   }),
   title: { absolute: 'Charlotte Picardo, Author at New Heights Educational Group, Inc.' },

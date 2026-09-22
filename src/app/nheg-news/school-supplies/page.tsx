@@ -6,11 +6,16 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'School Supplies at ProMedica Defiance Regional Hospital - New Heights Educational Group, Inc.',
-    description: 'Attention Families with School-age children. FOUR GREAT OPPORTUNITIES AT ONE SPECIAL EVENT - FREE SCHOOL SUPPLIES, HEALTH AND WELLNESS PRESENTATION, FREE DINNER, FREE READING TIME, WITH BOOKS TO BE HANDED OUT UPDATE - We would like to thank Kroger for contributing $100 gift card to purchase school supplies. UPDATE - Due to some extra donations',
+    title:
+      'School Supplies at ProMedica Defiance Regional Hospital - New Heights Educational Group, Inc.',
+    description:
+      'Attention Families with School-age children. FOUR GREAT OPPORTUNITIES AT ONE SPECIAL EVENT - FREE SCHOOL SUPPLIES, HEALTH AND WELLNESS PRESENTATION, FREE DINNER, FREE READING TIME, WITH BOOKS TO BE HANDED OUT UPDATE - We would like to thank Kroger for contributing $100 gift card to purchase school supplies. UPDATE - Due to some extra donations',
     canonical: '/nheg-news/school-supplies/',
   }),
-  title: { absolute: 'School Supplies at ProMedica Defiance Regional Hospital - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'School Supplies at ProMedica Defiance Regional Hospital - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {

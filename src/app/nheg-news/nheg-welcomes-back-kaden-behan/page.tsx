@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Welcomes Back Kaden Behan - New Heights Educational Group, Inc.',
-    description: 'Defiance, OH—The New Heights Educational Group (NHEG) welcomes Kaden Behan back to our internet airwaves. She was the original host for the show back in January of 2013. She will host her first return live internet show in August of 2016. Mrs. Behan’s show will be pre-recorded weekly; NHEG’s other broadcasts as part of “The',
+    description:
+      'Defiance, OH—The New Heights Educational Group (NHEG) welcomes Kaden Behan back to our internet airwaves. She was the original host for the show back in January of 2013. She will host her first return live internet show in August of 2016. Mrs. Behan’s show will be pre-recorded weekly; NHEG’s other broadcasts as part of “The',
     canonical: '/nheg-news/nheg-welcomes-back-kaden-behan/',
   }),
   title: { absolute: 'NHEG Welcomes Back Kaden Behan - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1831 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-welcomes-back-kaden-behan') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-welcomes-back-kaden-behan'),
+      }}
     />
   )
 }

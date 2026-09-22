@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'How to increase your productivity at home - New Heights Educational Group, Inc.',
-    description: 'One thing I’m sure everyone has learned through quarantine is how difficult it can be to work at home. The members of your family, snacks in your pantry, and the feeling of laziness or comfort you associate with your house are just a few of the endless distractions that negatively affect your productivity. Now that',
+    description:
+      'One thing I’m sure everyone has learned through quarantine is how difficult it can be to work at home. The members of your family, snacks in your pantry, and the feeling of laziness or comfort you associate with your house are just a few of the endless distractions that negatively affect your productivity. Now that',
     canonical: '/student-corner/how-to-increase-your-productivity-at-home/',
   }),
-  title: { absolute: 'How to increase your productivity at home - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'How to increase your productivity at home - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9181 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/how-to-increase-your-productivity-at-home') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('student-corner/how-to-increase-your-productivity-at-home'),
+      }}
     />
   )
 }

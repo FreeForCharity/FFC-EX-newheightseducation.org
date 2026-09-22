@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Welcome Maria Lang - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group is happy to welcome Maria Lang to our educational team. We are excited about her affordable and high quality art classes. We know that families struggle to come up with art projects that cover a variety of topics. Art Talk’n ($19/month or $190/year) Art Talk’n will teach you to express yourself',
+    description:
+      'The New Heights Educational Group is happy to welcome Maria Lang to our educational team. We are excited about her affordable and high quality art classes. We know that families struggle to come up with art projects that cover a variety of topics. Art Talk’n ($19/month or $190/year) Art Talk’n will teach you to express yourself',
     canonical: '/nheg-news/welcome-maria-lang/',
   }),
   title: { absolute: 'Welcome Maria Lang - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Drawing Course - NHEG Online Learning Annex',
-    description: 'The drawing course consists of 2 levels with the goal of teaching classical drawing skills. Using this foundation, The Drawing Course then launches into the world of characters and design, allowing the student to bridge the gap between imagining a character and then putting that character on the page.',
+    description:
+      'The drawing course consists of 2 levels with the goal of teaching classical drawing skills. Using this foundation, The Drawing Course then launches into the world of characters and design, allowing the student to bridge the gap between imagining a character and then putting that character on the page.',
     canonical: '/school/online-courses/drawing-course/',
   }),
   title: { absolute: 'The Drawing Course - NHEG Online Learning Annex' },

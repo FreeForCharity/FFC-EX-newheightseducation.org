@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Art of Drawing Readers In: Your attractive post title goes here - NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up The…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up The…',
     canonical: '/publications/post-2/',
   }),
   title: { absolute: 'The Art of Drawing Readers In: Your attractive post title goes here - NHEG' },

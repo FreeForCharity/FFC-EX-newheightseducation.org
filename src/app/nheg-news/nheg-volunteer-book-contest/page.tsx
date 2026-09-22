@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Volunteer Book Contest - New Heights Educational Group, Inc.',
-    description: 'NHEG is pleased to announce the winners of the book giveaway. We recently held an internal competition for volunteers and student families. Whoever raised the most funds would win their choice of one of our published books. The winner is Nayana Mogre, who raised a total of $30. We have decided to extend the same',
+    description:
+      'NHEG is pleased to announce the winners of the book giveaway. We recently held an internal competition for volunteers and student families. Whoever raised the most funds would win their choice of one of our published books. The winner is Nayana Mogre, who raised a total of $30. We have decided to extend the same',
     canonical: '/nheg-news/nheg-volunteer-book-contest/',
   }),
   title: { absolute: 'NHEG Volunteer Book Contest - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7924 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-volunteer-book-contest') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-volunteer-book-contest'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Charter and Public School Information - NHEG Online Learning Annex',
-    description: 'NHEG has consolidated a list of Ohio Charter/Public Schools links and resources for parents looking for the best option to send their kids to school.',
+    description:
+      'NHEG has consolidated a list of Ohio Charter/Public Schools links and resources for parents looking for the best option to send their kids to school.',
     canonical: '/school/parents/charter-school-families/ohio-charter-public-schools/',
   }),
   title: { absolute: 'Charter and Public School Information - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-485 page-child parent-pageid-476 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/parents/charter-school-families/ohio-charter-public-schools') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/parents/charter-school-families/ohio-charter-public-schools'
+        ),
+      }}
     />
   )
 }

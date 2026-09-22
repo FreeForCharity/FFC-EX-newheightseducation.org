@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Fetal Alcohol Syndrome in a Child’s School Education - New Heights Educational Group, Inc.',
-    description: 'Learning is a process that occurs continuously in people\'s life in which the acquisition of new behaviors, skills and attitudes has the aim of adapting the human being to the environment. This process occurs in the nervous system and therefore takes into consideration the neurological integrity of the brain to occur in the best possible',
+    title:
+      'Fetal Alcohol Syndrome in a Child’s School Education - New Heights Educational Group, Inc.',
+    description:
+      "Learning is a process that occurs continuously in people's life in which the acquisition of new behaviors, skills and attitudes has the aim of adapting the human being to the environment. This process occurs in the nervous system and therefore takes into consideration the neurological integrity of the brain to occur in the best possible",
     canonical: '/educational-articles/fetal-alcohol-syndrome-in-a-childs-school-education/',
   }),
-  title: { absolute: 'Fetal Alcohol Syndrome in a Child’s School Education - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Fetal Alcohol Syndrome in a Child’s School Education - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7701 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/fetal-alcohol-syndrome-in-a-childs-school-education') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'educational-articles/fetal-alcohol-syndrome-in-a-childs-school-education'
+        ),
+      }}
     />
   )
 }

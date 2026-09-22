@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Edgewood Country Club All Sports Camp COVID-19 Protocol - New Heights Educational Group, Inc.',
-    description: 'Article written and photograph taken by Dylan Schnur Edgewood Club All Sports Camp, located in River Vale, NJ, has hosted its second year of camp for 4-12 year olds. Edgewood has successfully been operating under COVID-19 Camp Policies and Procedures. Campers may choose to attend the summer camp from 8 AM - 2 PM or',
+    title:
+      'Edgewood Country Club All Sports Camp COVID-19 Protocol - New Heights Educational Group, Inc.',
+    description:
+      'Article written and photograph taken by Dylan Schnur Edgewood Club All Sports Camp, located in River Vale, NJ, has hosted its second year of camp for 4-12 year olds. Edgewood has successfully been operating under COVID-19 Camp Policies and Procedures. Campers may choose to attend the summer camp from 8 AM - 2 PM or',
     canonical: '/student-corner/edgewood-country-club-all-sports-camp-covid-19-protocol/',
   }),
-  title: { absolute: 'Edgewood Country Club All Sports Camp COVID-19 Protocol - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Edgewood Country Club All Sports Camp COVID-19 Protocol - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9138 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/edgewood-country-club-all-sports-camp-covid-19-protocol') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'student-corner/edgewood-country-club-all-sports-camp-covid-19-protocol'
+        ),
+      }}
     />
   )
 }

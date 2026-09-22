@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Unraveling Series: Unraveling Reading - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group, an award-winning nonprofit organization in Ohio, has released its second book - the first publication in our Unraveling series which aims to provide academic instruction in core subjects. Unraveling Reading, written by Daniela Silva from Brazil, is now available on Amazon and Kindle. This guide was created in response to',
+    description:
+      'The New Heights Educational Group, an award-winning nonprofit organization in Ohio, has released its second book - the first publication in our Unraveling series which aims to provide academic instruction in core subjects. Unraveling Reading, written by Daniela Silva from Brazil, is now available on Amazon and Kindle. This guide was created in response to',
     canonical: '/nheg-news/unraveling-series-unraveling-reading/',
   }),
-  title: { absolute: 'Unraveling Series: Unraveling Reading - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Unraveling Series: Unraveling Reading - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-2708 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/unraveling-series-unraveling-reading') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/unraveling-series-unraveling-reading'),
+      }}
     />
   )
 }

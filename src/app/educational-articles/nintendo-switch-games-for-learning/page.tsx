@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Nintendo Switch Games For Learning - New Heights Educational Group, Inc.',
-    description: 'Homeschooling is starting for many places during the Covid-19 pandemic. The kids probably have a Nintendo Switch; are you worried that they’ll be playing and not learning? Well, there are some video games that can help kids learn by having fun throughout the pandemic and homeschooling. Here are a few: MathLand - This is a',
+    description:
+      'Homeschooling is starting for many places during the Covid-19 pandemic. The kids probably have a Nintendo Switch; are you worried that they’ll be playing and not learning? Well, there are some video games that can help kids learn by having fun throughout the pandemic and homeschooling. Here are a few: MathLand - This is a',
     canonical: '/educational-articles/nintendo-switch-games-for-learning/',
   }),
   title: { absolute: 'Nintendo Switch Games For Learning - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9170 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/nintendo-switch-games-for-learning') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/nintendo-switch-games-for-learning'),
+      }}
     />
   )
 }

@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'White Christmas Auditions in Fort Wayne - New Heights Educational Group, Inc.',
-    description: 'Presented at the Embassy Theatre RATED G Veterans Bob Wallace and Phil Davis have a successful song-and-dance act after World War II. With romance in mind, the two follow a duo of beautiful singing sisters enroute to their Christmas show at a Vermont lodge, which just happens to be owned by Bob and Phil\'s former',
+    description:
+      "Presented at the Embassy Theatre RATED G Veterans Bob Wallace and Phil Davis have a successful song-and-dance act after World War II. With romance in mind, the two follow a duo of beautiful singing sisters enroute to their Christmas show at a Vermont lodge, which just happens to be owned by Bob and Phil's former",
     canonical: '/community-news/white-christmas-auditions-in-fort-wayne/',
   }),
-  title: { absolute: 'White Christmas Auditions in Fort Wayne - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'White Christmas Auditions in Fort Wayne - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13373 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/white-christmas-auditions-in-fort-wayne') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/white-christmas-auditions-in-fort-wayne'),
+      }}
     />
   )
 }

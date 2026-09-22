@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Educational Group Status. - New Heights Educational Group, Inc.',
-    description: 'NHEG is going through some big changes this year and a lot of things will start to look different in the coming months. To move forward with NHEG’s goals and dreams, we need funding for an annual budget. Pamela Clark can no longer run NHEG without a paid staff. What does this mean for volunteers',
+    description:
+      'NHEG is going through some big changes this year and a lot of things will start to look different in the coming months. To move forward with NHEG’s goals and dreams, we need funding for an annual budget. Pamela Clark can no longer run NHEG without a paid staff. What does this mean for volunteers',
     canonical: '/nheg-news/new-heights-educational-group-status/',
   }),
-  title: { absolute: 'New Heights Educational Group Status. - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'New Heights Educational Group Status. - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-12984 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/new-heights-educational-group-status') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/new-heights-educational-group-status'),
+      }}
     />
   )
 }

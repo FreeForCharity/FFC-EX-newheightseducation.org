@@ -6,18 +6,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Letter from Ohio House of Representatives On Our Stevie Award - New Heights Educational Group, Inc.',
-    description: 'On Saturday, Pamela Clark received a letter from Representative Craig S. Riedel and the Ohio House of Representatives recognizing both her and New Heights Educational Group for the Silver Stevie Award we recently won at the beginning of May. We would like to thank Representative Craig S. Riedel for this letter and recognizing the organization and',
+    title:
+      'Letter from Ohio House of Representatives On Our Stevie Award - New Heights Educational Group, Inc.',
+    description:
+      'On Saturday, Pamela Clark received a letter from Representative Craig S. Riedel and the Ohio House of Representatives recognizing both her and New Heights Educational Group for the Silver Stevie Award we recently won at the beginning of May. We would like to thank Representative Craig S. Riedel for this letter and recognizing the organization and',
     canonical: '/nheg-news/letter-from-ohio-house-of-representatives/',
   }),
-  title: { absolute: 'Letter from Ohio House of Representatives On Our Stevie Award - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Letter from Ohio House of Representatives On Our Stevie Award - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7503 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/letter-from-ohio-house-of-representatives') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/letter-from-ohio-house-of-representatives'),
+      }}
     />
   )
 }

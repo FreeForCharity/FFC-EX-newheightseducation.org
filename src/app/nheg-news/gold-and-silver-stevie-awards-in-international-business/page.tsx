@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Gold and Silver Stevie Awards in International Business. - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group (NHEG) was named the winner of a Gold and Silver Stevie® Award in the (Gold Winner) Company of the Year - Diversified Services - Small and (Silver Winner) Organization of the Year - Non-Profit or Government Organizations - Medium-size category in The 17th Annual International Business Awards® on September 10. The',
+    title:
+      'Gold and Silver Stevie Awards in International Business. - New Heights Educational Group, Inc.',
+    description:
+      'New Heights Educational Group (NHEG) was named the winner of a Gold and Silver Stevie® Award in the (Gold Winner) Company of the Year - Diversified Services - Small and (Silver Winner) Organization of the Year - Non-Profit or Government Organizations - Medium-size category in The 17th Annual International Business Awards® on September 10. The',
     canonical: '/nheg-news/gold-and-silver-stevie-awards-in-international-business/',
   }),
-  title: { absolute: 'Gold and Silver Stevie Awards in International Business. - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Gold and Silver Stevie Awards in International Business. - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9227 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/gold-and-silver-stevie-awards-in-international-business') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'nheg-news/gold-and-silver-stevie-awards-in-international-business'
+        ),
+      }}
     />
   )
 }

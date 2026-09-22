@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Images and Photography Credits - New Heights Educational Group, Inc.',
-    description: 'We like to acknowledge the following people and websites for use of their Images and Photography in development of the NHEG website.',
+    description:
+      'We like to acknowledge the following people and websites for use of their Images and Photography in development of the NHEG website.',
     canonical: '/who-we-are/nheg-press/images-and-photography/',
   }),
   title: { absolute: 'Images and Photography Credits - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-1447 page-child parent-pageid-216 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('who-we-are/nheg-press/images-and-photography') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('who-we-are/nheg-press/images-and-photography'),
+      }}
     />
   )
 }

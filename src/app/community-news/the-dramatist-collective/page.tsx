@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Dramatist Collective. - New Heights Educational Group, Inc.',
-    description: 'The Fort Wayne Civic Theatre is pleased to announce it\'s first year of The Dramatist Collective. ​First meeting: Sunday September 29th- 3pm-5pm The Dramatist Collective is a dynamic group of playwrights dedicated to nurturing and advancing new theatrical works and ideas. Meeting monthly, the Collective offers a supportive environment for writers to share their projects,',
+    description:
+      "The Fort Wayne Civic Theatre is pleased to announce it's first year of The Dramatist Collective. ​First meeting: Sunday September 29th- 3pm-5pm The Dramatist Collective is a dynamic group of playwrights dedicated to nurturing and advancing new theatrical works and ideas. Meeting monthly, the Collective offers a supportive environment for writers to share their projects,",
     canonical: '/community-news/the-dramatist-collective/',
   }),
   title: { absolute: 'The Dramatist Collective. - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13370 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/the-dramatist-collective') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/the-dramatist-collective'),
+      }}
     />
   )
 }

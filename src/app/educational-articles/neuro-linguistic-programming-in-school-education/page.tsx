@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Contributions of Neuro-linguistic Programming in School Education - New Heights Educational Group, Inc.',
-    description: 'Neuro-linguistic Programming, had its origin in the 70s, with the studies of Richard Brandler, in mathematics and computer science, at the University of California in Santa Cruz. After some time, Richard decided to study psychology and observed that when a person thinks about a traumatic or difficult event, successive times in a positive way, the',
+    title:
+      'Contributions of Neuro-linguistic Programming in School Education - New Heights Educational Group, Inc.',
+    description:
+      'Neuro-linguistic Programming, had its origin in the 70s, with the studies of Richard Brandler, in mathematics and computer science, at the University of California in Santa Cruz. After some time, Richard decided to study psychology and observed that when a person thinks about a traumatic or difficult event, successive times in a positive way, the',
     canonical: '/educational-articles/neuro-linguistic-programming-in-school-education/',
   }),
-  title: { absolute: 'Contributions of Neuro-linguistic Programming in School Education - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Contributions of Neuro-linguistic Programming in School Education - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6782 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/neuro-linguistic-programming-in-school-education') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'educational-articles/neuro-linguistic-programming-in-school-education'
+        ),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'What is Homeschooling? - New Heights Educational Group, Inc.',
-    description: 'Homeschooling involves parents and/or hired instructors as teachers within the home instead of enrolling children in a public or private school. It takes hard work, patience, and responsibility to home school. Reasons why parents choose to homeschool: Religion Special needs/disability School does not challenge child to his/her full potential Bullying Transportation/convenience Family travel Things to',
+    description:
+      'Homeschooling involves parents and/or hired instructors as teachers within the home instead of enrolling children in a public or private school. It takes hard work, patience, and responsibility to home school. Reasons why parents choose to homeschool: Religion Special needs/disability School does not challenge child to his/her full potential Bullying Transportation/convenience Family travel Things to',
     canonical: '/educational-articles/homeschooling/',
   }),
   title: { absolute: 'What is Homeschooling? - New Heights Educational Group, Inc.' },

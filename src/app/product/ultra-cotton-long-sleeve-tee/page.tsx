@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Ultra Cotton Long Sleeve Tee - New Heights Educational Group, Inc.',
-    description: 'A bit more formal than a standard-issue t-shirt, the ultra cotton long sleeve tee is a clear comfort winner. The sleeves also act as a nice frame. There are no side seams. The shoulders are tapped for improved durability. This makes for a good fitting around the shoulders and neck. The cotton used for these',
+    description:
+      'A bit more formal than a standard-issue t-shirt, the ultra cotton long sleeve tee is a clear comfort winner. The sleeves also act as a nice frame. There are no side seams. The shoulders are tapped for improved durability. This makes for a good fitting around the shoulders and neck. The cotton used for these',
     canonical: '/product/ultra-cotton-long-sleeve-tee/',
   }),
   title: { absolute: 'Ultra Cotton Long Sleeve Tee - New Heights Educational Group, Inc.' },

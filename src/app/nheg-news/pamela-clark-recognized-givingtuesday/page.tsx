@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela Clark Recognized at #GivingTuesday - New Heights Educational Group, Inc.',
-    description: 'Recently, Pamela Clark and NHEG was recognized by #GivingTuesday\'s #WomenWhoGive series, which celebrates women doing good in their communities. Here is the link to the full article but below you can read the interview that was conducted with Pamela Clark below. #GivingTuesday\'s Interview with Pamela Clark Read the interview below to learn more about what',
+    description:
+      "Recently, Pamela Clark and NHEG was recognized by #GivingTuesday's #WomenWhoGive series, which celebrates women doing good in their communities. Here is the link to the full article but below you can read the interview that was conducted with Pamela Clark below. #GivingTuesday's Interview with Pamela Clark Read the interview below to learn more about what",
     canonical: '/nheg-news/pamela-clark-recognized-givingtuesday/',
   }),
-  title: { absolute: 'Pamela Clark Recognized at #GivingTuesday - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Pamela Clark Recognized at #GivingTuesday - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6435 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/pamela-clark-recognized-givingtuesday') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/pamela-clark-recognized-givingtuesday'),
+      }}
     />
   )
 }

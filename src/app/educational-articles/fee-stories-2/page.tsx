@@ -6,11 +6,16 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'FEE Stories – The History of Slavery You Probably Weren’t Taught in School - New Heights Educational Group, Inc.',
-    description: 'Slavery cannot be justified or excused by enlightened people, but it can be studied, explained, put in context, and understood—if all the facts of it are in the equation. n “Recognizing Hard Truths About America’s History With Slavery,” published by FEE on February 11, 2023, I urged an assessment of slavery that includes its full',
+    title:
+      'FEE Stories – The History of Slavery You Probably Weren’t Taught in School - New Heights Educational Group, Inc.',
+    description:
+      'Slavery cannot be justified or excused by enlightened people, but it can be studied, explained, put in context, and understood—if all the facts of it are in the equation. n “Recognizing Hard Truths About America’s History With Slavery,” published by FEE on February 11, 2023, I urged an assessment of slavery that includes its full',
     canonical: '/educational-articles/fee-stories-2/',
   }),
-  title: { absolute: 'FEE Stories – The History of Slavery You Probably Weren’t Taught in School - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'FEE Stories – The History of Slavery You Probably Weren’t Taught in School - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {

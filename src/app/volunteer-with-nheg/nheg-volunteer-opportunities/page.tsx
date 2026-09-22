@@ -17,7 +17,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-9816 page-child parent-pageid-576 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('volunteer-with-nheg/nheg-volunteer-opportunities') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('volunteer-with-nheg/nheg-volunteer-opportunities'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Classroom Resources - NHEG Online Learning Annex',
-    description: 'As a teacher, putting together a teaching plan can be time consuming and expensive. These classroom resources will help in the development of that plan.',
+    description:
+      'As a teacher, putting together a teaching plan can be time consuming and expensive. These classroom resources will help in the development of that plan.',
     canonical: '/school/teachers/classroom-resources/',
   }),
   title: { absolute: 'Classroom Resources - NHEG Online Learning Annex' },

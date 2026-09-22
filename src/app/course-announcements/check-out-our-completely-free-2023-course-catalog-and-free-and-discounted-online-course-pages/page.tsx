@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Check out our completely free 2023 course catalog, and free and discounted online course pages. - New Heights Educational Group, Inc.',
-    description: 'Check out our completely free 2023 course catalog, and free and discounted online course pages. Our catalog is packed with free unique courses. The courses used award-winning curriculum. https://school.newheightseducation.org/online-courses/ https://school.newheightseducation.org/online-courses/discounted-and-free-online-classes/',
-    canonical: '/course-announcements/check-out-our-completely-free-2023-course-catalog-and-free-and-discounted-online-course-pages/',
+    title:
+      'Check out our completely free 2023 course catalog, and free and discounted online course pages. - New Heights Educational Group, Inc.',
+    description:
+      'Check out our completely free 2023 course catalog, and free and discounted online course pages. Our catalog is packed with free unique courses. The courses used award-winning curriculum. https://school.newheightseducation.org/online-courses/ https://school.newheightseducation.org/online-courses/discounted-and-free-online-classes/',
+    canonical:
+      '/course-announcements/check-out-our-completely-free-2023-course-catalog-and-free-and-discounted-online-course-pages/',
   }),
-  title: { absolute: 'Check out our completely free 2023 course catalog, and free and discounted online course pages. - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Check out our completely free 2023 course catalog, and free and discounted online course pages. - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13126 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('course-announcements/check-out-our-completely-free-2023-course-catalog-and-free-and-discounted-online-course-pages') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'course-announcements/check-out-our-completely-free-2023-course-catalog-and-free-and-discounted-online-course-pages'
+        ),
+      }}
     />
   )
 }

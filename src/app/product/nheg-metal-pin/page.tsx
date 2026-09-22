@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Metal Pin - New Heights Educational Group, Inc.',
-    description: '1,5"Diameter, in1.51Thickness, in0.08Show the world who you are and wear your design with pride with our custom-made bespoke metal lapel pins. These pins can add a touch of your unique personality to jackets, shirts, scarves, blankets and more. The pins come in two sizes: 1 inch or 1.5 inches in diameter..: Made of pewter.: 2',
+    description:
+      '1,5"Diameter, in1.51Thickness, in0.08Show the world who you are and wear your design with pride with our custom-made bespoke metal lapel pins. These pins can add a touch of your unique personality to jackets, shirts, scarves, blankets and more. The pins come in two sizes: 1 inch or 1.5 inches in diameter..: Made of pewter.: 2',
     canonical: '/product/nheg-metal-pin/',
   }),
   title: { absolute: 'NHEG Metal Pin - New Heights Educational Group, Inc.' },

@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Earns 2019 Platinum Seal of Transparency - New Heights Educational Group, Inc.',
-    description: 'Defiance, Ohio - New Heights Educational Group today earned a 2019 Platinum Seal of Transparency, the highest level of recognition offered by GuideStar, the world’s largest source of nonprofit information. By sharing metrics that highlight the progress NHEG is making toward its mission, the organization is helping donors move beyond simplistic ways of nonprofit evaluation',
+    description:
+      'Defiance, Ohio - New Heights Educational Group today earned a 2019 Platinum Seal of Transparency, the highest level of recognition offered by GuideStar, the world’s largest source of nonprofit information. By sharing metrics that highlight the progress NHEG is making toward its mission, the organization is helping donors move beyond simplistic ways of nonprofit evaluation',
     canonical: '/nheg-news/nheg-earns-2019-platinum-seal-of-transparency/',
   }),
-  title: { absolute: 'NHEG Earns 2019 Platinum Seal of Transparency - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'NHEG Earns 2019 Platinum Seal of Transparency - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8637 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-earns-2019-platinum-seal-of-transparency') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-earns-2019-platinum-seal-of-transparency'),
+      }}
     />
   )
 }

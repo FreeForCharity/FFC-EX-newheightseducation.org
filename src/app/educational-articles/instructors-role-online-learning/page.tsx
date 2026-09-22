@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Instructor’s Role in Online Learning - New Heights Educational Group, Inc.',
-    description: 'Most of the learners new to online learning think that taking an online course is comparatively easier than face-to–face course. Many online courses are asynchronous, which means that they can be taken anytime anywhere. This leads to the problem of self-discipline, which can be an issue for many first-time online learners. In the beginning, they',
+    description:
+      'Most of the learners new to online learning think that taking an online course is comparatively easier than face-to–face course. Many online courses are asynchronous, which means that they can be taken anytime anywhere. This leads to the problem of self-discipline, which can be an issue for many first-time online learners. In the beginning, they',
     canonical: '/educational-articles/instructors-role-online-learning/',
   }),
   title: { absolute: 'Instructor’s Role in Online Learning - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1427 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/instructors-role-online-learning') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/instructors-role-online-learning'),
+      }}
     />
   )
 }

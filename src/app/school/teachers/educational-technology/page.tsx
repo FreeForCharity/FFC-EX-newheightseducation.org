@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Educational Technology - NHEG Online Learning Annex',
-    description: 'This educational technology resources list contains schools & school districts across Ohio that incorporate educational-based technology in their classrooms.',
+    description:
+      'This educational technology resources list contains schools & school districts across Ohio that incorporate educational-based technology in their classrooms.',
     canonical: '/school/teachers/educational-technology/',
   }),
   title: { absolute: 'Educational Technology - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-293 page-parent page-child parent-pageid-260 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/educational-technology') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/educational-technology'),
+      }}
     />
   )
 }

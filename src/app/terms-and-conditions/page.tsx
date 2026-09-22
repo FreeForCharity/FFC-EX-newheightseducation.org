@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Terms and Conditions - New Heights Educational Group, Inc.',
-    description: 'The following are our Terms and Conditions, which are important and affect your legal rights, so please read them carefully.',
+    description:
+      'The following are our Terms and Conditions, which are important and affect your legal rights, so please read them carefully.',
     canonical: '/terms-and-conditions/',
   }),
   title: { absolute: 'Terms and Conditions - New Heights Educational Group, Inc.' },

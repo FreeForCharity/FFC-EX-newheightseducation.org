@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Latchkey Child - New Heights Educational Group, Inc.',
-    description: 'What is the definition of a latchkey child? A latchkey is a child who returns from school to an empty home because their parent or parents are away at work, or a child who is often left at home with little parental supervision. I never stayed home alone when I was young. I began to',
+    description:
+      'What is the definition of a latchkey child? A latchkey is a child who returns from school to an empty home because their parent or parents are away at work, or a child who is often left at home with little parental supervision. I never stayed home alone when I was young. I began to',
     canonical: '/educational-articles/latchkey-child/',
   }),
   title: { absolute: 'Latchkey Child - New Heights Educational Group, Inc.' },

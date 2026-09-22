@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Scholarship Opportunities - New Heights Educational Group, Inc.',
-    description: 'High School For Ninth Graders Scholarship Name: Back-to-School Scholarship Sub header Name: For Ninth Graders Prize: $500 Question: If you could have any celebrity or influencer visit your school, who would it be? Dates: August 1-31, 2024 Link: https://www.collegexpress.com/reg/signup?campaign=backtoschool9th&utm_campaign=NHEG&utm_medium=link&utm_source=NHEG High School Sophomore Scholarship Name: Back-to-School Scholarship Sub header Name: For High School Sophomores Prize: $500 Question:',
+    description:
+      'High School For Ninth Graders Scholarship Name: Back-to-School Scholarship Sub header Name: For Ninth Graders Prize: $500 Question: If you could have any celebrity or influencer visit your school, who would it be? Dates: August 1-31, 2024 Link: https://www.collegexpress.com/reg/signup?campaign=backtoschool9th&utm_campaign=NHEG&utm_medium=link&utm_source=NHEG High School Sophomore Scholarship Name: Back-to-School Scholarship Sub header Name: For High School Sophomores Prize: $500 Question:',
     canonical: '/community-news/scholarship-opportunities/',
   }),
   title: { absolute: 'Scholarship Opportunities - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13376 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/scholarship-opportunities') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/scholarship-opportunities'),
+      }}
     />
   )
 }

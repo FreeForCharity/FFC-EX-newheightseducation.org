@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Learning Disabilities / Special Needs - NHEG Online Learning Annex',
-    description: 'Learning Disabilities in children can be especially difficult for both the parents and the children, especially when it comes to school. This can be even more difficult for home school parents, so here at NHEG, we want to provide as much information as possible to help understand your children and their needs.',
+    description:
+      'Learning Disabilities in children can be especially difficult for both the parents and the children, especially when it comes to school. This can be even more difficult for home school parents, so here at NHEG, we want to provide as much information as possible to help understand your children and their needs.',
     canonical: '/school/parents/learning-disabilities-special-needs/',
   }),
   title: { absolute: 'Learning Disabilities / Special Needs - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-616 page-child parent-pageid-420 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/parents/learning-disabilities-special-needs') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/parents/learning-disabilities-special-needs'),
+      }}
     />
   )
 }

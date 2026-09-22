@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Who We Are - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group, Inc., promotes literacy for children and adults by offering a range of educational support services. Such services include the following: assisting families in the selection of schools; organization of educational activities; and acquisition of materials.',
+    description:
+      'New Heights Educational Group, Inc., promotes literacy for children and adults by offering a range of educational support services. Such services include the following: assisting families in the selection of schools; organization of educational activities; and acquisition of materials.',
     canonical: '/who-we-are/',
   }),
   title: { absolute: 'Who We Are - New Heights Educational Group, Inc.' },

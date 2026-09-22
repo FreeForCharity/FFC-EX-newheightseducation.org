@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Recognition Day 201 - New Heights Educational Group, Inc.',
-    description: 'Unfortunately we will be moving the NHEG Recognition Day 2018 event online. New Heights Educational Group cordial invites you to NHEG Recognition Day 2018 on Saturday June 2 from 2:30 pm to 5:00 PM at the ProMedica Defiance Regional Hospital. Recognition Day is a special event in which we recognize all the hard work that has',
+    description:
+      'Unfortunately we will be moving the NHEG Recognition Day 2018 event online. New Heights Educational Group cordial invites you to NHEG Recognition Day 2018 on Saturday June 2 from 2:30 pm to 5:00 PM at the ProMedica Defiance Regional Hospital. Recognition Day is a special event in which we recognize all the hard work that has',
     canonical: '/nheg-news/nheg-recognition-day-2018/',
   }),
   title: { absolute: 'NHEG Recognition Day 201 - New Heights Educational Group, Inc.' },

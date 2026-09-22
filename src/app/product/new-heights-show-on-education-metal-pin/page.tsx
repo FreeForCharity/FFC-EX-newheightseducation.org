@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Show on Education Metal Pin - New Heights Educational Group, Inc.',
-    description: '1,5"Diameter, in1.51Thickness, in0.08Show the world who you are and wear your design with pride with our custom-made bespoke metal lapel pins. These pins can add a touch of your unique personality to jackets, shirts, scarves, blankets and more. The pins come in two sizes: 1 inch or 1.5 inches in diameter..: Made of pewter.: 2',
+    description:
+      '1,5"Diameter, in1.51Thickness, in0.08Show the world who you are and wear your design with pride with our custom-made bespoke metal lapel pins. These pins can add a touch of your unique personality to jackets, shirts, scarves, blankets and more. The pins come in two sizes: 1 inch or 1.5 inches in diameter..: Made of pewter.: 2',
     canonical: '/product/new-heights-show-on-education-metal-pin/',
   }),
-  title: { absolute: 'New Heights Show on Education Metal Pin - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'New Heights Show on Education Metal Pin - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11701 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/new-heights-show-on-education-metal-pin') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/new-heights-show-on-education-metal-pin'),
+      }}
     />
   )
 }

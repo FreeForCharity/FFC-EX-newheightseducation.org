@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Awards - New Heights Educational Group, Inc.',
-    description: 'Over the years of dedicated service to the children and adults of the state of Ohio, we have received many awards and achievements for the work that we do. These awards and achievements cover various areas, including businesses and education. Each award and achievement is listed by name, the year we received it and, if appropriate, the category for which we were nominated.',
+    description:
+      'Over the years of dedicated service to the children and adults of the state of Ohio, we have received many awards and achievements for the work that we do. These awards and achievements cover various areas, including businesses and education. Each award and achievement is listed by name, the year we received it and, if appropriate, the category for which we were nominated.',
     canonical: '/who-we-are/awards-and-achievements/',
   }),
   title: { absolute: 'Awards - New Heights Educational Group, Inc.' },

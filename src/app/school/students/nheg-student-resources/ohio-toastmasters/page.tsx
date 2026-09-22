@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Ohio Toastmasters - NHEG Online Learning Annex',
-    description: 'The Ohio Toastmasters are a group of men and women of the Toastmasters organization who are looking to perfect their speaking and communication skills. If speaking in front of people is not your thing, or you have the fear of speaking in front of large groups of people, this organization will help you become a more effective speaker.',
+    description:
+      'The Ohio Toastmasters are a group of men and women of the Toastmasters organization who are looking to perfect their speaking and communication skills. If speaking in front of people is not your thing, or you have the fear of speaking in front of large groups of people, this organization will help you become a more effective speaker.',
     canonical: '/school/students/nheg-student-resources/ohio-toastmasters/',
   }),
   title: { absolute: 'Ohio Toastmasters - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-818 page-child parent-pageid-641 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/nheg-student-resources/ohio-toastmasters') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/nheg-student-resources/ohio-toastmasters'),
+      }}
     />
   )
 }

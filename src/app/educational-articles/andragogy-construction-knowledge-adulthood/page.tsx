@@ -6,18 +6,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Andragogy: Construction of Knowledge in Adulthood - New Heights Educational Group, Inc.',
-    description: 'Learning is a process developed throughout our life; however, little emphasis has been given to adult literacy or the construction of knowledge acquired in adulthood. If you look at the masters in our history, such as Jesus in biblical times, Paulo Freire in Brazil, and Socrates and Plato in ancient Greece, we can see that',
+    title:
+      'Andragogy: Construction of Knowledge in Adulthood - New Heights Educational Group, Inc.',
+    description:
+      'Learning is a process developed throughout our life; however, little emphasis has been given to adult literacy or the construction of knowledge acquired in adulthood. If you look at the masters in our history, such as Jesus in biblical times, Paulo Freire in Brazil, and Socrates and Plato in ancient Greece, we can see that',
     canonical: '/educational-articles/andragogy-construction-knowledge-adulthood/',
   }),
-  title: { absolute: 'Andragogy: Construction of Knowledge in Adulthood - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Andragogy: Construction of Knowledge in Adulthood - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1374 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/andragogy-construction-knowledge-adulthood') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/andragogy-construction-knowledge-adulthood'),
+      }}
     />
   )
 }

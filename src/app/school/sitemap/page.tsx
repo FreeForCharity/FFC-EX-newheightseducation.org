@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Sitemap - NHEG Online Learning Annex',
-    description: 'The NHEG sitemap organizes all of the various sections of the New Heights Educational Group website for search engine crawlers and users of this website.',
+    description:
+      'The NHEG sitemap organizes all of the various sections of the New Heights Educational Group website for search engine crawlers and users of this website.',
     canonical: '/school/sitemap/',
   }),
   title: { absolute: 'Sitemap - NHEG Online Learning Annex' },

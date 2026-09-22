@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Prom - New Heights Educational Group, Inc.',
-    description: 'The prom is a semi-formal dance or gathering of high school students. This event is typically held near the end of the senior year of high school. New Heights Educational Group has two options for home school and charter school students to attend a prom.',
+    description:
+      'The prom is a semi-formal dance or gathering of high school students. This event is typically held near the end of the senior year of high school. New Heights Educational Group has two options for home school and charter school students to attend a prom.',
     canonical: '/events/prom/',
   }),
   title: { absolute: 'Prom - New Heights Educational Group, Inc.' },

@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home Education Council of America Guest Speaker - New Heights Educational Group, Inc.',
-    description: 'Pamela Clark will be a Guest Speaker for Home Education Council of America (HECOA) Home School Bootcamp on March 31, 2020, 6-7 p.m., As she will discuss free and discounted curriculum options, and earning credits for high school students for today\'s homeschool families. This free online conference provides training for home educators. Home Education Council',
+    description:
+      "Pamela Clark will be a Guest Speaker for Home Education Council of America (HECOA) Home School Bootcamp on March 31, 2020, 6-7 p.m., As she will discuss free and discounted curriculum options, and earning credits for high school students for today's homeschool families. This free online conference provides training for home educators. Home Education Council",
     canonical: '/nheg-news/home-education-council-of-america-guest-speaker/',
   }),
-  title: { absolute: 'Home Education Council of America Guest Speaker - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Home Education Council of America Guest Speaker - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8865 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/home-education-council-of-america-guest-speaker') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/home-education-council-of-america-guest-speaker'),
+      }}
     />
   )
 }

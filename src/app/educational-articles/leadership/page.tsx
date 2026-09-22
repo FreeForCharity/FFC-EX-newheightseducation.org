@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Leadership - New Heights Educational Group, Inc.',
-    description: 'The successes or failures of a given society greatly depend on the quality of its leaders. Parents and tutors need leadership skills to better manage their home. Children need it to succeed in whatsoever they do. Enterprises, local communities as well as countries need leadership skills in order to better define responsibilities and help channel',
+    description:
+      'The successes or failures of a given society greatly depend on the quality of its leaders. Parents and tutors need leadership skills to better manage their home. Children need it to succeed in whatsoever they do. Enterprises, local communities as well as countries need leadership skills in order to better define responsibilities and help channel',
     canonical: '/educational-articles/leadership/',
   }),
   title: { absolute: 'Leadership - New Heights Educational Group, Inc.' },

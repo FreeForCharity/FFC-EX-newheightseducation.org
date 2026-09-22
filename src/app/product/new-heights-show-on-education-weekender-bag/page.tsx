@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Show on Education Weekender Bag - New Heights Educational Group, Inc.',
-    description: '24x13Length, in24.02Width, in13Depth, in5.52Handle height, in11.42Our oversized Weekender Tote is perfect for your weekend at the beach or in town. The wide-mouthed, durable bag holds a generous amount of personal items and is easily held by its thick rope handles..: 100% Spun Polyester.: T-bottom.: Laminated lining',
+    description:
+      '24x13Length, in24.02Width, in13Depth, in5.52Handle height, in11.42Our oversized Weekender Tote is perfect for your weekend at the beach or in town. The wide-mouthed, durable bag holds a generous amount of personal items and is easily held by its thick rope handles..: 100% Spun Polyester.: T-bottom.: Laminated lining',
     canonical: '/product/new-heights-show-on-education-weekender-bag/',
   }),
-  title: { absolute: 'New Heights Show on Education Weekender Bag - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'New Heights Show on Education Weekender Bag - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11593 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/new-heights-show-on-education-weekender-bag') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/new-heights-show-on-education-weekender-bag'),
+      }}
     />
   )
 }

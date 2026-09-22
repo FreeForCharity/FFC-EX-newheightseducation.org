@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Multimedia’s Impact on Literacy - New Heights Educational Group, Inc.',
-    description: 'There are currently over nineteen varieties of multimedia available. The most common ones are: Facebook with 1.86 billion users, Twitter with 319 million users, blogs with 28.3 million users, Snapchat with 158 million users daily, Instagram with 400 million users daily and YouTube with 6 billion hours viewed per month.[1] The latest literacy statistics for the',
+    description:
+      'There are currently over nineteen varieties of multimedia available. The most common ones are: Facebook with 1.86 billion users, Twitter with 319 million users, blogs with 28.3 million users, Snapchat with 158 million users daily, Instagram with 400 million users daily and YouTube with 6 billion hours viewed per month.[1] The latest literacy statistics for the',
     canonical: '/educational-articles/multimedias-impact-literacy/',
   }),
   title: { absolute: 'Multimedia’s Impact on Literacy - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5717 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/multimedias-impact-literacy') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/multimedias-impact-literacy'),
+      }}
     />
   )
 }

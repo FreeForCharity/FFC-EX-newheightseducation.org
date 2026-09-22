@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Graphic Design Dept. Promotion and Goodbye - New Heights Educational Group, Inc.',
-    description: 'Dear NHEG Family, It has been my sincere pleasure to supervise the NHEG Graphic Design Department. During that time, the staff working in this department have made significant contributions that this organization benefits from daily. Their continuing contribution of skill and time make ambitions well beyond the reach of funding possible. They have earned my',
+    description:
+      'Dear NHEG Family, It has been my sincere pleasure to supervise the NHEG Graphic Design Department. During that time, the staff working in this department have made significant contributions that this organization benefits from daily. Their continuing contribution of skill and time make ambitions well beyond the reach of funding possible. They have earned my',
     canonical: '/nheg-news/nheg-graphic-design-dept-promotion-and-goodbye/',
   }),
-  title: { absolute: 'NHEG Graphic Design Dept. Promotion and Goodbye - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'NHEG Graphic Design Dept. Promotion and Goodbye - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8787 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-graphic-design-dept-promotion-and-goodbye') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-graphic-design-dept-promotion-and-goodbye'),
+      }}
     />
   )
 }

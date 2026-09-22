@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Writing Contest - New Heights Educational Group, Inc.',
-    description: 'It\'s August and that means we are a month away from starting a new school year and it also means a end of your summer NHEG writing contest. That is what kids, we are kicking off the school season with a writing contest and the title of this contest is "Summer Educational Experience". What does',
+    description:
+      'It\'s August and that means we are a month away from starting a new school year and it also means a end of your summer NHEG writing contest. That is what kids, we are kicking off the school season with a writing contest and the title of this contest is "Summer Educational Experience". What does',
     canonical: '/nheg-news/nheg-writing-contest/',
   }),
   title: { absolute: 'NHEG Writing Contest - New Heights Educational Group, Inc.' },

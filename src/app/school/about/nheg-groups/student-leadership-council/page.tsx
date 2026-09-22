@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Student Leadership Council - NHEG Online Learning Annex',
-    description: 'Student Leadership Council\'s mission is to promote literacy for children and adults by offering a range of educational support services. Such services include assisting families in the selection of schools, organization of educational activities and acquisition of materials.',
+    description:
+      "Student Leadership Council's mission is to promote literacy for children and adults by offering a range of educational support services. Such services include assisting families in the selection of schools, organization of educational activities and acquisition of materials.",
     canonical: '/school/about/nheg-groups/student-leadership-council/',
   }),
   title: { absolute: 'Student Leadership Council - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6461 page-child parent-pageid-6458 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/about/nheg-groups/student-leadership-council') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/about/nheg-groups/student-leadership-council'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Misc. Teacher Resources - NHEG Online Learning Annex',
-    description: 'These are misc. teacher resources that don\'t fit into any particular category, but can provide benefits in becoming a more effective teacher in your classroom.',
+    description:
+      "These are misc. teacher resources that don't fit into any particular category, but can provide benefits in becoming a more effective teacher in your classroom.",
     canonical: '/school/teachers/teacher-resources/misc-teacher-resources/',
   }),
   title: { absolute: 'Misc. Teacher Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-668 page-child parent-pageid-6463 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/teacher-resources/misc-teacher-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/teacher-resources/misc-teacher-resources'),
+      }}
     />
   )
 }

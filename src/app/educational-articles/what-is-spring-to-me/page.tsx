@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'What is Spring to Me - New Heights Educational Group, Inc.',
-    description: 'What is the meaning of spring? Do you like the season or you don’t like it at all? There are many reasons why people love or hate spring. What do you do during spring? Here are some thoughts on what spring might mean to you. Reasons Why You May Like Spring Flowers - It’s that',
+    description:
+      'What is the meaning of spring? Do you like the season or you don’t like it at all? There are many reasons why people love or hate spring. What do you do during spring? Here are some thoughts on what spring might mean to you. Reasons Why You May Like Spring Flowers - It’s that',
     canonical: '/educational-articles/what-is-spring-to-me/',
   }),
   title: { absolute: 'What is Spring to Me - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8281 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/what-is-spring-to-me') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/what-is-spring-to-me'),
+      }}
     />
   )
 }

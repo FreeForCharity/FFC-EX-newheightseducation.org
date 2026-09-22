@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Teacher and Professional Organizations - NHEG Online Learning Annex',
-    description: 'This is a list of teacher and professional organizations in the state of Ohio for teachers to attend events, receive training and more. Of course, if you\'re a school administrator or working somewhere else in the educational system, these organizations will help you become a more effective leader.',
+    description:
+      "This is a list of teacher and professional organizations in the state of Ohio for teachers to attend events, receive training and more. Of course, if you're a school administrator or working somewhere else in the educational system, these organizations will help you become a more effective leader.",
     canonical: '/school/teachers/teacher-resources/teacher-and-professional-organizations/',
   }),
   title: { absolute: 'Teacher and Professional Organizations - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6462 page-child parent-pageid-6463 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/teacher-resources/teacher-and-professional-organizations') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/teachers/teacher-resources/teacher-and-professional-organizations'
+        ),
+      }}
     />
   )
 }

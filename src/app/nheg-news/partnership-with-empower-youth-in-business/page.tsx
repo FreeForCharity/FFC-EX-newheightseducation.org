@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with Empower Youth in Business - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group (NHEG) announces a new partnership with Empower Youth in Business. Allene Yue, a volunteer with NHEG and President of the NHEG Student Leadership Council, is Co-founder and Co-CEO of this organization. Empowering Youth in Business, otherwise known as EYB, is a student-run organization that strives to offer underprivileged youth in the',
+    description:
+      'New Heights Educational Group (NHEG) announces a new partnership with Empower Youth in Business. Allene Yue, a volunteer with NHEG and President of the NHEG Student Leadership Council, is Co-founder and Co-CEO of this organization. Empowering Youth in Business, otherwise known as EYB, is a student-run organization that strives to offer underprivileged youth in the',
     canonical: '/nheg-news/partnership-with-empower-youth-in-business/',
   }),
-  title: { absolute: 'Partnership with Empower Youth in Business - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Partnership with Empower Youth in Business - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9229 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/partnership-with-empower-youth-in-business') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/partnership-with-empower-youth-in-business'),
+      }}
     />
   )
 }

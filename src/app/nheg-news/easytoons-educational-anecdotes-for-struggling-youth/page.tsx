@@ -6,18 +6,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'EASYToons – Educational Anecdotes for Struggling Youth - New Heights Educational Group, Inc.',
-    description: 'NHEG announces a very special project coming to fruition, a comic book, titled EASYToons (Educational Anecdotes for Struggling Youth). Pamela Clark, Executive Director, explains, "After years of planning and finding the perfect group of talented graphic designers, with many skills and great work ethics, we are launching a comic book for students in need of',
+    title:
+      'EASYToons – Educational Anecdotes for Struggling Youth - New Heights Educational Group, Inc.',
+    description:
+      'NHEG announces a very special project coming to fruition, a comic book, titled EASYToons (Educational Anecdotes for Struggling Youth). Pamela Clark, Executive Director, explains, "After years of planning and finding the perfect group of talented graphic designers, with many skills and great work ethics, we are launching a comic book for students in need of',
     canonical: '/nheg-news/easytoons-educational-anecdotes-for-struggling-youth/',
   }),
-  title: { absolute: 'EASYToons – Educational Anecdotes for Struggling Youth - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'EASYToons – Educational Anecdotes for Struggling Youth - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8036 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/easytoons-educational-anecdotes-for-struggling-youth') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/easytoons-educational-anecdotes-for-struggling-youth'),
+      }}
     />
   )
 }

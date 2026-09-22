@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Radio Show Google Classrooms - New Heights Educational Group, Inc.',
-    description: 'Some of our audience already use our shows in their day-to-day learning. NHEG is now making it easier than ever to listen to relevant information and stay informed on happenings in the educational world. Now students can choose to listen to our shows by topic in a classroom setting using Google Classroom. All you need to do is email NewHeightsEducation@yahoo.com and',
+    description:
+      'Some of our audience already use our shows in their day-to-day learning. NHEG is now making it easier than ever to listen to relevant information and stay informed on happenings in the educational world. Now students can choose to listen to our shows by topic in a classroom setting using Google Classroom. All you need to do is email NewHeightsEducation@yahoo.com and',
     canonical: '/nheg-news/radio-show-google-classrooms/',
   }),
   title: { absolute: 'Radio Show Google Classrooms - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8151 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/radio-show-google-classrooms') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/radio-show-google-classrooms'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Martin Luther King Jr. Day - New Heights Educational Group, Inc.',
-    description: 'Written by: Barbara Bullen​ Martin Luther King Jr., (Michael King Jr., 1929-1968) known internationally throughout the world as one of the greatest mediators of all time, is honored yearly. Brought up as a Christian, he followed in his father’s footsteps (Martin Luther King, Sr.) by becoming a Baptist Minister. A man who took it upon',
+    description:
+      'Written by: Barbara Bullen​ Martin Luther King Jr., (Michael King Jr., 1929-1968) known internationally throughout the world as one of the greatest mediators of all time, is honored yearly. Brought up as a Christian, he followed in his father’s footsteps (Martin Luther King, Sr.) by becoming a Baptist Minister. A man who took it upon',
     canonical: '/educational-articles/martin-luther-king-jr-day/',
   }),
   title: { absolute: 'Martin Luther King Jr. Day - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-10278 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/martin-luther-king-jr-day') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/martin-luther-king-jr-day'),
+      }}
     />
   )
 }

@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Pedagogical Work in Children with Developmental Disorders - New Heights Educational Group, Inc.',
-    description: 'DSM-V defines that developmental disorders are developmental conditions that typically arise before the child enters school and are characterized by déficits in personal, social, academic or professional functioning. Learning is defined as a process that involves progressive changes in an individual behavior. This is often viewed as a result of his/her lifelong experiences, in addition',
+    title:
+      'Pedagogical Work in Children with Developmental Disorders - New Heights Educational Group, Inc.',
+    description:
+      'DSM-V defines that developmental disorders are developmental conditions that typically arise before the child enters school and are characterized by déficits in personal, social, academic or professional functioning. Learning is defined as a process that involves progressive changes in an individual behavior. This is often viewed as a result of his/her lifelong experiences, in addition',
     canonical: '/educational-articles/pedagogical-work-in-children-with-developmental-disorders/',
   }),
-  title: { absolute: 'Pedagogical Work in Children with Developmental Disorders - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Pedagogical Work in Children with Developmental Disorders - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7178 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/pedagogical-work-in-children-with-developmental-disorders') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'educational-articles/pedagogical-work-in-children-with-developmental-disorders'
+        ),
+      }}
     />
   )
 }

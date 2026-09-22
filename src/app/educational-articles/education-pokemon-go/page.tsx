@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education on Pokemon Go - New Heights Educational Group, Inc.',
-    description: 'By: Khrista Cendana There is a new app that is trending right now and it is called: Pokémon Go. Since the popular game has been released worldwide on mobile devices since two weeks ago, many people has downloaded it from their app store on their phones. Some people are even using it for education to',
+    description:
+      'By: Khrista Cendana There is a new app that is trending right now and it is called: Pokémon Go. Since the popular game has been released worldwide on mobile devices since two weeks ago, many people has downloaded it from their app store on their phones. Some people are even using it for education to',
     canonical: '/educational-articles/education-pokemon-go/',
   }),
   title: { absolute: 'Education on Pokemon Go - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1364 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/education-pokemon-go') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/education-pokemon-go'),
+      }}
     />
   )
 }

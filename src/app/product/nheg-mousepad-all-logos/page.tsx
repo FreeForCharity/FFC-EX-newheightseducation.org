@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Mousepad (all logos) - New Heights Educational Group, Inc.',
-    description: '9"x7.5"Height, in0.16Length, in9.14Width, in7.64An appealing accent on one\'s desk, this high quality mousepad is designed to provide a smooth, consistent, and durable surface. With personalized design print it will be an attractive decor on every desk..: 4 mm thick Neoprene.: Non-Slip.: Full print',
+    description:
+      '9"x7.5"Height, in0.16Length, in9.14Width, in7.64An appealing accent on one\'s desk, this high quality mousepad is designed to provide a smooth, consistent, and durable surface. With personalized design print it will be an attractive decor on every desk..: 4 mm thick Neoprene.: Non-Slip.: Full print',
     canonical: '/product/nheg-mousepad-all-logos/',
   }),
   title: { absolute: 'NHEG Mousepad (all logos) - New Heights Educational Group, Inc.' },

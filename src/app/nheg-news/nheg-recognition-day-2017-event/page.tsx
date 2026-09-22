@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Recognition Day 2017 - New Heights Educational Group, Inc.',
-    description: 'NHEG Recognition Day is an annual event where we recognize students and staff for their hard work and dedication to improving a student\'s education. So, we like to recognize the following people for their work in 2016-2017. Vanh Vue, Raleigh, NC, was named Tutor of the Year. Ms. Vue has been a tutor with NHEG',
+    description:
+      "NHEG Recognition Day is an annual event where we recognize students and staff for their hard work and dedication to improving a student's education. So, we like to recognize the following people for their work in 2016-2017. Vanh Vue, Raleigh, NC, was named Tutor of the Year. Ms. Vue has been a tutor with NHEG",
     canonical: '/nheg-news/nheg-recognition-day-2017-event/',
   }),
   title: { absolute: 'NHEG Recognition Day 2017 - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5987 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-recognition-day-2017-event') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-recognition-day-2017-event'),
+      }}
     />
   )
 }

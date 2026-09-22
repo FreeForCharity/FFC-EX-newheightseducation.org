@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Additional 2020 Stevie Awards - New Heights Educational Group, Inc.',
-    description: 'Back in March, New Heights Educational Group was awarded a Silver Stevie for Sales, but we are happy to announce our organization has won 4 more Stevies. New Heights was awarded a Gold 2020 Stevie Award for Product Management/Development Executive of the Year and Bronze 2020 Stevie Award for Product Developer of the Year. Also',
+    description:
+      'Back in March, New Heights Educational Group was awarded a Silver Stevie for Sales, but we are happy to announce our organization has won 4 more Stevies. New Heights was awarded a Gold 2020 Stevie Award for Product Management/Development Executive of the Year and Bronze 2020 Stevie Award for Product Developer of the Year. Also',
     canonical: '/nheg-news/additional-2020-stevie-awards/',
   }),
   title: { absolute: 'Additional 2020 Stevie Awards - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8970 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/additional-2020-stevie-awards') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/additional-2020-stevie-awards'),
+      }}
     />
   )
 }

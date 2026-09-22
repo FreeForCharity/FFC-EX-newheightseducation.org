@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Is Volunteering Worth The Time? - New Heights Educational Group, Inc.',
-    description: 'Are you bored and you don’t have anything to do? Do you want to do something to improve your resume? Volunteering might be something that you can do in your spare time, and it could improve your skills! Volunteering could help you in your education and schooling. Here are some pros and cons of volunteering.',
+    description:
+      'Are you bored and you don’t have anything to do? Do you want to do something to improve your resume? Volunteering might be something that you can do in your spare time, and it could improve your skills! Volunteering could help you in your education and schooling. Here are some pros and cons of volunteering.',
     canonical: '/educational-articles/is-volunteering-worth-the-time/',
   }),
   title: { absolute: 'Is Volunteering Worth The Time? - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9425 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/is-volunteering-worth-the-time') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/is-volunteering-worth-the-time'),
+      }}
     />
   )
 }

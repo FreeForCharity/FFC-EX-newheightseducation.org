@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Unisex Jersey Short Sleeve Tee - New Heights Educational Group, Inc.',
-    description: 'This classic unisex jersey short sleeve tee fits like a well-loved favorite. Soft cotton and quality print make users fall in love with it over and over again. These t-shirts have-ribbed knit collars to bolster shaping. The shoulders have taping for better fit over time. Dual side seams hold the garment\'s shape for longer. .:',
+    description:
+      "This classic unisex jersey short sleeve tee fits like a well-loved favorite. Soft cotton and quality print make users fall in love with it over and over again. These t-shirts have-ribbed knit collars to bolster shaping. The shoulders have taping for better fit over time. Dual side seams hold the garment's shape for longer. .:",
     canonical: '/product/unisex-jersey-short-sleeve-tee/',
   }),
   title: { absolute: 'Unisex Jersey Short Sleeve Tee - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11065 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/unisex-jersey-short-sleeve-tee') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/unisex-jersey-short-sleeve-tee'),
+      }}
     />
   )
 }

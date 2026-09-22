@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Classic Learning Test - NHEG Online Learning Annex',
-    description: 'NHEG is happy to support and bring awareness to a new college entrance exam that focuses on classical learning; it\'s called the Classic Learning Test. We hope that it will replace the SAT and ACT exam for home-school, classical school or private Christian school families.',
+    description:
+      "NHEG is happy to support and bring awareness to a new college entrance exam that focuses on classical learning; it's called the Classic Learning Test. We hope that it will replace the SAT and ACT exam for home-school, classical school or private Christian school families.",
     canonical: '/school/students/college-entrance-exams/classic-learning-test/',
   }),
   title: { absolute: 'Classic Learning Test - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-381 page-child parent-pageid-379 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/college-entrance-exams/classic-learning-test') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/college-entrance-exams/classic-learning-test'),
+      }}
     />
   )
 }

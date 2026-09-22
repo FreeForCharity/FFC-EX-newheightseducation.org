@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with SVHS - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) is furthering its partnership with Silicon Valley High School (SVHS). Silicon Valley High School (SVHS) is located in California and offers online learning courses to students of all ages. Its mission is to enhance the quality, relevance and accessibility of online high-school education while driving down the cost. These',
+    description:
+      'The New Heights Educational Group (NHEG) is furthering its partnership with Silicon Valley High School (SVHS). Silicon Valley High School (SVHS) is located in California and offers online learning courses to students of all ages. Its mission is to enhance the quality, relevance and accessibility of online high-school education while driving down the cost. These',
     canonical: '/nheg-news/partnership-with-svhs/',
   }),
   title: { absolute: 'Partnership with SVHS - New Heights Educational Group, Inc.' },

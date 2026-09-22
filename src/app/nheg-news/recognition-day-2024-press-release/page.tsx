@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Recognition Day 2024 Press Release - New Heights Educational Group, Inc.',
-    description: '8/19/2024 The New Heights Educational Group (NHEG) recently celebrated their volunteers at their 18th annual Recognition Day on August 16, 2024. Pamela Clark, Founder/Director, stated, “We’ve achieved another year of growth thanks to all your hard work. This dream is now 18 years in the making. Never could I have imagined where the dream would',
+    description:
+      '8/19/2024 The New Heights Educational Group (NHEG) recently celebrated their volunteers at their 18th annual Recognition Day on August 16, 2024. Pamela Clark, Founder/Director, stated, “We’ve achieved another year of growth thanks to all your hard work. This dream is now 18 years in the making. Never could I have imagined where the dream would',
     canonical: '/nheg-news/recognition-day-2024-press-release/',
   }),
   title: { absolute: 'Recognition Day 2024 Press Release - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13359 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/recognition-day-2024-press-release') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/recognition-day-2024-press-release'),
+      }}
     />
   )
 }

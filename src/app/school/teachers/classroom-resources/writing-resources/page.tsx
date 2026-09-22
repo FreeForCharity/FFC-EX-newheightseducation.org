@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Writing Resources - NHEG Online Learning Annex',
-    description: 'These writing resources will help not only help students become more effective writers, but will provide teachers in helping develop those writing skills. This resources, information and tools can be used by both the students and the teachers regardless if they are homeschool or in a private/charter/public school setting.',
+    description:
+      'These writing resources will help not only help students become more effective writers, but will provide teachers in helping develop those writing skills. This resources, information and tools can be used by both the students and the teachers regardless if they are homeschool or in a private/charter/public school setting.',
     canonical: '/school/teachers/classroom-resources/writing-resources/',
   }),
   title: { absolute: 'Writing Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-643 page-child parent-pageid-680 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/classroom-resources/writing-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/classroom-resources/writing-resources'),
+      }}
     />
   )
 }

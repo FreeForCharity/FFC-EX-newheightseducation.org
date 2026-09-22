@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Welcome New NHEG Board Members - New Heights Educational Group, Inc.',
-    description: 'Welcome NHEG Board Members - Kiyoko Green & Sheila Wright The New Heights Educational Group voted in two new board members during a special meeting held on October 15, 2017; they are Kiyoko Green & Sheila Wright. Both Kiyoko and Sheila have been long time volunteers of the organization., and were sworn in during the meeting. Both',
+    description:
+      'Welcome NHEG Board Members - Kiyoko Green & Sheila Wright The New Heights Educational Group voted in two new board members during a special meeting held on October 15, 2017; they are Kiyoko Green & Sheila Wright. Both Kiyoko and Sheila have been long time volunteers of the organization., and were sworn in during the meeting. Both',
     canonical: '/nheg-news/welcome-new-nheg-board-members/',
   }),
   title: { absolute: 'Welcome New NHEG Board Members - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6491 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/welcome-new-nheg-board-members') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/welcome-new-nheg-board-members'),
+      }}
     />
   )
 }

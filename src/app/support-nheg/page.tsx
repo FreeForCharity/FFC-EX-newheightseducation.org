@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Support NHEG - New Heights Educational Group, Inc.',
-    description: 'When you donate to our nonprofit organization, you not only support NHEG but the many home, public, charter students and families in Ohio. This includes helping purchase text books and school supplies, taking students on field trips, holding events such as the annual prom and graduation ceremonies and more.',
+    description:
+      'When you donate to our nonprofit organization, you not only support NHEG but the many home, public, charter students and families in Ohio. This includes helping purchase text books and school supplies, taking students on field trips, holding events such as the annual prom and graduation ceremonies and more.',
     canonical: '/support-nheg/',
   }),
   title: { absolute: 'Support NHEG - New Heights Educational Group, Inc.' },

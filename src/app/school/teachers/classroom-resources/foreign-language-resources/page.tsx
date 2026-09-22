@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Foreign Language Resources - NHEG Online Learning Annex',
-    description: 'This is a list of foreign language resources that will help introduce or expand teaching your class a foreign language through activities and instruction.',
+    description:
+      'This is a list of foreign language resources that will help introduce or expand teaching your class a foreign language through activities and instruction.',
     canonical: '/school/teachers/classroom-resources/foreign-language-resources/',
   }),
   title: { absolute: 'Foreign Language Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-695 page-child parent-pageid-680 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/classroom-resources/foreign-language-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/classroom-resources/foreign-language-resources'),
+      }}
     />
   )
 }

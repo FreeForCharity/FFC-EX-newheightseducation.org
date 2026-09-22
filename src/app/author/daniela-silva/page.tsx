@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Daniela Silva',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "Daniela Silva" Home » Archives for…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "Daniela Silva" Home » Archives for…',
     canonical: '/author/daniela-silva/',
   }),
   title: { absolute: 'Daniela Silva' },

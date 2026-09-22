@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Claudette Colvin - New Heights Educational Group, Inc.',
-    description: 'Written By: Barbara Bullen "When racism rears its ugly head against you should you take action to stop the pain you feel of being discriminated against the laws that aren’t right the laws to protect only whites!" When one hears about the Civil Rights era, it immediately brings to mind activists; Martin Luther King, Jr.,',
+    description:
+      'Written By: Barbara Bullen "When racism rears its ugly head against you should you take action to stop the pain you feel of being discriminated against the laws that aren’t right the laws to protect only whites!" When one hears about the Civil Rights era, it immediately brings to mind activists; Martin Luther King, Jr.,',
     canonical: '/educational-articles/claudette-colvin/',
   }),
   title: { absolute: 'Claudette Colvin - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-10259 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/claudette-colvin') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/claudette-colvin'),
+      }}
     />
   )
 }

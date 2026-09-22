@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Yearbook - NHEG Online Learning Annex',
-    description: 'New Heights Educational Group offers an annual NHEG yearbook to students that would like to participate and collect memories of the school year.',
+    description:
+      'New Heights Educational Group offers an annual NHEG yearbook to students that would like to participate and collect memories of the school year.',
     canonical: '/school/students/nheg-yearbook/',
   }),
   title: { absolute: 'NHEG Yearbook - NHEG Online Learning Annex' },

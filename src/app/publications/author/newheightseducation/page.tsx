@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
     canonical: '/publications/author/newheightseducation/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone archive author author-newheightseducation author-1 wp-custom-logo wp-embed-responsive wp-theme-astra ast-desktop ast-separate-container ast-two-container ast-no-sidebar astra-4.13.12 group-blog ast-replace-site-logo-transparent ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header elementor-default elementor-kit-5709"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('publications/author/newheightseducation') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('publications/author/newheightseducation'),
+      }}
     />
   )
 }

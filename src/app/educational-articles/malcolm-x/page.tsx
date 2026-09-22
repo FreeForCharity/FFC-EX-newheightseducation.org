@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Malcolm X - New Heights Educational Group, Inc.',
-    description: 'Written by Barbara Bullen “No, I’m not an American. I’m one of the 22 million Black people who are the victims of Americanism. One of the 22 million Black people who are the victims of democracy, nothing but disguised hypocrisy. So, I’m not standing here speaking to you as an American, or a patriot or',
+    description:
+      'Written by Barbara Bullen “No, I’m not an American. I’m one of the 22 million Black people who are the victims of Americanism. One of the 22 million Black people who are the victims of democracy, nothing but disguised hypocrisy. So, I’m not standing here speaking to you as an American, or a patriot or',
     canonical: '/educational-articles/malcolm-x/',
   }),
   title: { absolute: 'Malcolm X - New Heights Educational Group, Inc.' },

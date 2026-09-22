@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Photo Contest 2017 - New Heights Educational Group, Inc.',
-    description: 'Alright amateur photographers, here is your chance to put your images to the test in the NHEG Photo Contest for your chance to win 2 Disney Hopper Cards. If you are 7 to 14 years old share a photo of something that INSPIRES you, or something you LOVE! Enter your photos by December 10th in order',
+    description:
+      'Alright amateur photographers, here is your chance to put your images to the test in the NHEG Photo Contest for your chance to win 2 Disney Hopper Cards. If you are 7 to 14 years old share a photo of something that INSPIRES you, or something you LOVE! Enter your photos by December 10th in order',
     canonical: '/nheg-news/nheg-photo-contest/',
   }),
   title: { absolute: 'NHEG Photo Contest 2017 - New Heights Educational Group, Inc.' },

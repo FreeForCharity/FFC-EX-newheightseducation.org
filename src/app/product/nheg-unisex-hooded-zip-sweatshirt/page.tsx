@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Unisex Hooded Zip Sweatshirt - New Heights Educational Group, Inc.',
-    description: 'There’s nothing like a soft hooded hoodie to layer for cold winters. This hooded full zip sweatshirt features a soft and qualitative 50% cotton - 50% polyester fabric that has a regular fit and assures the perfect balance of long-lasting comfort and a contemporary silhouette. It’s in a unisex style design to fit both men',
+    description:
+      'There’s nothing like a soft hooded hoodie to layer for cold winters. This hooded full zip sweatshirt features a soft and qualitative 50% cotton - 50% polyester fabric that has a regular fit and assures the perfect balance of long-lasting comfort and a contemporary silhouette. It’s in a unisex style design to fit both men',
     canonical: '/product/nheg-unisex-hooded-zip-sweatshirt/',
   }),
   title: { absolute: 'NHEG Unisex Hooded Zip Sweatshirt - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11772 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/nheg-unisex-hooded-zip-sweatshirt') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/nheg-unisex-hooded-zip-sweatshirt'),
+      }}
     />
   )
 }

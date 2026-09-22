@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Books - New Heights Educational Group, Inc.',
-    description: 'The NHEG Books catalog contains books published by members of our team that we are proud to support. We provide information on the books and where you can buy them.',
+    description:
+      'The NHEG Books catalog contains books published by members of our team that we are proud to support. We provide information on the books and where you can buy them.',
     canonical: '/who-we-are/nheg-books/',
   }),
   title: { absolute: 'Books - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Public vs Private Schools - New Heights Educational Group, Inc.',
-    description: 'There are so many factors on what to decide in sending your child to the right school – for instance, private or public schools? How do you know which is better? What do you need to know before enrolling? In my experience, I was enrolled to a public school throughout my childhood life while my',
+    description:
+      'There are so many factors on what to decide in sending your child to the right school – for instance, private or public schools? How do you know which is better? What do you need to know before enrolling? In my experience, I was enrolled to a public school throughout my childhood life while my',
     canonical: '/educational-articles/pubic-vs-private-schools/',
   }),
   title: { absolute: 'Public vs Private Schools - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1423 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/pubic-vs-private-schools') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/pubic-vs-private-schools'),
+      }}
     />
   )
 }

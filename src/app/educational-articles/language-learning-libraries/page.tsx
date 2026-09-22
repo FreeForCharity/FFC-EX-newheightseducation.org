@@ -6,18 +6,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Empowering Students: A Journey with New Heights Educational Group - New Heights Educational Group, Inc.',
-    description: 'Unlocking Potential, One Student at a Time At NHEG, we believe that education is not just about textbooks and classrooms—it’s about igniting curiosity, fostering creativity, and empowering students to reach new heights. Our nonprofit organization is dedicated to promoting literacy for children and adults alike. Student Spotlight: Sharing Valuable Resources Meet Reggie, an enthusiastic homeschool student.',
+    title:
+      'Empowering Students: A Journey with New Heights Educational Group - New Heights Educational Group, Inc.',
+    description:
+      'Unlocking Potential, One Student at a Time At NHEG, we believe that education is not just about textbooks and classrooms—it’s about igniting curiosity, fostering creativity, and empowering students to reach new heights. Our nonprofit organization is dedicated to promoting literacy for children and adults alike. Student Spotlight: Sharing Valuable Resources Meet Reggie, an enthusiastic homeschool student.',
     canonical: '/educational-articles/language-learning-libraries/',
   }),
-  title: { absolute: 'Empowering Students: A Journey with New Heights Educational Group - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Empowering Students: A Journey with New Heights Educational Group - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13300 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/language-learning-libraries') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/language-learning-libraries'),
+      }}
     />
   )
 }

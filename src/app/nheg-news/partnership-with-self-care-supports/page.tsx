@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with Self Care Supports - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group (NHEG) announces a new partnership with Self Care Supports. Allene Yue, a volunteer with NHEG and President of the NHEG Student Leadership Council, is Founder and Executive Director of this organization. Self Care Supports is a student-run organization whose mission includes connecting, motivating and aiding teens while bringing awareness to mental',
+    description:
+      'New Heights Educational Group (NHEG) announces a new partnership with Self Care Supports. Allene Yue, a volunteer with NHEG and President of the NHEG Student Leadership Council, is Founder and Executive Director of this organization. Self Care Supports is a student-run organization whose mission includes connecting, motivating and aiding teens while bringing awareness to mental',
     canonical: '/nheg-news/partnership-with-self-care-supports/',
   }),
   title: { absolute: 'Partnership with Self Care Supports - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9301 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/partnership-with-self-care-supports') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/partnership-with-self-care-supports'),
+      }}
     />
   )
 }

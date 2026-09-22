@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Welcome Enjoli Baker - New Heights Educational Group, Inc.',
-    description: 'Please welcome Enjoli Baker as she is the new Assistant Director of Education Department for New Heights Educational Group. Enjoli Baker is from Savannah, Georgia. She has three fur babies and is married. She is a lover of anything that involves education. She has an MBA and an MPH degree (Masters in Public Health). She',
+    description:
+      'Please welcome Enjoli Baker as she is the new Assistant Director of Education Department for New Heights Educational Group. Enjoli Baker is from Savannah, Georgia. She has three fur babies and is married. She is a lover of anything that involves education. She has an MBA and an MPH degree (Masters in Public Health). She',
     canonical: '/nheg-news/welcome-enjoli-baker/',
   }),
   title: { absolute: 'Welcome Enjoli Baker - New Heights Educational Group, Inc.' },

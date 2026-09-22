@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Exciting news for the High School Symposium and College Fair! - New Heights Educational Group, Inc.',
-    description: 'CHEO High School Symposium Saturday, April 1 Dear Ohio Home Educators, CHEO’s most important event of the year is just a month away! Year after year, parents who have attended the CHEO High School Symposium express 100% satisfaction and are grateful for the help in navigating the high school years. This event - hands down',
-    canonical: '/educational-articles/exciting-news-for-the-high-school-symposium-and-college-fair/',
+    title:
+      'Exciting news for the High School Symposium and College Fair! - New Heights Educational Group, Inc.',
+    description:
+      'CHEO High School Symposium Saturday, April 1 Dear Ohio Home Educators, CHEO’s most important event of the year is just a month away! Year after year, parents who have attended the CHEO High School Symposium express 100% satisfaction and are grateful for the help in navigating the high school years. This event - hands down',
+    canonical:
+      '/educational-articles/exciting-news-for-the-high-school-symposium-and-college-fair/',
   }),
-  title: { absolute: 'Exciting news for the High School Symposium and College Fair! - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Exciting news for the High School Symposium and College Fair! - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13074 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/exciting-news-for-the-high-school-symposium-and-college-fair') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'educational-articles/exciting-news-for-the-high-school-symposium-and-college-fair'
+        ),
+      }}
     />
   )
 }

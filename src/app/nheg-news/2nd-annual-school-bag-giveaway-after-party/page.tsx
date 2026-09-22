@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2nd Annual School Bag Giveaway After Party - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group held their 2nd annual school-bag giveaway event on July 28th. Their efforts were shared with 20 needy families and 51 bags were handed out. NHEG Founder/Director Pamela Clark spoke at the event. She recognized all the volunteers and sponsors. Pamela and her husband Greg Clark worked tirelessly to organize, fill',
+    description:
+      'The New Heights Educational Group held their 2nd annual school-bag giveaway event on July 28th. Their efforts were shared with 20 needy families and 51 bags were handed out. NHEG Founder/Director Pamela Clark spoke at the event. She recognized all the volunteers and sponsors. Pamela and her husband Greg Clark worked tirelessly to organize, fill',
     canonical: '/nheg-news/2nd-annual-school-bag-giveaway-after-party/',
   }),
-  title: { absolute: '2nd Annual School Bag Giveaway After Party - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: '2nd Annual School Bag Giveaway After Party - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7664 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/2nd-annual-school-bag-giveaway-after-party') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/2nd-annual-school-bag-giveaway-after-party'),
+      }}
     />
   )
 }

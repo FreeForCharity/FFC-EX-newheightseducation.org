@@ -7,17 +7,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Bite-size Information for Teaching and Training - New Heights Educational Group, Inc.',
-    description: 'Many corporate training professionals are adopting shorter learning sessions and courses over the longer, traditional full-length courses. This is to help learners engage and retain information. This is referred to as the “bite sized” approach to learning. This can be transferred to classroom teaching and learning. The “bite-sized” learning concept helps teachers and facilitators to',
+    description:
+      'Many corporate training professionals are adopting shorter learning sessions and courses over the longer, traditional full-length courses. This is to help learners engage and retain information. This is referred to as the “bite sized” approach to learning. This can be transferred to classroom teaching and learning. The “bite-sized” learning concept helps teachers and facilitators to',
     canonical: '/educational-articles/bite-size-information-for-teaching-and-training/',
   }),
-  title: { absolute: 'Bite-size Information for Teaching and Training - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Bite-size Information for Teaching and Training - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1429 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/bite-size-information-for-teaching-and-training') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'educational-articles/bite-size-information-for-teaching-and-training'
+        ),
+      }}
     />
   )
 }

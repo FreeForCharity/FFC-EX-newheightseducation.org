@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Choosing The Right Sport - New Heights Educational Group, Inc.',
-    description: 'Sports, sports, sports! When deciding on a sport for a child to play, there are many things to consider. Do you want it to be easy or hard? Should the parent or guardian research the sport that the kid wants to play? Should the parents be the one to chose the sport or should the',
+    description:
+      'Sports, sports, sports! When deciding on a sport for a child to play, there are many things to consider. Do you want it to be easy or hard? Should the parent or guardian research the sport that the kid wants to play? Should the parents be the one to chose the sport or should the',
     canonical: '/educational-articles/choosing-the-right-sport/',
   }),
   title: { absolute: 'Choosing The Right Sport - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8412 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/choosing-the-right-sport') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/choosing-the-right-sport'),
+      }}
     />
   )
 }

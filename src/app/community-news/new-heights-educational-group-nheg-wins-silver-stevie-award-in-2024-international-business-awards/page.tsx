@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS® - New Heights Educational Group, Inc.',
-    description: '2024 International Business Awards® Stevie Award Winner Press Release Contact: Pamela Clark 419-786-0247 New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS® Sherwood, Ohio on 13 August, 2024 – NHEG was named the winner of a SILVER Stevie® Award in the Company of the Year - Diversified Services - Medium-size',
-    canonical: '/community-news/new-heights-educational-group-nheg-wins-silver-stevie-award-in-2024-international-business-awards/',
+    title:
+      'New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS® - New Heights Educational Group, Inc.',
+    description:
+      '2024 International Business Awards® Stevie Award Winner Press Release Contact: Pamela Clark 419-786-0247 New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS® Sherwood, Ohio on 13 August, 2024 – NHEG was named the winner of a SILVER Stevie® Award in the Company of the Year - Diversified Services - Medium-size',
+    canonical:
+      '/community-news/new-heights-educational-group-nheg-wins-silver-stevie-award-in-2024-international-business-awards/',
   }),
-  title: { absolute: 'New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS® - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS® - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13366 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/new-heights-educational-group-nheg-wins-silver-stevie-award-in-2024-international-business-awards') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'community-news/new-heights-educational-group-nheg-wins-silver-stevie-award-in-2024-international-business-awards'
+        ),
+      }}
     />
   )
 }

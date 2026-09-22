@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk – Literacy - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/H7LPiRqtsYQ In Today\'s episode titled "Pamela\'s Talk - Literacy" Pamela provides information on the literacy in the United States and were we compare to other countries.',
+    description:
+      'https://youtu.be/H7LPiRqtsYQ In Today\'s episode titled "Pamela\'s Talk - Literacy" Pamela provides information on the literacy in the United States and were we compare to other countries.',
     canonical: '/pamelas-talk/pamelas-talk-literacy/',
   }),
   title: { absolute: 'Pamela’s Talk – Literacy - New Heights Educational Group, Inc.' },

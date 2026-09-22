@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Teaching Harry Potter In School - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Teaching Harry Potter In School Home » Teaching Harry Potter In…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Teaching Harry Potter In School Home » Teaching Harry Potter In…',
     canonical: '/educational-articles/teaching-harry-potter-in-school/',
   }),
   title: { absolute: 'Teaching Harry Potter In School - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7991 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/teaching-harry-potter-in-school') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/teaching-harry-potter-in-school'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Nelson Medela - New Heights Educational Group, Inc.',
-    description: 'Written by: Barbara Bullen Nelson Rolihlahla Mandela known throughout the world as a revolutionary and political leader who aided in the dismantling of Apartheid; Black South Africans whose lives were filled with fear due to the historical racist and prejudicial governmental policies of South Africa found their hero in Mandela. The world craved such a',
+    description:
+      'Written by: Barbara Bullen Nelson Rolihlahla Mandela known throughout the world as a revolutionary and political leader who aided in the dismantling of Apartheid; Black South Africans whose lives were filled with fear due to the historical racist and prejudicial governmental policies of South Africa found their hero in Mandela. The world craved such a',
     canonical: '/educational-articles/nelson-medela/',
   }),
   title: { absolute: 'Nelson Medela - New Heights Educational Group, Inc.' },

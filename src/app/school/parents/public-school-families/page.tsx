@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Public School Families - NHEG Online Learning Annex',
-    description: 'At NHEG, we understand the shortcomings of a public school system, and our mission is to fill in educational gaps of children and adults. In addition to the general services offered by New Heights Educational Group that are available to everyone irrespective of their school choice, we offer public school students some services that are of specific interest to them.',
+    description:
+      'At NHEG, we understand the shortcomings of a public school system, and our mission is to fill in educational gaps of children and adults. In addition to the general services offered by New Heights Educational Group that are available to everyone irrespective of their school choice, we offer public school students some services that are of specific interest to them.',
     canonical: '/school/parents/public-school-families/',
   }),
   title: { absolute: 'Public School Families - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-540 page-parent page-child parent-pageid-420 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/parents/public-school-families') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/parents/public-school-families'),
+      }}
     />
   )
 }

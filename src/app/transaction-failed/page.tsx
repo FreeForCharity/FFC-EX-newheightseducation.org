@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Transaction Failed - New Heights Educational Group, Inc.',
-    description: 'We\'re sorry; your transaction failed to process. Please try again or contact site support.',
+    description:
+      "We're sorry; your transaction failed to process. Please try again or contact site support.",
     canonical: '/transaction-failed/',
   }),
   title: { absolute: 'Transaction Failed - New Heights Educational Group, Inc.' },

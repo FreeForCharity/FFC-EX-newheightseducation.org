@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Educational Group Services - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org We Help Educate Our Youth: Tutoring and Pre-Recorded Courses New…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org We Help Educate Our Youth: Tutoring and Pre-Recorded Courses New…',
     canonical: '/who-we-are/new-heights-educatioal-group-services/',
   }),
-  title: { absolute: 'New Heights Educational Group Services - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'New Heights Educational Group Services - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-13633 page-child parent-pageid-3409 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('who-we-are/new-heights-educatioal-group-services') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('who-we-are/new-heights-educatioal-group-services'),
+      }}
     />
   )
 }

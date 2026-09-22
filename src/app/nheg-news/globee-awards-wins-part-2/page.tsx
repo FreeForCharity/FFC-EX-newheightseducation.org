@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Globee Awards Wins Part 2 - New Heights Educational Group, Inc.',
-    description: 'NHEG announced today that The Globee® Awards, organizers of world’s premier business awards programs and business ranking lists, has named NHEG, Executive Director Pamela Clark, and Team Members 7x winners in the prestigious awards. Check out the other Globee Awards we have won here. Executive Hero of the Year | Effective Leadership During COVID-19 Pamela',
+    description:
+      'NHEG announced today that The Globee® Awards, organizers of world’s premier business awards programs and business ranking lists, has named NHEG, Executive Director Pamela Clark, and Team Members 7x winners in the prestigious awards. Check out the other Globee Awards we have won here. Executive Hero of the Year | Effective Leadership During COVID-19 Pamela',
     canonical: '/nheg-news/globee-awards-wins-part-2/',
   }),
   title: { absolute: 'Globee Awards Wins Part 2 - New Heights Educational Group, Inc.' },

@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Receives Grant from Jane Goodall Institute - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group was recently awarded a $200 Grant from the Jane Goodall Institute in order for NHEG to advance our online classroom program. The Jane Goodall Institute is a global community conservation organization whose mission is continue and support the work of Jane Goodall. In order to improve lives of both animals and humans',
+    description:
+      'New Heights Educational Group was recently awarded a $200 Grant from the Jane Goodall Institute in order for NHEG to advance our online classroom program. The Jane Goodall Institute is a global community conservation organization whose mission is continue and support the work of Jane Goodall. In order to improve lives of both animals and humans',
     canonical: '/nheg-news/nheg-receives-grant-jane-goodall-institute/',
   }),
-  title: { absolute: 'NHEG Receives Grant from Jane Goodall Institute - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'NHEG Receives Grant from Jane Goodall Institute - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-4727 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-receives-grant-jane-goodall-institute') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-receives-grant-jane-goodall-institute'),
+      }}
     />
   )
 }

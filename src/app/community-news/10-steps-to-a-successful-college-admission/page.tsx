@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '10 Steps to a Successful College Admission - New Heights Educational Group, Inc.',
-    description: 'NHEG is proud to announce that one of our volunteers Aditi Chopra has released a book last month on Amazon titled "10 Steps to a Successful College Admission". Aditi Chopra Has written many books, both fiction and non-fiction covering various topics. As for her latest book, it is a 60-page "guide is designed to help you',
+    description:
+      'NHEG is proud to announce that one of our volunteers Aditi Chopra has released a book last month on Amazon titled "10 Steps to a Successful College Admission". Aditi Chopra Has written many books, both fiction and non-fiction covering various topics. As for her latest book, it is a 60-page "guide is designed to help you',
     canonical: '/community-news/10-steps-to-a-successful-college-admission/',
   }),
-  title: { absolute: '10 Steps to a Successful College Admission - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: '10 Steps to a Successful College Admission - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7170 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/10-steps-to-a-successful-college-admission') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/10-steps-to-a-successful-college-admission'),
+      }}
     />
   )
 }

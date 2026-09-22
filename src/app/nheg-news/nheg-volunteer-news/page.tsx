@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Volunteer News - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group, a local, award-winning organization is expanding its online presence and has promoted many volunteers into leadership roles. Our new website is set to launch on February 1, 2017. The website is located at www.NewHeightsEducation.org. NHEG is a large organization and its home office is located in Defiance, Ohio, but its',
+    description:
+      'The New Heights Educational Group, a local, award-winning organization is expanding its online presence and has promoted many volunteers into leadership roles. Our new website is set to launch on February 1, 2017. The website is located at www.NewHeightsEducation.org. NHEG is a large organization and its home office is located in Defiance, Ohio, but its',
     canonical: '/nheg-news/nheg-volunteer-news/',
   }),
   title: { absolute: 'NHEG Volunteer News - New Heights Educational Group, Inc.' },

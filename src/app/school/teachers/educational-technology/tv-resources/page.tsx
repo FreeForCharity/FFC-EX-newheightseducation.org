@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'TV Resources - NHEG Online Learning Annex',
-    description: 'This is a list of TV resources for teachers teaching or working with middle/High School students in journalism, radio and TV broadcasting.',
+    description:
+      'This is a list of TV resources for teachers teaching or working with middle/High School students in journalism, radio and TV broadcasting.',
     canonical: '/school/teachers/educational-technology/tv-resources/',
   }),
   title: { absolute: 'TV Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-317 page-child parent-pageid-293 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/educational-technology/tv-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/educational-technology/tv-resources'),
+      }}
     />
   )
 }

@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2021 People’s Choice Award Nomination and Voting - New Heights Educational Group, Inc.',
-    description: 'Because NHEG won a Stevie® Award in one of the Company of the Year categories in The 87th Annual International Business Awards®. It has been automatically included in voting for the People’s Choice Stevie Awards for Favorite Companies. Place your vote now for New Heights Educational Group at http://peopleschoice.stevieawards.com. Voting will conclude on October 1',
+    description:
+      'Because NHEG won a Stevie® Award in one of the Company of the Year categories in The 87th Annual International Business Awards®. It has been automatically included in voting for the People’s Choice Stevie Awards for Favorite Companies. Place your vote now for New Heights Educational Group at http://peopleschoice.stevieawards.com. Voting will conclude on October 1',
     canonical: '/nheg-news/peoples-choice-award-nomination-and-voting/',
   }),
-  title: { absolute: '2021 People’s Choice Award Nomination and Voting - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      '2021 People’s Choice Award Nomination and Voting - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-10035 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/peoples-choice-award-nomination-and-voting') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/peoples-choice-award-nomination-and-voting'),
+      }}
     />
   )
 }

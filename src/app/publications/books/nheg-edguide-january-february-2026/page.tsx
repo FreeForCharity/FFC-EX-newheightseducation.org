@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG EDGuide January - February 2026 - NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
     canonical: '/publications/books/nheg-edguide-january-february-2026/',
   }),
   title: { absolute: 'NHEG EDGuide January - February 2026 - NHEG' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular dflip-template-default single single-dflip postid-6567 wp-custom-logo wp-embed-responsive wp-theme-astra ast-desktop ast-separate-container ast-two-container ast-right-sidebar astra-4.13.12 ast-sticky-sidebar group-blog ast-blog-single-style-1 ast-custom-post-type ast-single-post ast-replace-site-logo-transparent ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header ast-normal-title-enabled elementor-default elementor-kit-5709"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('publications/books/nheg-edguide-january-february-2026') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('publications/books/nheg-edguide-january-february-2026'),
+      }}
     />
   )
 }

@@ -7,10 +7,13 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Mastering the First Impression: Your intriguing post title goes here - NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
     canonical: '/publications/post-3/',
   }),
-  title: { absolute: 'Mastering the First Impression: Your intriguing post title goes here - NHEG' },
+  title: {
+    absolute: 'Mastering the First Impression: Your intriguing post title goes here - NHEG',
+  },
 }
 
 export default function Page() {

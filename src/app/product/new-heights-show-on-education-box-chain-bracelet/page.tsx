@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Show on Education Box Chain Bracelet - New Heights Educational Group, Inc.',
-    description: 'One SizeWrist diameter (max), in3.15Chain diameter, in0.0393Ash-coin pendant diameter, in0.63Jaylon pendant length, in1.38Jaylon pendant width , in0.4This box chain bracelet emphasizes the delicate, vibrant and sensual personality of its wearer. Made in USA. .: Sterling silver or 18K gold plated.: Several charm shapes.: Slider for adjustable width.: Nickel and lead free',
+    description:
+      'One SizeWrist diameter (max), in3.15Chain diameter, in0.0393Ash-coin pendant diameter, in0.63Jaylon pendant length, in1.38Jaylon pendant width , in0.4This box chain bracelet emphasizes the delicate, vibrant and sensual personality of its wearer. Made in USA. .: Sterling silver or 18K gold plated.: Several charm shapes.: Slider for adjustable width.: Nickel and lead free',
     canonical: '/product/new-heights-show-on-education-box-chain-bracelet/',
   }),
-  title: { absolute: 'New Heights Show on Education Box Chain Bracelet - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'New Heights Show on Education Box Chain Bracelet - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11580 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/new-heights-show-on-education-box-chain-bracelet') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/new-heights-show-on-education-box-chain-bracelet'),
+      }}
     />
   )
 }

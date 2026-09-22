@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Collaborative Learning in Online Environment - New Heights Educational Group, Inc.',
-    description: 'Online teaching and learning provides an efficient mechanism for engaging learners through collaborative learning. Educators/resource persons may find several ways to get learners on the same platform as compared to face-to-face settings since interaction between members in close proximity to one another may not be possible. It provides an opportunity to share their ideas/experiences beyond',
+    description:
+      'Online teaching and learning provides an efficient mechanism for engaging learners through collaborative learning. Educators/resource persons may find several ways to get learners on the same platform as compared to face-to-face settings since interaction between members in close proximity to one another may not be possible. It provides an opportunity to share their ideas/experiences beyond',
     canonical: '/educational-articles/collaborative-learning-online-environment/',
   }),
-  title: { absolute: 'Collaborative Learning in Online Environment - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Collaborative Learning in Online Environment - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1499 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/collaborative-learning-online-environment') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/collaborative-learning-online-environment'),
+      }}
     />
   )
 }

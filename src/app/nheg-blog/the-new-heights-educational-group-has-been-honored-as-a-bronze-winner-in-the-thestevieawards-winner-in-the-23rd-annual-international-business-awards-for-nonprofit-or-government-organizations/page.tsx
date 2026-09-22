@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'The New Heights Educational Group has been honored as a Bronze Winner in the @TheStevieAwards winner in The 23rd Annual International Business Awards® for Nonprofit or Government Organizations – Medium-size - New Heights Educational Group, Inc.',
+    title:
+      'The New Heights Educational Group has been honored as a Bronze Winner in the @TheStevieAwards winner in The 23rd Annual International Business Awards® for Nonprofit or Government Organizations – Medium-size - New Heights Educational Group, Inc.',
     description: 'stevies, stevieawards, internationalbusinessawards, NewHeightsEducationalGroup',
-    canonical: '/nheg-blog/the-new-heights-educational-group-has-been-honored-as-a-bronze-winner-in-the-thestevieawards-winner-in-the-23rd-annual-international-business-awards-for-nonprofit-or-government-organizations/',
+    canonical:
+      '/nheg-blog/the-new-heights-educational-group-has-been-honored-as-a-bronze-winner-in-the-thestevieawards-winner-in-the-23rd-annual-international-business-awards-for-nonprofit-or-government-organizations/',
   }),
-  title: { absolute: 'The New Heights Educational Group has been honored as a Bronze Winner in the @TheStevieAwards winner in The 23rd Annual International Business Awards® for Nonprofit or Government Organizations – Medium-size - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'The New Heights Educational Group has been honored as a Bronze Winner in the @TheStevieAwards winner in The 23rd Annual International Business Awards® for Nonprofit or Government Organizations – Medium-size - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-13669 page-child parent-pageid-1522 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-blog/the-new-heights-educational-group-has-been-honored-as-a-bronze-winner-in-the-thestevieawards-winner-in-the-23rd-annual-international-business-awards-for-nonprofit-or-government-organizations') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'nheg-blog/the-new-heights-educational-group-has-been-honored-as-a-bronze-winner-in-the-thestevieawards-winner-in-the-23rd-annual-international-business-awards-for-nonprofit-or-government-organizations'
+        ),
+      }}
     />
   )
 }

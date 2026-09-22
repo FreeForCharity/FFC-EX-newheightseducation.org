@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home School Families - NHEG Online Learning Annex',
-    description: 'Home school families have their own educational needs and concerns that may be better served in a subgroup involving only home school parents and students. We have come up with the following services specifically aimed at home school students and parents.',
+    description:
+      'Home school families have their own educational needs and concerns that may be better served in a subgroup involving only home school parents and students. We have come up with the following services specifically aimed at home school students and parents.',
     canonical: '/school/parents/home-school-families/',
   }),
   title: { absolute: 'Home School Families - NHEG Online Learning Annex' },

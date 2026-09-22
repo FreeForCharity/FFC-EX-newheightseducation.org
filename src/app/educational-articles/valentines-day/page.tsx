@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Valentine’s Day - New Heights Educational Group, Inc.',
-    description: 'What is Valentine’s Day, you might ask? One would assume that it is a day for love, where your husband, wife, girlfriend or boyfriend buy romantic gifts or plan a getaway vacation. But the holiday does not have to be about romance; not everyone has a romantic partner during Valentine’s Day. You can still give',
+    description:
+      'What is Valentine’s Day, you might ask? One would assume that it is a day for love, where your husband, wife, girlfriend or boyfriend buy romantic gifts or plan a getaway vacation. But the holiday does not have to be about romance; not everyone has a romantic partner during Valentine’s Day. You can still give',
     canonical: '/educational-articles/valentines-day/',
   }),
   title: { absolute: 'Valentine’s Day - New Heights Educational Group, Inc.' },

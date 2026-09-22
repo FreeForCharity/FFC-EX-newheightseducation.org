@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'SAG Unisex Heavy Cotton Tee - New Heights Educational Group, Inc.',
-    description: 'SMLXL2XL3XL4XL5XLWidth, in182021.9723.9825.992830.0431.97Length, in28.5129.4930.5231.532.5233.5134.4935.52Sleeve length, in7.257.768.238.759.269.7710.2410.75This heavy cotton tee has the classic cotton look and feel. Casual elegance will make it an instant favorite in every man\'s wardrobe..: Classic fit.: 100% Cotton (fibre content may vary for different colors).: Light fabric (5.3 oz/yd² (180 g/m²)).: Tear away label.: Runs true to size',
+    description:
+      "SMLXL2XL3XL4XL5XLWidth, in182021.9723.9825.992830.0431.97Length, in28.5129.4930.5231.532.5233.5134.4935.52Sleeve length, in7.257.768.238.759.269.7710.2410.75This heavy cotton tee has the classic cotton look and feel. Casual elegance will make it an instant favorite in every man's wardrobe..: Classic fit.: 100% Cotton (fibre content may vary for different colors).: Light fabric (5.3 oz/yd² (180 g/m²)).: Tear away label.: Runs true to size",
     canonical: '/product/sag-unisex-heavy-cotton-tee/',
   }),
   title: { absolute: 'SAG Unisex Heavy Cotton Tee - New Heights Educational Group, Inc.' },

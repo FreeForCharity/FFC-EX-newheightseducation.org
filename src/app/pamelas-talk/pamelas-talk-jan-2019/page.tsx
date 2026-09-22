@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk Jan 2019 - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/593j-CHEsX8 In Today\'s episode titled "Pamela\'s Talk - Literacy" Pamela provides information and updates about NHEG, our courses and other important information. Also, NHEG is looking to increase the number of tutors for our students to access. If you would like to become a volunteer tutor please contact Pamela Clark.',
+    description:
+      'https://youtu.be/593j-CHEsX8 In Today\'s episode titled "Pamela\'s Talk - Literacy" Pamela provides information and updates about NHEG, our courses and other important information. Also, NHEG is looking to increase the number of tutors for our students to access. If you would like to become a volunteer tutor please contact Pamela Clark.',
     canonical: '/pamelas-talk/pamelas-talk-jan-2019/',
   }),
   title: { absolute: 'Pamela’s Talk Jan 2019 - New Heights Educational Group, Inc.' },

@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with Natural Born Leaders - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) announces a new partnership with Natural Born Leaders. Pamela Clark, Executive Director of NHEG, stated, “NHEG has been a strong proponent of holistic and kinesthetic learning since its creation 15 years ago. We are happy to partner with Natural Born Leaders to bring more opportunities and online learning to',
+    description:
+      'The New Heights Educational Group (NHEG) announces a new partnership with Natural Born Leaders. Pamela Clark, Executive Director of NHEG, stated, “NHEG has been a strong proponent of holistic and kinesthetic learning since its creation 15 years ago. We are happy to partner with Natural Born Leaders to bring more opportunities and online learning to',
     canonical: '/nheg-news/partnership-with-natural-born-leaders/',
   }),
-  title: { absolute: 'Partnership with Natural Born Leaders - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Partnership with Natural Born Leaders - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9861 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/partnership-with-natural-born-leaders') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/partnership-with-natural-born-leaders'),
+      }}
     />
   )
 }

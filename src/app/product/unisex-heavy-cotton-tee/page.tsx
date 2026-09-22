@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Unisex Heavy Cotton Tee - New Heights Educational Group, Inc.',
-    description: 'The unisex heavy cotton tee is the basic staple of any wardrobe. It is the foundation upon which casual fashion grows. All it needs is a personalized design to elevate things to profitability. The specialty spun fibers provide a smooth surface for premium printing vividity and sharpness. No side seams mean there are no itchy',
+    description:
+      'The unisex heavy cotton tee is the basic staple of any wardrobe. It is the foundation upon which casual fashion grows. All it needs is a personalized design to elevate things to profitability. The specialty spun fibers provide a smooth surface for premium printing vividity and sharpness. No side seams mean there are no itchy',
     canonical: '/product/unisex-heavy-cotton-tee/',
   }),
   title: { absolute: 'Unisex Heavy Cotton Tee - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Sarika Gauba, Author at New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "sarika.g" Home » Archives for Sarika…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "sarika.g" Home » Archives for Sarika…',
     canonical: '/author/sarika-g/',
   }),
   title: { absolute: 'Sarika Gauba, Author at New Heights Educational Group, Inc.' },

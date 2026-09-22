@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'CHEO Commencement Ceremony - New Heights Educational Group, Inc.',
-    description: 'CHEO Commencement Ceremony CELEBRATING A MILESTONE...WITH YOU! When and Where May 27, 2023! Location: Mount Vernon Nazarene University Chapel 800 Martinsburg Road, Mt. Vernon, Ohio CHEO Commencement | CHEO (cheohome.org)',
+    description:
+      'CHEO Commencement Ceremony CELEBRATING A MILESTONE...WITH YOU! When and Where May 27, 2023! Location: Mount Vernon Nazarene University Chapel 800 Martinsburg Road, Mt. Vernon, Ohio CHEO Commencement | CHEO (cheohome.org)',
     canonical: '/nheg-news/cheo-commencement-ceremony/',
   }),
   title: { absolute: 'CHEO Commencement Ceremony - New Heights Educational Group, Inc.' },

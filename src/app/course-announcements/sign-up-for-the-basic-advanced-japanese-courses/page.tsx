@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Sign up for the Basic & Advanced Japanese Courses - New Heights Educational Group, Inc.',
-    description: 'The live course for the Beginning Japanese course will start on Tuesday,November 27, and Thursday, November 29, from 4:30 p.m. EST· 5:30 p.m. EST. It will include greetings and addressing others, a weekly vocabulary list and dialogue to practice with basic grammar to practice for forming sentences like questions, expressing interests and so much more.',
+    title:
+      'Sign up for the Basic & Advanced Japanese Courses - New Heights Educational Group, Inc.',
+    description:
+      'The live course for the Beginning Japanese course will start on Tuesday,November 27, and Thursday, November 29, from 4:30 p.m. EST· 5:30 p.m. EST. It will include greetings and addressing others, a weekly vocabulary list and dialogue to practice with basic grammar to practice for forming sentences like questions, expressing interests and so much more.',
     canonical: '/course-announcements/sign-up-for-the-basic-advanced-japanese-courses/',
   }),
-  title: { absolute: 'Sign up for the Basic & Advanced Japanese Courses - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Sign up for the Basic & Advanced Japanese Courses - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7821 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('course-announcements/sign-up-for-the-basic-advanced-japanese-courses') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'course-announcements/sign-up-for-the-basic-advanced-japanese-courses'
+        ),
+      }}
     />
   )
 }

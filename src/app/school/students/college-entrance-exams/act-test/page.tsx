@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'ACT Test - NHEG Online Learning Annex',
-    description: 'The ACT Test is a national college admissions examination that consists of subject area tests in English, Mathematics, Reading and Science. The ACT includes 215 multiple-choice questions and takes approximately 3 hours and 30 minutes to complete.',
+    description:
+      'The ACT Test is a national college admissions examination that consists of subject area tests in English, Mathematics, Reading and Science. The ACT includes 215 multiple-choice questions and takes approximately 3 hours and 30 minutes to complete.',
     canonical: '/school/students/college-entrance-exams/act-test/',
   }),
   title: { absolute: 'ACT Test - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-808 page-child parent-pageid-379 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/college-entrance-exams/act-test') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/college-entrance-exams/act-test'),
+      }}
     />
   )
 }

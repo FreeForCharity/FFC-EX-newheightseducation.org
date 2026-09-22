@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Teacher Portal - NHEG Online Learning Annex',
-    description: 'The NHEG Teachers Portal is a dedicated page of information, resources, organizations and professional development for teachers in Ohio.',
+    description:
+      'The NHEG Teachers Portal is a dedicated page of information, resources, organizations and professional development for teachers in Ohio.',
     canonical: '/school/teachers/',
   }),
   title: { absolute: 'Teacher Portal - NHEG Online Learning Annex' },

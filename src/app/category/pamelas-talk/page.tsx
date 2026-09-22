@@ -6,11 +6,12 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Pamela\'s Talk - New Heights Educational Group, Inc.',
-    description: 'Pamela’s Talk is a video series of Pamela Clark talking about various educational topics and what is currently happening at New Heights Educational Group.',
+    title: "Pamela's Talk - New Heights Educational Group, Inc.",
+    description:
+      'Pamela’s Talk is a video series of Pamela Clark talking about various educational topics and what is currently happening at New Heights Educational Group.',
     canonical: '/category/pamelas-talk/',
   }),
-  title: { absolute: 'Pamela\'s Talk - New Heights Educational Group, Inc.' },
+  title: { absolute: "Pamela's Talk - New Heights Educational Group, Inc." },
 }
 
 export default function Page() {

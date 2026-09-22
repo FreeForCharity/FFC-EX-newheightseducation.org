@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Feeling overworked or overwhelmed? Here’s how you can handle your stress. - New Heights Educational Group, Inc.',
-    description: 'One time or another, we’ve all gotten to the point where we want to do everything at once. Whether it is because the thought of being unproductive is torturing, or an overachieving tendency has led to burnout, we often feel overwhelmed when the school/work season begins. Though this anxiety is sometimes difficult to handle, there',
-    canonical: '/student-corner/feeling-overworked-or-overwhelmed-heres-how-you-can-handle-your-stress/',
+    title:
+      'Feeling overworked or overwhelmed? Here’s how you can handle your stress. - New Heights Educational Group, Inc.',
+    description:
+      'One time or another, we’ve all gotten to the point where we want to do everything at once. Whether it is because the thought of being unproductive is torturing, or an overachieving tendency has led to burnout, we often feel overwhelmed when the school/work season begins. Though this anxiety is sometimes difficult to handle, there',
+    canonical:
+      '/student-corner/feeling-overworked-or-overwhelmed-heres-how-you-can-handle-your-stress/',
   }),
-  title: { absolute: 'Feeling overworked or overwhelmed? Here’s how you can handle your stress. - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Feeling overworked or overwhelmed? Here’s how you can handle your stress. - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9210 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/feeling-overworked-or-overwhelmed-heres-how-you-can-handle-your-stress') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'student-corner/feeling-overworked-or-overwhelmed-heres-how-you-can-handle-your-stress'
+        ),
+      }}
     />
   )
 }

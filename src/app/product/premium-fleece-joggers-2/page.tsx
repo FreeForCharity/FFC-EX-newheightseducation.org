@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Premium Fleece Joggers - New Heights Educational Group, Inc.',
-    description: 'S M L XL 2XL Waist, in 15.00 15.98 17.01 17.99 18.98 Inseam, in 28.98 30.00 30.98 31.97 32.99 Outseam, in 38.98 40.00 40.98 41.97 42.99 Staying active is no problem when you’ve got a stylish pair of premium-quality joggers like these. The back pocket is customizable and has two spacious pockets on the',
+    description:
+      'S M L XL 2XL Waist, in 15.00 15.98 17.01 17.99 18.98 Inseam, in 28.98 30.00 30.98 31.97 32.99 Outseam, in 38.98 40.00 40.98 41.97 42.99 Staying active is no problem when you’ve got a stylish pair of premium-quality joggers like these. The back pocket is customizable and has two spacious pockets on the',
     canonical: '/product/premium-fleece-joggers-2/',
   }),
   title: { absolute: 'Premium Fleece Joggers - New Heights Educational Group, Inc.' },

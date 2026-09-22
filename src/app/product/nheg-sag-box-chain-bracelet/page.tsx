@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG SAG Box Chain Bracelet - New Heights Educational Group, Inc.',
-    description: 'One SizeWrist diameter (max), in3.15Chain diameter, in0.0393Ash-coin pendant diameter, in0.63Jaylon pendant length, in1.38Jaylon pendant width , in0.4This box chain bracelet emphasizes the delicate, vibrant and sensual personality of its wearer. Made in USA. .: Sterling silver or 18K gold plated.: Several charm shapes.: Slider for adjustable width.: Nickel and lead free',
+    description:
+      'One SizeWrist diameter (max), in3.15Chain diameter, in0.0393Ash-coin pendant diameter, in0.63Jaylon pendant length, in1.38Jaylon pendant width , in0.4This box chain bracelet emphasizes the delicate, vibrant and sensual personality of its wearer. Made in USA. .: Sterling silver or 18K gold plated.: Several charm shapes.: Slider for adjustable width.: Nickel and lead free',
     canonical: '/product/nheg-sag-box-chain-bracelet/',
   }),
   title: { absolute: 'NHEG SAG Box Chain Bracelet - New Heights Educational Group, Inc.' },

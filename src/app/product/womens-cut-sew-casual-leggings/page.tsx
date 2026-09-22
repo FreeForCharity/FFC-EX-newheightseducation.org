@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Women’s Cut & Sew Casual Leggings - New Heights Educational Group, Inc.',
-    description: 'XS S M L XL 2XL Width at waist, in 13.50 14.53 15.51 16.77 18.27 19.76 Outseam length, in 38.27 38.62 39.02 39.37 39.76 40.16 Inseam length, in 30.00 30.00 30.00 30.04 30.00 30.00 Crisp imagery, vibrant colors and a soft touch - these elastic skinny fit leggings are perfect for any casual occasion',
+    description:
+      'XS S M L XL 2XL Width at waist, in 13.50 14.53 15.51 16.77 18.27 19.76 Outseam length, in 38.27 38.62 39.02 39.37 39.76 40.16 Inseam length, in 30.00 30.00 30.00 30.04 30.00 30.00 Crisp imagery, vibrant colors and a soft touch - these elastic skinny fit leggings are perfect for any casual occasion',
     canonical: '/product/womens-cut-sew-casual-leggings/',
   }),
   title: { absolute: 'Women’s Cut & Sew Casual Leggings - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-10745 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/womens-cut-sew-casual-leggings') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/womens-cut-sew-casual-leggings'),
+      }}
     />
   )
 }

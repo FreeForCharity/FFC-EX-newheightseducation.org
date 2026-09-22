@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Volunteer Award Winners - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group would like to recognize the hard work all our volunteers and the individuals awards they have won with us.',
+    description:
+      'New Heights Educational Group would like to recognize the hard work all our volunteers and the individuals awards they have won with us.',
     canonical: '/who-we-are/awards-and-achievements/volunteer-award-winners/',
   }),
   title: { absolute: 'Volunteer Award Winners - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-9307 page-child parent-pageid-57 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('who-we-are/awards-and-achievements/volunteer-award-winners') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('who-we-are/awards-and-achievements/volunteer-award-winners'),
+      }}
     />
   )
 }

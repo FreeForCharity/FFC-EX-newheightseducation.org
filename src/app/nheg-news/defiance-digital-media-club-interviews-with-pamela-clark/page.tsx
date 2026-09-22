@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Defiance Digital Media Club Interviews with Pamela Clark - New Heights Educational Group, Inc.',
-    description: 'Last month, the Defiance Digital Media Club had three interviews with Pamela Clark discussing various topics over those interviews. The topics covered were about New Heights Educational Group, National School Choice Week and the NHEG Color Guard and Baton Corps. You can watch three interviews by click the links below. New Heights Educational Group National',
+    title:
+      'Defiance Digital Media Club Interviews with Pamela Clark - New Heights Educational Group, Inc.',
+    description:
+      'Last month, the Defiance Digital Media Club had three interviews with Pamela Clark discussing various topics over those interviews. The topics covered were about New Heights Educational Group, National School Choice Week and the NHEG Color Guard and Baton Corps. You can watch three interviews by click the links below. New Heights Educational Group National',
     canonical: '/nheg-news/defiance-digital-media-club-interviews-with-pamela-clark/',
   }),
-  title: { absolute: 'Defiance Digital Media Club Interviews with Pamela Clark - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Defiance Digital Media Club Interviews with Pamela Clark - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8830 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/defiance-digital-media-club-interviews-with-pamela-clark') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'nheg-news/defiance-digital-media-club-interviews-with-pamela-clark'
+        ),
+      }}
     />
   )
 }

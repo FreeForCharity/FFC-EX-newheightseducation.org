@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Letters of Support - New Heights Educational Group, Inc.',
-    description: 'These are letters of support and appreciation are from parents, teachers and students thanking us for the work that we do for communities in Ohio. It is our pleasure to post these letters and comments from the people who walked through our doors in order to show the impact we have had on their lives.',
+    description:
+      'These are letters of support and appreciation are from parents, teachers and students thanking us for the work that we do for communities in Ohio. It is our pleasure to post these letters and comments from the people who walked through our doors in order to show the impact we have had on their lives.',
     canonical: '/who-we-are/letters-of-support/',
   }),
   title: { absolute: 'Letters of Support - New Heights Educational Group, Inc.' },

@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Who Are the New Heights Educational Group? - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group is a nonprofit institution committed to education and quality of services to parents, students, and school community. Among the services provided are the "homeschooling" that offers children an education given at home (by parents or tutors) or outside the school environment. The organization offers to users of this type of',
+    description:
+      'The New Heights Educational Group is a nonprofit institution committed to education and quality of services to parents, students, and school community. Among the services provided are the "homeschooling" that offers children an education given at home (by parents or tutors) or outside the school environment. The organization offers to users of this type of',
     canonical: '/nheg-news/new-heights-educational-group/',
   }),
-  title: { absolute: 'Who Are the New Heights Educational Group? - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Who Are the New Heights Educational Group? - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1393 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/new-heights-educational-group') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/new-heights-educational-group'),
+      }}
     />
   )
 }

@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '$1000 Grant From Defiance Area Foundation - New Heights Educational Group, Inc.',
-    description: 'NHEG is proud to announce that we have received a $1000 grant from Defiance Area Foundation as part of their 40th Anniversary celebration. As part of their celebration, Defiance Area Foundation awarded 40 local non-profit organizations in Defiance County. NHEG\'s Founder/Executive Director stated, "This grant will be used to expand our online courses and reach',
+    description:
+      'NHEG is proud to announce that we have received a $1000 grant from Defiance Area Foundation as part of their 40th Anniversary celebration. As part of their celebration, Defiance Area Foundation awarded 40 local non-profit organizations in Defiance County. NHEG\'s Founder/Executive Director stated, "This grant will be used to expand our online courses and reach',
     canonical: '/nheg-news/1000-grant-from-defiance-area-foundation/',
   }),
-  title: { absolute: '$1000 Grant From Defiance Area Foundation - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: '$1000 Grant From Defiance Area Foundation - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8392 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/1000-grant-from-defiance-area-foundation') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/1000-grant-from-defiance-area-foundation'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
     canonical: '/author/m-anderson/',
   }),
   title: { absolute: 'Michael Anderson, Author at New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Grants and Donations - New Heights Educational Group, Inc.',
-    description: 'We would like to thank everyone for the donations NHEG has received in order to support our educational programs and services that are used by students. We also like to thank the many organizations that have awarded grants to NHEG as well.',
+    description:
+      'We would like to thank everyone for the donations NHEG has received in order to support our educational programs and services that are used by students. We also like to thank the many organizations that have awarded grants to NHEG as well.',
     canonical: '/support-nheg/donations-nheg-has-received/',
   }),
   title: { absolute: 'Grants and Donations - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-2788 page-child parent-pageid-1897 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('support-nheg/donations-nheg-has-received') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('support-nheg/donations-nheg-has-received'),
+      }}
     />
   )
 }

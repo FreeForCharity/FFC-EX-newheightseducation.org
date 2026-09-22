@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Online Tutoring for your Child - New Heights Educational Group, Inc.',
-    description: 'According to Wikipedia, online tutoring is a teaching process that occurs virtually, where teachers and students interact in different places of the world and at same or different times, through the Internet.Online tutoring helps to meet previously unmet needs by some educational institutions. Students with limited time and locomotion are particularly helped since learning occurs',
+    description:
+      'According to Wikipedia, online tutoring is a teaching process that occurs virtually, where teachers and students interact in different places of the world and at same or different times, through the Internet.Online tutoring helps to meet previously unmet needs by some educational institutions. Students with limited time and locomotion are particularly helped since learning occurs',
     canonical: '/educational-articles/online-tutoring-child/',
   }),
   title: { absolute: 'Online Tutoring for your Child - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1366 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/online-tutoring-child') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/online-tutoring-child'),
+      }}
     />
   )
 }

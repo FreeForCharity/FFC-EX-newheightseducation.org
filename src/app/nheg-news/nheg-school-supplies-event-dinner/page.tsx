@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG School Supplies Event & Dinner - New Heights Educational Group, Inc.',
-    description: 'Our NHEG School Supplies Event was a great success as we had 69 people show our to our giveaway in which 46 bags worth of schools supplies were given out. Pamela Clark, Executive Director at The New Heights Educational Group, (NHEG) recently hosted a school bag giveaway and community dinner in partnership with Detray Chiropractic.',
+    description:
+      'Our NHEG School Supplies Event was a great success as we had 69 people show our to our giveaway in which 46 bags worth of schools supplies were given out. Pamela Clark, Executive Director at The New Heights Educational Group, (NHEG) recently hosted a school bag giveaway and community dinner in partnership with Detray Chiropractic.',
     canonical: '/nheg-news/nheg-school-supplies-event-dinner/',
   }),
   title: { absolute: 'NHEG School Supplies Event & Dinner - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6170 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-school-supplies-event-dinner') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-school-supplies-event-dinner'),
+      }}
     />
   )
 }

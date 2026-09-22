@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Women’s Cut & Sew Racerback Dress - New Heights Educational Group, Inc.',
-    description: 'L Width (at bottom hem), in 22.01 Width (at chest), in 17.99 Length (front HSP), in 34.02 A feminine and stylish, yet really comfortable dress. This high quality AOP racerback dress is appealing from every angle. Inspired by the freedom of creativity, it will instantly become everyone\'s alltime favorite. .: 100% Polyester.: White seam',
+    description:
+      "L Width (at bottom hem), in 22.01 Width (at chest), in 17.99 Length (front HSP), in 34.02 A feminine and stylish, yet really comfortable dress. This high quality AOP racerback dress is appealing from every angle. Inspired by the freedom of creativity, it will instantly become everyone's alltime favorite. .: 100% Polyester.: White seam",
     canonical: '/product/womens-cut-sew-racerback-dress-3/',
   }),
   title: { absolute: 'Women’s Cut & Sew Racerback Dress - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-12208 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/womens-cut-sew-racerback-dress-3') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/womens-cut-sew-racerback-dress-3'),
+      }}
     />
   )
 }

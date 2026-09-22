@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk: NHEG - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/ysNMMnT_wkQ Today\'s episode titled Pamela\'s Talk - NHEG, Pamela Clark discusses her passion, purpose, inspiration and advancements of the New Heights Educational Group.',
+    description:
+      "https://youtu.be/ysNMMnT_wkQ Today's episode titled Pamela's Talk - NHEG, Pamela Clark discusses her passion, purpose, inspiration and advancements of the New Heights Educational Group.",
     canonical: '/pamelas-talk/pamelas-talk-nheg/',
   }),
   title: { absolute: 'Pamela’s Talk: NHEG - New Heights Educational Group, Inc.' },

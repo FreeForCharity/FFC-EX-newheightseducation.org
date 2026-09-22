@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Looking for Library Space - New Heights Educational Group, Inc.',
-    description: 'Do you have an empty building? The New Heights Educational Group is in urgent need of finding a new donated location for an educational library. Our library currently offers more than 3,803 books on different curriculum and encyclopedias. We also offer over 101 pieces of software and 139 DVD and VHS Tapes. We have a',
+    description:
+      'Do you have an empty building? The New Heights Educational Group is in urgent need of finding a new donated location for an educational library. Our library currently offers more than 3,803 books on different curriculum and encyclopedias. We also offer over 101 pieces of software and 139 DVD and VHS Tapes. We have a',
     canonical: '/nheg-news/looking-library-space/',
   }),
   title: { absolute: 'Looking for Library Space - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk – College Credit Plus - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/KiCNYnTW6T4 Today\'s episode titled Pamela\'s Talk - College Credit Plus. Pamela talks about the state of Ohio\'s College Credit Plus program. CCP Description: Ohio’s College Credit Plus can help you earn college and high school credits at the same time by taking college courses from community colleges or universities. The purpose of this program is',
+    description:
+      "https://youtu.be/KiCNYnTW6T4 Today's episode titled Pamela's Talk - College Credit Plus. Pamela talks about the state of Ohio's College Credit Plus program. CCP Description: Ohio’s College Credit Plus can help you earn college and high school credits at the same time by taking college courses from community colleges or universities. The purpose of this program is",
     canonical: '/pamelas-talk/pamelas-talk-college-credit-plus/',
   }),
   title: { absolute: 'Pamela’s Talk – College Credit Plus - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5697 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('pamelas-talk/pamelas-talk-college-credit-plus') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('pamelas-talk/pamelas-talk-college-credit-plus'),
+      }}
     />
   )
 }

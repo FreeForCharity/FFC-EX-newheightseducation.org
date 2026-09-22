@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2020 Stevie® Awards Finalist - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group NAMED AS FINALIST IN 2020 STEVIE® AWARDS FOR SALES & CUSTOMER SERVICE 14th annual awards will be presented on February 28 in Las Vegas Defiance, Ohio – January 16, 2020 – New Heights Educational Group (NHEG) was named a Finalist today in the Award for Ethics in Sales category in the',
+    description:
+      'New Heights Educational Group NAMED AS FINALIST IN 2020 STEVIE® AWARDS FOR SALES & CUSTOMER SERVICE 14th annual awards will be presented on February 28 in Las Vegas Defiance, Ohio – January 16, 2020 – New Heights Educational Group (NHEG) was named a Finalist today in the Award for Ethics in Sales category in the',
     canonical: '/nheg-news/2020-stevie-awards-finalist/',
   }),
   title: { absolute: '2020 Stevie® Awards Finalist - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8789 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/2020-stevie-awards-finalist') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/2020-stevie-awards-finalist'),
+      }}
     />
   )
 }

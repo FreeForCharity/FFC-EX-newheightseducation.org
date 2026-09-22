@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'How to Effectively Manage Your Time - New Heights Educational Group, Inc.',
-    description: 'Effective time management is a key skill for all aspects of life. Though many people can acknowledge their procrastination, they never put in the effort to change their habits. The truth is many academic and work-related struggles can be fixed by filling your day with productive tasks. Luckily, using your time wisely does',
+    description:
+      'Effective time management is a key skill for all aspects of life. Though many people can acknowledge their procrastination, they never put in the effort to change their habits. The truth is many academic and work-related struggles can be fixed by filling your day with productive tasks. Luckily, using your time wisely does',
     canonical: '/educational-articles/how-to-effectively-manage-your-time/',
   }),
   title: { absolute: 'How to Effectively Manage Your Time - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9295 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/how-to-effectively-manage-your-time') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/how-to-effectively-manage-your-time'),
+      }}
     />
   )
 }

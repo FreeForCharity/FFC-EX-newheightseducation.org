@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Press - New Heights Educational Group, Inc.',
-    description: 'The NHEG Press center contains online articles, videos and other media formats from news outlets and websites from Ohio and across the country. Select the database below and from there you can read, watch or listen to New Heights Educational Group talking about what we do.',
+    description:
+      'The NHEG Press center contains online articles, videos and other media formats from news outlets and websites from Ohio and across the country. Select the database below and from there you can read, watch or listen to New Heights Educational Group talking about what we do.',
     canonical: '/who-we-are/nheg-press/',
   }),
   title: { absolute: 'Press - New Heights Educational Group, Inc.' },

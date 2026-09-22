@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Kids Fine Jersey Tee - New Heights Educational Group, Inc.',
-    description: 'XS S M L XL Width, in 13.00 15.00 17.00 18.00 19.00 Length, in 19.00 21.50 23.00 25.00 26.50 Sleeve length, in 5.24 6.26 6.50 7.01 8.66 Super soft fine jersey fabric compliments that playful innocence of this longer-length youth style tee. High quality print makes it instantly loved by all who wear it.',
+    description:
+      'XS S M L XL Width, in 13.00 15.00 17.00 18.00 19.00 Length, in 19.00 21.50 23.00 25.00 26.50 Sleeve length, in 5.24 6.26 6.50 7.01 8.66 Super soft fine jersey fabric compliments that playful innocence of this longer-length youth style tee. High quality print makes it instantly loved by all who wear it.',
     canonical: '/product/kids-fine-jersey-tee-2/',
   }),
   title: { absolute: 'Kids Fine Jersey Tee - New Heights Educational Group, Inc.' },

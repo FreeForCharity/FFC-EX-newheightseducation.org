@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Get Your School Bag Today – We Have 70+ Bags - New Heights Educational Group, Inc.',
-    description: 'Dear families of school age children, The New Heights Educational Group (NHEG) is now accepting RSVP’s for the school bag giveaway. Thanks to First Federal Bank we have over 70 bags this year! “This surpassed our goal and last year’s collection by 27 bags!” The event will be held on July 28th from 3:30 pm',
+    description:
+      'Dear families of school age children, The New Heights Educational Group (NHEG) is now accepting RSVP’s for the school bag giveaway. Thanks to First Federal Bank we have over 70 bags this year! “This surpassed our goal and last year’s collection by 27 bags!” The event will be held on July 28th from 3:30 pm',
     canonical: '/nheg-news/get-your-school-bag-today-we-have-70-bags/',
   }),
-  title: { absolute: 'Get Your School Bag Today – We Have 70+ Bags - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Get Your School Bag Today – We Have 70+ Bags - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7615 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/get-your-school-bag-today-we-have-70-bags') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/get-your-school-bag-today-we-have-70-bags'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Privacy Policy - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group, INC is an Ohio based organization with its home office at 14735 Power Dam Road. Since this is a home office, only scheduled appointments are allowed. New Heights Educational Group, INC (NHEG)is the owner and operator of www.NewHeightsEducation.org and School.NewHeightsEducation.org websites. NHEG is committed to protecting the in-person and online privacy of visitors to our websites.',
+    description:
+      'New Heights Educational Group, INC is an Ohio based organization with its home office at 14735 Power Dam Road. Since this is a home office, only scheduled appointments are allowed. New Heights Educational Group, INC (NHEG)is the owner and operator of www.NewHeightsEducation.org and School.NewHeightsEducation.org websites. NHEG is committed to protecting the in-person and online privacy of visitors to our websites.',
     canonical: '/privacy-policy/',
   }),
   title: { absolute: 'Privacy Policy - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG SAG Matte Onyx Bracelet - New Heights Educational Group, Inc.',
-    description: 'One SizeBracelet Diameter , in2.17Coin Pendant Diameter, in0.67Tile Pendant Diameter, in0.67The onyx bracelet is expertly hand cast and polished in the USA and features vibrant, textured and glossy enamel-style coloring..: Sterling silver or 18K gold plated pendant.: Elastic wire.: Several charm shapes.: Nickel and lead free',
+    description:
+      'One SizeBracelet Diameter , in2.17Coin Pendant Diameter, in0.67Tile Pendant Diameter, in0.67The onyx bracelet is expertly hand cast and polished in the USA and features vibrant, textured and glossy enamel-style coloring..: Sterling silver or 18K gold plated pendant.: Elastic wire.: Several charm shapes.: Nickel and lead free',
     canonical: '/product/nheg-sag-matte-onyx-bracelet/',
   }),
   title: { absolute: 'NHEG SAG Matte Onyx Bracelet - New Heights Educational Group, Inc.' },

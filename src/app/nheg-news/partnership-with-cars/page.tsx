@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with CARS - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) has been an active partner of IAA’s Donate A Car program for a number of years. IAA recently announced a merger with the Charitable Auto Resources (CARS) vehicle donation program. The IAA relationship will be active through May 12, 2021, and then NHEG will transition to the CARS program. CARS is',
+    description:
+      'The New Heights Educational Group (NHEG) has been an active partner of IAA’s Donate A Car program for a number of years. IAA recently announced a merger with the Charitable Auto Resources (CARS) vehicle donation program. The IAA relationship will be active through May 12, 2021, and then NHEG will transition to the CARS program. CARS is',
     canonical: '/nheg-news/partnership-with-cars/',
   }),
   title: { absolute: 'Partnership with CARS - New Heights Educational Group, Inc.' },

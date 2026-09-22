@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Online Learning Annex',
-    description: 'The NHEG Learning Annex provides free and paid online courses for both children and adults looking to increase their educational and life skills. Our own NHEG teachers and tutors help develop these online courses for those looking for an easy-to-use online solution for their educational needs. Also, the NHEG Learning Annex partners with many educators across the country who provide online courses for both children and adults who are interested in learning new topics and skills.',
+    description:
+      'The NHEG Learning Annex provides free and paid online courses for both children and adults looking to increase their educational and life skills. Our own NHEG teachers and tutors help develop these online courses for those looking for an easy-to-use online solution for their educational needs. Also, the NHEG Learning Annex partners with many educators across the country who provide online courses for both children and adults who are interested in learning new topics and skills.',
     canonical: '/school/',
   }),
   title: { absolute: 'NHEG Online Learning Annex' },

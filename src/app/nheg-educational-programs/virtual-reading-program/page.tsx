@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Virtual Reading Program - New Heights Educational Group, Inc.',
-    description: 'In partnership with 2nd & 7 Foundation and our Reading Ambassador Rhone-Ann Huang we have implemented a virtual reading program for children.',
+    description:
+      'In partnership with 2nd & 7 Foundation and our Reading Ambassador Rhone-Ann Huang we have implemented a virtual reading program for children.',
     canonical: '/nheg-educational-programs/virtual-reading-program/',
   }),
   title: { absolute: 'Virtual Reading Program - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-9339 page-child parent-pageid-519 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-educational-programs/virtual-reading-program') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-educational-programs/virtual-reading-program'),
+      }}
     />
   )
 }

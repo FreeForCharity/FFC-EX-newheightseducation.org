@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG for #GivingTuesday - New Heights Educational Group, Inc.',
-    description: 'Global Day of Giving Takes Place this Year on November 29 NHEG is planning to raise funds for our Resource and Literacy Center for #GivingTuesday, a global giving movement that has been driven by individuals, families, organizations, businesses and communities in all 50 states and in countries around the world. Since its founding in 2012,',
+    description:
+      'Global Day of Giving Takes Place this Year on November 29 NHEG is planning to raise funds for our Resource and Literacy Center for #GivingTuesday, a global giving movement that has been driven by individuals, families, organizations, businesses and communities in all 50 states and in countries around the world. Since its founding in 2012,',
     canonical: '/nheg-news/nheg-for-givingtuesday/',
   }),
   title: { absolute: 'NHEG for #GivingTuesday - New Heights Educational Group, Inc.' },

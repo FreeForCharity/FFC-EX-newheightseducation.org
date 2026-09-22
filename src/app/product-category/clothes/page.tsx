@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Clothes - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Shop Home » Clothes This form has moved to email. We read every…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Shop Home » Clothes This form has moved to email. We read every…',
     canonical: '/product-category/clothes/',
   }),
   title: { absolute: 'Clothes - New Heights Educational Group, Inc.' },

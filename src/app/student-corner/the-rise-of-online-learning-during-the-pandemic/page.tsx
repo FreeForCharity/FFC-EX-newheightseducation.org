@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Rise of Online Learning During the Pandemic - New Heights Educational Group, Inc.',
-    description: 'The COVID-19 pandemic has brought us to the state where we must do most of our work and school tasks remotely. The pandemic has changed education forever. Although it has forced us to social distance , I think it has provided learners with a sense of connection and commitment to the community and society similar',
+    description:
+      'The COVID-19 pandemic has brought us to the state where we must do most of our work and school tasks remotely. The pandemic has changed education forever. Although it has forced us to social distance , I think it has provided learners with a sense of connection and commitment to the community and society similar',
     canonical: '/student-corner/the-rise-of-online-learning-during-the-pandemic/',
   }),
-  title: { absolute: 'The Rise of Online Learning During the Pandemic - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'The Rise of Online Learning During the Pandemic - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9191 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/the-rise-of-online-learning-during-the-pandemic') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('student-corner/the-rise-of-online-learning-during-the-pandemic'),
+      }}
     />
   )
 }

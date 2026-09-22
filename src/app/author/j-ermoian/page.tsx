@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Jeff Ermoian, Author at New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "j.ermoian" Home » Archives for Jeff…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "j.ermoian" Home » Archives for Jeff…',
     canonical: '/author/j-ermoian/',
   }),
   title: { absolute: 'Jeff Ermoian, Author at New Heights Educational Group, Inc.' },

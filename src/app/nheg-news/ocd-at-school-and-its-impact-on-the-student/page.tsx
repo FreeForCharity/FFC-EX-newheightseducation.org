@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'OCD at School and It’s Impact on the Student - New Heights Educational Group, Inc.',
-    description: 'Identifying Obsessive Compulsive Disorder at School and Learn How to Transform Negative OCD`s Features in Positive Aspects for Self-development By Daniela Silva Obsessive-Compulsive Disorder (OCD) is characterized by the constant presence of preoccupations, repetitive behaviors (rituals) and recurrent and persistent thoughts that lead to great suffering and malaise in the child\'s life. OCD in',
+    description:
+      "Identifying Obsessive Compulsive Disorder at School and Learn How to Transform Negative OCD`s Features in Positive Aspects for Self-development By Daniela Silva Obsessive-Compulsive Disorder (OCD) is characterized by the constant presence of preoccupations, repetitive behaviors (rituals) and recurrent and persistent thoughts that lead to great suffering and malaise in the child's life. OCD in",
     canonical: '/nheg-news/ocd-at-school-and-its-impact-on-the-student/',
   }),
-  title: { absolute: 'OCD at School and It’s Impact on the Student - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'OCD at School and It’s Impact on the Student - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7651 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/ocd-at-school-and-its-impact-on-the-student') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/ocd-at-school-and-its-impact-on-the-student'),
+      }}
     />
   )
 }

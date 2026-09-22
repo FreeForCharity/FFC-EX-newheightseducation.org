@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Tutoring Program - New Heights Educational Group, Inc.',
-    description: 'The NHEG Tutoring program is for K-12 students who are having difficulty in a subject and are looking for a tutor to help them learn it effectively. Our tutors share the vision of NHEG. Our tutoring services focus on the individual\'s needs and learning styles.',
+    description:
+      "The NHEG Tutoring program is for K-12 students who are having difficulty in a subject and are looking for a tutor to help them learn it effectively. Our tutors share the vision of NHEG. Our tutoring services focus on the individual's needs and learning styles.",
     canonical: '/nheg-educational-programs/nheg-tutoring-program/',
   }),
   title: { absolute: 'NHEG Tutoring Program - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-521 page-parent page-child parent-pageid-519 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-educational-programs/nheg-tutoring-program') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-educational-programs/nheg-tutoring-program'),
+      }}
     />
   )
 }

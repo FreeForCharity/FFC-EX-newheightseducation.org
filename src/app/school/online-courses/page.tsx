@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Courses - NHEG Online Learning Annex',
-    description: 'Login This form has moved to email. We read every message. Info@NewHeightsEducation.org Create Account This form has moved to email. We read every message…',
+    description:
+      'Login This form has moved to email. We read every message. Info@NewHeightsEducation.org Create Account This form has moved to email. We read every message…',
     canonical: '/school/online-courses/',
   }),
   title: { absolute: 'Courses - NHEG Online Learning Annex' },

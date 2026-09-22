@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Civic Theatre – IN THE WINGS - New Heights Educational Group, Inc.',
-    description: 'The IN THE WINGS—Arts in Education Program at the Civic Theatre of Fort Wayne, Indiana, schedule for the 2019-2020 school year is as follows: Please contact the New Heights Educational Group for tickets for your family. Everyone attending must be enrolled (free) with NHEG to request the free tickets. IN THE WINGS offers backstage tours',
+    description:
+      'The IN THE WINGS—Arts in Education Program at the Civic Theatre of Fort Wayne, Indiana, schedule for the 2019-2020 school year is as follows: Please contact the New Heights Educational Group for tickets for your family. Everyone attending must be enrolled (free) with NHEG to request the free tickets. IN THE WINGS offers backstage tours',
     canonical: '/community-news/civic-theatre-in-the-wings/',
   }),
   title: { absolute: 'Civic Theatre – IN THE WINGS - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8447 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/civic-theatre-in-the-wings') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/civic-theatre-in-the-wings'),
+      }}
     />
   )
 }

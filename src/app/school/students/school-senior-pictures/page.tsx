@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'School and Senior Pictures - NHEG Online Learning Annex',
-    description: 'For students looking to get their pictures taken, NHEG offers high quality and reasonably priced photographers for your school and senior pictures.',
+    description:
+      'For students looking to get their pictures taken, NHEG offers high quality and reasonably priced photographers for your school and senior pictures.',
     canonical: '/school/students/school-senior-pictures/',
   }),
   title: { absolute: 'School and Senior Pictures - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-1356 page-child parent-pageid-6467 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/school-senior-pictures') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/school-senior-pictures'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'U.S. Department of Education – Home Schools - NHEG Online Learning Annex',
-    description: 'The U.S. Dept. of Education has its laws and regulations that must be followed in order to enroll your child in a home school program in your home state. Below is a list of all 50 states and links to their Department of Education\'s website.',
+    description:
+      "The U.S. Dept. of Education has its laws and regulations that must be followed in order to enroll your child in a home school program in your home state. Below is a list of all 50 states and links to their Department of Education's website.",
     canonical: '/school/parents/home-school-families/us-dept-education-home-schools/',
   }),
   title: { absolute: 'U.S. Department of Education – Home Schools - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-1711 page-child parent-pageid-448 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/parents/home-school-families/us-dept-education-home-schools') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/parents/home-school-families/us-dept-education-home-schools'
+        ),
+      }}
     />
   )
 }

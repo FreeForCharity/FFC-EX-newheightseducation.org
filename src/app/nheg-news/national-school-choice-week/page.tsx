@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'National School Choice Week - New Heights Educational Group, Inc.',
-    description: 'Please join the New Heights Educational Group on January 22 as we discuss and kick off National School Choice Week. This is a great chance to learn about educational choices and topics in the State of Ohio, and how you, in partnership with NHEG can make a difference in our community. Bring a board game',
+    description:
+      'Please join the New Heights Educational Group on January 22 as we discuss and kick off National School Choice Week. This is a great chance to learn about educational choices and topics in the State of Ohio, and how you, in partnership with NHEG can make a difference in our community. Bring a board game',
     canonical: '/nheg-news/national-school-choice-week/',
   }),
   title: { absolute: 'National School Choice Week - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-3174 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/national-school-choice-week') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/national-school-choice-week'),
+      }}
     />
   )
 }

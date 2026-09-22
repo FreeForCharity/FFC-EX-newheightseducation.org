@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Enrichment Day - New Heights Educational Group, Inc.',
-    description: 'NHEG Enrichment Day is a special day for both eager students and their parents in which we augment the participants\' interactions in the classroom. For example, students have enjoyed History classes where the classes came to life and they could speak to individuals that made a difference in the world.',
+    description:
+      "NHEG Enrichment Day is a special day for both eager students and their parents in which we augment the participants' interactions in the classroom. For example, students have enjoyed History classes where the classes came to life and they could speak to individuals that made a difference in the world.",
     canonical: '/events/nheg-enrichment-day/',
   }),
   title: { absolute: 'NHEG Enrichment Day - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with Detray Chiropractic - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group is proud to announce a new partnership with local Defiance Ohio business, DeTray Chiropractic. Detray Chiropractic offers high quality chiropractic services in Defiance, Ohio. They have a strong commitment to community. They would like to offer a "Lunch and Learn" or "Dinner and Learn" to our volunteers, students and staff',
+    description:
+      'The New Heights Educational Group is proud to announce a new partnership with local Defiance Ohio business, DeTray Chiropractic. Detray Chiropractic offers high quality chiropractic services in Defiance, Ohio. They have a strong commitment to community. They would like to offer a "Lunch and Learn" or "Dinner and Learn" to our volunteers, students and staff',
     canonical: '/nheg-news/partnership-detray-chiropractic/',
   }),
   title: { absolute: 'Partnership with Detray Chiropractic - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5982 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/partnership-detray-chiropractic') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/partnership-detray-chiropractic'),
+      }}
     />
   )
 }

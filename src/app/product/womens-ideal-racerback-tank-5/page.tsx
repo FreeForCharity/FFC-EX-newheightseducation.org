@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Women’s Ideal Racerback Tank - New Heights Educational Group, Inc.',
-    description: 'XS S M L XL 2XL Width, in 13.98 15.00 15.98 16.97 17.99 18.98 Length, in 26.97 27.48 27.95 28.46 28.98 29.49 High quality print of this slim fit tank-top will turn heads. And bystanders won\'t be disappointed - the racerback cut looks good on any woman\'s shoulders. .: 60% combed ringspun cotton, 40%',
+    description:
+      "XS S M L XL 2XL Width, in 13.98 15.00 15.98 16.97 17.99 18.98 Length, in 26.97 27.48 27.95 28.46 28.98 29.49 High quality print of this slim fit tank-top will turn heads. And bystanders won't be disappointed - the racerback cut looks good on any woman's shoulders. .: 60% combed ringspun cotton, 40%",
     canonical: '/product/womens-ideal-racerback-tank-5/',
   }),
   title: { absolute: 'Women’s Ideal Racerback Tank - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-12429 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/womens-ideal-racerback-tank-5') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/womens-ideal-racerback-tank-5'),
+      }}
     />
   )
 }

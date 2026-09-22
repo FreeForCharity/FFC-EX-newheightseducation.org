@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Frani Wyner Promoted to A.V.D.D. of Photography - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group is proud to announce that Frani Wyner has been promoted to Assistant Virtual Development Director of Photography. Frani Wyner is a married mother of 5 and along with being a dental assistant for 35+ years she has been an avid photographer since she was a young. Her inspiration in photography came',
+    description:
+      'New Heights Educational Group is proud to announce that Frani Wyner has been promoted to Assistant Virtual Development Director of Photography. Frani Wyner is a married mother of 5 and along with being a dental assistant for 35+ years she has been an avid photographer since she was a young. Her inspiration in photography came',
     canonical: '/nheg-news/frani-wyner-avdd-photography/',
   }),
-  title: { absolute: 'Frani Wyner Promoted to A.V.D.D. of Photography - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Frani Wyner Promoted to A.V.D.D. of Photography - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6266 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/frani-wyner-avdd-photography') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/frani-wyner-avdd-photography'),
+      }}
     />
   )
 }

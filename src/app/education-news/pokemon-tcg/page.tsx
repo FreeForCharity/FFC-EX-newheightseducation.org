@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pokemon TCG - New Heights Educational Group, Inc.',
-    description: 'How can Pokemon TCG be educational for kids? Can adults play the game? What is the negative side of playing this game? This article will explain the basics of what the game is and how it can be an educational tool. What is Pokemon TCG? TCG is short for trading card game. The game became',
+    description:
+      'How can Pokemon TCG be educational for kids? Can adults play the game? What is the negative side of playing this game? This article will explain the basics of what the game is and how it can be an educational tool. What is Pokemon TCG? TCG is short for trading card game. The game became',
     canonical: '/education-news/pokemon-tcg/',
   }),
   title: { absolute: 'Pokemon TCG - New Heights Educational Group, Inc.' },

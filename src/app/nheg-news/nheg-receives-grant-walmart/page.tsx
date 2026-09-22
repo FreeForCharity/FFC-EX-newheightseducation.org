@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Receives Grant From Walmart - New Heights Educational Group, Inc.',
-    description: 'On March 2nd, New Heights Educational Group was honored to receive a $500 Grant from Walmart in their Napoleon Ohio location. The money from this grant will be used for our Recognition and Graduation Day Events. This is what Pamela Clark had to say after recieving the grant from Walmart. "This is a very important event',
+    description:
+      'On March 2nd, New Heights Educational Group was honored to receive a $500 Grant from Walmart in their Napoleon Ohio location. The money from this grant will be used for our Recognition and Graduation Day Events. This is what Pamela Clark had to say after recieving the grant from Walmart. "This is a very important event',
     canonical: '/nheg-news/nheg-receives-grant-walmart/',
   }),
   title: { absolute: 'NHEG Receives Grant From Walmart - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5437 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-receives-grant-walmart') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-receives-grant-walmart'),
+      }}
     />
   )
 }

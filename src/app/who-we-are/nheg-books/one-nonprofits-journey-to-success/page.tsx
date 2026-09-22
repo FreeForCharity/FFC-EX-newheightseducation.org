@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'One Nonprofit’s Journey to Success - New Heights Educational Group, Inc.',
-    description: 'One Nonprofit\'s Journey to Success, is a book about an Ohio-based nonprofit, New Heights Educational Group, and its founder and director Ms. Pamela Clark.',
+    description:
+      "One Nonprofit's Journey to Success, is a book about an Ohio-based nonprofit, New Heights Educational Group, and its founder and director Ms. Pamela Clark.",
     canonical: '/who-we-are/nheg-books/one-nonprofits-journey-to-success/',
   }),
   title: { absolute: 'One Nonprofit’s Journey to Success - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-833 page-child parent-pageid-1757 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('who-we-are/nheg-books/one-nonprofits-journey-to-success') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('who-we-are/nheg-books/one-nonprofits-journey-to-success'),
+      }}
     />
   )
 }

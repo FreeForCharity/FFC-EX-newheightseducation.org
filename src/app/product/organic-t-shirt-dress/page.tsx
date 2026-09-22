@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Organic T-Shirt Dress - New Heights Educational Group, Inc.',
-    description: 'XS S M L XL Width, in 16.93 17.91 18.90 19.88 20.87 Length, in 32.87 33.86 34.84 35.83 36.81 The organic cotton t-shirt dress is made of 100% ringspun cotton – a comfortable and durable fabric. All materials are grown and gathered without the use of pesticides. This short-length t-shirt dress has a scoop',
+    description:
+      'XS S M L XL Width, in 16.93 17.91 18.90 19.88 20.87 Length, in 32.87 33.86 34.84 35.83 36.81 The organic cotton t-shirt dress is made of 100% ringspun cotton – a comfortable and durable fabric. All materials are grown and gathered without the use of pesticides. This short-length t-shirt dress has a scoop',
     canonical: '/product/organic-t-shirt-dress/',
   }),
   title: { absolute: 'Organic T-Shirt Dress - New Heights Educational Group, Inc.' },

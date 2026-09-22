@@ -6,11 +6,16 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Gardner’s Multiple Intelligence Theory for Online Teaching - New Heights Educational Group, Inc.',
-    description: 'Howard Gardner defined nine intelligences possessed by humans, i.e., multiple intelligences. These are visual/spatial, verbal/linguistic, logical/mathematical, bodily/kinesthetic, musical/rhythmic, interpersonal and intrapersonal/reflective, naturalist and existential (Table 1). Although we all possess all of these intelligences, we develop and utilize them differently. The awareness of multiple intelligences is useful to an online instructor because compilation of a student',
+    title:
+      'Gardner’s Multiple Intelligence Theory for Online Teaching - New Heights Educational Group, Inc.',
+    description:
+      'Howard Gardner defined nine intelligences possessed by humans, i.e., multiple intelligences. These are visual/spatial, verbal/linguistic, logical/mathematical, bodily/kinesthetic, musical/rhythmic, interpersonal and intrapersonal/reflective, naturalist and existential (Table 1). Although we all possess all of these intelligences, we develop and utilize them differently. The awareness of multiple intelligences is useful to an online instructor because compilation of a student',
     canonical: '/educational-articles/intelligence/',
   }),
-  title: { absolute: 'Gardner’s Multiple Intelligence Theory for Online Teaching - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Gardner’s Multiple Intelligence Theory for Online Teaching - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {

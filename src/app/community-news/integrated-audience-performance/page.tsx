@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Integrated Audience Performance - New Heights Educational Group, Inc.',
-    description: 'Integrated Audience Performance Thursday, July 20th 7:30 PM Arts United Center are free for participants in both our In The Wings and Project Lights Up! programs. The content of the show is exactly what patrons will see at our public performances. Prior to the show, everything that could be considered alarming in any way will',
+    description:
+      'Integrated Audience Performance Thursday, July 20th 7:30 PM Arts United Center are free for participants in both our In The Wings and Project Lights Up! programs. The content of the show is exactly what patrons will see at our public performances. Prior to the show, everything that could be considered alarming in any way will',
     canonical: '/community-news/integrated-audience-performance/',
   }),
   title: { absolute: 'Integrated Audience Performance - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13231 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/integrated-audience-performance') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/integrated-audience-performance'),
+      }}
     />
   )
 }

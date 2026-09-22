@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2017 ServeOhio Award - New Heights Educational Group, Inc.',
-    description: 'Today is a great honor as New Heights Educational Group\'s Director, Pamela Clark has received the 2017 ServeOhio Award from the Ohio Governor John Kasich. Pamela received this wonderful award on the 14th of April. Below is the citation for the award: "On behalf of the State of Ohio, we congratulate you on being nominated for a',
+    description:
+      'Today is a great honor as New Heights Educational Group\'s Director, Pamela Clark has received the 2017 ServeOhio Award from the Ohio Governor John Kasich. Pamela received this wonderful award on the 14th of April. Below is the citation for the award: "On behalf of the State of Ohio, we congratulate you on being nominated for a',
     canonical: '/nheg-news/2017-serveohio-award/',
   }),
   title: { absolute: '2017 ServeOhio Award - New Heights Educational Group, Inc.' },

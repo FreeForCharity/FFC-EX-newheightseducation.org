@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Physical Education Resources - NHEG Online Learning Annex',
-    description: 'If you are teaching physical education or like to incorporate PE into your classes, check out these physical education resources for a healthier student. Any kind of physical activity can be counted as physical education for homeschoolers.',
+    description:
+      'If you are teaching physical education or like to incorporate PE into your classes, check out these physical education resources for a healthier student. Any kind of physical activity can be counted as physical education for homeschoolers.',
     canonical: '/school/teachers/classroom-resources/physical-education-resources/',
   }),
   title: { absolute: 'Physical Education Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-676 page-child parent-pageid-680 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/classroom-resources/physical-education-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/teachers/classroom-resources/physical-education-resources'
+        ),
+      }}
     />
   )
 }

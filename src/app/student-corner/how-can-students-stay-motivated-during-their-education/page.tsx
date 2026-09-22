@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'How can students stay motivated during their education? - New Heights Educational Group, Inc.',
-    description: 'Junior and senior years can be daunting with completing college applications in the US, personal statements in the UK, recommendation letters, etc. But it is important to survive these years smoothly and happily without burning out. In September 2020, many younger students reached out to me with the question, “How do I survive senior year?”',
+    title:
+      'How can students stay motivated during their education? - New Heights Educational Group, Inc.',
+    description:
+      'Junior and senior years can be daunting with completing college applications in the US, personal statements in the UK, recommendation letters, etc. But it is important to survive these years smoothly and happily without burning out. In September 2020, many younger students reached out to me with the question, “How do I survive senior year?”',
     canonical: '/student-corner/how-can-students-stay-motivated-during-their-education/',
   }),
-  title: { absolute: 'How can students stay motivated during their education? - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'How can students stay motivated during their education? - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9493 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/how-can-students-stay-motivated-during-their-education') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'student-corner/how-can-students-stay-motivated-during-their-education'
+        ),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG SLC Custom Pin Buttons - New Heights Educational Group, Inc.',
-    description: '1,25"Diameter, in, in1.25Thickness, in, in0.16Custom Pin Buttons: made from metal, yet lightweight and durable with a strong safety pin. Begin your journey in selling Customized Pin Buttons with Printify..: 2 sizes.: Safety pin backing.: Made in USA',
+    description:
+      '1,25"Diameter, in, in1.25Thickness, in, in0.16Custom Pin Buttons: made from metal, yet lightweight and durable with a strong safety pin. Begin your journey in selling Customized Pin Buttons with Printify..: 2 sizes.: Safety pin backing.: Made in USA',
     canonical: '/product/nheg-slc-custom-pin-buttons/',
   }),
   title: { absolute: 'NHEG SLC Custom Pin Buttons - New Heights Educational Group, Inc.' },

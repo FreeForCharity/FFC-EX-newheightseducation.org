@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Recognition Day 2021 - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) announces that its annual Recognition Day event will be held online via Zoom this year. Students, teachers/tutors, partners, affiliates, donors and volunteers from around the world are recognized and celebrated during this event. This year’s Recognition Day will be held on June 20, 2021, from 3:00 p.m. - 5:00',
+    description:
+      'The New Heights Educational Group (NHEG) announces that its annual Recognition Day event will be held online via Zoom this year. Students, teachers/tutors, partners, affiliates, donors and volunteers from around the world are recognized and celebrated during this event. This year’s Recognition Day will be held on June 20, 2021, from 3:00 p.m. - 5:00',
     canonical: '/nheg-news/nheg-recognition-day-2021/',
   }),
   title: { absolute: 'NHEG Recognition Day 2021 - New Heights Educational Group, Inc.' },

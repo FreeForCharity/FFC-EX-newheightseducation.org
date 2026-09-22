@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Holiday Giving from NHEG - New Heights Educational Group, Inc.',
-    description: 'Over fifty toys were distributed to the NW Ohio families for Christmas thanks to a collaboration between the New Heights Educational Group (NHEG) and two anonymous community sponsors. NHEG director Pamela Clark created a Facebook page seeking out families that needed food and gifts for Christmas. Pamela Clark stated, “This is the first time we',
+    description:
+      'Over fifty toys were distributed to the NW Ohio families for Christmas thanks to a collaboration between the New Heights Educational Group (NHEG) and two anonymous community sponsors. NHEG director Pamela Clark created a Facebook page seeking out families that needed food and gifts for Christmas. Pamela Clark stated, “This is the first time we',
     canonical: '/nheg-news/holiday-giving-from-nheg/',
   }),
   title: { absolute: 'Holiday Giving from NHEG - New Heights Educational Group, Inc.' },

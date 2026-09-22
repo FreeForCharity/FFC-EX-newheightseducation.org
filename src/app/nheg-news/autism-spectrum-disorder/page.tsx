@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Autism Spectrum Disorder - New Heights Educational Group, Inc.',
-    description: 'Autism Spectrum Disorder is a continuum of symptoms and behaviors related to a set of disorders with similar characteristics that vary from person to person. Some individuals have mild symptoms, while others may experience more severe symptoms. Populations more susceptible to developing the disorder include male children, children whose siblings have the syndrome, and people',
+    description:
+      'Autism Spectrum Disorder is a continuum of symptoms and behaviors related to a set of disorders with similar characteristics that vary from person to person. Some individuals have mild symptoms, while others may experience more severe symptoms. Populations more susceptible to developing the disorder include male children, children whose siblings have the syndrome, and people',
     canonical: '/nheg-news/autism-spectrum-disorder/',
   }),
   title: { absolute: 'Autism Spectrum Disorder - New Heights Educational Group, Inc.' },

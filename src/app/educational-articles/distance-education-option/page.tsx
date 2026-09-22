@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Distance Education Option - New Heights Educational Group, Inc.',
-    description: 'Technology is offering new tools for information and communication in all fields of life and education is no exception. Internet has brought about a new possibility that never existed before in the history of mankind: face-to-face learning from a distance! Distance education in the form of correspondence courses has been with us for some',
+    description:
+      'Technology is offering new tools for information and communication in all fields of life and education is no exception. Internet has brought about a new possibility that never existed before in the history of mankind: face-to-face learning from a distance! Distance education in the form of correspondence courses has been with us for some',
     canonical: '/educational-articles/distance-education-option/',
   }),
   title: { absolute: 'The Distance Education Option - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1381 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/distance-education-option') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/distance-education-option'),
+      }}
     />
   )
 }

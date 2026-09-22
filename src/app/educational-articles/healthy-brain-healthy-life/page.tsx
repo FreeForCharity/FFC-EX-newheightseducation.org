@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Healthy Brain, Healthy Life - New Heights Educational Group, Inc.',
-    description: 'Every day of our lives, we expend a large amount of energy and time in maintaining our home, automobiles, electronic gadgets such as smartphone, Xbox and smart TV, even decking out our wardrobes with gorgeous gowns and sharp suits, and the list goes on. In this hustle and bustle lifestyle, we often forget to think',
+    description:
+      'Every day of our lives, we expend a large amount of energy and time in maintaining our home, automobiles, electronic gadgets such as smartphone, Xbox and smart TV, even decking out our wardrobes with gorgeous gowns and sharp suits, and the list goes on. In this hustle and bustle lifestyle, we often forget to think',
     canonical: '/educational-articles/healthy-brain-healthy-life/',
   }),
   title: { absolute: 'Healthy Brain, Healthy Life - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7675 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/healthy-brain-healthy-life') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/healthy-brain-healthy-life'),
+      }}
     />
   )
 }

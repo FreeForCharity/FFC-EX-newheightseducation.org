@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Partnering with Tutorfly - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group announces a new partnership with Tutorfly, which provides easy access to peer tutoring via a safe and secure platform that allows students, tutors, and administrators to hold tutoring and mentoring sessions. Tutorfly currently supports nonprofit tutoring and mentoring groups that service over 100 schools in California, case study, and wants to',
+    description:
+      'New Heights Educational Group announces a new partnership with Tutorfly, which provides easy access to peer tutoring via a safe and secure platform that allows students, tutors, and administrators to hold tutoring and mentoring sessions. Tutorfly currently supports nonprofit tutoring and mentoring groups that service over 100 schools in California, case study, and wants to',
     canonical: '/nheg-news/nheg-partnering-with-tutorfly/',
   }),
   title: { absolute: 'NHEG Partnering with Tutorfly - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9561 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-partnering-with-tutorfly') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-partnering-with-tutorfly'),
+      }}
     />
   )
 }

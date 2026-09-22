@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights 10th Anniversary - New Heights Educational Group, Inc.',
-    description: 'Our 10th Anniversary was much more than a mere date on the calendar June 1st 2006. It was a joyous celebration of the incredible achievements over the years. New Heights Educational Group has been relentlessly overcoming obstacles to achieve our mission of helping students and families achieve their goals and dreams. It was also a',
+    description:
+      'Our 10th Anniversary was much more than a mere date on the calendar June 1st 2006. It was a joyous celebration of the incredible achievements over the years. New Heights Educational Group has been relentlessly overcoming obstacles to achieve our mission of helping students and families achieve their goals and dreams. It was also a',
     canonical: '/nheg-news/new-heights-10th-anniversary/',
   }),
   title: { absolute: 'New Heights 10th Anniversary - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5585 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/new-heights-10th-anniversary') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/new-heights-10th-anniversary'),
+      }}
     />
   )
 }

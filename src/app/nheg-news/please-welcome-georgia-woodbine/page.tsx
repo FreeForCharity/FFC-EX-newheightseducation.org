@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Please Welcome Georgia Woodbine - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group announces a partnership with Georgia Woodbine. Georgia Woodbine is one of the world’s leading authorities in personal and professional development and has helped to motivate and inspire an entire generation. She is widely known as a change agent, author, lifestyle transformation coach and dynamic and entertaining speaker. She has been featured',
+    description:
+      'New Heights Educational Group announces a partnership with Georgia Woodbine. Georgia Woodbine is one of the world’s leading authorities in personal and professional development and has helped to motivate and inspire an entire generation. She is widely known as a change agent, author, lifestyle transformation coach and dynamic and entertaining speaker. She has been featured',
     canonical: '/nheg-news/please-welcome-georgia-woodbine/',
   }),
   title: { absolute: 'Please Welcome Georgia Woodbine - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8156 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/please-welcome-georgia-woodbine') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/please-welcome-georgia-woodbine'),
+      }}
     />
   )
 }

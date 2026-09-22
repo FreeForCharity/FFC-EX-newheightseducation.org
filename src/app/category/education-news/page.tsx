@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education News - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Education News Home » Education News 0 By Pamela Clark In…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Education News Home » Education News 0 By Pamela Clark In…',
     canonical: '/category/education-news/',
   }),
   title: { absolute: 'Education News - New Heights Educational Group, Inc.' },

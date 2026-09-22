@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Why Charter School? - New Heights Educational Group, Inc.',
-    description: 'Why do you want to go to a charter school? My mom has been telling me that if I were still in school, she would have enrolled me in a charter school rather than a public school. Are charter schools better? What are the differences and options when enrolling? I always thought that charter schools',
+    description:
+      'Why do you want to go to a charter school? My mom has been telling me that if I were still in school, she would have enrolled me in a charter school rather than a public school. Are charter schools better? What are the differences and options when enrolling? I always thought that charter schools',
     canonical: '/educational-articles/why-charter-school/',
   }),
   title: { absolute: 'Why Charter School? - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8744 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/why-charter-school') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/why-charter-school'),
+      }}
     />
   )
 }

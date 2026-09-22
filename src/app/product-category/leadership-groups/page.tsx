@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Leadership Groups - New Heights Educational Group, Inc.',
-    description: 'Adult and Student Leadership Collections Please allow three – four weeks to receive your order.',
+    description:
+      'Adult and Student Leadership Collections Please allow three – four weeks to receive your order.',
     canonical: '/product-category/leadership-groups/',
   }),
   title: { absolute: 'NHEG Leadership Groups - New Heights Educational Group, Inc.' },

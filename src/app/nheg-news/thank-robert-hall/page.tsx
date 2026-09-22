@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Thank you Robert Hall - New Heights Educational Group, Inc.',
-    description: 'A Special Goodbye to Robert Hall, who has volunteered with NHEG for the last 5 1/2 years as a Research Coordinator. Last year he took on the job of Assistant Virtual Development Director of Research, wherein he excelled as the key person for the research department. We are very thankful to Robert for giving us',
+    description:
+      'A Special Goodbye to Robert Hall, who has volunteered with NHEG for the last 5 1/2 years as a Research Coordinator. Last year he took on the job of Assistant Virtual Development Director of Research, wherein he excelled as the key person for the research department. We are very thankful to Robert for giving us',
     canonical: '/nheg-news/thank-robert-hall/',
   }),
   title: { absolute: 'Thank you Robert Hall - New Heights Educational Group, Inc.' },

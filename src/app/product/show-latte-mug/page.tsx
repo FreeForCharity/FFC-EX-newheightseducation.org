@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Show Latte mug - New Heights Educational Group, Inc.',
-    description: '12ozHeight, in4.02Diameter , in3.71A true coffee lover knows that each variety of this aromatic drink deserves a special cup. This durable ceramic latte mug with high quality sublimation printing makes it a gift appreciated by any latte drinker..: White ceramic.: 12 oz (0.35l).: Rounded corners.: C-Handle',
+    description:
+      '12ozHeight, in4.02Diameter , in3.71A true coffee lover knows that each variety of this aromatic drink deserves a special cup. This durable ceramic latte mug with high quality sublimation printing makes it a gift appreciated by any latte drinker..: White ceramic.: 12 oz (0.35l).: Rounded corners.: C-Handle',
     canonical: '/product/show-latte-mug/',
   }),
   title: { absolute: 'Show Latte mug - New Heights Educational Group, Inc.' },

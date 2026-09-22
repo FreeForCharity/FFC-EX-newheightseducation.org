@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'What is Bullying and How to Deal With It - New Heights Educational Group, Inc.',
-    description: 'There are four different types of bullying out there - physical, verbal, covert or hidden bullying and cyber-bullying. When I was in school, I mostly received verbal bullying. My parents didn’t know about it since I mostly ignored it and I didn’t say anything back to those that were verbally bullying me. Parents should know',
+    description:
+      'There are four different types of bullying out there - physical, verbal, covert or hidden bullying and cyber-bullying. When I was in school, I mostly received verbal bullying. My parents didn’t know about it since I mostly ignored it and I didn’t say anything back to those that were verbally bullying me. Parents should know',
     canonical: '/educational-articles/what-is-bullying-and-how-to-deal-with-it/',
   }),
-  title: { absolute: 'What is Bullying and How to Deal With It - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'What is Bullying and How to Deal With It - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1495 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/what-is-bullying-and-how-to-deal-with-it') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/what-is-bullying-and-how-to-deal-with-it'),
+      }}
     />
   )
 }

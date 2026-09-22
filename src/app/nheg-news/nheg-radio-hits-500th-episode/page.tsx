@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Radio Hits 500th Episode - New Heights Educational Group, Inc.',
-    description: 'The New Heights Show on Education reached its 500th episode on March 2, 2019. The show was launched in January 19, 2013, and has reached 214,350 listeners. This show started and continues under the watchful eye of Pamela Clark, Executive Director of the New Heights Educational Group (NHEG). Volunteer hosts were brought on board to',
+    description:
+      'The New Heights Show on Education reached its 500th episode on March 2, 2019. The show was launched in January 19, 2013, and has reached 214,350 listeners. This show started and continues under the watchful eye of Pamela Clark, Executive Director of the New Heights Educational Group (NHEG). Volunteer hosts were brought on board to',
     canonical: '/nheg-news/nheg-radio-hits-500th-episode/',
   }),
   title: { absolute: 'NHEG Radio Hits 500th Episode - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8266 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-radio-hits-500th-episode') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-radio-hits-500th-episode'),
+      }}
     />
   )
 }

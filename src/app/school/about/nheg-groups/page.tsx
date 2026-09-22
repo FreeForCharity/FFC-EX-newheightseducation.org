@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Groups - NHEG Online Learning Annex',
-    description: 'NHEG Support Groups provide various support to not only our board members but to students, parents and the teachers in Ohio. Each group provides a pivotal function in our organization to strengthen our programs and services plus help support and educate children and adults, so they can build a much stronger educational background.',
+    description:
+      'NHEG Support Groups provide various support to not only our board members but to students, parents and the teachers in Ohio. Each group provides a pivotal function in our organization to strengthen our programs and services plus help support and educate children and adults, so they can build a much stronger educational background.',
     canonical: '/school/about/nheg-groups/',
   }),
   title: { absolute: 'NHEG Groups - NHEG Online Learning Annex' },

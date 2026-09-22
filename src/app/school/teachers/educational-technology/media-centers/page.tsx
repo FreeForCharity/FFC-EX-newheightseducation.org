@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Media Centers - NHEG Online Learning Annex',
-    description: 'This is a list of schools and school districts who have media centers with books and computers that teachers can use for teaching and class projects.',
+    description:
+      'This is a list of schools and school districts who have media centers with books and computers that teachers can use for teaching and class projects.',
     canonical: '/school/teachers/educational-technology/media-centers/',
   }),
   title: { absolute: 'Media Centers - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6465 page-child parent-pageid-293 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/educational-technology/media-centers') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/educational-technology/media-centers'),
+      }}
     />
   )
 }

@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Acquisition Internationals 2021 Award Winner - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group, (NHEG) was named Best Literacy Promotion & Support NPO - Midwest USA by Acquisition Internationals 2021 Non-Profit Organization Awards. Pamela Clark, Executive Director of NHEG, stated, “We are thankful for this honor and want to thank the organization and judges of Acquisition International for this honor.” Acquisition International (AI) is honored',
+    description:
+      'New Heights Educational Group, (NHEG) was named Best Literacy Promotion & Support NPO - Midwest USA by Acquisition Internationals 2021 Non-Profit Organization Awards. Pamela Clark, Executive Director of NHEG, stated, “We are thankful for this honor and want to thank the organization and judges of Acquisition International for this honor.” Acquisition International (AI) is honored',
     canonical: '/nheg-news/acquisition-internationals-2021-award-winner/',
   }),
-  title: { absolute: 'Acquisition Internationals 2021 Award Winner - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Acquisition Internationals 2021 Award Winner - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9973 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/acquisition-internationals-2021-award-winner') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/acquisition-internationals-2021-award-winner'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Backpack (Made in USA) - New Heights Educational Group, Inc.',
-    description: 'One SizeLength, in11.82Width, in5.12Height , in18.12Have you got room for all that? With our roomy and durable backpack, you will! This bag is made from spun polyester and weights 1.3 lbs, just enough to be light, strong and long lasting. Grab it, stow it, throw it onto the seat next to you, this backpack can',
+    description:
+      'One SizeLength, in11.82Width, in5.12Height , in18.12Have you got room for all that? With our roomy and durable backpack, you will! This bag is made from spun polyester and weights 1.3 lbs, just enough to be light, strong and long lasting. Grab it, stow it, throw it onto the seat next to you, this backpack can',
     canonical: '/product/nheg-backpack-made-in-usa/',
   }),
   title: { absolute: 'NHEG Backpack (Made in USA) - New Heights Educational Group, Inc.' },

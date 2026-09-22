@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'THE YELLOW GLASSESS PROJECT - New Heights Educational Group, Inc.',
-    description: 'The Yellow Glasses Project is a program designed to help shine a light on literacy. When you buy, wear and share your yellow sunglasses from participating Dollar General stores, you will be helping the Dollar General Literacy Foundation build awareness and empower others through literacy and basic education. https://www.dgliteracy.org/yellowglasses/',
+    description:
+      'The Yellow Glasses Project is a program designed to help shine a light on literacy. When you buy, wear and share your yellow sunglasses from participating Dollar General stores, you will be helping the Dollar General Literacy Foundation build awareness and empower others through literacy and basic education. https://www.dgliteracy.org/yellowglasses/',
     canonical: '/community-news/the-yellow-glassess-project/',
   }),
   title: { absolute: 'THE YELLOW GLASSESS PROJECT - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13225 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/the-yellow-glassess-project') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/the-yellow-glassess-project'),
+      }}
     />
   )
 }

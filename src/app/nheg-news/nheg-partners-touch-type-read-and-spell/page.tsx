@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Partners with Touch Type Read and Spell - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) is proud to announce our new partnership with Touch Type Read and Spell. An award-winning, multi-sensory course. This revolutionary product helps students of all ages that need help learning to read and spell. The product also helps students who have dyslexia learn from the comfort of their own home.',
+    description:
+      'The New Heights Educational Group (NHEG) is proud to announce our new partnership with Touch Type Read and Spell. An award-winning, multi-sensory course. This revolutionary product helps students of all ages that need help learning to read and spell. The product also helps students who have dyslexia learn from the comfort of their own home.',
     canonical: '/nheg-news/nheg-partners-touch-type-read-and-spell/',
   }),
-  title: { absolute: 'NHEG Partners with Touch Type Read and Spell - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'NHEG Partners with Touch Type Read and Spell - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5888 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-partners-touch-type-read-and-spell') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-partners-touch-type-read-and-spell'),
+      }}
     />
   )
 }

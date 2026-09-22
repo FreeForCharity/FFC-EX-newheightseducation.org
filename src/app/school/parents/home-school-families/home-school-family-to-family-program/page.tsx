@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home School Family to Family Program - NHEG Online Learning Annex',
-    description: 'The Home School Family to Family Meetup allows budget-conscious home school families the opportunity to travel across the country for hands-on learning.',
+    description:
+      'The Home School Family to Family Meetup allows budget-conscious home school families the opportunity to travel across the country for hands-on learning.',
     canonical: '/school/parents/home-school-families/home-school-family-to-family-program/',
   }),
   title: { absolute: 'Home School Family to Family Program - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-457 page-child parent-pageid-448 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/parents/home-school-families/home-school-family-to-family-program') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/parents/home-school-families/home-school-family-to-family-program'
+        ),
+      }}
     />
   )
 }

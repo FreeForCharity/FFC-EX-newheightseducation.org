@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Please Welcome Freddie Bandola Jr to NHEG Radio - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) welcomes Freddie Bandola Jr., who will host his first internet radio show on December 5, 2018. On his show, Mr. Bandola will discuss topics pertaining to technology and cyber awareness. Mr Bandola\'s show will air weekly starting December 5, 2018 at 2:00 p.m. PST / 5:00 p.m. EST, joining',
+    description:
+      "The New Heights Educational Group (NHEG) welcomes Freddie Bandola Jr., who will host his first internet radio show on December 5, 2018. On his show, Mr. Bandola will discuss topics pertaining to technology and cyber awareness. Mr Bandola's show will air weekly starting December 5, 2018 at 2:00 p.m. PST / 5:00 p.m. EST, joining",
     canonical: '/nheg-news/please-welcome-freddie-bandola-jr-to-nheg-radio/',
   }),
-  title: { absolute: 'Please Welcome Freddie Bandola Jr to NHEG Radio - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Please Welcome Freddie Bandola Jr to NHEG Radio - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7833 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/please-welcome-freddie-bandola-jr-to-nheg-radio') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/please-welcome-freddie-bandola-jr-to-nheg-radio'),
+      }}
     />
   )
 }

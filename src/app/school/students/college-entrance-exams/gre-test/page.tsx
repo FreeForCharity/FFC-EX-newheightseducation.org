@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'GRE Exam - NHEG Online Learning Annex',
-    description: 'If you\'re planning on going to graduate school, you\'ll maybe required to take the Graduate Record Exam (GRE) in order to attend a specific graduate school. Much like the SAT and ACT, the GRE exam is a broad assessment of your critical thinking, analytical writing, verbal reasoning and quantitative reasoning skills.',
+    description:
+      "If you're planning on going to graduate school, you'll maybe required to take the Graduate Record Exam (GRE) in order to attend a specific graduate school. Much like the SAT and ACT, the GRE exam is a broad assessment of your critical thinking, analytical writing, verbal reasoning and quantitative reasoning skills.",
     canonical: '/school/students/college-entrance-exams/gre-test/',
   }),
   title: { absolute: 'GRE Exam - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-812 page-child parent-pageid-379 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/college-entrance-exams/gre-test') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/college-entrance-exams/gre-test'),
+      }}
     />
   )
 }

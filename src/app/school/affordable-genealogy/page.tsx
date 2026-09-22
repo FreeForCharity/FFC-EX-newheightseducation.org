@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Affordable Genealogy - NHEG Online Learning Annex',
-    description: 'Expert and Professional Genealogy Building inspiration and pride in heritage for students and families. Tying the past to the present and service to the communities in which we live. Also offering Pre-recorded Genealogy and DNA Courses Who and where do you come from?',
+    description:
+      'Expert and Professional Genealogy Building inspiration and pride in heritage for students and families. Tying the past to the present and service to the communities in which we live. Also offering Pre-recorded Genealogy and DNA Courses Who and where do you come from?',
     canonical: '/school/affordable-genealogy/',
   }),
   title: { absolute: 'Affordable Genealogy - NHEG Online Learning Annex' },

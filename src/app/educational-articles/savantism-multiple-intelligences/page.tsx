@@ -6,18 +6,25 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Savantism and Multiple Intelligences: The Extraordinary Brain Syndrome - New Heights Educational Group, Inc.',
-    description: 'A person with Savant syndrome is characterized as having a set of high-performance skills involving some cognitive areas related to logical reasoning, memory processing or creativity capacity. These skills can involve the ability to quickly solve numerical calculations, the ability of memorizing entire contents of books with ease (reading a great number of works of',
+    title:
+      'Savantism and Multiple Intelligences: The Extraordinary Brain Syndrome - New Heights Educational Group, Inc.',
+    description:
+      'A person with Savant syndrome is characterized as having a set of high-performance skills involving some cognitive areas related to logical reasoning, memory processing or creativity capacity. These skills can involve the ability to quickly solve numerical calculations, the ability of memorizing entire contents of books with ease (reading a great number of works of',
     canonical: '/educational-articles/savantism-multiple-intelligences/',
   }),
-  title: { absolute: 'Savantism and Multiple Intelligences: The Extraordinary Brain Syndrome - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Savantism and Multiple Intelligences: The Extraordinary Brain Syndrome - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5766 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/savantism-multiple-intelligences') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/savantism-multiple-intelligences'),
+      }}
     />
   )
 }

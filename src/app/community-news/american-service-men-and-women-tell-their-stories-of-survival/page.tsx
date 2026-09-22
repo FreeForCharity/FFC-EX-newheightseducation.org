@@ -6,18 +6,27 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'American Service Men and Women Tell Their Stories of Survival - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group Launches Podcast The New Heights Educational Group is excited to announce the launch of a new podcast titled “American Service Men and Women Tell Their Stories of Survival.” Hosted by Pamela Clark, this podcast will feature firsthand accounts from sailors who served aboard the USS Drexler, with plans to explore additional',
+    title:
+      'American Service Men and Women Tell Their Stories of Survival - New Heights Educational Group, Inc.',
+    description:
+      'New Heights Educational Group Launches Podcast The New Heights Educational Group is excited to announce the launch of a new podcast titled “American Service Men and Women Tell Their Stories of Survival.” Hosted by Pamela Clark, this podcast will feature firsthand accounts from sailors who served aboard the USS Drexler, with plans to explore additional',
     canonical: '/community-news/american-service-men-and-women-tell-their-stories-of-survival/',
   }),
-  title: { absolute: 'American Service Men and Women Tell Their Stories of Survival - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'American Service Men and Women Tell Their Stories of Survival - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13560 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/american-service-men-and-women-tell-their-stories-of-survival') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'community-news/american-service-men-and-women-tell-their-stories-of-survival'
+        ),
+      }}
     />
   )
 }

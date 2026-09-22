@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Take Power Over Your Habits: How to Change Your Life by Changing Your Routine - New Heights Educational Group, Inc.',
-    description: 'Habits, whether they are good or bad, consume our everyday lives. Whether it’s the cup of coffee you have every morning or the path you take to work, a majority of our actions come from the routines we like to stick to. In that sense, we can actually use these habits to change',
-    canonical: '/student-corner/take-power-over-your-habits-how-to-change-your-life-by-changing-your-routine/',
+    title:
+      'Take Power Over Your Habits: How to Change Your Life by Changing Your Routine - New Heights Educational Group, Inc.',
+    description:
+      'Habits, whether they are good or bad, consume our everyday lives. Whether it’s the cup of coffee you have every morning or the path you take to work, a majority of our actions come from the routines we like to stick to. In that sense, we can actually use these habits to change',
+    canonical:
+      '/student-corner/take-power-over-your-habits-how-to-change-your-life-by-changing-your-routine/',
   }),
-  title: { absolute: 'Take Power Over Your Habits: How to Change Your Life by Changing Your Routine - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Take Power Over Your Habits: How to Change Your Life by Changing Your Routine - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9211 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/take-power-over-your-habits-how-to-change-your-life-by-changing-your-routine') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'student-corner/take-power-over-your-habits-how-to-change-your-life-by-changing-your-routine'
+        ),
+      }}
     />
   )
 }

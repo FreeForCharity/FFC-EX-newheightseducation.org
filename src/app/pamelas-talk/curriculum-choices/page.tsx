@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk: Curriculum Choices - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/NE8AFx72kaM Today\'s episode titled Pamela\'s Talk - Curriculum Choices, Pamela Clark discusses her thoughts about the curriculum choices for students.',
+    description:
+      "https://youtu.be/NE8AFx72kaM Today's episode titled Pamela's Talk - Curriculum Choices, Pamela Clark discusses her thoughts about the curriculum choices for students.",
     canonical: '/pamelas-talk/curriculum-choices/',
   }),
   title: { absolute: 'Pamela’s Talk: Curriculum Choices - New Heights Educational Group, Inc.' },

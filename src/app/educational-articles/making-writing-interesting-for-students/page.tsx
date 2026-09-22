@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Making Writing Interesting For Students - New Heights Educational Group, Inc.',
-    description: 'Writing courses can become boring for students who are taking the class, especially for those who aren’t interested in writing. What should teachers do then to help their students? Writing isn’t for everyone. Teachers must remember that not every student enjoys writing, and some of them don\'t know how to express themselves with the written',
+    description:
+      "Writing courses can become boring for students who are taking the class, especially for those who aren’t interested in writing. What should teachers do then to help their students? Writing isn’t for everyone. Teachers must remember that not every student enjoys writing, and some of them don't know how to express themselves with the written",
     canonical: '/educational-articles/making-writing-interesting-for-students/',
   }),
-  title: { absolute: 'Making Writing Interesting For Students - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Making Writing Interesting For Students - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7715 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/making-writing-interesting-for-students') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/making-writing-interesting-for-students'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Brochure - New Heights Educational Group, Inc.',
-    description: 'We are happy to announce that New Heights Educational Group has released a new brochure so be on the look out for our brochure in the Defiance community. Of course, you can easily download and share our brochure with the following images. We like to thank our Graphics team, especially Kevin Adusei and Jeff Ermoian for',
+    description:
+      'We are happy to announce that New Heights Educational Group has released a new brochure so be on the look out for our brochure in the Defiance community. Of course, you can easily download and share our brochure with the following images. We like to thank our Graphics team, especially Kevin Adusei and Jeff Ermoian for',
     canonical: '/nheg-news/nheg-brochure/',
   }),
   title: { absolute: 'NHEG Brochure - New Heights Educational Group, Inc.' },

@@ -6,18 +6,28 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Most Outstanding Literacy Promotion & Support NPO – Midwest by Global Business Insights Awards - New Heights Educational Group, Inc.',
-    description: '9/17/24 2024 New Heights Educational Group Global Business Insights Award Press Release Contact: Pamela Clark, 419-786-0247 New Heights Educational Group Selected as Most Outstanding Literacy Promotion & Support NPO – Midwest by Global Business Insights Awards Sherwood, Ohio, September 17, 2024: New Heights Educational Group has been selected as Most Outstanding Literacy Promotion & Support',
-    canonical: '/nheg-news/most-outstanding-literacy-promotion-support-npo-midwest-by-global-business-insights-awards/',
+    title:
+      'Most Outstanding Literacy Promotion & Support NPO – Midwest by Global Business Insights Awards - New Heights Educational Group, Inc.',
+    description:
+      '9/17/24 2024 New Heights Educational Group Global Business Insights Award Press Release Contact: Pamela Clark, 419-786-0247 New Heights Educational Group Selected as Most Outstanding Literacy Promotion & Support NPO – Midwest by Global Business Insights Awards Sherwood, Ohio, September 17, 2024: New Heights Educational Group has been selected as Most Outstanding Literacy Promotion & Support',
+    canonical:
+      '/nheg-news/most-outstanding-literacy-promotion-support-npo-midwest-by-global-business-insights-awards/',
   }),
-  title: { absolute: 'Most Outstanding Literacy Promotion & Support NPO – Midwest by Global Business Insights Awards - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Most Outstanding Literacy Promotion & Support NPO – Midwest by Global Business Insights Awards - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13388 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/most-outstanding-literacy-promotion-support-npo-midwest-by-global-business-insights-awards') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'nheg-news/most-outstanding-literacy-promotion-support-npo-midwest-by-global-business-insights-awards'
+        ),
+      }}
     />
   )
 }

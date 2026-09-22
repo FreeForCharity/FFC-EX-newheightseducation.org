@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG SLC Backpack (Made in USA) - New Heights Educational Group, Inc.',
-    description: 'One SizeLength, in11.82Width, in5.12Height , in18.12Have you got room for all that? With our roomy and durable backpack, you will! This bag is made from spun polyester and weights 1.3 lbs, just enough to be light, strong and long lasting. Grab it, stow it, throw it onto the seat next to you, this backpack can',
+    description:
+      'One SizeLength, in11.82Width, in5.12Height , in18.12Have you got room for all that? With our roomy and durable backpack, you will! This bag is made from spun polyester and weights 1.3 lbs, just enough to be light, strong and long lasting. Grab it, stow it, throw it onto the seat next to you, this backpack can',
     canonical: '/product/nheg-slc-backpack-made-in-usa/',
   }),
   title: { absolute: 'NHEG SLC Backpack (Made in USA) - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11641 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/nheg-slc-backpack-made-in-usa') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/nheg-slc-backpack-made-in-usa'),
+      }}
     />
   )
 }

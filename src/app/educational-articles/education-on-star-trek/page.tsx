@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education on Star Trek - New Heights Educational Group, Inc.',
-    description: 'Have you ever wondered if watching Star Trek is good for kids? I started watching Star Trek back in the middle of the ’90s as a kid, and as of right now. I am still hooked on the fandom. Besides the awesome characters, episodes and music, did you know that there’s also an educational element',
+    description:
+      'Have you ever wondered if watching Star Trek is good for kids? I started watching Star Trek back in the middle of the ’90s as a kid, and as of right now. I am still hooked on the fandom. Besides the awesome characters, episodes and music, did you know that there’s also an educational element',
     canonical: '/educational-articles/education-on-star-trek/',
   }),
   title: { absolute: 'Education on Star Trek - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9117 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/education-on-star-trek') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/education-on-star-trek'),
+      }}
     />
   )
 }

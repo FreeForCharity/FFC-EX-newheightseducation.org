@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Men’s Ultra Cotton Tank Top - New Heights Educational Group, Inc.',
-    description: 'S M L XL 2XL 3XL Width, in 17.99 20.00 22.01 24.02 25.98 27.99 Length, in 28.03 29.02 30.04 31.02 32.05 32.99 The men\'s ultra cotton tank top is just that - ultra. The fabric is 100% cotton for solids, while heather varieties include polyester. These fabrics all serve as excellent base laters for',
+    description:
+      "S M L XL 2XL 3XL Width, in 17.99 20.00 22.01 24.02 25.98 27.99 Length, in 28.03 29.02 30.04 31.02 32.05 32.99 The men's ultra cotton tank top is just that - ultra. The fabric is 100% cotton for solids, while heather varieties include polyester. These fabrics all serve as excellent base laters for",
     canonical: '/product/mens-ultra-cotton-tank-top/',
   }),
   title: { absolute: 'Men’s Ultra Cotton Tank Top - New Heights Educational Group, Inc.' },

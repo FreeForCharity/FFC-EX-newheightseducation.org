@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'High Waisted Yoga Leggings - New Heights Educational Group, Inc.',
-    description: 'XS S M L XL 2XL Waist width, in 13.39 13.58 13.78 13.98 14.17 14.37 Hip width, in 16.14 16.54 17.40 18.31 19.21 20.08 Outseam length, in 36.81 37.40 37.99 38.58 39.17 39.76 Inseam length, in 26.97 27.56 28.15 28.74 29.33 29.92 These skinny fitting high-waisted yoga leggings will take you from workout to',
+    description:
+      'XS S M L XL 2XL Waist width, in 13.39 13.58 13.78 13.98 14.17 14.37 Hip width, in 16.14 16.54 17.40 18.31 19.21 20.08 Outseam length, in 36.81 37.40 37.99 38.58 39.17 39.76 Inseam length, in 26.97 27.56 28.15 28.74 29.33 29.92 These skinny fitting high-waisted yoga leggings will take you from workout to',
     canonical: '/product/high-waisted-yoga-leggings/',
   }),
   title: { absolute: 'High Waisted Yoga Leggings - New Heights Educational Group, Inc.' },

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'How to Remember Everything You Read - New Heights Educational Group, Inc.',
-    description: 'Though reading non-fiction may not be the most interesting pastime in the world, the genre can help you discover and learn more about the world around you. However it is often very difficult to actually retain information when you read these books, which defeats the whole purpose of sitting down to actually read them. Whether',
+    description:
+      'Though reading non-fiction may not be the most interesting pastime in the world, the genre can help you discover and learn more about the world around you. However it is often very difficult to actually retain information when you read these books, which defeats the whole purpose of sitting down to actually read them. Whether',
     canonical: '/student-corner/how-to-remember-everything-you-read/',
   }),
   title: { absolute: 'How to Remember Everything You Read - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9329 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/how-to-remember-everything-you-read') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('student-corner/how-to-remember-everything-you-read'),
+      }}
     />
   )
 }

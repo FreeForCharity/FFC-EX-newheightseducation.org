@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'In The wings Performance - New Heights Educational Group, Inc.',
-    description: 'In The wings Performance Thursday, Feb. 8th 7:30 PM Arts United Center Please call the Box Office at (260) 424-5220 with your coupon code to reserve your free tickets to this event! This production is rated PG-13. Contact Danielle Andersen at dandersen@fwcivic.org with any questions.',
+    description:
+      'In The wings Performance Thursday, Feb. 8th 7:30 PM Arts United Center Please call the Box Office at (260) 424-5220 with your coupon code to reserve your free tickets to this event! This production is rated PG-13. Contact Danielle Andersen at dandersen@fwcivic.org with any questions.',
     canonical: '/nheg-news/in-the-wings-performance/',
   }),
   title: { absolute: 'In The wings Performance - New Heights Educational Group, Inc.' },

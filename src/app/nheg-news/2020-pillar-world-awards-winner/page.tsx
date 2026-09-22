@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2020 Pillar World Awards Winner - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group, its Executive Director, Pamela Clark, and its Volunteers garner 6 Gold and Silver Awards in the 5th Annual 2020 Pillar World Awards. The Pillar World Awards Winners to be Celebrated in Virtual Ceremony in December The coveted annual Pillar® World Awards is the world\'s premier awards program honoring best employers, employees,',
+    description:
+      "New Heights Educational Group, its Executive Director, Pamela Clark, and its Volunteers garner 6 Gold and Silver Awards in the 5th Annual 2020 Pillar World Awards. The Pillar World Awards Winners to be Celebrated in Virtual Ceremony in December The coveted annual Pillar® World Awards is the world's premier awards program honoring best employers, employees,",
     canonical: '/nheg-news/2020-pillar-world-awards-winner/',
   }),
   title: { absolute: '2020 Pillar World Awards Winner - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9271 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/2020-pillar-world-awards-winner') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/2020-pillar-world-awards-winner'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Globee Award Winner - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group announced today that The Globee® Awards, organizers of world’s premier business awards programs and business ranking lists, has named NHEG Business Development Outstanding Performance of the Year. GOLD GLOBEE® WINNER New Heights Educational Group | Defiance, OH USA Customer Service & Support Team of the Year | During COVID-19 BRONZE',
+    description:
+      'The New Heights Educational Group announced today that The Globee® Awards, organizers of world’s premier business awards programs and business ranking lists, has named NHEG Business Development Outstanding Performance of the Year. GOLD GLOBEE® WINNER New Heights Educational Group | Defiance, OH USA Customer Service & Support Team of the Year | During COVID-19 BRONZE',
     canonical: '/nheg-news/the-globee-award-winner/',
   }),
   title: { absolute: 'The Globee Award Winner - New Heights Educational Group, Inc.' },

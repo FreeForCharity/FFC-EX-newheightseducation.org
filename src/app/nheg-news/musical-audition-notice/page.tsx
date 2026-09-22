@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'MUSICAL AUDITION NOTICE - New Heights Educational Group, Inc.',
-    description: 'Sunday, March 5 - Arts United Center starting at 6:00 PM Stephen Sondheim and James Lapine take everyone\'s favorite storybook characters and bring them together in a timeless, yet uniquely relevant piece of musical theatre. When a Baker and his Wife learn they\'ve been cursed with childlessness by the Witch next door, they embark on a',
+    description:
+      "Sunday, March 5 - Arts United Center starting at 6:00 PM Stephen Sondheim and James Lapine take everyone's favorite storybook characters and bring them together in a timeless, yet uniquely relevant piece of musical theatre. When a Baker and his Wife learn they've been cursed with childlessness by the Witch next door, they embark on a",
     canonical: '/nheg-news/musical-audition-notice/',
   }),
   title: { absolute: 'MUSICAL AUDITION NOTICE - New Heights Educational Group, Inc.' },

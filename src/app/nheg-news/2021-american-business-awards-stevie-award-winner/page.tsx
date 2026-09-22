@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2021 American Business Awards Winner - New Heights Educational Group, Inc.',
-    description: '\'New Heights Educational Group Honored as 2021 American Business Awards Stevie winners which will be celebrated on June 30th. Pamela Clark, Executive Director of New Heights Educational Group, was named the winner of a Gold Stevie® Award in the Education Hero of the Year category in the 19th Annual American Business Awards® today. Julia Landy',
+    description:
+      "'New Heights Educational Group Honored as 2021 American Business Awards Stevie winners which will be celebrated on June 30th. Pamela Clark, Executive Director of New Heights Educational Group, was named the winner of a Gold Stevie® Award in the Education Hero of the Year category in the 19th Annual American Business Awards® today. Julia Landy",
     canonical: '/nheg-news/2021-american-business-awards-stevie-award-winner/',
   }),
   title: { absolute: '2021 American Business Awards Winner - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9751 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/2021-american-business-awards-stevie-award-winner') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/2021-american-business-awards-stevie-award-winner'),
+      }}
     />
   )
 }

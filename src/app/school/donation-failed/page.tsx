@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Donation Failed - NHEG Online Learning Annex',
-    description: 'We\'re sorry, your donation failed to process. Please try again or contact site support.',
+    description:
+      "We're sorry, your donation failed to process. Please try again or contact site support.",
     canonical: '/school/donation-failed/',
   }),
   title: { absolute: 'Donation Failed - NHEG Online Learning Annex' },

@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG announces partnership with Vedder Therapy - New Heights Educational Group, Inc.',
-    description: 'Introducing Vedder Therapy! We are an in-home pediatric speech language therapy private practice. We are based in Wood County, Ohio but provide services to surrounding counties as well. We come to you! We provide services from birth to 17 years of age. We are currently private pay. Families can use FSA/HSA accounts and a superbill',
+    description:
+      'Introducing Vedder Therapy! We are an in-home pediatric speech language therapy private practice. We are based in Wood County, Ohio but provide services to surrounding counties as well. We come to you! We provide services from birth to 17 years of age. We are currently private pay. Families can use FSA/HSA accounts and a superbill',
     canonical: '/nheg-news/nheg-announces-partnership-with-vedder-therapy/',
   }),
-  title: { absolute: 'NHEG announces partnership with Vedder Therapy - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'NHEG announces partnership with Vedder Therapy - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13177 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-announces-partnership-with-vedder-therapy') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-announces-partnership-with-vedder-therapy'),
+      }}
     />
   )
 }

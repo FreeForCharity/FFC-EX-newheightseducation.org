@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Sponsor A Student - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group\'s Sponsor A Student program gives the community a chance to help a student pay for the costs of a solid education.',
+    description:
+      "New Heights Educational Group's Sponsor A Student program gives the community a chance to help a student pay for the costs of a solid education.",
     canonical: '/nheg-educational-programs/sponsor-a-student/',
   }),
   title: { absolute: 'Sponsor A Student - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6065 page-child parent-pageid-519 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-educational-programs/sponsor-a-student') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-educational-programs/sponsor-a-student'),
+      }}
     />
   )
 }

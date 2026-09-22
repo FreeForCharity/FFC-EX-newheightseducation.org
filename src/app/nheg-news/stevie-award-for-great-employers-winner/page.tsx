@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Stevie Award for Great Employers Winner - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group has been named the winner has been awarded three Stevie Awards in the fifth annual Stevie Awards for Great Employers. Anusha Nemali was awarded the Bronze 2020 Stevie Award for Human Resources Executive of the Year, while New Heights was award a Gold 2020 Stevie Award for Learning Expertise at its',
+    description:
+      'New Heights Educational Group has been named the winner has been awarded three Stevie Awards in the fifth annual Stevie Awards for Great Employers. Anusha Nemali was awarded the Bronze 2020 Stevie Award for Human Resources Executive of the Year, while New Heights was award a Gold 2020 Stevie Award for Learning Expertise at its',
     canonical: '/nheg-news/stevie-award-for-great-employers-winner/',
   }),
-  title: { absolute: 'Stevie Award for Great Employers Winner - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Stevie Award for Great Employers Winner - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9146 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/stevie-award-for-great-employers-winner') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/stevie-award-for-great-employers-winner'),
+      }}
     />
   )
 }

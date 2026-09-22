@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Neuroscience and Brain Child Development - New Heights Educational Group, Inc.',
-    description: 'The technological advances in neuroscience allowed scientists to research and develop studies about the human brain, especially in the first six years of a child’s development. This period is a phase of greater plasticity, which is the ability that the brain has to change through the numerous connections made between the neurons for each new experience and learning. It is',
+    description:
+      'The technological advances in neuroscience allowed scientists to research and develop studies about the human brain, especially in the first six years of a child’s development. This period is a phase of greater plasticity, which is the ability that the brain has to change through the numerous connections made between the neurons for each new experience and learning. It is',
     canonical: '/educational-articles/neuroscience-and-brain-child-development/',
   }),
-  title: { absolute: 'Neuroscience and Brain Child Development - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Neuroscience and Brain Child Development - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7570 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/neuroscience-and-brain-child-development') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/neuroscience-and-brain-child-development'),
+      }}
     />
   )
 }

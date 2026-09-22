@@ -6,18 +6,24 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Discover your origins and connect with DNA relatives - New Heights Educational Group, Inc.',
+    title:
+      'Discover your origins and connect with DNA relatives - New Heights Educational Group, Inc.',
     description: 'Click the link to discover your origins and connect with DNA relatives',
     canonical: '/nheg-news/discover-your-origins-and-connect-with-dna-relatives/',
   }),
-  title: { absolute: 'Discover your origins and connect with DNA relatives - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Discover your origins and connect with DNA relatives - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13207 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/discover-your-origins-and-connect-with-dna-relatives') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/discover-your-origins-and-connect-with-dna-relatives'),
+      }}
     />
   )
 }

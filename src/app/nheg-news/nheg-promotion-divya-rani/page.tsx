@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Promotion - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group would like to congratulate one of our volunteers with a promotion within our organization, Divya Rani. Divya has been with New Heights since December of last year as an HR Coordinator for our organization. So it is with grant honor that Pamela Clark has promoted Divya Rani to HR Resources Team Leader.',
+    description:
+      'New Heights Educational Group would like to congratulate one of our volunteers with a promotion within our organization, Divya Rani. Divya has been with New Heights since December of last year as an HR Coordinator for our organization. So it is with grant honor that Pamela Clark has promoted Divya Rani to HR Resources Team Leader.',
     canonical: '/nheg-news/nheg-promotion-divya-rani/',
   }),
   title: { absolute: 'NHEG Promotion - New Heights Educational Group, Inc.' },

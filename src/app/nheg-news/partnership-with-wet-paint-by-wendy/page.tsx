@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with Wet Paint by Wendy - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group (NHEG) announces a new partnership with Wet Paint by Wendy. Wet Paint by Wendy is about functional art with a little abstract twist. Her slogan is ‘abstract art that anyone can enjoy’!! Wendy paints in both acrylics and resin. Her creations use structured techniques with unexpected, unique and wonderful results. She',
+    description:
+      'New Heights Educational Group (NHEG) announces a new partnership with Wet Paint by Wendy. Wet Paint by Wendy is about functional art with a little abstract twist. Her slogan is ‘abstract art that anyone can enjoy’!! Wendy paints in both acrylics and resin. Her creations use structured techniques with unexpected, unique and wonderful results. She',
     canonical: '/nheg-news/partnership-with-wet-paint-by-wendy/',
   }),
   title: { absolute: 'Partnership with Wet Paint by Wendy - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8979 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/partnership-with-wet-paint-by-wendy') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/partnership-with-wet-paint-by-wendy'),
+      }}
     />
   )
 }

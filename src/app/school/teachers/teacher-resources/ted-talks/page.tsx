@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'TED Talks - NHEG Online Learning Annex',
-    description: 'These are TED Talks presentations given by teachers who discuss teaching experiences and how to become a more effective teacher.',
+    description:
+      'These are TED Talks presentations given by teachers who discuss teaching experiences and how to become a more effective teacher.',
     canonical: '/school/teachers/teacher-resources/ted-talks/',
   }),
   title: { absolute: 'TED Talks - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-645 page-child parent-pageid-6463 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/teacher-resources/ted-talks') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/teacher-resources/ted-talks'),
+      }}
     />
   )
 }

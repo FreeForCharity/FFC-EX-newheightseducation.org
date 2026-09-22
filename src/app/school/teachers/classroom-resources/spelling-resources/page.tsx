@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Spelling Resources - NHEG Online Learning Annex',
-    description: 'This is a list of spelling resources to help you teach your students to become more effective spellers and prepare them for the next spelling bee.',
+    description:
+      'This is a list of spelling resources to help you teach your students to become more effective spellers and prepare them for the next spelling bee.',
     canonical: '/school/teachers/classroom-resources/spelling-resources/',
   }),
   title: { absolute: 'Spelling Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-674 page-child parent-pageid-680 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/teachers/classroom-resources/spelling-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/teachers/classroom-resources/spelling-resources'),
+      }}
     />
   )
 }

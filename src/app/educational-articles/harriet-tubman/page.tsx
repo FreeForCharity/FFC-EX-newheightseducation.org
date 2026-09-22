@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Harriet Tubman - New Heights Educational Group, Inc.',
-    description: 'Written By Barbara Bullen Harriet Tubman an abolitionist renown. We thank God for her spirit, her strength and her love for her fellow men. We’ll remember her birthday this March to tell her story of the love for mankind, despite the cruelty that she, the slaves and the fugitives received by the merciless slave masters',
+    description:
+      'Written By Barbara Bullen Harriet Tubman an abolitionist renown. We thank God for her spirit, her strength and her love for her fellow men. We’ll remember her birthday this March to tell her story of the love for mankind, despite the cruelty that she, the slaves and the fugitives received by the merciless slave masters',
     canonical: '/educational-articles/harriet-tubman/',
   }),
   title: { absolute: 'Harriet Tubman - New Heights Educational Group, Inc.' },

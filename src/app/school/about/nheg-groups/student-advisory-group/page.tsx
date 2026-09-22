@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Student Advisory Group - NHEG Online Learning Annex',
-    description: 'New Heights helps students plan and save for their future by writing grants on their behalf. In return, students participate in advisory group meetings and raise funds for themselves/New Heights. SAG students are a minimum age of 7 and/or have GPAs under 3.0.',
+    description:
+      'New Heights helps students plan and save for their future by writing grants on their behalf. In return, students participate in advisory group meetings and raise funds for themselves/New Heights. SAG students are a minimum age of 7 and/or have GPAs under 3.0.',
     canonical: '/school/about/nheg-groups/student-advisory-group/',
   }),
   title: { absolute: 'Student Advisory Group - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-6460 page-child parent-pageid-6458 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/about/nheg-groups/student-advisory-group') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/about/nheg-groups/student-advisory-group'),
+      }}
     />
   )
 }

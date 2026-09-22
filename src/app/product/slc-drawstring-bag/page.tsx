@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'SLC Drawstring Bag - New Heights Educational Group, Inc.',
-    description: 'One SizeLength, in18.9Width, in14.57Drawcord length , in23.63 - 25.6Lightweight, durable and looking amazing - all the best qualities in one package! Thinking of a quick trip to the gym, store or beach? Take this drawstring gym bag with you, it’s the perfect storage system for those quick hops and light travels when you don’t feel',
+    description:
+      'One SizeLength, in18.9Width, in14.57Drawcord length , in23.63 - 25.6Lightweight, durable and looking amazing - all the best qualities in one package! Thinking of a quick trip to the gym, store or beach? Take this drawstring gym bag with you, it’s the perfect storage system for those quick hops and light travels when you don’t feel',
     canonical: '/product/slc-drawstring-bag/',
   }),
   title: { absolute: 'SLC Drawstring Bag - New Heights Educational Group, Inc.' },

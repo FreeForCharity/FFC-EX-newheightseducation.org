@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home School Guidance Programs - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Home School Guidance Programs NHEG Home School Guidance Programs…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Home School Guidance Programs NHEG Home School Guidance Programs…',
     canonical: '/nheg-educational-programs/home-school-guidance-programs/',
   }),
   title: { absolute: 'Home School Guidance Programs - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-9657 page-child parent-pageid-519 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-educational-programs/home-school-guidance-programs') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-educational-programs/home-school-guidance-programs'),
+      }}
     />
   )
 }

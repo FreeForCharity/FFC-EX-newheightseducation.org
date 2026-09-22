@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'National School Choice Week 2018 - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group is recognizing National School Choice Week in Defiance, Ohio on January 27, 2018 at 5:30 pm at Defiance Regional Hospital. Mayor Mike McCann has shared a Proclamation for Defiance School Choice Week 2018 recognizing this event as a city wide event for all citizens. Pamela Clark, Executive Director of NHEG,',
+    description:
+      'The New Heights Educational Group is recognizing National School Choice Week in Defiance, Ohio on January 27, 2018 at 5:30 pm at Defiance Regional Hospital. Mayor Mike McCann has shared a Proclamation for Defiance School Choice Week 2018 recognizing this event as a city wide event for all citizens. Pamela Clark, Executive Director of NHEG,',
     canonical: '/community-news/national-school-choice-week-2018/',
   }),
   title: { absolute: 'National School Choice Week 2018 - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6670 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/national-school-choice-week-2018') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/national-school-choice-week-2018'),
+      }}
     />
   )
 }

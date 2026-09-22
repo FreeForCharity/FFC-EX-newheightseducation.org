@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Cirque de la Symphonique Concert - New Heights Educational Group, Inc.',
-    description: 'The Lima Symphony Orchestra, invites you and your students to our Annual Young People\'s Concert: Cirque de la Symphonique. Under the direction of Maestro Crafton Beck, the LSO will present two great art forms, both requiring agility, creativity and a lifetime of practice. Gravity-defying aerial flyers, acrobats, dancers and jugglers will perform to choreographed symphonic',
+    description:
+      "The Lima Symphony Orchestra, invites you and your students to our Annual Young People's Concert: Cirque de la Symphonique. Under the direction of Maestro Crafton Beck, the LSO will present two great art forms, both requiring agility, creativity and a lifetime of practice. Gravity-defying aerial flyers, acrobats, dancers and jugglers will perform to choreographed symphonic",
     canonical: '/community-news/cirque-de-la-symphonique-concert/',
   }),
   title: { absolute: 'Cirque de la Symphonique Concert - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7712 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/cirque-de-la-symphonique-concert') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/cirque-de-la-symphonique-concert'),
+      }}
     />
   )
 }

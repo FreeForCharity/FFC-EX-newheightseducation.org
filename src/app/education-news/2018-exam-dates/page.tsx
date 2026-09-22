@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2018 Exam Dates - New Heights Educational Group, Inc.',
-    description: 'In continuation of our last post about the CLT exam dates, the NHEG team has collected 2018 exam dates for the following college entrance exams: ACT, GRE, LSAT, SAT, SAT II and SSAT. An important note, if you want to double check on these dates please contact your school or testing center in making sure',
+    description:
+      'In continuation of our last post about the CLT exam dates, the NHEG team has collected 2018 exam dates for the following college entrance exams: ACT, GRE, LSAT, SAT, SAT II and SSAT. An important note, if you want to double check on these dates please contact your school or testing center in making sure',
     canonical: '/education-news/2018-exam-dates/',
   }),
   title: { absolute: '2018 Exam Dates - New Heights Educational Group, Inc.' },

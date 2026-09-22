@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Endangered: The Mexican Grey Wolf - New Heights Educational Group, Inc.',
-    description: 'by Erika Hanson The word \'wolf\' brings up images of a massive grey and white canid, prowling the forests and tundra of such states as Michigan, Wyoming, and Alaska, just to name a few. This subspecies of wolf is well-known. It\'s the one heard about in fairytales, seen on documentaries and in books. But the',
+    description:
+      "by Erika Hanson The word 'wolf' brings up images of a massive grey and white canid, prowling the forests and tundra of such states as Michigan, Wyoming, and Alaska, just to name a few. This subspecies of wolf is well-known. It's the one heard about in fairytales, seen on documentaries and in books. But the",
     canonical: '/education-news/endangered-the-mexican-grey-wolf/',
   }),
   title: { absolute: 'Endangered: The Mexican Grey Wolf - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-12902 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('education-news/endangered-the-mexican-grey-wolf') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('education-news/endangered-the-mexican-grey-wolf'),
+      }}
     />
   )
 }

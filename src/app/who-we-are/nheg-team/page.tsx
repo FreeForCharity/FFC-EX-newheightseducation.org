@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Our Team - New Heights Educational Group, Inc.',
-    description: 'Meet our NHEG Team, a group of volunteers who are working together to help provide educational support to both children and adults in the state of Ohio. We not only have people volunteering from the United States but also from around the world.',
+    description:
+      'Meet our NHEG Team, a group of volunteers who are working together to help provide educational support to both children and adults in the state of Ohio. We not only have people volunteering from the United States but also from around the world.',
     canonical: '/who-we-are/nheg-team/',
   }),
   title: { absolute: 'Our Team - New Heights Educational Group, Inc.' },

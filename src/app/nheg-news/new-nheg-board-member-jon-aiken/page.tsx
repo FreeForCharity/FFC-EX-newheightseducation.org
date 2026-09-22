@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New NHEG Board Member – Jon Aitken - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) is happy to announce a new board member. Jon Aitken has been a member of the NHEG team for the last five years. The board voted Mr. Aitken in at the annual meeting held on December 9th. Mr. Aitken has a rich educational background and is the District Manager',
+    description:
+      'The New Heights Educational Group (NHEG) is happy to announce a new board member. Jon Aitken has been a member of the NHEG team for the last five years. The board voted Mr. Aitken in at the annual meeting held on December 9th. Mr. Aitken has a rich educational background and is the District Manager',
     canonical: '/nheg-news/new-nheg-board-member-jon-aiken/',
   }),
   title: { absolute: 'New NHEG Board Member – Jon Aitken - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7943 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/new-nheg-board-member-jon-aiken') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/new-nheg-board-member-jon-aiken'),
+      }}
     />
   )
 }

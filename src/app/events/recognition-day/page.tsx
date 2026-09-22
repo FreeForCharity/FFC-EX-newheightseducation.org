@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Recognition Day - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group\'s Recognition Day is a special event in which we recognize all the hard work that has been accomplish by students and volunteers throughout the year.',
+    description:
+      "The New Heights Educational Group's Recognition Day is a special event in which we recognize all the hard work that has been accomplish by students and volunteers throughout the year.",
     canonical: '/events/recognition-day/',
   }),
   title: { absolute: 'Recognition Day - New Heights Educational Group, Inc.' },

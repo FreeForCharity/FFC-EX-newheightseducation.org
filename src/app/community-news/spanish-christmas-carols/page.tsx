@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'SPANISH CHRISTMAS CAROLS - New Heights Educational Group, Inc.',
-    description: 'JOIN US FOR SPANISH CHRISTMAS CAROLS WHEN : DEC. 2, 2023 TIME: 2 PM EASTERN WHERE: ONLINE!! PRICE: FREE!! RSVP: ACADEMIABILINGUALBRIDGES@GMAIL.COM WWW.ACADEMIABILINGUALBRIDGES.COM',
+    description:
+      'JOIN US FOR SPANISH CHRISTMAS CAROLS WHEN : DEC. 2, 2023 TIME: 2 PM EASTERN WHERE: ONLINE!! PRICE: FREE!! RSVP: ACADEMIABILINGUALBRIDGES@GMAIL.COM WWW.ACADEMIABILINGUALBRIDGES.COM',
     canonical: '/community-news/spanish-christmas-carols/',
   }),
   title: { absolute: 'SPANISH CHRISTMAS CAROLS - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13262 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/spanish-christmas-carols') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/spanish-christmas-carols'),
+      }}
     />
   )
 }

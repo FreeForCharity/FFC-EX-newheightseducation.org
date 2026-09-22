@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Donation Confirmation - NHEG Online Learning Annex',
-    description: 'Login This form has moved to email. We read every message. Info@NewHeightsEducation.org Create Account This form has moved to email. We read every message…',
+    description:
+      'Login This form has moved to email. We read every message. Info@NewHeightsEducation.org Create Account This form has moved to email. We read every message…',
     canonical: '/school/donation-confirmation/',
   }),
   title: { absolute: 'Donation Confirmation - NHEG Online Learning Annex' },

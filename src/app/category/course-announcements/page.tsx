@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Course Announcements - New Heights Educational Group, Inc.',
-    description: '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Course Announcements Home » Course Announcements 0 By Sarika Gauba…',
+    description:
+      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Course Announcements Home » Course Announcements 0 By Sarika Gauba…',
     canonical: '/category/course-announcements/',
   }),
   title: { absolute: 'Course Announcements - New Heights Educational Group, Inc.' },

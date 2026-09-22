@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Assessment - New Heights Educational Group, Inc.',
-    description: 'Within NHEG, student growth is tracked with various tools and assessments, which helps us determine students’ placement in the appropriate level classes.',
+    description:
+      'Within NHEG, student growth is tracked with various tools and assessments, which helps us determine students’ placement in the appropriate level classes.',
     canonical: '/nheg-educational-programs/nheg-tracking-student-growth/nheg-assessment/',
   }),
   title: { absolute: 'NHEG Assessment - New Heights Educational Group, Inc.' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-5822 page-child parent-pageid-1235 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-educational-programs/nheg-tracking-student-growth/nheg-assessment') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'nheg-educational-programs/nheg-tracking-student-growth/nheg-assessment'
+        ),
+      }}
     />
   )
 }

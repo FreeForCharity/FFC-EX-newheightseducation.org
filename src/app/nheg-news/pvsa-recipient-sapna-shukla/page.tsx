@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'PVSA Recipient Sapna Shukla - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group is e happy to announce that Sapna Shukla has been awarded the Presidential Volunteer Service Award for her commitment to NHEG. She was awarded both the Bronze and Silver awards in this great program that recognizes volunteers and the work they do in their community. Not only is Mrs. Shukla our',
+    description:
+      'New Heights Educational Group is e happy to announce that Sapna Shukla has been awarded the Presidential Volunteer Service Award for her commitment to NHEG. She was awarded both the Bronze and Silver awards in this great program that recognizes volunteers and the work they do in their community. Not only is Mrs. Shukla our',
     canonical: '/nheg-news/pvsa-recipient-sapna-shukla/',
   }),
   title: { absolute: 'PVSA Recipient Sapna Shukla - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8206 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/pvsa-recipient-sapna-shukla') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/pvsa-recipient-sapna-shukla'),
+      }}
     />
   )
 }

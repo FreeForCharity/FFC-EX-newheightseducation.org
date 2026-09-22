@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Volunteer: Jeff Ermoian - New Heights Educational Group, Inc.',
-    description: 'Jeff Ermoian brings a passion for media and arts education to the NHEG team. Those passions are revealed in his career path. TV Producer, Corporate Trainer, Illustrator, Cartoonist, Animator, Author, Performer, Copywriter, Art Director and Pre-Press Network Administrator are among the titles held during his long career in visual communication. Jeff has 8 years of',
+    description:
+      'Jeff Ermoian brings a passion for media and arts education to the NHEG team. Those passions are revealed in his career path. TV Producer, Corporate Trainer, Illustrator, Cartoonist, Animator, Author, Performer, Copywriter, Art Director and Pre-Press Network Administrator are among the titles held during his long career in visual communication. Jeff has 8 years of',
     canonical: '/nheg-news/new-volunteer-jeff-ermoian/',
   }),
   title: { absolute: 'New Volunteer: Jeff Ermoian - New Heights Educational Group, Inc.' },

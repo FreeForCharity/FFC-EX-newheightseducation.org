@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'An Exciting Year Ahead! - New Heights Educational Group, Inc.',
-    description: 'CELEBRATING READERS & LEADERS - We have adopted February 7 as our own day to celebrate all things 2nd & 7. We want to show our impact and celebrate our mission. The mission of 2nd & 7 is to promote reading by providing free books and positive role models and kids in need while encouraging',
+    description:
+      'CELEBRATING READERS & LEADERS - We have adopted February 7 as our own day to celebrate all things 2nd & 7. We want to show our impact and celebrate our mission. The mission of 2nd & 7 is to promote reading by providing free books and positive role models and kids in need while encouraging',
     canonical: '/nheg-news/an-exciting-year-ahead/',
   }),
   title: { absolute: 'An Exciting Year Ahead! - New Heights Educational Group, Inc.' },

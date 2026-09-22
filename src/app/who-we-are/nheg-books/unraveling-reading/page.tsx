@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Unraveling Reading - New Heights Educational Group, Inc.',
-    description: 'Unraveling Reading is a response to the needs and difficulties faced by parents, students and teachers with respect to literacy and education. It presents strategies and alternatives for developing reading and writing in children, youth and adults in a practical and dynamic way.',
+    description:
+      'Unraveling Reading is a response to the needs and difficulties faced by parents, students and teachers with respect to literacy and education. It presents strategies and alternatives for developing reading and writing in children, youth and adults in a practical and dynamic way.',
     canonical: '/who-we-are/nheg-books/unraveling-reading/',
   }),
   title: { absolute: 'Unraveling Reading - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-1849 page-child parent-pageid-1757 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('who-we-are/nheg-books/unraveling-reading') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('who-we-are/nheg-books/unraveling-reading'),
+      }}
     />
   )
 }

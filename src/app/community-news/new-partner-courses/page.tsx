@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Partner Courses - New Heights Educational Group, Inc.',
-    description: 'Check out the brand new and free courses from Hillsdale College. Discounted & Free Online Classes - NHEG Online Learning Annex (newheightseducation.org)',
+    description:
+      'Check out the brand new and free courses from Hillsdale College. Discounted & Free Online Classes - NHEG Online Learning Annex (newheightseducation.org)',
     canonical: '/community-news/new-partner-courses/',
   }),
   title: { absolute: 'New Partner Courses - New Heights Educational Group, Inc.' },

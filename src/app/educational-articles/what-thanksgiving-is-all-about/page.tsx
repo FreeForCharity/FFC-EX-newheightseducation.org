@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'What Thanksgiving Is All About - New Heights Educational Group, Inc.',
-    description: 'Thanksgiving Day is a day to celebrate with family and friends. It is also a day where we should be grateful for what we have. It is a holiday where loved ones are together at the table and are enjoying a wonderful feast. Here are more facts and history on how Thanksgiving started. People: According',
+    description:
+      'Thanksgiving Day is a day to celebrate with family and friends. It is also a day where we should be grateful for what we have. It is a holiday where loved ones are together at the table and are enjoying a wonderful feast. Here are more facts and history on how Thanksgiving started. People: According',
     canonical: '/educational-articles/what-thanksgiving-is-all-about/',
   }),
   title: { absolute: 'What Thanksgiving Is All About - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-3177 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('educational-articles/what-thanksgiving-is-all-about') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('educational-articles/what-thanksgiving-is-all-about'),
+      }}
     />
   )
 }

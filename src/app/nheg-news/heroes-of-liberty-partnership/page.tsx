@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Heroes of Liberty Partnership - New Heights Educational Group, Inc.',
-    description: 'Heroes of Liberty is a series of children’s books that help pass the torch of American values to the next generation - one story at a time. The series features beautifully illustrated biographies of important people throughout American history. Each book is written in an engaging format and filled with breathtaking artwork focusing on the',
+    description:
+      'Heroes of Liberty is a series of children’s books that help pass the torch of American values to the next generation - one story at a time. The series features beautifully illustrated biographies of important people throughout American history. Each book is written in an engaging format and filled with breathtaking artwork focusing on the',
     canonical: '/nheg-news/heroes-of-liberty-partnership/',
   }),
   title: { absolute: 'Heroes of Liberty Partnership - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-10268 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/heroes-of-liberty-partnership') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/heroes-of-liberty-partnership'),
+      }}
     />
   )
 }

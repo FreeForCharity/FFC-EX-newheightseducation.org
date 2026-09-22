@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: '2019 Golden Bridge Awards - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group (NHEG) has earned the prestigious Gold status (x2) and one Bronze status in the 2019 Golden Bridge Awards®. The coveted annual Golden Bridge Awards® program encompasses the world’s best in organizational performance, innovations, products and services, executives and management teams, women in business and the professions, innovations, best deployments, product management,',
+    description:
+      'New Heights Educational Group (NHEG) has earned the prestigious Gold status (x2) and one Bronze status in the 2019 Golden Bridge Awards®. The coveted annual Golden Bridge Awards® program encompasses the world’s best in organizational performance, innovations, products and services, executives and management teams, women in business and the professions, innovations, best deployments, product management,',
     canonical: '/nheg-news/2019-golden-bridge-awards/',
   }),
   title: { absolute: '2019 Golden Bridge Awards - New Heights Educational Group, Inc.' },

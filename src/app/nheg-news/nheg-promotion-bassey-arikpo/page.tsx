@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Promotion – Bassey Arikpo - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group would like to congratulate one of our volunteers with a promotion within our organization, Bassey Arikpo. Bassey Arikpo is the latest volunteer to earn a promotion within the organization. Arikpo was named the Associate Director of Virtual Development of Video Production and New Media. This is what Pamela Clark had to',
+    description:
+      'New Heights Educational Group would like to congratulate one of our volunteers with a promotion within our organization, Bassey Arikpo. Bassey Arikpo is the latest volunteer to earn a promotion within the organization. Arikpo was named the Associate Director of Virtual Development of Video Production and New Media. This is what Pamela Clark had to',
     canonical: '/nheg-news/nheg-promotion-bassey-arikpo/',
   }),
   title: { absolute: 'NHEG Promotion – Bassey Arikpo - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5726 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-promotion-bassey-arikpo') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-promotion-bassey-arikpo'),
+      }}
     />
   )
 }

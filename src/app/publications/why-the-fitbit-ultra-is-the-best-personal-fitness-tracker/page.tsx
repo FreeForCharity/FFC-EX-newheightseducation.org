@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Why The Fitbit Ultra Is The Best Personal Fitness Tracker - NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Why…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Why…',
     canonical: '/publications/why-the-fitbit-ultra-is-the-best-personal-fitness-tracker/',
   }),
   title: { absolute: 'Why The Fitbit Ultra Is The Best Personal Fitness Tracker - NHEG' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5621 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-astra ast-desktop ast-narrow-container ast-separate-container ast-no-sidebar astra-4.13.12 group-blog ast-blog-single-style-1 ast-single-post ast-replace-site-logo-transparent ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header ast-normal-title-enabled elementor-default elementor-kit-5709"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('publications/why-the-fitbit-ultra-is-the-best-personal-fitness-tracker') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'publications/why-the-fitbit-ultra-is-the-best-personal-fitness-tracker'
+        ),
+      }}
     />
   )
 }

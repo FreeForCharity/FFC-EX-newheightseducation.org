@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Student Resources - NHEG Online Learning Annex',
-    description: 'The NHEG Student Resources is your best source in making sure your children are prepared to enter school all the way to graduating college. This includes financial aid/scholarship assistance, preparing for college entrance exams like the SATs or the ACTs, tools and resources to help become a more effective student.',
+    description:
+      'The NHEG Student Resources is your best source in making sure your children are prepared to enter school all the way to graduating college. This includes financial aid/scholarship assistance, preparing for college entrance exams like the SATs or the ACTs, tools and resources to help become a more effective student.',
     canonical: '/school/students/nheg-student-resources/',
   }),
   title: { absolute: 'Student Resources - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-641 page-parent page-child parent-pageid-6467 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/students/nheg-student-resources') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/students/nheg-student-resources'),
+      }}
     />
   )
 }

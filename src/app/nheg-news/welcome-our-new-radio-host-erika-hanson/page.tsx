@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Welcome Our New Radio Host Erika Hanson - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) welcomes Erika Hanson who will host her first internet radio show on March 28, 2019. On her show, Ms. Hanson will discuss topics pertaining to depression, anxiety and other disabilities within our community. Erika graduated in 1999 with a B.A. in English and Psychology. In the years that followed,',
+    description:
+      'The New Heights Educational Group (NHEG) welcomes Erika Hanson who will host her first internet radio show on March 28, 2019. On her show, Ms. Hanson will discuss topics pertaining to depression, anxiety and other disabilities within our community. Erika graduated in 1999 with a B.A. in English and Psychology. In the years that followed,',
     canonical: '/nheg-news/welcome-our-new-radio-host-erika-hanson/',
   }),
-  title: { absolute: 'Welcome Our New Radio Host Erika Hanson - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Welcome Our New Radio Host Erika Hanson - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8078 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/welcome-our-new-radio-host-erika-hanson') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/welcome-our-new-radio-host-erika-hanson'),
+      }}
     />
   )
 }

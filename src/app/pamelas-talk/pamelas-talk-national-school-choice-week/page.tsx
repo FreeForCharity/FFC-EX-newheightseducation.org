@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela’s Talk: National School Choice Week - New Heights Educational Group, Inc.',
-    description: 'https://youtu.be/sf1HwaAzfW8 Today\'s episode titled Pamela\'s Talk - National School Choice Week, Pamela talks about this program that brings awareness to education options for students.',
+    description:
+      "https://youtu.be/sf1HwaAzfW8 Today's episode titled Pamela's Talk - National School Choice Week, Pamela talks about this program that brings awareness to education options for students.",
     canonical: '/pamelas-talk/pamelas-talk-national-school-choice-week/',
   }),
-  title: { absolute: 'Pamela’s Talk: National School Choice Week - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'Pamela’s Talk: National School Choice Week - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-4469 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('pamelas-talk/pamelas-talk-national-school-choice-week') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('pamelas-talk/pamelas-talk-national-school-choice-week'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'ABLE / GED Testing Program - NHEG Online Learning Annex',
-    description: 'New Heights Educational Group provides support for children or adults who are looking to get their ABLE/GED and go to college to further their education.',
+    description:
+      'New Heights Educational Group provides support for children or adults who are looking to get their ABLE/GED and go to college to further their education.',
     canonical: '/school/students/able-ged/',
   }),
   title: { absolute: 'ABLE / GED Testing Program - NHEG Online Learning Annex' },

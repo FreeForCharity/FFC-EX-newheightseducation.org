@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Home/Charter School Graduation - New Heights Educational Group, Inc.',
-    description: 'Since 2011, New Heights Education Group has been proud to hold graduation ceremonies for the students who live in the state of Ohio. While NHEG is not a school, we show families alternative learning styles, provide tutors and help them achieve their dreams.',
+    description:
+      'Since 2011, New Heights Education Group has been proud to hold graduation ceremonies for the students who live in the state of Ohio. While NHEG is not a school, we show families alternative learning styles, provide tutors and help them achieve their dreams.',
     canonical: '/events/nheg-home-charter-school-graduation/',
   }),
   title: { absolute: 'NHEG Home/Charter School Graduation - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-425 page-child parent-pageid-423 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('events/nheg-home-charter-school-graduation') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('events/nheg-home-charter-school-graduation'),
+      }}
     />
   )
 }

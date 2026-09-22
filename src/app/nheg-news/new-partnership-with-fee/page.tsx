@@ -6,11 +6,16 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'New Partnership with Foundation for Economic Education - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group has recently partnered with Foundation for Economic Education (FEE). FEE has been a leading non-profit organization in teaching the principles of a free society since its founding in 1946 by Leonard E. Read. Today, FEE focuses on bringing freedom as a life philosophy to young audiences while striving to bring',
+    title:
+      'New Partnership with Foundation for Economic Education - New Heights Educational Group, Inc.',
+    description:
+      'The New Heights Educational Group has recently partnered with Foundation for Economic Education (FEE). FEE has been a leading non-profit organization in teaching the principles of a free society since its founding in 1946 by Leonard E. Read. Today, FEE focuses on bringing freedom as a life philosophy to young audiences while striving to bring',
     canonical: '/nheg-news/new-partnership-with-fee/',
   }),
-  title: { absolute: 'New Partnership with Foundation for Economic Education - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'New Partnership with Foundation for Economic Education - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {

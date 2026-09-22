@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Teachers and Tutors - NHEG Online Learning Annex',
-    description: 'Say hello to our NHEG Teachers and tutors, volunteer educators in the state of Ohio whose mission is to help students become more effective learners. NHEG offers training and support for its teachers/tutors. We have incredible teachers/tutors and are always looking for more. Our tutors make an incredible impact on students.',
+    description:
+      'Say hello to our NHEG Teachers and tutors, volunteer educators in the state of Ohio whose mission is to help students become more effective learners. NHEG offers training and support for its teachers/tutors. We have incredible teachers/tutors and are always looking for more. Our tutors make an incredible impact on students.',
     canonical: '/school/about/nheg-educational-department-staff/nheg-teachers/',
   }),
   title: { absolute: 'Teachers and Tutors - NHEG Online Learning Annex' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-505 page-child parent-pageid-222 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/about/nheg-educational-department-staff/nheg-teachers') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('school/about/nheg-educational-department-staff/nheg-teachers'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Student Achievements - NHEG Online Learning Annex',
-    description: 'We wish to recognize the many students who walked through our doors on our NHEG Student Achievements page. We are proud of what they have done.',
+    description:
+      'We wish to recognize the many students who walked through our doors on our NHEG Student Achievements page. We are proud of what they have done.',
     canonical: '/school/parents/nheg-tracking-student-growth/nheg-student-achievements/',
   }),
   title: { absolute: 'NHEG Student Achievements - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-3050 page-child parent-pageid-1235 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/parents/nheg-tracking-student-growth/nheg-student-achievements') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/parents/nheg-tracking-student-growth/nheg-student-achievements'
+        ),
+      }}
     />
   )
 }

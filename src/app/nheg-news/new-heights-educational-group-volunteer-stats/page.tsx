@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Educational Group Volunteer Stats - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group built by volunteers from all over the world. These stats were gathered by Gary Stevens.',
+    description:
+      'New Heights Educational Group built by volunteers from all over the world. These stats were gathered by Gary Stevens.',
     canonical: '/nheg-news/new-heights-educational-group-volunteer-stats/',
   }),
-  title: { absolute: 'New Heights Educational Group Volunteer Stats - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'New Heights Educational Group Volunteer Stats - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-13582 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/new-heights-educational-group-volunteer-stats') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/new-heights-educational-group-volunteer-stats'),
+      }}
     />
   )
 }

@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Show on Education Custom Pin Buttons - New Heights Educational Group, Inc.',
-    description: '1,25"Diameter, in, in1.25Thickness, in, in0.16Custom Pin Buttons: made from metal, yet lightweight and durable with a strong safety pin. Begin your journey in selling Customized Pin Buttons with Printify..: 2 sizes.: Safety pin backing.: Made in USA',
+    description:
+      '1,25"Diameter, in, in1.25Thickness, in, in0.16Custom Pin Buttons: made from metal, yet lightweight and durable with a strong safety pin. Begin your journey in selling Customized Pin Buttons with Printify..: 2 sizes.: Safety pin backing.: Made in USA',
     canonical: '/product/new-heights-show-on-education-custom-pin-buttons/',
   }),
-  title: { absolute: 'New Heights Show on Education Custom Pin Buttons - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'New Heights Show on Education Custom Pin Buttons - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-11760 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/new-heights-show-on-education-custom-pin-buttons') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/new-heights-show-on-education-custom-pin-buttons'),
+      }}
     />
   )
 }

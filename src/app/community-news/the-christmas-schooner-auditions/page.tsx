@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'The Christmas Schooner Auditions - New Heights Educational Group, Inc.',
-    description: 'Starting at 6:00 PM on August 15th auditions are being at the the Arts United Center for the play The Christmas Schooner. Auditions will be done in 15 minute slots with no more than five people per slot and we ask that you arrive 15 minutes prior to the time slot you sign up for',
+    description:
+      'Starting at 6:00 PM on August 15th auditions are being at the the Arts United Center for the play The Christmas Schooner. Auditions will be done in 15 minute slots with no more than five people per slot and we ask that you arrive 15 minutes prior to the time slot you sign up for',
     canonical: '/community-news/the-christmas-schooner-auditions/',
   }),
   title: { absolute: 'The Christmas Schooner Auditions - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-10002 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/the-christmas-schooner-auditions') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/the-christmas-schooner-auditions'),
+      }}
     />
   )
 }

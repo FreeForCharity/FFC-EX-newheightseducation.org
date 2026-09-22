@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Success is more about effort than intelligence - New Heights Educational Group, Inc.',
-    description: 'Excelling in every challenge, task, or assignment that comes your way is not something that relies entirely on your IQ. In fact, when it comes to getting 100% on your next school project or nailing a job interview, efficiency and work ethic are extremely important. With the right techniques, you can achieve above',
+    description:
+      'Excelling in every challenge, task, or assignment that comes your way is not something that relies entirely on your IQ. In fact, when it comes to getting 100% on your next school project or nailing a job interview, efficiency and work ethic are extremely important. With the right techniques, you can achieve above',
     canonical: '/student-corner/success-is-more-about-effort-than-intelligence/',
   }),
-  title: { absolute: 'Success is more about effort than intelligence - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'Success is more about effort than intelligence - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9174 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('student-corner/success-is-more-about-effort-than-intelligence') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('student-corner/success-is-more-about-effort-than-intelligence'),
+      }}
     />
   )
 }

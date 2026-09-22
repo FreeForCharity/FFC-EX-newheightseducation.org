@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Sheila Wright is now a NHEG Teacher - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group, (NHEG) is announcing a new teacher, Sheila Wright who will be joining the team of this award winning organization. Sheila has been a committed volunteer at NHEG since July of 2015 as a proofreader and was recently promoted to Assistant Virtual Developer Of Proofreader/Editing of Website. She will be teaching',
+    description:
+      'The New Heights Educational Group, (NHEG) is announcing a new teacher, Sheila Wright who will be joining the team of this award winning organization. Sheila has been a committed volunteer at NHEG since July of 2015 as a proofreader and was recently promoted to Assistant Virtual Developer Of Proofreader/Editing of Website. She will be teaching',
     canonical: '/nheg-news/welcome-sheila-wright/',
   }),
   title: { absolute: 'Sheila Wright is now a NHEG Teacher - New Heights Educational Group, Inc.' },

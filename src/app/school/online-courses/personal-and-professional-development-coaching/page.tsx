@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Personal & Professional Development Coaching - NHEG Online Learning Annex',
-    description: 'Login This form has moved to email. We read every message. Info@NewHeightsEducation.org Create Account This form has moved to email. We read every message…',
+    description:
+      'Login This form has moved to email. We read every message. Info@NewHeightsEducation.org Create Account This form has moved to email. We read every message…',
     canonical: '/school/online-courses/personal-and-professional-development-coaching/',
   }),
   title: { absolute: 'Personal & Professional Development Coaching - NHEG Online Learning Annex' },
@@ -17,7 +18,11 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular page-template-default page page-id-7321 page-child parent-pageid-2 wp-theme-jupiter wpb-js-composer js-comp-ver-7.7.2 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('school/online-courses/personal-and-professional-development-coaching') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent(
+          'school/online-courses/personal-and-professional-development-coaching'
+        ),
+      }}
     />
   )
 }

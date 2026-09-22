@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Interview with NHEG Founder/Director - New Heights Educational Group, Inc.',
-    description: 'By: Khrista Cendana You’re a parent thinking about enrolling your child in an online learning system, or you’re an adult wanting to learn a new subject or field and have questions about how it all works and how to get started. I was able to speak with the founder/executive director of the New Heights Educational',
+    description:
+      'By: Khrista Cendana You’re a parent thinking about enrolling your child in an online learning system, or you’re an adult wanting to learn a new subject or field and have questions about how it all works and how to get started. I was able to speak with the founder/executive director of the New Heights Educational',
     canonical: '/nheg-news/interview-nheg-founderdirector-online-learning/',
   }),
   title: { absolute: 'Interview with NHEG Founder/Director - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-1362 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/interview-nheg-founderdirector-online-learning') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/interview-nheg-founderdirector-online-learning'),
+      }}
     />
   )
 }

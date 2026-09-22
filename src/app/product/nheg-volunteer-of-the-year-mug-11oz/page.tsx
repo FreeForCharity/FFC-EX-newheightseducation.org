@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Volunteer of the Year Mug 11oz - New Heights Educational Group, Inc.',
-    description: '11ozHeight, in3.75Diameter, in3.15Perfect for coffee, tea and hot chocolate, this classic shape white, durable ceramic mug in the most popular size. High quality sublimation printing makes it an appreciated gift to every true hot beverage lover..: White ceramic.: 11 oz (0.33 l).: Rounded corners.: C-Handle',
+    description:
+      '11ozHeight, in3.75Diameter, in3.15Perfect for coffee, tea and hot chocolate, this classic shape white, durable ceramic mug in the most popular size. High quality sublimation printing makes it an appreciated gift to every true hot beverage lover..: White ceramic.: 11 oz (0.33 l).: Rounded corners.: C-Handle',
     canonical: '/product/nheg-volunteer-of-the-year-mug-11oz/',
   }),
   title: { absolute: 'NHEG Volunteer of the Year Mug 11oz - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular product-template-default single single-product postid-12182 wp-theme-jupiter theme-jupiter woocommerce woocommerce-page woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('product/nheg-volunteer-of-the-year-mug-11oz') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('product/nheg-volunteer-of-the-year-mug-11oz'),
+      }}
     />
   )
 }

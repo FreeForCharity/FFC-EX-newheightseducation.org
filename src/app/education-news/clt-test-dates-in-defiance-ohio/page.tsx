@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'CLT Test Dates in Defiance Ohio - New Heights Educational Group, Inc.',
-    description: 'These are the following CLT Test dates in Defiance Ohio. They are September 29th and December 1 and will be held at the Defiance Regional Medical Center. ***Please note that the Oct 10, 2018, date is only for schools that are purchasing the exam for their students to be administered during the school day. NHEG',
+    description:
+      'These are the following CLT Test dates in Defiance Ohio. They are September 29th and December 1 and will be held at the Defiance Regional Medical Center. ***Please note that the Oct 10, 2018, date is only for schools that are purchasing the exam for their students to be administered during the school day. NHEG',
     canonical: '/education-news/clt-test-dates-in-defiance-ohio/',
   }),
   title: { absolute: 'CLT Test Dates in Defiance Ohio - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-7696 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('education-news/clt-test-dates-in-defiance-ohio') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('education-news/clt-test-dates-in-defiance-ohio'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Partnership with National CSI - New Heights Educational Group, Inc.',
-    description: 'If you love CSI and forensics, this online STEM camp is for you! Taught by current and former detectives (how cool is that!), this one-week class is packed with hands-on activities to learn what it takes to become a crime scene investigator, formatted to 90 minutes per day. In this course, you will be able',
+    description:
+      'If you love CSI and forensics, this online STEM camp is for you! Taught by current and former detectives (how cool is that!), this one-week class is packed with hands-on activities to learn what it takes to become a crime scene investigator, formatted to 90 minutes per day. In this course, you will be able',
     canonical: '/nheg-news/partnership-with-national-csi/',
   }),
   title: { absolute: 'Partnership with National CSI - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-9822 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/partnership-with-national-csi') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/partnership-with-national-csi'),
+      }}
     />
   )
 }

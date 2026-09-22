@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home School Q&A Center - New Heights Educational Group, Inc.',
-    description: 'NHEG is proud to announce our new Home School Q&A Center. A place to answer your questions about home schooling and other resources for your children. While, the Q&A Center is more for parents living in Ohio, however, if you live in another state and our looking to home school your children than this could',
+    description:
+      'NHEG is proud to announce our new Home School Q&A Center. A place to answer your questions about home schooling and other resources for your children. While, the Q&A Center is more for parents living in Ohio, however, if you live in another state and our looking to home school your children than this could',
     canonical: '/nheg-news/home-school-qa-center/',
   }),
   title: { absolute: 'Home School Q&A Center - New Heights Educational Group, Inc.' },

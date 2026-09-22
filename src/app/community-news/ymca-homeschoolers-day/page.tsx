@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'YMCA Homeschoolers Day - New Heights Educational Group, Inc.',
-    description: 'On April 13, 2020, from 10:00 am-3:00 pm at the YMCA Storer Camps in Jackson Mississippi for a day of fun at YMCA Homeschoolers Day. An adventurous day planned especially with home school families in mind. Come experience all that our Outdoor Education program has to offer as families explore and learn through our hands-on',
+    description:
+      'On April 13, 2020, from 10:00 am-3:00 pm at the YMCA Storer Camps in Jackson Mississippi for a day of fun at YMCA Homeschoolers Day. An adventurous day planned especially with home school families in mind. Come experience all that our Outdoor Education program has to offer as families explore and learn through our hands-on',
     canonical: '/community-news/ymca-homeschoolers-day/',
   }),
   title: { absolute: 'YMCA Homeschoolers Day - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-8886 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('community-news/ymca-homeschoolers-day') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('community-news/ymca-homeschoolers-day'),
+      }}
     />
   )
 }

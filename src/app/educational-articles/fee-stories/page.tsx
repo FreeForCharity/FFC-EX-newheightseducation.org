@@ -6,11 +6,16 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'FEE Stories – I Grew Up in a Communist System. Here’s What Americans Don’t Understand About Freedom - New Heights Educational Group, Inc.',
-    description: 'Only in a free-market system can we truly achieve individual liberty and human flourishing. Individual freedom can only exist in the context of free-market capitalism. Personal freedom thrives in capitalism, declines in government-regulated economies, and vanishes in communism. Aside from better economic and legislative policies, what America needs is a more intense appreciation for individual',
+    title:
+      'FEE Stories – I Grew Up in a Communist System. Here’s What Americans Don’t Understand About Freedom - New Heights Educational Group, Inc.',
+    description:
+      'Only in a free-market system can we truly achieve individual liberty and human flourishing. Individual freedom can only exist in the context of free-market capitalism. Personal freedom thrives in capitalism, declines in government-regulated economies, and vanishes in communism. Aside from better economic and legislative policies, what America needs is a more intense appreciation for individual',
     canonical: '/educational-articles/fee-stories/',
   }),
-  title: { absolute: 'FEE Stories – I Grew Up in a Communist System. Here’s What Americans Don’t Understand About Freedom - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'FEE Stories – I Grew Up in a Communist System. Here’s What Americans Don’t Understand About Freedom - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {

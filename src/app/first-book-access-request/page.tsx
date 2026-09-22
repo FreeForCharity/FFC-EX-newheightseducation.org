@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'First Book Access Request - New Heights Educational Group, Inc.',
-    description: 'Do you have a student in need? New Heights Educational Group now provides thousands of FREE ebooks for students in need.',
+    description:
+      'Do you have a student in need? New Heights Educational Group now provides thousands of FREE ebooks for students in need.',
     canonical: '/first-book-access-request/',
   }),
   title: { absolute: 'First Book Access Request - New Heights Educational Group, Inc.' },

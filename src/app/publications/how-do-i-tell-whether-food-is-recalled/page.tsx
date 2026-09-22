@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'How Do I Tell Whether Food Is Recalled? - NHEG',
-    description: 'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up How…',
+    description:
+      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up How…',
     canonical: '/publications/how-do-i-tell-whether-food-is-recalled/',
   }),
   title: { absolute: 'How Do I Tell Whether Food Is Recalled? - NHEG' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5306 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-astra ast-desktop ast-narrow-container ast-separate-container ast-no-sidebar astra-4.13.12 group-blog ast-blog-single-style-1 ast-single-post ast-replace-site-logo-transparent ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header ast-normal-title-enabled elementor-default elementor-kit-5709"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('publications/how-do-i-tell-whether-food-is-recalled') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('publications/how-do-i-tell-whether-food-is-recalled'),
+      }}
     />
   )
 }

@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NSHSS Recognition - New Heights Educational Group, Inc.',
-    description: 'Pamela Clark, a recognized NSHSS Educator at New Heights Educational Group Resource and Literacy Center, is honored to share this opportunity with students to earn placement in the National Society of High School Scholars. Mrs. Clark has been nominating students since 2011, and all of the students she\'s nominated have been inducted into NSHSS. The',
+    description:
+      "Pamela Clark, a recognized NSHSS Educator at New Heights Educational Group Resource and Literacy Center, is honored to share this opportunity with students to earn placement in the National Society of High School Scholars. Mrs. Clark has been nominating students since 2011, and all of the students she's nominated have been inducted into NSHSS. The",
     canonical: '/nheg-news/nshss-recognition/',
   }),
   title: { absolute: 'NSHSS Recognition - New Heights Educational Group, Inc.' },

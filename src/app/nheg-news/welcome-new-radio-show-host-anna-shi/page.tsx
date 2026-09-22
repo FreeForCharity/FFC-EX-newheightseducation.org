@@ -7,17 +7,22 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Welcomes New Radio Show Host Anna Shi - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group would like to welcome Anna Shi as the newest member of our Radio Show on Education team. Her first broadcast will be on September 3, 2017 and then will air weekly on Sundays at 5:00 p.m. EST. Ms. Shi is the eleventh host featured by NHEG in four years and will discuss topics',
+    description:
+      'The New Heights Educational Group would like to welcome Anna Shi as the newest member of our Radio Show on Education team. Her first broadcast will be on September 3, 2017 and then will air weekly on Sundays at 5:00 p.m. EST. Ms. Shi is the eleventh host featured by NHEG in four years and will discuss topics',
     canonical: '/nheg-news/welcome-new-radio-show-host-anna-shi/',
   }),
-  title: { absolute: 'NHEG Welcomes New Radio Show Host Anna Shi - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'NHEG Welcomes New Radio Show Host Anna Shi - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6205 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/welcome-new-radio-show-host-anna-shi') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/welcome-new-radio-show-host-anna-shi'),
+      }}
     />
   )
 }

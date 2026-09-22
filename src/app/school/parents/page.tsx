@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Parents - NHEG Online Learning Annex',
-    description: 'The NHEG Parents Information & Resources Portal is a dedicated page of information and resources for parents of home, public and charter school students.',
+    description:
+      'The NHEG Parents Information & Resources Portal is a dedicated page of information and resources for parents of home, public and charter school students.',
     canonical: '/school/parents/',
   }),
   title: { absolute: 'Parents - NHEG Online Learning Annex' },

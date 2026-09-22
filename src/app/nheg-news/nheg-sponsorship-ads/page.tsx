@@ -7,10 +7,13 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Sponsorship Radio & Magazine Ads - New Heights Educational Group, Inc.',
-    description: 'New Heights Educational Group is proud to announce our NHEG Sponsorship Ads for both our radio programs and monthly magazine. By sponsoring our radio show and magazine, your business or organization will not only help our organization build solid educational programs for students to participate but you also provide more educational opportunities in the state',
+    description:
+      'New Heights Educational Group is proud to announce our NHEG Sponsorship Ads for both our radio programs and monthly magazine. By sponsoring our radio show and magazine, your business or organization will not only help our organization build solid educational programs for students to participate but you also provide more educational opportunities in the state',
     canonical: '/nheg-news/nheg-sponsorship-ads/',
   }),
-  title: { absolute: 'NHEG Sponsorship Radio & Magazine Ads - New Heights Educational Group, Inc.' },
+  title: {
+    absolute: 'NHEG Sponsorship Radio & Magazine Ads - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {

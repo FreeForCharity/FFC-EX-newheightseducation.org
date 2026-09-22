@@ -7,7 +7,8 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Disney Park Hopper Tickets Raffle - New Heights Educational Group, Inc.',
-    description: 'NHEG is proud to announce that we are having a raffle in which two lucky winners will receive one of two pairs of Disney Park Hopper Tickets. Tickets will be raffled off in sets of two for $5.00 per ticket, 4/$15.00, 6 for $25.00. The auction will end October 31, 2017. To purchase your tickets',
+    description:
+      'NHEG is proud to announce that we are having a raffle in which two lucky winners will receive one of two pairs of Disney Park Hopper Tickets. Tickets will be raffled off in sets of two for $5.00 per ticket, 4/$15.00, 6 for $25.00. The auction will end October 31, 2017. To purchase your tickets',
     canonical: '/nheg-news/disney-park-hopper-tickets-raffle/',
   }),
   title: { absolute: 'Disney Park Hopper Tickets Raffle - New Heights Educational Group, Inc.' },
@@ -17,7 +18,9 @@ export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-6176 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/disney-park-hopper-tickets-raffle') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/disney-park-hopper-tickets-raffle'),
+      }}
     />
   )
 }

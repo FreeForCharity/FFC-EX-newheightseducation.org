@@ -7,17 +7,23 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Welcomes Our New Radio Host Karen Muzzall - New Heights Educational Group, Inc.',
-    description: 'The New Heights Educational Group (NHEG) welcomes Karen Muzzall to the New Heights Educational Group Educational Radio Show team. Muzzall’s show will air weekly on Saturdays at 12 p.m. EST/11 a.m. CST. The first show will air on Saturday, May 20, 2017. The weekly broadcasts will be part of The New Heights Show on Education.',
+    description:
+      'The New Heights Educational Group (NHEG) welcomes Karen Muzzall to the New Heights Educational Group Educational Radio Show team. Muzzall’s show will air weekly on Saturdays at 12 p.m. EST/11 a.m. CST. The first show will air on Saturday, May 20, 2017. The weekly broadcasts will be part of The New Heights Show on Education.',
     canonical: '/nheg-news/nheg-welcomes-radio-host-karen-muzzall/',
   }),
-  title: { absolute: 'NHEG Welcomes Our New Radio Host Karen Muzzall - New Heights Educational Group, Inc.' },
+  title: {
+    absolute:
+      'NHEG Welcomes Our New Radio Host Karen Muzzall - New Heights Educational Group, Inc.',
+  },
 }
 
 export default function Page() {
   return (
     <div
       className="ffc-clone wp-singular post-template-default single single-post postid-5845 single-format-standard wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.3 vc_responsive"
-      dangerouslySetInnerHTML={{ __html: loadCloneContent('nheg-news/nheg-welcomes-radio-host-karen-muzzall') }}
+      dangerouslySetInnerHTML={{
+        __html: loadCloneContent('nheg-news/nheg-welcomes-radio-host-karen-muzzall'),
+      }}
     />
   )
 }
