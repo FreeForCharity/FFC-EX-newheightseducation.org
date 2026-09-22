@@ -12,10 +12,7 @@
       ],
       "numberOfRuns": 3,
       "settings": {
-        "blockedUrlPatterns": [
-          "*.zeffy.com/*",
-          "*.zeffy.org/*"
-        ]
+        "blockedUrlPatterns": ["*.zeffy.com/*", "*.zeffy.org/*"]
       }
     },
     "upload": {
