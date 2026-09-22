@@ -4,13 +4,18 @@
       "staticDistDir": "./out",
       "url": [
         "http://localhost/index.html",
-        "http://localhost/cookie-policy.html",
-        "http://localhost/privacy-policy.html",
-        "http://localhost/terms-of-service.html"
+        "http://localhost/contact-us/index.html",
+        "http://localhost/cart/index.html",
+        "http://localhost/cookie-policy/index.html",
+        "http://localhost/privacy-policy/index.html",
+        "http://localhost/terms-of-service/index.html"
       ],
       "numberOfRuns": 3,
       "settings": {
-        "blockedUrlPatterns": ["*.zeffy.com/*", "*.zeffy.org/*"]
+        "blockedUrlPatterns": [
+          "*.zeffy.com/*",
+          "*.zeffy.org/*"
+        ]
       }
     },
     "upload": {
@@ -19,15 +24,60 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 0.9 }],
-        "categories:accessibility": ["error", { "minScore": 0.98 }],
-        "categories:best-practices": ["warn", { "minScore": 0.96 }],
-        "categories:seo": ["error", { "minScore": 0.98 }],
-        "resource-summary:total:size": ["error", { "maxNumericValue": 3500000 }],
-        "resource-summary:media:size": ["error", { "maxNumericValue": 1000000 }],
-        "resource-summary:script:size": ["warn", { "maxNumericValue": 1200000 }],
-        "resource-summary:image:size": ["warn", { "maxNumericValue": 1000000 }],
-        "resource-summary:font:size": ["warn", { "maxNumericValue": 500000 }]
+        "categories:performance": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 0.98
+          }
+        ],
+        "categories:best-practices": [
+          "warn",
+          {
+            "minScore": 0.96
+          }
+        ],
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 0.98
+          }
+        ],
+        "resource-summary:total:size": [
+          "error",
+          {
+            "maxNumericValue": 3500000
+          }
+        ],
+        "resource-summary:media:size": [
+          "error",
+          {
+            "maxNumericValue": 1000000
+          }
+        ],
+        "resource-summary:script:size": [
+          "warn",
+          {
+            "maxNumericValue": 1200000
+          }
+        ],
+        "resource-summary:image:size": [
+          "warn",
+          {
+            "maxNumericValue": 1000000
+          }
+        ],
+        "resource-summary:font:size": [
+          "warn",
+          {
+            "maxNumericValue": 500000
+          }
+        ]
       }
     }
   }
