@@ -1,0 +1,942 @@
+<style type="text/css">.ffc-clone .acp_wrapper .jcarousel-control-prev {left: -35px; background: #185D2F;color: #ffffff;box-shadow: none; }.ffc-clone .acp_wrapper .jcarousel-control-next {right: -35px; background: #185D2F;color: #ffffff; box-shadow: none; }.ffc-clone .acp_wrapper .jcarousel-control-prev:hover,.ffc-clone .acp_wrapper .jcarousel-control-next:hover { background: #0F1207; color: #ffffff; box-shadow: none;}.ffc-clone .acp_wrapper { clear: both; border-radius: 0px; }.ffc-clone .paging_btns li.nbox a { height: auto !important; } .ffc-clone .paging_btns { list-style: none;  margin: 0 auto!important; padding: 0;  height: auto; text-align: center; } .ffc-clone .loader_container .loader { display: block; width: 100px; height: auto; box-shadow: none;} .ffc-clone .loader_container { position: absolute; display: none; background: rgba(174,174,174,0.7);}                .ffc-clone .button_style a { color: #FFFFFF !important; text-decoration: none !important;display: block; width: 100%; height: 100%; overflow: hidden;} 
+.ffc-clone .button_style { background: #185D2F;margin: 10px 2px 10px 0!important; padding:0px; text-align: center; color: #FFFFFF !important;cursor: pointer;overflow: hidden; display: inline-block;border: 1px solid #cccccc!important;} .ffc-clone .acp_title_left { float: left; width: 100%;}.ffc-clone .acp_content {text-align: justify; clear: both; } .ffc-clone .button_style:hover, .ffc-clone .button_style:hover *:not(.acp_page_number) { background: #0F1207;color: #FFFFFF !important;}.ffc-clone .acp_page_number {float: left; font-size:16px;line-height: 47px;padding: 0px 10px; background-color:#777777;color:#FFFFFF;font-weight:bold;font-family:arial }.ffc-clone .paging_btns li.active {background: #ffffff !important;color: #0F1207 !important;cursor: default;border: 1px solid #cccccc !important; }.ffc-clone .paging_btns li.active a { color: #0F1207 !important; cursor: default;} .ffc-clone .paging_btns li.nbox { width: auto !important; height: auto !important;padding: 3px; } .ffc-clone .acp_title { font-size: 13px;overflow: hidden;box-sizing: initial; max-height:38px; padding:12px; line-height:16px;font-family:arial; } .ffc-clone .button_style:hover, .ffc-clone .button_style:hover *:not(.acp_page_number) { background:inherit;}.ffc-clone .acp_previous_page{ background: url(%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/advanced-content-pagination/assets/img/acp-prev.png) center left no-repeat #185D2F;}.ffc-clone .acp_previous_page:hover{background: url(%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/advanced-content-pagination/assets/img/acp-prev_hover.png) center left no-repeat #0F1207; color: #FFFFFF !important;}.ffc-clone .acp_next_page{background: url(%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/advanced-content-pagination/assets/img/acp-next.png) center right no-repeat #185D2F;}.ffc-clone .acp_next_page:hover{background: url(%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/advanced-content-pagination/assets/img/acp-next_hover.png) center right no-repeat #0F1207;color: #FFFFFF !important;}@media screen and (max-width:420px){.ffc-clone .acp_title{ font-size:12px!important; } .ffc-clone .acp_desc{ font-size:11px!important; }}
+</style>
+<style id="critical-path-css" type="text/css">
+.ffc-clone,.ffc-clone html{width:100%;height:100%;margin:0;padding:0}.ffc-clone .page-preloader{top:0;left:0;z-index:999;position:fixed;height:100%;width:100%;text-align:center}.ffc-clone .preloader-preview-area{animation-delay:-.2s;top:50%;-ms-transform:translateY(100%);transform:translateY(100%);margin-top:10px;max-height:calc(50% - 20px);opacity:1;width:100%;text-align:center;position:absolute}.ffc-clone .preloader-logo{max-width:90%;top:50%;-ms-transform:translateY(-100%);transform:translateY(-100%);margin:-10px auto 0 auto;max-height:calc(50% - 20px);opacity:1;position:relative}.ffc-clone .ball-pulse>div{width:15px;height:15px;border-radius:100%;margin:2px;animation-fill-mode:both;display:inline-block;animation:ball-pulse .75s infinite cubic-bezier(.2,.68,.18,1.08)}.ffc-clone .ball-pulse>div:nth-child(1){animation-delay:-.36s}.ffc-clone .ball-pulse>div:nth-child(2){animation-delay:-.24s}.ffc-clone .ball-pulse>div:nth-child(3){animation-delay:-.12s}@keyframes ball-pulse{0%{transform:scale(1);opacity:1}45%{transform:scale(.1);opacity:.7}80%{transform:scale(1);opacity:1}}.ffc-clone .ball-clip-rotate-pulse{position:relative;-ms-transform:translateY(-15px) translateX(-10px);transform:translateY(-15px) translateX(-10px);display:inline-block}.ffc-clone .ball-clip-rotate-pulse>div{animation-fill-mode:both;position:absolute;top:0;left:0;border-radius:100%}.ffc-clone .ball-clip-rotate-pulse>div:first-child{height:36px;width:36px;top:7px;left:-7px;animation:ball-clip-rotate-pulse-scale 1s 0s cubic-bezier(.09,.57,.49,.9) infinite}.ffc-clone .ball-clip-rotate-pulse>div:last-child{position:absolute;width:50px;height:50px;left:-16px;top:-2px;background:0 0;border:2px solid;animation:ball-clip-rotate-pulse-rotate 1s 0s cubic-bezier(.09,.57,.49,.9) infinite;animation-duration:1s}@keyframes ball-clip-rotate-pulse-rotate{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(.6)}100%{transform:rotate(360deg) scale(1)}}@keyframes ball-clip-rotate-pulse-scale{30%{transform:scale(.3)}100%{transform:scale(1)}}@keyframes square-spin{25%{transform:perspective(100px) rotateX(180deg) rotateY(0)}50%{transform:perspective(100px) rotateX(180deg) rotateY(180deg)}75%{transform:perspective(100px) rotateX(0) rotateY(180deg)}100%{transform:perspective(100px) rotateX(0) rotateY(0)}}.ffc-clone .square-spin{display:inline-block}.ffc-clone .square-spin>div{animation-fill-mode:both;width:50px;height:50px;animation:square-spin 3s 0s cubic-bezier(.09,.57,.49,.9) infinite}.ffc-clone .cube-transition{position:relative;-ms-transform:translate(-25px,-25px);transform:translate(-25px,-25px);display:inline-block}.ffc-clone .cube-transition>div{animation-fill-mode:both;width:15px;height:15px;position:absolute;top:-5px;left:-5px;animation:cube-transition 1.6s 0s infinite ease-in-out}.ffc-clone .cube-transition>div:last-child{animation-delay:-.8s}@keyframes cube-transition{25%{transform:translateX(50px) scale(.5) rotate(-90deg)}50%{transform:translate(50px,50px) rotate(-180deg)}75%{transform:translateY(50px) scale(.5) rotate(-270deg)}100%{transform:rotate(-360deg)}}.ffc-clone .ball-scale>div{border-radius:100%;margin:2px;animation-fill-mode:both;display:inline-block;height:60px;width:60px;animation:ball-scale 1s 0s ease-in-out infinite}@keyframes ball-scale{0%{transform:scale(0)}100%{transform:scale(1);opacity:0}}.ffc-clone .line-scale>div{animation-fill-mode:both;display:inline-block;width:5px;height:50px;border-radius:2px;margin:2px}.ffc-clone .line-scale>div:nth-child(1){animation:line-scale 1s -.5s infinite cubic-bezier(.2,.68,.18,1.08)}.ffc-clone .line-scale>div:nth-child(2){animation:line-scale 1s -.4s infinite cubic-bezier(.2,.68,.18,1.08)}.ffc-clone .line-scale>div:nth-child(3){animation:line-scale 1s -.3s infinite cubic-bezier(.2,.68,.18,1.08)}.ffc-clone .line-scale>div:nth-child(4){animation:line-scale 1s -.2s infinite cubic-bezier(.2,.68,.18,1.08)}.ffc-clone .line-scale>div:nth-child(5){animation:line-scale 1s -.1s infinite cubic-bezier(.2,.68,.18,1.08)}@keyframes line-scale{0%{transform:scaley(1)}50%{transform:scaley(.4)}100%{transform:scaley(1)}}.ffc-clone .ball-scale-multiple{position:relative;-ms-transform:translateY(30px);transform:translateY(30px);display:inline-block}.ffc-clone .ball-scale-multiple>div{border-radius:100%;animation-fill-mode:both;margin:2px;position:absolute;left:-30px;top:0;opacity:0;margin:0;width:50px;height:50px;animation:ball-scale-multiple 1s 0s linear infinite}.ffc-clone .ball-scale-multiple>div:nth-child(2){animation-delay:-.2s}.ffc-clone .ball-scale-multiple>div:nth-child(3){animation-delay:-.2s}@keyframes ball-scale-multiple{0%{transform:scale(0);opacity:0}5%{opacity:1}100%{transform:scale(1);opacity:0}}.ffc-clone .ball-pulse-sync{display:inline-block}.ffc-clone .ball-pulse-sync>div{width:15px;height:15px;border-radius:100%;margin:2px;animation-fill-mode:both;display:inline-block}.ffc-clone .ball-pulse-sync>div:nth-child(1){animation:ball-pulse-sync .6s -.21s infinite ease-in-out}.ffc-clone .ball-pulse-sync>div:nth-child(2){animation:ball-pulse-sync .6s -.14s infinite ease-in-out}.ffc-clone .ball-pulse-sync>div:nth-child(3){animation:ball-pulse-sync .6s -70ms infinite ease-in-out}@keyframes ball-pulse-sync{33%{transform:translateY(10px)}66%{transform:translateY(-10px)}100%{transform:translateY(0)}}.ffc-clone .transparent-circle{display:inline-block;border-top:.5em solid rgba(255,255,255,.2);border-right:.5em solid rgba(255,255,255,.2);border-bottom:.5em solid rgba(255,255,255,.2);border-left:.5em solid #fff;transform:translateZ(0);animation:transparent-circle 1.1s infinite linear;width:50px;height:50px;border-radius:50%}.ffc-clone .transparent-circle:after{border-radius:50%;width:10em;height:10em}@keyframes transparent-circle{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.ffc-clone .ball-spin-fade-loader{position:relative;top:-10px;left:-10px;display:inline-block}.ffc-clone .ball-spin-fade-loader>div{width:15px;height:15px;border-radius:100%;margin:2px;animation-fill-mode:both;position:absolute;animation:ball-spin-fade-loader 1s infinite linear}.ffc-clone .ball-spin-fade-loader>div:nth-child(1){top:25px;left:0;animation-delay:-.84s;-webkit-animation-delay:-.84s}.ffc-clone .ball-spin-fade-loader>div:nth-child(2){top:17.05px;left:17.05px;animation-delay:-.72s;-webkit-animation-delay:-.72s}.ffc-clone .ball-spin-fade-loader>div:nth-child(3){top:0;left:25px;animation-delay:-.6s;-webkit-animation-delay:-.6s}.ffc-clone .ball-spin-fade-loader>div:nth-child(4){top:-17.05px;left:17.05px;animation-delay:-.48s;-webkit-animation-delay:-.48s}.ffc-clone .ball-spin-fade-loader>div:nth-child(5){top:-25px;left:0;animation-delay:-.36s;-webkit-animation-delay:-.36s}.ffc-clone .ball-spin-fade-loader>div:nth-child(6){top:-17.05px;left:-17.05px;animation-delay:-.24s;-webkit-animation-delay:-.24s}.ffc-clone .ball-spin-fade-loader>div:nth-child(7){top:0;left:-25px;animation-delay:-.12s;-webkit-animation-delay:-.12s}.ffc-clone .ball-spin-fade-loader>div:nth-child(8){top:17.05px;left:-17.05px;animation-delay:0s;-webkit-animation-delay:0s}@keyframes ball-spin-fade-loader{50%{opacity:.3;transform:scale(.4)}100%{opacity:1;transform:scale(1)}}		</style>
+<style id="wp-img-auto-sizes-contain-inline-css">
+.ffc-clone img:is([sizes=auto i],.ffc-clone [sizes^="auto,.ffc-clone " i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+.ffc-clone{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){.ffc-clone{--wp-admin-border-width-focus:1.5px}}.ffc-clone .wp-element-button{cursor:pointer}.ffc-clone .has-very-light-gray-background-color{background-color:#eee}.ffc-clone .has-very-dark-gray-background-color{background-color:#313131}.ffc-clone .has-very-light-gray-color{color:#eee}.ffc-clone .has-very-dark-gray-color{color:#313131}.ffc-clone .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}.ffc-clone .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}.ffc-clone .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}.ffc-clone .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}.ffc-clone .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}.ffc-clone .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}.ffc-clone .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.ffc-clone{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.ffc-clone .has-regular-font-size{font-size:1em}.ffc-clone .has-larger-font-size{font-size:2.625em}.ffc-clone .has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.ffc-clone .has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.ffc-clone .has-text-align-center{text-align:center}.ffc-clone .has-text-align-left{text-align:left}.ffc-clone .has-text-align-right{text-align:right}.ffc-clone .has-fit-text{white-space:nowrap!important}.ffc-clone #end-resizable-editor-section{display:none}.ffc-clone .aligncenter{clear:both}.ffc-clone .items-justified-left{justify-content:flex-start}.ffc-clone .items-justified-center{justify-content:center}.ffc-clone .items-justified-right{justify-content:flex-end}.ffc-clone .items-justified-space-between{justify-content:space-between}.ffc-clone .screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.ffc-clone .screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}.ffc-clone html :where(.has-border-color){border-style:solid}.ffc-clone html :where([style^=border-color],.ffc-clone [style*=";border-color"],.ffc-clone [style*="; border-color"]){border-style:solid}.ffc-clone html :where([style^=border-top-color],.ffc-clone [style*=";border-top-color"],.ffc-clone [style*="; border-top-color"]){border-top-style:solid}.ffc-clone html :where([style^=border-right-color],.ffc-clone [style*=";border-right-color"],.ffc-clone [style*="; border-right-color"]){border-right-style:solid}.ffc-clone html :where([style^=border-bottom-color],.ffc-clone [style*=";border-bottom-color"],.ffc-clone [style*="; border-bottom-color"]){border-bottom-style:solid}.ffc-clone html :where([style^=border-left-color],.ffc-clone [style*=";border-left-color"],.ffc-clone [style*="; border-left-color"]){border-left-style:solid}.ffc-clone html :where([style^=border-width],.ffc-clone [style*=";border-width"],.ffc-clone [style*="; border-width"]){border-style:solid}.ffc-clone html :where([style^=border-top-width],.ffc-clone [style*=";border-top-width"],.ffc-clone [style*="; border-top-width"]){border-top-style:solid}.ffc-clone html :where([style^=border-right-width],.ffc-clone [style*=";border-right-width"],.ffc-clone [style*="; border-right-width"]){border-right-style:solid}.ffc-clone html :where([style^=border-bottom-width],.ffc-clone [style*=";border-bottom-width"],.ffc-clone [style*="; border-bottom-width"]){border-bottom-style:solid}.ffc-clone html :where([style^=border-left-width],.ffc-clone [style*=";border-left-width"],.ffc-clone [style*="; border-left-width"]){border-left-style:solid}.ffc-clone html :where(img[class*=wp-image-]){height:auto;max-width:100%}.ffc-clone :where(figure){margin:0 0 1em}.ffc-clone html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){.ffc-clone html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+.ffc-clone /*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.ffc-clone .wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<link rel='stylesheet' id='wc-blocks-style-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css' media='all' />
+<link rel='stylesheet' id='awsm-ead-public-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/cache/wpfc-minified/kyn6boir/9kdck.css' media='all' />
+<link rel="stylesheet" type="text/css" href="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/cache/wpfc-minified/etgtnuhz/p3h3.css" media="all"/>
+<style id="global-styles-inline-css">
+.ffc-clone{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.ffc-clone .wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}.ffc-clone :where(body) { margin: 0; }.ffc-clone :where(.is-layout-flex){gap: 0.5em;}.ffc-clone :where(.is-layout-grid){gap: 0.5em;}.ffc-clone .is-layout-flex{display: flex;}.ffc-clone .is-layout-flex{flex-wrap: wrap;align-items: center;}.ffc-clone .is-layout-flex > :is(*, .ffc-clone div){margin: 0;}.ffc-clone .is-layout-grid{display: grid;}.ffc-clone .is-layout-grid > :is(*, .ffc-clone div){margin: 0;}.ffc-clone{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}.ffc-clone :where(.wp-element-button, .ffc-clone .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.ffc-clone .has-black-color{color: var(--wp--preset--color--black) !important;}.ffc-clone .has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.ffc-clone .has-white-color{color: var(--wp--preset--color--white) !important;}.ffc-clone .has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.ffc-clone .has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.ffc-clone .has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.ffc-clone .has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.ffc-clone .has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.ffc-clone .has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.ffc-clone .has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.ffc-clone .has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.ffc-clone .has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.ffc-clone .has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.ffc-clone .has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.ffc-clone .has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.ffc-clone .has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.ffc-clone .has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.ffc-clone .has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.ffc-clone .has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.ffc-clone .has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.ffc-clone .has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.ffc-clone .has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.ffc-clone .has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.ffc-clone .has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.ffc-clone .has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.ffc-clone .has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.ffc-clone .has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.ffc-clone .has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.ffc-clone .has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.ffc-clone .has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.ffc-clone .has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.ffc-clone .has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.ffc-clone .has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.ffc-clone .has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.ffc-clone .has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.ffc-clone .has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.ffc-clone .has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.ffc-clone .has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.ffc-clone .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.ffc-clone .has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.ffc-clone .has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.ffc-clone .has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.ffc-clone .has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.ffc-clone .has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.ffc-clone .has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.ffc-clone .has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.ffc-clone .has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.ffc-clone .has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.ffc-clone .has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.ffc-clone .has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.ffc-clone .has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.ffc-clone .has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link rel='stylesheet' id='acp-prevnext-css-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/advanced-content-pagination/assets/css/prevnext.min.css' media='all' />
+<link rel='stylesheet' id='google-language-translator-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/google-language-translator/css/style.css' media='' />
+<link rel='stylesheet' id='glt-toolbar-styles-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/google-language-translator/css/toolbar.css' media='' />
+<link rel='stylesheet' id='woocommerce-override-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/plugins/min/woocommerce.css' media='all' />
+<link rel="stylesheet" type="text/css" href="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/cache/wpfc-minified/q96u3d3m/4own0.css" media="all"/>
+<style id="woocommerce-inline-inline-css">
+.ffc-clone .woocommerce form .form-row .required { visibility: visible; }
+/*# sourceURL=woocommerce-inline-inline-css */
+</style>
+<link rel='stylesheet' id='bsearch-style-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/better-search/includes/css/bsearch-styles.min.css' media='all' />
+<link rel='stylesheet' id='brands-styles-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/woocommerce/assets/css/brands.css' media='all' />
+<link rel='stylesheet' id='theme-styles-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/min/full-styles.6.10.2.css' media='all' />
+<link rel="stylesheet" type="text/css" href="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/cache/wpfc-minified/q60oavc0/e7c5x.css" media="all"/>
+<style id="theme-styles-inline-css">
+.ffc-clone #wpadminbar {
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+-webkit-perspective: 1000;
+-ms-perspective: 1000;
+perspective: 1000;
+-webkit-transform: translateZ(0px);
+-ms-transform: translateZ(0px);
+transform: translateZ(0px);
+}
+@media screen and (max-width: 600px) {
+.ffc-clone #wpadminbar {
+position: fixed !important;
+}
+}
+.ffc-clone { background-color:#fff; } .ffc-clone .hb-custom-header #mk-page-introduce, .ffc-clone .mk-header { background-color:#f7f7f7;background-size:cover;-webkit-background-size:cover;-moz-background-size:cover; } .ffc-clone .hb-custom-header > div, .ffc-clone .mk-header-bg { background-color:#185d2f; } .ffc-clone .mk-classic-nav-bg { background-color:#185d2f; } .ffc-clone .master-holder-bg { background-color:#fff; } .ffc-clone #mk-footer { background-color:#185d2f; } .ffc-clone #mk-boxed-layout { -webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0); -moz-box-shadow:0 0 0px rgba(0, 0, 0, 0); box-shadow:0 0 0px rgba(0, 0, 0, 0); } .ffc-clone .mk-news-tab .mk-tabs-tabs .is-active a, .ffc-clone .mk-fancy-title.pattern-style span, .ffc-clone .mk-fancy-title.pattern-style.color-gradient span:after, .ffc-clone .page-bg-color { background-color:#fff; } .ffc-clone .page-title { font-size:20px; color:#4d4d4d; text-transform:uppercase; font-weight:400; letter-spacing:2px; } .ffc-clone .page-subtitle { font-size:14px; line-height:100%; color:#a3a3a3; font-size:14px; text-transform:none; } .ffc-clone .header-style-1 .mk-header-padding-wrapper, .ffc-clone .header-style-2 .mk-header-padding-wrapper, .ffc-clone .header-style-3 .mk-header-padding-wrapper { padding-top:61px; } .ffc-clone .mk-process-steps[max-width~="950px"] ul::before { display:none !important; } .ffc-clone .mk-process-steps[max-width~="950px"] li { margin-bottom:30px !important; width:100% !important; text-align:center; } .ffc-clone .mk-event-countdown-ul[max-width~="750px"] li { width:90%; display:block; margin:0 auto 15px; } .ffc-clone { font-family:Arial, Helvetica, sans-serif } .ffc-clone h1, .ffc-clone h2, .ffc-clone h3, .ffc-clone h4, .ffc-clone h5, .ffc-clone h6, .ffc-clone textarea,.ffc-clone input,.ffc-clone select,.ffc-clone button, .ffc-clone .the-title, .ffc-clone .mk-pricing-table .mk-offer-title, .ffc-clone .mk-pricing-table .mk-pricing-plan, .ffc-clone .mk-pricing-table .mk-pricing-price, .ffc-clone .mk-blog-container .mk-blog-meta .the-title, .ffc-clone .post .blog-single-title, .ffc-clone .mk-blog-hero .content-holder .the-title, .ffc-clone .blog-blockquote-content, .ffc-clone .blog-twitter-content , .ffc-clone .ffc-h1, .ffc-clone .ffc-h2, .ffc-clone .ffc-h3, .ffc-clone .ffc-h4, .ffc-clone .ffc-h5, .ffc-clone .ffc-h6{ font-family:Merriweather } .ffc-clone, .ffc-clone p:not(.form-row):not(.woocommerce-mini-cart__empty-message):not(.woocommerce-mini-cart__total):not(.woocommerce-mini-cart__buttons):not(.mk-product-total-name):not(.woocommerce-result-count), .ffc-clone .woocommerce-customer-details address, .ffc-clone a, .ffc-clone .main-navigation-ul, .ffc-clone .mk-vm-menuwrapper, .ffc-clone #mk-footer-navigation ul li a, .ffc-clone .mk-blog-container .mk-blog-meta .the-excerpt p, .ffc-clone .mk-single-content p { font-family:Oswald } @font-face { font-family:'star'; src:url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.eot'); src:url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.eot') format('embedded-opentype'), url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.woff') format('woff'), url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.ttf') format('truetype'), url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.svg') format('svg'); font-weight:normal; font-style:normal; } @font-face { font-family:'WooCommerce'; src:url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.eot'); src:url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.eot') format('embedded-opentype'), url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.woff') format('woff'), url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.ttf') format('truetype'), url('%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.svg') format('svg'); font-weight:normal; font-style:normal; } .ffc-clone .nheg-radio p, .ffc-clone .support-nheg p{color:#fff;} .ffc-clone #support-nheg-home .vc_general.vc_cta3.vc_cta3-style-classic, .ffc-clone .vc_general.vc_cta3.vc_cta3-style-custom {border:0px} .ffc-clone #sub-footer a {color:#fff;text-decoration:underline;} .ffc-clone .footer-wrapper .widgettitle,.ffc-clone .side-dash-top-widgets {text-align:center;} .ffc-clone .footer-nav a {font-size:24px;} .ffc-clone .partner-call-to-action p{color:#fff;} .ffc-clone .custom_toggle .mk-toggle-title {background:#185d2f !important ; color:#fff !important; font-size:24px !important; } .ffc-clone .nheg-blog p {color:#fff;padding-top:20px;} .ffc-clone #media_audio-2, .ffc-clone #media_image-4, .ffc-clone #search-1, .ffc-clone #categories-1, .ffc-clone #categories-1 a, .ffc-clone #categories-1 ul li, .ffc-clone #recent-posts-1, .ffc-clone #recent-posts-1 a, .ffc-clone #recent-posts-1 ul li, .ffc-clone #recent-comments-1, .ffc-clone #recent-comments-1 a, .ffc-clone #recent-comments-1 ul li, .ffc-clone #twitter-2, .ffc-clone #twitter-2 a, .ffc-clone #twitter-2 ul li {color:#0f1207;} .ffc-clone .contact-nav p {color:#fff;} .ffc-clone .pvsa-table {font-size:16px;} .ffc-clone .tg {border-collapse:collapse;border-spacing:0;} .ffc-clone .tg td {padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .ffc-clone .tg th {font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .ffc-clone .tg .tg-mpqh {font-weight:bold;background-color:#002868;color:#ffffff;text-align:center;vertical-align:top} .ffc-clone .tg .tg-p94l {font-weight:bold;background-color:#002868;color:#ffffff;vertical-align:top} .ffc-clone .tg .tg-o4ll {font-weight:bold;background-color:#ffffff;vertical-align:top} .ffc-clone .tg .tg-i81m {background-color:#ffffff;text-align:center;vertical-align:top} .ffc-clone code, .ffc-clone pre {line-height:5px} .ffc-clone .mk-css-icon-close div, .ffc-clone .mk-css-icon-menu div { background-color:#fff !important; }
+/*# sourceURL=theme-styles-inline-css */
+</style>
+<link rel='stylesheet' id='mkhb-render-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/header-builder/includes/assets/css/mkhb-render.css' media='all' />
+<link rel='stylesheet' id='mkhb-row-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/header-builder/includes/assets/css/mkhb-row.css' media='all' />
+<link rel='stylesheet' id='mkhb-column-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/themes/jupiter/header-builder/includes/assets/css/mkhb-column.css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/js_composer_theme/assets/css/js_composer.min.css' media='all' />
+<link rel='stylesheet' id='jupiter-donut-shortcodes-css' href='%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/plugins/jupiter-donut/assets/css/shortcodes-styles.min.css' media='all' />
+<link rel="stylesheet" type="text/css" href="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/cache/wpfc-minified/buqhwch/7rex.css" media="all"/>
+<style type="text/css" media="screen">
+.ffc-clone .g { margin:0px; padding:0px; overflow:hidden; line-height:1; zoom:1; }
+.ffc-clone .g img { height:auto; }
+.ffc-clone .g-col { position:relative; float:left; }
+.ffc-clone .g-col:first-child { margin-left: 0; }
+.ffc-clone .g-col:last-child { margin-right: 0; }
+.ffc-clone .g-1 { min-width:0px; max-width:750px; margin: 0 auto; }
+.ffc-clone .b-1 { margin:0px 0px 0px 0px; }
+@media only screen and (max-width: 480px) {
+.ffc-clone .g-col, .ffc-clone .g-dyn, .ffc-clone .g-single { width:100%; margin-left:0; margin-right:0; }
+}
+</style>
+<style>.ffc-clone #google_language_translator a{display:none!important;}.ffc-clone div.skiptranslate.goog-te-gadget{display:inline!important;}.ffc-clone .goog-te-gadget{color:transparent!important;}.ffc-clone .goog-te-gadget{font-size:0px!important;}.ffc-clone .goog-branding{display:none;}.ffc-clone .goog-tooltip{display: none!important;}.ffc-clone .goog-tooltip:hover{display: none!important;}.ffc-clone .goog-text-highlight{background-color:transparent!important;border:none!important;box-shadow:none!important;}.ffc-clone #google_language_translator select.goog-te-combo{color:#32373c;}.ffc-clone div.skiptranslate{display:none!important;}.ffc-clone{top:0px!important;}.ffc-clone #goog-gt-{display:none!important;}.ffc-clone font font{background-color:transparent!important;box-shadow:none!important;position:initial!important;}.ffc-clone #glt-translate-trigger{left:20px;right:auto;}.ffc-clone #glt-translate-trigger > span{color:#ffffff;}.ffc-clone #glt-translate-trigger{background:#f89406;}.ffc-clone .goog-te-gadget .goog-te-combo{width:100%;}</style>
+<style>.ffc-clone .woocommerce-product-gallery{ opacity: 1 !important; }</style>
+<style type="text/css" data-type="vc_shortcodes-default-css">.ffc-clone .vc_do_custom_heading{margin-bottom:0.625rem;margin-top:0;}</style>
+<style type="text/css" data-type="vc_shortcodes-custom-css">.ffc-clone .vc_custom_1479859226467{padding-right: 20px !important;padding-left: 20px !important;}.ffc-clone .vc_custom_1526009144395{padding-right: 0px !important;padding-left: 0px !important;}.ffc-clone .vc_custom_1618887551204{margin-bottom: 0px !important;}</style>
+<style> .ffc-clone .wpb_animate_when_almost_visible { opacity: 1; }</style>
+
+<!-- Target for scroll anchors to achieve native browser bahaviour + possible enhancements like smooth scrolling -->
+<div id="top-of-page"></div>
+<div id="mk-boxed-layout">
+<div id="mk-theme-container" >
+<header data-height='60'
+data-sticky-height='55'
+data-responsive-height='90'
+data-transparent-skin=''
+data-header-style='1'
+data-sticky-style='fixed'
+data-sticky-offset='header' id="mk-header-1" class="mk-header header-style-1 header-align-left  toolbar-false menu-hover-4 sticky-style-fixed mk-background-stretch full-header " role="banner" itemscope="itemscope" itemtype="https://schema.org/WPHeader" >
+<div class="mk-header-holder">
+<div class="mk-header-inner add-header-height">
+<div class="mk-header-bg "></div>
+<div class="mk-header-nav-container one-row-style menu-hover-style-4" role="navigation" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" >
+<nav class="mk-main-navigation js-main-nav"><ul id="menu-main-navigation" class="main-navigation-ul"><li id="menu-item-10210" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="http://school.newheightseducation.org/">Learning Annex</a></li>
+<li id="menu-item-10183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/">Home</a></li>
+<li id="menu-item-10193" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/">Who We Are</a>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10169" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/awards-and-achievements/">Awards</a></li>
+<li id="menu-item-10167" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/?page_id=203">Advertise With NHEG</a></li>
+<li id="menu-item-10168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/affiliates-partners/">Affiliates &#038; Partners</a><i class="menu-sub-level-arrow"><svg  class="mk-svg-icon" data-name="mk-icon-angle-right" data-cacheid="icon-6a955b2c99fdd" style=" height:16px; width: 5.7142857142857px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1792"><path d="M595 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></i>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10176" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/support-nheg/donations-nheg-has-received/">Grants and Donations</a></li>
+</ul>
+</li>
+<li id="menu-item-10171" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-68 current_page_item"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/letters-of-support/">Letters of Support</a></li>
+<li id="menu-item-10173" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-team/">Our Team</a></li>
+<li id="menu-item-10174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-press/">Press</a><i class="menu-sub-level-arrow"><svg  class="mk-svg-icon" data-name="mk-icon-angle-right" data-cacheid="icon-6a955b2c9a3fb" style=" height:16px; width: 5.7142857142857px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1792"><path d="M595 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></i>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10178" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-press/images-and-photography/">Images and Photography Credits</a></li>
+</ul>
+</li>
+<li id="menu-item-13641" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/new-heights-educatioal-group-services/">Services</a></li>
+</ul>
+</li>
+<li id="menu-item-10163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/">Programs</a>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10211" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/support-nheg/fundraising-for-nheg/">Fundraising for NHEG</a></li>
+<li id="menu-item-10164" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/home-school-guidance-programs/">Home School Guidance Programs</a></li>
+<li id="menu-item-12487" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://nheg.memberhub.com/store?category=NHEG%20Program%20and%20Service%20Fees">Program &#038; Service Fees</a></li>
+<li id="menu-item-10166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tutoring-program/">NHEG Tutoring Program</a><i class="menu-sub-level-arrow"><svg  class="mk-svg-icon" data-name="mk-icon-angle-right" data-cacheid="icon-6a955b2c9a995" style=" height:16px; width: 5.7142857142857px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1792"><path d="M595 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></i>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10203" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tutoring-program/nheg-tutoring-request-form/">Tutoring Request Form</a></li>
+<li id="menu-item-10206" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://nheg.tutorfly.org/">Tutoring Login</a></li>
+</ul>
+</li>
+<li id="menu-item-10199" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/sponsor-a-student/">Sponsor A Student</a></li>
+<li id="menu-item-10200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tracking-student-growth/">Tracking Student Growth</a><i class="menu-sub-level-arrow"><svg  class="mk-svg-icon" data-name="mk-icon-angle-right" data-cacheid="icon-6a955b2c9ad2c" style=" height:16px; width: 5.7142857142857px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1792"><path d="M595 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></i>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10179" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tracking-student-growth/nheg-assessment/">NHEG Assessment</a></li>
+</ul>
+</li>
+<li id="menu-item-10201" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-travel/">Travel Program</a></li>
+<li id="menu-item-10202" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/virtual-reading-program/">Virtual Reading Program</a></li>
+</ul>
+</li>
+<li id="menu-item-10189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/volunteer-with-nheg/">Volunteer</a>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10217" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/volunteer-with-nheg/nheg-volunteer-opportunities/">Volunteer Opportunities</a></li>
+<li id="menu-item-10191" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/volunteer-with-nheg/volunteer-form/">Volunteer Form</a></li>
+</ul>
+</li>
+<li id="menu-item-10144" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/">Events</a>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10145" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/national-school-choice-week/">National School Choice Week</a></li>
+<li id="menu-item-10146" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/nheg-enrichment-day/">NHEG Enrichment Day</a></li>
+<li id="menu-item-10147" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/nheg-home-charter-school-graduation/">NHEG Home/Charter School Graduation</a></li>
+<li id="menu-item-10148" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/prom/">Prom</a></li>
+<li id="menu-item-10197" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/recognition-day/">Recognition Day</a></li>
+<li id="menu-item-10198" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/school-bag-give-away/">School Bag Giveaway</a></li>
+</ul>
+</li>
+<li id="menu-item-10208" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5">Support NHEG</a></li>
+<li id="menu-item-10207" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="https://radio.newheightseducation.org/">Radio Show</a></li>
+<li id="menu-item-10135" class="menu-item menu-item-type-post_type menu-item-object-page no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/contact-us/">Contact Us</a></li>
+<li id="menu-item-12523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-store/">NHEG Store</a>
+<ul style="" class="sub-menu ">
+<li id="menu-item-12505" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/my-account/">My account</a></li>
+<li id="menu-item-12506" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/cart/">Cart</a></li>
+</ul>
+</li>
+<li id="menu-item-13244" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="https://publications.newheightseducation.org/">NHEG publications</a>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-books/">Books</a><i class="menu-sub-level-arrow"><svg  class="mk-svg-icon" data-name="mk-icon-angle-right" data-cacheid="icon-6a955b2c9ba3c" style=" height:16px; width: 5.7142857142857px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1792"><path d="M595 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></i>
+<ul style="" class="sub-menu ">
+<li id="menu-item-10182" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-books/one-nonprofits-journey-to-success/">One Nonprofit’s Journey to Success</a></li>
+<li id="menu-item-10204" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-books/unraveling-reading/">Unraveling Reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-10133" class="menu-item menu-item-type-post_type menu-item-object-page no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-blog/">Blog</a></li>
+</ul></nav>
+<div class="main-nav-side-search">
+<a class="mk-search-trigger add-header-height mk-fullscreen-trigger" href="#"><i class="mk-svg-icon-wrapper"><svg  class="mk-svg-icon" data-name="mk-icon-search" data-cacheid="icon-6a955b2c9bf45" style=" height:16px; width: 14.857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1664 1792"><path d="M1152 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg></i></a>
+</div>
+<div class="shopping-cart-header add-header-height">
+<a class="mk-shoping-cart-link" href="%%BASE%%/cart/">
+<svg  class="mk-svg-icon" data-name="mk-moon-cart-2" data-cacheid="icon-6a955b2c9c640" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M423.609 288c17.6 0 35.956-13.846 40.791-30.769l46.418-162.463c4.835-16.922-5.609-30.768-23.209-30.768h-327.609c0-35.346-28.654-64-64-64h-96v64h96v272c0 26.51 21.49 48 48 48h304c17.673 0 32-14.327 32-32s-14.327-32-32-32h-288v-32h263.609zm-263.609-160h289.403l-27.429 96h-261.974v-96zm32 344c0 22-18 40-40 40h-16c-22 0-40-18-40-40v-16c0-22 18-40 40-40h16c22 0 40 18 40 40v16zm288 0c0 22-18 40-40 40h-16c-22 0-40-18-40-40v-16c0-22 18-40 40-40h16c22 0 40 18 40 40v16z"/></svg>		<span class="mk-header-cart-count">0</span>
+</a>
+<div class="mk-shopping-cart-box">
+<div class="widget woocommerce widget_shopping_cart"><h1 class="widgettitle ffc-h2">Cart</h1><div class="widget_shopping_cart_content"></div></div>		<div class="clearboth"></div>
+</div>
+</div>
+</div>
+<div class="mk-nav-responsive-link">
+<div class="mk-css-icon-menu">
+<div class="mk-css-icon-menu-line-1"></div>
+<div class="mk-css-icon-menu-line-2"></div>
+<div class="mk-css-icon-menu-line-3"></div>
+</div>
+</div>	<div class=" header-logo fit-logo-img add-header-height logo-is-responsive logo-has-sticky">
+<a href="%%BASE%%/" title="New Heights Educational Group, Inc.">
+<img class="mk-desktop-logo dark-logo "
+title="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+alt="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2018/03/nheg-tree-logo-white.png" />
+<img class="mk-desktop-logo light-logo "
+title="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+alt="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2018/03/nheg-tree-logo-white.png" />
+<img class="mk-resposnive-logo "
+title="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+alt="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2018/03/nheg-tree-logo-white.png" />
+<img class="mk-sticky-logo "
+title="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+alt="The New Heights Educational Group promotes literacy for children and adults by offering a range of educational support services."
+src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2018/03/nheg-tree-logo-white.png" />
+</a>
+</div>
+<div class="mk-header-right">
+</div>
+</div>
+<div class="mk-responsive-wrap">
+<nav class="menu-main-navigation-container"><ul id="menu-main-navigation-1" class="mk-responsive-nav"><li id="responsive-menu-item-10210" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="http://school.newheightseducation.org/">Learning Annex</a></li>
+<li id="responsive-menu-item-10183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/">Home</a></li>
+<li id="responsive-menu-item-10193" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/">Who We Are</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca0f90" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10169" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/awards-and-achievements/">Awards</a></li>
+<li id="responsive-menu-item-10167" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/?page_id=203">Advertise With NHEG</a></li>
+<li id="responsive-menu-item-10168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/affiliates-partners/">Affiliates &#038; Partners</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca14f2" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10176" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/support-nheg/donations-nheg-has-received/">Grants and Donations</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10171" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-68 current_page_item"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/letters-of-support/">Letters of Support</a></li>
+<li id="responsive-menu-item-10173" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-team/">Our Team</a></li>
+<li id="responsive-menu-item-10174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-press/">Press</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca1ace" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10178" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-press/images-and-photography/">Images and Photography Credits</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-13641" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/new-heights-educatioal-group-services/">Services</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/">Programs</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca2020" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10211" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/support-nheg/fundraising-for-nheg/">Fundraising for NHEG</a></li>
+<li id="responsive-menu-item-10164" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/home-school-guidance-programs/">Home School Guidance Programs</a></li>
+<li id="responsive-menu-item-12487" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://nheg.memberhub.com/store?category=NHEG%20Program%20and%20Service%20Fees">Program &#038; Service Fees</a></li>
+<li id="responsive-menu-item-10166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tutoring-program/">NHEG Tutoring Program</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca2617" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10203" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tutoring-program/nheg-tutoring-request-form/">Tutoring Request Form</a></li>
+<li id="responsive-menu-item-10206" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://nheg.tutorfly.org/">Tutoring Login</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10199" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/sponsor-a-student/">Sponsor A Student</a></li>
+<li id="responsive-menu-item-10200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tracking-student-growth/">Tracking Student Growth</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca2bc9" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10179" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-tracking-student-growth/nheg-assessment/">NHEG Assessment</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10201" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/nheg-travel/">Travel Program</a></li>
+<li id="responsive-menu-item-10202" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-educational-programs/virtual-reading-program/">Virtual Reading Program</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/volunteer-with-nheg/">Volunteer</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca31e9" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10217" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/volunteer-with-nheg/nheg-volunteer-opportunities/">Volunteer Opportunities</a></li>
+<li id="responsive-menu-item-10191" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/volunteer-with-nheg/volunteer-form/">Volunteer Form</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10144" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/">Events</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca370a" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10145" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/national-school-choice-week/">National School Choice Week</a></li>
+<li id="responsive-menu-item-10146" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/nheg-enrichment-day/">NHEG Enrichment Day</a></li>
+<li id="responsive-menu-item-10147" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/nheg-home-charter-school-graduation/">NHEG Home/Charter School Graduation</a></li>
+<li id="responsive-menu-item-10148" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/prom/">Prom</a></li>
+<li id="responsive-menu-item-10197" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/recognition-day/">Recognition Day</a></li>
+<li id="responsive-menu-item-10198" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/events/school-bag-give-away/">School Bag Giveaway</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-10208" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5">Support NHEG</a></li>
+<li id="responsive-menu-item-10207" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://radio.newheightseducation.org/">Radio Show</a></li>
+<li id="responsive-menu-item-10135" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/contact-us/">Contact Us</a></li>
+<li id="responsive-menu-item-12523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-store/">NHEG Store</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca434b" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-12505" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/my-account/">My account</a></li>
+<li id="responsive-menu-item-12506" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/cart/">Cart</a></li>
+</ul>
+</li>
+<li id="responsive-menu-item-13244" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="https://publications.newheightseducation.org/">NHEG publications</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca48a2" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-books/">Books</a><span class="mk-nav-arrow mk-nav-sub-closed"><svg  class="mk-svg-icon" data-name="mk-moon-arrow-down" data-cacheid="icon-6a955b2ca4bb1" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 192l-96-96-160 160-160-160-96 96 256 255.999z"/></svg></span>
+<ul class="sub-menu ">
+<li id="responsive-menu-item-10182" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-books/one-nonprofits-journey-to-success/">One Nonprofit’s Journey to Success</a></li>
+<li id="responsive-menu-item-10204" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/who-we-are/nheg-books/unraveling-reading/">Unraveling Reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="responsive-menu-item-10133" class="menu-item menu-item-type-post_type menu-item-object-page"><a class="menu-item-link js-smooth-scroll"  href="%%BASE%%/nheg-blog/">Blog</a></li>
+</ul></nav>
+<div class="ffc-contact-fallback" style="border:1px solid #ccc;border-radius:6px;padding:1rem;margin:1rem 0"><p style="margin:0 0 .5rem">This form has moved to email. We read every message.</p><p style="margin:0"><a href="mailto:Info@NewHeightsEducation.org?subject=Website%20enquiry%20from%20newheightseducation.org">Info@NewHeightsEducation.org</a></p></div>
+</div>
+</div>
+<div class="mk-header-padding-wrapper"></div>
+</header>
+<div id="theme-page" class="master-holder  clearfix" itemscope="itemscope" itemtype="https://schema.org/Blog" >
+<div class="master-holder-bg-holder">
+<div id="theme-page-bg" class="master-holder-bg js-el"  ></div>
+</div>
+<div class="mk-main-wrapper-holder">
+<div id="mk-page-id-68" class="theme-page-wrapper mk-main-wrapper mk-grid full-layout no-padding">
+<div class="theme-content no-padding" itemprop="mainEntityOfPage">
+<div class="wpb-content-wrapper">
+<div  data-mk-full-width="true" data-mk-full-width-init="false" data-mk-stretch-content="true" class="wpb_row vc_row vc_row-fluid jupiter-donut- mk-fullwidth-true  attched-false    vc_custom_1479859226467  js-master-row  mk-full-content-true">
+<div class="vc_col-sm-12 wpb_column column_container  jupiter-donut- _ jupiter-donut-height-full">
+<h2 style="text-align: center" class="vc_custom_heading vc_do_custom_heading ffc-h1" >Letters of Support for New Heights Educational Group</h2><div class="vc_separator wpb_content_element vc_separator_align_center vc_sep_width_100 vc_sep_pos_align_center vc_separator_no_text vc_sep_color_grey wpb_content_element  wpb_content_element" ><span class="vc_sep_holder vc_sep_holder_l"><span class="vc_sep_line"></span></span><span class="vc_sep_holder vc_sep_holder_r"><span class="vc_sep_line"></span></span>
+</div>	<div class=" vc_custom_1618887551204">
+<div id="text-block-3" class="mk-text-block  jupiter-donut- ">
+<p>These letters of support and appreciation are from parents, teachers and students thanking us for the work that we do for communities in Ohio and beyond. It is our pleasure to post these letters and comments to show the impact we have had on the lives of people who utilized NHEG&#8217;s services.</p>
+<p style="text-align: center;"><strong>Click on the names below to read the letters.</strong></p>
+<div class="clearboth"></div>
+</div>
+</div>
+<div class="vc_empty_space"   style="height: 20px"><span class="vc_empty_space_inner"></span></div></div>
+</div>
+<div class="vc_row-full-width vc_clearfix"></div>
+<div  data-mk-full-width="true" data-mk-full-width-init="false" data-mk-stretch-content="true" class="wpb_row vc_row vc_row-fluid jupiter-donut- mk-fullwidth-true  attched-false letters   vc_custom_1526009144395  js-master-row  mk-full-content-true">
+<div class="vc_col-sm-12 wpb_column column_container  jupiter-donut- _ jupiter-donut-height-full">
+<div id="mk-toggle-5" class="mk-toggle simple-style  jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cac0fa" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>					</span>
+<div class="mk-toggle-pane">
+</div>
+</div>
+<div id="mk-toggle-6" class="mk-toggle simple-style  jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cac4f3" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>					</span>
+<div class="mk-toggle-pane">
+</div>
+</div>
+<div id="mk-toggle-7" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cac97a" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Danielle Andersen		</span>
+<div class="mk-toggle-pane">
+<p>Dear Ms. Clark,</p>
+<p>On behalf of the Fort Wayne Civic Theatre I would like to thank you and New Heights Educational Group, Inc. for 19 years of coordination and partnership with our In The Wings Arts In Education Program. It is community partners like you who enable us to bring the joy of theater and the arts to the lives of youth who may not otherwise have the opportunity to experience it.</p>
+<p>We look forward to many more years of partnership with your organization.</p>
+<p>Sincerely,</p>
+<p>Danielle Andersen</p>
+</div>
+</div>
+<div id="mk-toggle-8" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cacda5" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Marina Klimi		</span>
+<div class="mk-toggle-pane">
+<p>March 14, 2023</p>
+<p>Greece</p>
+<p>This is intended as a reference to Pamela Clark. I first met Pamela in 2016 and started volunteering with her organization NHEG. During all this time, Pamela has demonstrated exceptional professionalism and dedication to her cause.</p>
+<p>Pamela&#8217;s most important competency is giving her colleagues the tools to develop. Pamela has a solid work ethic and an unwavering commitment to achieving the highest standards of excellence in her work. Her attention to detail and her ability to work well under pressure were decisive for the success of many projects.</p>
+<p>She has demonstrated an ability to quickly adapt to changing circumstances, and her exceptional problem-solving skills have enabled her to identify and solve complex problems with ease.</p>
+<p>In addition to her technical skills, she is a great communicator and team player. She works very collaboratively and is able to work effectively with colleagues from different departments to achieve common goals. Her positive attitude and willingness to surpass expectations made her a highly respected and appreciated member of our team.</p>
+<p>At this point, I have to thank Pamela for teaching me so much and for allowing me to flourish and develop my professional skills. I wish all employers had the same spirit and professional qualities that Pamela has.</p>
+<p>I will always hold on to the years I worked with Pamela as a valuable asset.</p>
+<p>Sincerely,</p>
+<p>Marina Klimi</p>
+<p>Graphic Designer</p>
+</div>
+</div>
+<div id="mk-toggle-9" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cad111" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Heather Ruggiero		</span>
+<div class="mk-toggle-pane">
+<p>For nine months I volunteered with New Heights, where I monitored tutoring sessions, made online course materials and worked as a one-on-one tutor. Each role provides satisfaction of its own kind, because all volunteers support a meaningful mission.</p>
+<p>When I first chose to volunteer at New Heights, I had no idea exactly how rewarding the experience would be. What gratification can be compared to the possibility of making a lasting, positive impact on another person’s life? Helping students learn, overcome struggles and watching them emerge with new skills and confidence in their abilities is a powerfully fulfilling experience.</p>
+<p>The rewards are far greater than sipping a hot cocoa on a cold winter day, watching a highly anticipated movie for the first time or walking through the park when all the autumn leaves have exploded into brightly colored hues.</p>
+<p>With Pamela Clark’s leadership, the nonprofit is always growing and improving. She is forward-thinking, considerate and shows that she appreciates individuals who volunteer their time to the organization. Volunteers are listened to and regularly communicated with, so they always feel connected to the group. Although volunteering usually implies no compensation, it is not without its paybacks.</p>
+<p>While tutoring, helping a student also taught me how to be a better teacher. For me, volunteering has been an even greater educational experience than most of the personal and professional development courses I have taken. Volunteering has been time well spent. It’s no surprise that a growing body of research supports that volunteering yields both physical and mental health benefits. This is also true to my personal experience. However, the quality of the organization a person volunteers at is also of importance.</p>
+<p>Over the years, I have been a volunteer with four different organizations. My best experience has been with New Heights Educational Group. New Heights Educational Group is a nonprofit of the highest caliber.</p>
+<p>Sincerely,</p>
+<p>Heather Ruggiero</p>
+</div>
+</div>
+<div id="mk-toggle-10" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cad468" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			One Student’s Journey By Susan Zartman, Math Tutor		</span>
+<div class="mk-toggle-pane">
+<p>I began tutoring sessions with my student* in February 2011, when she and I identified her challenging areas as – the metric system, fractions and percentages. We have worked methodically over the past year to improve her understanding, and what follows is just a brief glimpse of her amazing academic journey.</p>
+<p>We started with the metric system. First, she began to understand the importance of prefixes, then she converted English measurements to metric and back again. Fractions came next. In order to add and subtract, she learned to covert whole numbers into fractions and find the lowest common multiple to make denominators equal. We progressed to multiplying and dividing fractions, converting fractions into decimals and applying direct and inverse proportions to maps and scales.</p>
+<p>She was ready to tackle ratios and percentages in May. Soon, she could find percentages and express ratios; calculate increases and decreases of set values; and find mean, mode, and medium.</p>
+<p>Pre-Algebra began in August 2011, only six months after our first days of tutoring. She had increased her calculation speed drastically, and she was now learning basic algebra concepts such as integers, distributive properties, simplifying algebraic expressions and solving equations through basic operations (adding, subtracting, multiplying and dividing).</p>
+<p>A new year (2012) rang in a new topic: Algebra. She mastered simple and longer equations, as well as negative numbers. We then moved on to “x” as a variable. We combined multiple “x”, freed the trapped “x”, solved fractions with “x” on top and bottom and solved for “x” on both sides of the equation.</p>
+<p>We recently completed chapters on roots and powers, and now we’re working on second-degree equations! During our year together, she has progressed through two grade levels in math. Though she began as a B student, it didn’t take her long to excel, become and stay an &#8220;A&#8221; student.</p>
+<p>I’m amazed at her determination and accomplishments!</p>
+<p>*student wishes to remain anonymous</p>
+</div>
+</div>
+<div id="mk-toggle-11" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cad7c4" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Mary Ann Mitchell Hurst		</span>
+<div class="mk-toggle-pane">
+<p>Dear Pamela Clark,</p>
+<p>I have been aware of and am amazed by you and your family’s tireless self-sacrificing efforts to reach children and adults struggling with personal educational issues. You have often forwarded interesting enrichment opportunities to my children and me. I was a member of New Heights for four years until I decided to put my youngest into the local high school. She is so involved there, and my finances are so tight this year that I chose to not renew my $65 family membership. However, I continue to make my garage available to New Heights as a library location because I believe in what you are doing.</p>
+<p>I am equally impressed with how you have reached out to professionals and agencies in the community trying to build collaboration with such agencies as the Defiance Area Foundation, the Experience Works program and Four County Family Center, while also reaching out to parents through advertised meetings, etc.</p>
+<p>It is impossible for any one agency to meet all the special needs of area student/family populations, whether those students are homeschooled, enrolled online in a charter school or attending classes in actual school building classrooms. As a substitute teacher in the public and parochial classrooms in Northwest Ohio, I see many students and families who could benefit from your services if they were more easily accessible with more people available to provide your agency’s services in a central location other than a private home.</p>
+<p>I personally like being able to build bridges for New Heights while working in the local schools, as well as working to improve understanding of and communication between people working within different educational arenas. While previously involved in home school associations in this geographic area, I often saw the need for more positive attitudes between educators of different philosophies and domains and the blending of resources and approaches.</p>
+<p>New Heights is an organization that can make inroads in this endeavor if there are more people available to carry out the vision.</p>
+<p>Although you have tapped many volunteer resources locally and nationally through the internet, funding of tutors and office space would definitely make it easier to provide a concrete image and services that could be promoted publicly. Increased funding would also make it easier to provide online teaching opportunities and online tutoring opportunities. Money would be available to pay teachers who are willing to contribute to New Heights’ work in that way but may not be able to afford doing it for free.</p>
+<p>You have great vision. I can only hope that doors open for New Heights financially so that you can truly have the funds to locate New Heights in its own office with staff to help you reach the many people who could benefit from the multitude of services you are trying to offer as one person. There are so many directions New Heights could expand, one direction at a time, if there were funds available to even provide adequate service in one area that would help raise money that could open up another area of funded service. I continue to hope and pray for your efforts at grant searching and writing to be blessed and more fruitful.</p>
+<p>Sincerely,</p>
+<p>Mary Ann Mitchell Hurst</p>
+</div>
+</div>
+<div id="mk-toggle-12" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cadb73" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Dawn L.		</span>
+<div class="mk-toggle-pane">
+<p>New Heights is a great group with a wealth of information, books in their library, helpful hints, a large website and caring staff full of confident-building comments to help make the decisions that is right for each family.</p>
+<p>When we were looking for a group in our haste to get removed from public school due to medical issues, New Heights was there with open arms helping us on our way with kind words, help with paperwork and a feeling that we can do this ourselves and get the results we were looking for.</p>
+<p>Dawn L</p>
+</div>
+</div>
+<div id="mk-toggle-13" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cadec4" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Christina W.		</span>
+<div class="mk-toggle-pane">
+<p>September 5, 2009</p>
+<p>To whom it may concern:</p>
+<p>My name is Christina L. West. I am a parent of a disabled child with learning disabilities. I am also a proud member of the New Heights Educational Group stemming from my son’s particular circumstances, in that his education is currently being provided by the Ohio Department of Education Autism Scholarship Program, an individualized education program that brings together a wide range of educators, therapists, physicians, and community services to meet the needs of an autistic student. New Heights Educational Group helps me to successfully assemble those together. It is also New Heights Educational Group’s unique specialties and their array of information and services that enables me as a parent to provide not only for my child but myself to maintain that quality of education, special services and care.</p>
+<p>It would behoove other organizations and government agencies to take a closer look at News Heights Educational Group’s unyielding commitment to its members, the outreach that they so often donate to the community, as an example of sheer will and true charity to meet the needs of others.</p>
+<p>For my family and to this community New Heights Educational Group is undoubtedly a vital asset to us all.</p>
+<p>Thank you.</p>
+<p>Most Sincerely,</p>
+<p>Christina W.</p>
+</div>
+</div>
+<div id="mk-toggle-14" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cae21b" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Deanne J.		</span>
+<div class="mk-toggle-pane">
+<p>New Heights has helped me a lot with homeschooling.</p>
+<p>Sincerely,</p>
+<p>Deanne J</p>
+</div>
+</div>
+<div id="mk-toggle-15" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cae55b" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Lisa C.		</span>
+<div class="mk-toggle-pane">
+<p>To whom it may concern:</p>
+<p>Sept. 6, 2009</p>
+<p>My name is Lisa and I would like to tell you what the New Heights Educational Group has done for me. I am a mother of two children. My oldest is 16 and is in our local public school. She is doing very well there. However my son, who is 13, is attending an online charter school. He had been struggling for several years prior to this.</p>
+<p>When I ran across the New Heights Educational Group’s website I was amazed at the information it had to offer. I contacted Pamela Clark and set up a time to meet her. I told her my son’s story and she was able to give me all the information and support that I needed. I have seen a huge change in my son in regards to his schoolwork.  He is becoming more independent in his studies.</p>
+<p>We enjoy all that New Heights has to offer. We go on field trips, have enrichment classes, tutors to help our kids and many activities throughout the year. It is a very active and growing educational group. I do not know of another group near me that offers this to all families regardless of school choice. Since I have children in public and charter schools, most places refuse to help. Pamela Clark is quite knowledgeable and very passionate when it comes to anything dealing with kids.</p>
+<p>We are blessed to have come across this group and hope that it will continue to grow and thrive.</p>
+<p>Sincerely,</p>
+<p>Lisa C.</p>
+</div>
+</div>
+<div id="mk-toggle-16" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cae893" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from The Collins Family		</span>
+<div class="mk-toggle-pane">
+<p>Sept. 6, 2009</p>
+<p>Dear New Heights,</p>
+<p>Thank you for providing my family with a computer. With this addition to our family my children will be able to use this for school. Without your help my children would not have this opportunity. As my daughter gets older she brings more homework home and several of her courses involve things that need done on the computer. We will also be able to participate in online classes now as well.</p>
+<p>Sincerely,</p>
+<p>The Collins Family</p>
+</div>
+</div>
+<div id="mk-toggle-17" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2caebfb" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Lisa S		</span>
+<div class="mk-toggle-pane">
+<p>May 31, 2009</p>
+<p>Dear New Heights Educational Group,</p>
+<p>I am writing this letter to present the great learning benefits of having the archeology classes available to my family. I would not be able to financially afford the classes unless they could be offered for free. Having these classes available would greatly enhance my children’s understanding of history and geography. My one son has always loved geography and memorized all the states from a map when he was six years old. However, he has not been able to really pursue his interest as his school has not yet focused on states, capitals and learning other cultures.</p>
+<p>The availability of these classes would be a fantastic opportunity to expand my children’s knowledge of the study of archeology, how this interesting field reveals the secrets of the past, and how our history is built upon the cultures, knowledge and experience of those who have gone before us. I would so appreciate having this learning option available.</p>
+<p>Sincerely,</p>
+<p>Lisa S</p>
+</div>
+</div>
+<div id="mk-toggle-18" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2caef29" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Jeannette Y		</span>
+<div class="mk-toggle-pane">
+<p>Hi Pamela,</p>
+<p>It was such a joy to speak to you last night. Your enthusiasm is contagious. I am so grateful that you are willing to help us. Believe me we need all the help we can get.</p>
+<p>I just wanted to say a quick thank you.</p>
+<p>Blessings,</p>
+<p>Jeannette Y (August 29, 2009)</p>
+</div>
+</div>
+<div id="mk-toggle-19" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2caf26c" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Maggie S		</span>
+<div class="mk-toggle-pane">
+<p>Sat, May 30, 2009</p>
+<p>My name is Maggie, and I have been with Pamela Clark from the beginning as a part of New Heights.  Three of my kids partook of the classes that Jeremy taught and they really enjoyed them. We are a one-income family with 4 kids. My husband works construction and has always been able to provide for us. The slowing economy has hit the construction business hard and times have been tough for us. We made a commitment to homeschool our kids and this grant would help us with this. Our children love history and solving puzzles.</p>
+<p>Sincerely,</p>
+<p>Maggie S</p>
+</div>
+</div>
+<div id="mk-toggle-20" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2caf5e4" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Lisa C		</span>
+<div class="mk-toggle-pane">
+<p>May 30, 2009</p>
+<p>To Whom It May Concern:</p>
+<p>My name is Lisa C, and my family was involved with the first Archaeology Module that New Heights Educational Group offered. It was a good learning experience for us. We would love to continue with this. I believe that it is important for my children to learn about the history of this wonderful world that we live in. This type of hands on learning is how my son learns. With the opportunities that New Heights Educational Group offers, he is able to interact with other students and attend some great classes.</p>
+<p>Thank you,</p>
+<p>Lisa C</p>
+</div>
+</div>
+<div id="mk-toggle-21" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2caf94a" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Christina W		</span>
+<div class="mk-toggle-pane">
+<p>October 5, 2009</p>
+<p>Dear Mrs. Clark,</p>
+<p>I would like to take this time to thank you and your organization for the generous gift of two computers for my son, Thomas, and myself. It is indeed a gift that we will not only treasure but one that we will use day in and day out now and in the future for academics. Your commitment to children, leading a clear path toward their academics is by far most commendable and true. Thank you again for the generous kindness and help.</p>
+<p>Most Sincerely,</p>
+<p>Christina W</p>
+</div>
+</div>
+<div id="mk-toggle-22" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cafc81" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Kassy R.		</span>
+<div class="mk-toggle-pane">
+<p>Pamela,</p>
+<p>Thank you for your time and work in setting up all of these activities at the Y! Many of us from Van Wert are grateful to be able to participate.</p>
+<p>Thank you again!</p>
+<p>Kassy R.</p>
+</div>
+</div>
+<div id="mk-toggle-23" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb015a" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Laura M.		</span>
+<div class="mk-toggle-pane">
+<p>March 29, 2008</p>
+<p>I really want to thank you for the hard work you have done, not only with the YMCA swim and gym, but with providing wonderful info for all of us out there who want to educate our children. I see this as a beautiful gift that God has given you and a blessing to all. I know that might sound corny (I kinda am like that), but I don’t think people today really give enough positive statements to one another. I am so thankful for the hard work you have done so that I can keep my kids involved with others as well as new ideas for educating them. I am hoping to start coming to your meetings. I know that there are many members that participate in the swim and gym that are from Van Wert Group, like me.</p>
+<p>God bless you, and I’ll see you soon.</p>
+<p>Sincerely,</p>
+<p>Laura M.</p>
+</div>
+</div>
+<div id="mk-toggle-24" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb04a8" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Johnathon G		</span>
+<div class="mk-toggle-pane">
+<p><strong>[This is from a young man who was an employee of New Heights and had Autism]</strong></p>
+<p>7/23/10</p>
+<p>I am writing to thank all those people at New Heights Educational Group for providing me with the opportunity to expand my job skills, by being very welcoming and friendly individuals.</p>
+<p>These people allowed me to be myself and they didn’t have any concern about what school I went to, or what my old job skills were; they treated me with respect, were friendly and were willing to get to know me as a person and not just a number or just another employee that was there to work and collect a paycheck. And with that said, I was glad I decided to work for New Heights, for I learned an array of new job skills and refreshed on some things I had almost forgotten. So, I thank Pamela Clark for being a great employer, Mary Ann for being a great supervisor and Terrah C for being nice employee on the last days of my employment.</p>
+<p>Johnathon G</p>
+</div>
+</div>
+<div id="mk-toggle-25" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb08cb" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Jacob B.		</span>
+<div class="mk-toggle-pane">
+<p>In reference to an online class we offered a while back:</p>
+<p>January 5, 2010</p>
+<p>This has been by far the funnest class I’ve ever taken.</p>
+<p>Jacob B.</p>
+</div>
+</div>
+<div id="mk-toggle-26" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb0bfd" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Joy Y.		</span>
+<div class="mk-toggle-pane">
+<p>September 16, 2009</p>
+<p>Hi Pamela,</p>
+<p>Thanks for the wonderful class. Eliza was shy because other kids are in high school already. Thank you for your hard work!</p>
+<p>Joy Y.</p>
+</div>
+</div>
+<div id="mk-toggle-27" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb0fa4" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Susan		</span>
+<div class="mk-toggle-pane">
+<p>As Joshua entered high school, his father had found himself unable to take care of Josh. So I took leave of absence from my job to take care of him and finish his schooling. He was 14 at the time, so I didn’t take him to the doctor for an ADHD prescription feeling that he had outgrown the need for medication.</p>
+<p>Joshua would come home occasionally complaining about fighting with a bully in school, even got detention once for swinging back on one. It took the school 3 months to call me to say there is a problem and wanted him back on medication. At the same time, I told them “I need to know right away when this happens, so I can take care of the situation.” Well, we went to the doctor and got an ADHD script and never heard from the school again until IEP time, even though Josh would tell me of confrontations still going on.</p>
+<p>The grades Josh got were not the best. With ADHD considered, straight A’s were not expected on my part. He also had lazy streaks, so if he was getting a good grade in one class, he would neglect the homework and work on something else. However, he would work on big, long assignments and get horrible grades just because he didn’t have the right instructions or full instructions. Then, when I asked about his special education class, he would normally say that he is pushed to the side so they can help others in the room that are worse off than he was.</p>
+<p>During the IEP is when my eyes were opened for the first time. They said Josh tested at 4th grade level for writing and spelling. Comprehension, grammar, punctuation and vocabulary were all below average. His female teachers complained they couldn’t read his assignments along with other minor problems. Being shocked, appalled and angered even more, I was unable to speak. His father spoke up and said the homework assignments needed to be checked by someone because he was writing them down wrong. This meeting took place in April, and by the end of the school year, not one assignment came home to me signed by a teacher.</p>
+<p>With school coming to a close for that year, it was apparent to me that if Josh stayed in public school he would graduate and not be able to spell or write. What would he do after graduation? Flip burgers at McDonalds? College or trade school would be out of the question, and my son deserved better treatment than this. Something had to change, so our adventure in homeschool began.</p>
+<p>Now, after homeschooling for one year, he is able to write complete sentences with correct punctuation, and finished 3 grade levels of spelling, which was accomplished only by help from Pamela Clark. All of his grades improved to A’s or B’s by the close of the first semester. The GPA average in public school was 2.0, and homeschool this year is 3.8.</p>
+<p>Beside academically, Josh has improved as a son and a friend. He doesn’t have anger issues like he used to. Has a willingness to help me or other family members with anything needing to get done. Some of his friends feel he has more patience and can communicate better with them now.</p>
+<p>Although he has accomplished a lot, we still have a long way to go.</p>
+<p>Susan</p>
+</div>
+</div>
+<div id="mk-toggle-28" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb1320" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Misty		</span>
+<div class="mk-toggle-pane">
+<p>Hi, my name is Misty, and this is my life dealing with the public schools.</p>
+<p>When I was in the 2nd grade, I had a teacher, Mrs. B. She was so mean to me I had nightmares and threw up all the time because of her. She would tell me how stupid I was and threaten to spank me. If she were mad at me she would just make me miss out on recess and other opportunities. My mom tried to switch teachers for me, but Mrs. S would not do anything about it. She would scream at me and tell me how worthless I was on a daily basis. One day she had me so upset I threw up in her classroom, and I was punished for it and made fun of. There is not a day that goes by that I don’t think about the harm that she caused me, and I’m 30 years old. The principal at school at the time was Mr. S. He was evil, and one day I had told him of this boy that was calling me bad names and he made me repeat the bad words to him forcefully and that made me really sad! The next year while I was standing in line for PE class there was an uncovered boiler pipe that I put my arm on accidentally and burned it really bad but they did not seem to care. I had to beg them to call my dad to come and get me. To this day my arm has a really big and bad scar on it.</p>
+<p>I was called stupid by the teaching staff; even the bus drivers were mean and disrespectful, not just to me but to the other students as well. If you would be noisy they would stomp on the breaks so you would hit your head on the seat in front of you. When I made it finally to Sr. High I was still in LD classes, and you could only be friends with other LD students because other children were taught not to talk or play with you because you were so stupid, and there was no help if you didn’t get; you just didn’t get it. No one cares if you made it or not. When I made it over to a trade school I had a teacher that tried to molest me and was not punished at all for it, and there were 2 of us girls that told on him. I still have nightmares about school and wake up drenched in sweat.</p>
+<p>Then I sent my little girl to school and since she was bigger than the other children in her class she was made fun of all the time and a teacher was just as bad as the other kids were to her. The teacher smacked her around and pinched her arm and left bruises on her. I called child protective services on Mrs. Snyder but nothing came of it, and the teacher was mad at me and my little girl for telling. So, when the other children got milk in the class she wasn’t allowed to have any because the teacher was punishing her for telling. I had several meetings with the principal, and she told me and my husband that if they did not want them to put their hands on my child then they said, well then if she runs out in front of cars or bus we will just let her get hit. Now I would go on and on and on but I won’t.</p>
+<p>Thank you for reading my letter and I hope in some small way we can get the schools and staff to realize the trauma they cause the children and their parents. When you’re in a special education class you’re placed not passed to the next grade. You can do no work, get Os and still be placed in the next grade.</p>
+<p>Misty</p>
+</div>
+</div>
+<div id="mk-toggle-29" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb1687" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Nathan H		</span>
+<div class="mk-toggle-pane">
+<p>To Whom It May Concern:</p>
+<p>I am writing this letter to express my thanks and support to New Heights Educational Group. Although I only use a few of the resources that New Heights provides, I find it very beneficial to be a part of this group. New Heights helped my family through the process of signing my son out of school and filling out the proper paperwork that our state requires. New Heights has made available to me a library of educational materials that I can sign out and use. They also give my family the opportunity to take part in field trips, various classes, volunteer opportunities, tickets to various theater productions and general information about home education. My family also intends on using New Heights to help us through the assessment process at the end of the school year. In my opinion, it is beneficial to have a group like New Heights to back you in your decision to homeschool, and, furthermore, I feel they provide a valuable service to the homeschool community.</p>
+<p>Sincerely,</p>
+<p>Nathan H</p>
+</div>
+</div>
+<div id="mk-toggle-30" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb19a9" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Maggie		</span>
+<div class="mk-toggle-pane">
+<p>Dear Sir or Ma’am,</p>
+<p>I am writing a letter of recommendation and approval for New Heights Educational Group. My name is Maggie, and I have been with New Heights since before the beginning. I helped Pamela Clark put together our homeschool group and out of that came New Heights, which has been a nonprofit for the last two years. I was Vice-President, and, now, I am a Board member.</p>
+<p>We have made many lifetime friends through this group, and it is an integral part of my children’s lives. Over the years we have gone on many field trips such as: Put-In-Bay, COSI Toledo and Columbus, Toledo Zoo, Ft. Wayne Zoo, Renaissance Festival, Rock Show in Ft. Wayne, Lazer X, Clymer Wildlife Museum, and soon we will be going to the Spangler Candy Company. This past school year we have been meeting biweekly for the kids to have a cooking class. They themselves do all of the cooking, and then they get to eat their product.</p>
+<p>Last month, my oldest daughter, Correena started a class where she is teaching all of the other kids about people who have an amazing true life story. These are people you wouldn’t learn in history class at school, and she is doing this after the cooking class.</p>
+<p>Also, being with New Heights, my second oldest daughter, Kathryne, who has many learning disadvantages has been able to learn at her own pace without the fear of discrimination and ridicule. As a parent, I thoroughly enjoy how the older kids interact with the younger ones.</p>
+<p>I am going to continue to be a member of New Heights for many years to come.</p>
+<p>Sincerely,</p>
+<p>Maggie</p>
+</div>
+</div>
+<div id="mk-toggle-31" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb1d06" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Teresa Molnar		</span>
+<div class="mk-toggle-pane">
+<p>To Whom It May Concern:</p>
+<p>First Baptist Church in Defiance, OH, has had the privilege of hosting the New Heights Educational Group, a Resource and Literacy Center, to use our classroom building for free over the last 3 years. They would meet once or twice a month for educational classes and to have annual events.</p>
+<p>We have gladly offered this service to them since we believe in what they are accomplishing.</p>
+<p>Sincerely,</p>
+<p>Teresa Molnar<br />
+FBC Secretary</p>
+</div>
+</div>
+<div id="mk-toggle-32" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb20f6" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Emilie Handley		</span>
+<div class="mk-toggle-pane">
+<p>August 29, 2011</p>
+<p>To Whom It May Concern:</p>
+<p>It is my pleasure to write this letter on behalf of the New Heights Educational Group, Inc. and the work they offer to our community.</p>
+<p>Founder / Director, Pamela Clark has been a true blessing to the kids who have worked with her through my program.  A quick outline of the YouthWorks work experience program is:  giving youth the opportunity to hold a temporary job where they can earn a paycheck, learn what it takes to hold a job, and possibly explore a career path of interest.</p>
+<p>Over the last two years when partnering with New Heights Educational Group, my clients have learned so much about working in group and individual projects. Services that my clients were exposed to included front-office work, research, website updating, grant proposals and many other useful leadership/life skills needed in today’s workforce.</p>
+<p>In conclusion, I fully support New Heights Educational Group and look forward to working with them for years to come.</p>
+<p>Sincerely,</p>
+<p>Emilie Handley</p>
+</div>
+</div>
+<div id="mk-toggle-33" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb2486" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Eunice Wadewitz		</span>
+<div class="mk-toggle-pane">
+<p>Dear Mrs. Clark,</p>
+<p>As Music &amp; Education Director of the Fort Wayne Civic Theatre, I respectfully submit this letter as documentation of participation of New Heights Educational Group in the Fort Wayne Civic Theatre IN THE WINGS Arts-in-Education Program.</p>
+<p>IN THE WINGS provides free theatrical opportunities to at-risk and economically disadvantage youth and their families through schools and social service agencies. The program includes free tickets to special performances of main stage productions, which are followed by talkbacks with the cast and crew of each production, tours of the theater, workshops, internships, and study guides of each show. New Heights Educational Group has been a participant since its inception, requesting as many as 40 tickets per production and has shown great interest in providing these unique opportunities for its members.</p>
+<p>We are pleased to share this experience with New Heights in the hopes of encouraging the students in their endeavors and providing opportunities they may not normally have, and we are committed to continuing collaboration with New Heights in the IN THE WINGS Program.</p>
+<p>Sincerely,</p>
+<p>Eunice Wadewitz<br />
+Music &amp; Education Director<br />
+Defiance Area Foundation<br />
+507 Fifth Street, Defiance, Ohio 43512<br />
+Phone: (419) 782-3130<br />
+defoundation@defnet.com<br />
+www.defianceareafoundation.org</p>
+</div>
+</div>
+<div id="mk-toggle-34" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb281f" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Christine R. Yoder		</span>
+<div class="mk-toggle-pane">
+<p>July 23, 2012</p>
+<p>To Whom it May Concern:</p>
+<p>I am happy to write this letter on behalf of New Heights Education Group and the support they provide to our community.</p>
+<p>Pamela Clark and her team have provided an outreach to the community, and we have been blessed that we have been able to support them financially over the past several years. They are passionate about their mission and assisting the educational needs of young people through individual education and training.</p>
+<p>They are dedicated to the people they serve and providing attention, support and nurturing of individuals and families in and around Defiance County.</p>
+<p>Blessings,<br />
+Christine R. Yoder<br />
+Executive Director<br />
+“TO ENHANCE, ENRICH, ENCOURAGE, AND SUPPORT THE GREATER DEFIANCE AREA”</p>
+</div>
+</div>
+<div id="mk-toggle-35" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb2b71" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Maggie Spangler		</span>
+<div class="mk-toggle-pane">
+<p>Feb 12, 2013</p>
+<p>I have been with New Heights Educational Group since the beginning. New Heights offers so many services and over the years; I have taken advantage of several. With 3 children and now 4, the extensive library has saved me close to a $1,000 over the years. The tutoring services have been a God send to one of my children and has helped her to excel. The Enrichment Classes presented an opportunity for the children to get together and pursue what interested them. For instance, in the past we had cooking classes, Latin, gym time, and my one daughter was able to combine her love of history and research, contacting the individuals involved and poetry into an enriching history curriculum where the other children were able to learn about these said involved individuals, who are unsung heroes of history, and then were able to interview them.</p>
+<p>What would learning be without field trips? Over the years we have been on wide variety of field trips as a group. Not only do the children learn about the topic or place but they also have fun and get to spend time with other kids. This provides an opportunity for them to make friends and learn how to interact with others, along with the Enrichment Classes. I have taken advantage of the High School Transcripts class, and that has helped me beyond measure.</p>
+<p>New Heights also offers amazing opportunities and a safe environment where your children can volunteer. For anyone who has high schoolers, volunteering is extremely crucial when applying for scholarships and for getting accepted to the college of your dreams.</p>
+<p>Maggie Spangler</p>
+</div>
+</div>
+<div id="mk-toggle-36" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb2eb5" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Daniela.		</span>
+<div class="mk-toggle-pane">
+<p>From: Daniela Silva<br />
+To: Pamela Clark &lt;newheightseducation@yahoo.com&gt;<br />
+Sent: Wednesday, July 17, 2013 2:32 PM<br />
+Subject: educational writer_award</p>
+<p>Pamela,</p>
+<p>I got in my house, and I loved the ” Educational Writer Award.” More proof of affection and recognition you and the entire team has had for volunteers. I want you to know, that even far away, I feel close to “New Heights Educational group.” I hope to contribute increasingly to the institution, through of articles, content and education materials. I love being part of NHEG, and love even more to contribute to what I have to offer, in an attempt to constantly improve the lives of thousands of people. May God bless us in this beautiful project and empower us to do more and more good work!</p>
+<p>A big hug, of the size of Brazil!</p>
+<p>Daniela</p>
+</div>
+</div>
+<div id="mk-toggle-37" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb31c9" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Correena Spangler		</span>
+<div class="mk-toggle-pane">
+<p>August 30, 2013</p>
+<p>Dear Mrs. Clark,</p>
+<p>I am writing on behalf of Ms. Susan Zartman and her work as a tutor for the New Heights Educational Group, Inc. Ms. Zartman has been my math tutor for the past three years. She has effectively helped me with Basic math, Pre-algebra, Algebra I and Business math.</p>
+<p>Ms. Zartman took the time to figure out what learning style worked best for me. She helped me understand mathematics and, in turn, I actually didn’t mind doing it. She had a very good knowledge of the subject and always knew how to explain it. She would often have many lessons done ahead of time which says that she is prepared and likes the subject she teaches.</p>
+<p>I enjoyed tutoring under Ms. Zartman. She also helped me prepare for the mathematics portion of the SAT. She was well-organized and thorough in her explanations. I would highly recommend her.</p>
+<p>Sincerely,</p>
+<p>Correena Spangler</p>
+</div>
+</div>
+<div id="mk-toggle-38" class="mk-toggle fancy-style custom_toggle jupiter-donut-">
+<span class="mk-toggle-title">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-right" data-cacheid="icon-6a955b2cb3696" style=" height:13px; width: 9.2857142857143px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1792"><path d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"/></svg>			Letter from Billy S.		</span>
+<div class="mk-toggle-pane">
+<p>June 23, 2014</p>
+<p>To Whom It May Concern,</p>
+<p>I am being tutored in reading by New Heights three times a week.</p>
+<p>I like it. It is working. It gives me something to look forward to by helping me prepare to learn how to read so people don’t look at me like I am illiterate. I would like to try to go to college and learn to do small engine repair, so I can get a job and provide for my kids and family. I will give my kids a skill of working on small engines. It helps my kids that I get tutored because I do my homework with them, and I can help them with theirs. This makes me feel better about myself.</p>
+<p>Pamela Clark is looking for a volunteer speech teacher for me. I like how New Heights finds volunteers to help people in need.  It is also not expensive.  My wife also likes all the activities for kids and insights she gets for kids.</p>
+<p>Billy S.</p>
+</div>
+</div>
+<div class="vc_empty_space"   style="height: 40px"><span class="vc_empty_space_inner"></span></div></div>
+</div>
+<div class="vc_row-full-width vc_clearfix"></div>
+</div>		<div class="clearboth"></div>
+<div class="clearboth"></div>
+</div>
+<div class="clearboth"></div>
+</div>
+</div>
+</div>
+
+<section id="mk-footer-unfold-spacer"></section>
+<section id="mk-footer" class="" role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter" >
+<div class="footer-wrapper fullwidth-footer">
+<div class="mk-padding-wrapper">
+<div class=""><section id="text-4" class="widget widget_text">			<div class="textwidget"><div  data-mk-full-width="true" data-mk-full-width-init="false" data-mk-stretch-content="true" class="wpb_row vc_row vc_row-fluid jupiter-donut- mk-fullwidth-true  attched-false     js-master-row  mk-full-content-true">
+<div class="vc_col-sm-12 wpb_column column_container  jupiter-donut- _ jupiter-donut-height-full">
+<div class="wpb_row vc_inner vc_row vc_row-fluid jupiter-donut-   attched-false   ">
+<div class="footer-nav wpb_column vc_column_container vc_col-sm-6">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<div class=" vc_custom_1525998669009">
+<div id="text-block-40" class="mk-text-block  jupiter-donut- ">
+<p style="text-align: center;"><a href="https://www.newheightseducation.org/wp-content/uploads/2017/01/new-heights-educational-group-footer-image.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-4135" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/01/new-heights-educational-group-footer-image-300x113.png" alt="New Heights Educational Group" width="300" height="113" srcset="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/01/new-heights-educational-group-footer-image-300x113.png 300w, %%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/01/new-heights-educational-group-footer-image.png 400w, %%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/01/new-heights-educational-group-footer-image-330x124.png 330w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></p>
+<p style="text-align: center;">| <a title="New Herights Educational Group" href="%%BASE%%/">Home</a> | <a href="http://school.newheightseducation.org/" target="_blank" rel="noopener noreferrer">Learning Annex</a>| <a title="NHEG Programs" href="https://www.newheightseducation.org/nheg-educational-programs">Programs</a> | <a title="Support NHEG" href="https://www.newheightseducation.org/support-nheg">Support</a> | <a href="https://www.newheightseducation.org/volunteer-with-nheg/" target="_blank" rel="noopener noreferrer">Volunteer</a> | <a href="https://www.newheightseducation.org/events/" target="_blank" rel="noopener noreferrer">Events</a> | <a title="NHEG Radio Show" href="https://www.newheightseducation.org/nheg-radio-show">Radio Show</a> | <a title="NHEG Blog" href="https://www.newheightseducation.org/nheg-blog">Blog</a> | <a title="Contact NHEG" href="https://www.newheightseducation.org/contact-us">Contact</a> |</p>
+<div class="clearboth"></div>
+</div></div>
+<div class=" vc_custom_1525999102930">
+<div id="text-block-41" class="mk-text-block  jupiter-donut- ">
+<p style="text-align: center;">| <a title="Who We Are" href="https://www.newheightseducation.org/who-we-are">Who We Are</a> | <a title="NHEG Team" href="https://www.newheightseducation.org/who-we-are/nheg-team">Our Team</a> | <a title="NHEG Affiliates &amp; Partners" href="https://www.newheightseducation.org/who-we-are/affiliates-partners">Partners</a> | <a title="Advertise With NHEG" href="https://www.newheightseducation.org/who-we-are/advertise-with-nheg">Advertise</a> | <a title="NHEG Awards" href="https://www.newheightseducation.org/who-we-are/awards-and-achievements">Awards</a> | <a title="Letters of Support" href="https://www.newheightseducation.org/who-we-are/letters-of-support">Letters of Support</a> | <a title="NHEG Books" href="https://www.newheightseducation.org/who-we-are/nheg-books">Books</a> | <a title="NHEG Magazine" href="https://www.newheightseducation.org/who-we-are/nheg-magazine">Magazine</a> | <a title="NHEG Press" href="https://www.newheightseducation.org/who-we-are/nheg-press">Press</a> |</p>
+<div class="clearboth"></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-2">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >Leave Us A Review</h3>
+<div class=" vc_custom_1525997418949">
+<div id="text-block-42" class="mk-text-block  jupiter-donut- ">
+<div style="text-align: center;"><br />
+</div>
+<p><noscript> <a href="http://greatnonprofits.org/org/new-heights-educational-group/?badge=1"> <img decoding="async" alt="Review NEW HEIGHTS EDUCATIONAL GROUP on Great Nonprofits" title="Review NEW HEIGHTS EDUCATIONAL GROUP on Great Nonprofits" src="//cdn.greatnonprofits.org/images/great-nonprofits.gif?id=1491417"> </a></noscript></p>
+<div class="clearboth"></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-2">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<div class=" vc_custom_1588696935671">
+<div id="text-block-43" class="mk-text-block  jupiter-donut- ">
+<p style="text-align: center;"><a href="https://tutors.com/math-tutors" target="_blank" rel="noopener noreferrer" aria-label="Math tutors"><img decoding="async" src="//cdn.tutors.com/assets/images/tmp/tutors-2020.png" width="150"  alt=""/></a></p>
+<div class="clearboth"></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-2">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >Follow Us</h3>
+<div id="social-networks-44" class="mk-social-network-shortcode jupiter-donut-padding-0 jupiter-donut-margin-10-0 s_social jupiter-donut-list-reset jupiter-donut-align-center s_circle social-align-center large  jupiter-donut-">
+<ul class="jupiter-donut-margin-0 jupiter-donut-padding-0 a_list-style-none">
+<li><a rel="noreferrer noopener" target="_blank" class="facebook-hover c_" href="https://www.facebook.com/NewHeightsEducationalGroup/"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-facebook" data-cacheid="icon-6a955b2cb77bb" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm64.057 159.299h-49.041c-7.42 0-14.918 7.452-14.918 12.99v19.487h63.723c-2.081 28.41-6.407 64.679-6.407 64.679h-57.566v159.545h-63.929v-159.545h-32.756v-64.474h32.756v-33.53c0-8.098-1.706-62.336 70.46-62.336h57.678v63.183z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="twitter-hover c_" href="hhttps://x.com/newheightseduc1"><?xml version="1.0" encoding="utf-8"?><br />
+<!-- Generator: Adobe Illustrator 28.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><br />
+<svg  class="mk-svg-icon" data-name="mk-jupiter-icon-twitter" data-cacheid="icon-6a955b2cb7882" style=" height:32px; width: px; "  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+<path d="M4.9,4.4l5.5,7.1h0.8L5.8,4.4H4.9z M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M9.9,12.4L7.5,9.3l-2.7,3.1H3.3
+l3.5-4L3.1,3.6h3.1l2.1,2.8l2.5-2.8h1.5L9.1,7.3l3.9,5.1H9.9z"/>
+</svg><br />
+</a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="rss-hover c_" href="https://rumble.com/register/NHEG/"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-rss" data-cacheid="icon-6a955b2cb7923" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm-90.203 384.325c-20.801 0-37.663-16.861-37.663-37.663 0-20.801 16.862-37.663 37.663-37.663 20.8 0 37.663 16.862 37.663 37.663-.001 20.802-16.863 37.663-37.663 37.663zm97.299-.324c0-36.053-14.04-69.944-39.531-95.438-25.493-25.49-59.387-39.531-95.438-39.531l-.195.003v-54.029l.195-.001c104.38 0 188.998 84.616 188.998 188.997h-54.029zm98.873-.001c0-31.594-6.174-62.213-18.353-91.007-11.776-27.839-28.645-52.853-50.138-74.345-21.493-21.494-46.507-38.363-74.347-50.138-28.795-12.18-59.414-18.355-91.006-18.355l-.195.001v-54.029h.195c158.99 0 287.875 128.886 287.875 287.873h-54.031z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="instagram-hover c_" href="https://www.instagram.com/pamelasclark/"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-instagram" data-cacheid="icon-6a955b2cb79ea" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M375.3,197.7L375.3,197.7c-0.6-11.5-2.2-20.4-5-27.1c-2.5-6.7-5.7-11.8-10.9-17c-5.9-5.5-10.5-8.4-16.9-10.9 c-4.1-1.8-11.3-4.3-27.1-5c-15.4-0.7-20.4-0.7-58.8-0.7s-43.4,0-58.8,0.7c-11.5,0.6-20.4,2.2-27,5c-6.7,2.5-11.8,5.7-17,10.9 c-5.5,5.9-8.4,10.5-10.9,16.9c-1.8,4.1-4.3,11.3-5,27.1c-0.7,15.4-0.7,20.4-0.7,58.8s0,43.4,0.7,58.8c0.4,14.3,2.9,22,5,27.1 c2.5,6.7,5.7,11.8,10.9,17c5.9,5.5,10.5,8.4,16.9,10.9c4.1,1.8,11.3,4.3,27.1,5c15.4,0.7,20.4,0.7,58.8,0.7s43.4,0,58.8-0.7 c11.5-0.6,20.4-2.2,27-5c6.7-2.5,11.8-5.7,17-10.9c5.5-5.9,8.4-10.5,10.9-16.9c1.8-4.1,4.3-11.3,5-27.1l0.2-3.4 c0.6-13.1,0.9-19.7,0.5-55.5C376,218,376,213.1,375.3,197.7z M351.4,178.7c0,9.4-7.7,17.1-17.1,17.1c-9.4,0-17.1-7.7-17.1-17.1 c0-9.4,7.7-17.1,17.1-17.1C343.7,161.6,351.4,169.3,351.4,178.7z M256.5,330.6c-40.9,0-74.1-33.2-74.1-74.1 c0-40.9,33.2-74.1,74.1-74.1c40.9,0,74.1,33.2,74.1,74.1C330.6,297.4,297.4,330.6,256.5,330.6z"/><ellipse transform="matrix(0.9732 -0.2298 0.2298 0.9732 -52.0702 65.7936)" cx="256.5" cy="256.5" rx="48.9" ry="48.9"/><path d="M437.9,75.1C389.4,26.7,325,0,256.5,0C188,0,123.6,26.7,75.1,75.1S0,188,0,256.5C0,325,26.7,389.4,75.1,437.9 C123.6,486.3,188,513,256.5,513c68.5,0,132.9-26.7,181.4-75.1C486.3,389.4,513,325,513,256.5C513,188,486.3,123.6,437.9,75.1z  M400.8,316.4L400.8,316.4c-0.6,14.1-2.7,24.7-6.8,35.3c-4.2,10.5-9.2,18.2-16.7,25.6c-8,8-16,13.2-25.6,16.7 c-10.4,4-21.3,6.1-35.3,6.8c-15.4,0.7-20.5,0.7-59.9,0.7c-39.3,0-44.4,0-59.9-0.7c-14.1-0.6-24.7-2.6-35.3-6.8 c-10.5-4.2-18.2-9.2-25.6-16.7c-8.1-8.1-13.2-16-16.7-25.6c-4-10.4-6.1-21.3-6.8-35.3c-0.7-15.4-0.7-20.5-0.7-59.9 c0-39.3,0-44.4,0.7-59.9c0.6-14.1,2.6-24.7,6.8-35.3c3.9-9.7,9-17.6,16.7-25.6c8.1-8.1,16-13.2,25.6-16.7c10.4-4,21.3-6.1,35.3-6.8 c15.4-0.7,20.5-0.7,59.9-0.7c39.3,0,44.4,0,59.9,0.7c14.1,0.6,24.7,2.6,35.3,6.8c10.5,4.2,18.1,9.2,25.6,16.7 c8,8.1,13.2,16,16.7,25.6c4,10.4,6.1,21.3,6.8,35.3c0.7,15.4,0.7,20.5,0.7,59.9C401.5,295.8,401.5,300.9,400.8,316.4z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="pinterest-hover c_" href="https://www.pinterest.com/NewHeightsEducation/"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-pinterest" data-cacheid="icon-6a955b2cb7a99" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm25.508 327.119c-20.463 0-39.703-10.759-46.285-22.973 0 0-11.014 42.454-13.332 50.654-8.206 28.956-32.336 57.931-34.204 60.3-1.31 1.665-4.206 1.132-4.509-1.046-.518-3.692-6.671-40.229.567-70.031 3.638-14.973 24.374-100.423 24.374-100.423s-6.043-11.758-6.043-29.166c0-27.301 16.275-47.695 36.541-47.695 17.236 0 25.559 12.585 25.559 27.661 0 16.856-11.034 42.045-16.726 65.388-4.754 19.568 10.085 35.51 29.901 35.51 35.895 0 60.076-44.851 60.076-97.988 0-40.37-27.955-70.62-78.837-70.62-57.474 0-93.302 41.693-93.302 88.276 0 16.037 4.881 27.376 12.511 36.129 3.501 4.032 4 5.65 2.728 10.264-.929 3.396-2.993 11.566-3.874 14.802-1.261 4.669-5.144 6.335-9.488 4.613-26.458-10.512-38.802-38.716-38.802-70.411 0-52.337 45.394-115.119 135.43-115.119 72.351 0 119.955 50.911 119.955 105.569 0 72.294-41.325 126.306-102.241 126.306z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="linkedin-hover c_" href="https://www.linkedin.com/company/10828913"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-linkedin" data-cacheid="icon-6a955b2cb7b37" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm-96.612 95.448c19.722 0 31.845 13.952 32.215 32.284 0 17.943-12.492 32.311-32.592 32.311h-.389c-19.308 0-31.842-14.368-31.842-32.311 0-18.332 12.897-32.284 32.609-32.284zm32.685 288.552h-64.073v-192h64.073v192zm223.927-.089h-63.77v-97.087c0-27.506-11.119-46.257-34.797-46.257-18.092 0-22.348 12.656-27.075 24.868-1.724 4.382-2.165 10.468-2.165 16.583v101.892h-64.193s.881-173.01 0-192.221h57.693v.31h6.469v19.407c9.562-12.087 25.015-24.527 52.495-24.527 43.069 0 75.344 29.25 75.344 92.077v104.954z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="tumblr-hover c_" href="https://www.tumblr.com/blog/newheightsshowoneducationposts"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-tumblr" data-cacheid="icon-6a955b2cb7bd7" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm89.067 396.562c-19.192 16.539-59.182 19.626-71.627 19.626-14.163 0-22.516-1.825-33.381-5.514-10.886-3.731-20.16-9.031-27.845-15.815-7.676-6.877-12.994-14.163-15.969-21.871-2.965-7.697-4.456-18.899-4.456-33.585v-103.958h-39.059v-51.666c36.882 0 58.001-49 58.001-88.14h57.491v80.091h57.654v59.715h-57.654v73.753c0 18.592-.236 21.414 1.668 26.704 3.815 6.437 11.747 20.038 35.294 20.038 17.94 0 32.258-9.442 39.883-20.038v60.659z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="yelp-hover c_" href="https://www.yelp.com/biz/new-heights-educational-group-defiance-2"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-yelp" data-cacheid="icon-6a955b2cb7c9f" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm-85.5 111.2c17.394-12.656 50.835-16.277 64.599-13.809 13.768 2.457 20.962 9.581 21.06 18.264l.781 110.677c.063 8.688-4.809 16.674-10.843 17.746-6.06 1.054-14.982-4.113-19.888-11.507l-62.75-94.892c-4.869-7.408-14.675-10.674 7.042-26.48zm-42.401 197.426c-1.588-8.887 0-51.824 0-51.824 2.645-12.331 12.668-19.866 21.352-16.686l66.734 24.489c8.678 3.18 15.081 11.467 14.224 18.45-.884 6.983-8.77 15.019-17.574 17.907l-63.173 20.688c-8.803 2.897-19.953-4.135-21.564-13.024zm130.336 92.128c-.173 8.69-15.628 17.428-24.398 14.478l-46.082-14.817c-8.75-2.95-11.731-18.56-5.73-25.202l44.071-48.907c6-6.632 16.056-11.637 22.393-11.096 6.332.541 11.351 8.065 11.178 16.783l-1.432 68.762zm122.325-57.073c-3.871 10.756-24.882 39.447-24.882 39.447-4.976 7.385-23.006 8.688-27.514 1.083l-34.866-59.062c-4.51-7.615-5.367-16.04-1.92-18.708 3.438-2.699 13.606-2.92 22.56-.544l55.26 14.708c8.956 2.378 15.233 12.291 11.363 23.075zm-6.885-83.419l-61.59 10.574c-9.108 1.887-19.829-1.596-23.853-7.767-4.022-6.149-2.406-16.634 3.622-23.234l35.615-39.262c6.027-6.606 16.718-7.55 26.063-.025 9.356 7.505 26.639 29.535 29.132 37.01 2.526 7.464 2.125 20.235-8.988 22.703z"/></svg></a></li>
+<li><a rel="noreferrer noopener" target="_blank" class="reddit-hover c_" href="https://www.reddit.com/r/NHEG/"><svg  class="mk-svg-icon" data-name="mk-jupiter-icon-reddit" data-cacheid="icon-6a955b2cb7d42" style=" height:32px; width: 32px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M393.642 216.634l-.009-.038c-1.879-4.094-4.823-7.184-8.385-9.291-3.552-2.119-7.703-3.199-11.873-3.199-3.776 0-7.534.894-10.863 2.669 10.594 9.731 19.882 21.416 25.894 35.182 1.924-1.779 3.579-3.956 4.813-6.384 1.603-3.166 2.514-6.726 2.514-10.242 0-2.957-.644-5.911-2.058-8.67l-.035-.028zm-243.765-9.721c-3.449-1.699-7.019-2.916-10.541-2.897-.594 0-1.19.043-1.78.109h-.085l-.085.01c-5.059.147-10.174 2.485-14.003 6.228-3.838 3.729-6.38 8.77-6.573 14.317v.056l-.009.037c-.04.454-.049.904-.049 1.326 0 3.427.993 6.739 2.68 9.754 1.243 2.233 2.877 4.288 4.719 6.059 5.928-13.702 15.161-25.326 25.724-34.999zm157.877-7.232l-.144-.056c-4.169-1.354-8.375-2.552-12.616-3.573-12.688-3.048-25.688-4.582-38.68-4.582-17.448 0-34.882 2.74-51.593 8.183-21.702 7.288-42.631 20.109-56.048 39.958v.028c-6.809 9.92-10.786 22.226-10.786 34.492 0 4.506.537 9.021 1.66 13.423h.018c2.438 9.863 7.216 18.656 13.403 26.322 6.174 7.676 13.761 14.226 21.734 19.583 1.762 1.135 3.534 2.253 5.351 3.332 23.166 13.677 49.844 19.658 76.314 19.658 4.483 0 8.993-.151 13.44-.491 26.673-2.327 53.453-10.666 75.097-27.676l.009-.019c6.889-5.377 13.279-11.918 18.324-19.329 5.073-7.421 8.779-15.713 10.433-24.742v-.019h.01c.678-3.38 1.003-6.787 1.003-10.223 0-12.201-4.162-24.488-10.909-34.36-13.447-19.802-34.313-32.707-56.019-39.91zm-132.076 56.815c0-11.067 8.971-20.037 20.037-20.037s20.037 8.97 20.037 20.037c0 11.067-8.971 20.038-20.037 20.038s-20.037-8.971-20.037-20.038zm140.68 57.84v.017c-.474 1.724-1.303 3.18-2.358 4.367-1.037 1.188-2.251 2.108-3.493 2.885-2.509 1.563-5.18 2.635-7.19 3.813l-.072.045-.081.053c-15.219 7.146-32.297 11.085-49.286 11.085-18.846.017-37.613-4.851-53.552-15.603-1.621-.867-2.858-2.19-3.667-3.663-.848-1.581-1.26-3.313-1.26-5.055 0-1.928.5-3.849 1.518-5.519.983-1.608 2.501-2.966 4.445-3.698h-.01l.196-.08c1.228-.553 2.488-.831 3.685-.831 1.443 0 2.786.366 3.997.884 1.232.5 2.345 1.19 3.407 1.877 2.09 1.385 4.006 2.849 5.685 3.537l.053.017.058.035c11.152 5.476 23.455 8.093 35.84 8.093 16.51 0 33.132-4.627 47.254-13.077 1.501-.981 3.18-1.438 4.797-1.438 2.001 0 3.904.642 5.538 1.697 1.616 1.063 3.001 2.555 3.858 4.349.58 1.206.928 2.537.928 3.966 0 .741-.098 1.483-.295 2.242zm-.275-37.802c-11.067 0-20.037-8.971-20.037-20.038s8.971-20.037 20.037-20.037 20.038 8.97 20.038 20.037c0 11.067-8.971 20.038-20.038 20.038zm-60.083-282.934c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm153.783 254.595c-3.892 6.294-9.251 11.547-15.427 15.126.404 3.274.627 6.568.627 9.863 0 17.738-5.781 35.163-15.856 49.134h-.017c-18.603 26.172-47.163 41.611-76.01 49.401h-.009l-.019.019c-15.389 3.947-31.246 5.963-47.101 5.963-23.639 0-47.266-4.514-69.299-13.848l-.01-.019h-.018c-22.848-9.967-44.622-25.802-57.976-49.012-7.181-12.381-11.132-26.899-11.132-41.495 0-3.322.215-6.616.631-9.89-6.017-3.568-11.229-8.653-15.085-14.729-4.134-6.522-6.751-14.142-7.087-22.215v-.128c.009-11.302 4.648-22.002 11.86-29.892 7.207-7.884 17.053-13.043 27.617-13.043h.447c1.101-.08 2.224-.128 3.338-.128 5.305 0 10.625.909 15.68 2.963l.027.019.027.01c4.304 1.912 8.59 4.236 12.411 7.444 1.244-.686 2.586-1.462 4.107-2.068 23.138-14.5 50.039-20.091 76.256-21.7.228-13.743 1.826-28.125 8.16-40.709 5.27-10.459 14.424-18.6 25.331-21.415l.036-.019.063-.014c4.151-.852 8.329-1.245 12.5-1.245 6.923 0 14.046-.383 20.916.392 6.443-10.407 17.962-17.358 31.076-17.358 20.142 0 36.529 16.387 36.529 36.53s-16.387 36.53-36.529 36.53c-19.776 0-35.921-15.801-36.502-35.44-5.147-.587-10.401-.451-15.438-.445-1.305 0-2.603.07-3.901.208h-.01c-6.736.687-12.992 5.178-16.024 11.633v.029c-4.608 9.479-5.529 20.563-5.674 31.567 25.815 1.788 51.781 8.329 74.543 22.181h.027l.331.194c.43.28 1.226.739 1.951 1.151 1.563-1.344 3.229-2.726 5.108-3.913 6.907-4.865 15.077-7.28 23.254-7.28 3.642 0 7.276.492 10.801 1.444h.019l.134.037.142.029v.01c8.33 2.239 15.865 7.307 21.537 14.127 5.672 6.838 9.494 15.49 10.236 24.87v.057c.045.733.063 1.471.063 2.205 0 8.244-2.505 16.162-6.666 22.873zm-63.932-106.199c8.749 0 15.866-7.118 15.866-15.866s-7.117-15.866-15.866-15.866c-8.748 0-15.865 7.117-15.865 15.866s7.117 15.866 15.865 15.866z"/></svg></a></li>
+</ul>
+</div>
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >NHEG Smiles on Amazon</h3>
+<div  class="wpb_single_image wpb_content_element vc_align_center wpb_content_element">
+<figure class="wpb_wrapper vc_figure">
+<a href="https://smile.amazon.com/ch/26-1424214" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="250" height="150" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo.png" class="vc_single_image-img attachment-full" alt="Amazon Smile Logo" title="Amazon Smile Logo" decoding="async" loading="lazy" itemprop="image" /></a><br />
+</figure>
+</p></div>
+</div>
+</div>
+</div></div>
+<div class="wpb_row vc_inner vc_row vc_row-fluid jupiter-donut-   attched-false   ">
+<div class="wpb_column vc_column_container vc_col-sm-1/5">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >Review Us on Yelp</h3>
+<div  class="wpb_single_image wpb_content_element vc_align_center wpb_content_element">
+<figure class="wpb_wrapper vc_figure">
+<a href="https://www.yelp.com/biz/new-heights-educational-group-defiance-2" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="250" height="150" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/01/review-nheg-on-yelp.png" class="vc_single_image-img attachment-full" alt="Review NHEG on Yelp" title="Review NHEG on Yelp" decoding="async" loading="lazy" itemprop="image" /></a><br />
+</figure>
+</p></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-1/5">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >Seal of Transparency</h3>
+<div  class="wpb_single_image wpb_content_element vc_align_center wpb_content_element">
+<figure class="wpb_wrapper vc_figure">
+<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="135" height="135" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714.png" class="vc_single_image-img attachment-full" alt="" title="profile-platinum2023-seal5714" decoding="async" loading="lazy" srcset="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714.png 135w, %%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714-100x100.png 100w, %%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714-1024x1024.png 1024w" sizes="auto, (max-width: 135px) 100vw, 135px" itemprop="image" /></div>
+</figure></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-1/5">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >GuideStar Memeber</h3>
+<div  class="wpb_single_image wpb_content_element vc_align_center wpb_content_element">
+<figure class="wpb_wrapper vc_figure">
+<a href="http://www.guidestar.org/profile/26-1424214" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="250" height="150" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2017/09/guidestar-exchange-platnium-participant.png" class="vc_single_image-img attachment-full" alt="GuideStar Exchange Platnium Participant" title="GuideStar Exchange Platnium Participant" decoding="async" loading="lazy" itemprop="image" /></a><br />
+</figure>
+</p></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-1/5">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >Great NonProfits</h3>
+<div  class="wpb_single_image wpb_content_element vc_align_center wpb_content_element">
+<figure class="wpb_wrapper vc_figure">
+<a href="https://greatnonprofits.org/org/new-heights-educational-group" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="200" height="150" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2021/09/great-nonprofits-2021-top-rated.png" class="vc_single_image-img attachment-full" alt="Great Nonprofits 2021 Top-Rated" title="Great Nonprofits 2021 Top-Rated" decoding="async" loading="lazy" itemprop="image" /></a><br />
+</figure>
+</p></div>
+</div>
+</div>
+</div>
+<div class="wpb_column vc_column_container vc_col-sm-1/5">
+<div class="vc_column-inner">
+<div class="wpb_wrapper">
+<h3 style="font-size: 18px;text-align: center" class="vc_custom_heading vc_do_custom_heading" >NSHSS Partner</h3>
+<div  class="wpb_single_image wpb_content_element vc_align_center wpb_content_element">
+<figure class="wpb_wrapper vc_figure">
+<a href="https://www.nshss.org/" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="200" height="100" src="%%BASE%%/_ffc-assets/newheightseducation.org/wp-content/uploads/2020/06/nshss-educator.png" class="vc_single_image-img attachment-full" alt="NSHSS Educator" title="NSHSS Educator" decoding="async" loading="lazy" itemprop="image" /></a><br />
+</figure>
+</p></div>
+</div>
+</div>
+</div></div>
+</div></div>
+<div class="vc_row-full-width vc_clearfix"></div>
+</div>
+</section></div>
+<div class="clearboth"></div>
+</div>
+</div>
+<div id="sub-footer">
+<div class=" fullwidth-footer">
+<span class="mk-footer-copyright">© 2021 <a href="https://www.newheightseducation.org/">New Heights Educational Group, Inc.</a>  | 11809 US Route 127 Sherwood, Ohio 43556 | +1.419.786.0247 |  Designed By: <a href="mailto:mike.r.anderson@outlook.com" title="Michael Anderson">Michael Anderson</a> | <a href="https://www.newheightseducation.org/privacy-policy" title="Privacy Policy">Privacy Policy</a> | <a href="https://www.newheightseducation.org/terms-and-conditions/" title="Terms & Conditions">Terms & Conditions</a> | | Sitemap |</span>
+</div>
+<div class="clearboth"></div>
+</div>
+</section>
+</div>
+</div>
+<div class="bottom-corner-btns js-bottom-corner-btns">
+<a href="#top-of-page" class="mk-go-top  js-smooth-scroll js-bottom-corner-btn js-bottom-corner-btn--back">
+<svg  class="mk-svg-icon" data-name="mk-icon-chevron-up" data-cacheid="icon-6a955b2cc694c" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792"><path d="M1683 1331l-166 165q-19 19-45 19t-45-19l-531-531-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z"/></svg></a>
+<div class="add-cart-responsive-state">
+<a class="mk-shoping-cart-link" href="%%BASE%%/cart/">
+<svg  class="mk-svg-icon" data-name="mk-moon-cart-2" data-cacheid="icon-6a955b2cc6e60" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M423.609 288c17.6 0 35.956-13.846 40.791-30.769l46.418-162.463c4.835-16.922-5.609-30.768-23.209-30.768h-327.609c0-35.346-28.654-64-64-64h-96v64h96v272c0 26.51 21.49 48 48 48h304c17.673 0 32-14.327 32-32s-14.327-32-32-32h-288v-32h263.609zm-263.609-160h289.403l-27.429 96h-261.974v-96zm32 344c0 22-18 40-40 40h-16c-22 0-40-18-40-40v-16c0-22 18-40 40-40h16c22 0 40 18 40 40v16zm288 0c0 22-18 40-40 40h-16c-22 0-40-18-40-40v-16c0-22 18-40 40-40h16c22 0 40 18 40 40v16z"/></svg>				<span class="mk-header-cart-count">0</span>
+</a>
+</div>
+</div>
+<div class="mk-fullscreen-search-overlay">
+<a href="#" class="mk-fullscreen-close"><svg  class="mk-svg-icon" data-name="mk-moon-close-2" data-cacheid="icon-6a955b2cc717f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M390.628 345.372l-45.256 45.256-89.372-89.373-89.373 89.372-45.255-45.255 89.373-89.372-89.372-89.373 45.254-45.254 89.373 89.372 89.372-89.373 45.256 45.255-89.373 89.373 89.373 89.372z"/></svg></a>
+<div class="mk-fullscreen-search-wrapper">
+<p>Start typing and press Enter to search</p>
+<div class="ffc-contact-fallback" style="border:1px solid #ccc;border-radius:6px;padding:1rem;margin:1rem 0"><p style="margin:0 0 .5rem">This form has moved to email. We read every message.</p><p style="margin:0"><a href="mailto:Info@NewHeightsEducation.org?subject=Website%20enquiry%20from%20newheightseducation.org">Info@NewHeightsEducation.org</a></p></div>
+</div>
+</div>
+<style type='text/css'></style><style id="mk-shortcode-static-styles" type="text/css"> .ffc-clone #text-block-3 { margin-bottom:0px; text-align:left; }   .ffc-clone #text-block-40 { margin-bottom:0px; text-align:left; } .ffc-clone #text-block-41 { margin-bottom:0px; text-align:left; } .ffc-clone #text-block-42 { margin-bottom:0px; text-align:left; } .ffc-clone #text-block-43 { margin-bottom:0px; text-align:left; } .ffc-clone #social-networks-44 a{ margin:4px; } .ffc-clone #social-networks-44 a svg{ fill:#ffffff; } .ffc-clone #social-networks-44 a:hover svg{ fill:#0f1207; }</style>
+<div id="glt-translate-trigger"><span class="notranslate">Translate Â»</span></div><div id="glt-toolbar"></div><div id="flags" style="display:none" class="size18"><ul id="sortable" class="ui-sortable"><li id="Afrikaans"><a href="#" title="Afrikaans" class="nturl notranslate af flag Afrikaans"></a></li><li id="Albanian"><a href="#" title="Albanian" class="nturl notranslate sq flag Albanian"></a></li><li id="Amharic"><a href="#" title="Amharic" class="nturl notranslate am flag Amharic"></a></li><li id="Arabic"><a href="#" title="Arabic" class="nturl notranslate ar flag Arabic"></a></li><li id="Armenian"><a href="#" title="Armenian" class="nturl notranslate hy flag Armenian"></a></li><li id="Azerbaijani"><a href="#" title="Azerbaijani" class="nturl notranslate az flag Azerbaijani"></a></li><li id="Basque"><a href="#" title="Basque" class="nturl notranslate eu flag Basque"></a></li><li id="Belarusian"><a href="#" title="Belarusian" class="nturl notranslate be flag Belarusian"></a></li><li id="Bengali"><a href="#" title="Bengali" class="nturl notranslate bn flag Bengali"></a></li><li id="Bosnian"><a href="#" title="Bosnian" class="nturl notranslate bs flag Bosnian"></a></li><li id="Bulgarian"><a href="#" title="Bulgarian" class="nturl notranslate bg flag Bulgarian"></a></li><li id="Catalan"><a href="#" title="Catalan" class="nturl notranslate ca flag Catalan"></a></li><li id="Cebuano"><a href="#" title="Cebuano" class="nturl notranslate ceb flag Cebuano"></a></li><li id="Chichewa"><a href="#" title="Chichewa" class="nturl notranslate ny flag Chichewa"></a></li><li id="Chinese (Simplified)"><a href="#" title="Chinese (Simplified)" class="nturl notranslate zh-CN flag Chinese (Simplified)"></a></li><li id="Chinese (Traditional)"><a href="#" title="Chinese (Traditional)" class="nturl notranslate zh-TW flag Chinese (Traditional)"></a></li><li id="Corsican"><a href="#" title="Corsican" class="nturl notranslate co flag Corsican"></a></li><li id="Croatian"><a href="#" title="Croatian" class="nturl notranslate hr flag Croatian"></a></li><li id="Czech"><a href="#" title="Czech" class="nturl notranslate cs flag Czech"></a></li><li id="Danish"><a href="#" title="Danish" class="nturl notranslate da flag Danish"></a></li><li id="Dutch"><a href="#" title="Dutch" class="nturl notranslate nl flag Dutch"></a></li><li id="English"><a href="#" title="English" class="nturl notranslate en flag united-states"></a></li><li id="Esperanto"><a href="#" title="Esperanto" class="nturl notranslate eo flag Esperanto"></a></li><li id="Estonian"><a href="#" title="Estonian" class="nturl notranslate et flag Estonian"></a></li><li id="Filipino"><a href="#" title="Filipino" class="nturl notranslate tl flag Filipino"></a></li><li id="Finnish"><a href="#" title="Finnish" class="nturl notranslate fi flag Finnish"></a></li><li id="French"><a href="#" title="French" class="nturl notranslate fr flag French"></a></li><li id="Frisian"><a href="#" title="Frisian" class="nturl notranslate fy flag Frisian"></a></li><li id="Galician"><a href="#" title="Galician" class="nturl notranslate gl flag Galician"></a></li><li id="Georgian"><a href="#" title="Georgian" class="nturl notranslate ka flag Georgian"></a></li><li id="German"><a href="#" title="German" class="nturl notranslate de flag German"></a></li><li id="Greek"><a href="#" title="Greek" class="nturl notranslate el flag Greek"></a></li><li id="Gujarati"><a href="#" title="Gujarati" class="nturl notranslate gu flag Gujarati"></a></li><li id="Haitian"><a href="#" title="Haitian" class="nturl notranslate ht flag Haitian"></a></li><li id="Hausa"><a href="#" title="Hausa" class="nturl notranslate ha flag Hausa"></a></li><li id="Hawaiian"><a href="#" title="Hawaiian" class="nturl notranslate haw flag Hawaiian"></a></li><li id="Hebrew"><a href="#" title="Hebrew" class="nturl notranslate iw flag Hebrew"></a></li><li id="Hindi"><a href="#" title="Hindi" class="nturl notranslate hi flag Hindi"></a></li><li id="Hmong"><a href="#" title="Hmong" class="nturl notranslate hmn flag Hmong"></a></li><li id="Hungarian"><a href="#" title="Hungarian" class="nturl notranslate hu flag Hungarian"></a></li><li id="Icelandic"><a href="#" title="Icelandic" class="nturl notranslate is flag Icelandic"></a></li><li id="Igbo"><a href="#" title="Igbo" class="nturl notranslate ig flag Igbo"></a></li><li id="Indonesian"><a href="#" title="Indonesian" class="nturl notranslate id flag Indonesian"></a></li><li id="Irish"><a href="#" title="Irish" class="nturl notranslate ga flag Irish"></a></li><li id="Italian"><a href="#" title="Italian" class="nturl notranslate it flag Italian"></a></li><li id="Japanese"><a href="#" title="Japanese" class="nturl notranslate ja flag Japanese"></a></li><li id="Javanese"><a href="#" title="Javanese" class="nturl notranslate jw flag Javanese"></a></li><li id="Kannada"><a href="#" title="Kannada" class="nturl notranslate kn flag Kannada"></a></li><li id="Kazakh"><a href="#" title="Kazakh" class="nturl notranslate kk flag Kazakh"></a></li><li id="Khmer"><a href="#" title="Khmer" class="nturl notranslate km flag Khmer"></a></li><li id="Korean"><a href="#" title="Korean" class="nturl notranslate ko flag Korean"></a></li><li id="Kurdish"><a href="#" title="Kurdish" class="nturl notranslate ku flag Kurdish"></a></li><li id="Kyrgyz"><a href="#" title="Kyrgyz" class="nturl notranslate ky flag Kyrgyz"></a></li><li id="Lao"><a href="#" title="Lao" class="nturl notranslate lo flag Lao"></a></li><li id="Latin"><a href="#" title="Latin" class="nturl notranslate la flag Latin"></a></li><li id="Latvian"><a href="#" title="Latvian" class="nturl notranslate lv flag Latvian"></a></li><li id="Lithuanian"><a href="#" title="Lithuanian" class="nturl notranslate lt flag Lithuanian"></a></li><li id="Luxembourgish"><a href="#" title="Luxembourgish" class="nturl notranslate lb flag Luxembourgish"></a></li><li id="Macedonian"><a href="#" title="Macedonian" class="nturl notranslate mk flag Macedonian"></a></li><li id="Malagasy"><a href="#" title="Malagasy" class="nturl notranslate mg flag Malagasy"></a></li><li id="Malayalam"><a href="#" title="Malayalam" class="nturl notranslate ml flag Malayalam"></a></li><li id="Malay"><a href="#" title="Malay" class="nturl notranslate ms flag Malay"></a></li><li id="Maltese"><a href="#" title="Maltese" class="nturl notranslate mt flag Maltese"></a></li><li id="Maori"><a href="#" title="Maori" class="nturl notranslate mi flag Maori"></a></li><li id="Marathi"><a href="#" title="Marathi" class="nturl notranslate mr flag Marathi"></a></li><li id="Mongolian"><a href="#" title="Mongolian" class="nturl notranslate mn flag Mongolian"></a></li><li id="Myanmar (Burmese)"><a href="#" title="Myanmar (Burmese)" class="nturl notranslate my flag Myanmar (Burmese)"></a></li><li id="Nepali"><a href="#" title="Nepali" class="nturl notranslate ne flag Nepali"></a></li><li id="Norwegian"><a href="#" title="Norwegian" class="nturl notranslate no flag Norwegian"></a></li><li id="Pashto"><a href="#" title="Pashto" class="nturl notranslate ps flag Pashto"></a></li><li id="Persian"><a href="#" title="Persian" class="nturl notranslate fa flag Persian"></a></li><li id="Polish"><a href="#" title="Polish" class="nturl notranslate pl flag Polish"></a></li><li id="Portuguese"><a href="#" title="Portuguese" class="nturl notranslate pt flag Portuguese"></a></li><li id="Punjabi"><a href="#" title="Punjabi" class="nturl notranslate pa flag Punjabi"></a></li><li id="Romanian"><a href="#" title="Romanian" class="nturl notranslate ro flag Romanian"></a></li><li id="Russian"><a href="#" title="Russian" class="nturl notranslate ru flag Russian"></a></li><li id="Serbian"><a href="#" title="Serbian" class="nturl notranslate sr flag Serbian"></a></li><li id="Shona"><a href="#" title="Shona" class="nturl notranslate sn flag Shona"></a></li><li id="Sesotho"><a href="#" title="Sesotho" class="nturl notranslate st flag Sesotho"></a></li><li id="Sindhi"><a href="#" title="Sindhi" class="nturl notranslate sd flag Sindhi"></a></li><li id="Sinhala"><a href="#" title="Sinhala" class="nturl notranslate si flag Sinhala"></a></li><li id="Slovak"><a href="#" title="Slovak" class="nturl notranslate sk flag Slovak"></a></li><li id="Slovenian"><a href="#" title="Slovenian" class="nturl notranslate sl flag Slovenian"></a></li><li id="Samoan"><a href="#" title="Samoan" class="nturl notranslate sm flag Samoan"></a></li><li id="Scots Gaelic"><a href="#" title="Scots Gaelic" class="nturl notranslate gd flag Scots Gaelic"></a></li><li id="Somali"><a href="#" title="Somali" class="nturl notranslate so flag Somali"></a></li><li id="Spanish"><a href="#" title="Spanish" class="nturl notranslate es flag Spanish"></a></li><li id="Sundanese"><a href="#" title="Sundanese" class="nturl notranslate su flag Sundanese"></a></li><li id="Swahili"><a href="#" title="Swahili" class="nturl notranslate sw flag Swahili"></a></li><li id="Swedish"><a href="#" title="Swedish" class="nturl notranslate sv flag Swedish"></a></li><li id="Tajik"><a href="#" title="Tajik" class="nturl notranslate tg flag Tajik"></a></li><li id="Tamil"><a href="#" title="Tamil" class="nturl notranslate ta flag Tamil"></a></li><li id="Telugu"><a href="#" title="Telugu" class="nturl notranslate te flag Telugu"></a></li><li id="Thai"><a href="#" title="Thai" class="nturl notranslate th flag Thai"></a></li><li id="Turkish"><a href="#" title="Turkish" class="nturl notranslate tr flag Turkish"></a></li><li id="Ukrainian"><a href="#" title="Ukrainian" class="nturl notranslate uk flag Ukrainian"></a></li><li id="Urdu"><a href="#" title="Urdu" class="nturl notranslate ur flag Urdu"></a></li><li id="Uzbek"><a href="#" title="Uzbek" class="nturl notranslate uz flag Uzbek"></a></li><li id="Vietnamese"><a href="#" title="Vietnamese" class="nturl notranslate vi flag Vietnamese"></a></li><li id="Welsh"><a href="#" title="Welsh" class="nturl notranslate cy flag Welsh"></a></li><li id="Xhosa"><a href="#" title="Xhosa" class="nturl notranslate xh flag Xhosa"></a></li><li id="Yiddish"><a href="#" title="Yiddish" class="nturl notranslate yi flag Yiddish"></a></li><li id="Yoruba"><a href="#" title="Yoruba" class="nturl notranslate yo flag Yoruba"></a></li><li id="Zulu"><a href="#" title="Zulu" class="nturl notranslate zu flag Zulu"></a></li></ul></div><div id='glt-footer'><div id="google_language_translator" class="default-language-en"></div></div>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+<!-- Global site tag (gtag.js) - Google Ads: 1021552528 -->  
+</script>

@@ -1,0 +1,250 @@
+.ffc-clone /* ============================================================================
+   DEVICE
+   ========================================================================= */
+.mkhb-device * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ffc-clone .mkhb-device *:before,
+.ffc-clone .mkhb-device *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ffc-clone .mkhb-device.mkhb-desktop:before,
+.ffc-clone .mkhb-device.mkhb-desktop:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.ffc-clone .mkhb-container,
+.ffc-clone .mkhb-container-fluid {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.ffc-clone .mkhb-mobile .mkhb-container {
+    display: block;
+}
+
+.ffc-clone .mkhb-container-fluid {
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+    .ffc-clone .mkhb-container {
+        width: 750px
+    }
+}
+@media (min-width: 992px) {
+    .ffc-clone .mkhb-container {
+        width: 960px
+    }
+}
+@media (min-width: 1200px) {
+    .ffc-clone .mkhb-container {
+        width: 1140px
+    }
+}
+
+.ffc-clone .clearfix:after,
+.ffc-clone .clearfix:before,
+.ffc-clone .mkhb-container-fluid:after,
+.ffc-clone .mkhb-container-fluid:before,
+.ffc-clone .mkhb-container:after,
+.ffc-clone .mkhb-container:before,
+.ffc-clone .mkhb-row:after,
+.ffc-clone .mkhb-row:before {
+    content: " ";
+    display: table
+}
+.ffc-clone .clearfix:after,
+.ffc-clone .mkhb-container-fluid:after,
+.ffc-clone .mkhb-container:after,
+.ffc-clone .mkhb-row:after {
+    clear: both
+}
+
+.ffc-clone /* Use flexbox when setting equal-height columns. */
+.mkhb-equal-height-columns {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.ffc-clone .mkhb-container img, .ffc-clone .mkhb-container-fluid img {
+    max-width: 100%;
+    display: block;
+}
+
+.ffc-clone .mkhb-custom-header {
+    border-bottom: 1px solid #ededed;
+}
+
+.ffc-clone /* ============================================================================
+   INLINE CONTAINER
+   ========================================================================= */
+.mkhb-inline-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.ffc-clone .mkhb-inline-container div[class^=mkhb-inline-container__] {
+    flex: 1;
+    display: flex;
+}
+
+.ffc-clone .mkhb-inline-container__left {
+    justify-content: flex-start;
+}
+.ffc-clone .mkhb-inline-container__center {
+    justify-content: center;
+}
+.ffc-clone .mkhb-inline-container__right {
+    justify-content: flex-end;
+}
+
+.ffc-clone .mkhb-col-align__top div[class^=mkhb-inline-container__] {
+    align-items: flex-start;
+}
+
+.ffc-clone .mkhb-col-align__middle div[class^=mkhb-inline-container__] {
+    align-items: center;
+}
+
+.ffc-clone .mkhb-col-align__bottom div[class^=mkhb-inline-container__] {
+    align-items: flex-end;
+}
+
+.ffc-clone /* ============================================================================
+   FIXED HEADER
+   ========================================================================= */
+.mkhb-fixed--filled {
+    height: 92px;
+}
+
+.ffc-clone .mkhb-fixed--filled.mkhb-overlap {
+    height: auto;
+}
+
+.ffc-clone .mkhb-fixed > .mkhb-device-container,
+.ffc-clone .mkhb-overlap > .mkhb-device-container {
+    width: 100%;
+    z-index: 200;
+}
+
+.ffc-clone .mkhb-fixed > .mkhb-device-container,
+.ffc-clone .mkhb-fixed.mkhb-overlap > .mkhb-device-container {
+    position: fixed;
+}
+
+.ffc-clone .mkhb-overlap > .mkhb-device-container {
+    position: absolute;
+}
+
+.ffc-clone /* ============================================================================
+   STICKY HEADER
+   ========================================================================= */
+.mkhb-sticky {
+    width: 100%;
+    position: fixed;
+    z-index: 301;
+    top: -100px;
+    opacity: 0;
+}
+
+.ffc-clone .mkhb-sticky--active {
+    transition: top 0.35s ease 0.1s;
+    opacity: 1;
+}
+
+.ffc-clone .mkhb-sticky.mkhb-sticky--lazy {
+    transition: all 0.3s ease-in-out;
+}
+
+
+.ffc-clone /* ============================================================================
+   DEVICES DISPLAY
+   ========================================================================= */
+@media (max-width: 767px) {
+    .ffc-clone .mkhb-el-tablet,
+    .ffc-clone .mkhb-el-desktop,
+    .ffc-clone .mkhb-el-sticky--tablet,
+    .ffc-clone .mkhb-el-sticky--desktop {
+        display: none !important;
+    }
+    .ffc-clone .mkhb-tablet,
+    .ffc-clone .mkhb-desktop,
+    .ffc-clone .mkhb-sticky--tablet,
+    .ffc-clone .mkhb-sticky--desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .ffc-clone .mkhb-el-mobile,
+    .ffc-clone .mkhb-el-desktop,
+    .ffc-clone .mkhb-el-sticky--mobile,
+    .ffc-clone .mkhb-el-sticky--desktop {
+        display: none !important;
+    }
+    .ffc-clone .mkhb-mobile,
+    .ffc-clone .mkhb-desktop,
+    .ffc-clone .mkhb-sticky--mobile,
+    .ffc-clone .mkhb-sticky--desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 1025px) {
+    .ffc-clone .mkhb-el-mobile,
+    .ffc-clone .mkhb-el-tablet,
+    .ffc-clone .mkhb-el-sticky--mobile,
+    .ffc-clone .mkhb-el-sticky--tablet {
+        display: none !important;
+    }
+    .ffc-clone .mkhb-mobile,
+    .ffc-clone .mkhb-tablet,
+    .ffc-clone .mkhb-sticky--mobile,
+    .ffc-clone .mkhb-sticky--tablet {
+        display: none;
+    }
+}
+
+.ffc-clone /* ============================================================================
+   CONTACT AND SCROLL TOP - DEVICES DISPLAY
+   ========================================================================= */
+.mkhb-shopping-icon .mk-go-top,
+.ffc-clone .mkhb-shopping-icon .mk-quick-contact-wrapper {
+    bottom: 15px;
+}
+@media handheld, only screen and (max-width: 1024px) {
+    .ffc-clone .mkhb-shopping-icon .mk-go-top.is-active {
+        bottom: 73px;
+    }
+}
+@media handheld, only screen and (min-width: 768px) and (max-width: 1024px) {
+    .ffc-clone .mkhb-shopping-icon--tablet .mk-go-top,
+    .ffc-clone .mkhb-shopping-icon--tablet .mk-quick-contact-wrapper {
+        bottom: 87px;
+    }
+    .ffc-clone .mkhb-shopping-icon--tablet .mk-go-top.is-active {
+        bottom: 145px;
+    }
+}
+@media handheld, only screen and (max-width: 767px) {
+    .ffc-clone .mkhb-shopping-icon--mobile .mk-go-top,
+    .ffc-clone .mkhb-shopping-icon--mobile .mk-quick-contact-wrapper {
+        bottom: 87px;
+    }
+    .ffc-clone .mkhb-shopping-icon--mobile .mk-go-top.is-active {
+        bottom: 145px;
+    }
+}

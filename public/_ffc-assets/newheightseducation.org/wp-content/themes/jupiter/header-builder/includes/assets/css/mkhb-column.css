@@ -1,0 +1,230 @@
+.ffc-clone /* ============================================================================
+   COLUMN - Default
+   ========================================================================= */
+.mkhb-col {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	vertical-align: top;
+	border-width: 0;
+	border-color: #ffffff;
+	border-style: solid;
+}
+
+.ffc-clone .mkhb-col--bg-image {
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+}
+
+.ffc-clone /* ============================================================================
+   COLUMN - Inline Container
+   ========================================================================= */
+.mkhb-col__container-inline__wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.ffc-clone .mkhb-col__container-inline__wrap div[class^=mkhb-col__container-inline__] {
+    flex: 1;
+    display: flex;
+}
+
+.ffc-clone .mkhb-col__container-inline__left {
+    justify-content: flex-start;
+}
+
+.ffc-clone .mkhb-col__container-inline__center {
+    justify-content: center;
+}
+
+.ffc-clone .mkhb-col__container-inline__right {
+    justify-content: flex-end;
+}
+
+.ffc-clone /* ============================================================================
+   COLUMN - Vertical alignment
+   ========================================================================= */
+.mkhb-col--align-top div[class^=mkhb-col__container-inline__] {
+    align-items: flex-start;
+}
+
+.ffc-clone .mkhb-col--align-middle div[class^=mkhb-col__container-inline__] {
+    align-items: center;
+}
+
+.ffc-clone .mkhb-col--align-bottom div[class^=mkhb-col__container-inline__] {
+    align-items: flex-end;
+}
+
+.ffc-clone /* ============================================================================
+   COLUMN - General
+   ========================================================================= */
+.mkhb-col__container {
+    width: 100%;
+}
+
+.ffc-clone .mkhb-col-md-1,
+.ffc-clone .mkhb-col-md-10,
+.ffc-clone .mkhb-col-md-11,
+.ffc-clone .mkhb-col-md-12,
+.ffc-clone .mkhb-col-md-2,
+.ffc-clone .mkhb-col-md-3,
+.ffc-clone .mkhb-col-md-4,
+.ffc-clone .mkhb-col-md-5,
+.ffc-clone .mkhb-col-md-6,
+.ffc-clone .mkhb-col-md-7,
+.ffc-clone .mkhb-col-md-8,
+.ffc-clone .mkhb-col-md-9,
+.ffc-clone .mkhb-col-sm-1,
+.ffc-clone .mkhb-col-sm-10,
+.ffc-clone .mkhb-col-sm-11,
+.ffc-clone .mkhb-col-sm-12,
+.ffc-clone .mkhb-col-sm-2,
+.ffc-clone .mkhb-col-sm-3,
+.ffc-clone .mkhb-col-sm-4,
+.ffc-clone .mkhb-col-sm-5,
+.ffc-clone .mkhb-col-sm-6,
+.ffc-clone .mkhb-col-sm-7,
+.ffc-clone .mkhb-col-sm-8,
+.ffc-clone .mkhb-col-sm-9,
+.ffc-clone .mkhb-col-xs-1,
+.ffc-clone .mkhb-col-xs-10,
+.ffc-clone .mkhb-col-xs-11,
+.ffc-clone .mkhb-col-xs-12,
+.ffc-clone .mkhb-col-xs-2,
+.ffc-clone .mkhb-col-xs-3,
+.ffc-clone .mkhb-col-xs-4,
+.ffc-clone .mkhb-col-xs-5,
+.ffc-clone .mkhb-col-xs-6,
+.ffc-clone .mkhb-col-xs-7,
+.ffc-clone .mkhb-col-xs-8,
+.ffc-clone .mkhb-col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.ffc-clone .mkhb-col-xs-1,
+.ffc-clone .mkhb-col-xs-10,
+.ffc-clone .mkhb-col-xs-11,
+.ffc-clone .mkhb-col-xs-12,
+.ffc-clone .mkhb-col-xs-2,
+.ffc-clone .mkhb-col-xs-3,
+.ffc-clone .mkhb-col-xs-4,
+.ffc-clone .mkhb-col-xs-5,
+.ffc-clone .mkhb-col-xs-6,
+.ffc-clone .mkhb-col-xs-7,
+.ffc-clone .mkhb-col-xs-8,
+.ffc-clone .mkhb-col-xs-9 {
+    float: left;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .ffc-clone .mkhb-col-sm-1,
+    .ffc-clone .mkhb-col-sm-10,
+    .ffc-clone .mkhb-col-sm-11,
+    .ffc-clone .mkhb-col-sm-12,
+    .ffc-clone .mkhb-col-sm-2,
+    .ffc-clone .mkhb-col-sm-3,
+    .ffc-clone .mkhb-col-sm-4,
+    .ffc-clone .mkhb-col-sm-5,
+    .ffc-clone .mkhb-col-sm-6,
+    .ffc-clone .mkhb-col-sm-7,
+    .ffc-clone .mkhb-col-sm-8,
+    .ffc-clone .mkhb-col-sm-9 {
+        float: left
+    }
+    .ffc-clone .mkhb-col-sm-12 {
+        width: 100%
+    }
+    .ffc-clone .mkhb-col-sm-11 {
+        width: 91.66666667%
+    }
+    .ffc-clone .mkhb-col-sm-10 {
+        width: 83.33333333%
+    }
+    .ffc-clone .mkhb-col-sm-9 {
+        width: 75%
+    }
+    .ffc-clone .mkhb-col-sm-8 {
+        width: 66.66666667%
+    }
+    .ffc-clone .mkhb-col-sm-7 {
+        width: 58.33333333%
+    }
+    .ffc-clone .mkhb-col-sm-6 {
+        width: 50%
+    }
+    .ffc-clone .mkhb-col-sm-5 {
+        width: 41.66666667%
+    }
+    .ffc-clone .mkhb-col-sm-4 {
+        width: 33.33333333%
+    }
+    .ffc-clone .mkhb-col-sm-3 {
+        width: 25%
+    }
+    .ffc-clone .mkhb-col-sm-2 {
+        width: 16.66666667%
+    }
+    .ffc-clone .mkhb-col-sm-1 {
+        width: 8.33333333%
+    }
+}
+
+@media (min-width: 992px) {
+    .ffc-clone .mkhb-col-md-1,
+    .ffc-clone .mkhb-col-md-10,
+    .ffc-clone .mkhb-col-md-11,
+    .ffc-clone .mkhb-col-md-12,
+    .ffc-clone .mkhb-col-md-2,
+    .ffc-clone .mkhb-col-md-3,
+    .ffc-clone .mkhb-col-md-4,
+    .ffc-clone .mkhb-col-md-5,
+    .ffc-clone .mkhb-col-md-6,
+    .ffc-clone .mkhb-col-md-7,
+    .ffc-clone .mkhb-col-md-8,
+    .ffc-clone .mkhb-col-md-9 {
+        float: left
+    }
+    .ffc-clone .mkhb-col-md-12 {
+        width: 100%
+    }
+    .ffc-clone .mkhb-col-md-11 {
+        width: 91.66666667%
+    }
+    .ffc-clone .mkhb-col-md-10 {
+        width: 83.33333333%
+    }
+    .ffc-clone .mkhb-col-md-9 {
+        width: 75%
+    }
+    .ffc-clone .mkhb-col-md-8 {
+        width: 66.66666667%
+    }
+    .ffc-clone .mkhb-col-md-7 {
+        width: 58.33333333%
+    }
+    .ffc-clone .mkhb-col-md-6 {
+        width: 50%
+    }
+    .ffc-clone .mkhb-col-md-5 {
+        width: 41.66666667%
+    }
+    .ffc-clone .mkhb-col-md-4 {
+        width: 33.33333333%
+    }
+    .ffc-clone .mkhb-col-md-3 {
+        width: 25%
+    }
+    .ffc-clone .mkhb-col-md-2 {
+        width: 16.66666667%
+    }
+    .ffc-clone .mkhb-col-md-1 {
+        width: 8.33333333%
+    }
+}
