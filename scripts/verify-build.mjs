@@ -37,6 +37,9 @@ async function walkHtml(dir, results = []) {
   for (const entry of entries) {
     const full = join(dir, entry.name)
     if (entry.isDirectory()) {
+      // Captured third-party assets, not routes: an embedded player's own
+      // HTML has no <h1> and no canonical, and should not have.
+      if (entry.name === '_ffc-assets') continue
       await walkHtml(full, results)
     } else if (entry.name.endsWith('.html') && !SKIP.has(entry.name)) {
       results.push(full)
