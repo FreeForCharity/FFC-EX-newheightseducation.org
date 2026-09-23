@@ -49,6 +49,15 @@ function findChromiumExecutable(): string | undefined {
  */
 export default defineConfig({
   testDir: './tests',
+  // `tests/smoke/` is the POST-DEPLOY suite: its subject is the live
+  // deployment, supplied through SMOKE_BASE_URL by
+  // .github/workflows/post-deploy-smoke.yml, and it runs from
+  // playwright.smoke.config.ts. Left in, `testDir` sweeps it into the ordinary
+  // E2E run and points it at the local preview server -- where its whole
+  // reason for existing (a basePath the build never sees, a host that will not
+  // resolve a directory, an asset Pages does not serve) cannot be observed, so
+  // it would pass for the wrong reason on every run.
+  testIgnore: '**/smoke/**',
   // Run tests in parallel for better performance
   fullyParallel: true,
   // Fail the build on CI if you accidentally left test.only in the source code
