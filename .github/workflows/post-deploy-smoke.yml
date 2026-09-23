@@ -830,9 +830,18 @@ jobs:
         # Depth hook: a repo can ship its own Playwright smoke suite in
         # tests/smoke/ (optionally with playwright.smoke.config.ts reading
         # SMOKE_BASE_URL) and the engine runs it against the live URL.
-        # Adopted from the FFC-EX-mitchellnchistory.org pattern. Apex mode
-        # only: repo suites assert canonical-URL invariants.
-        if: steps.url.outputs.mode == 'apex'
+        # Adopted from the FFC-EX-mitchellnchistory.org pattern.
+        #
+        # Runs in DEFAULT mode too, which it used to skip. The reason given for
+        # apex-only was that repo suites assert canonical-URL invariants -- true
+        # of a suite that hardcodes the apex, and this repo's does not: it takes
+        # the host from SMOKE_BASE_URL and compares the canonical's PATH against
+        # the path actually served, which is correct on both. Excluding default
+        # mode left a github.io deployment with no route-level verification at
+        # all, so a deploy going green meant the artifact uploaded and nothing
+        # about whether any of it was reachable. That is the window a migrated
+        # site sits in for weeks before its domain is cut over.
+        if: steps.url.outputs.mode == 'apex' || steps.url.outputs.mode == 'default'
         env:
           SMOKE_BASE_URL: ${{ steps.url.outputs.url }}
           SMOKE_URL: ${{ steps.url.outputs.url }}
