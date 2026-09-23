@@ -15,8 +15,17 @@ import { smokeBase, resolveLoc, parseLocs, pool, fetchPage } from './_helpers'
  * host.
  */
 test.describe('deployed routes', () => {
-  // ~790 requests across the public internet.
-  test.setTimeout(10 * 60 * 1000)
+  // Worst case is what sets this, not the happy path. ~790 routes at
+  // concurrency 16 with a 20s per-request timeout is ceil(790/16) * 20s ~= 17
+  // minutes if EVERY request hangs -- so a 10-minute cap would have killed the
+  // test before it could report which routes were broken, which is the only
+  // thing anyone reads it for. Raised by Copilot on #19.
+  //
+  // Two changes rather than one: the cap is above the worst case, AND the
+  // sweep gives up early (see MAX_FAILURES) so the worst case is not reached.
+  // A host failing 25 routes does not need the other 765 checked to prove
+  // something is wrong.
+  test.setTimeout(20 * 60 * 1000)
 
   test('the sitemap itself is served and non-empty', async ({ request }) => {
     const url = new URL('sitemap.xml', smokeBase()).toString()
@@ -36,17 +45,40 @@ test.describe('deployed routes', () => {
     expect(locs.length).toBeGreaterThan(0)
 
     const urls = locs.map((l) => resolveLoc(l, base))
-    const results = await pool(urls, 16, (u) => fetchPage(request, u))
+
+    // Stop sweeping once the verdict is no longer in doubt. This bounds the
+    // run against a host that is down or timing out, and it keeps the report
+    // readable: 25 named routes are actionable, 790 are a wall.
+    const MAX_FAILURES = 25
+    let failures = 0
+    const results = await pool(urls, 16, async (u) => {
+      if (failures >= MAX_FAILURES) return { code: -1, isPage: true, why: 'not checked' }
+      const r = await fetchPage(request, u)
+      if (!r.isPage) failures += 1
+      return r
+    })
 
     const broken = urls.map((u, i) => ({ url: u, ...results[i] })).filter((r) => !r.isPage)
+    const stopped = failures >= MAX_FAILURES
+    const checked = results.filter((r) => r.why !== 'not checked').length
 
     // Reported in full rather than as a count: the first thing anyone reading a
     // failure needs is WHICH routes, and a truncated list sends them to the
     // artifact instead.
+    // The early stop introduces a way for this test to pass while measuring
+    // nothing: if the threshold were ever reached before any route was
+    // checked, `broken` is empty and the assertion below succeeds on a
+    // denominator of zero. Assert the denominator, the same way the sitemap
+    // test asserts it advertises at least one route.
+    expect(checked, 'the sweep must actually check routes').toBeGreaterThan(0)
+
     const detail = broken.map((b) => `  ${b.why}  ${b.url}`).join('\n')
+    const note = stopped
+      ? `stopped after ${MAX_FAILURES} failures (${checked} of ${urls.length} checked) -- `
+      : ''
     expect(
       broken.length,
-      `${broken.length} of ${urls.length} advertised routes did not serve a page:\n${detail}`
+      `${note}${broken.length} of ${checked} checked routes did not serve a page:\n${detail}`
     ).toBe(0)
   })
 })

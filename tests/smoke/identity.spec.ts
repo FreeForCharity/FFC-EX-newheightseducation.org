@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { smokeBase } from './_helpers'
+import { siteConfig } from '../../src/lib/site.config'
 
 /**
  * The deployment serves THIS charity's site, wired to the URL it is served at.
@@ -40,9 +41,19 @@ test('the canonical matches the URL the page is actually served at', async ({ pa
     `canonical path ${c.pathname} must match the served path ${served.pathname}`
   ).toBe(norm(served.pathname))
 
-  // ...and it must not still point at the WordPress origin this site was
-  // migrated off, which is what a half-updated site config leaves behind.
-  expect(c.hostname).not.toMatch(/(^|\.)newheightseducation\.org$/)
+  // ...and its ORIGIN must be the one this repo declares as production.
+  //
+  // An earlier version hardcoded "not newheightseducation.org", which Copilot
+  // called brittle and which was worse than brittle: after the domain cutover
+  // that host BECOMES the canonical, so the assertion would have started
+  // failing on a correct deployment. `siteConfig.url` is the repo's own
+  // declaration of where it lives, and `scripts/check-drift.mjs` already fails
+  // CI when it disagrees with `public/CNAME` -- so this is anchored to a value
+  // something else keeps honest, and it follows the site through cutover
+  // instead of having to be remembered.
+  expect(c.origin, `canonical origin must be the configured site origin`).toBe(
+    new URL(siteConfig.url).origin
+  )
   expect(c.protocol).toBe('https:')
 })
 
