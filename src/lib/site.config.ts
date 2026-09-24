@@ -263,6 +263,48 @@ export function twitterSite(): string | undefined {
   return `@${raw}`
 }
 
+/**
+ * The parent organization to ASSERT, or null.
+ *
+ * `parentOrg` and `supportedBy` mean different things and the difference is a
+ * statement about the charity's legal standing. `supportedBy` is the FFC
+ * program attribution, required on every supported site. `parentOrg` is
+ * genuine fiscal sponsorship -- "a project of" -- which says the charity is
+ * not independent.
+ *
+ * An FFC-EX repo is an EXTERNAL charity's own site: Free For Charity provides
+ * the website and domain at no cost, and the charity is its own 501(c)(3).
+ * The template nonetheless ships `parentOrg` pointing at Free For Charity,
+ * the same organization as `supportedBy`, so a fork that changes nothing
+ * renders "Supported by Free For Charity | A project of Free For Charity" in
+ * its footer -- measured on this site's `main`, on all 793 pages.
+ *
+ * That pair is self-contradictory by FFC's own definitions, and the
+ * authoritative footer standard
+ * (FFC-IN-ffcadmin.org/docs/footer-standard-adoption-checklist.md) lists
+ * "Supported by Free For Charity" as required and has no parent-organization
+ * item at all. So a `parentOrg` naming the supporting organization is the
+ * template's default leaking through, never a real relationship, and it is
+ * refused here rather than in each of the three places that render it.
+ *
+ * Same class as `ffc-footer`'s TEMPLATE_EIN guard: a shipped default that is
+ * wrong for every site inheriting it, and wrong in the direction that
+ * misstates the charity.
+ *
+ * Compared on name OR url, because a fork that retitles the block without
+ * repointing it -- or repoints without retitling -- is still the template
+ * default wearing a different label.
+ */
+export function assertedParentOrg(): SiteConfig['parentOrg'] | null {
+  const parent = siteConfig.parentOrg
+  if (!parent) return null
+  const norm = (s: string) => s.trim().toLowerCase().replace(/\/+$/, '')
+  const same =
+    norm(parent.name) === norm(siteConfig.supportedBy.name) ||
+    norm(parent.url) === norm(siteConfig.supportedBy.url)
+  return same ? null : parent
+}
+
 /** Returns the OG/Twitter card description, falling back to the longer page description. */
 export function cardDescription(): string {
   return siteConfig.shortDescription.trim() || siteConfig.description

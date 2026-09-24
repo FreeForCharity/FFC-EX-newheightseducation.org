@@ -8,7 +8,7 @@ import { FaFacebookF, FaLinkedinIn, FaGithub } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import type { IconType } from 'react-icons'
 
-import { siteConfig } from '@/lib/site.config'
+import { assertedParentOrg, siteConfig } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
 import { eventsSectionVisible } from '@/lib/events/visibility'
 import { configuredTeam } from '@/data/team'
@@ -275,18 +275,35 @@ const Footer: React.FC = () => {
           >
             {siteConfig.supportedBy.name}
           </Link>
-          {siteConfig.parentOrg && (
+          {assertedParentOrg() && (
             <>
               {' | A project of '}
               <Link
-                href={siteConfig.parentOrg.url}
+                href={assertedParentOrg()!.url}
                 className="underline text-[#2EA3F2] hover:text-[#2EA3F2] transition-colors"
               >
-                {siteConfig.parentOrg.name}
+                {assertedParentOrg()!.name}
               </Link>
             </>
           )}
         </p>
+        {/* The same independence statement `ffc-footer` carries, duplicated
+            here deliberately and temporarily: this is the footer that renders
+            today, and whichever of the two a visitor sees has to say whose
+            organization this is. It goes away with this component when the
+            layout switches to `ffc-footer` (#24). */}
+        {!assertedParentOrg() && (
+          <p className="text-[13px] leading-[22px] pt-[6px]">
+            {siteConfig.name} is an independent nonprofit organization.{' '}
+            <Link
+              href={siteConfig.supportedBy.url}
+              className="underline text-[#2EA3F2] hover:text-[#2EA3F2] transition-colors"
+            >
+              {siteConfig.supportedBy.name}
+            </Link>{' '}
+            provides its website and domain services at no cost.
+          </p>
+        )}
       </div>
     </footer>
   )

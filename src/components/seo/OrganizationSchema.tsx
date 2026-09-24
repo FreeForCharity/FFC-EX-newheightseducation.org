@@ -1,5 +1,5 @@
 import React from 'react'
-import { siteConfig, siteUrl } from '@/lib/site.config'
+import { assertedParentOrg, siteConfig, siteUrl } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
 
 /**
@@ -60,13 +60,29 @@ export function buildOrganizationSchema(): Record<string, unknown> {
     }
   }
 
-  if (siteConfig.parentOrg) {
+  // `assertedParentOrg()` and not `siteConfig.parentOrg`: the template ships
+  // the latter pointing at Free For Charity, the SUPPORTING organization, not
+  // a parent. Emitting it would tell search engines the charity is a
+  // subsidiary of FFC -- the one field here a human never sees and a
+  // knowledge panel does.
+  //
+  // Stated as a hazard rather than as damage done, because on THIS site it is
+  // not: measured 2026-09-24, `OrganizationSchema` is imported by nothing and
+  // there are zero `NonprofitOrganization` blocks across all 793 built pages.
+  // The 706-generated home page replaced the template one that used to render
+  // it. So the live harm was the footer's visible "A project of" clause; this
+  // guard is for the forks where the component is still wired, and for this
+  // one if it is wired again. That the site currently publishes no
+  // Organization identity at all is a separate gap, filed rather than fixed
+  // here.
+  const parentOrg = assertedParentOrg()
+  if (parentOrg) {
     // When this site is "a project of" an umbrella org, link the two so search
     // engines can relate them in the knowledge graph.
     schema.parentOrganization = {
       '@type': 'NonprofitOrganization',
-      name: siteConfig.parentOrg.name,
-      url: siteConfig.parentOrg.url,
+      name: parentOrg.name,
+      url: parentOrg.url,
     }
   }
 
