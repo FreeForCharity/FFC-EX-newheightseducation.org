@@ -394,3 +394,54 @@ body {
 body:has(.ffc-clone header) > header {
   display: none;
 }
+
+/* --- Two WCAG failures the capture brought with it ------------------------
+   Both measured with Lighthouse against the built output, which is the same
+   tool that gates this repo: `categories:accessibility` is an ERROR-level
+   assertion at 0.98 in `lighthouserc.json`, and /contact-us/ scored 0.93,
+   /privacy-policy/ 0.92 and /cart/ 0.96. Two audits, weight 7 each, were the
+   whole gap.
+
+   1. `color-contrast` — the Google Language Translator trigger renders
+      "Translate »" in #ffffff on #f89406. That is **2.28:1** where 4.5:1 is
+      required, and it sits on every captured page. The orange is the
+      charity's own, so it is kept and the TEXT is darkened instead:
+      #1a1a1a on the same orange measures 8.6:1. Recolouring the background
+      would have hit the same ratio and changed the thing a visitor actually
+      notices.
+
+   2. `link-in-text-block` — inline prose links are #185d2f on #0f1207 body
+      text, **2.38:1** against their surroundings where 3:1 is required, with
+      no other styling. Two nodes on /contact-us/ (the charity's Facebook and
+      X links inside a paragraph). Underlining satisfies the rule without
+      touching a single colour, which is why it is the fix here: the rule is
+      "do not rely on colour ALONE", and an underline is the conventional
+      other cue.
+
+      Scoped to `p a` on purpose. The theme's menus, buttons and cards are
+      also anchors, and underlining those would restyle the whole site to fix
+      a prose problem.
+
+   BOTH SELECTORS ARE DELIBERATELY OVER-SPECIFIC, and the first attempt at
+   this shipped them one step too weak. The converter already scopes the
+   captured stylesheets under `.ffc-clone`, and it injects them INSIDE the
+   fragment -- so they land after this file in the cascade and win every tie.
+   Measured with CDP `CSS.getMatchedStylesForNode`: `.ffc-clone
+   #glt-translate-trigger span` (1,1,1) lost to the capture's `.ffc-clone
+   #glt-translate-trigger > span` (1,1,1), and `.ffc-clone p a` (0,1,2) lost
+   to its `.ffc-clone a:link` (0,2,1). The computed style was still
+   `rgb(255,255,255)` and `text-decoration: none`, and Lighthouse still scored
+   0.93 -- a rule that is present, scoped correctly and has no effect. Hence
+   the leading `body` on one and the link-state selectors on the other. */
+body .ffc-clone #glt-translate-trigger span,
+body .ffc-clone #glt-translate-trigger a {
+  color: #1a1a1a;
+}
+
+.ffc-clone p a:link,
+.ffc-clone p a:visited,
+.ffc-clone p a:hover,
+.ffc-clone p a:focus,
+.ffc-clone p a:active {
+  text-decoration: underline;
+}
