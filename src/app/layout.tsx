@@ -1,7 +1,17 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Header from './../components/header'
-import Footer from './../components/footer'
+// The slim attribution strip 706 generates for a captured site, not the
+// template's marketing footer. Every captured page brings New Heights
+// Educational Group's own footer -- their green strip with the logo, nine
+// social links, the Candid / GuideStar / GreatNonprofits / NSHSS badges and
+// their address -- and the template footer rendered a SECOND one below it,
+// 814px tall, whose quick links point at /#hero .. /#faq anchors this site's
+// pages do not have. ffc-footer carries what must survive (the required
+// "Supported by" attribution, the independence statement, the policy links)
+// in 169px. Its own docblock states the rule: a footer full of links to
+// nothing is a worse outcome than a smaller footer.
+import Footer from './../components/ffc-footer'
 import CookieConsent from './../components/cookie-consent'
 import GoogleTagManager, { GoogleTagManagerNoScript } from './../components/google-tag-manager'
 import { siteConfig, siteUrl, twitterSite, cardDescription } from '@/lib/site.config'
