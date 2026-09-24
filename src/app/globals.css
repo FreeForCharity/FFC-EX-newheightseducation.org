@@ -349,3 +349,106 @@ body {
 .ffc-clone {
   isolation: isolate;
 }
+
+/* A captured embed must not be wider than the page it is on.
+   /nheg-educational-programs/sponsor-a-student/ carries a Google Docs iframe
+   with a hard `width="1280"`, which at a 1440 viewport pushed the document to
+   2178px wide -- 738px of horizontal scroll, measured, and proportionally far
+   worse on a phone. It was the only page of 793 that overflowed, which is why
+   it needs a rule rather than an edit: the next capture can bring another one.
+   The source site has the same markup and the same problem; reproducing a
+   layout break faithfully is not a goal. */
+.ffc-clone iframe {
+  max-width: 100%;
+}
+
+/* A captured page brings the SITE'S OWN header, and it is the one a visitor
+   should see. The template header must not render over it.
+
+   Measured on newheightseducation.org, 2026-09-24, in Chromium at 1440x900
+   against the built export -- every figure below is from the browser, not
+   from reading the markup:
+
+     - FFC's header is `position: fixed`, `z-index: 50`, 80px tall, and
+       `isolation: isolate` above deliberately keeps the capture beneath
+       FFC's chrome. Correct for the cookie banner it was written for, and
+       it also buries the site's real navigation.
+     - The captured header occupies 0..60px on every page, entirely under
+       it. On /contact-us/ the eight links `Learning Annex, Home, Who We Are,
+       Programs, Volunteer, Events, Support NHEG, Radio Show` are present,
+       visible to the accessibility tree, and painted over.
+     - What shows instead is the template's own nav, whose seven links are
+       `/#hero`, `/#mission`, `/#programs`, `/#volunteer`, `/#donate`,
+       `/#faq` and `/#team`. Every one of those ids is absent from the home
+       page, because the home page is captured content: measured 0
+       occurrences of each in `out/index.html`. So the nav on display was
+       not merely duplicative, it was seven dead links.
+     - And each page's own first heading was sliced in half by the 80px
+       band -- visible in a screenshot of /contact-us/ as "CONTACT NHEG"
+       cut through the middle.
+
+   All 581 captured fragments carry their own `<header>`, so the condition
+   is unanimous here; it is still written as a condition rather than a flat
+   rule, because a capture that brings no header of its own must keep FFC's
+   rather than lose navigation entirely.
+
+   `:has()` and not JavaScript: this is a static export, so a client-side
+   pathname check would render FFC's header and then remove it, a flash on
+   every page load. `:has()` is Baseline since December 2023; a browser
+   without it falls back to the previous behaviour rather than to something
+   broken. Asserted in a real browser by tests/smoke/, never assumed --
+   this rule cannot be verified by reading it. */
+body:has(.ffc-clone header) > header {
+  display: none;
+}
+
+/* --- Two WCAG failures the capture brought with it ------------------------
+   Both measured with Lighthouse against the built output, which is the same
+   tool that gates this repo: `categories:accessibility` is an ERROR-level
+   assertion at 0.98 in `lighthouserc.json`, and /contact-us/ scored 0.93,
+   /privacy-policy/ 0.92 and /cart/ 0.96. Two audits, weight 7 each, were the
+   whole gap.
+
+   1. `color-contrast` — the Google Language Translator trigger renders
+      "Translate »" in #ffffff on #f89406. That is **2.28:1** where 4.5:1 is
+      required, and it sits on every captured page. The orange is the
+      charity's own, so it is kept and the TEXT is darkened instead:
+      #1a1a1a on the same orange measures 8.6:1. Recolouring the background
+      would have hit the same ratio and changed the thing a visitor actually
+      notices.
+
+   2. `link-in-text-block` — inline prose links are #185d2f on #0f1207 body
+      text, **2.38:1** against their surroundings where 3:1 is required, with
+      no other styling. Two nodes on /contact-us/ (the charity's Facebook and
+      X links inside a paragraph). Underlining satisfies the rule without
+      touching a single colour, which is why it is the fix here: the rule is
+      "do not rely on colour ALONE", and an underline is the conventional
+      other cue.
+
+      Scoped to `p a` on purpose. The theme's menus, buttons and cards are
+      also anchors, and underlining those would restyle the whole site to fix
+      a prose problem.
+
+   BOTH SELECTORS ARE DELIBERATELY OVER-SPECIFIC, and the first attempt at
+   this shipped them one step too weak. The converter already scopes the
+   captured stylesheets under `.ffc-clone`, and it injects them INSIDE the
+   fragment -- so they land after this file in the cascade and win every tie.
+   Measured with CDP `CSS.getMatchedStylesForNode`: `.ffc-clone
+   #glt-translate-trigger span` (1,1,1) lost to the capture's `.ffc-clone
+   #glt-translate-trigger > span` (1,1,1), and `.ffc-clone p a` (0,1,2) lost
+   to its `.ffc-clone a:link` (0,2,1). The computed style was still
+   `rgb(255,255,255)` and `text-decoration: none`, and Lighthouse still scored
+   0.93 -- a rule that is present, scoped correctly and has no effect. Hence
+   the leading `body` on one and the link-state selectors on the other. */
+body .ffc-clone #glt-translate-trigger span,
+body .ffc-clone #glt-translate-trigger a {
+  color: #1a1a1a;
+}
+
+.ffc-clone p a:link,
+.ffc-clone p a:visited,
+.ffc-clone p a:hover,
+.ffc-clone p a:focus,
+.ffc-clone p a:active {
+  text-decoration: underline;
+}

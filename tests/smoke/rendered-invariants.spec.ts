@@ -71,6 +71,129 @@ test.describe('rendered invariants', () => {
   })
 
   /**
+   * The site's OWN navigation must be the one a visitor can see.
+   *
+   * This is the test that would have caught two days of a migration looking
+   * nothing like the site it migrated, and it has to live here because every
+   * fact in it is a rendered fact. Both halves were measured on
+   * newheightseducation.org, 2026-09-24, before the fix:
+   *
+   *   - FFC's header is `position: fixed`, 80px tall, `z-index: 50`, and
+   *     `.ffc-clone { isolation: isolate }` above deliberately keeps the
+   *     capture beneath FFC's chrome. So the captured header at 0..60px was
+   *     painted over on all 793 pages -- the eight links `Learning Annex,
+   *     Home, Who We Are, Programs, Volunteer, Events, Support NHEG, Radio
+   *     Show` present, sized, and invisible.
+   *   - What showed instead offered `/#hero`, `/#mission`, `/#programs`,
+   *     `/#volunteer`, `/#donate`, `/#faq`, `/#team`: seven anchors into a
+   *     template home page that captured content had replaced. Zero of those
+   *     ids exist in the built home page.
+   *
+   * Every gate in this repo verifies the export against ITSELF, which is why
+   * a nav that was both hidden and dead passed all of them. A DOM query alone
+   * would not have caught it either -- the links were in the DOM. Only the
+   * geometry says what a visitor sees.
+   */
+  test("the captured page's own header is the visible one", async ({ page }) => {
+    for (const path of SAMPLE) {
+      await page.goto(`./${path}`, { waitUntil: 'load' })
+
+      const m = await page.evaluate(() => {
+        const clone = document.querySelector('.ffc-clone')
+        const capturedHeader = clone?.querySelector('header') ?? null
+        const templateHeader = document.querySelector('body > header')
+        if (!clone || !capturedHeader) return { skip: true as const }
+        const templateVisible =
+          !!templateHeader && getComputedStyle(templateHeader).display !== 'none'
+        const hb = capturedHeader.getBoundingClientRect()
+        // Anything of FFC's still painting over the captured header's band.
+        const band = { x: Math.round(hb.x + hb.width / 2), y: Math.round(hb.y + hb.height / 2) }
+        const topAt = document.elementFromPoint(band.x, band.y) as HTMLElement | null
+        return {
+          skip: false as const,
+          templateVisible,
+          capturedHeaderHeight: Math.round(hb.height),
+          topIsCaptured: !!topAt?.closest('.ffc-clone'),
+        }
+      })
+
+      // A capture that brings no header of its own keeps FFC's, by design.
+      if (m.skip) continue
+
+      expect(
+        m.templateVisible,
+        `${path || '(home)'}: the template header must not render over the page's own`
+      ).toBe(false)
+      expect(
+        m.capturedHeaderHeight,
+        `${path || '(home)'}: the captured header must occupy real space`
+      ).toBeGreaterThan(0)
+      expect(
+        m.topIsCaptured,
+        `${path || '(home)'}: the topmost element in the captured header's band must be the capture's`
+      ).toBe(true)
+    }
+  })
+
+  /**
+   * A phone must be able to navigate the site.
+   *
+   * At 390px the captured header collapses to a hamburger and the desktop menu
+   * is `display: none`, so that control IS the navigation. Measured before it
+   * was wired: two hamburger elements present on /who-we-are/ and
+   * /contact-us/, ZERO visible navigation links, and tapping either changed
+   * nothing. Every page, every phone visitor.
+   *
+   * Two separate causes, and the first hid the second. `clone-enhance` -- the
+   * captured pages' whole client runtime, which workflow 706 generates -- was
+   * imported by nothing. Wiring it up changed nothing either, because it was
+   * written for a Divi capture and this site is Jupiter/MK, so none of its
+   * selectors matched. A test that only asserted "the component renders" would
+   * have passed through both.
+   *
+   * So this asserts the OUTCOME a visitor cares about: tap the control, more
+   * navigation becomes visible than before.
+   */
+  test('a phone can open the site navigation', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    for (const path of SAMPLE) {
+      await page.goto(`./${path}`, { waitUntil: 'load' })
+
+      const toggle = page
+        .locator('.ffc-clone')
+        .locator('.mk-nav-responsive-link, .mobile_menu_bar, .et_mobile_nav_menu')
+        .first()
+      // A capture whose header does not collapse has nothing to assert here.
+      if ((await toggle.count()) === 0 || !(await toggle.isVisible())) continue
+
+      const countVisibleNavLinks = () =>
+        page.evaluate(
+          () =>
+            [
+              ...document.querySelectorAll(
+                '.ffc-clone .mk-responsive-wrap a, .ffc-clone .mobile_nav a, .ffc-clone header a'
+              ),
+            ].filter((a) => a.getBoundingClientRect().width > 0).length
+        )
+
+      const before = await countVisibleNavLinks()
+      await toggle.click()
+      await page.waitForTimeout(500)
+      const after = await countVisibleNavLinks()
+
+      expect(
+        after,
+        `${path || '(home)'}: tapping the menu control must reveal navigation (${before} -> ${after})`
+      ).toBeGreaterThan(before)
+
+      // The control was a bare <div>/<span> in the capture; it must reach the
+      // accessibility tree as something operable, not just work with a mouse.
+      await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+      await expect(toggle).toHaveAttribute('role', 'button')
+    }
+  })
+
+  /**
    * Captured chrome cannot paint above FFC's own overlays.
    *
    * Social Snap ships `#ss-floating-bar { position: fixed; z-index: 999 }` and
