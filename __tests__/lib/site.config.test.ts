@@ -13,6 +13,19 @@ describe('supportedBy (FFC footer standard)', () => {
   })
 })
 
+describe('integrations.zeffyDonationUrl', () => {
+  // The field is consumed as an iframe `src` (SupportFreeForCharity), and
+  // Zeffy serves a frameable form only from its /embed/ endpoint. The hosted
+  // /donation-form/ URL is the right one for an <a> and the wrong one here,
+  // and the two differ by four characters -- so a fork pasting the link it
+  // has to hand produces a donation panel that silently refuses to render.
+  it('is an embeddable Zeffy form, not the hosted page', () => {
+    const url = new URL(siteConfig.integrations.zeffyDonationUrl)
+    expect(url.hostname).toBe('www.zeffy.com')
+    expect(url.pathname.startsWith('/embed/donation-form/')).toBe(true)
+  })
+})
+
 describe('siteUrl', () => {
   it('returns the base URL for "/"', () => {
     expect(siteUrl('/')).toBe(`${siteConfig.url}/`)

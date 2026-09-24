@@ -220,7 +220,8 @@ export const siteConfig: SiteConfig = {
     showEvents: true,
   },
   integrations: {
-    zeffyDonationUrl: 'https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5',
+    zeffyDonationUrl:
+      'https://www.zeffy.com/embed/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5',
     idealistUrl: 'https://www.idealist.org/en/nonprofit/7bdfa3deb71c4175acda6ddc9ec011e1',
     eventsFacebookPageUrl: 'https://www.facebook.com/NewHeightsEducationalGroup',
     // TODO(unsourced): still Free For Charity's form. NHEG's own captured
