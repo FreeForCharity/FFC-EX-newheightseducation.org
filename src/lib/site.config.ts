@@ -189,10 +189,10 @@ export const siteConfig: SiteConfig = {
     { label: 'YouTube', href: 'https://www.youtube.com/channel/UCcpyuCpFRzYzfHYznRlX_zw' },
   ],
   ein: '26-1424214',
-  // TODO(unsourced): still the template's founding year. Nothing in the
-  // capture attests NHEG's, and a guessed founding date on a nonprofit's
-  // public profile is worse than an obvious placeholder. Needs NHEG.
-  foundingDate: '2014',
+  // 2006, confirmed by NHEG (#25). 2014 was Free For Charity's own founding
+  // year, inherited from the template; NHEG's contact page says the
+  // organization "was formed on June 1, 2006".
+  foundingDate: '2006',
   nonprofitStatus: 'https://schema.org/Nonprofit501c3',
   phone: { display: '419.786.0247', tel: '4197860247' },
   addresses: [
@@ -215,8 +215,14 @@ export const siteConfig: SiteConfig = {
   },
   taxStatusLabel: 'a US 501c3 Non Profit',
   sections: {
-    showEndowment: true,
-    showPrograms: true,
+    // Both off: these two sections are Free For Charity's own marketing copy,
+    // no route on this site renders them, and they are parked under
+    // _disabled_template_routes/. The flags stay because the Header and Footer
+    // read them to decide whether to show a "Programs" nav link -- with the
+    // flag off the link self-hides rather than pointing at a #programs anchor
+    // no page has.
+    showEndowment: false,
+    showPrograms: false,
     showEvents: true,
   },
   integrations: {

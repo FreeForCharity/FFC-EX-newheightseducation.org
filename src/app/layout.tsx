@@ -10,6 +10,8 @@ import { openSans, lato, faustina } from '@/lib/fonts'
 import { AT_POLYFILL_JS } from '@/lib/at-polyfill'
 import { CONSENT_MODE_BOOTSTRAP } from '@/lib/consent-mode'
 import { OG_IMAGE } from '@/lib/page-metadata'
+import OrganizationSchema from '@/components/seo/OrganizationSchema'
+import WebsiteSchema from '@/components/seo/WebsiteSchema'
 
 const defaultTitle = `${siteConfig.name} | ${siteConfig.tagline}`
 
@@ -105,14 +107,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
 
-        {/* Preload critical LCP image */}
-        <link
-          rel="preload"
-          as="image"
-          href={assetPath('/Images/figma-hero-img.webp')}
-          fetchPriority="high"
-        />
-
         {/* Google Consent Mode v2 defaults. MUST execute before any Google
             tag loads, which is why it is an inline <head> script placed
             above the GoogleTagManager component rather than a next/script:
@@ -123,6 +117,14 @@ export default function RootLayout({
             src/lib/consent-mode.ts. */}
         <script dangerouslySetInnerHTML={{ __html: CONSENT_MODE_BOOTSTRAP }} />
         <GoogleTagManager />
+        {/* Machine-readable identity for the organization and the site, both
+            built entirely from siteConfig. In the layout rather than on the
+            home page because this site's `/` is a captured WordPress page: the
+            capture carries no JSON-LD at all (measured: zero
+            application/ld+json blocks across all 793 built pages), so without
+            this the charity publishes no structured identity anywhere. */}
+        <OrganizationSchema />
+        <WebsiteSchema />
       </head>
       <body
         className={['antialiased', openSans.variable, lato.variable, faustina.variable].join(' ')}

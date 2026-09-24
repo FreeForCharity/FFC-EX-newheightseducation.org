@@ -66,15 +66,12 @@ export function buildOrganizationSchema(): Record<string, unknown> {
   // subsidiary of FFC -- the one field here a human never sees and a
   // knowledge panel does.
   //
-  // Stated as a hazard rather than as damage done, because on THIS site it is
-  // not: measured 2026-09-24, `OrganizationSchema` is imported by nothing and
-  // there are zero `NonprofitOrganization` blocks across all 793 built pages.
-  // The 706-generated home page replaced the template one that used to render
-  // it. So the live harm was the footer's visible "A project of" clause; this
-  // guard is for the forks where the component is still wired, and for this
-  // one if it is wired again. That the site currently publishes no
-  // Organization identity at all is a separate gap, filed rather than fixed
-  // here.
+  // This was a hazard rather than damage done for as long as the component was
+  // unwired: the 706-generated home page replaced the template one that used to
+  // render it, so the only live harm was the footer's visible "A project of"
+  // clause. `src/app/layout.tsx` now renders this on every page, which closes
+  // the separate gap (a site publishing no machine-readable identity at all)
+  // and makes the guard load-bearing rather than precautionary.
   const parentOrg = assertedParentOrg()
   if (parentOrg) {
     // When this site is "a project of" an umbrella org, link the two so search

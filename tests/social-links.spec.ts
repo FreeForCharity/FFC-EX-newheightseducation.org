@@ -26,53 +26,30 @@ test.describe('Footer Social Links', () => {
     await expect(googlePlusLabel).toHaveCount(0)
   })
 
-  test('should display active social media links', async ({ page }) => {
-    // Navigate to the homepage
+  test('should display every configured social media link', async ({ page }) => {
+    // Iterated rather than named platform by platform. The template asserted
+    // facebook/twitter/linkedin/github by name and by hard-coded URL, so a
+    // charity whose accounts are a different set (here: YouTube instead of
+    // GitHub) could only be accommodated by editing the spec. Driving off
+    // siteConfig means the assertion is "the footer renders exactly the
+    // accounts this site configured", which is the property worth holding.
     await page.goto('/')
 
-    // Verify Facebook link is present
-    const facebookLink = page.locator(`footer a[href*="${testConfig.socialLinks.facebook.url}"]`)
-    await expect(facebookLink).toBeVisible()
-    await expect(facebookLink).toHaveAttribute(
-      'aria-label',
-      testConfig.socialLinks.facebook.ariaLabel
-    )
+    expect(testConfig.socialLinks.length).toBeGreaterThan(0)
 
-    // Verify X (Twitter) link is present
-    const twitterLink = page.locator(`footer a[href*="${testConfig.socialLinks.twitter.url}"]`)
-    await expect(twitterLink).toBeVisible()
-    await expect(twitterLink).toHaveAttribute(
-      'aria-label',
-      testConfig.socialLinks.twitter.ariaLabel
-    )
-
-    // Verify LinkedIn link is present
-    const linkedInLink = page.locator(`footer a[href*="${testConfig.socialLinks.linkedin.url}"]`)
-    await expect(linkedInLink).toBeVisible()
-    await expect(linkedInLink).toHaveAttribute(
-      'aria-label',
-      testConfig.socialLinks.linkedin.ariaLabel
-    )
-
-    // Verify GitHub link is present
-    const githubLink = page.locator(`footer a[href*="${testConfig.socialLinks.github.url}"]`)
-    await expect(githubLink).toBeVisible()
-    await expect(githubLink).toHaveAttribute('aria-label', testConfig.socialLinks.github.ariaLabel)
+    for (const { url, ariaLabel } of testConfig.socialLinks) {
+      const link = page.locator(`footer a[href="${url}"]`)
+      await expect(link, `footer link for ${ariaLabel}`).toBeVisible()
+      await expect(link).toHaveAttribute('aria-label', ariaLabel)
+    }
   })
 
-  test('should have exactly 4 social media icons', async ({ page }) => {
-    // Navigate to the homepage
+  test('shows one social icon per configured account, and no others', async ({ page }) => {
     await page.goto('/')
 
-    // Count all social media links in the footer
-    // They are identified by having target="_blank" and being in the footer's social links section
-
-    // We should have exactly 4 social icons: Facebook, X (Twitter), LinkedIn, GitHub
-    // Note: This count might be higher due to other external links in footer
-    // So let's be more specific and count only links with aria-label containing social platform names
-    const socialMediaLinks = page.locator(
-      `footer a[aria-label="${testConfig.socialLinks.facebook.ariaLabel}"], footer a[aria-label="${testConfig.socialLinks.twitter.ariaLabel}"], footer a[aria-label="${testConfig.socialLinks.linkedin.ariaLabel}"], footer a[aria-label="${testConfig.socialLinks.github.ariaLabel}"]`
-    )
-    await expect(socialMediaLinks).toHaveCount(4)
+    const selector = testConfig.socialLinks
+      .map(({ ariaLabel }) => `footer a[aria-label="${ariaLabel}"]`)
+      .join(', ')
+    await expect(page.locator(selector)).toHaveCount(testConfig.socialLinks.length)
   })
 })

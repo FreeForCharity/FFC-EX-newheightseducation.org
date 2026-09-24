@@ -5,11 +5,16 @@
 // member's card links to it. There are no photos: cards render an initials
 // monogram, so a forking charity never has to source or host portrait images.
 
-import clarkeMoyer from './team/clarke-moyer.json'
-import chrisRae from './team/chris-rae.json'
-import tylerCarlotto from './team/tyler-carlotto.json'
-import brennanDarling from './team/brennan-darling.json'
-import rebeccaCook from './team/rebecca-cook.json'
+// Five blank member slots. The template shipped Free For Charity's own staff
+// here; New Heights Educational Group has not supplied a roster, so each slot
+// is blank and `configuredTeam` below is empty -- which is what makes the
+// header's and footer's "Team" link self-hide instead of pointing at a #team
+// anchor no page renders. Fill a slot in to bring the link back.
+import member1 from './team/member-1.json'
+import member2 from './team/member-2.json'
+import member3 from './team/member-3.json'
+import member4 from './team/member-4.json'
+import member5 from './team/member-5.json'
 
 export type TeamMember = {
   /** Full name; the first + last initials seed the avatar monogram. */
@@ -24,13 +29,7 @@ export type TeamMember = {
   linkedinUrl?: string
 }
 
-export const team: TeamMember[] = [
-  clarkeMoyer,
-  chrisRae,
-  tylerCarlotto,
-  brennanDarling,
-  rebeccaCook,
-]
+export const team: TeamMember[] = [member1, member2, member3, member4, member5]
 
 // `team` is assembled from a fixed list of JSON imports, so its length never
 // drops to 0 when a fork blanks those JSON files (rather than deleting entries).
