@@ -1,6 +1,20 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Header from './../components/header'
+// The captured pages' ENTIRE client-side runtime. Workflow 706 generates this
+// component (convert-clone-to-routes.mjs step 8) and never wires it up, so it
+// sat in the repo imported by nothing while the site shipped 793 pages whose
+// only navigation at mobile width is a hamburger that does nothing.
+//
+// Measured at 390px before this line existed: /contact-us/ and /who-we-are/
+// render 0 visible navigation links and two hamburger controls, and tapping
+// them changes nothing. A visitor on a phone could not move around the site.
+//
+// It is a client component and not a `<script>` in the captured markup on
+// purpose -- its own docblock explains why: the fragment is injected with
+// `dangerouslySetInnerHTML`, and a `<script>` arriving that way runs on a cold
+// load and silently does not on a client-side navigation.
+import CloneEnhance from './../components/clone-enhance'
 import Footer from './../components/footer'
 import CookieConsent from './../components/cookie-consent'
 import GoogleTagManager, { GoogleTagManagerNoScript } from './../components/google-tag-manager'
@@ -137,6 +151,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Header />
+        <CloneEnhance />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
