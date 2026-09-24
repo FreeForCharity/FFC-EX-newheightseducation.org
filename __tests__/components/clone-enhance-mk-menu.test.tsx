@@ -84,6 +84,41 @@ describe('wireMkMenu with two toggles on one panel', () => {
     expect(expanded(b)).toBe('false')
   })
 
+  /**
+   * jsdom lays nothing out, so every element reports zero size and the
+   * component's "which control is on screen?" test can only be exercised by
+   * standing in for the layout. `getClientRects` is the branch that decides it,
+   * so stubbing it on one toggle is the smallest honest stand-in for a
+   * breakpoint where that control is the visible one.
+   */
+  function renderOnly(el: HTMLElement) {
+    Object.defineProperty(el, 'getClientRects', {
+      configurable: true,
+      value: () => [{ width: 38, height: 38 }] as unknown as DOMRectList,
+    })
+  }
+
+  it('returns focus to the control that is on screen, not the one wired first', () => {
+    const { a, b, panel } = buildHeader()
+    // At this width the theme renders the SECOND control. `a` stays hidden, and
+    // `focus()` on a hidden element does nothing at all.
+    renderOnly(b)
+    render(<CloneEnhance />)
+
+    act(() => {
+      b.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    })
+    expect(panel.style.display).toBe('block')
+
+    act(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+    })
+    expect(panel.style.display).toBe('none')
+    // Wiring order put `a` first, so a handler that focuses its own toggle
+    // lands here instead -- closing the menu and stranding the visitor.
+    expect(document.activeElement).toBe(b)
+  })
+
   it('still announces both controls as buttons', () => {
     const { a, b } = buildHeader()
     render(<CloneEnhance />)
