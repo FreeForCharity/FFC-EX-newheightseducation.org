@@ -4,6 +4,7 @@ import {
   office365Url,
   outlookLiveUrl,
 } from '@/lib/events/addToCalendar'
+import { siteConfig } from '@/lib/site.config'
 import type { UnifiedEvent } from '@/lib/events/types'
 
 const event: UnifiedEvent = {
@@ -51,6 +52,21 @@ describe('addToCalendar URL helpers', () => {
     expect(decoded).toContain('SUMMARY:Test Event\\, with comma')
     expect(decoded).toContain('DESCRIPTION:Some description\\; with semicolons')
     expect(decoded).toContain('END:VEVENT')
+  })
+
+  it('escapes the organisation name in PRODID', () => {
+    // PRODID is an iCalendar TEXT value, so an unescaped comma or semicolon
+    // in the organisation's name ends the property early and the .ics no
+    // longer parses. This site's name happens to contain neither, which is
+    // why the guard has to supply one rather than read the real config.
+    const original = siteConfig.name
+    try {
+      siteConfig.name = 'Acme, Inc.; Education'
+      const decoded = decodeURIComponent(icsDataUri(event).replace(/^data:[^,]+,/, ''))
+      expect(decoded).toContain('PRODID:-//Acme\\, Inc.\\; Education//Events//EN')
+    } finally {
+      siteConfig.name = original
+    }
   })
 
   it('falls back to a 1-hour default when no end time is given', () => {

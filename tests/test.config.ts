@@ -57,31 +57,27 @@ export const testConfig = {
    * Social Media Links Configuration
    * Used in: tests/social-links.spec.ts
    */
-  socialLinks: {
-    facebook: {
-      url: 'facebook.com/freeforcharity',
-      ariaLabel: 'Facebook',
-    },
-    twitter: {
-      url: 'x.com/freeforcharity1',
-      ariaLabel: 'X (Twitter)',
-    },
-    linkedin: {
-      url: 'linkedin.com/company/freeforcharity',
-      ariaLabel: 'LinkedIn',
-    },
-    github: {
-      url: 'github.com/FreeForCharity/FFC-IN-FFC_Single_Page_Template',
-      ariaLabel: 'GitHub',
-    },
-  },
+  // Derived from siteConfig rather than listed by platform. The template named
+  // four fixed keys (facebook/twitter/linkedin/github) and hard-coded Free For
+  // Charity's own profile URLs, so a rebrand silently left the E2E suite
+  // asserting the template's accounts -- which is how it kept passing while
+  // pointing at the wrong organization. The footer renders one link per
+  // configured entry with `aria-label={label}`, so this is the same list the
+  // page is built from.
+  socialLinks: siteConfig.social
+    .map((s) => ({ url: s.href.trim(), ariaLabel: s.label }))
+    .filter((s) => s.url.length > 0),
 
   /**
    * Copyright Configuration
    * Used in: tests/copyright.spec.ts
    */
   copyright: {
-    text: 'All Rights Are Reserved by Free For Charity a US 501c3 Non Profit',
+    // Assembled the way the footer assembles it, from siteConfig, so a rebrand
+    // cannot leave this asserting the previous organization's name.
+    text: `All Rights Are Reserved by ${siteConfig.name}${
+      siteConfig.taxStatusLabel.trim() ? ` ${siteConfig.taxStatusLabel.trim()}` : ''
+    }`,
     searchText: 'All Rights Are Reserved',
     // The permanent "Supported by" attribution (FFC footer standard) — sourced
     // from siteConfig.supportedBy, which is required and always rendered.
@@ -126,9 +122,9 @@ export const testConfig = {
    * Used in: tests/logo.spec.ts
    */
   logo: {
-    headerAlt: 'Free For Charity',
+    headerAlt: siteConfig.name,
     heroAlt: 'Hero image',
-    navBarAriaLabel: 'Free For Charity home',
+    navBarAriaLabel: `${siteConfig.name} home`,
   },
 
   /**

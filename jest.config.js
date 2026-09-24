@@ -9,6 +9,10 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
+  // The parked template tests keep the `__tests__` layout so they can be
+  // restored verbatim, so they have to be excluded by path rather than by
+  // name -- see _disabled_template_routes/README.md.
+  testPathIgnorePatterns: ['/node_modules/', '/_disabled_template_routes/'],
   testMatch: [
     '**/__tests__/**/*.test.js',
     '**/__tests__/**/*.test.ts',

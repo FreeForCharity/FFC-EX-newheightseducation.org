@@ -1,45 +1,32 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { siteConfig } from '@/lib/site.config'
-import EndowmentFeatures from '../../../src/components/home-page/Endowment-Features'
-import OurPrograms from '../../../src/components/home-page/Our-Programs'
-import Events from '../../../src/components/home-page/Events'
+import Events from '../../src/components/home-page/Events'
 
-// Self-hiding behavior (FFC-Cloudflare-Automation#816 Part B): the FFC-specific
-// marketing sections are gated behind siteConfig.sections.* so a rebranded fork
-// can hide them (they carry FFC copy, not per-charity data). Defaults are true,
-// so the FFC template site still renders them — the populated render is covered
-// by each section's own test. Here we exercise the hidden path by mutating the
-// shared config object (the established pattern in site.config.test.ts) and
-// restoring it afterward.
-describe('home-page section visibility flags', () => {
+// Self-hiding behavior (FFC-Cloudflare-Automation#816 Part B): a home-page
+// section gated behind siteConfig.sections.* renders null rather than an empty
+// shell, so a rebranded fork hides it without leaving a heading or a dead
+// #anchor behind. Exercised by mutating the shared config object (the
+// established pattern in site.config.test.ts) and restoring it afterward.
+//
+// This file was `home-page/section-visibility.test.tsx` and also covered
+// Endowment-Features and Our-Programs. Those two sections carry Free For
+// Charity's own marketing copy, no route renders them on this site, and they
+// are parked under _disabled_template_routes/ along with their tests. Events
+// is the one gated section still reachable, so the file moved up a level and
+// was renamed for what it now covers.
+describe('Events section visibility', () => {
   const original = {
-    showEndowment: siteConfig.sections.showEndowment,
-    showPrograms: siteConfig.sections.showPrograms,
     showEvents: siteConfig.sections.showEvents,
     sourcesConfigured: process.env.EVENTS_SOURCES_CONFIGURED,
   }
   afterEach(() => {
-    siteConfig.sections.showEndowment = original.showEndowment
-    siteConfig.sections.showPrograms = original.showPrograms
     siteConfig.sections.showEvents = original.showEvents
     if (original.sourcesConfigured === undefined) {
       delete process.env.EVENTS_SOURCES_CONFIGURED
     } else {
       process.env.EVENTS_SOURCES_CONFIGURED = original.sourcesConfigured
     }
-  })
-
-  it('Endowment-Features renders nothing when showEndowment is false', () => {
-    siteConfig.sections.showEndowment = false
-    const { container } = render(<EndowmentFeatures />)
-    expect(container).toBeEmptyDOMElement()
-  })
-
-  it('Our-Programs renders nothing when showPrograms is false', () => {
-    siteConfig.sections.showPrograms = false
-    const { container } = render(<OurPrograms />)
-    expect(container).toBeEmptyDOMElement()
   })
 
   it('Events renders nothing when showEvents is false', () => {
@@ -51,7 +38,7 @@ describe('home-page section visibility flags', () => {
   })
 
   it('Events renders nothing when no sources are configured and the snapshot is empty', () => {
-    // The template default: flag on, no EVENTS_* sources wired up, and the
+    // The state this site ships in: flag on, no EVENTS_* sources wired up, and the
     // committed src/data/events.generated.json snapshot is empty.
     siteConfig.sections.showEvents = true
     delete process.env.EVENTS_SOURCES_CONFIGURED

@@ -1,5 +1,5 @@
 /**
- * Central site configuration for Free For Charity template sites.
+ * Central site configuration for this site.
  *
  * EDIT THIS FILE to customize a new FFC-supported nonprofit site.
  * Most values that vary between sites flow from here so individual
@@ -65,7 +65,7 @@ export type SiteConfig = {
   vulnerabilityDisclosurePath: string
   /** Social links displayed in the footer. */
   social: readonly SiteSocialLink[]
-  /** IRS Employer Identification Number (tax ID), e.g. '46-2471893'. */
+  /** IRS Employer Identification Number (tax ID), e.g. '00-0000000'. */
   ein: string
   /**
    * Year (or ISO date) the organization was founded, e.g. '2014'.
@@ -156,80 +156,83 @@ export type SiteConfig = {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'Free For Charity',
-  tagline: 'Reduce Costs, Increase Impact',
+  name: 'New Heights Educational Group',
+  tagline: 'Educational Resources to Help Reach Your Goals',
   description:
-    'Free For Charity connects students, professionals, and businesses with nonprofits to reduce costs and increase revenues—putting more resources back into their missions.',
+    'New Heights Educational Group, Inc., promotes literacy for children and adults by offering a range of educational support services. Such services include the following: assisting families in the selection of schools; organization of educational activities; and acquisition of materials.',
   shortDescription:
-    'Connecting students, professionals, and businesses with nonprofits to reduce costs and increase revenues.',
+    'Promoting literacy for children and adults through educational support services for home, charter and public school families.',
   // Bare origin only (drift-check enforced). The template deploys to the
   // GitHub Pages default URL; the /FFC-IN-FFC_Single_Page_Template subpath
   // comes from NEXT_PUBLIC_BASE_PATH, which siteUrl() folds in at build time.
   // A fork with a custom domain sets its own origin here (and no basePath).
   url: 'https://freeforcharity.github.io',
-  twitterHandle: '@freeforcharity',
-  contactEmail: 'security@freeforcharity.org',
+  twitterHandle: '@newheightseduc1',
+  contactEmail: 'info@newheightseducation.org',
   keywords: [
     'nonprofit',
-    'charity',
+    'education',
+    'literacy',
+    'tutoring',
+    'homeschool',
+    'charter school',
+    'Ohio',
     'volunteer',
     'donate',
-    'free hosting',
-    'domains',
-    'Microsoft 365',
   ],
   themeColor: '#ffffff',
   vulnerabilityDisclosurePath: '/vulnerability-disclosure-policy',
   social: [
-    { label: 'Facebook', href: 'https://www.facebook.com/freeforcharity' },
-    { label: 'X (Twitter)', href: 'https://x.com/freeforcharity1' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/freeforcharity/' },
-    { label: 'GitHub', href: 'https://github.com/FreeForCharity/FFC-IN-FFC_Single_Page_Template' },
+    { label: 'Facebook', href: 'https://www.facebook.com/NewHeightsEducationalGroup' },
+    { label: 'X (Twitter)', href: 'https://x.com/newheightseduc1' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/10828913' },
+    { label: 'YouTube', href: 'https://www.youtube.com/channel/UCcpyuCpFRzYzfHYznRlX_zw' },
   ],
-  ein: '46-2471893',
-  foundingDate: '2014',
+  ein: '26-1424214',
+  // 2006, confirmed by NHEG (#25). 2014 was Free For Charity's own founding
+  // year, inherited from the template; NHEG's contact page says the
+  // organization "was formed on June 1, 2006".
+  foundingDate: '2006',
   nonprofitStatus: 'https://schema.org/Nonprofit501c3',
-  phone: { display: '(520) 222-8104', tel: '5202228104' },
+  phone: { display: '419.786.0247', tel: '4197860247' },
   addresses: [
     {
       label: 'Main Address',
-      lines: ['4030 Wake Forrest Road', 'Suite 349', 'Raleigh, NC 27609'],
+      lines: ['11809 US Route 127', 'Sherwood, Ohio 43556'],
       mapUrl:
-        'https://www.google.com/maps/search/?api=1&query=4030+Wake+Forrest+Road+Suite+349+Raleigh+NC+27609',
-    },
-    {
-      label: 'PA Office Address',
-      lines: ['301 Science Park Road, Suite 119', 'State College, PA 16803'],
-      mapUrl:
-        'https://www.google.com/maps/place/Free+For+Charity/@40.7768455,-77.8963305,17z/data=!3m1!4b1!4m6!3m5!1s0x89cea944b44a2e01:0x6fc2d6bf09e00a0f!8m2!3d40.7768415!4d-77.8937556!16s%2Fg%2F11vzvbl2d7?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D',
+        'https://www.google.com/maps/search/?api=1&query=11809+US+Route+127+Sherwood+OH+43556',
     },
   ],
   guidestar: {
-    profileUrl: 'https://www.guidestar.org/profile/46-2471893',
+    profileUrl: 'https://www.guidestar.org/profile/26-1424214',
     directProfileUrl:
-      'https://www.guidestar.org/profile/shared/bbbe173a-87b9-4af9-a8a2-cae255a95742',
+      'https://www.guidestar.org/profile/shared/5c37b63b-6a75-4ab0-9be9-491908c269d7',
   },
   supportedBy: {
     name: 'Free For Charity',
     url: 'https://freeforcharity.org',
     hubUrl: 'https://freeforcharity.org/hub/',
   },
-  parentOrg: {
-    name: 'Free For Charity',
-    url: 'https://freeforcharity.org',
-    hubUrl: 'https://freeforcharity.org/hub/',
-  },
   taxStatusLabel: 'a US 501c3 Non Profit',
   sections: {
-    showEndowment: true,
-    showPrograms: true,
+    // Both off: these two sections are Free For Charity's own marketing copy,
+    // no route on this site renders them, and they are parked under
+    // _disabled_template_routes/. The flags stay because the Header and Footer
+    // read them to decide whether to show a "Programs" nav link -- with the
+    // flag off the link self-hides rather than pointing at a #programs anchor
+    // no page has.
+    showEndowment: false,
+    showPrograms: false,
     showEvents: true,
   },
   integrations: {
-    zeffyDonationUrl: 'https://www.zeffy.com/embed/donation-form/free-for-charity-endowment-fund',
-    idealistUrl:
-      'https://www.idealist.org/en/nonprofit/356bfc8e2ae64f83beea4a4e677e99d7-free-for-charity-state-college#opportunities',
-    eventsFacebookPageUrl: 'https://www.facebook.com/freeforcharity',
+    zeffyDonationUrl:
+      'https://www.zeffy.com/embed/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5',
+    idealistUrl: 'https://www.idealist.org/en/nonprofit/7bdfa3deb71c4175acda6ddc9ec011e1',
+    eventsFacebookPageUrl: 'https://www.facebook.com/NewHeightsEducationalGroup',
+    // TODO(unsourced): still Free For Charity's form. NHEG's own captured
+    // pages say "This form has moved to email. Info@NewHeightsEducation.org",
+    // so there may be no replacement to point at. Needs NHEG.
     microsoftFormUrl: 'https://forms.office.com/r/vePxGq6JqG',
   },
 }
@@ -264,6 +267,83 @@ export function twitterSite(): string | undefined {
   const raw = siteConfig.twitterHandle.trim().replace(/^@+/, '')
   if (!raw) return undefined
   return `@${raw}`
+}
+
+/**
+ * Free For Charity's own EIN, as the template ships it.
+ *
+ * `ffc-footer` carries an identical constant, inlined there because workflow
+ * 706 copies that file into charity repos whose `site.config` may not export
+ * this helper yet. This is the copy the rest of `src/` uses, so a component
+ * never has to hold the literal.
+ */
+export const TEMPLATE_EIN = '46-2471893'
+
+/**
+ * The charity's EIN, or empty when the config still carries the template's.
+ *
+ * `ein` is a required field, so an unedited or half-edited fork has a value
+ * either way — and a tax ID is the one field where being confidently wrong is
+ * worse than being absent. It is what a donor claims a deduction against and
+ * what a knowledge panel repeats.
+ *
+ * `check:drift` does flag a template EIN left in this file — measured, it
+ * reports `src/lib/site.config.ts:NNN still references Free For Charity's EIN`
+ * once `siteConfig.name` differs — so this is not the only guard, and the gate
+ * is not as blind as it first looks. It is the guard that still holds in the
+ * window the gate cannot see: a rebrand in progress, a branch CI has not run
+ * yet, a fork that edits the name and the EIN in separate commits. Emitting
+ * nothing is always safe; `OrganizationSchema` simply omits `taxID`.
+ *
+ * Same shape as `assertedParentOrg` below, and for the same reason: a shipped
+ * default that is wrong for every site inheriting it, and wrong in the
+ * direction that misstates the charity.
+ */
+export function assertedEin(): string {
+  const ein = siteConfig.ein?.trim() ?? ''
+  return ein === TEMPLATE_EIN ? '' : ein
+}
+
+/**
+ * The parent organization to ASSERT, or null.
+ *
+ * `parentOrg` and `supportedBy` mean different things and the difference is a
+ * statement about the charity's legal standing. `supportedBy` is the FFC
+ * program attribution, required on every supported site. `parentOrg` is
+ * genuine fiscal sponsorship -- "a project of" -- which says the charity is
+ * not independent.
+ *
+ * An FFC-EX repo is an EXTERNAL charity's own site: Free For Charity provides
+ * the website and domain at no cost, and the charity is its own 501(c)(3).
+ * The template nonetheless ships `parentOrg` pointing at Free For Charity,
+ * the same organization as `supportedBy`, so a fork that changes nothing
+ * renders "Supported by Free For Charity | A project of Free For Charity" in
+ * its footer -- measured on this site's `main`, on all 793 pages.
+ *
+ * That pair is self-contradictory by FFC's own definitions, and the
+ * authoritative footer standard
+ * (FFC-IN-ffcadmin.org/docs/footer-standard-adoption-checklist.md) lists
+ * "Supported by Free For Charity" as required and has no parent-organization
+ * item at all. So a `parentOrg` naming the supporting organization is the
+ * template's default leaking through, never a real relationship, and it is
+ * refused here rather than in each of the three places that render it.
+ *
+ * Same class as `ffc-footer`'s TEMPLATE_EIN guard: a shipped default that is
+ * wrong for every site inheriting it, and wrong in the direction that
+ * misstates the charity.
+ *
+ * Compared on name OR url, because a fork that retitles the block without
+ * repointing it -- or repoints without retitling -- is still the template
+ * default wearing a different label.
+ */
+export function assertedParentOrg(): SiteConfig['parentOrg'] | null {
+  const parent = siteConfig.parentOrg
+  if (!parent) return null
+  const norm = (s: string) => s.trim().toLowerCase().replace(/\/+$/, '')
+  const same =
+    norm(parent.name) === norm(siteConfig.supportedBy.name) ||
+    norm(parent.url) === norm(siteConfig.supportedBy.url)
+  return same ? null : parent
 }
 
 /** Returns the OG/Twitter card description, falling back to the longer page description. */
