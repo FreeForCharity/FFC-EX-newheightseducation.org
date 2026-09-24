@@ -592,6 +592,17 @@ function isAllowedIdentityLine(relPath, line) {
   // its job without naming them, and "fixing" them would make it publish the
   // template's tax ID as the charity's own. The hub link is the same required
   // footer-standard item already allowed in `src/components/footer`.
+  // The same exemption the footer's TEMPLATE_* constants get below, for the
+  // same reason and on one line only: `assertedEin()` blanks the EIN when the
+  // config still carries Free For Charity's, so it has to NAME that value to
+  // detect it. Flagging the detector as drift would mean the only way to pass
+  // the gate is to delete the guard. Scoped to the exact declaration -- every
+  // other `46-2471893` in this file, including the `ein` field itself, is
+  // still an error (measured: reverting `ein` to the template value fails the
+  // gate on its own line).
+  if (normalized === 'src/lib/site.config.ts') {
+    return /^export const TEMPLATE_EIN =/.test(line.trim())
+  }
   if (normalized === 'src/components/ffc-footer/index.tsx') {
     return (
       /^const TEMPLATE_(EIN|GUIDESTAR) =/.test(line.trim()) ||

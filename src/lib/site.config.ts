@@ -270,6 +270,41 @@ export function twitterSite(): string | undefined {
 }
 
 /**
+ * Free For Charity's own EIN, as the template ships it.
+ *
+ * `ffc-footer` carries an identical constant, inlined there because workflow
+ * 706 copies that file into charity repos whose `site.config` may not export
+ * this helper yet. This is the copy the rest of `src/` uses, so a component
+ * never has to hold the literal.
+ */
+export const TEMPLATE_EIN = '46-2471893'
+
+/**
+ * The charity's EIN, or empty when the config still carries the template's.
+ *
+ * `ein` is a required field, so an unedited or half-edited fork has a value
+ * either way — and a tax ID is the one field where being confidently wrong is
+ * worse than being absent. It is what a donor claims a deduction against and
+ * what a knowledge panel repeats.
+ *
+ * `check:drift` does flag a template EIN left in this file — measured, it
+ * reports `src/lib/site.config.ts:NNN still references Free For Charity's EIN`
+ * once `siteConfig.name` differs — so this is not the only guard, and the gate
+ * is not as blind as it first looks. It is the guard that still holds in the
+ * window the gate cannot see: a rebrand in progress, a branch CI has not run
+ * yet, a fork that edits the name and the EIN in separate commits. Emitting
+ * nothing is always safe; `OrganizationSchema` simply omits `taxID`.
+ *
+ * Same shape as `assertedParentOrg` below, and for the same reason: a shipped
+ * default that is wrong for every site inheriting it, and wrong in the
+ * direction that misstates the charity.
+ */
+export function assertedEin(): string {
+  const ein = siteConfig.ein?.trim() ?? ''
+  return ein === TEMPLATE_EIN ? '' : ein
+}
+
+/**
  * The parent organization to ASSERT, or null.
  *
  * `parentOrg` and `supportedBy` mean different things and the difference is a

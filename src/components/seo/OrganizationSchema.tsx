@@ -1,5 +1,5 @@
 import React from 'react'
-import { assertedParentOrg, siteConfig, siteUrl } from '@/lib/site.config'
+import { assertedEin, assertedParentOrg, siteConfig, siteUrl } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
 
 /**
@@ -41,9 +41,17 @@ export function buildOrganizationSchema(): Record<string, unknown> {
     schema.email = siteConfig.contactEmail
   }
 
-  if (siteConfig.ein) {
+  // `assertedEin()` and not the raw field: `ein` is required, so a fork that
+  // has not finished rebranding still has a value, and this is the one place
+  // that value reaches a knowledge panel as the charity's own tax ID. The
+  // helper returns empty for the template's EIN and this line then omits
+  // `taxID` entirely, which is the safe direction -- absent beats wrong for a
+  // number a donor claims a deduction against. `ffc-footer` blanks its identity
+  // line on the same rule.
+  const ein = assertedEin()
+  if (ein) {
     // schema.org/Organization taxID — surfaces the EIN to search/knowledge panels.
-    schema.taxID = siteConfig.ein
+    schema.taxID = ein
   }
 
   if (siteConfig.phone?.tel) {
