@@ -343,6 +343,18 @@ body {
   isolation: isolate;
 }
 
+/* A captured embed must not be wider than the page it is on.
+   /nheg-educational-programs/sponsor-a-student/ carries a Google Docs iframe
+   with a hard `width="1280"`, which at a 1440 viewport pushed the document to
+   2178px wide -- 738px of horizontal scroll, measured, and proportionally far
+   worse on a phone. It was the only page of 793 that overflowed, which is why
+   it needs a rule rather than an edit: the next capture can bring another one.
+   The source site has the same markup and the same problem; reproducing a
+   layout break faithfully is not a goal. */
+.ffc-clone iframe {
+  max-width: 100%;
+}
+
 /* A captured page brings the SITE'S OWN header, and it is the one a visitor
    should see. The template header must not render over it.
 
