@@ -1,5 +1,5 @@
 /**
- * Central site configuration for Free For Charity template sites.
+ * Central site configuration for this site.
  *
  * EDIT THIS FILE to customize a new FFC-supported nonprofit site.
  * Most values that vary between sites flow from here so individual
@@ -65,7 +65,7 @@ export type SiteConfig = {
   vulnerabilityDisclosurePath: string
   /** Social links displayed in the footer. */
   social: readonly SiteSocialLink[]
-  /** IRS Employer Identification Number (tax ID), e.g. '46-2471893'. */
+  /** IRS Employer Identification Number (tax ID), e.g. '00-0000000'. */
   ein: string
   /**
    * Year (or ISO date) the organization was founded, e.g. '2014'.
@@ -156,65 +156,59 @@ export type SiteConfig = {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'Free For Charity',
-  tagline: 'Reduce Costs, Increase Impact',
+  name: 'New Heights Educational Group',
+  tagline: 'Educational Resources to Help Reach Your Goals',
   description:
-    'Free For Charity connects students, professionals, and businesses with nonprofits to reduce costs and increase revenues—putting more resources back into their missions.',
+    'New Heights Educational Group, Inc., promotes literacy for children and adults by offering a range of educational support services. Such services include the following: assisting families in the selection of schools; organization of educational activities; and acquisition of materials.',
   shortDescription:
-    'Connecting students, professionals, and businesses with nonprofits to reduce costs and increase revenues.',
+    'Promoting literacy for children and adults through educational support services for home, charter and public school families.',
   // Bare origin only (drift-check enforced). The template deploys to the
   // GitHub Pages default URL; the /FFC-IN-FFC_Single_Page_Template subpath
   // comes from NEXT_PUBLIC_BASE_PATH, which siteUrl() folds in at build time.
   // A fork with a custom domain sets its own origin here (and no basePath).
   url: 'https://freeforcharity.github.io',
-  twitterHandle: '@freeforcharity',
-  contactEmail: 'security@freeforcharity.org',
+  twitterHandle: '@newheightseduc1',
+  contactEmail: 'info@newheightseducation.org',
   keywords: [
     'nonprofit',
-    'charity',
+    'education',
+    'literacy',
+    'tutoring',
+    'homeschool',
+    'charter school',
+    'Ohio',
     'volunteer',
     'donate',
-    'free hosting',
-    'domains',
-    'Microsoft 365',
   ],
   themeColor: '#ffffff',
   vulnerabilityDisclosurePath: '/vulnerability-disclosure-policy',
   social: [
-    { label: 'Facebook', href: 'https://www.facebook.com/freeforcharity' },
-    { label: 'X (Twitter)', href: 'https://x.com/freeforcharity1' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/freeforcharity/' },
-    { label: 'GitHub', href: 'https://github.com/FreeForCharity/FFC-IN-FFC_Single_Page_Template' },
+    { label: 'Facebook', href: 'https://www.facebook.com/NewHeightsEducationalGroup' },
+    { label: 'X (Twitter)', href: 'https://x.com/newheightseduc1' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/10828913' },
+    { label: 'YouTube', href: 'https://www.youtube.com/channel/UCcpyuCpFRzYzfHYznRlX_zw' },
   ],
-  ein: '46-2471893',
+  ein: '26-1424214',
+  // TODO(unsourced): still the template's founding year. Nothing in the
+  // capture attests NHEG's, and a guessed founding date on a nonprofit's
+  // public profile is worse than an obvious placeholder. Needs NHEG.
   foundingDate: '2014',
   nonprofitStatus: 'https://schema.org/Nonprofit501c3',
-  phone: { display: '(520) 222-8104', tel: '5202228104' },
+  phone: { display: '419.786.0247', tel: '4197860247' },
   addresses: [
     {
       label: 'Main Address',
-      lines: ['4030 Wake Forrest Road', 'Suite 349', 'Raleigh, NC 27609'],
+      lines: ['11809 US Route 127', 'Sherwood, Ohio 43556'],
       mapUrl:
-        'https://www.google.com/maps/search/?api=1&query=4030+Wake+Forrest+Road+Suite+349+Raleigh+NC+27609',
-    },
-    {
-      label: 'PA Office Address',
-      lines: ['301 Science Park Road, Suite 119', 'State College, PA 16803'],
-      mapUrl:
-        'https://www.google.com/maps/place/Free+For+Charity/@40.7768455,-77.8963305,17z/data=!3m1!4b1!4m6!3m5!1s0x89cea944b44a2e01:0x6fc2d6bf09e00a0f!8m2!3d40.7768415!4d-77.8937556!16s%2Fg%2F11vzvbl2d7?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D',
+        'https://www.google.com/maps/search/?api=1&query=11809+US+Route+127+Sherwood+OH+43556',
     },
   ],
   guidestar: {
-    profileUrl: 'https://www.guidestar.org/profile/46-2471893',
+    profileUrl: 'https://www.guidestar.org/profile/26-1424214',
     directProfileUrl:
-      'https://www.guidestar.org/profile/shared/bbbe173a-87b9-4af9-a8a2-cae255a95742',
+      'https://www.guidestar.org/profile/shared/5c37b63b-6a75-4ab0-9be9-491908c269d7',
   },
   supportedBy: {
-    name: 'Free For Charity',
-    url: 'https://freeforcharity.org',
-    hubUrl: 'https://freeforcharity.org/hub/',
-  },
-  parentOrg: {
     name: 'Free For Charity',
     url: 'https://freeforcharity.org',
     hubUrl: 'https://freeforcharity.org/hub/',
@@ -226,10 +220,12 @@ export const siteConfig: SiteConfig = {
     showEvents: true,
   },
   integrations: {
-    zeffyDonationUrl: 'https://www.zeffy.com/embed/donation-form/free-for-charity-endowment-fund',
-    idealistUrl:
-      'https://www.idealist.org/en/nonprofit/356bfc8e2ae64f83beea4a4e677e99d7-free-for-charity-state-college#opportunities',
-    eventsFacebookPageUrl: 'https://www.facebook.com/freeforcharity',
+    zeffyDonationUrl: 'https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5',
+    idealistUrl: 'https://www.idealist.org/en/nonprofit/7bdfa3deb71c4175acda6ddc9ec011e1',
+    eventsFacebookPageUrl: 'https://www.facebook.com/NewHeightsEducationalGroup',
+    // TODO(unsourced): still Free For Charity's form. NHEG's own captured
+    // pages say "This form has moved to email. Info@NewHeightsEducation.org",
+    // so there may be no replacement to point at. Needs NHEG.
     microsoftFormUrl: 'https://forms.office.com/r/vePxGq6JqG',
   },
 }

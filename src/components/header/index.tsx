@@ -111,10 +111,10 @@ const Header: React.FC = () => {
             >
               <Link href="/" onClick={handleLinkClick} className="block">
                 <Image
-                  src={assetPath('/Images/logo.webp')}
+                  src={assetPath('/Images/nheg-logo.jpg')}
                   alt={siteConfig.name}
-                  width={686}
-                  height={234}
+                  width={1536}
+                  height={307}
                   priority
                   className={`w-auto max-w-none object-contain transition-all duration-300 ${
                     isScrolled ? 'h-7' : 'h-11'
