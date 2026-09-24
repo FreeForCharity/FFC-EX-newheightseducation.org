@@ -20,6 +20,9 @@ const eslintConfig = [
     ignores: [
       // Static WordPress clone assets (not source), added by workflow 706.
       'public/**',
+      // Template code parked by the migration -- see
+      // _disabled_template_routes/README.md. Not part of this site.
+      '_disabled_template_routes/**',
       'node_modules/**',
       '.next/**',
       'out/**',

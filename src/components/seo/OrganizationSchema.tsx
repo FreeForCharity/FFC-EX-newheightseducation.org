@@ -1,5 +1,5 @@
 import React from 'react'
-import { siteConfig, siteUrl } from '@/lib/site.config'
+import { assertedEin, assertedParentOrg, siteConfig, siteUrl } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
 
 /**
@@ -41,9 +41,17 @@ export function buildOrganizationSchema(): Record<string, unknown> {
     schema.email = siteConfig.contactEmail
   }
 
-  if (siteConfig.ein) {
+  // `assertedEin()` and not the raw field: `ein` is required, so a fork that
+  // has not finished rebranding still has a value, and this is the one place
+  // that value reaches a knowledge panel as the charity's own tax ID. The
+  // helper returns empty for the template's EIN and this line then omits
+  // `taxID` entirely, which is the safe direction -- absent beats wrong for a
+  // number a donor claims a deduction against. `ffc-footer` blanks its identity
+  // line on the same rule.
+  const ein = assertedEin()
+  if (ein) {
     // schema.org/Organization taxID — surfaces the EIN to search/knowledge panels.
-    schema.taxID = siteConfig.ein
+    schema.taxID = ein
   }
 
   if (siteConfig.phone?.tel) {
@@ -60,13 +68,26 @@ export function buildOrganizationSchema(): Record<string, unknown> {
     }
   }
 
-  if (siteConfig.parentOrg) {
+  // `assertedParentOrg()` and not `siteConfig.parentOrg`: the template ships
+  // the latter pointing at Free For Charity, the SUPPORTING organization, not
+  // a parent. Emitting it would tell search engines the charity is a
+  // subsidiary of FFC -- the one field here a human never sees and a
+  // knowledge panel does.
+  //
+  // This was a hazard rather than damage done for as long as the component was
+  // unwired: the 706-generated home page replaced the template one that used to
+  // render it, so the only live harm was the footer's visible "A project of"
+  // clause. `src/app/layout.tsx` now renders this on every page, which closes
+  // the separate gap (a site publishing no machine-readable identity at all)
+  // and makes the guard load-bearing rather than precautionary.
+  const parentOrg = assertedParentOrg()
+  if (parentOrg) {
     // When this site is "a project of" an umbrella org, link the two so search
     // engines can relate them in the knowledge graph.
     schema.parentOrganization = {
       '@type': 'NonprofitOrganization',
-      name: siteConfig.parentOrg.name,
-      url: siteConfig.parentOrg.url,
+      name: parentOrg.name,
+      url: parentOrg.url,
     }
   }
 

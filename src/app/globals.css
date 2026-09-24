@@ -271,6 +271,13 @@ body {
   color: #3d3d3d;
   font-size: 0.85rem;
 }
+/* The independence statement. Same size as the legal line rather than
+   smaller: it says whose organization this is, which is not fine print. */
+.ffc-footer__relationship {
+  color: #3d3d3d;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
 
 /* Text that exists for a screen reader and a crawler, not for a sighted
    reader: the destination appended to a "Read More" link. Clipped rather than

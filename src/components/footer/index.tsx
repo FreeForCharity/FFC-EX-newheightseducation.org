@@ -8,7 +8,7 @@ import { FaFacebookF, FaLinkedinIn, FaGithub } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import type { IconType } from 'react-icons'
 
-import { siteConfig } from '@/lib/site.config'
+import { assertedParentOrg, siteConfig } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
 import { eventsSectionVisible } from '@/lib/events/visibility'
 import { configuredTeam } from '@/data/team'
@@ -31,6 +31,11 @@ const Footer: React.FC = () => {
   const socialLinks = siteConfig.social.filter((s) => s.href)
   // Trim so whitespace-only config behaves like empty (link/clause self-hides).
   const taxStatusLabel = siteConfig.taxStatusLabel.trim()
+  // Resolved once. The guard reads config and compares strings; calling it
+  // four times to answer one question is what forced the `!` assertions
+  // below, and a non-null assertion on a repeated call is a claim about a
+  // function's purity, not about this value.
+  const parentOrg = assertedParentOrg()
   // Same predicate the Events section uses to self-hide, so the quick-link
   // never points at a missing #events anchor.
   const showEventsLink = eventsSectionVisible()
@@ -275,18 +280,35 @@ const Footer: React.FC = () => {
           >
             {siteConfig.supportedBy.name}
           </Link>
-          {siteConfig.parentOrg && (
+          {parentOrg && (
             <>
               {' | A project of '}
               <Link
-                href={siteConfig.parentOrg.url}
+                href={parentOrg.url}
                 className="underline text-[#2EA3F2] hover:text-[#2EA3F2] transition-colors"
               >
-                {siteConfig.parentOrg.name}
+                {parentOrg.name}
               </Link>
             </>
           )}
         </p>
+        {/* The same independence statement `ffc-footer` carries, duplicated
+            here deliberately and temporarily: this is the footer that renders
+            today, and whichever of the two a visitor sees has to say whose
+            organization this is. It goes away with this component when the
+            layout switches to `ffc-footer` (#24). */}
+        {!parentOrg && (
+          <p className="text-[13px] leading-[22px] pt-[6px]">
+            <Link
+              href={siteConfig.supportedBy.url}
+              className="underline text-[#2EA3F2] hover:text-[#2EA3F2] transition-colors"
+            >
+              {siteConfig.supportedBy.name}
+            </Link>{' '}
+            provides this website and its domain services at no cost. {siteConfig.name} is an
+            independent organization, responsible for its own content and operations.
+          </p>
+        )}
       </div>
     </footer>
   )

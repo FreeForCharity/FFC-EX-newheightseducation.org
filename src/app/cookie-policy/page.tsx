@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { pageMetadata } from '@/lib/page-metadata'
+import { siteConfig } from '@/lib/site.config'
 
 const PAGE_NAME = 'Cookie Policy'
 const CANONICAL_PATH = '/cookie-policy'
@@ -10,7 +11,7 @@ const CANONICAL_PATH = '/cookie-policy'
 // per-page OG/Twitter handling is documented in src/lib/page-metadata.ts.
 export const metadata: Metadata = pageMetadata({
   title: PAGE_NAME,
-  description: 'Cookie Policy for Free For Charity website',
+  description: `Cookie Policy for ${siteConfig.name}`,
   canonical: CANONICAL_PATH,
 })
 
@@ -504,17 +505,14 @@ export default function CookiePolicy() {
           <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
               <strong>Email:</strong>{' '}
-              <a href="mailto:privacy@freeforcharity.org" className="text-blue-600 underline">
-                privacy@freeforcharity.org
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-blue-600 underline">
+                {siteConfig.contactEmail}
               </a>
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Emergency Contact:</strong> Clarke Moyer
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
               <strong>Phone:</strong>{' '}
-              <a href="tel:520-222-8104" className="text-blue-600 underline">
-                520-222-8104
+              <a href={`tel:${siteConfig.phone.tel}`} className="text-blue-600 underline">
+                {siteConfig.phone.display}
               </a>
             </li>
           </ul>

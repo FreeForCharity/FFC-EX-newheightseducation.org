@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import OrganizationSchema, {
   buildOrganizationSchema,
 } from '../../../src/components/seo/OrganizationSchema'
-import { siteConfig } from '../../../src/lib/site.config'
+import { siteConfig, TEMPLATE_EIN } from '../../../src/lib/site.config'
 
 describe('OrganizationSchema', () => {
   it('builds a schema.org NonprofitOrganization object with values from siteConfig', () => {
@@ -90,5 +90,40 @@ describe('OrganizationSchema', () => {
     const parsed = JSON.parse(text) as Record<string, unknown>
     expect(parsed.name).toBe(siteConfig.name)
     expect(parsed['@type']).toBe('NonprofitOrganization')
+  })
+})
+
+/**
+ * The template's EIN must never reach `taxID`.
+ *
+ * `ein` is a required config field, so a fork that has not finished rebranding
+ * still has a value — and since this schema renders on every page from
+ * `layout.tsx`, that value is what a knowledge panel would repeat as the
+ * charity's tax ID. `check:drift` does catch a template EIN left in
+ * `site.config.ts` (measured: it reports the line once `siteConfig.name`
+ * differs), so this is the second guard, for the window the gate cannot see —
+ * a rebrand in progress, a branch CI has not run yet.
+ *
+ * Absent beats wrong here: the field is simply omitted.
+ */
+describe('taxID never carries the template EIN', () => {
+  const original = siteConfig.ein
+  afterEach(() => {
+    siteConfig.ein = original
+  })
+
+  it('omits taxID entirely when the config still holds Free For Charity’s EIN', () => {
+    siteConfig.ein = TEMPLATE_EIN
+    expect(buildOrganizationSchema()).not.toHaveProperty('taxID')
+  })
+
+  it("emits the charity's own EIN once it is set", () => {
+    siteConfig.ein = '26-1424214'
+    expect(buildOrganizationSchema().taxID).toBe('26-1424214')
+  })
+
+  it('omits taxID for a blank or whitespace-only EIN rather than emitting empty', () => {
+    siteConfig.ein = '   '
+    expect(buildOrganizationSchema()).not.toHaveProperty('taxID')
   })
 })
