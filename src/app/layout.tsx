@@ -1,21 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Header from './../components/header'
-// The MIGRATION footer, not the template's marketing one. A captured page
-// brings the charity's own full footer -- on newheightseducation.org that is
-// the green NHEG strip with their logo, nine social links, the Candid /
-// GuideStar / GreatNonprofits / NSHSS badges and their real address -- so the
-// template footer rendered a SECOND one below it, 814px tall, carrying Free
-// For Charity's contact details and seven links (`/#hero`, `/#mission`,
-// `/#programs`, `/#donate`, `/#volunteer`, `/#faq`, `/#team`) to anchors that
-// do not exist on a captured home page. Measured: 0 occurrences of each id in
-// `out/index.html`.
-//
-// `ffc-footer` is what workflow 706 generates for exactly this case, and its
-// own docblock says so -- "the cloned pages keep their own visual footer; this
-// strip carries the Free For Charity program attribution and the legal/policy
-// links". It was generated into this repo and imported by nothing.
-import Footer from './../components/ffc-footer'
+import Footer from './../components/footer'
 import CookieConsent from './../components/cookie-consent'
 import GoogleTagManager, { GoogleTagManagerNoScript } from './../components/google-tag-manager'
 import { siteConfig, siteUrl, twitterSite, cardDescription } from '@/lib/site.config'
