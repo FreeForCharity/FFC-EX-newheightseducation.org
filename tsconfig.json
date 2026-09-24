@@ -29,5 +29,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "_disabled_template_routes"]
+  "exclude": ["node_modules", "_disabled_template_routes", "_disabled_template_code"]
 }

@@ -12,7 +12,7 @@ import Events from '../../src/components/home-page/Events'
 // This file was `home-page/section-visibility.test.tsx` and also covered
 // Endowment-Features and Our-Programs. Those two sections carry Free For
 // Charity's own marketing copy, no route renders them on this site, and they
-// are parked under _disabled_template_routes/ along with their tests. Events
+// are parked under _disabled_template_code/ along with their tests. Events
 // is the one gated section still reachable, so the file moved up a level and
 // was renamed for what it now covers.
 describe('Events section visibility', () => {

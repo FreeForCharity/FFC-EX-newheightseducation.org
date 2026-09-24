@@ -9,11 +9,27 @@ its endowment cards, its "Support Free For Charity" panel — are assembled by
 every real route (`page.tsx` / `layout.tsx` / `route.ts` under `src/app`)
 reaches none of them.
 
-They are parked here rather than deleted, following the convention `tests/`
-already set (see [`tests/README.md`](tests/README.md)): workflow 706 parked the
-template's `privacy-policy` route and its home-page E2E specs for exactly this
-reason, so the template's history stays legible and a later rebrand can restore
-any of it.
+They are parked rather than deleted so the template's history stays legible and
+a later rebrand can restore any of it.
+
+## Why this is not `_disabled_template_routes/`
+
+That directory belongs to workflow 706, and its contract is narrower than its
+name suggests: on every run `restoreTemplateRoutes()` moves **each top-level
+entry** back into `src/app/<name>/`, and deletes any top-level file. So a
+directory parked there is asserted to be an app route.
+
+This subtree is not routes. Parked under that name, 706 restored `src/` to
+`src/app/src/`, `tests/` to `src/app/tests/` and `__tests__/` to
+`src/app/__tests__/`, and deleted this README — and the build then failed on
+eight `TS2307`s, because the restored files' `@/…` imports resolve to siblings
+that are no longer in `src/`. Measured on run 36003387454, which is what created
+this directory.
+
+`_disabled_template_routes/` therefore holds only what 706 itself parked and
+expects to restore — today, `privacy-policy/`. Anything parked because it has no
+route belongs here instead. The two are excluded from the build by the same
+three configs, so the split costs nothing but the distinction.
 
 ## Why parking, and not editing in place
 
@@ -36,7 +52,7 @@ inventing content for a page no visitor can reach. Removing the files from
 | `src/data/faqs.ts`, `src/data/faqs/`, `src/data/results.ts` | FFC's FAQ answers and its 2023 impact statistics. No remaining consumer in `src/`.                                                                                      |
 | `src/hooks/`                                                | `useIntersectionObserver` and `useReducedMotion`, used only by the parked sections.                                                                                     |
 | `__tests__/`                                                | The unit tests for all of the above, moved with their subjects.                                                                                                         |
-| `tests/`                                                    | The template's home-page E2E specs, parked earlier by 706.                                                                                                              |
+| `tests/`                                                    | The template's home-page E2E specs, parked by #15.                                                                                                                      |
 
 ## What deliberately stayed in `src/`
 
@@ -55,9 +71,10 @@ inventing content for a page no visitor can reach. Removing the files from
 
 Parked code must not gate this site's CI, so three configs exclude it by path:
 `tsconfig.json` (`exclude`), `eslint.config.mjs` (`ignores`) and
-`jest.config.js` (`testPathIgnorePatterns`). The tests keep their `__tests__`
-layout so they can be restored verbatim, which is why jest has to exclude them
-by path rather than by name.
+`jest.config.js` (`testPathIgnorePatterns`). Each names **both** this directory
+and `_disabled_template_routes/`. The tests keep their `__tests__` layout so
+they can be restored verbatim, which is why jest has to exclude them by path
+rather than by name.
 
 **Parking code because its subject no longer exists is not the same as deleting
 a failing check.** If anything here starts describing something this site does

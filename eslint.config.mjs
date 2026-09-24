@@ -21,7 +21,9 @@ const eslintConfig = [
       // Static WordPress clone assets (not source), added by workflow 706.
       'public/**',
       // Template code parked by the migration -- see
-      // _disabled_template_routes/README.md. Not part of this site.
+      // _disabled_template_code/README.md. Not part of this site.
+      '_disabled_template_code/**',
+      // Routes workflow 706 parked, which it restores on its next run.
       '_disabled_template_routes/**',
       'node_modules/**',
       '.next/**',
