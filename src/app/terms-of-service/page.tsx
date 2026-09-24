@@ -40,9 +40,9 @@ export default function TermsOfService() {
           </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             Welcome to {siteConfig.name}! These Terms of Service (“Terms”) govern your access to and
-            use of our website, services, and platforms (collectively, “Services”), provided by Free
-            For Charity (“we,” “us,” or “our”). By accessing or using our Services, you agree to be
-            bound by these Terms. If you do not agree to these Terms, please do not use our
+            use of our website, services, and platforms (collectively, “Services”), provided by{' '}
+            {siteConfig.name} (“we,” “us,” or “our”). By accessing or using our Services, you agree
+            to be bound by these Terms. If you do not agree to these Terms, please do not use our
             Services.
           </p>
 
@@ -160,9 +160,9 @@ export default function TermsOfService() {
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             Our Services are provided on an “as is” and “as available” basis. {siteConfig.name}{' '}
             makes no representations or warranties of any kind, express or implied, regarding the
-            use or the results of our Services in terms of accuracy, reliability, or otherwise. Free
-            For Charity disclaims all warranties, express or implied, including, but not limited to,
-            implied warranties of merchantability, fitness for a particular purpose, and
+            use or the results of our Services in terms of accuracy, reliability, or otherwise.{' '}
+            {siteConfig.name} disclaims all warranties, express or implied, including, but not
+            limited to, implied warranties of merchantability, fitness for a particular purpose, and
             non-infringement.
           </p>
 
