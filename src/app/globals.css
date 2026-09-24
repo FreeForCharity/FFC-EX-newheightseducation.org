@@ -342,3 +342,43 @@ body {
 .ffc-clone {
   isolation: isolate;
 }
+
+/* A captured page brings the SITE'S OWN header, and it is the one a visitor
+   should see. The template header must not render over it.
+
+   Measured on newheightseducation.org, 2026-09-24, in Chromium at 1440x900
+   against the built export -- every figure below is from the browser, not
+   from reading the markup:
+
+     - FFC's header is `position: fixed`, `z-index: 50`, 80px tall, and
+       `isolation: isolate` above deliberately keeps the capture beneath
+       FFC's chrome. Correct for the cookie banner it was written for, and
+       it also buries the site's real navigation.
+     - The captured header occupies 0..60px on every page, entirely under
+       it. On /contact-us/ the eight links `Learning Annex, Home, Who We Are,
+       Programs, Volunteer, Events, Support NHEG, Radio Show` are present,
+       visible to the accessibility tree, and painted over.
+     - What shows instead is the template's own nav, whose seven links are
+       `/#hero`, `/#mission`, `/#programs`, `/#volunteer`, `/#donate`,
+       `/#faq` and `/#team`. Every one of those ids is absent from the home
+       page, because the home page is captured content: measured 0
+       occurrences of each in `out/index.html`. So the nav on display was
+       not merely duplicative, it was seven dead links.
+     - And each page's own first heading was sliced in half by the 80px
+       band -- visible in a screenshot of /contact-us/ as "CONTACT NHEG"
+       cut through the middle.
+
+   All 581 captured fragments carry their own `<header>`, so the condition
+   is unanimous here; it is still written as a condition rather than a flat
+   rule, because a capture that brings no header of its own must keep FFC's
+   rather than lose navigation entirely.
+
+   `:has()` and not JavaScript: this is a static export, so a client-side
+   pathname check would render FFC's header and then remove it, a flash on
+   every page load. `:has()` is Baseline since December 2023; a browser
+   without it falls back to the previous behaviour rather than to something
+   broken. Asserted in a real browser by tests/smoke/, never assumed --
+   this rule cannot be verified by reading it. */
+body:has(.ffc-clone header) > header {
+  display: none;
+}

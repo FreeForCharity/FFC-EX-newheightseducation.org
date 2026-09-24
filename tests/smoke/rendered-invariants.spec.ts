@@ -71,6 +71,71 @@ test.describe('rendered invariants', () => {
   })
 
   /**
+   * The site's OWN navigation must be the one a visitor can see.
+   *
+   * This is the test that would have caught two days of a migration looking
+   * nothing like the site it migrated, and it has to live here because every
+   * fact in it is a rendered fact. Both halves were measured on
+   * newheightseducation.org, 2026-09-24, before the fix:
+   *
+   *   - FFC's header is `position: fixed`, 80px tall, `z-index: 50`, and
+   *     `.ffc-clone { isolation: isolate }` above deliberately keeps the
+   *     capture beneath FFC's chrome. So the captured header at 0..60px was
+   *     painted over on all 793 pages -- the eight links `Learning Annex,
+   *     Home, Who We Are, Programs, Volunteer, Events, Support NHEG, Radio
+   *     Show` present, sized, and invisible.
+   *   - What showed instead offered `/#hero`, `/#mission`, `/#programs`,
+   *     `/#volunteer`, `/#donate`, `/#faq`, `/#team`: seven anchors into a
+   *     template home page that captured content had replaced. Zero of those
+   *     ids exist in the built home page.
+   *
+   * Every gate in this repo verifies the export against ITSELF, which is why
+   * a nav that was both hidden and dead passed all of them. A DOM query alone
+   * would not have caught it either -- the links were in the DOM. Only the
+   * geometry says what a visitor sees.
+   */
+  test("the captured page's own header is the visible one", async ({ page }) => {
+    for (const path of SAMPLE) {
+      await page.goto(`./${path}`, { waitUntil: 'load' })
+
+      const m = await page.evaluate(() => {
+        const clone = document.querySelector('.ffc-clone')
+        const capturedHeader = clone?.querySelector('header') ?? null
+        const templateHeader = document.querySelector('body > header')
+        if (!clone || !capturedHeader) return { skip: true as const }
+        const templateVisible =
+          !!templateHeader && getComputedStyle(templateHeader).display !== 'none'
+        const hb = capturedHeader.getBoundingClientRect()
+        // Anything of FFC's still painting over the captured header's band.
+        const band = { x: Math.round(hb.x + hb.width / 2), y: Math.round(hb.y + hb.height / 2) }
+        const topAt = document.elementFromPoint(band.x, band.y) as HTMLElement | null
+        return {
+          skip: false as const,
+          templateVisible,
+          capturedHeaderHeight: Math.round(hb.height),
+          topIsCaptured: !!topAt?.closest('.ffc-clone'),
+        }
+      })
+
+      // A capture that brings no header of its own keeps FFC's, by design.
+      if (m.skip) continue
+
+      expect(
+        m.templateVisible,
+        `${path || '(home)'}: the template header must not render over the page's own`
+      ).toBe(false)
+      expect(
+        m.capturedHeaderHeight,
+        `${path || '(home)'}: the captured header must occupy real space`
+      ).toBeGreaterThan(0)
+      expect(
+        m.topIsCaptured,
+        `${path || '(home)'}: the topmost element in the captured header's band must be the capture's`
+      ).toBe(true)
+    }
+  })
+
+  /**
    * Captured chrome cannot paint above FFC's own overlays.
    *
    * Social Snap ships `#ss-floating-bar { position: fixed; z-index: 999 }` and
