@@ -560,8 +560,34 @@ const FFC_IDENTITY_PATTERNS = [
 // that page documents FFC's own policy, so its label intentionally keeps FFC's
 // name after a rebrand) so any other freeforcharity.org URL — or an EIN, phone,
 // or email — is still flagged even inside the footer.
+// `/free-for-charity-donation-policy` is not leftover branding: it is Free For
+// Charity's OWN donation policy, published on a supported charity's site
+// alongside that charity's own `/donation-policy`. The two are different
+// documents and the footer links both. Every FFC reference on that page is
+// therefore correct by construction, and flagging them asks for the page to be
+// rewritten into something it is not -- the only "fix" that satisfies the
+// check is to make the page misstate whose policy it is.
+//
+// Scoped to that one route rather than to a pattern: any OTHER page acquiring
+// FFC identity is still a finding, which is the whole point of the check.
+const FFC_OWN_POLICY_PAGE = 'src/app/free-for-charity-donation-policy/page.tsx'
+
 function isAllowedIdentityLine(relPath, line) {
   const normalized = relPath.split(sep).join('/')
+  if (normalized === FFC_OWN_POLICY_PAGE) return true
+  // `ffc-footer` is the migration footer, and three of its FFC references are
+  // load-bearing rather than leftover. The two TEMPLATE_* constants are the
+  // values it exists to DETECT -- it blanks the identity line when the config
+  // still carries Free For Charity's EIN or Candid profile, so it cannot do
+  // its job without naming them, and "fixing" them would make it publish the
+  // template's tax ID as the charity's own. The hub link is the same required
+  // footer-standard item already allowed in `src/components/footer`.
+  if (normalized === 'src/components/ffc-footer/index.tsx') {
+    return (
+      /^const TEMPLATE_(EIN|GUIDESTAR) =/.test(line.trim()) ||
+      /href="https:\/\/freeforcharity\.org\/hub\/"/i.test(line)
+    )
+  }
   if (normalized !== 'src/components/footer/index.tsx') return false
   return (
     /Built with Free For Charity/.test(line) ||
@@ -605,12 +631,25 @@ async function checkBrandIdentity() {
     } catch {
       continue
     }
-    const lines = withoutSupportedByBlock(rel, body).split('\n')
+    const scanned = withoutSupportedByBlock(rel, body)
+    const lines = scanned.split('\n')
+    let offset = 0
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]
+      const lineStart = offset
+      offset += line.length + 1
       if (isAllowedIdentityLine(rel, line)) continue
       for (const p of FFC_IDENTITY_PATTERNS) {
-        if (p.re.test(line)) {
+        // `exec`, not `test`, because the position of the reference is what
+        // decides this: `insideComment` reads the text BEFORE an index, so
+        // asking about the match itself distinguishes a comment line (the
+        // reference sits after `//`, skipped) from code with a trailing
+        // comment (the reference sits before it, still flagged). Passing the
+        // line's start instead reports neither, which is how the first
+        // version of this silently changed nothing.
+        const hit = new RegExp(p.re.source, p.re.flags.replace('g', '')).exec(line)
+        if (hit) {
+          if (insideComment(scanned, lineStart + hit.index + hit[0].length)) continue
           errors.push(
             `${rel}:${i + 1} still references ${p.label} after this site rebranded to "${name}". ` +
               `Replace it with the new organization's details.`
