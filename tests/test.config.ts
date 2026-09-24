@@ -65,8 +65,8 @@ export const testConfig = {
   // configured entry with `aria-label={label}`, so this is the same list the
   // page is built from.
   socialLinks: siteConfig.social
-    .filter((s) => s.href.trim().length > 0)
-    .map((s) => ({ url: s.href, ariaLabel: s.label })),
+    .map((s) => ({ url: s.href.trim(), ariaLabel: s.label }))
+    .filter((s) => s.url.length > 0),
 
   /**
    * Copyright Configuration
