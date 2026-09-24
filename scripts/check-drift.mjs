@@ -546,11 +546,21 @@ const TEMPLATE_ORG_NAME = 'Free For Charity'
 // a child site's own rendered pages. FFC references a child legitimately keeps
 // (e.g. a parent-org credit) live in src/lib/site.config.ts via siteConfig, not
 // as literals in src/app or src/components, so they are out of this scan's scope.
-const FFC_IDENTITY_PATTERNS = [
+export const FFC_IDENTITY_PATTERNS = [
   { re: /Free For Charity|Free for Charity/, label: 'the template org name "Free For Charity"' },
   { re: /freeforcharity\.org/i, label: 'a freeforcharity.org URL' },
   { re: /46-?2471893/, label: "Free For Charity's EIN (46-2471893)" },
-  { re: /520[\s.-]?222[\s.-]?8104/, label: "Free For Charity's phone number (520-222-8104)" },
+  // `[\s.()-]*` and not `[\s.-]?`: the old pattern allowed at most ONE
+  // separator character, so it saw `520-222-8104` and `520.222.8104` and was
+  // blind to `(520) 222-8104` -- two characters between the area code and the
+  // exchange, and the commonest way a US number is written. It missed exactly
+  // that on `src/app/donation-policy/page.tsx`, a live route soliciting
+  // donations, which is the case this rule exists for. Optional parentheses
+  // around the area code for the same reason.
+  {
+    re: /\(?520\)?[\s.()-]*222[\s.()-]*8104/,
+    label: "Free For Charity's phone number (520-222-8104)",
+  },
   { re: /[A-Za-z0-9._%+-]+@freeforcharity\.org/i, label: 'a @freeforcharity.org email address' },
 ]
 

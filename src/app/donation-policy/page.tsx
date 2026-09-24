@@ -84,7 +84,10 @@ export default function DonationPolicy() {
               {siteConfig.contactEmail}
             </a>
             <br />
-            Phone: (520) 222-8104
+            Phone:{' '}
+            <a href={`tel:${siteConfig.phone.tel}`} className="text-primary underline">
+              {siteConfig.phone.display}
+            </a>
           </p>
         </div>
       </div>

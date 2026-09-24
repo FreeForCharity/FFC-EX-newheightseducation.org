@@ -510,9 +510,6 @@ export default function CookiePolicy() {
               </a>
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Emergency Contact:</strong> Clarke Moyer
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
               <strong>Phone:</strong>{' '}
               <a href={`tel:${siteConfig.phone.tel}`} className="text-blue-600 underline">
                 {siteConfig.phone.display}

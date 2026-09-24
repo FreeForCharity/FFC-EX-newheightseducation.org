@@ -134,6 +134,55 @@ describe('check-drift: Pages config discard', () => {
   })
 })
 
+/** Runs one FFC_IDENTITY_PATTERNS entry against a string in a child process. */
+function identityMatches(label: string, text: string): boolean {
+  const href = pathToFileURL(script).href
+  const out = execFileSync(
+    process.execPath,
+    [
+      '--input-type=module',
+      '-e',
+      `const m = await import(${JSON.stringify(href)});` +
+        `const p = m.FFC_IDENTITY_PATTERNS.find((x) => x.label.includes(${JSON.stringify(label)}));` +
+        `if (!p) throw new Error('no pattern labelled ' + ${JSON.stringify(label)});` +
+        `process.stdout.write(String(p.re.test(${JSON.stringify(text)})))`,
+    ],
+    { encoding: 'utf8' }
+  )
+  return out.trim() === 'true'
+}
+
+/**
+ * The phone pattern was `520[\s.-]?222[\s.-]?8104` — at most ONE separator
+ * character — so it saw `520-222-8104` and was blind to `(520) 222-8104`,
+ * which has two. It missed exactly that on `src/app/donation-policy/page.tsx`,
+ * a live route soliciting donations, and the rebrand gate reported no drift.
+ *
+ * Every one of these is the same number a visitor would dial, so a gate that
+ * catches one spelling and not another is not catching the number.
+ */
+describe('FFC identity patterns — phone number spellings', () => {
+  const phone = "Free For Charity's phone number"
+
+  it.each([
+    '(520) 222-8104',
+    '(520)222-8104',
+    '520-222-8104',
+    '520.222.8104',
+    '520 222 8104',
+    '5202228104',
+  ])('matches %s', (text) => {
+    expect(identityMatches(phone, text)).toBe(true)
+  })
+
+  it.each([
+    ["the charity's own number", '419.786.0247'],
+    ['a different number that shares a prefix', '520-222-8105'],
+  ])('does not match %s', (_why, text) => {
+    expect(identityMatches(phone, text)).toBe(false)
+  })
+})
+
 describe('check-drift script (end to end)', () => {
   it('passes against this repo — no live workflow discards next.config.ts', () => {
     const out = execFileSync(process.execPath, [script], { encoding: 'utf8' })
