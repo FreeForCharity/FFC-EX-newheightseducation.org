@@ -1,12 +1,26 @@
 {
   "domain": "newheightseducation.org",
   "mount": "",
-  "capturedAt": "2026-09-22T04:01:26.327Z",
+  "capturedAt": "2026-09-25T10:36:48.569Z",
   "restRoot": "https://newheightseducation.org/wp-json/",
   "restFlavor": "pretty",
   "inventory": {
     "restPages": 0,
     "restPosts": 0,
+    "restRefusals": [
+      {
+        "collection": "pages",
+        "reason": "shape",
+        "status": 200,
+        "detail": "no JSON body (unparseable or empty)"
+      },
+      {
+        "collection": "posts",
+        "reason": "shape",
+        "status": 200,
+        "detail": "no JSON body (unparseable or empty)"
+      }
+    ],
     "sitemapSource": "/wp-sitemap.xml",
     "sitemapPageUrls": 430,
     "addedBySitemap": 430,
@@ -55,22 +69,23 @@
     "available": true
   },
   "assets": {
-    "downloaded": 4920,
-    "failed": 13,
+    "downloaded": 4917,
+    "failed": 14,
     "failures": {
-      "total": 13,
+      "total": 14,
       "byStatus": {
         "0": 1,
+        "403": 1,
         "404": 12
       },
       "byHost": {
         "cdn.greatnonprofits.org": 1,
         "cdn.tutors.com": 1,
-        "newheightseducation.org": 11
+        "newheightseducation.org": 12
       },
       "sample": [
         "HTTP 404 https://cdn.greatnonprofits.org/images/great-nonprofits.gif?id=1491417",
-        "HTTP 0 https://cdn.tutors.com/assets/images/tmp/tutors-2020.png",
+        "HTTP 403 https://cdn.tutors.com/assets/images/tmp/tutors-2020.png",
         "HTTP 404 https://newheightseducation.org/wp-content/uploads/mk_assets/theme-options-production-1787025385.css",
         "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.eot?r52kw2",
         "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.eot?r52kw2#iefix",
@@ -100,7 +115,7 @@
   },
   "imageOptimization": {
     "enabledPdfs": true,
-    "maxPdfMb": 20,
+    "maxPdfMb": 90,
     "pdfsShrunk": 0,
     "pdfsDeclined": 0,
     "pdfsSkippedNoEncoder": 0,
@@ -113,17 +128,19 @@
     "recoded": 145,
     "declined": 1,
     "skippedNoEncoder": 0,
-    "stillOverBudget": 3,
+    "stillOverBudget": 0,
     "collisions": 1,
     "bytesBefore": 116553619,
-    "bytesAfter": 23030334
+    "bytesAfter": 22534940
   },
   "remainingExternalHosts": [
     "secure.gravatar.com",
     "fonts.googleapis.com"
   ],
   "escapedPaths": [],
-  "ignoreHosts": [],
+  "ignoreHosts": [
+    "s3.amazonaws.com"
+  ],
   "forms": {
     "pageCount": 430,
     "pages": [
@@ -3445,7 +3462,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 153064
+      "bytes": 153036
     },
     {
       "id": null,
@@ -5233,7 +5250,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 212148
+      "bytes": 212136
     },
     {
       "id": null,
@@ -5245,7 +5262,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 236353
+      "bytes": 236323
     },
     {
       "id": null,
@@ -5257,7 +5274,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 163187
+      "bytes": 163157
     },
     {
       "id": null,
@@ -5269,7 +5286,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 233887
+      "bytes": 233858
     },
     {
       "id": null,
@@ -5281,7 +5298,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 200598
+      "bytes": 200569
     },
     {
       "id": null,
@@ -5293,7 +5310,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 239655
+      "bytes": 239626
     },
     {
       "id": null,
@@ -5317,7 +5334,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 222814
+      "bytes": 222784
     },
     {
       "id": null,
@@ -5329,7 +5346,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 231063
+      "bytes": 231050
     },
     {
       "id": null,
@@ -5341,7 +5358,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 126440
+      "bytes": 126410
     },
     {
       "id": null,
@@ -5353,7 +5370,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 138230
+      "bytes": 138200
     },
     {
       "id": null,
@@ -5365,7 +5382,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 126189
+      "bytes": 126159
     },
     {
       "id": null,
@@ -5377,14 +5394,15 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 126730
+      "bytes": 126700
     }
   ],
   "verdict": {
     "ok": false,
     "problems": [
+      "the REST inventory was refused for pages (no JSON body (unparseable or empty)); posts (no JSON body (unparseable or empty)) — no X-WP-Total to check completeness against, so the sitemap is this capture's only inventory",
       "unlocalized asset hosts: secure.gravatar.com, fonts.googleapis.com",
-      "assets: 13 failed (12×HTTP 404, 1×HTTP 0); 11 of them on newheightseducation.org"
+      "assets: 14 failed (12×HTTP 404, 1×HTTP 0, 1×HTTP 403); 12 of them on newheightseducation.org"
     ]
   }
 }

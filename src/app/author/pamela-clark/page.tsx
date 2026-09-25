@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela Clark',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "Pamela Clark" Home » Archives for…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Pamela Clark" Home » Archives for…',
     canonical: '/author/pamela-clark/',
   }),
   title: { absolute: 'Pamela Clark' },

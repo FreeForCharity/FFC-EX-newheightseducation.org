@@ -6,18 +6,18 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'New Heights Educational Group Publications – Inspire & Empower - NHEG',
+    title: 'Student Support Services | New Heights Educational Group | Ohio',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. Info@NewHeightsEducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'The New Heights Educational Group promotes literacy for children and adults by offering a range of student support services for their educational needs.',
     canonical: '/',
   }),
-  title: { absolute: 'New Heights Educational Group Publications – Inspire & Empower - NHEG' },
+  title: { absolute: 'Student Support Services | New Heights Educational Group | Ohio' },
 }
 
 export default function Page() {
   return (
     <div
-      className="ffc-clone home wp-singular page-template page-template-elementor_header_footer page page-id-6271 wp-custom-logo wp-embed-responsive wp-theme-astra ast-desktop ast-page-builder-template ast-no-sidebar astra-4.13.12 group-blog ast-single-post ast-replace-site-logo-transparent ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header elementor-default elementor-template-full-width elementor-kit-5709 elementor-page elementor-page-6271"
+      className="ffc-clone home wp-singular page-template-default page page-id-3410 wp-theme-jupiter theme-jupiter woocommerce-no-js wpb-js-composer js-comp-ver-8.7.4 vc_responsive"
       dangerouslySetInnerHTML={{ __html: loadCloneContent('index') }}
     />
   )

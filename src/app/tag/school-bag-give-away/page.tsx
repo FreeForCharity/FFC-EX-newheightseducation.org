@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'School Bag Give Away - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Tag Archives for: "School Bag Give Away" Home » School…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Tag Archives for: "School Bag Give Away" Home » School…',
     canonical: '/tag/school-bag-give-away/',
   }),
   title: { absolute: 'School Bag Give Away - New Heights Educational Group, Inc.' },
