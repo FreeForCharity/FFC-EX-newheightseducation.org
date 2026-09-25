@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Teaching Harry Potter In School - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Teaching Harry Potter In School Home » Teaching Harry Potter In…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Teaching Harry Potter In School Home » Teaching Harry Potter In…',
     canonical: '/educational-articles/teaching-harry-potter-in-school/',
   }),
   title: { absolute: 'Teaching Harry Potter In School - New Heights Educational Group, Inc.' },

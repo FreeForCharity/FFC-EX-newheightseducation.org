@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Senadee Atapattu, Author at New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "senadee.a" Home » Archives for…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "senadee.a" Home » Archives for…',
     canonical: '/author/senadee-a/',
   }),
   title: { absolute: 'Senadee Atapattu, Author at New Heights Educational Group, Inc.' },

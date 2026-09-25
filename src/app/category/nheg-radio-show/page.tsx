@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Radio Show - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org NHEG Radio Show Home » NHEG Radio Show 0 By Michael Anderson In…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org NHEG Radio Show Home » NHEG Radio Show 0 By Michael Anderson In…',
     canonical: '/category/nheg-radio-show/',
   }),
   title: { absolute: 'NHEG Radio Show - New Heights Educational Group, Inc.' },
