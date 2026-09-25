@@ -452,3 +452,43 @@ body .ffc-clone #glt-translate-trigger a {
 .ffc-clone p a:active {
   text-decoration: underline;
 }
+
+/* WPBakery's "full height row" option is a desktop assumption, and on a phone
+   it hands the visitor a blank screen.
+
+   `vc_row-o-full-height` carries `min-height: 100vh` unconditionally -- it is
+   the source site's own CSS, not a capture artifact, confirmed with CDP
+   `CSS.getMatchedStylesForNode` against the built export. That works on a
+   desktop, where the section's cover image renders 1280x400 inside a 915px
+   box and the site navigation sits above it. At 412px the same image drops to
+   its 414x129 srcset variant and the navigation collapses into the hamburger,
+   so 915px of section holds 128px of image and nothing else.
+
+   Measured on the deployed export at 412x915, above-the-fold coverage across
+   a 40-route sample: median 0.69, and the two WORST pages in the whole sample
+   are the two this rule touches -- `/events/school-bag-give-away/` at 0.201
+   with a 424px empty band, and the home page at 0.239 with 376px. The first
+   heading on the home page sat at y=1005, a full screen below the fold.
+
+   Capping it at the phone breakpoint rather than editing the captured markup:
+   the class comes from the source and the next capture brings it back, and
+   four built routes carry it today. 768px is WPBakery's own breakpoint, so the
+   cap lines up with where its grid already reflows to a single column.
+
+   The same reasoning as the `iframe` rule above: the source site has the same
+   markup and the same problem, and reproducing a layout break faithfully is
+   not a goal.
+
+   The leading `body` is load-bearing, for the reason the `#glt-translate-trigger`
+   rule below records: the capture's own `<style>` blocks are inlined into the
+   page fragment, so they land AFTER this file in the cascade and win every tie.
+   Written without it, this selector matches the source's at (0,3,0), loses, and
+   changes nothing -- which is exactly what it did on the first attempt, with
+   the above-the-fold numbers coming back byte-identical. A rule that is
+   present, scoped correctly and has no effect. */
+@media (max-width: 768px) {
+  body .ffc-clone .vc_section.vc_row-o-full-height,
+  body .ffc-clone .vc_row.vc_row-o-full-height {
+    min-height: 0;
+  }
+}
