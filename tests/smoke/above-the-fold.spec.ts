@@ -110,7 +110,8 @@ test.describe('above the fold', () => {
         }
 
         const TEXT = 'h1,h2,h3,h4,p,li,td,figcaption,blockquote'
-        const INK = `${TEXT},img,svg,video,button,input`
+        const MEDIA = 'img,svg,video,button,input'
+        const INK = `${TEXT},${MEDIA}`
 
         const texts = Array.from(document.querySelectorAll(TEXT)).filter(
           (e) =>
@@ -127,7 +128,16 @@ test.describe('above the fold', () => {
         const spans: Array<[number, number]> = []
         for (const el of Array.from(document.querySelectorAll(INK))) {
           if (!isVisible(el) || isFixed(el)) continue
-          const isMedia = /^(IMG|SVG|VIDEO|BUTTON|INPUT)$/.test(el.tagName)
+          // `el.matches(MEDIA)` rather than a tagName test, because tagName is
+          // not reliably upper case. SVG lives in a foreign namespace, so it
+          // is NOT uppercased: measured in Chromium, `<svg>.tagName` is the
+          // string "svg" while `<img>.tagName` is "IMG". A `/^(IMG|SVG|...)$/`
+          // test therefore rejects every `<svg>`, and since an SVG's innerText
+          // is empty it was then dropped by the text check too -- so icons
+          // counted as nothing, under-reporting ink on any page drawn with
+          // them. Reusing the selector the elements were collected with cannot
+          // drift from it. Reported by copilot-pull-request-reviewer on #32.
+          const isMedia = el.matches(MEDIA)
           if (!isMedia && ((el as HTMLElement).innerText || '').trim().length < 3) continue
           const r = el.getBoundingClientRect()
           const top = Math.max(0, r.top)
