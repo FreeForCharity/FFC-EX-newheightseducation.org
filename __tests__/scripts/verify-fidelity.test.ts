@@ -6,6 +6,7 @@ import {
   similarity,
   titleSimilarity,
   leadingSegment,
+  hasTitleSeparator,
   degenerateTitles,
   looksLikeTheExport,
   sourceUrlFor,
@@ -139,6 +140,13 @@ describe('titleSimilarity', () => {
     expect(titleSimilarity('Who We Are', 'Shopping Cart')).toBe(0)
   })
 
+  // Same suffix drop as above, with a theme that writes its separator with
+  // no surrounding spaces. This scored 0.286 and FAILED -- below the 0.5 bar
+  // -- while the spaced spelling of the identical title scored 1.
+  it('scores a dropped suffix 1 when the separator has no spaces', () => {
+    expect(titleSimilarity('Who We Are\u2014New Heights Educational Group', 'Who We Are')).toBe(1)
+  })
+
   // The documented blind spot, pinned so it cannot be mistaken for a bug
   // later and "fixed" into something that breaks the two cases above.
   // `degenerateTitles` is what makes it visible; see below.
@@ -155,8 +163,28 @@ describe('leadingSegment', () => {
     ['A \u00b7 B', 'a'],
     ['No separator here', 'no separator here'],
     ['Well-known hyphen kept', 'well-known hyphen kept'],
+    // Unspaced separators. `normalizeText` folds \u2013 and \u2014 to `-`, so reading
+    // the separator AFTER normalizing made both dash branches dead code and
+    // `A\u2014B` came back as the single segment `a-b`. The bare hyphen still
+    // needs its spaces, which is what keeps `Well-known` above intact.
+    ['A|B', 'a'],
+    ['A\u2013B', 'a'],
+    ['A\u2014B', 'a'],
+    ['A\u00b7B', 'a'],
   ])('%s -> %s', (input, expected) => {
     expect(leadingSegment(input)).toBe(expected)
+  })
+})
+
+describe('hasTitleSeparator', () => {
+  it.each([
+    ['A | B', true],
+    ['A\u2014B', true],
+    ['A - B', true],
+    ['Well-known hyphen kept', false],
+    ['No separator here', false],
+  ])('%s -> %s', (input, expected) => {
+    expect(hasTitleSeparator(input)).toBe(expected)
   })
 })
 
@@ -202,6 +230,24 @@ describe('looksLikeTheExport', () => {
 
   it('does not fire on a class that merely contains the substring', () => {
     expect(looksLikeTheExport('<div class="not-ffc-cloned">x</div>')).toBe(false)
+  })
+
+  // Every legal spelling of the attribute. A guard that misses one does not
+  // fail loudly -- it lets the run compare the export against itself and
+  // report perfect fidelity forever, which is the one outcome this function
+  // exists to prevent. All three of these returned false at first.
+  it.each([
+    ["<div class='ffc-clone home'>x</div>", 'single quotes'],
+    ['<div class = "ffc-clone">x</div>', 'spaces around ='],
+    ['<div class=ffc-clone>x</div>', 'unquoted'],
+  ])('fires on %s', (html) => {
+    expect(looksLikeTheExport(html)).toBe(true)
+  })
+
+  // `\bffc-clone\b` matches here, because `-` ends a word. Class attributes
+  // are whitespace-separated tokens, so the boundaries have to be whitespace.
+  it('does not fire on a longer class that starts with the marker', () => {
+    expect(looksLikeTheExport('<div class="ffc-clone-wrapper">x</div>')).toBe(false)
   })
 })
 

@@ -44,10 +44,14 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
 
+      # Node 24 and setup-node@v6, matching .nvmrc and every other build
+      # workflow here. This job BUILDS the export it then measures, so a
+      # different Node major would have it comparing a build the deploy never
+      # produced. Reported by copilot-pull-request-reviewer on #33.
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
           cache: pnpm
 
       - name: Install dependencies
@@ -100,13 +104,21 @@ jobs:
         # written; the exit code is captured and re-raised in the last step
         # rather than swallowed.
         #
-        # The strict flag compares against the STRING 'false', not the boolean.
-        # On a schedule event `inputs.strict` is empty, and GitHub's loose
-        # equality makes `'' == false` true -- written the obvious way, every
-        # scheduled run would have passed no matter what it found, which is the
-        # exact failure this whole check exists to stop. Comparing to 'false'
-        # is strict on schedule under either coercion, and opts out only when
-        # someone dispatches it deliberately.
+        # The strict flag has to name the EVENT, because neither comparison
+        # alone is right for both. GitHub casts across types to a number
+        # before comparing, so:
+        #
+        #   schedule    inputs.strict absent -> 0.  `== false` is TRUE, and
+        #               every scheduled run would opt itself out of strict --
+        #               the exact failure this whole check exists to stop.
+        #   dispatch    inputs.strict is a real boolean. `== 'false'` casts
+        #               the string to NaN, which equals nothing, so unticking
+        #               the box did nothing and strict could not be turned off.
+        #
+        # This shipped as the second form. Testing the event name first makes
+        # the boolean comparison safe: strict always on a schedule, opt-out
+        # only when a human deliberately unticks it. Reported by
+        # copilot-pull-request-reviewer on #33.
         run: |
           set +e
           node scripts/verify-fidelity.mjs \
@@ -115,7 +127,7 @@ jobs:
             --sample "${{ inputs.sample || '25' }}" \
             --delay-ms 750 \
             --report fidelity-report.json \
-            ${{ inputs.strict == 'false' && ' ' || '--strict' }}
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.strict == false) && ' ' || '--strict' }}
           echo "exit=$?" >> "$GITHUB_OUTPUT"
 
       - name: Upload the report

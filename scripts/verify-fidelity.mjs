@@ -143,14 +143,42 @@ export function similarity(a, b) {
  * the wrong side of any bar you could draw. Leading segments separate them
  * completely.
  */
-export function leadingSegment(title) {
-  return normalizeText(title)
-    .split(/\s*[|\u2013\u2014\u00b7\u2022]\s*|\s+-\s+/)[0]
+const TITLE_SEPARATOR = /\s*[|\u2013\u2014\u00b7\u2022]\s*|\s+-\s+/
+
+/**
+ * `normalizeText` without the dash folding, for reading separators.
+ *
+ * `normalizeText` rewrites en and em dashes to `-` because in PROSE they are
+ * the same character to a reader. In a TITLE they are separators, and folding
+ * them first made both branches below dead code: measured, `A\u2014B` came out of
+ * `normalizeText` as `a-b`, which matches neither `[\u2013\u2014]` (the characters are
+ * gone) nor `\s+-\s+` (there are no spaces), so the title did not split at
+ * all. `Who We Are\u2014New Heights Educational Group` against `Who We Are` then
+ * scored 0.286 and FAILED a page whose only sin was dropping its site-name
+ * suffix -- the exact case `titleSimilarity` was written to forgive.
+ *
+ * Bare `-` still needs surrounding spaces, so `Well-known hyphen kept` stays
+ * one segment. Reported by copilot-pull-request-reviewer on #33.
+ */
+function normalizeKeepingDashes(value) {
+  if (typeof value !== 'string') return ''
+  let out = value
+  for (const [entity, char] of Object.entries(ENTITIES)) out = out.split(entity).join(char)
+  return out
+    .replace(/\\(['"])/g, '$1')
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201c\u201d]/g, '"')
+    .replace(/\s+/g, ' ')
     .trim()
+    .toLowerCase()
+}
+
+export function leadingSegment(title) {
+  return normalizeText(normalizeKeepingDashes(title).split(TITLE_SEPARATOR)[0])
 }
 
 export function hasTitleSeparator(title) {
-  return /[|\u2013\u2014\u00b7\u2022]|\s-\s/.test(normalizeText(title))
+  return TITLE_SEPARATOR.test(normalizeKeepingDashes(title))
 }
 
 /**
@@ -217,7 +245,20 @@ export function degenerateTitles(titles) {
  */
 export function looksLikeTheExport(html) {
   if (typeof html !== 'string') return false
-  return /class="[^"]*\b(ffc-clone|ffc-footer)\b/.test(html)
+  // Any legal spelling of the attribute, not just `class="..."`. Measured,
+  // the double-quote-only form returned false for `class='ffc-clone'`,
+  // `class = "ffc-clone"` and `class=ffc-clone` alike -- and a guard that
+  // fails to fire does not fail loudly here, it lets the run score the export
+  // against itself and report 1.00 forever, which is the single outcome this
+  // function exists to prevent. Reported by copilot-pull-request-reviewer.
+  //
+  // The token test uses whitespace boundaries rather than `\b`: `\bffc-clone\b`
+  // also matches inside `ffc-clone-wrapper`, because `-` ends a word.
+  for (const m of html.matchAll(/\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+    const value = m[1] ?? m[2] ?? m[3] ?? ''
+    if (/(^|\s)(ffc-clone|ffc-footer)(\s|$)/.test(value)) return true
+  }
+  return false
 }
 
 /**
