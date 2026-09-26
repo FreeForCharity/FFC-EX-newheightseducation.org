@@ -1,0 +1,166 @@
+name: Source Fidelity Check
+
+# Compares the deployed export against the SOURCE site it was captured from.
+#
+# Every other check in this repo asks whether the export is internally sound.
+# This is the only one that asks whether it is the same site. Two defects
+# shipped past a fully green board because nothing did: the home page was the
+# publications page (#1370), and a full-height hero left the phone fold blank.
+#
+# NOT a PR check, deliberately. It fetches a third party's live WordPress, and
+# that origin already returned 503s under the capture's own crawl at 250ms
+# spacing. Weekly, plus on demand.
+
+on:
+  schedule:
+    # Weekly, Monday 06:23 UTC. An off-the-hour minute on purpose: scheduled
+    # runs on :00 queue behind everyone else's.
+    - cron: '23 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Source origin (defaults to the domain in the capture report)'
+        type: string
+        default: ''
+      sample:
+        description: 'How many routes to compare'
+        type: string
+        default: '25'
+      strict:
+        description: 'Fail the run on findings'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  fidelity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      # Node 24 and setup-node@v6, matching .nvmrc and every other build
+      # workflow here. This job BUILDS the export it then measures, so a
+      # different Node major would have it comparing a build the deploy never
+      # produced. Reported by copilot-pull-request-reviewer on #33.
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # `verify-fidelity.mjs` reads the route list from out/ and decides which
+      # routes came from the source by looking for a matching file in
+      # src/clone-content/. The build is what produces out/.
+      - name: Build the export
+        run: pnpm run build
+
+      - name: Resolve the source and export origins
+        id: origins
+        run: |
+          set -euo pipefail
+
+          # The source domain is recorded by the capture itself, so this stays
+          # correct for any site 706 migrates without being configured here.
+          if [ -n "${{ inputs.source }}" ]; then
+            SOURCE="${{ inputs.source }}"
+          else
+            DOMAIN=$(node -e "
+              const fs = require('fs');
+              const candidates = ['public/wp-capture-report.apex.json', 'public/wp-capture-report.json'];
+              for (const p of candidates) {
+                if (!fs.existsSync(p)) continue;
+                const d = JSON.parse(fs.readFileSync(p, 'utf8')).domain;
+                if (d) { console.log(d); process.exit(0); }
+              }
+              process.exit(1);
+            ")
+            SOURCE="https://${DOMAIN}"
+          fi
+
+          # Same rule the deploy uses: a CNAME means the custom domain, no
+          # CNAME means the github.io subpath.
+          if [ -s "public/CNAME" ]; then
+            EXPORT="https://$(cat public/CNAME)"
+          else
+            EXPORT="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}"
+          fi
+
+          echo "source=$SOURCE" >> "$GITHUB_OUTPUT"
+          echo "export=$EXPORT" >> "$GITHUB_OUTPUT"
+          echo "Comparing $EXPORT against $SOURCE"
+
+      - name: Compare the export against the source
+        id: compare
+        # `set +e` so the report is always uploaded and the summary always
+        # written; the exit code is captured and re-raised in the last step
+        # rather than swallowed.
+        #
+        # The strict flag has to name the EVENT, because neither comparison
+        # alone is right for both. GitHub casts across types to a number
+        # before comparing, so:
+        #
+        #   schedule    inputs.strict absent -> 0.  `== false` is TRUE, and
+        #               every scheduled run would opt itself out of strict --
+        #               the exact failure this whole check exists to stop.
+        #   dispatch    inputs.strict is a real boolean. `== 'false'` casts
+        #               the string to NaN, which equals nothing, so unticking
+        #               the box did nothing and strict could not be turned off.
+        #
+        # This shipped as the second form. Testing the event name first makes
+        # the boolean comparison safe: strict always on a schedule, opt-out
+        # only when a human deliberately unticks it. Reported by
+        # copilot-pull-request-reviewer on #33.
+        run: |
+          set +e
+          node scripts/verify-fidelity.mjs \
+            --source "${{ steps.origins.outputs.source }}" \
+            --export "${{ steps.origins.outputs.export }}" \
+            --sample "${{ inputs.sample || '25' }}" \
+            --delay-ms 750 \
+            --report fidelity-report.json \
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.strict == false) && ' ' || '--strict' }}
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fidelity-report-${{ github.run_number }}
+          path: fidelity-report.json
+          if-no-files-found: warn
+
+      - name: Summarise
+        if: always()
+        run: |
+          {
+            echo "## Source Fidelity Check"
+            echo ""
+            echo "- **Source:** ${{ steps.origins.outputs.source }}"
+            echo "- **Export:** ${{ steps.origins.outputs.export }}"
+            echo "- **Exit:** ${{ steps.compare.outputs.exit }}"
+            echo ""
+            if [ -f fidelity-report.json ]; then
+              echo '```json'
+              node -e "console.log(JSON.stringify(require('./fidelity-report.json').summary, null, 2))"
+              echo '```'
+            fi
+            echo ""
+            echo "Exit 2 means no comparison was made at all — an unreachable source, or a"
+            echo "completed DNS cutover where the source now serves this export. That is not"
+            echo "a passing run; it means the check has nothing left to measure here."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail the run if the comparison found something
+        if: always() && steps.compare.outputs.exit != '0'
+        run: |
+          echo "::error::fidelity check exited ${{ steps.compare.outputs.exit }}"
+          exit 1
