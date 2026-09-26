@@ -63,17 +63,30 @@ describe('visibleText', () => {
   // `comparePages` fails on, in the passing direction. Each of these returned
   // 'real var leaked=1;' before the fix. CodeQL js/bad-tag-filter, #33.
   it.each([
-    ['bare', '<script>var leaked=1;</script>'],
-    ['space', '<script>var leaked=1;</script >'],
-    ['newline', '<script>var leaked=1;</script\n>'],
-    ['tab', '<script>var leaked=1;</script\t>'],
-  ])('drops a script body closed with a %s end tag', (_label, script) => {
-    expect(visibleText(`<p>real</p>${script}`)).toBe('real')
+    ['bare', '</script>'],
+    ['space', '</script >'],
+    ['newline', '</script\n>'],
+    ['tab', '</script\t>'],
+    ['self-closing slash', '</script/>'],
+    ['attributes', '</script foo="bar">'],
+    ['whitespace then attributes', '</script\t\n bar>'],
+  ])('drops a script body closed with a %s end tag', (_label, close) => {
+    expect(visibleText(`<p>real</p><script>var leaked=1;${close}`)).toBe('real')
+  })
+
+  // The other direction, and the reason the pattern is `[\s/][^>]*` rather
+  // than the easier `[^>]*`: `</scriptfoo>` does NOT close a script element.
+  // A browser keeps parsing JavaScript past it, so treating it as a close
+  // would start counting real script as visible text -- the same defect the
+  // cases above describe, reached by over-matching instead of under-matching.
+  it.each([['</scriptfoo>'], ['</scripty>']])('does not treat %s as a script end tag', (close) => {
+    expect(visibleText(`<p>real</p><script>var leaked=1;${close}`)).toBe('real var leaked=1;')
   })
 
   it.each([
     ['style', '<style>.a{color:red}</style >'],
     ['noscript', '<noscript>hidden words</noscript >'],
+    ['style with attributes', '<style>.a{color:red}</style media=all>'],
   ])('drops a %s body closed with a spaced end tag', (_label, markup) => {
     expect(visibleText(`<p>real</p>${markup}`)).toBe('real')
   })
@@ -88,12 +101,15 @@ describe('extractTitle / extractHeadings', () => {
   // not silent here: `comparePages` skips the title assertion entirely when
   // the source title is empty, so the ONE check that caught #1370 would have
   // turned itself off for any page whose theme emits `</title >`.
-  it('reads a title closed with a spaced end tag', () => {
-    expect(extractTitle('<title>Who We Are</title >')).toBe('who we are')
-  })
+  it.each([['</title>'], ['</title >'], ['</title\n>'], ['</title lang=en>']])(
+    'reads a title closed with %s',
+    (close) => {
+      expect(extractTitle(`<title>Who We Are${close}`)).toBe('who we are')
+    }
+  )
 
-  it('reads headings closed with spaced end tags', () => {
-    expect(extractHeadings('<h1>A</h1 ><h2>B</h2\n>')).toEqual(['a', 'b'])
+  it('reads headings closed with whitespace or attributes in the end tag', () => {
+    expect(extractHeadings('<h1>A</h1 ><h2>B</h2\n><h1>C</h1 class=x>')).toEqual(['a', 'b', 'c'])
   })
 
   it('reads h1 and h2 text without their markup', () => {

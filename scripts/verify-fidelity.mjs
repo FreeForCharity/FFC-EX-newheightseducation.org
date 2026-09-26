@@ -73,12 +73,18 @@ export function normalizeText(value) {
 /**
  * Strip scripts, styles and tags; keep what a reader sees.
  *
- * Every end tag is `<\/x\s*>`, not `<\/x>`. HTML allows whitespace between
- * the tag name and the `>`, so `</script >`, `</script\n>` and `</script\t>`
- * all close a script element -- and a pattern that requires the bare form
- * fails to match them, leaving the ENTIRE script body in the "visible" text.
- * Measured on `<script>var leaked=1;</script >`: the bare pattern returns
- * "real var leaked=1;" where this one returns "real".
+ * Every end tag is `<\/x(?:[\s/][^>]*)?>`, not `<\/x>`. An end tag may carry
+ * whitespace and even attributes before its `>` -- `</script >`,
+ * `</script\n>`, `</script/>` and `</script\t\n bar>` all close a script
+ * element, the attributes being ignored -- and a pattern that requires the
+ * bare form matches none of them, leaving the ENTIRE script body in the
+ * "visible" text. Measured on `<script>var leaked=1;</script >`: the bare
+ * pattern returns "real var leaked=1;" where this one returns "real".
+ *
+ * The leading `[\s/]` is what keeps it honest. `<\/script[^>]*>` would also
+ * swallow `</scriptfoo>`, which does NOT close a script element -- the
+ * browser keeps parsing JavaScript past it, so treating it as a close is the
+ * same mistake in the other direction.
  *
  * That is not cosmetic here. The word-count ratio is one of only two blocking
  * assertions in `comparePages`, and inflating one side's word count with
@@ -90,22 +96,22 @@ export function visibleText(html) {
   if (typeof html !== 'string') return ''
   return normalizeText(
     html
-      .replace(/<script\b[\s\S]*?<\/script\s*>/gi, ' ')
-      .replace(/<style\b[\s\S]*?<\/style\s*>/gi, ' ')
-      .replace(/<noscript\b[\s\S]*?<\/noscript\s*>/gi, ' ')
+      .replace(/<script\b[\s\S]*?<\/script(?:[\s/][^>]*)?>/gi, ' ')
+      .replace(/<style\b[\s\S]*?<\/style(?:[\s/][^>]*)?>/gi, ' ')
+      .replace(/<noscript\b[\s\S]*?<\/noscript(?:[\s/][^>]*)?>/gi, ' ')
       .replace(/<!--[\s\S]*?-->/g, ' ')
       .replace(/<[^>]+>/g, ' ')
   )
 }
 
 export function extractTitle(html) {
-  const m = /<title[^>]*>([\s\S]*?)<\/title\s*>/i.exec(html || '')
+  const m = /<title[^>]*>([\s\S]*?)<\/title(?:[\s/][^>]*)?>/i.exec(html || '')
   return normalizeText(m ? m[1] : '')
 }
 
 export function extractHeadings(html) {
   const out = []
-  for (const m of (html || '').matchAll(/<h[12][^>]*>([\s\S]*?)<\/h[12]\s*>/gi)) {
+  for (const m of (html || '').matchAll(/<h[12][^>]*>([\s\S]*?)<\/h[12](?:[\s/][^>]*)?>/gi)) {
     const text = normalizeText(m[1].replace(/<[^>]+>/g, ' '))
     if (text) out.push(text)
   }
