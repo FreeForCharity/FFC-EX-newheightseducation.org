@@ -70,27 +70,42 @@ export function normalizeText(value) {
     .toLowerCase()
 }
 
-/** Strip scripts, styles and tags; keep what a reader sees. */
+/**
+ * Strip scripts, styles and tags; keep what a reader sees.
+ *
+ * Every end tag is `<\/x\s*>`, not `<\/x>`. HTML allows whitespace between
+ * the tag name and the `>`, so `</script >`, `</script\n>` and `</script\t>`
+ * all close a script element -- and a pattern that requires the bare form
+ * fails to match them, leaving the ENTIRE script body in the "visible" text.
+ * Measured on `<script>var leaked=1;</script >`: the bare pattern returns
+ * "real var leaked=1;" where this one returns "real".
+ *
+ * That is not cosmetic here. The word-count ratio is one of only two blocking
+ * assertions in `comparePages`, and inflating one side's word count with
+ * JavaScript source moves it in the passing direction -- a page that lost
+ * most of its prose could score healthy because its scripts made up the
+ * difference. Reported by CodeQL (`js/bad-tag-filter`) on #33.
+ */
 export function visibleText(html) {
   if (typeof html !== 'string') return ''
   return normalizeText(
     html
-      .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
-      .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
-      .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, ' ')
+      .replace(/<script\b[\s\S]*?<\/script\s*>/gi, ' ')
+      .replace(/<style\b[\s\S]*?<\/style\s*>/gi, ' ')
+      .replace(/<noscript\b[\s\S]*?<\/noscript\s*>/gi, ' ')
       .replace(/<!--[\s\S]*?-->/g, ' ')
       .replace(/<[^>]+>/g, ' ')
   )
 }
 
 export function extractTitle(html) {
-  const m = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html || '')
+  const m = /<title[^>]*>([\s\S]*?)<\/title\s*>/i.exec(html || '')
   return normalizeText(m ? m[1] : '')
 }
 
 export function extractHeadings(html) {
   const out = []
-  for (const m of (html || '').matchAll(/<h[12][^>]*>([\s\S]*?)<\/h[12]>/gi)) {
+  for (const m of (html || '').matchAll(/<h[12][^>]*>([\s\S]*?)<\/h[12]\s*>/gi)) {
     const text = normalizeText(m[1].replace(/<[^>]+>/g, ' '))
     if (text) out.push(text)
   }

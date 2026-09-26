@@ -55,11 +55,44 @@ describe('visibleText', () => {
   it('drops comments', () => {
     expect(visibleText('<p>kept</p><!-- dropped -->')).toBe('kept')
   })
+
+  // `</script >` closes a script element -- HTML allows whitespace before the
+  // `>`. A pattern requiring the bare form does not match it and leaves the
+  // whole script BODY in the visible text, which inflates the word count that
+  // `comparePages` fails on, in the passing direction. Each of these returned
+  // 'real var leaked=1;' before the fix. CodeQL js/bad-tag-filter, #33.
+  it.each([
+    ['bare', '<script>var leaked=1;</script>'],
+    ['space', '<script>var leaked=1;</script >'],
+    ['newline', '<script>var leaked=1;</script\n>'],
+    ['tab', '<script>var leaked=1;</script\t>'],
+  ])('drops a script body closed with a %s end tag', (_label, script) => {
+    expect(visibleText(`<p>real</p>${script}`)).toBe('real')
+  })
+
+  it.each([
+    ['style', '<style>.a{color:red}</style >'],
+    ['noscript', '<noscript>hidden words</noscript >'],
+  ])('drops a %s body closed with a spaced end tag', (_label, markup) => {
+    expect(visibleText(`<p>real</p>${markup}`)).toBe('real')
+  })
 })
 
 describe('extractTitle / extractHeadings', () => {
   it('reads the title', () => {
     expect(extractTitle('<html><head><title>Who We Are</title></head></html>')).toBe('who we are')
+  })
+
+  // Same whitespace-before-`>` rule as visibleText. A missed title match is
+  // not silent here: `comparePages` skips the title assertion entirely when
+  // the source title is empty, so the ONE check that caught #1370 would have
+  // turned itself off for any page whose theme emits `</title >`.
+  it('reads a title closed with a spaced end tag', () => {
+    expect(extractTitle('<title>Who We Are</title >')).toBe('who we are')
+  })
+
+  it('reads headings closed with spaced end tags', () => {
+    expect(extractHeadings('<h1>A</h1 ><h2>B</h2\n>')).toEqual(['a', 'b'])
   })
 
   it('reads h1 and h2 text without their markup', () => {
