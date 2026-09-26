@@ -24,7 +24,7 @@
  * --strict, 2 the comparison could not be made at all. The third is the
  * important one -- see `looksLikeTheExport`.
  */
-import { readFileSync, existsSync, writeFileSync, readdirSync } from 'node:fs'
+import { existsSync, writeFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 // ---------------------------------------------------------------- pure parts
