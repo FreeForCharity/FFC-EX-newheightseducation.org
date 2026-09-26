@@ -258,9 +258,17 @@ export function looksLikeTheExport(html) {
   // against itself and report 1.00 forever, which is the single outcome this
   // function exists to prevent. Reported by copilot-pull-request-reviewer.
   //
-  // The token test uses whitespace boundaries rather than `\b`: `\bffc-clone\b`
-  // also matches inside `ffc-clone-wrapper`, because `-` ends a word.
-  for (const m of html.matchAll(/\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+  // Neither boundary here is `\b`, and BOTH had to stop being it -- the same
+  // mistake, one level apart, because `-` ends a word:
+  //
+  //   \bffc-clone\b   also matches inside `ffc-clone-wrapper`
+  //   \bclass         also matches inside `data-class` and `xml:class`
+  //
+  // The second was mine, written into the line that fixed the first, and it
+  // fails the other way: a `data-class` anywhere on the source front page
+  // would report a cutover that had not happened and refuse to score at all.
+  // Reported by copilot-pull-request-reviewer on #33.
+  for (const m of html.matchAll(/(?<![-\w:])class\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
     const value = m[1] ?? m[2] ?? m[3] ?? ''
     if (/(^|\s)(ffc-clone|ffc-footer)(\s|$)/.test(value)) return true
   }

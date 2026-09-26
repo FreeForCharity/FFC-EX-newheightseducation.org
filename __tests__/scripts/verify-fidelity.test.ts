@@ -265,6 +265,22 @@ describe('looksLikeTheExport', () => {
   it('does not fire on a longer class that starts with the marker', () => {
     expect(looksLikeTheExport('<div class="ffc-clone-wrapper">x</div>')).toBe(false)
   })
+
+  // The same `\b` mistake one level up, and it was introduced by the fix for
+  // the one above: `\bclass` matches inside `data-class` too. It fails the
+  // opposite way -- a cutover reported that never happened, and the run
+  // refuses to score anything.
+  it.each([
+    ['<div data-class="ffc-clone">x</div>', 'data-class'],
+    ['<div xml:class="ffc-clone">x</div>', 'a namespaced attribute'],
+    ['<div myclass="ffc-clone">x</div>', 'a suffixed attribute'],
+  ])('does not fire on %s', (html) => {
+    expect(looksLikeTheExport(html)).toBe(false)
+  })
+
+  it('still fires on a real class beside a decoy data-class', () => {
+    expect(looksLikeTheExport('<div data-class="x" class="ffc-clone home">y</div>')).toBe(true)
+  })
 })
 
 describe('sourceUrlFor', () => {
