@@ -44,6 +44,12 @@ import { PNG } from 'pngjs'
 // pinning v7 would mean the comparison logic below could not be unit-tested.
 // The two versions take the same arguments.
 import pixelmatch from 'pixelmatch'
+// Reused rather than reimplemented. Two functions that disagree about which
+// routes came from the source would compare different populations and be
+// impossible to read against each other -- and this file already learned that
+// lesson once, when `unpublishedCaptures` disagreed with `capturedRoutes`
+// about the route/file mapping.
+import { capturedRoutes, sampleRoutes } from './verify-fidelity.mjs'
 
 // ---------------------------------------------------------------- pure parts
 
@@ -174,16 +180,44 @@ async function main() {
     console.error('usage: verify-visual.mjs --source <origin> --export <origin> [options]')
     process.exit(2)
   }
-  // Normalized up front, not per-use. `sourceUrlFor` adds a missing leading
+  const outDir = arg('out', 'out')
+  const cloneDir = arg('clone-content', join('src', 'clone-content'))
+  const sampleSize = Number(arg('sample', '8'))
+
+  // Routes are DERIVED from the build by default, not hard-coded.
+  //
+  // The first version shipped a literal list of NHEG paths, which is wrong in
+  // two ways: it silently stops representing the site as pages come and go,
+  // and it cannot be ported to another charity's repo at all -- and porting
+  // these gates into 706 so every migration inherits them is the whole point.
+  // `capturedRoutes` + `sampleRoutes` are the same functions the text gate
+  // uses, so both gates look at the same population and their reports can be
+  // read against each other.
+  //
+  // `--routes` still overrides, for investigating a specific page.
+  //
+  // Normalized up front, not per-use: `sourceUrlFor` adds a missing leading
   // slash for the source, but the export URL is built by concatenation, so
-  // `--routes who-we-are/` produced `https://host.example.orgwho-we-are/`
-  // for one side and a valid URL for the other -- the two origins would have
-  // been compared at different paths.
-  const routes = (arg('routes', '/') || '/')
-    .split(',')
-    .map((r) => r.trim())
-    .filter(Boolean)
-    .map((r) => (r.startsWith('/') ? r : `/${r}`))
+  // `--routes who-we-are/` produced `https://host.example.orgwho-we-are/` for
+  // one side and a valid URL for the other -- the two origins would have been
+  // compared at different paths.
+  const explicit = arg('routes', '')
+  const routes = (
+    explicit
+      ? explicit
+          .split(',')
+          .map((r) => r.trim())
+          .filter(Boolean)
+      : sampleRoutes(capturedRoutes(outDir, cloneDir), sampleSize)
+  ).map((r) => (r.startsWith('/') ? r : `/${r}`))
+
+  if (!routes.length) {
+    console.error(
+      `::error::no routes to compare. With no --routes, they are derived from ${outDir} + ` +
+        `${cloneDir}; build the site first.`
+    )
+    process.exit(2)
+  }
   const mount = arg('mount', '')
   const width = Number(arg('width', '1280'))
   const height = Number(arg('height', '2000'))
@@ -272,6 +306,7 @@ async function main() {
     // states both and the smallest region actually compared.
     requestedViewport: `${width}x${height}`,
     routes: routes.length,
+    routeSource: explicit ? 'explicit --routes' : `sampled ${routes.length} of the built site`,
     compared: scored.length,
     skipped: rows.length - scored.length,
     comparedPx: scored.length

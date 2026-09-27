@@ -20,9 +20,13 @@ on:
   workflow_dispatch:
     inputs:
       routes:
-        description: 'Comma-separated routes to compare'
+        description: 'Specific routes to compare (comma-separated). Empty = sample the built site.'
         type: string
-        default: '/,/who-we-are/,/contact-us/,/nheg-educational-programs/,/support-nheg/'
+        default: ''
+      sample:
+        description: 'How many routes to sample when none are given explicitly'
+        type: string
+        default: '8'
       width:
         description: 'Viewport width (1280 desktop, 390 phone)'
         type: string
@@ -60,6 +64,12 @@ jobs:
 
       - name: Install Chromium
         run: pnpm exec playwright install --with-deps chromium
+
+      # Routes are derived from the build, so the build has to exist. The
+      # alternative -- a hard-coded route list -- stops representing the site
+      # the moment pages come or go, and cannot be ported to another charity.
+      - name: Build the export
+        run: pnpm run build
 
       # Before measuring anything, prove the instrument still works. A
       # screenshot comparison that has stopped discriminating reports a clean
@@ -106,7 +116,8 @@ jobs:
           node scripts/verify-visual.mjs \
             --source "${{ steps.origins.outputs.source }}" \
             --export "${{ steps.origins.outputs.export }}" \
-            --routes "${{ inputs.routes || '/,/who-we-are/,/contact-us/,/nheg-educational-programs/,/support-nheg/' }}" \
+            --routes "${{ inputs.routes || '' }}" \
+            --sample "${{ inputs.sample || '8' }}" \
             --width "${{ inputs.width || '1280' }}" \
             --max-diff "${{ inputs.max_diff || '0.15' }}" \
             --report visual-report.json \
