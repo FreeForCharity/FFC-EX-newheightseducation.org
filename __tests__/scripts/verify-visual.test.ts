@@ -234,4 +234,34 @@ describe('bandRatios', () => {
   it('returns nothing when there are fewer rows than bands', async () => {
     expect(await bandRatios(solid(10, 2, BLACK), solid(10, 2, BLACK), 4)).toEqual([])
   })
+
+  // A fractional count is not merely odd-shaped: with 2.5 over 100 rows,
+  // `step` is 40, the loop runs three times, and `i === bands - 1` never
+  // matches 1.5, so the third band reads rows 80-120 of a 100-row image and
+  // pngjs throws `bitblt reading outside image`. The CLI's per-route catch
+  // records that as `skipped` -- a bad argument disguised as a network
+  // failure. Reported by copilot-pull-request-reviewer on #36.
+  it('floors a fractional band count instead of reading past the image', async () => {
+    const a = solid(10, 100, BLACK)
+    await expect(bandRatios(a, a, 2.5)).resolves.toHaveLength(2)
+    await expect(bandRatios(a, a, 3.7)).resolves.toHaveLength(3)
+  })
+
+  it.each([[0.5], [0], [-1], [NaN], [Infinity]])(
+    'returns nothing for a band count of %s rather than throwing',
+    async (bands) => {
+      const a = solid(10, 100, BLACK)
+      await expect(bandRatios(a, a, bands as number)).resolves.toEqual([])
+    }
+  )
+
+  // Every row still accounted for once the count has been floored.
+  it('covers every row for a fractional count too', async () => {
+    const a = solid(10, 100, BLACK)
+    const b = stack(band(99, BLACK), band(1, WHITE))
+    const r = await bandRatios(a, b, 2.5)
+    expect(r).toHaveLength(2)
+    expect(r[0]).toBe(0)
+    expect(r[1]).toBeGreaterThan(0)
+  })
 })

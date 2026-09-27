@@ -96,16 +96,24 @@ export async function diffRatio(aPng, bPng, { threshold = 0.2 } = {}) {
 export async function bandRatios(aPng, bPng, bands = 4) {
   const width = Math.min(aPng.width, bPng.width)
   const height = Math.min(aPng.height, bPng.height)
-  if (width <= 0 || height <= 0 || bands < 1) return []
-  const step = Math.floor(height / bands)
+  // Floored to an integer BEFORE anything derives from it. A fractional
+  // count does not merely give an odd number of bands: with 2.5 over 100
+  // rows, `step` is 40, the loop runs three times, and `i === bands - 1` can
+  // never match 1.5 -- so the last band is 40 rows starting at row 80 and
+  // pngjs throws `bitblt reading outside image`. The CLI's per-route catch
+  // then records that as `skipped`, which reads as a network failure rather
+  // than a bad argument. Reported by copilot-pull-request-reviewer on #36.
+  const count = Math.floor(Number(bands))
+  if (width <= 0 || height <= 0 || !Number.isFinite(count) || count < 1) return []
+  const step = Math.floor(height / count)
   if (step <= 0) return []
   const out = []
-  for (let i = 0; i < bands; i += 1) {
+  for (let i = 0; i < count; i += 1) {
     const top = i * step
     // The last band absorbs the remainder, so no rows go unexamined -- the
     // same reason `comparedPx` is reported beside `requestedViewport`: a
     // check must not quietly skip part of what it claims to cover.
-    const bandHeight = i === bands - 1 ? height - top : step
+    const bandHeight = i === count - 1 ? height - top : step
     out.push(
       Number(
         (
