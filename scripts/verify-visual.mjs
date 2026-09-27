@@ -174,10 +174,16 @@ async function main() {
     console.error('usage: verify-visual.mjs --source <origin> --export <origin> [options]')
     process.exit(2)
   }
+  // Normalized up front, not per-use. `sourceUrlFor` adds a missing leading
+  // slash for the source, but the export URL is built by concatenation, so
+  // `--routes who-we-are/` produced `https://host.example.orgwho-we-are/`
+  // for one side and a valid URL for the other -- the two origins would have
+  // been compared at different paths.
   const routes = (arg('routes', '/') || '/')
     .split(',')
     .map((r) => r.trim())
     .filter(Boolean)
+    .map((r) => (r.startsWith('/') ? r : `/${r}`))
   const mount = arg('mount', '')
   const width = Number(arg('width', '1280'))
   const height = Number(arg('height', '2000'))
@@ -200,7 +206,15 @@ async function main() {
   const { chromium } = await import('@playwright/test')
   const browser = await chromium.launch(executablePath ? { executablePath } : {})
   const context = await browser.newContext({
-    viewport: { width, height: Math.min(height, 1200) },
+    // As tall as the capture, NOT capped. Playwright does not reject a clip
+    // taller than the viewport -- it silently clamps the image to the
+    // viewport and returns successfully. Measured: viewport 1200 with
+    // `clip.height: 2000` returns a 1280x1200 PNG. On the defaults that
+    // meant comparing the top 1200px of every page while the report said
+    // `1280x2000` -- 800px unexamined, under a label that said otherwise.
+    // The self-test missed it because it runs at --height 900, where the
+    // clip fits: a configuration the real run never uses.
+    viewport: { width, height },
     deviceScaleFactor: 1,
     reducedMotion: 'reduce',
   })
@@ -250,10 +264,25 @@ async function main() {
     checkedAt: new Date().toISOString(),
     source: sourceOrigin,
     export: exportOrigin,
-    viewport: `${width}x${height}`,
+    // Both, and deliberately. `requestedViewport` is what was asked for;
+    // `comparedPx` is what was actually measured. They were the same number
+    // until Playwright was found to silently clamp a clip taller than the
+    // viewport -- the run reported 1280x2000 and compared 1280x1200. A
+    // summary that can only state the request cannot show that gap, so it
+    // states both and the smallest region actually compared.
+    requestedViewport: `${width}x${height}`,
     routes: routes.length,
     compared: scored.length,
     skipped: rows.length - scored.length,
+    comparedPx: scored.length
+      ? scored
+          .map((r) => r.comparedPx)
+          .sort(
+            (a, b) =>
+              Number(a.split('x')[0]) * Number(a.split('x')[1]) -
+              Number(b.split('x')[0]) * Number(b.split('x')[1])
+          )[0]
+      : null,
     medianDiffRatio: median(scored.map((r) => r.ratio)),
     worstDiffRatio: scored.length ? Math.max(...scored.map((r) => r.ratio)) : null,
     threshold: maxRatio,

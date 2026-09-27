@@ -369,8 +369,18 @@ export function unpublishedCaptures(outDir, cloneDir) {
       if (entry.isDirectory()) walk(join(dir, entry.name), `${prefix}${entry.name}/`)
       else if (entry.name.endsWith('.html')) {
         const stem = entry.name.slice(0, -5)
-        const route =
-          stem === 'index' && prefix === '' ? '/' : `/${prefix}${stem === 'index' ? '' : stem}/`
+        // The exact inverse of `capturedRoutes`, which maps route `/X/` to
+        // the clone file `X.html`. So a clone file at relative path `R.html`
+        // is route `/R/`, and ONLY the root `index.html` is `/`.
+        //
+        // Special-casing a nested `index.html` to mean its parent section is
+        // wrong twice over: it built `/publications//` (the prefix already
+        // ends in a slash), and even spelled correctly `/publications/` is
+        // not the route `capturedRoutes` would pair with that file -- that
+        // is `/publications/index/`. Two functions that disagree about the
+        // mapping report phantom gaps. Reported by
+        // copilot-pull-request-reviewer on #34.
+        const route = prefix === '' && stem === 'index' ? '/' : `/${prefix}${stem}/`
         if (!built.has(route)) out.push(route)
       }
     }

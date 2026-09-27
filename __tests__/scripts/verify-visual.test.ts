@@ -135,6 +135,25 @@ describe('median', () => {
   })
 })
 
+describe('route normalization', () => {
+  // `sourceUrlFor` repairs a missing leading slash for the SOURCE url, but
+  // the export url is built by concatenation, so an unnormalized route sent
+  // the two origins to different paths:
+  //   source: https://example.org/who-we-are/   (repaired)
+  //   export: https://example.orgwho-we-are/    (invalid)
+  // The CLI normalizes up front now; this pins the shape it must produce.
+  const normalize = (r: string) => (r.startsWith('/') ? r : `/${r}`)
+
+  it.each([
+    ['who-we-are/', '/who-we-are/'],
+    ['/who-we-are/', '/who-we-are/'],
+    ['/', '/'],
+  ])('%s -> %s', (input, expected) => {
+    expect(normalize(input)).toBe(expected)
+    expect(`https://example.org${normalize(input)}`).toMatch(/^https:\/\/example\.org\//)
+  })
+})
+
 describe('sourceUrlFor', () => {
   it('maps a route 1:1', () => {
     expect(sourceUrlFor('/who-we-are/', 'https://example.org')).toBe(

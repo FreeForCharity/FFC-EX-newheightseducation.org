@@ -47,6 +47,11 @@ const STYLED = `<!doctype html><html><head><style>
 
 /** Same DOM, same words, no stylesheet. A text check cannot see this. */
 const UNSTYLED = STYLED.replace(/<style>[\s\S]*?<\/style>/, '')
+/** Tall enough that a 2000px capture has real content to reach. */
+const TALL = STYLED.replace(
+  '</body>',
+  '<div style="height:2600px;background:linear-gradient(#0b3d2e,#fff)"></div></body>'
+)
 /** Same styling, trivially different copy. Must NOT trip the threshold. */
 const TWEAKED = STYLED.replace('Tutoring and family support.', 'Tutoring and family support!')
 
@@ -91,7 +96,7 @@ try {
   const sp = await listen(src)
   const ep = await listen(exp)
 
-  const compare = (source, exported) => {
+  const compare = (source, exported, width = 1000, height = 900) => {
     sourceBank = source
     exportBank = exported
     return run([
@@ -103,9 +108,9 @@ try {
       '--routes',
       '/',
       '--width',
-      '1000',
+      String(width),
       '--height',
-      '900',
+      String(height),
       '--settle-ms',
       '150',
       '--delay-ms',
@@ -119,11 +124,11 @@ try {
     ])
   }
 
-  const check = async (label, source, exported, want) => {
-    const r = await compare(source, exported)
+  const check = async (label, source, exported, want, width, height) => {
+    const r = await compare(source, exported, width, height)
     const m = /"medianDiffRatio": ([0-9.]+|null)/.exec(r.out)
     const ratio = m && m[1] !== 'null' ? Number(m[1]) : null
-    results.push({ label, ok: want(r.status, ratio), status: r.status, ratio, out: r.out })
+    results.push({ label, ok: want(r.status, ratio, r.out), status: r.status, ratio, out: r.out })
   }
 
   await check(
@@ -148,6 +153,21 @@ try {
   )
 
   await check('an unreachable page is not a pass', {}, { '/': STYLED }, (s) => s === 2)
+
+  // At the DEFAULT height, which every scenario above avoids. Playwright
+  // silently CLAMPS a clip taller than the viewport rather than rejecting it:
+  // measured, viewport 1200 with `clip.height: 2000` returns a 1280x1200 PNG
+  // and no error. That under-measured every page by 800px while the report
+  // said `1280x2000`. A self-test that only ever runs where the clip fits
+  // cannot see it -- which is exactly what happened here.
+  await check(
+    'the default height is really captured, not silently clamped',
+    { '/': TALL },
+    { '/': TALL },
+    (s, ratio, out) => s === 0 && ratio === 0 && /"comparedPx": "1280x2000"/.test(out),
+    1280,
+    2000
+  )
 } finally {
   src.close()
   exp.close()

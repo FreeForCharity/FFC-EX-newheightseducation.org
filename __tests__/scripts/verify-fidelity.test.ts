@@ -427,6 +427,37 @@ describe('unpublishedCaptures', () => {
     ])
   })
 
+  // A nested index.html. The naive expression built `/publications//` --
+  // the prefix already ends in a slash -- and even spelled `/publications/`
+  // it would be wrong, because `capturedRoutes` pairs route `/X/` with clone
+  // file `X.html`, so `publications/index.html` is route
+  // `/publications/index/`. Two functions disagreeing about that mapping
+  // report phantom gaps. Reported by copilot-pull-request-reviewer on #34.
+  it('pairs a nested index.html with the route capturedRoutes would build', () => {
+    const fx2 = mkdtempSync(join(tmpdir(), 'coverage-idx-'))
+    mkdirSync(join(fx2, 'out', 'publications', 'index'), { recursive: true })
+    writeFileSync(join(fx2, 'out', 'publications', 'index', 'index.html'), 'x')
+    mkdirSync(join(fx2, 'clone', 'publications'), { recursive: true })
+    writeFileSync(join(fx2, 'clone', 'publications', 'index.html'), 'x')
+    // Published at /publications/index/, so nothing is missing.
+    expect(unpublishedCaptures(join(fx2, 'out'), join(fx2, 'clone'))).toEqual([])
+    rmSync(fx2, { recursive: true, force: true })
+  })
+
+  it('never emits a route containing a double slash', () => {
+    const fx3 = mkdtempSync(join(tmpdir(), 'coverage-idx2-'))
+    mkdirSync(join(fx3, 'out'), { recursive: true })
+    writeFileSync(join(fx3, 'out', 'index.html'), 'x')
+    mkdirSync(join(fx3, 'clone', 'publications', 'books'), { recursive: true })
+    writeFileSync(join(fx3, 'clone', 'index.html'), 'x')
+    writeFileSync(join(fx3, 'clone', 'publications', 'index.html'), 'x')
+    writeFileSync(join(fx3, 'clone', 'publications', 'books', 'index.html'), 'x')
+    const out = unpublishedCaptures(join(fx3, 'out'), join(fx3, 'clone'))
+    expect(out.filter((r) => r.includes('//'))).toEqual([])
+    expect(out).toEqual(['/publications/books/index/', '/publications/index/'])
+    rmSync(fx3, { recursive: true, force: true })
+  })
+
   it('does not list a captured page that IS published', () => {
     expect(unpublishedCaptures(join(fx, 'out'), join(fx, 'clone'))).not.toContain('/who-we-are/')
   })
