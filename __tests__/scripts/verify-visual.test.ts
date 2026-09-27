@@ -1,5 +1,6 @@
 import { PNG } from 'pngjs'
 import {
+  bandRatios,
   diffRatio,
   cropTo,
   isFinding,
@@ -166,5 +167,101 @@ describe('sourceUrlFor', () => {
       'https://example.org/algebra-i/'
     )
     expect(sourceUrlFor('/school/', 'https://example.org', 'school')).toBe('https://example.org/')
+  })
+})
+
+describe('bandRatios', () => {
+  /**
+   * The point of bands is telling the three causes apart. A single ratio
+   * cannot: measured on the live pair, the home page scored 0.910 while four
+   * other pages sat at 0.195-0.230, and nothing in that number said whether
+   * the hero had rotated or the stylesheet had failed.
+   */
+  const band = (h: number, rgb: [number, number, number]) => solid(40, h, rgb)
+
+  /** Stack slices vertically into one image. */
+  const stack = (...parts: PNG[]) => {
+    const height = parts.reduce((n, p) => n + p.height, 0)
+    const out = new PNG({ width: parts[0].width, height })
+    let y = 0
+    for (const p of parts) {
+      PNG.bitblt(p, out, 0, 0, p.width, p.height, 0, y)
+      y += p.height
+    }
+    return out
+  }
+
+  const BLACK: [number, number, number] = [0, 0, 0]
+  const WHITE: [number, number, number] = [255, 255, 255]
+
+  it('a rotating hero: top band high, the rest ~0', async () => {
+    const a = stack(band(25, BLACK), band(25, BLACK), band(25, BLACK), band(25, BLACK))
+    const b = stack(band(25, WHITE), band(25, BLACK), band(25, BLACK), band(25, BLACK))
+    const r = await bandRatios(a, b)
+    expect(r).toHaveLength(4)
+    expect(r[0]).toBeCloseTo(1, 1)
+    expect(r.slice(1)).toEqual([0, 0, 0])
+  })
+
+  it('unstyled page: every band high', async () => {
+    const r = await bandRatios(solid(40, 100, BLACK), solid(40, 100, WHITE))
+    expect(r).toEqual([1, 1, 1, 1])
+  })
+
+  it('a footer difference: bottom band high, the rest ~0', async () => {
+    const a = stack(band(25, BLACK), band(25, BLACK), band(25, BLACK), band(25, BLACK))
+    const b = stack(band(25, BLACK), band(25, BLACK), band(25, BLACK), band(25, WHITE))
+    const r = await bandRatios(a, b)
+    expect(r.slice(0, 3)).toEqual([0, 0, 0])
+    expect(r[3]).toBeCloseTo(1, 1)
+  })
+
+  // No rows may go unexamined -- the same rule that put `comparedPx` beside
+  // `requestedViewport`. 101 rows over 4 bands is 25 each with 1 left over,
+  // and the remainder has to land somewhere.
+  it('covers every row when the height does not divide evenly', async () => {
+    const a = solid(10, 101, BLACK)
+    const b = stack(band(100, BLACK), band(1, WHITE))
+    const r = await bandRatios(a, b)
+    expect(r.slice(0, 3)).toEqual([0, 0, 0])
+    expect(r[3]).toBeGreaterThan(0)
+  })
+
+  it('returns nothing rather than throwing on a zero-area comparison', async () => {
+    expect(await bandRatios(solid(0, 0, BLACK), solid(10, 10, BLACK))).toEqual([])
+  })
+
+  it('returns nothing when there are fewer rows than bands', async () => {
+    expect(await bandRatios(solid(10, 2, BLACK), solid(10, 2, BLACK), 4)).toEqual([])
+  })
+
+  // A fractional count is not merely odd-shaped: with 2.5 over 100 rows,
+  // `step` is 40, the loop runs three times, and `i === bands - 1` never
+  // matches 1.5, so the third band reads rows 80-120 of a 100-row image and
+  // pngjs throws `bitblt reading outside image`. The CLI's per-route catch
+  // records that as `skipped` -- a bad argument disguised as a network
+  // failure. Reported by copilot-pull-request-reviewer on #36.
+  it('floors a fractional band count instead of reading past the image', async () => {
+    const a = solid(10, 100, BLACK)
+    await expect(bandRatios(a, a, 2.5)).resolves.toHaveLength(2)
+    await expect(bandRatios(a, a, 3.7)).resolves.toHaveLength(3)
+  })
+
+  it.each([[0.5], [0], [-1], [NaN], [Infinity]])(
+    'returns nothing for a band count of %s rather than throwing',
+    async (bands) => {
+      const a = solid(10, 100, BLACK)
+      await expect(bandRatios(a, a, bands as number)).resolves.toEqual([])
+    }
+  )
+
+  // Every row still accounted for once the count has been floored.
+  it('covers every row for a fractional count too', async () => {
+    const a = solid(10, 100, BLACK)
+    const b = stack(band(99, BLACK), band(1, WHITE))
+    const r = await bandRatios(a, b, 2.5)
+    expect(r).toHaveLength(2)
+    expect(r[0]).toBe(0)
+    expect(r[1]).toBeGreaterThan(0)
   })
 })
