@@ -76,6 +76,57 @@ export async function diffRatio(aPng, bPng, { threshold = 0.2 } = {}) {
   return { ratio: changed / (width * height), width, height, diff }
 }
 
+/**
+ * The diff ratio of each horizontal band, top to bottom.
+ *
+ * One number for a whole page cannot say WHAT differs, and telling the two
+ * likeliest causes apart is the whole diagnosis:
+ *
+ *   top band high, rest low   a rotating hero -- a static export freezes one
+ *                             slide, so this is expected, not a defect
+ *   every band high           the stylesheet did not apply, or the page is
+ *                             genuinely the wrong page
+ *   bottom band high          a footer or a late-loading region
+ *
+ * Measured on the live pair, the home page scored 0.910 overall while four
+ * other pages sat at 0.195-0.230. That one number could not separate those
+ * explanations, and the diff image -- the only thing that could -- lives in a
+ * CI artifact rather than in the report a reader sees first.
+ */
+export async function bandRatios(aPng, bPng, bands = 4) {
+  const width = Math.min(aPng.width, bPng.width)
+  const height = Math.min(aPng.height, bPng.height)
+  if (width <= 0 || height <= 0 || bands < 1) return []
+  const step = Math.floor(height / bands)
+  if (step <= 0) return []
+  const out = []
+  for (let i = 0; i < bands; i += 1) {
+    const top = i * step
+    // The last band absorbs the remainder, so no rows go unexamined -- the
+    // same reason `comparedPx` is reported beside `requestedViewport`: a
+    // check must not quietly skip part of what it claims to cover.
+    const bandHeight = i === bands - 1 ? height - top : step
+    out.push(
+      Number(
+        (
+          await diffRatio(
+            cropBand(aPng, width, top, bandHeight),
+            cropBand(bPng, width, top, bandHeight)
+          )
+        ).ratio.toFixed(4)
+      )
+    )
+  }
+  return out
+}
+
+/** A horizontal slice, for band-wise comparison. */
+export function cropBand(png, width, top, height) {
+  const slice = new PNG({ width, height })
+  PNG.bitblt(png, slice, 0, top, width, height, 0, 0)
+  return slice
+}
+
 /** A top-left crop, so two differently sized shots can be compared at all. */
 export function cropTo(png, width, height) {
   if (png.width === width && png.height === height) return png
@@ -269,13 +320,14 @@ async function main() {
           row = { ...row, skipped: `source HTTP ${src.status}, export HTTP ${exp.status}` }
         } else {
           const { ratio, width: w, height: h, diff } = await diffRatio(src.png, exp.png)
+          const bands = await bandRatios(src.png, exp.png)
           const name = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replace(/\//g, '_')
           if (diff && isFinding(ratio, maxRatio)) {
             writeFileSync(join(diffDir, `${name}.diff.png`), PNG.sync.write(diff))
             writeFileSync(join(diffDir, `${name}.source.png`), PNG.sync.write(src.png))
             writeFileSync(join(diffDir, `${name}.export.png`), PNG.sync.write(exp.png))
           }
-          row = { ...row, ratio: Number(ratio.toFixed(4)), comparedPx: `${w}x${h}` }
+          row = { ...row, ratio: Number(ratio.toFixed(4)), comparedPx: `${w}x${h}`, bands }
         }
       } catch (err) {
         row = { ...row, skipped: String(err && err.message ? err.message : err) }
@@ -328,6 +380,9 @@ async function main() {
     console.error(
       `::error::${f.route}: ${(f.ratio * 100).toFixed(1)}% of compared pixels differ from ` +
         `${f.sourceUrl} (threshold ${(maxRatio * 100).toFixed(0)}%). ` +
+        `By band, top to bottom: ${(f.bands || []).map((b) => `${(b * 100).toFixed(0)}%`).join(' ')}. ` +
+        'A high top band with the rest low usually means a rotating hero the export froze; ' +
+        'every band high means the styling did not apply or the page is wrong. ' +
         'A diff image is in the run artifact.'
     )
 

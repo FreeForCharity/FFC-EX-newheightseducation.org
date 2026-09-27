@@ -1,5 +1,6 @@
 import { PNG } from 'pngjs'
 import {
+  bandRatios,
   diffRatio,
   cropTo,
   isFinding,
@@ -166,5 +167,71 @@ describe('sourceUrlFor', () => {
       'https://example.org/algebra-i/'
     )
     expect(sourceUrlFor('/school/', 'https://example.org', 'school')).toBe('https://example.org/')
+  })
+})
+
+describe('bandRatios', () => {
+  /**
+   * The point of bands is telling the three causes apart. A single ratio
+   * cannot: measured on the live pair, the home page scored 0.910 while four
+   * other pages sat at 0.195-0.230, and nothing in that number said whether
+   * the hero had rotated or the stylesheet had failed.
+   */
+  const band = (h: number, rgb: [number, number, number]) => solid(40, h, rgb)
+
+  /** Stack slices vertically into one image. */
+  const stack = (...parts: PNG[]) => {
+    const height = parts.reduce((n, p) => n + p.height, 0)
+    const out = new PNG({ width: parts[0].width, height })
+    let y = 0
+    for (const p of parts) {
+      PNG.bitblt(p, out, 0, 0, p.width, p.height, 0, y)
+      y += p.height
+    }
+    return out
+  }
+
+  const BLACK: [number, number, number] = [0, 0, 0]
+  const WHITE: [number, number, number] = [255, 255, 255]
+
+  it('a rotating hero: top band high, the rest ~0', async () => {
+    const a = stack(band(25, BLACK), band(25, BLACK), band(25, BLACK), band(25, BLACK))
+    const b = stack(band(25, WHITE), band(25, BLACK), band(25, BLACK), band(25, BLACK))
+    const r = await bandRatios(a, b)
+    expect(r).toHaveLength(4)
+    expect(r[0]).toBeCloseTo(1, 1)
+    expect(r.slice(1)).toEqual([0, 0, 0])
+  })
+
+  it('unstyled page: every band high', async () => {
+    const r = await bandRatios(solid(40, 100, BLACK), solid(40, 100, WHITE))
+    expect(r).toEqual([1, 1, 1, 1])
+  })
+
+  it('a footer difference: bottom band high, the rest ~0', async () => {
+    const a = stack(band(25, BLACK), band(25, BLACK), band(25, BLACK), band(25, BLACK))
+    const b = stack(band(25, BLACK), band(25, BLACK), band(25, BLACK), band(25, WHITE))
+    const r = await bandRatios(a, b)
+    expect(r.slice(0, 3)).toEqual([0, 0, 0])
+    expect(r[3]).toBeCloseTo(1, 1)
+  })
+
+  // No rows may go unexamined -- the same rule that put `comparedPx` beside
+  // `requestedViewport`. 101 rows over 4 bands is 25 each with 1 left over,
+  // and the remainder has to land somewhere.
+  it('covers every row when the height does not divide evenly', async () => {
+    const a = solid(10, 101, BLACK)
+    const b = stack(band(100, BLACK), band(1, WHITE))
+    const r = await bandRatios(a, b)
+    expect(r.slice(0, 3)).toEqual([0, 0, 0])
+    expect(r[3]).toBeGreaterThan(0)
+  })
+
+  it('returns nothing rather than throwing on a zero-area comparison', async () => {
+    expect(await bandRatios(solid(0, 0, BLACK), solid(10, 10, BLACK))).toEqual([])
+  })
+
+  it('returns nothing when there are fewer rows than bands', async () => {
+    expect(await bandRatios(solid(10, 2, BLACK), solid(10, 2, BLACK), 4)).toEqual([])
   })
 })
