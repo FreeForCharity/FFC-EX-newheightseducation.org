@@ -1,0 +1,170 @@
+name: Visual Fidelity Check
+
+# Does the export LOOK like the source site?
+#
+# `fidelity-check.yml` compares words and titles. A page can score 1.00 there
+# and render as unstyled text: every word present, in order, under the right
+# title. Nothing in this repo had ever compared a pixel to anything --
+# `post-deploy-smoke.yml` takes two screenshots and uploads them for a human
+# to look at, and `above-the-fold.spec.ts` measures DOM geometry. Real
+# pictures, no comparison.
+#
+# NOT a PR check: it renders a third party's live WordPress twice per route,
+# and that origin already returned 503s under the capture's own crawl.
+
+on:
+  schedule:
+    # Weekly, Monday 07:11 UTC — after the text fidelity check at 06:23, so a
+    # week's two signals land together. Off-the-hour on purpose.
+    - cron: '11 7 * * 1'
+  workflow_dispatch:
+    inputs:
+      routes:
+        description: 'Specific routes to compare (comma-separated). Empty = sample the built site.'
+        type: string
+        default: ''
+      sample:
+        description: 'How many routes to sample when none are given explicitly'
+        type: string
+        default: '8'
+      width:
+        description: 'Viewport width (1280 desktop, 390 phone)'
+        type: string
+        default: '1280'
+      max_diff:
+        description: 'Fail a page above this share of differing pixels'
+        type: string
+        default: '0.15'
+      strict:
+        description: 'Fail the run on findings'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      # Routes are derived from the build, so the build has to exist. The
+      # alternative -- a hard-coded route list -- stops representing the site
+      # the moment pages come or go, and cannot be ported to another charity.
+      - name: Build the export
+        run: pnpm run build
+
+      # Before measuring anything, prove the instrument still works. A
+      # screenshot comparison that has stopped discriminating reports a clean
+      # score forever, and a clean score looks exactly like a healthy site.
+      # If this step fails the run stops here rather than publishing a
+      # reassuring number.
+      - name: Self-test the detector
+        run: node scripts/verify-visual-selftest.mjs
+
+      - name: Resolve the source and export origins
+        id: origins
+        run: |
+          set -euo pipefail
+          DOMAIN=$(node -e "
+            const fs = require('fs');
+            for (const p of ['public/wp-capture-report.apex.json', 'public/wp-capture-report.json']) {
+              if (!fs.existsSync(p)) continue;
+              const d = JSON.parse(fs.readFileSync(p, 'utf8')).domain;
+              if (d) { console.log(d); process.exit(0); }
+            }
+            process.exit(1);
+          ")
+          if [ -s "public/CNAME" ]; then
+            EXPORT="https://$(cat public/CNAME)"
+          else
+            EXPORT="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}"
+          fi
+          echo "source=https://${DOMAIN}" >> "$GITHUB_OUTPUT"
+          echo "export=$EXPORT" >> "$GITHUB_OUTPUT"
+          echo "Comparing $EXPORT against https://${DOMAIN}"
+
+      - name: Compare rendered pages
+        id: compare
+        # `set +e` so the report and diff images are always uploaded; the exit
+        # code is captured and re-raised at the end rather than swallowed.
+        #
+        # `strict` names the EVENT, because neither comparison alone is right
+        # for both: on a schedule `inputs.strict` is absent and casts to 0, so
+        # `== false` is true and every scheduled run would opt out; on a
+        # dispatch it is a real boolean, so `== 'false'` casts the string to
+        # NaN and the checkbox could never be unticked.
+        run: |
+          set +e
+          node scripts/verify-visual.mjs \
+            --source "${{ steps.origins.outputs.source }}" \
+            --export "${{ steps.origins.outputs.export }}" \
+            --routes "${{ inputs.routes || '' }}" \
+            --sample "${{ inputs.sample || '8' }}" \
+            --width "${{ inputs.width || '1280' }}" \
+            --max-diff "${{ inputs.max_diff || '0.15' }}" \
+            --report visual-report.json \
+            --diff-dir visual-diffs \
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.strict == false) && ' ' || '--strict' }}
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the report and diff images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-report-${{ github.run_number }}
+          path: |
+            visual-report.json
+            visual-diffs/
+          if-no-files-found: warn
+
+      - name: Summarise
+        if: always()
+        run: |
+          {
+            echo "## Visual Fidelity Check"
+            echo ""
+            echo "- **Source:** ${{ steps.origins.outputs.source }}"
+            echo "- **Export:** ${{ steps.origins.outputs.export }}"
+            echo "- **Exit:** ${{ steps.compare.outputs.exit }}"
+            echo ""
+            if [ -f visual-report.json ]; then
+              echo '```json'
+              node -e "console.log(JSON.stringify(require('./visual-report.json').summary, null, 2))"
+              echo '```'
+            fi
+            echo ""
+            echo "Side-by-side and diff PNGs for any failing page are in the run artifact."
+            echo ""
+            echo "\`comparedPx\` is the region actually measured; \`requestedViewport\` is what"
+            echo "was asked for. If they differ, the capture was clamped and the run examined"
+            echo "less of each page than it set out to."
+            echo ""
+            echo "This is a screening signal, not a verdict. Only the first \`--height\` pixels"
+            echo "are compared, the FFC footer and cookie banner are masked because they exist"
+            echo "only on the export, and a WordPress origin serves genuinely dynamic content."
+            echo "Read a finding as \"look at this page\", not as \"this page is broken\"."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail the run if a page differs too much
+        if: always() && steps.compare.outputs.exit != '0'
+        run: |
+          echo "::error::visual check exited ${{ steps.compare.outputs.exit }}"
+          exit 1
