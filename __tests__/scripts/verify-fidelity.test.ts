@@ -1,3 +1,6 @@
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
 import {
   normalizeText,
   visibleText,
@@ -11,6 +14,8 @@ import {
   looksLikeTheExport,
   sourceUrlFor,
   sampleRoutes,
+  unpublishedCaptures,
+  groupRoutes,
   comparePages,
   MIN_TITLE_SIMILARITY,
 } from '../../scripts/verify-fidelity.mjs'
@@ -388,5 +393,60 @@ describe('comparePages', () => {
   it('does not fail on a title the source itself does not have', () => {
     const r = comparePages('/a/', page('', words(200)), page('Anything', words(200)))
     expect(r.findings).toEqual([])
+  })
+})
+
+describe('unpublishedCaptures', () => {
+  // The inverse question `capturedRoutes` cannot ask. It starts from the BUILD
+  // and keeps routes that have source content; nothing in it notices content
+  // that never became a route, which is why the gate's first live run scored
+  // 1.000 with zero findings while 355 pages were missing from the site.
+  const fx = mkdtempSync(join(tmpdir(), 'coverage-'))
+
+  beforeAll(() => {
+    for (const r of ['', 'who-we-are']) {
+      mkdirSync(join(fx, 'out', r), { recursive: true })
+      writeFileSync(join(fx, 'out', r, 'index.html'), 'x')
+    }
+    mkdirSync(join(fx, 'clone', 'publications'), { recursive: true })
+    mkdirSync(join(fx, 'clone', 'school'), { recursive: true })
+    writeFileSync(join(fx, 'clone', 'index.html'), 'x')
+    writeFileSync(join(fx, 'clone', 'who-we-are.html'), 'x')
+    writeFileSync(join(fx, 'clone', 'publications', 'a.html'), 'x')
+    writeFileSync(join(fx, 'clone', 'publications', 'b.html'), 'x')
+    writeFileSync(join(fx, 'clone', 'school', 'c.html'), 'x')
+  })
+
+  afterAll(() => rmSync(fx, { recursive: true, force: true }))
+
+  it('lists captured pages that never became a route', () => {
+    expect(unpublishedCaptures(join(fx, 'out'), join(fx, 'clone'))).toEqual([
+      '/publications/a/',
+      '/publications/b/',
+      '/school/c/',
+    ])
+  })
+
+  it('does not list a captured page that IS published', () => {
+    expect(unpublishedCaptures(join(fx, 'out'), join(fx, 'clone'))).not.toContain('/who-we-are/')
+  })
+})
+
+describe('groupRoutes', () => {
+  // 355 routes in a report is noise; "publications/ 245, school/ 110" names
+  // the cause.
+  it('counts by top-level section, largest first', () => {
+    expect(groupRoutes(['/a/x/', '/a/y/', '/a/z/', '/b/q/'])).toEqual([
+      { section: 'a', count: 3 },
+      { section: 'b', count: 1 },
+    ])
+  })
+
+  it('breaks ties by name so a report is stable between runs', () => {
+    expect(groupRoutes(['/z/1/', '/a/1/']).map((g) => g.section)).toEqual(['a', 'z'])
+  })
+
+  it('labels a root-level page rather than dropping it', () => {
+    expect(groupRoutes(['/'])).toEqual([{ section: '(root)', count: 1 }])
   })
 })

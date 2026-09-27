@@ -77,7 +77,7 @@ const runCli = (args: string[]) =>
     child.on('close', (status) => resolve({ status, out }))
   })
 
-const compare = (source: Bank, exported: Bank) => {
+const compare = (source: Bank, exported: Bank, allowUnpublished = 1) => {
   sourcePages = source
   exportPages = exported
   return runCli([
@@ -96,6 +96,8 @@ const compare = (source: Bank, exported: Bank) => {
     '0',
     '--timeout-ms',
     '5000',
+    '--allow-unpublished',
+    String(allowUnpublished),
     '--strict',
   ])
 }
@@ -112,6 +114,11 @@ beforeAll(async () => {
     const stem = route === '/' ? 'index' : route.replace(/^\/|\/$/g, '')
     writeFileSync(join(fixture, 'clone', `${stem}.html`), '<html></html>')
   }
+  // One captured page with NO route, standing in for the 355 real ones. Every
+  // scenario below allows exactly this one, so the coverage test can withhold
+  // the allowance and be the only thing that changes.
+  mkdirSync(join(fixture, 'clone', 'publications'), { recursive: true })
+  writeFileSync(join(fixture, 'clone', 'publications', 'newsletter.html'), '<html></html>')
   sourceServer = serve(() => sourcePages)
   exportServer = serve(() => exportPages)
   sourceOrigin = `http://127.0.0.1:${await listen(sourceServer)}`
@@ -188,6 +195,37 @@ describe('verify-fidelity CLI, source vs export', () => {
     const { status, out } = await compare({ '/': clone }, { '/': clone })
     expect(out).toMatch(/already serving the FFC export/)
     expect(status).toBe(2)
+  })
+
+  // The defect the gate shipped with. On 2026-09-26 its first live run scored
+  // a median title of 1.000 with zero findings while 355 captured pages had
+  // no route -- the export was 55% of the origin and every page it looked at
+  // was faithful, so it reported perfection. Coverage is the only assertion
+  // here that is not about a page, because a page that was never published
+  // never gets a score.
+  it('fails when captured pages were never published, even with every page faithful', async () => {
+    const faithful = {
+      '/': page('Home | NHEG', `<p>${words(200)}</p>`),
+      '/who-we-are/': page('Who We Are | NHEG', `<p>${words(200)}</p>`),
+    }
+    const { status, out } = await compare(faithful, faithful, 0)
+    expect(out).toMatch(/1 captured pages have no route/)
+    expect(out).toMatch(/publications\/ 1/)
+    expect(out).toMatch(/publishes 2 of 3 pages/)
+    expect(out).toMatch(/67% of the source/)
+    expect(status).toBe(1)
+  })
+
+  // ...and the allowance has to work, or a staged migration cannot run this
+  // check at all.
+  it('passes the same tree when the gap is declared deliberate', async () => {
+    const faithful = {
+      '/': page('Home | NHEG', `<p>${words(200)}</p>`),
+      '/who-we-are/': page('Who We Are | NHEG', `<p>${words(200)}</p>`),
+    }
+    const { status, out } = await compare(faithful, faithful, 1)
+    expect(out).not.toMatch(/have no route/)
+    expect(status).toBe(0)
   })
 
   it('treats an unreachable source as no comparison, not as a pass', async () => {

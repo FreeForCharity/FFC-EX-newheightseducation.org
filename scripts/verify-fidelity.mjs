@@ -334,6 +334,70 @@ export function capturedRoutes(outDir, cloneDir) {
 }
 
 /**
+ * Captured pages that the build did NOT turn into a route.
+ *
+ * The inverse of `capturedRoutes`, and the question that function cannot ask.
+ * `capturedRoutes` starts from `out/` and keeps the routes that have source
+ * content behind them -- so it enumerates what WAS published and is blind, by
+ * construction, to what was captured and then dropped.
+ *
+ * That blindness had already cost this site. On 2026-09-26 the first live run
+ * reported `capturedRoutes: 430`, a median title score of 1.000 and zero
+ * findings, while 355 captured pages -- 245 under `publications/`, 110 under
+ * `school/`, a median of 230 KB of real content each -- sat in the repo with
+ * no route. The export was 55% of the origin and the gate called it perfect,
+ * because every page it looked at was faithful. It was measuring the right
+ * thing about the wrong population.
+ *
+ * A staged migration legitimately produces this state for a while; `f8dd091`
+ * dropped those routes on purpose, to re-add each subdomain as its own
+ * capture. What is not legitimate is a fidelity report that stays silent
+ * about it. This is what makes the gap a number in the summary instead of
+ * something a person has to notice by eye.
+ */
+export function unpublishedCaptures(outDir, cloneDir) {
+  const built = new Set(capturedRoutes(outDir, cloneDir))
+  const out = []
+  const walk = (dir, prefix) => {
+    let entries
+    try {
+      entries = readdirSync(dir, { withFileTypes: true })
+    } catch {
+      return
+    }
+    for (const entry of entries) {
+      if (entry.isDirectory()) walk(join(dir, entry.name), `${prefix}${entry.name}/`)
+      else if (entry.name.endsWith('.html')) {
+        const stem = entry.name.slice(0, -5)
+        const route =
+          stem === 'index' && prefix === '' ? '/' : `/${prefix}${stem === 'index' ? '' : stem}/`
+        if (!built.has(route)) out.push(route)
+      }
+    }
+  }
+  walk(cloneDir, '')
+  return out.sort()
+}
+
+/**
+ * The top-level sections a set of unpublished routes falls into.
+ *
+ * 355 individual routes in a report is noise no one reads; "publications/ 245,
+ * school/ 110" is the same fact in a form that names the cause.
+ */
+export function groupRoutes(routes, limit = 10) {
+  const counts = new Map()
+  for (const r of routes) {
+    const section = r.split('/').filter(Boolean)[0] || '(root)'
+    counts.set(section, (counts.get(section) || 0) + 1)
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, limit)
+    .map(([section, count]) => ({ section, count }))
+}
+
+/**
  * A spread across the route list, always including the front page.
  *
  * Evenly spaced rather than random: a run that samples different pages every
@@ -445,6 +509,10 @@ async function main() {
   const timeoutMs = Number(arg('timeout-ms', '30000'))
   const reportPath = arg('report', '')
   const strict = flag('strict')
+  // A staged migration legitimately leaves captured sections unpublished for
+  // a while. Set this to the number currently expected, so the gap stays a
+  // deliberate, reviewable figure instead of a silence.
+  const allowUnpublished = Number(arg('allow-unpublished', '0'))
 
   const routes = capturedRoutes(outDir, cloneDir)
   if (!routes.length) {
@@ -528,6 +596,10 @@ async function main() {
     )
   }
 
+  // Coverage: captured pages the build never turned into a route. Measured
+  // AFTER the per-page loop so a fetch failure cannot hide it.
+  const unpublished = unpublishedCaptures(outDir, cloneDir)
+
   const failing = rows.filter((r) => r.findings.length)
   const scored = rows.filter((r) => typeof r.titleScore === 'number')
   const median = (xs) =>
@@ -543,6 +615,10 @@ async function main() {
     medianTitleScore: median(scored.map((r) => r.titleScore)),
     medianTextRatio: median(scored.map((r) => r.textRatio).filter((x) => typeof x === 'number')),
     withFindings: failing.length,
+    capturedPages: routes.length + unpublished.length,
+    unpublishedCaptures: unpublished.length,
+    unpublishedBySection: groupRoutes(unpublished),
+    coverage: Number((routes.length / (routes.length + unpublished.length)).toFixed(3)),
   }
 
   console.error(`\n[fidelity] ${JSON.stringify(summary, null, 1)}`)
@@ -550,6 +626,24 @@ async function main() {
     for (const f of row.findings) console.error(`::error::${row.route}: ${f}`)
   for (const u of unreachable)
     console.error(`[fidelity] source no longer serves ${u.url} (HTTP ${u.status})`)
+
+  // A page that was captured and never routed is not visible to any per-page
+  // score, because no score is ever computed for it. It is the one kind of
+  // infidelity this check would otherwise report as perfect.
+  const coverageShortfall = unpublished.length > allowUnpublished
+  if (coverageShortfall) {
+    const sections = groupRoutes(unpublished)
+      .map((g) => `${g.section}/ ${g.count}`)
+      .join(', ')
+    console.error(
+      `::error::${unpublished.length} captured pages have no route, so the export publishes ` +
+        `${routes.length} of ${routes.length + unpublished.length} pages ` +
+        `(${Math.round(summary.coverage * 100)}% of the source). By section: ${sections}. ` +
+        'Every page this run scored is faithful; that is a statement about the published ' +
+        'subset, not about the site. Publish the missing sections, or pass ' +
+        `--allow-unpublished ${unpublished.length} to declare the gap deliberate.`
+    )
+  }
 
   if (reportPath) {
     writeFileSync(
@@ -559,7 +653,7 @@ async function main() {
     )
     console.error(`[fidelity] report written to ${reportPath}`)
   }
-  process.exit(failing.length && strict ? 1 : 0)
+  process.exit((failing.length || coverageShortfall) && strict ? 1 : 0)
 }
 
 const invokedDirectly = process.argv[1] && process.argv[1].endsWith('verify-fidelity.mjs')

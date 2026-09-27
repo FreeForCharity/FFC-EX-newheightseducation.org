@@ -30,6 +30,10 @@ on:
         description: 'Fail the run on findings'
         type: boolean
         default: true
+      allow_unpublished:
+        description: 'Captured pages expected to have no route (a staged migration)'
+        type: string
+        default: '0'
 
 permissions:
   contents: read
@@ -98,6 +102,14 @@ jobs:
           echo "export=$EXPORT" >> "$GITHUB_OUTPUT"
           echo "Comparing $EXPORT against $SOURCE"
 
+      # `allow_unpublished` defaults to 0 on purpose, including on a schedule.
+      # This repo currently publishes 430 of 785 captured pages -- `school/`
+      # and `publications/` were captured and then had their routes dropped in
+      # f8dd091, to be re-added as their own 706 runs. Until they are, a run
+      # that reports a clean score is describing 55% of the site. Leaving the
+      # allowance at 0 makes the weekly run say so, and it goes green on its
+      # own the moment those sections publish -- no one has to remember to
+      # change a number back.
       - name: Compare the export against the source
         id: compare
         # `set +e` so the report is always uploaded and the summary always
@@ -127,6 +139,7 @@ jobs:
             --sample "${{ inputs.sample || '25' }}" \
             --delay-ms 750 \
             --report fidelity-report.json \
+            --allow-unpublished "${{ inputs.allow_unpublished || '0' }}" \
             ${{ (github.event_name == 'workflow_dispatch' && inputs.strict == false) && ' ' || '--strict' }}
           echo "exit=$?" >> "$GITHUB_OUTPUT"
 
