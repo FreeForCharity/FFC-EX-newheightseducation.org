@@ -120,8 +120,6 @@ export type SiteConfig = {
    * when their data files are emptied and need no flag here.
    */
   sections: {
-    /** FFC Endowment feature cards. */
-    showEndowment: boolean
     /** FFC's own three-program (Domains/Hosting/Consulting) marketing block. */
     showPrograms: boolean
     /**
@@ -215,13 +213,10 @@ export const siteConfig: SiteConfig = {
   },
   taxStatusLabel: 'a US 501c3 Non Profit',
   sections: {
-    // Both off: these two sections are Free For Charity's own marketing copy,
-    // no route on this site renders them, and their code has been
-    // deleted. The flags stay because the Header and Footer
-    // read them to decide whether to show a "Programs" nav link -- with the
-    // flag off the link self-hides rather than pointing at a #programs anchor
-    // no page has.
-    showEndowment: false,
+    // Off: this is Free For Charity's own marketing copy, no route on this
+    // site renders it, and its code has been deleted. The flag stays because
+    // the Header and Footer read it to decide whether to show a "Programs"
+    // nav link; off, the link hides instead of pointing at a missing anchor.
     showPrograms: false,
     showEvents: true,
   },
