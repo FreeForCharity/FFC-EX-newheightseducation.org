@@ -53,7 +53,7 @@ jobs:
       # different Node major would have it comparing a build the deploy never
       # produced. Reported by copilot-pull-request-reviewer on #33.
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: pnpm
