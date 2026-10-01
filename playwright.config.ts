@@ -47,6 +47,10 @@ function findChromiumExecutable(): string | undefined {
  * - Configurable workers based on environment
  * - Tests run in isolation to prevent side effects
  */
+// Not 3000: outside CI an existing server is reused, and 3000 is often another local app.
+const PORT = Number(process.env.E2E_PORT ?? 3210)
+const BASE_URL = `http://localhost:${PORT}`
+
 export default defineConfig({
   testDir: './tests',
   // `tests/smoke/` is the POST-DEPLOY suite: its subject is the live
@@ -71,7 +75,7 @@ export default defineConfig({
 
   use: {
     // Base URL for tests
-    baseURL: 'http://localhost:3000',
+    baseURL: BASE_URL,
     // Collect trace when retrying the failed test
     trace: 'on-first-retry',
   },
@@ -93,8 +97,8 @@ export default defineConfig({
 
   // Run local dev server before starting the tests
   webServer: {
-    command: 'pnpm run preview',
-    url: 'http://localhost:3000',
+    command: `pnpm exec serve out -l ${PORT}`,
+    url: BASE_URL,
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },
