@@ -100,7 +100,11 @@ jobs:
           fi
 
       - name: Build with Next.js
-        run: pnpm run build
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
+        with:
+          max_attempts: 2
+          timeout_minutes: 15
+          command: pnpm run build
         env:
           # See "Determine base path" above. Set automatically based on
           # whether public/CNAME exists.
