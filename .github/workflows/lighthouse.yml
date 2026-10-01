@@ -392,3 +392,9 @@ jobs:
             }
 
             await run();
+
+      - name: Fail if any audit failed
+        if: ${{ needs.audit.result != 'success' }}
+        run: |
+          echo "::error::One or more Lighthouse audits failed (audit result: ${{ needs.audit.result }})."
+          exit 1
