@@ -15,16 +15,18 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
-# Only run if the deployment was successful
+# Build once, audit every URL in its own parallel job, then merge the reports.
 jobs:
-  lighthouse:
+  build:
     # Only run on successful deployment, PR, or manual trigger
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
-      pull-requests: write
+
+    outputs:
+      urls: ${{ steps.urls.outputs.urls }}
 
     steps:
       - name: Checkout
@@ -56,42 +58,98 @@ jobs:
           fi
 
       - name: Build site
-        run: pnpm run build
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
+        with:
+          max_attempts: 2
+          timeout_minutes: 15
+          command: pnpm run build
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
 
       - name: Stage site for Lighthouse
-        id: stage
-        # lighthouserc.json serves ./out at the domain root and audits
-        # root-relative URLs. That matches a custom-domain deploy, but a
-        # subpath build prefixes every asset URL with /<repo-name> — served
-        # from the root, all CSS/JS would 404 and Lighthouse would audit an
-        # unstyled skeleton page (bogus scores, e.g. tap-target failures from
-        # default user-agent styles). Nest the export under the same subpath
-        # the production Pages deploy uses and audit the subpath URLs instead.
-        # The page list is derived from lighthouserc.json (single source of
-        # truth) so it can't drift from the config.
+        # Nest the export under the production subpath so asset URLs resolve.
         run: |
-          base="${{ steps.basepath.outputs.value }}"
-          if [ -n "$base" ]; then
-            mkdir -p "_lhci-site${base}"
-            cp -r out/. "_lhci-site${base}/"
-            flags="--collect.staticDistDir=./_lhci-site"
-            pages=$(jq -r '.ci.collect.url[] | sub("^http://localhost/"; "")' lighthouserc.json)
-            for page in $pages; do
-              flags="$flags --collect.url=http://localhost${base}/${page}"
-            done
-            echo "flags=$flags" >> "$GITHUB_OUTPUT"
-          else
-            echo "flags=" >> "$GITHUB_OUTPUT"
-          fi
+          BASE_PATH="${{ steps.basepath.outputs.value }}"
+          rm -rf .lighthouseci-dist
+          mkdir -p ".lighthouseci-dist$BASE_PATH"
+          cp -R out/. ".lighthouseci-dist$BASE_PATH/"
+          jq --arg base_path "$BASE_PATH" \
+            '.ci.collect.staticDistDir = "./.lighthouseci-dist" | .ci.collect.url |= map(sub("http://localhost"; "http://localhost" + $base_path))' \
+            lighthouserc.json > lighthouserc.runtime.json
+          mv lighthouserc.runtime.json lighthouserc.json
+
+      - name: List URLs for the audit matrix
+        id: urls
+        run: echo "urls=$(jq -c '.ci.collect.url' lighthouserc.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload site for auditing
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-site
+          path: |
+            .lighthouseci-dist
+            lighthouserc.json
+          include-hidden-files: true
+          retention-days: 1
+
+  audit:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        url: ${{ fromJson(needs.build.outputs.urls) }}
+
+    steps:
+      - name: Download site
+        uses: actions/download-artifact@v8
+        with:
+          name: lighthouse-site
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
 
       - name: Run Lighthouse CI
-        # @lhci/cli is a devDependency, already installed above — no global
-        # install needed (pnpm add -g would also require PNPM_HOME on runners).
-        run: pnpm exec lhci autorun ${{ steps.stage.outputs.flags }}
+        run: |
+          jq --arg url "${{ matrix.url }}" '.ci.collect.url = [$url]' lighthouserc.json > lighthouserc.one.json
+          npx -y @lhci/cli@0.15.1 autorun --config=./lighthouserc.one.json
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: lighthouse-run-${{ strategy.job-index }}
+          path: .lighthouseci/lhr-*
+          include-hidden-files: true
+          retention-days: 1
+
+  lighthouse:
+    needs: [build, audit]
+    if: ${{ always() && needs.build.result == 'success' }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Collect reports
+        uses: actions/download-artifact@v8
+        with:
+          pattern: lighthouse-run-*
+          path: .lighthouseci
+          merge-multiple: true
 
       - name: Display Lighthouse Results Summary
         if: always()
@@ -159,6 +217,7 @@ jobs:
         if: always()
         with:
           name: lighthouse-reports
+          include-hidden-files: true
           path: .lighthouseci
           retention-days: 30
 
@@ -185,7 +244,7 @@ jobs:
             }
 
             // Find all JSON report files
-            const files = fs.readdirSync(resultsDir).filter(f => f.endsWith('.json'));
+            const files = fs.readdirSync(resultsDir).filter(f => f.startsWith('lhr-') && f.endsWith('.json'));
             if (files.length === 0) {
               console.log('No Lighthouse JSON reports found');
               return;

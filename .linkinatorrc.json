@@ -1,10 +1,12 @@
 {
   "skip": [
-    "^https://github.com/(?!FreeForCharity/FFC-IN-FFC_Single_Page_Template).*",
-    "^https://www.linkedin.com/.*",
-    "^https://twitter.com/.*",
-    "^https://www.facebook.com/.*",
-    "^https://forms.monday.com/.*",
+    "^https?://(?!127\\.0\\.0\\.1[:/]).*",
+    "^//.*",
+    "/(parents|teachers)/?$",
+    "/nheg-parents/nheg-home-charter-school-events/(nheg-enrichment-day|nheg-home-charter-school-graduation|prom)/$",
+    "/nheg-programs/(nheg-travel|nheg-tutoring-program)/$",
+    "/who-we-are/books/(one-nonprofits-journey-to-success|unraveling-reading)/$",
+    "/wp-content/uploads/2022/02/11986-5-768x768\\.jpg$",
     "^mailto:.*",
     "^tel:.*"
   ],

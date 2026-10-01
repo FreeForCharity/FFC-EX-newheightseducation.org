@@ -60,7 +60,11 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Build Next.js site
-        run: pnpm run build
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
+        with:
+          max_attempts: 2
+          timeout_minutes: 15
+          command: pnpm run build
         # Note: Do NOT set NEXT_PUBLIC_BASE_PATH here
         # The basePath is only needed for actual GitHub Pages deployment (in deploy.yml)
         # E2E tests need to run against a build without basePath since the test server
@@ -91,12 +95,8 @@ jobs:
           retention-days: 7
 
   link-check:
-    name: Link check (soft-fail)
+    name: Link check
     runs-on: ubuntu-latest
-    # Soft-fail today so we can see what linkinator surfaces without
-    # blocking merges. Flip to hard-fail once the noise is understood
-    # — tracked as a follow-up to #289.
-    continue-on-error: true
     # Kept as a separate job (not inside test-and-build) so it does not
     # multiply across the Playwright shard matrix introduced by #133.
 
@@ -117,7 +117,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Next.js site
-        run: pnpm run build
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
+        with:
+          max_attempts: 2
+          timeout_minutes: 15
+          command: pnpm run build
 
       - name: Check for broken links
         run: pnpm run check-links
