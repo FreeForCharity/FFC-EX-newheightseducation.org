@@ -353,10 +353,10 @@ Tests run automatically in GitHub Actions with the following configuration:
 Key settings:
 
 - **Test Directory**: `./tests`
-- **Base URL**: `http://localhost:3000`
+- **Base URL**: `http://localhost:3210` (override with `E2E_PORT`)
 - **Parallel Execution**: Enabled (disabled in CI for stability)
 - **Retries**: 2 in CI, 0 locally
-- **Web Server**: Auto-starts `pnpm run preview` before tests
+- **Web Server**: Starts `serve out` on that port before tests and never reuses an existing server, so a port collision fails loudly instead of testing another app
 - **Browser**: System Chromium (fallback to Playwright's if unavailable)
 - **Trace Collection**: On first retry for debugging
 - **Reporter**: HTML report

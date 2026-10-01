@@ -47,7 +47,7 @@ function findChromiumExecutable(): string | undefined {
  * - Configurable workers based on environment
  * - Tests run in isolation to prevent side effects
  */
-// Not 3000: outside CI an existing server is reused, and 3000 is often another local app.
+// A dedicated port, never reused: reusing 3000 silently ran the suite against another local app.
 const PORT = Number(process.env.E2E_PORT ?? 3210)
 const BASE_URL = `http://localhost:${PORT}`
 
@@ -99,7 +99,7 @@ export default defineConfig({
   webServer: {
     command: `pnpm exec serve out -l ${PORT}`,
     url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 120 * 1000,
   },
 })
