@@ -146,7 +146,7 @@ grep -rniE 'FFC-IN-FFC_Single_Page_Template|ffcworkingsite1\.org|46-?2471893|520
 - **Instance-describing docs (replace the placeholder domain with the real one):**
   `CONTRIBUTING.md`, `SECURITY.md`, `DEPLOYMENT.md`, `CLOUDFLARE_SETUP.md`,
   `THREAT-MODEL.md`, `ISSUE_RESOLUTION.md`, `NAMING_CONVENTIONS.md`,
-  `FACEBOOK_EVENTS_SETUP.md`, and any workflow comments. Where these describe the
+  `EVENTS_SETUP.md`, and any workflow comments. Where these describe the
   new site (deployment, production URL, threat model), also swap the org NAME,
   not just the domain — a domain change with "Free For Charity" text left beside
   it reads as a mismatch.
