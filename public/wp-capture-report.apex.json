@@ -1,7 +1,7 @@
 {
   "domain": "newheightseducation.org",
   "mount": "",
-  "capturedAt": "2026-09-25T10:36:48.569Z",
+  "capturedAt": "2026-09-28T16:18:53.411Z",
   "restRoot": "https://newheightseducation.org/wp-json/",
   "restFlavor": "pretty",
   "inventory": {
@@ -69,19 +69,18 @@
     "available": true
   },
   "assets": {
-    "downloaded": 4917,
-    "failed": 14,
+    "downloaded": 4918,
+    "failed": 13,
     "failures": {
-      "total": 14,
+      "total": 13,
       "byStatus": {
-        "0": 1,
         "403": 1,
         "404": 12
       },
       "byHost": {
         "cdn.greatnonprofits.org": 1,
         "cdn.tutors.com": 1,
-        "newheightseducation.org": 12
+        "newheightseducation.org": 11
       },
       "sample": [
         "HTTP 404 https://cdn.greatnonprofits.org/images/great-nonprofits.gif?id=1491417",
@@ -115,32 +114,36 @@
   },
   "imageOptimization": {
     "enabledPdfs": true,
+    "shrinkAllPdfs": true,
     "maxPdfMb": 90,
-    "pdfsShrunk": 0,
-    "pdfsDeclined": 0,
+    "pdfsShrunk": 24,
+    "pdfsDeclined": 2,
     "pdfsSkippedNoEncoder": 0,
     "pdfsStillOverBudget": [],
-    "pdfBytesBefore": 0,
-    "pdfBytesAfter": 0,
+    "pdfBytesBefore": 156356265,
+    "pdfBytesAfter": 36698860,
     "enabled": true,
+    "recodeAll": true,
     "encoderAvailable": true,
     "maxImageKb": 400,
-    "recoded": 145,
-    "declined": 1,
+    "recoded": 4484,
+    "declined": 257,
     "skippedNoEncoder": 0,
     "stillOverBudget": 0,
-    "collisions": 1,
-    "bytesBefore": 116553619,
-    "bytesAfter": 22534940
+    "collisions": 0,
+    "disambiguated": 22,
+    "nameCollisionsAvoided": 18,
+    "deadFontFaceRulesRemoved": 8,
+    "deadFontFaceSourcesRemoved": 31,
+    "bytesBefore": 331216719,
+    "bytesAfter": 103318520
   },
   "remainingExternalHosts": [
     "secure.gravatar.com",
     "fonts.googleapis.com"
   ],
   "escapedPaths": [],
-  "ignoreHosts": [
-    "s3.amazonaws.com"
-  ],
+  "ignoreHosts": [],
   "forms": {
     "pageCount": 430,
     "pages": [
@@ -5402,7 +5405,7 @@
     "problems": [
       "the REST inventory was refused for pages (no JSON body (unparseable or empty)); posts (no JSON body (unparseable or empty)) — no X-WP-Total to check completeness against, so the sitemap is this capture's only inventory",
       "unlocalized asset hosts: secure.gravatar.com, fonts.googleapis.com",
-      "assets: 14 failed (12×HTTP 404, 1×HTTP 0, 1×HTTP 403); 12 of them on newheightseducation.org"
+      "assets: 13 failed (12×HTTP 404, 1×HTTP 403); 11 of them on newheightseducation.org"
     ]
   }
 }

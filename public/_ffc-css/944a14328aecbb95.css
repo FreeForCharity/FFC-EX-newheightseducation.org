@@ -1,0 +1,11 @@
+
+.ffc-clone .g { margin:0px; padding:0px; overflow:hidden; line-height:1; zoom:1; }
+.ffc-clone .g img { height:auto; }
+.ffc-clone .g-col { position:relative; float:left; }
+.ffc-clone .g-col:first-child { margin-left: 0; }
+.ffc-clone .g-col:last-child { margin-right: 0; }
+.ffc-clone .g-1 { min-width:0px; max-width:750px; margin: 0 auto; }
+.ffc-clone .b-1 { margin:0px 0px 0px 0px; }
+@media only screen and (max-width: 480px) {
+.ffc-clone .g-col, .ffc-clone .g-dyn, .ffc-clone .g-single { width:100%; margin-left:0; margin-right:0; }
+}
