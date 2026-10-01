@@ -216,8 +216,8 @@ export const siteConfig: SiteConfig = {
   taxStatusLabel: 'a US 501c3 Non Profit',
   sections: {
     // Both off: these two sections are Free For Charity's own marketing copy,
-    // no route on this site renders them, and they are parked under
-    // _disabled_template_code/. The flags stay because the Header and Footer
+    // no route on this site renders them, and their code has been
+    // deleted. The flags stay because the Header and Footer
     // read them to decide whether to show a "Programs" nav link -- with the
     // flag off the link self-hides rather than pointing at a #programs anchor
     // no page has.
