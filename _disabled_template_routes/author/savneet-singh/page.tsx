@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Savneet Singh',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "Savneet Singh" Home » Archives for…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Savneet Singh" Home » Archives for…',
     canonical: '/author/savneet-singh/',
   }),
   title: { absolute: 'Savneet Singh' },

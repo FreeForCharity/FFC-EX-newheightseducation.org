@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Heather Ruggiero, Author at New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Archives Author Archive for: "HeatherRuggiero" Home » Archives for…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "HeatherRuggiero" Home » Archives for…',
     canonical: '/author/heatherruggiero/',
   }),
   title: { absolute: 'Heather Ruggiero, Author at New Heights Educational Group, Inc.' },
