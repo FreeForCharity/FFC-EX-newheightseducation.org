@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import './theme-fonts.css'
+import './theme-layout.css'
 import Header from './../components/header'
 // The captured pages' ENTIRE client-side runtime. Workflow 706 generates this
 // component (convert-clone-to-routes.mjs step 8) and never wires it up, so it
