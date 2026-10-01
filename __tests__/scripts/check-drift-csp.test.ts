@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process'
-import { cpSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { cpSync, mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -46,7 +46,8 @@ function layoutSource(withMeta: boolean): string {
 
 /** Builds a throwaway repo carrying only what checkCspSync reads. */
 function run(headers: HeadersState, layoutMeta: boolean): { code: number; output: string } {
-  const dir = mkdtempSync(join(tmpdir(), 'ffc-drift-csp-'))
+  // realpath: on macOS tmpdir() is behind the /var symlink, which breaks the script's main-module check.
+  const dir = mkdtempSync(join(realpathSync(tmpdir()), 'ffc-drift-csp-'))
   try {
     mkdirSync(join(dir, 'scripts'), { recursive: true })
     mkdirSync(join(dir, 'src/app'), { recursive: true })
@@ -117,7 +118,7 @@ describe('check-drift CSP: unreadable is not the same as absent', () => {
   // ("restore the file" — it is already there) and let the run pass, because
   // the absent case is only a warning.
   function runWithUnreadableHeaders(layoutMeta = true): { code: number; output: string } {
-    const dir = mkdtempSync(join(tmpdir(), 'ffc-drift-unreadable-'))
+    const dir = mkdtempSync(join(realpathSync(tmpdir()), 'ffc-drift-unreadable-'))
     try {
       mkdirSync(join(dir, 'scripts'), { recursive: true })
       mkdirSync(join(dir, 'src/app'), { recursive: true })
@@ -190,7 +191,7 @@ describe('check-drift CSP: _headers findings are warnings, not coverage', () => 
 
 describe('check-drift CSP: the sync diff still holds', () => {
   it('errors when a third-party origin exists in only one of the two copies', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'ffc-drift-csp-sync-'))
+    const dir = mkdtempSync(join(realpathSync(tmpdir()), 'ffc-drift-csp-sync-'))
     try {
       mkdirSync(join(dir, 'scripts'), { recursive: true })
       mkdirSync(join(dir, 'src/app'), { recursive: true })

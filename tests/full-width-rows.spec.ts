@@ -1,0 +1,51 @@
+import { test, expect } from '@playwright/test'
+
+const PAGES = ['', 'who-we-are/', 'contact-us/']
+const VIEWPORTS = [
+  { width: 1440, height: 900 },
+  { width: 390, height: 844 },
+]
+
+test.describe('full-width rows and hero', () => {
+  for (const viewport of VIEWPORTS) {
+    test(`rows span the viewport with no horizontal scroll at ${viewport.width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize(viewport)
+      for (const path of PAGES) {
+        await page.goto(`./${path}`)
+        const m = await page.evaluate(() => {
+          const rows = [
+            ...document.querySelectorAll(
+              '[data-mk-full-width="true"], [data-vc-full-width="true"]'
+            ),
+          ].map((el) => el.getBoundingClientRect())
+          return {
+            rows: rows.length,
+            boxed: rows.filter(
+              (b) => Math.round(b.left) !== 0 || Math.round(b.width) !== window.innerWidth
+            ).length,
+            overflow: document.documentElement.scrollWidth - window.innerWidth,
+          }
+        })
+        expect(m.rows, path).toBeGreaterThan(0)
+        expect(m.boxed, path).toBe(0)
+        expect(m.overflow, path).toBeLessThanOrEqual(0)
+      }
+    })
+  }
+
+  test('home hero paints its bundled background and fills the desktop viewport', async ({
+    page,
+  }) => {
+    await page.setViewportSize(VIEWPORTS[0])
+    await page.goto('./')
+    const hero = page.locator('[data-vc-parallax-image]').first()
+    const bg = await hero.evaluate((el) => getComputedStyle(el).backgroundImage)
+    expect(bg).toMatch(/_next\/static\/media\/nheg-home-cover/)
+    const url = bg.match(/url\("?([^")]+)"?\)/)![1]
+    expect((await page.request.get(url)).status()).toBe(200)
+    const box = await hero.boundingBox()
+    expect(box!.height).toBeGreaterThanOrEqual(VIEWPORTS[0].height - 1)
+  })
+})
