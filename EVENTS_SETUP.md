@@ -8,13 +8,13 @@ Events are fetched **at build time** by `scripts/fetch-events.mjs` and persisted
 - No third-party cookies are set by the events section.
 - The section is fully renderable in a static export.
 
-A scheduled GitHub Action (`.github/workflows/refresh-events.yml`) re-runs the fetch every 6 hours and, when the snapshot changed, opens (or updates) a pull request on the fixed `automation/events-refresh` branch. It never pushes to `main` — merging that PR is what deploys the refreshed snapshot through the normal pipeline.
+A manually dispatched GitHub Action (`.github/workflows/refresh-events.yml`) re-runs the fetch and, when the snapshot changed, opens (or updates) a pull request on the fixed `automation/events-refresh` branch. It never pushes to `main` — merging that PR is what deploys the refreshed snapshot through the normal pipeline.
 
 ## Quick start
 
 1. Decide which sources you want to enable. Each is independent.
 2. Add the matching secrets to your GitHub repo at **Settings → Secrets and variables → Actions**.
-3. Manually trigger the **Refresh Events Snapshot** workflow once to populate `src/data/events.generated.json` (or wait up to 6 hours). It opens a PR on the `automation/events-refresh` branch when the snapshot changed.
+3. Manually trigger the **Refresh Events Snapshot** workflow once to populate `src/data/events.generated.json`. It opens a PR on the `automation/events-refresh` branch when the snapshot changed.
 4. Review and merge that PR; the Pages deploy workflow then publishes the refreshed snapshot.
 
 With no sources configured and an empty committed snapshot, the whole section (and its footer quick-link) self-hides — the template ships in that state. Once at least one source is configured, a refresh with zero upcoming events shows a friendly empty state instead, linking to the Facebook page set in `siteConfig.integrations.eventsFacebookPageUrl` (`src/lib/site.config.ts`). Turn the section off entirely with `siteConfig.sections.showEvents = false`.
@@ -110,7 +110,7 @@ Then run `npm run dev` and visit `#events`.
 - `src/lib/events/` — Types, config helpers, ICS + Facebook parsers, format/grouping/add-to-calendar utilities.
 - `src/components/home-page/Events/` — Section component, cards, badges, empty state, add-to-calendar menu.
 - `scripts/fetch-events.mjs` — Build-time aggregation script (also invoked by `prebuild`).
-- `.github/workflows/refresh-events.yml` — Scheduled refresh workflow (opens a PR; never pushes to `main`).
+- `.github/workflows/refresh-events.yml` — Manually dispatched refresh workflow (opens a PR; never pushes to `main`).
 - `__tests__/lib/events/` — Unit tests for parsers and helpers.
 - `__tests__/components/Events.test.tsx` — Component-level and a11y tests.
 - `tests/events.spec.ts` — Playwright E2E spec.
