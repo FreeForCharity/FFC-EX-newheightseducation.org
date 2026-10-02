@@ -1,7 +1,7 @@
 {
   "domain": "newheightseducation.org",
   "mount": "",
-  "capturedAt": "2026-09-25T10:36:48.569Z",
+  "capturedAt": "2026-10-02T01:50:37.858Z",
   "restRoot": "https://newheightseducation.org/wp-json/",
   "restFlavor": "pretty",
   "inventory": {
@@ -79,19 +79,19 @@
         "404": 12
       },
       "byHost": {
+        "newheightseducation.org": 12,
         "cdn.greatnonprofits.org": 1,
-        "cdn.tutors.com": 1,
-        "newheightseducation.org": 12
+        "cdn.tutors.com": 1
       },
       "sample": [
+        "HTTP 0 https://newheightseducation.org/wp-content/uploads/2022/02/68312-3.jpg",
         "HTTP 404 https://cdn.greatnonprofits.org/images/great-nonprofits.gif?id=1491417",
         "HTTP 403 https://cdn.tutors.com/assets/images/tmp/tutors-2020.png",
         "HTTP 404 https://newheightseducation.org/wp-content/uploads/mk_assets/theme-options-production-1787025385.css",
         "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.eot?r52kw2",
         "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.eot?r52kw2#iefix",
         "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.ttf?r52kw2",
-        "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.woff?r52kw2",
-        "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.svg?r52kw2#vcpb-plugin-icons"
+        "HTTP 404 https://newheightseducation.org/wp-content/plugins/js_composer_theme/assets/fonts/vc_icons_v3/fonts/vcpb-plugin-icons.woff?r52kw2"
       ]
     }
   },
@@ -115,32 +115,36 @@
   },
   "imageOptimization": {
     "enabledPdfs": true,
+    "shrinkAllPdfs": true,
     "maxPdfMb": 90,
-    "pdfsShrunk": 0,
-    "pdfsDeclined": 0,
+    "pdfsShrunk": 24,
+    "pdfsDeclined": 2,
     "pdfsSkippedNoEncoder": 0,
     "pdfsStillOverBudget": [],
-    "pdfBytesBefore": 0,
-    "pdfBytesAfter": 0,
+    "pdfBytesBefore": 156356265,
+    "pdfBytesAfter": 36698860,
     "enabled": true,
+    "recodeAll": true,
     "encoderAvailable": true,
     "maxImageKb": 400,
-    "recoded": 145,
-    "declined": 1,
+    "recoded": 4483,
+    "declined": 257,
     "skippedNoEncoder": 0,
     "stillOverBudget": 0,
-    "collisions": 1,
-    "bytesBefore": 116553619,
-    "bytesAfter": 22534940
+    "collisions": 0,
+    "disambiguated": 22,
+    "nameCollisionsAvoided": 18,
+    "deadFontFaceRulesRemoved": 8,
+    "deadFontFaceSourcesRemoved": 31,
+    "bytesBefore": 330666144,
+    "bytesAfter": 103261394
   },
   "remainingExternalHosts": [
     "secure.gravatar.com",
     "fonts.googleapis.com"
   ],
   "escapedPaths": [],
-  "ignoreHosts": [
-    "s3.amazonaws.com"
-  ],
+  "ignoreHosts": [],
   "forms": {
     "pageCount": 430,
     "pages": [
@@ -3318,7 +3322,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 164967
+      "bytes": 164982
     },
     {
       "id": null,
@@ -3462,7 +3466,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 153036
+      "bytes": 153031
     },
     {
       "id": null,
@@ -5250,7 +5254,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 212136
+      "bytes": 212115
     },
     {
       "id": null,
@@ -5262,7 +5266,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 236323
+      "bytes": 236367
     },
     {
       "id": null,
@@ -5274,7 +5278,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 163157
+      "bytes": 163154
     },
     {
       "id": null,
@@ -5286,7 +5290,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 233858
+      "bytes": 233884
     },
     {
       "id": null,
@@ -5298,7 +5302,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 200569
+      "bytes": 200595
     },
     {
       "id": null,
@@ -5310,7 +5314,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 239626
+      "bytes": 239639
     },
     {
       "id": null,
@@ -5322,7 +5326,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 180889
+      "bytes": 180916
     },
     {
       "id": null,
@@ -5334,7 +5338,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 222784
+      "bytes": 222811
     },
     {
       "id": null,
@@ -5346,7 +5350,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 231050
+      "bytes": 231060
     },
     {
       "id": null,
@@ -5358,7 +5362,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 126410
+      "bytes": 126437
     },
     {
       "id": null,
@@ -5370,7 +5374,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 138200
+      "bytes": 138215
     },
     {
       "id": null,
@@ -5382,7 +5386,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 126159
+      "bytes": 126186
     },
     {
       "id": null,
@@ -5394,7 +5398,7 @@
       "parent": 0,
       "menuOrder": 0,
       "source": "sitemap",
-      "bytes": 126700
+      "bytes": 126727
     }
   ],
   "verdict": {

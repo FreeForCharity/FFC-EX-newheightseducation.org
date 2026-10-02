@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Store - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org NHEG Store Show your support for New Heights Educational Group by…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org NHEG Store Show your support for New Heights Educational Group by…',
     canonical: '/nheg-store/',
   }),
   title: { absolute: 'NHEG Store - New Heights Educational Group, Inc.' },
