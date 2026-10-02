@@ -5,6 +5,7 @@ import { discoverRoutes, APP_DIR } from '../../src/app/sitemap'
 function declaredCanonical(source: string): string | undefined {
   const literal = source.match(/canonical:\s*'([^']*)'/)
   if (literal) return literal[1]
+  if (!/canonical:\s*CANONICAL_PATH\b/.test(source)) return undefined
   const constant = source.match(/const CANONICAL_PATH = '([^']*)'/)
   return constant?.[1]
 }
