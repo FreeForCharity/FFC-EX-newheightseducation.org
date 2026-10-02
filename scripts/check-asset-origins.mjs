@@ -52,10 +52,14 @@ const cssUrls = (css) =>
 
 /** Every URL a browser with JavaScript on would fetch as an asset for this page. */
 export function assetRefs(html) {
-  const doc = html
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<noscript\b[\s\S]*?<\/noscript\s*>/gi, '')
-    .replace(/(<script\b[^>]*>)[\s\S]*?(<\/script\s*>)/gi, '$1$2')
+  let doc = html
+  for (let prev; prev !== doc;) {
+    prev = doc
+    doc = doc
+      .replace(/<!--[\s\S]*?(?:-->|$)/g, '')
+      .replace(/<noscript\b[\s\S]*?(?:<\/noscript\b[^>]*>|$)/gi, '')
+  }
+  doc = doc.replace(/(<script\b[^>]*>)[\s\S]*?(<\/script\b[^>]*>|$)/gi, '$1$2')
   const refs = []
   for (const [tag, name] of doc.matchAll(/<(img|source|video|audio|script|link)\b[^>]*>/gi)) {
     const kind = name.toLowerCase()
@@ -76,7 +80,7 @@ export function assetRefs(html) {
   for (const [, , style] of doc.matchAll(/\sstyle\s*=\s*(["'])([\s\S]*?)\1/gi)) {
     refs.push(...cssUrls(decode(style)))
   }
-  for (const [, css] of doc.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style\s*>/gi)) {
+  for (const [, css] of doc.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style\b[^>]*>/gi)) {
     refs.push(...cssUrls(css))
   }
   return refs.map(decode).filter((ref) => ref && !/^(data|blob|about|javascript):/i.test(ref))

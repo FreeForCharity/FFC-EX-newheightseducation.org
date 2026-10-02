@@ -42,6 +42,15 @@ describe('assetRefs', () => {
     expect(assetRefs(html)).toEqual([])
   })
 
+  it('handles end tags with attributes and nested or unclosed comments', () => {
+    const html = `
+      <script>var u = "<img src='//cdn.example.org/a.png'>"</script\t\n bar>
+      <noscript><img src="//cdn.example.org/b.gif"></noscript foo>
+      <!<!-- x -->-- <img src="//cdn.example.org/c.png"> -->
+      <!-- <img src="//cdn.example.org/d.png">`
+    expect(assetRefs(html)).toEqual([])
+  })
+
   it('decodes HTML entities in attribute URLs', () => {
     expect(assetRefs('<img src="/a.jpg?s=1&#038;d=mm">')).toEqual(['/a.jpg?s=1&d=mm'])
   })
