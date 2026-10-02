@@ -6,7 +6,7 @@ const css = fs.readFileSync(path.join(APP_DIR, 'theme-fonts.css'), 'utf8')
 const faces = css.match(/@font-face\s*{[^}]*}/g) ?? []
 
 describe('theme-fonts.css', () => {
-  it.each(['Oswald', 'Merriweather'])(
+  it.each(['Oswald', 'Merriweather', 'Abril Fatface'])(
     'declares %s under the name the captured CSS uses',
     (family) => {
       expect(faces.some((f) => f.includes(`font-family: '${family}'`))).toBe(true)

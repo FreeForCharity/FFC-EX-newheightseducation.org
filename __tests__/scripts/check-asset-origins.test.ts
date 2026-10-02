@@ -1,0 +1,106 @@
+/**
+ * @jest-environment node
+ */
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
+import { assetRefs, checkRef, checkOut } from '../../scripts/check-asset-origins.mjs'
+
+describe('assetRefs', () => {
+  it('collects src, srcset, poster, asset links and inline CSS urls', () => {
+    const html = `
+      <img src="/a.png" srcset="/a-1.png 1x, /a-2.png 2x">
+      <video poster="/p.jpg"><source src="/v.mp4"></video>
+      <script src="/s.js"></script>
+      <link rel="stylesheet" href="/c.css">
+      <div style="background:url(&#039;/bg.jpg&#039;)"></div>
+      <style>.x{background:url("/s.svg")}</style>`
+    expect(assetRefs(html).sort()).toEqual(
+      [
+        '/a.png',
+        '/a-1.png',
+        '/a-2.png',
+        '/p.jpg',
+        '/v.mp4',
+        '/s.js',
+        '/c.css',
+        '/bg.jpg',
+        '/s.svg',
+      ].sort()
+    )
+  })
+
+  it('skips what a browser with JavaScript on never fetches', () => {
+    const html = `
+      <noscript><img src="//cdn.example.org/badge.gif"></noscript>
+      <script>var u = "<img src='//cdn.example.org/x.png'>"</script>
+      <!-- <img src="//cdn.example.org/old.png"> -->
+      <link rel="preconnect" href="https://cdn.example.org">
+      <link rel="dns-prefetch" href="https://cdn.example.org">
+      <a href="https://example.org/page">link</a>
+      <img src="data:image/gif;base64,R0lGOD">`
+    expect(assetRefs(html)).toEqual([])
+  })
+
+  it('decodes HTML entities in attribute URLs', () => {
+    expect(assetRefs('<img src="/a.jpg?s=1&#038;d=mm">')).toEqual(['/a.jpg?s=1&d=mm'])
+  })
+})
+
+describe('checkRef', () => {
+  const ctx = (files: string[], basePath = '') => ({
+    pagePath: `${basePath}/news/post/`,
+    basePath,
+    exists: (p: string) => files.includes(p),
+  })
+
+  it('flags an off-site host the CSP does not name', () => {
+    expect(checkRef('//cdn.tutors.com/a.png', ctx([]))).toBe('off-site //cdn.tutors.com/a.png')
+  })
+
+  it('allows the analytics and widget hosts', () => {
+    expect(checkRef('https://www.googletagmanager.com/gtm.js', ctx([]))).toBeUndefined()
+    expect(checkRef('https://widgets.guidestar.org/w.js', ctx([]))).toBeUndefined()
+  })
+
+  it('resolves same-origin paths against the page and the base path', () => {
+    const files = ['/img/a.png', '/news/b.png']
+    expect(checkRef('/img/a.png', ctx(files))).toBeUndefined()
+    expect(checkRef('../b.png', ctx(files))).toBeUndefined()
+    expect(checkRef('/base/img/a.png', ctx(files, '/base'))).toBeUndefined()
+    expect(checkRef('/img/missing.png', ctx(files))).toBe('missing /img/missing.png')
+  })
+
+  it('flags a path that escapes the base path', () => {
+    expect(checkRef('../../../wp-content/x.svg', ctx([], '/base'))).toBe(
+      'outside the base path ../../../wp-content/x.svg'
+    )
+  })
+})
+
+describe('checkOut', () => {
+  let out = ''
+  beforeEach(() => {
+    out = mkdtempSync(join(tmpdir(), 'asset-origins-'))
+    mkdirSync(join(out, 'about'))
+    mkdirSync(join(out, '_ffc-assets'))
+    writeFileSync(join(out, '_ffc-assets', 'logo.png'), '')
+    writeFileSync(join(out, '_ffc-assets', 'embed.html'), '<img src="//cdn.example.org/x.png">')
+  })
+  afterEach(() => rmSync(out, { recursive: true, force: true }))
+
+  it('passes a site whose assets are all local and present', () => {
+    writeFileSync(join(out, 'index.html'), '<img src="/_ffc-assets/logo.png">')
+    expect(checkOut(out).size).toBe(0)
+  })
+
+  it('groups each problem with the pages it appears on', () => {
+    const page = '<img src="//cdn.tutors.com/a.png"><img src="/_ffc-assets/gone.png">'
+    writeFileSync(join(out, 'index.html'), page)
+    writeFileSync(join(out, 'about', 'index.html'), page)
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'off-site //cdn.tutors.com/a.png': ['/about/', '/'],
+      'missing /_ffc-assets/gone.png': ['/about/', '/'],
+    })
+  })
+})

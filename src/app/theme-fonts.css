@@ -14,3 +14,11 @@
   font-display: swap;
   src: url('./fonts/merriweather/merriweather-latin-wght-normal.woff2') format('woff2');
 }
+
+@font-face {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/abril-fatface/abril-fatface-latin-400-normal.woff2') format('woff2');
+}
