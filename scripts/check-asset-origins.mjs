@@ -15,7 +15,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 export const ALLOWED_HOSTS =
-  /^(www\.googletagmanager\.com|connect\.facebook\.net|www\.zeffy\.com|widgets\.guidestar\.org|([a-z0-9-]+\.)*google-analytics\.com|([a-z0-9-]+\.)*clarity\.ms)$/
+  /^(www\.googletagmanager\.com|connect\.facebook\.net|www\.zeffy\.com|widgets\.guidestar\.org|([a-z0-9-]+\.)+google-analytics\.com|([a-z0-9-]+\.)+clarity\.ms)$/
 
 const ASSET_LINK_RELS = new Set([
   'stylesheet',
@@ -111,8 +111,8 @@ export function assetRefs(html) {
  */
 export function checkRef(ref, { pagePath, basePath, exists }) {
   if (/^(https?:)?\/\//i.test(ref)) {
-    const host = new URL(ref, 'https://site.invalid').hostname
-    return ALLOWED_HOSTS.test(host) ? undefined : `off-site ${ref}`
+    const url = new URL(ref, 'https://site.invalid')
+    return url.port === '' && ALLOWED_HOSTS.test(url.hostname) ? undefined : `off-site ${ref}`
   }
   if (ref.startsWith('#')) return undefined
   const url = new URL(ref, `https://site.invalid${pagePath}`)

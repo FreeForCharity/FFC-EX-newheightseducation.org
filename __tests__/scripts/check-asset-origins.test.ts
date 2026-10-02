@@ -84,6 +84,9 @@ describe('checkRef', () => {
       'https://evil.googletagmanager.com/x.js',
       'https://unrelated.facebook.net/x.js',
       'https://foo.zeffy.com/x.js',
+      'https://google-analytics.com/g.js',
+      'https://clarity.ms/c.js',
+      'https://www.googletagmanager.com:444/gtm.js',
     ]) {
       expect(checkRef(ref, ctx([]))).toBe(`off-site ${ref}`)
     }
