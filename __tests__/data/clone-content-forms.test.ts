@@ -69,6 +69,15 @@ describe('captured forms (#45)', () => {
     expect(missing.map((p) => p.name)).toEqual([])
   })
 
+  it('gives the restored search inputs an accessible name', () => {
+    const unnamed = pages.filter(({ html }) =>
+      [...html.matchAll(/<input\b[^>]*\bid="(?:s|mk-fullscreen-search-input)"[^>]*>/g)].some(
+        ([tag]) => !/\baria-label="[^"]+"/.test(tag)
+      )
+    )
+    expect(unnamed.map((p) => p.name)).toEqual([])
+  })
+
   it('still replaces contact forms with the mailto block', () => {
     const contact = pages.find((p) => p.name === 'contact-us.html')
     expect(contact?.html).toContain(FALLBACK)
