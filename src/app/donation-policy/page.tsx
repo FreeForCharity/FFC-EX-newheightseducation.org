@@ -4,7 +4,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 import { siteConfig } from '@/lib/site.config'
 
 const PAGE_NAME = 'Donation Policy'
-const CANONICAL_PATH = '/donation-policy'
+const CANONICAL_PATH = '/donation-policy/'
 
 // Bare page name as title (the root layout template appends the brand);
 // per-page OG/Twitter handling is documented in src/lib/page-metadata.ts.

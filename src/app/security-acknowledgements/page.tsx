@@ -6,7 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 import { siteConfig } from '@/lib/site.config'
 
 const PAGE_NAME = 'Security Acknowledgements'
-const CANONICAL_PATH = '/security-acknowledgements'
+const CANONICAL_PATH = '/security-acknowledgements/'
 
 // Bare page name as title (the root layout template appends the brand);
 // per-page OG/Twitter handling is documented in src/lib/page-metadata.ts.
