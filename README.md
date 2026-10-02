@@ -946,9 +946,7 @@ For comprehensive guides and documentation:
 
 ### Feature Implementation Guides
 
-- **[FACEBOOK_EVENTS_SUMMARY.md](./FACEBOOK_EVENTS_SUMMARY.md)** - 📋 Executive summary and decision guide for Facebook Events integration
-- **[FACEBOOK_EVENTS_REQUIREMENTS.md](./FACEBOOK_EVENTS_REQUIREMENTS.md)** - Complete requirements analysis for Facebook Events integration
-- **[FACEBOOK_EVENTS_SETUP.md](./FACEBOOK_EVENTS_SETUP.md)** - Step-by-step implementation guide for adding Facebook Events section
+- **[EVENTS_SETUP.md](./EVENTS_SETUP.md)** - Setup guide for the Events section (Google Calendar, Microsoft 365 and Facebook)
 
 ### Troubleshooting & Planning
 

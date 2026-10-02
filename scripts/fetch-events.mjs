@@ -556,14 +556,14 @@ async function main() {
     // snapshot (the section then self-hides on the next build, per the
     // visibility predicate). Only rewrite if the
     // current snapshot actually has events (to avoid pointless commit
-    // churn on every scheduled run for a template that ships with no
+    // churn on every refresh run for a template that ships with no
     // sources configured).
     const existing = await readExistingSnapshot()
     if (existing.events.length === 0) {
       console.log('[events] No sources configured; snapshot already empty.')
       return
     }
-    // Only the scheduled refresh workflow may clear a populated snapshot
+    // Only the refresh workflow may clear a populated snapshot
     // (EVENTS_REFRESH_CONTEXT=1). Every other caller - above all `prebuild`
     // in CI/deploy, which runs without the EVENTS_* secrets - must leave the
     // committed snapshot untouched, or a secret-less production build would
@@ -613,7 +613,7 @@ async function main() {
 
   // If every source errored, leave the snapshot alone — retention has
   // already preserved whatever was there, and bumping `updatedAt` would
-  // both create a commit per 6-hour cron run during an outage and
+  // both create a commit per refresh run during an outage and
   // misleadingly tell visitors the data refreshed when nothing did.
   const allFailed = results.every((r) => !r.ok)
   if (allFailed) {
@@ -636,7 +636,7 @@ main().catch((err) => {
   console.error(`[events] Unexpected failure: ${scrubSecrets(err.message ?? String(err), secrets)}`)
   // Two callers, two contracts. As `prebuild`, an unexpected crash must not
   // break the site build — the committed snapshot stays in place and the
-  // build proceeds. In the scheduled refresh workflow, exit 0 would make a
+  // build proceeds. In the refresh workflow, exit 0 would make a
   // crashed refresh indistinguishable from a quiet one: no PR opens, the
   // run stays green, and the outage is invisible. The workflow sets
   // EVENTS_FAIL_ON_ERROR=1 so the crash turns the run red instead.
