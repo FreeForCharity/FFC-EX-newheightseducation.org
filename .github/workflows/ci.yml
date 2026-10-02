@@ -79,6 +79,9 @@ jobs:
         # Reuses the build above — fails if shipped JS exceeds the gzipped budget.
         run: pnpm run check:bundle
 
+      - name: Check every asset is served from the site
+        run: pnpm run check:assets
+
       - name: Run E2E tests
         run: pnpm run test:e2e
         env:
