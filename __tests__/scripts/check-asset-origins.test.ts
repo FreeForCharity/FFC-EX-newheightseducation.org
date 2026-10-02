@@ -51,6 +51,18 @@ describe('assetRefs', () => {
     expect(assetRefs(html)).toEqual([])
   })
 
+  it('splits srcset candidates separated by a bare comma', () => {
+    expect(
+      assetRefs('<img srcset="data:image/png;base64,AAA= 1x,//cdn.example.org/b.png 2x">')
+    ).toEqual(['//cdn.example.org/b.png'])
+    expect(assetRefs('<img srcset="/a.png 1x,/b.png 2x,/c.png, /d.png">')).toEqual([
+      '/a.png',
+      '/b.png',
+      '/c.png',
+      '/d.png',
+    ])
+  })
+
   it('decodes HTML entities in attribute URLs', () => {
     expect(assetRefs('<img src="/a.jpg?s=1&#038;d=mm">')).toEqual(['/a.jpg?s=1&d=mm'])
   })
@@ -65,6 +77,18 @@ describe('checkRef', () => {
 
   it('flags an off-site host the CSP does not name', () => {
     expect(checkRef('//cdn.tutors.com/a.png', ctx([]))).toBe('off-site //cdn.tutors.com/a.png')
+  })
+
+  it('allows only the hosts the CSP names, not their sibling subdomains', () => {
+    for (const ref of [
+      'https://evil.googletagmanager.com/x.js',
+      'https://unrelated.facebook.net/x.js',
+      'https://foo.zeffy.com/x.js',
+    ]) {
+      expect(checkRef(ref, ctx([]))).toBe(`off-site ${ref}`)
+    }
+    expect(checkRef('https://region1.google-analytics.com/g.js', ctx([]))).toBeUndefined()
+    expect(checkRef('https://c.clarity.ms/c.js', ctx([]))).toBeUndefined()
   })
 
   it('allows the analytics and widget hosts', () => {

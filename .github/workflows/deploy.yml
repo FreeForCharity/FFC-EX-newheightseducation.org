@@ -110,6 +110,11 @@ jobs:
           # whether public/CNAME exists.
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
 
+      - name: Check every asset is served from the site
+        run: pnpm run check:assets
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
+
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v5
         with:

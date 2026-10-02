@@ -15,7 +15,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 export const ALLOWED_HOSTS =
-  /(^|\.)(googletagmanager\.com|google-analytics\.com|clarity\.ms|facebook\.net|zeffy\.com)$|^widgets\.guidestar\.org$/
+  /^(www\.googletagmanager\.com|connect\.facebook\.net|www\.zeffy\.com|widgets\.guidestar\.org|([a-z0-9-]+\.)*google-analytics\.com|([a-z0-9-]+\.)*clarity\.ms)$/
 
 const ASSET_LINK_RELS = new Set([
   'stylesheet',
@@ -39,11 +39,30 @@ const decode = (value) =>
     .replace(/&#0?38;|&amp;/g, '&')
     .trim()
 
-const srcsetUrls = (value) =>
-  value
-    .split(/,\s+/)
-    .map((part) => part.trim().split(/\s+/)[0])
-    .filter(Boolean)
+// Per the HTML srcset parsing rules: a URL runs to whitespace, trailing commas
+// end a candidate, and descriptors run to the next comma outside parentheses.
+function srcsetUrls(value) {
+  const urls = []
+  let i = 0
+  while (i < value.length) {
+    while (i < value.length && /[\s,]/.test(value[i])) i++
+    let url = ''
+    while (i < value.length && !/\s/.test(value[i])) url += value[i++]
+    if (!url) break
+    if (url.endsWith(',')) {
+      urls.push(url.replace(/,+$/, ''))
+      continue
+    }
+    urls.push(url)
+    let depth = 0
+    while (i < value.length && !(value[i] === ',' && depth === 0)) {
+      if (value[i] === '(') depth++
+      else if (value[i] === ')') depth = Math.max(0, depth - 1)
+      i++
+    }
+  }
+  return urls.filter(Boolean)
+}
 
 const cssUrls = (css) =>
   [...css.matchAll(/url\(\s*(?:"([^"]*)"|'([^']*)'|([^)'"]*))\s*\)/gi)].map(
