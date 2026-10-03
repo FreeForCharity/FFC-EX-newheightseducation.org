@@ -14,7 +14,8 @@
  *      trap) at the path it is served from, and `og:url` agrees with it.
  *   3. Every indexable page has og:title, og:description, og:image and a
  *      twitter:card.
- *   4. sitemap.xml lists exactly the indexable pages.
+ *   4. sitemap.xml lists exactly the indexable pages, and robots.txt points
+ *      at it under the base path.
  *
  * Run: `npm run build` first, then `node scripts/verify-build.mjs`
  * (or `npm run verify:build`). Exits non-zero on any violation.
@@ -113,6 +114,19 @@ for (const page of pages) {
 
   for (const key of SOCIAL) {
     if (!metaContent(html, key)) errors.push(`${rel}: missing ${key}.`)
+  }
+}
+
+let robots = ''
+try {
+  robots = await readFile(join(OUT, 'robots.txt'), 'utf8')
+} catch {
+  errors.push('out/robots.txt: missing.')
+}
+if (robots) {
+  const sitemapLine = robots.match(/^sitemap:\s*(\S+)/im)?.[1]
+  if (pathOf(sitemapLine) !== `${BASE_PATH}/sitemap.xml`) {
+    errors.push(`robots.txt: Sitemap ${sitemapLine} is not ${BASE_PATH}/sitemap.xml.`)
   }
 }
 
