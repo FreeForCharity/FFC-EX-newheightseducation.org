@@ -159,14 +159,15 @@ export function pageCount(url, html) {
   return Math.max(...counts)
 }
 
-async function paginated(url, html) {
-  const pages = []
-  for (let n = 2; n <= pageCount(url, html); n++) {
-    const pageUrl = `${url.replace(/\/?$/, '/')}page/${n}/`
-    const res = await get(pageUrl)
-    if (res.ok) pages.push({ url: pageUrl, html: await res.text() })
-  }
-  return pages
+const archivePageUrls = (url, html) =>
+  Array.from(
+    { length: pageCount(url, html) - 1 },
+    (_, i) => `${url.replace(/\/?$/, '/')}page/${i + 2}/`
+  )
+
+async function fetchPage(url) {
+  const res = await get(url)
+  return { url, status: res.status, html: res.ok ? await res.text() : '' }
 }
 
 /** dFlip books: the inline `df_option_<id>` object whose `source` is the PDF. */
@@ -175,7 +176,9 @@ export function dflipSources(html) {
   for (const m of html.matchAll(/(?:var\s+|window\.)(df_option_\d+)\s*=\s*(\{[\s\S]*?\});/g)) {
     try {
       const option = JSON.parse(m[2])
-      if (option.source) books.push({ option: m[1], source: option.source })
+      // A book saved with no PDF is recorded too, so a missing source reads as
+      // the live site's state rather than a gap in the archive.
+      books.push({ option: m[1], source: option.source || null })
     } catch {
       books.push({ option: m[1], unparsed: m[2].slice(0, 500) })
     }
@@ -242,21 +245,33 @@ export async function crawl(host, out) {
   const index = join(out, 'html', `${host}.json`)
   const saved = existsSync(index) ? JSON.parse(readFileSync(index, 'utf8')) : []
   const done = new Map(saved.filter((p) => p.status === 200).map((p) => [p.url, p]))
-  const pages = [...done.values()].map((p) => ({
+  let pages = [...done.values()].map((p) => ({
     ...p,
     html: readFileSync(join(out, htmlPath(p.url)), 'utf8'),
   }))
-  // Reuse what was saved, but retry anything that failed last time.
+  // Reuse what was saved, but retry anything that failed last time, and any
+  // archive page a saved parent links to that is missing.
+  const isPaged = (url) => /\/page\/\d+\/$/.test(url)
   const urls = saved.length
-    ? saved.filter((p) => !done.has(p.url) && !/\/page\/\d+\/$/.test(p.url)).map((p) => p.url)
+    ? [
+        ...saved.filter((p) => !done.has(p.url)).map((p) => p.url),
+        ...pages
+          .filter((p) => !isPaged(p.url))
+          .flatMap((p) => archivePageUrls(p.url, p.html))
+          .filter((u) => !saved.some((p) => p.url === u)),
+      ]
     : await pageUrls(host)
   await pool(urls, Number(process.env.ARCHIVE_POOL || 6), async (url) => {
-    const res = await get(url)
-    const html = await res.text()
-    pages.push({ url, status: res.status, html })
-    for (const p of await paginated(url, html)) pages.push({ ...p, status: 200 })
+    const page = await fetchPage(url)
+    pages.push(page)
+    if (isPaged(url) || page.status !== 200) return
+    for (const child of archivePageUrls(url, page.html)) {
+      if (!done.has(child)) pages.push(await fetchPage(child))
+    }
   })
-  pages.sort((a, b) => a.url.localeCompare(b.url))
+  const byUrl = new Map()
+  for (const p of pages) if (!byUrl.has(p.url) || p.status === 200) byUrl.set(p.url, p)
+  pages = [...byUrl.values()].sort((a, b) => a.url.localeCompare(b.url))
   for (const p of pages) write(join(out, htmlPath(p.url)), p.html)
   writeJson(
     index,
@@ -387,11 +402,13 @@ if (invokedDirectly) {
   const crawled = {}
   for (const host of HOSTS) {
     const pages = await crawl(host, out)
+    const ok = pages.filter((p) => p.status === 200)
     crawled[host] = {
-      pages: pages.length,
-      paginated: pages.filter((p) => /\/page\/\d+\/$/.test(p.url)).length,
+      pages: ok.length,
+      paginated: ok.filter((p) => /\/page\/\d+\/$/.test(p.url)).length,
+      failed: pages.filter((p) => p.status !== 200).map(({ url, status }) => ({ url, status })),
     }
-    for (const { url, html } of pages) {
+    for (const { url, html } of ok) {
       for (const book of dflipSources(html)) {
         const local =
           book.source &&

@@ -14,7 +14,7 @@ Small JSON maps are in this folder. Large files are release assets:
 | ------------------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Rendered HTML, 999 pages | `live-html-2026-10-02.zip`                                                                             | Each host's Yoast sitemap plus `wp/v2/pages` and `wp/v2/posts`, and each archive's `/page/N/` pages (186 of them) | [#52](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/52), [#62](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/62) |
 | Screenshots, 108         | `live-screenshots-2026-10-02-scrolled.zip`                                                             | 36 URLs, one per template and section, full page at 1440, 768 and 390 px, scrolled first so lazy images load      | [#62](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/62)                                                                                    |
-| Flipbook sources, 84     | [`dflip-sources.json`](./dflip-sources.json)                                                           | The inline `df_option_*` object on each `publications.` book page                                                 | [#51](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/51)                                                                                    |
+| Flipbook sources, 85     | [`dflip-sources.json`](./dflip-sources.json)                                                           | The inline `df_option_*` object on each `publications.` book page                                                 | [#51](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/51)                                                                                    |
 | Forms, 130               | [`forms.json`](./forms.json)                                                                           | Every `<form>` in the rendered HTML: action, fields, labels, required flags and options                           | [#53](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/53)                                                                                    |
 | Products, 94             | [`products.json`](./products.json)                                                                     | `wc/store/v1/products`, with all 1,220 variations                                                                 | [#54](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/54)                                                                                    |
 | Media libraries, 2,091   | `media-*.zip`, listed in [`media-manifest.<host>.json`](./media-manifest.newheightseducation.org.json) | `wp/v2/media`, saving the original upload where WordPress also kept a scaled copy                                 | [#50](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/50)                                                                                    |
@@ -26,6 +26,7 @@ Every media file and flipbook PDF has a `sha256` and a byte count in its manifes
 ## Things to know
 
 - **Flipbook PDFs.**
+  - 84 of the 85 flipbooks have a PDF. `/books/2014-newsletter/` was saved on the live site with no source (`df_option_6226` has no `source`), so it is recorded with `source: null`. That's a broken original, not a gap in the archive.
   - Only 7 of the 84 are in the [#40](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/pull/40) capture. All 84 are in `media-publications.newheightseducation.org-*.zip`.
   - `dflip-sources.json` maps each book page to its PDF, its expected path under `_ffc-assets/` and its hash.
 - **The media API hides some items.**
@@ -34,7 +35,9 @@ Every media file and flipbook PDF has a `sha256` and a byte count in its manifes
 - **Form recipients aren't public.**
   - `forms.json` has what a visitor sees. There are 14 distinct Caldera forms: 6 on the apex, 7 on school and 1 on radio. The other entries are search, store, PayPal and sign-in forms.
   - Where each form's submissions go is only in the WordPress admin. It's asked on [#42](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/42) for [#53](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/53).
-- **One page returned 500:** `publications.newheightseducation.org/local-portfolio/`. Its status is recorded in `html/<host>.json` inside the HTML zip.
+- **Pages that failed are listed** in [`crawl.json`](./crawl.json):
+  - `publications.newheightseducation.org/local-portfolio/` returns 500.
+  - `author/m-anderson/` advertises 25 pages, but pages 12 to 25 return 404 on the live site.
 - **Bluehost rate limiting.** After about 1,000 requests, Bluehost answered with a cookie challenge (HTTP 409) for about half an hour. The media pass ran afterwards at one request every 2 seconds.
 
 ## How to re-run
