@@ -1,30 +1,22 @@
 import { createHash } from 'node:crypto'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
-import { join, extname } from 'node:path'
+import { join } from 'node:path'
+import recompressed from './media-recompressed.json'
 
 /**
  * Each media-library file the site serves at its original path must be the
  * file the live site had: byte-identical to the sha256 in the live archive's
- * media manifest (#41), or a recompression of it (same format, no larger) made
- * to keep the export under the Pages size limit.
+ * media manifest (#41), or the reviewed recompression of it (made to keep the
+ * export under the Pages size limit) whose hash is pinned in
+ * media-recompressed.json. The archived original stays in the release.
  */
 
 const ROOT = join(__dirname, '..', '..')
 const ARCHIVE = join(ROOT, 'docs', 'live-archive', '2026-10-02')
 const ASSETS = join(ROOT, 'public', '_ffc-assets')
+const PINNED: Record<string, string> = recompressed
 
 type Entry = { url: string; bytes: number; sha256: string }
-
-const MAGIC: Record<string, (b: Buffer) => boolean> = {
-  '.pdf': (b) => b.subarray(0, 5).toString('latin1') === '%PDF-',
-  '.jpg': (b) => b[0] === 0xff && b[1] === 0xd8,
-  '.jpeg': (b) => b[0] === 0xff && b[1] === 0xd8,
-  '.png': (b) => b.subarray(1, 4).toString('latin1') === 'PNG',
-  '.gif': (b) => b.subarray(0, 3).toString('latin1') === 'GIF',
-  '.webp': (b) =>
-    b.subarray(0, 4).toString('latin1') === 'RIFF' &&
-    b.subarray(8, 12).toString('latin1') === 'WEBP',
-}
 
 const served = readdirSync(ARCHIVE)
   .filter((f) => f.startsWith('media-manifest.'))
@@ -32,19 +24,23 @@ const served = readdirSync(ARCHIVE)
   .map((entry) => ({ ...entry, local: join(ASSETS, entry.url.replace(/^https?:\/\//, '')) }))
   .filter((entry) => existsSync(entry.local))
 
+const sha256 = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex')
+
 describe('media served at its original path', () => {
   it('finds files to check', () => {
     expect(served.length).toBeGreaterThan(100)
   })
 
-  it('matches the live archive, or is a smaller copy of the same format', () => {
-    const wrong = served.flatMap(({ url, bytes, sha256, local }) => {
-      const body = readFileSync(local)
-      if (createHash('sha256').update(body).digest('hex') === sha256) return []
-      const isFormat = MAGIC[extname(local).toLowerCase()]
-      if (isFormat?.(body) && body.length <= bytes) return []
-      return [{ url, archived: bytes, served: body.length }]
+  it('matches the live archive or its pinned recompression', () => {
+    const wrong = served.flatMap(({ url, sha256: archived, local }) => {
+      const actual = sha256(local)
+      return actual === archived || actual === PINNED[url] ? [] : [{ url, actual }]
     })
     expect(wrong).toEqual([])
+  })
+
+  it('pins only recompressions of files the site still serves', () => {
+    const urls = new Set(served.map(({ url }) => url))
+    expect(Object.keys(PINNED).filter((url) => !urls.has(url))).toEqual([])
   })
 })
