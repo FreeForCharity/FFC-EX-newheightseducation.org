@@ -26,7 +26,6 @@ import { fileURLToPath } from 'node:url'
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(SCRIPT_DIR, '..')
-const OUT = join(ROOT, 'out')
 
 // Error/utility pages are not indexable content, so the invariants don't apply.
 const SKIP = new Set(['404.html', '_not-found.html'])
@@ -53,8 +52,6 @@ async function walkHtml(dir, results = []) {
   return results
 }
 
-const errors = []
-const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '')
 const SOCIAL = ['og:title', 'og:description', 'og:image', 'twitter:card']
 
 const metaContent = (html, key) => {
@@ -66,7 +63,7 @@ const metaContent = (html, key) => {
 }
 
 // The path of an absolute http(s) URL with no query or fragment, else undefined.
-const pathOf = (url) => {
+export const pathOf = (url) => {
   try {
     const { protocol, search, hash, pathname } = new URL(url)
     return /^https?:$/.test(protocol) && !search && !hash ? pathname : undefined
@@ -75,86 +72,106 @@ const pathOf = (url) => {
   }
 }
 
-const routeOf = (page) => {
-  const rel = relative(OUT, page).split('\\').join('/')
-  return `${BASE_PATH}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '/')}`
-}
+const readOptional = (file) => readFile(file, 'utf8').catch(() => undefined)
 
-try {
-  await stat(OUT)
-} catch {
-  console.error('\n❌ out/ not found. Run `npm run build` before verify:build.')
-  process.exit(1)
-}
-
-const pages = await walkHtml(OUT)
-if (pages.length === 0) {
-  console.error('\n❌ No HTML pages found under out/. Did the build succeed?')
-  process.exit(1)
-}
-
-for (const page of pages) {
-  const rel = relative(ROOT, page)
-  const html = await readFile(page, 'utf8')
-
-  const h1Count = (html.match(/<h1[\s>]/g) || []).length
-  if (h1Count !== 1) {
-    errors.push(`${rel}: expected exactly one <h1>, found ${h1Count}.`)
+/** Every violation in the static export at `out`, served under `basePath`. */
+export async function verifyBuild(out, basePath = '') {
+  const errors = []
+  const routeOf = (page) => {
+    const rel = relative(out, page).split('\\').join('/')
+    return `${basePath}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '/')}`
   }
 
-  const canonical = html.match(/<link[^>]+rel="canonical"[^>]*href="([^"]*)"/i)?.[1]
-  if (!canonical) {
-    errors.push(`${rel}: missing <link rel="canonical">.`)
+  const pages = await walkHtml(out)
+  for (const page of pages) {
+    const rel = relative(out, page).split('\\').join('/')
+    const html = await readFile(page, 'utf8')
+
+    const h1Count = (html.match(/<h1[\s>]/g) || []).length
+    if (h1Count !== 1) {
+      errors.push(`${rel}: expected exactly one <h1>, found ${h1Count}.`)
+    }
+
+    const canonical = html.match(/<link[^>]+rel="canonical"[^>]*href="([^"]*)"/i)?.[1]
+    if (!canonical) {
+      errors.push(`${rel}: missing <link rel="canonical">.`)
+    } else {
+      if (pathOf(canonical) !== routeOf(page)) {
+        errors.push(`${rel}: canonical ${canonical} is not the path it is served at.`)
+      }
+      if (metaContent(html, 'og:url') !== canonical) {
+        errors.push(`${rel}: og:url does not match the canonical.`)
+      }
+    }
+
+    for (const key of SOCIAL) {
+      if (!metaContent(html, key)) errors.push(`${rel}: missing ${key}.`)
+    }
+  }
+
+  const robots = await readOptional(join(out, 'robots.txt'))
+  if (robots === undefined) {
+    errors.push('robots.txt: missing.')
   } else {
-    if (pathOf(canonical) !== routeOf(page)) {
-      errors.push(`${rel}: canonical ${canonical} is not the path it is served at.`)
-    }
-    if (metaContent(html, 'og:url') !== canonical) {
-      errors.push(`${rel}: og:url does not match the canonical.`)
+    const sitemapUrl = robots.match(/^sitemap:\s*(\S+)/im)?.[1]
+    if (pathOf(sitemapUrl) !== `${basePath}/sitemap.xml`) {
+      errors.push(`robots.txt: Sitemap ${sitemapUrl} is not ${basePath}/sitemap.xml.`)
     }
   }
 
-  for (const key of SOCIAL) {
-    if (!metaContent(html, key)) errors.push(`${rel}: missing ${key}.`)
+  const sitemap = await readOptional(join(out, 'sitemap.xml'))
+  if (sitemap === undefined) {
+    errors.push('sitemap.xml: missing.')
+  } else {
+    const locs = [...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1])
+    const listed = new Set()
+    for (const loc of locs) {
+      const route = pathOf(loc)
+      if (route === undefined) errors.push(`sitemap.xml: ${loc} is not a plain http(s) URL.`)
+      else if (listed.has(route)) errors.push(`sitemap.xml: lists ${route} more than once.`)
+      listed.add(route)
+    }
+    const served = new Set(pages.map(routeOf))
+    for (const route of served) {
+      if (!listed.has(route)) errors.push(`sitemap.xml: missing ${route}.`)
+    }
+    for (const route of listed) {
+      if (route !== undefined && !served.has(route)) {
+        errors.push(`sitemap.xml: lists ${route}, which is not a page.`)
+      }
+    }
   }
+
+  return { pages: pages.length, errors }
 }
 
-let robots = ''
-try {
-  robots = await readFile(join(OUT, 'robots.txt'), 'utf8')
-} catch {
-  errors.push('out/robots.txt: missing.')
-}
-if (robots) {
-  const sitemapLine = robots.match(/^sitemap:\s*(\S+)/im)?.[1]
-  if (pathOf(sitemapLine) !== `${BASE_PATH}/sitemap.xml`) {
-    errors.push(`robots.txt: Sitemap ${sitemapLine} is not ${BASE_PATH}/sitemap.xml.`)
+async function main() {
+  const out = join(ROOT, 'out')
+  try {
+    await stat(out)
+  } catch {
+    console.error('\n❌ out/ not found. Run `npm run build` before verify:build.')
+    process.exit(1)
   }
-}
 
-let sitemap = ''
-try {
-  sitemap = await readFile(join(OUT, 'sitemap.xml'), 'utf8')
-} catch {
-  errors.push('out/sitemap.xml: missing.')
-}
-if (sitemap) {
-  const listed = new Set([...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => pathOf(m[1])))
-  const served = new Set(pages.map(routeOf))
-  for (const route of served) if (!listed.has(route)) errors.push(`sitemap.xml: missing ${route}.`)
-  for (const route of listed)
-    if (!served.has(route)) errors.push(`sitemap.xml: lists ${route}, which is not a page.`)
-}
+  const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '')
+  const { pages, errors } = await verifyBuild(out, basePath)
+  if (pages === 0) {
+    console.error('\n❌ No HTML pages found under out/. Did the build succeed?')
+    process.exit(1)
+  }
+  if (errors.length) {
+    console.error('\n❌ Built-output verification failed:')
+    for (const e of errors) console.error('  - ' + e)
+    console.error(
+      '\nFix the page source (one <h1> per page; per-page alternates.canonical and openGraph) and rebuild.'
+    )
+    process.exit(1)
+  }
 
-if (errors.length) {
-  console.error('\n❌ Built-output verification failed:')
-  for (const e of errors) console.error('  - ' + e)
-  console.error(
-    '\nFix the page source (one <h1> per page; per-page alternates.canonical and openGraph) and rebuild.'
+  console.log(
+    `\n✅ Built-output verified — ${pages} pages each have one <h1>, their own canonical and social tags, and are all in the sitemap.`
   )
-  process.exit(1)
 }
 
-console.log(
-  `\n✅ Built-output verified — ${pages.length} pages each have one <h1>, their own canonical and social tags, and are all in the sitemap.`
-)
+if (process.argv[1] === fileURLToPath(import.meta.url)) main()
