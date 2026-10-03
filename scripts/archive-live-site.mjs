@@ -99,10 +99,10 @@ const decode = (s) =>
   s
     .replace(/&#0?39;|&#8217;|&apos;/g, "'")
     .replace(/&quot;/g, '"')
-    .replace(/&#0?38;|&amp;/g, '&')
     .replace(/&nbsp;|&#160;/g, ' ')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/&#0?38;|&amp;/g, '&')
 
 const text = (html) =>
   decode(html.replace(/<[^>]*>/g, ' '))
@@ -238,17 +238,19 @@ const formKey = (form) =>
     ? form.id
     : `${form.id || ''}|${form.action || ''}|${form.fields.map((f) => f.name).join(',')}`
 
-async function crawl(host, out) {
+export async function crawl(host, out) {
   const index = join(out, 'html', `${host}.json`)
-  if (existsSync(index)) {
-    return JSON.parse(readFileSync(index, 'utf8')).map((p) => ({
-      ...p,
-      html: readFileSync(join(out, htmlPath(p.url)), 'utf8'),
-    }))
-  }
-  const urls = await pageUrls(host)
-  const pages = []
-  await pool(urls, 6, async (url) => {
+  const saved = existsSync(index) ? JSON.parse(readFileSync(index, 'utf8')) : []
+  const done = new Map(saved.filter((p) => p.status === 200).map((p) => [p.url, p]))
+  const pages = [...done.values()].map((p) => ({
+    ...p,
+    html: readFileSync(join(out, htmlPath(p.url)), 'utf8'),
+  }))
+  // Reuse what was saved, but retry anything that failed last time.
+  const urls = saved.length
+    ? saved.filter((p) => !done.has(p.url) && !/\/page\/\d+\/$/.test(p.url)).map((p) => p.url)
+    : await pageUrls(host)
+  await pool(urls, Number(process.env.ARCHIVE_POOL || 6), async (url) => {
     const res = await get(url)
     const html = await res.text()
     pages.push({ url, status: res.status, html })
@@ -303,6 +305,26 @@ async function media(host, out) {
     }
   )
   return entries.sort((a, b) => a.id - b.id || a.url.localeCompare(b.url))
+}
+
+/** Each flipbook's PDF, saved beside the media and hashed. Many are attached
+ * to posts `wp/v2/media` does not list, so they are fetched by their URL. */
+export async function flipbookPdfs(books, out) {
+  return pool(books, Number(process.env.ARCHIVE_POOL || 6), async (book) => {
+    if (!book.source) return book
+    const { host, pathname } = new URL(book.source)
+    const path = join(out, 'media', host, decodeURIComponent(pathname))
+    let buf
+    if (existsSync(path)) {
+      buf = readFileSync(path)
+    } else {
+      const res = await get(book.source)
+      if (!res.ok) return { ...book, status: res.status }
+      buf = Buffer.from(await res.arrayBuffer())
+      write(path, buf)
+    }
+    return { ...book, bytes: buf.length, sha256: sha256(buf) }
+  })
 }
 
 async function products() {
@@ -383,7 +405,7 @@ if (invokedDirectly) {
       }
     }
   }
-  writeJson(join(data, 'dflip-sources.json'), books)
+  writeJson(join(data, 'dflip-sources.json'), await flipbookPdfs(books, out))
   writeJson(
     join(data, 'forms.json'),
     [...forms.values()].map(({ pages, ...form }) =>

@@ -75,20 +75,34 @@ if (invokedDirectly) {
   const browser = await chromium.launch()
   const index = []
   for (const url of URLS) {
+    // One context per URL, so the three viewports share its cache.
+    const ctx = await browser.newContext()
+    const page = await ctx.newPage()
     for (const [name, viewport] of Object.entries(VIEWPORTS)) {
-      const ctx = await browser.newContext({ viewport })
-      const page = await ctx.newPage()
       const file = `${slug(url)}.${name}.png`
       try {
+        await page.setViewportSize(viewport)
         const res = await page.goto(url, { waitUntil: 'load', timeout: 90000 })
-        await page.waitForTimeout(3000)
+        if (!res || !res.ok()) throw new Error(`HTTP ${res?.status()}`)
+        // Scroll to the bottom and back so lazy images and scroll-triggered
+        // backgrounds load before the full-page capture.
+        await page.evaluate(async () => {
+          for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
+            window.scrollTo(0, y)
+            await new Promise((r) => setTimeout(r, 150))
+          }
+          window.scrollTo(0, 0)
+        })
+        await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {})
+        await page.waitForTimeout(1500)
         await page.screenshot({ path: join(out, file), fullPage: true })
-        index.push({ url, viewport: name, file, status: res?.status() })
+        index.push({ url, viewport: name, file, status: res.status() })
       } catch (err) {
         index.push({ url, viewport: name, error: String(err).slice(0, 200) })
       }
-      await ctx.close()
     }
+    await ctx.close()
+    await new Promise((r) => setTimeout(r, Number(process.env.ARCHIVE_GAP_MS || 0)))
   }
   await browser.close()
   writeFileSync(join(out, 'index.json'), JSON.stringify(index, null, 2) + '\n')
