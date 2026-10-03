@@ -7,7 +7,7 @@
  * Static rather than a browser crawl so it covers every route in seconds.
  * `<noscript>` content and inline script bodies are skipped because a browser
  * with JavaScript on never requests them; preconnect and dns-prefetch hints are
- * not asset loads. URLs inside captured `.css` files are not checked yet (#50).
+ * not asset loads. Stylesheets the pages load are checked for their `url()` targets too.
  *
  * Run: `pnpm run build` first, then `pnpm run check:assets`.
  */
@@ -141,18 +141,41 @@ function walkHtml(dir, results = []) {
   return results
 }
 
+/** URLs a stylesheet loads, ignoring data URIs and fragment-only references. */
+export const stylesheetRefs = (css) =>
+  cssUrls(css.replace(/\/\*[\s\S]*?\*\//g, ''))
+    .map((ref) => ref.trim())
+    .filter((ref) => ref && !ref.startsWith('#') && !/^(data|blob|about):/i.test(ref))
+
 export function checkOut(outDir, basePath = '') {
   const exists = (path) => existsSync(join(outDir, path))
   const problems = new Map()
+  const stylesheets = new Map()
+  const report = (problem, where) => {
+    if (!problems.has(problem)) problems.set(problem, [])
+    problems.get(problem).push(where)
+  }
   for (const file of walkHtml(outDir)) {
     const rel = relative(outDir, file).split('\\').join('/')
     const route = rel.endsWith('index.html') ? rel.slice(0, -'index.html'.length) : rel
     const pagePath = `${basePath}/${route}`
     for (const ref of assetRefs(readFileSync(file, 'utf8'))) {
       const problem = checkRef(ref, { pagePath, basePath, exists })
-      if (!problem) continue
-      if (!problems.has(problem)) problems.set(problem, [])
-      problems.get(problem).push(`/${route}`)
+      if (problem) {
+        report(problem, `/${route}`)
+        continue
+      }
+      if (/^(https?:)?\/\//i.test(ref)) continue
+      const sitePath = decodeURIComponent(new URL(ref, `https://site.invalid${pagePath}`).pathname)
+      if (sitePath.endsWith('.css') && !stylesheets.has(sitePath))
+        stylesheets.set(sitePath, `/${route}`)
+    }
+  }
+  for (const [sitePath] of stylesheets) {
+    const file = join(outDir, basePath ? sitePath.slice(basePath.length) : sitePath)
+    for (const ref of stylesheetRefs(readFileSync(file, 'utf8'))) {
+      const problem = checkRef(ref, { pagePath: sitePath, basePath, exists })
+      if (problem) report(problem, sitePath)
     }
   }
   return problems

@@ -1,8 +1,8 @@
 
 .ffc-clone /* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
 div.rating-cancel,.ffc-clone div.star-rating{float:left;width:17px;height:15px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
-.ffc-clone div.rating-cancel,.ffc-clone div.rating-cancel a{background:url(delete.gif) no-repeat 0 -16px}
-.ffc-clone div.star-rating,.ffc-clone div.star-rating a{background:url(star.gif) no-repeat 0 0px}
+.ffc-clone div.rating-cancel,.ffc-clone div.rating-cancel a{background:url("data:,") no-repeat 0 -16px}
+.ffc-clone div.star-rating,.ffc-clone div.star-rating a{background:url("data:,") no-repeat 0 0px}
 .ffc-clone div.rating-cancel a,.ffc-clone div.star-rating a{display:block;width:16px;height:100%;background-position:0 0px;border:0}
 .ffc-clone div.star-rating-on a{background-position:0 -16px!important}
 .ffc-clone div.star-rating-hover a{background-position:0 -32px}
@@ -860,7 +860,7 @@ input.ui-button::-moz-focus-inner,
 }
 .ffc-clone .ui-widget-content {
 	border: 1px solid #aaaaaa;
-	background: #ffffff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x;
+	background: #ffffff url("data:,") 50% 50% repeat-x;
 	color: #222222;
 }
 .ffc-clone .ui-widget-content a {
@@ -868,7 +868,7 @@ input.ui-button::-moz-focus-inner,
 }
 .ffc-clone .ui-widget-header {
 	border: 1px solid #aaaaaa;
-	background: #cccccc url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
+	background: #cccccc url("data:,") 50% 50% repeat-x;
 	color: #222222;
 	font-weight: bold;
 }
@@ -882,7 +882,7 @@ input.ui-button::-moz-focus-inner,
 .ffc-clone .ui-widget-content .ui-state-default,
 .ffc-clone .ui-widget-header .ui-state-default {
 	border: 1px solid #d3d3d3;
-	background: #e6e6e6 url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+	background: #e6e6e6 url("data:,") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #555555;
 }
@@ -899,7 +899,7 @@ input.ui-button::-moz-focus-inner,
 .ffc-clone .ui-widget-content .ui-state-focus,
 .ffc-clone .ui-widget-header .ui-state-focus {
 	border: 1px solid #999999;
-	background: #dadada url("images/ui-bg_glass_75_dadada_1x400.png") 50% 50% repeat-x;
+	background: #dadada url("data:,") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
 }
@@ -918,7 +918,7 @@ input.ui-button::-moz-focus-inner,
 .ffc-clone .ui-widget-content .ui-state-active,
 .ffc-clone .ui-widget-header .ui-state-active {
 	border: 1px solid #aaaaaa;
-	background: #ffffff url("images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
+	background: #ffffff url("data:,") 50% 50% repeat-x;
 	font-weight: normal;
 	color: #212121;
 }
@@ -935,7 +935,7 @@ input.ui-button::-moz-focus-inner,
 .ffc-clone .ui-widget-content .ui-state-highlight,
 .ffc-clone .ui-widget-header .ui-state-highlight {
 	border: 1px solid #fcefa1;
-	background: #fbf9ee url("images/ui-bg_glass_55_fbf9ee_1x400.png") 50% 50% repeat-x;
+	background: #fbf9ee url("data:,") 50% 50% repeat-x;
 	color: #363636;
 }
 .ffc-clone .ui-state-highlight a,
@@ -947,7 +947,7 @@ input.ui-button::-moz-focus-inner,
 .ffc-clone .ui-widget-content .ui-state-error,
 .ffc-clone .ui-widget-header .ui-state-error {
 	border: 1px solid #cd0a0a;
-	background: #fef1ec url("images/ui-bg_glass_95_fef1ec_1x400.png") 50% 50% repeat-x;
+	background: #fef1ec url("data:,") 50% 50% repeat-x;
 	color: #cd0a0a;
 }
 .ffc-clone .ui-state-error a,
@@ -993,27 +993,27 @@ input.ui-button::-moz-focus-inner,
 }
 .ffc-clone .ui-icon,
 .ffc-clone .ui-widget-content .ui-icon {
-	background-image: url("images/ui-icons_222222_256x240.png");
+	background-image: url("data:,");
 }
 .ffc-clone .ui-widget-header .ui-icon {
-	background-image: url("images/ui-icons_222222_256x240.png");
+	background-image: url("data:,");
 }
 .ffc-clone .ui-state-default .ui-icon {
-	background-image: url("images/ui-icons_888888_256x240.png");
+	background-image: url("data:,");
 }
 .ffc-clone .ui-state-hover .ui-icon,
 .ffc-clone .ui-state-focus .ui-icon {
-	background-image: url("images/ui-icons_454545_256x240.png");
+	background-image: url("data:,");
 }
 .ffc-clone .ui-state-active .ui-icon {
-	background-image: url("images/ui-icons_454545_256x240.png");
+	background-image: url("data:,");
 }
 .ffc-clone .ui-state-highlight .ui-icon {
-	background-image: url("images/ui-icons_2e83ff_256x240.png");
+	background-image: url("data:,");
 }
 .ffc-clone .ui-state-error .ui-icon,
 .ffc-clone .ui-state-error-text .ui-icon {
-	background-image: url("images/ui-icons_cd0a0a_256x240.png");
+	background-image: url("data:,");
 }
 
 .ffc-clone /* positioning */
@@ -1226,14 +1226,14 @@ input.ui-button::-moz-focus-inner,
 
 .ffc-clone /* Overlays */
 .ui-widget-overlay {
-	background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
+	background: #aaaaaa url("data:,") 50% 50% repeat-x;
 	opacity: .3;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 }
 .ffc-clone .ui-widget-shadow {
 	margin: -8px 0 0 -8px;
 	padding: 8px;
-	background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
+	background: #aaaaaa url("data:,") 50% 50% repeat-x;
 	opacity: .3;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 	border-radius: 8px;
