@@ -127,7 +127,8 @@
         "type": "checkbox",
         "label": "Yes",
         "required": true,
-        "value": "Yes"
+        "value": "Yes",
+        "question": "Do you have a child that lacks access to high quality books?"
       },
       {
         "name": "fld_8768091",
@@ -391,147 +392,168 @@
         "type": "checkbox",
         "label": "Tutoring",
         "required": true,
-        "value": "Tutoring"
+        "value": "Tutoring",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1378459]",
         "type": "checkbox",
         "label": "Online Courses",
         "required": true,
-        "value": "Online Courses"
+        "value": "Online Courses",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt2056485]",
         "type": "checkbox",
         "label": "Enrichment Classes",
         "required": true,
-        "value": "Enrichment Classes"
+        "value": "Enrichment Classes",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1777045]",
         "type": "checkbox",
         "label": "Recognition Days",
         "required": true,
-        "value": "Recognition Days"
+        "value": "Recognition Days",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1602402]",
         "type": "checkbox",
         "label": "Informational Services and/or Classes",
         "required": true,
-        "value": "Informational Services and/or Classes "
+        "value": "Informational Services and/or Classes ",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1129908]",
         "type": "checkbox",
         "label": "Student Assessment",
         "required": true,
-        "value": "Student Assessment"
+        "value": "Student Assessment",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1074733]",
         "type": "checkbox",
         "label": "Student Leadership and Advisory Boards",
         "required": true,
-        "value": "Student Leadership and Advisory Boards"
+        "value": "Student Leadership and Advisory Boards",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1443280]",
         "type": "checkbox",
         "label": "Student Intern Opportunities",
         "required": true,
-        "value": "Student Intern Opportunities"
+        "value": "Student Intern Opportunities",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_7644259[opt1326000]",
         "type": "checkbox",
         "label": "Virtual Reading Program",
         "required": true,
-        "value": "Virtual Reading Program"
+        "value": "Virtual Reading Program",
+        "question": "What programs would you like to participate in?"
       },
       {
         "name": "fld_5504767[opt1351657]",
         "type": "checkbox",
         "label": "Parent Advisory Board",
         "required": false,
-        "value": "Parent Advisory Board"
+        "value": "Parent Advisory Board",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt1378459]",
         "type": "checkbox",
         "label": "Graduation Ceremonies",
         "required": false,
-        "value": "Graduation Ceremonies"
+        "value": "Graduation Ceremonies",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt2056485]",
         "type": "checkbox",
         "label": "Arts and Crafts",
         "required": false,
-        "value": "Arts and Crafts"
+        "value": "Arts and Crafts",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt1777045]",
         "type": "checkbox",
         "label": "NHEG Color Guard and/or NHEG Baton",
         "required": false,
-        "value": "NHEG Color Guard and/or NHEG Baton"
+        "value": "NHEG Color Guard and/or NHEG Baton",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt1602402]",
         "type": "checkbox",
         "label": "Fieldtrips, Events and Live Event",
         "required": false,
-        "value": "Fieldtrips, Events and Live Event"
+        "value": "Fieldtrips, Events and Live Event",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt1074733]",
         "type": "checkbox",
         "label": "Fundraising",
         "required": false,
-        "value": "Fundraising"
+        "value": "Fundraising",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt1090031]",
         "type": "checkbox",
         "label": "Home School Prep and Guidance Program/Student Schedules/Monitoring",
         "required": false,
-        "value": "Home School Prep and Guidance Program/Student Schedules/Monitoring"
+        "value": "Home School Prep and Guidance Program/Student Schedules/Monitoring",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_5504767[opt1735232]",
         "type": "checkbox",
         "label": "Home School Notification, Diploma and Transcript Template Services",
         "required": false,
-        "value": "Home School Notification, Diploma and Transcript Template Services"
+        "value": "Home School Notification, Diploma and Transcript Template Services",
+        "question": "program participation row #2"
       },
       {
         "name": "fld_7725947",
         "type": "radio",
         "label": "Yes",
         "required": false,
-        "value": "Yes"
+        "value": "Yes",
+        "question": "Are you willing to volunteer time with us"
       },
       {
         "name": "fld_7725947",
         "type": "radio",
         "label": "No",
         "required": false,
-        "value": "No"
+        "value": "No",
+        "question": "Are you willing to volunteer time with us"
       },
       {
         "name": "fld_8085098",
         "type": "radio",
         "label": "Yes",
         "required": false,
-        "value": "Yes"
+        "value": "Yes",
+        "question": "Is your family in the low income category?"
       },
       {
         "name": "fld_8085098",
         "type": "radio",
         "label": "No",
         "required": false,
-        "value": "No"
+        "value": "No",
+        "question": "Is your family in the low income category?"
       },
       {
         "name": "fld_4837141",
@@ -4523,14 +4545,16 @@
         "type": "radio",
         "label": "Yes",
         "required": false,
-        "value": "Yes"
+        "value": "Yes",
+        "question": "Veteran"
       },
       {
         "name": "fld_1671939",
         "type": "radio",
         "label": "No",
         "required": false,
-        "value": "No"
+        "value": "No",
+        "question": "Veteran"
       },
       {
         "name": "fld_7360175",
@@ -5159,7 +5183,8 @@
         "type": "checkbox",
         "label": "Sign Up Now",
         "required": false,
-        "value": "Sign Up Now"
+        "value": "Sign Up Now",
+        "question": "Show Mailing List"
       },
       {
         "name": "fld_9970286",

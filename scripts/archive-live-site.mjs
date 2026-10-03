@@ -192,6 +192,18 @@ export function formsIn(html) {
   for (const m of html.matchAll(/(<form\b[^>]*>)([\s\S]*?)<\/form>/gi)) {
     const [, open, body] = m
     const labels = new Map()
+    // The prompt for a radio or checkbox group: Caldera's `<label id="<field>Label">`,
+    // or a fieldset legend. Each option's own label is only "Yes", "No" and so on.
+    const questions = new Map()
+    for (const q of body.matchAll(/<label\b[^>]*\sid="([\w-]+)Label"[^>]*>([\s\S]*?)<\/label>/gi)) {
+      questions.set(q[1], text(q[2]).replace(/\s*\*$/, ''))
+    }
+    for (const f of body.matchAll(
+      /<fieldset\b[\s\S]*?<legend\b[^>]*>([\s\S]*?)<\/legend>([\s\S]*?)<\/fieldset>/gi
+    )) {
+      const name = (f[2].match(/\sname="([^"\[]+)/) || [])[1]
+      if (name && !questions.has(name)) questions.set(name, text(f[1]))
+    }
     for (const l of body.matchAll(/<label\b([^>]*)>([\s\S]*?)<\/label>/gi)) {
       const forId = attr(`<label ${l[1]}>`, 'for')
       if (forId) labels.set(forId, text(l[2]).replace(/\s*\*$/, ''))
@@ -216,7 +228,11 @@ export function formsIn(html) {
           .map((o) => text(o[1]))
           .filter(Boolean)
       }
-      if (type === 'checkbox' || type === 'radio') field.value = attr(tag, 'value')
+      if (type === 'checkbox' || type === 'radio') {
+        field.value = attr(tag, 'value')
+        const question = questions.get((field.name || '').replace(/\[.*$/, ''))
+        if (question) field.question = question
+      }
       fields.push(field)
     }
     const submit = body.match(
@@ -236,7 +252,7 @@ export function formsIn(html) {
 
 // A Caldera form keeps its `CF...` id on every page it is embedded in, while
 // its field names carry a per-instance suffix.
-const formKey = (form) =>
+export const formKey = (form) =>
   /^CF[0-9a-f]+$/.test(form.id || '')
     ? form.id
     : `${form.id || ''}|${form.action || ''}|${form.fields.map((f) => f.name).join(',')}`
@@ -345,8 +361,11 @@ export async function flipbookPdfs(books, out) {
 async function products() {
   const host = 'https://newheightseducation.org/wp-json/wc/store/v1/products'
   const list = await allPages(host, 20)
-  return pool(list, 4, async (p) => {
-    const variations = await pool(p.variations || [], 4, async (v) => {
+  const size = Number(process.env.ARCHIVE_POOL || 4)
+  return pool(list, size, async (p) => {
+    // Variations run one at a time inside each product, so the total stays at
+    // ARCHIVE_POOL requests in flight.
+    const variations = await pool(p.variations || [], 1, async (v) => {
       const res = await get(`${host}/${v.id}`)
       if (!res.ok) return { id: v.id, attributes: v.attributes, status: res.status }
       const body = await res.json()
