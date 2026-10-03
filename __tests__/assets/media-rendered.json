@@ -487,10 +487,6 @@
     "sha256": "90ad86a96260410dccb3f88821d8627f20dedf1df02573baac6de95b0af36ca4",
     "source": "https://publications.newheightseducation.org/wp-content/uploads/2026/09/NHEG-EDGUIDE-September-October-2026.webp"
   },
-  "newheightseducation.org/wp-content/uploads/2013/04/distance-education.jpg": {
-    "sha256": "e204407f5546ddf8fe542412ea89837a0e320788482b74b939e67091dfc49e4f",
-    "source": "https://newheightseducation.org/wp-content/uploads/2013/04/distance-education.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2016/09/2017-silve-stevie-award-american-business-awards-100x100.webp": {
     "sha256": "b15600bdf69bf1f2dfc156cda24dd82fa4fdea3352fb9f9808eb70b11d5ca37a",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/09/2017-silve-stevie-award-american-business-awards.png"
@@ -509,10 +505,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2016/09/2017-silve-stevie-award-american-business-awards-60x60.webp": {
     "sha256": "59ae6115dffeccf8664d5f31362a5446b7858c6d2c32eb0235f459913ea28c1e",
-    "source": "https://newheightseducation.org/wp-content/uploads/2016/09/2017-silve-stevie-award-american-business-awards.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2016/09/2017-silve-stevie-award-american-business-awards.png": {
-    "sha256": "c2d2bf6ef0e346dccd262f4c804f032e7e4ac2ca7629489974b0011f952bc66d",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/09/2017-silve-stevie-award-american-business-awards.png"
   },
   "newheightseducation.org/wp-content/uploads/2016/09/nheg-annex-cover-v1__id-5794.jpg": {
@@ -579,10 +571,6 @@
     "sha256": "2799d4b8331ff405e920b3e3efdccb5c9b3d2ed0053cebdb24005994bfeb4a47",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/09/nheg-radio-show-on-education-icon.png"
   },
-  "newheightseducation.org/wp-content/uploads/2016/09/nheg-radio-show-on-education-icon.png": {
-    "sha256": "dc9fac63220ebbdd491378bd599d6b3dc43451162167e8f3fd3dfa14c42f44be",
-    "source": "https://newheightseducation.org/wp-content/uploads/2016/09/nheg-radio-show-on-education-icon.png"
-  },
   "newheightseducation.org/wp-content/uploads/2016/09/one-non-profits-journey-to-success-cover-1024x427.webp": {
     "sha256": "dca27e8fc1a9953bce416fc506610ef9a95fdbb3c102ca15f9977794070c8d8c",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/09/one-non-profits-journey-to-success-cover.jpg"
@@ -609,10 +597,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2016/09/one-non-profits-journey-to-success-cover-768x320.jpg": {
     "sha256": "f3d824d8df152d2ff5f5856cdbcbe034fea7c0eb23dd38ef8ad1b3a46cc0f844",
-    "source": "https://newheightseducation.org/wp-content/uploads/2016/09/one-non-profits-journey-to-success-cover.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2016/09/one-non-profits-journey-to-success-cover.jpg": {
-    "sha256": "f52d5e601db432187c872450f26fe97378979c8fe6d7f5150f020f199baa0176",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/09/one-non-profits-journey-to-success-cover.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2016/09/unraveling-reading-cover-1024x427.webp": {
@@ -647,21 +631,9 @@
     "sha256": "c969140097ca2d169a8d01168f3c40376023974ac9bc638a8424055ecd0b9b71",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/09/unraveling-reading-cover.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2016/10/andragogy-cover.jpg": {
-    "sha256": "bd334d4fb73612758d702a37d7e709226284a5be18a82880feaf74b3ed31d181",
-    "source": "https://newheightseducation.org/wp-content/uploads/2016/10/andragogy-cover.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2016/11/givingtuesday.webp": {
     "sha256": "25870531c8776212653b0178b772ca6049983f7e5d846b711e47fde7a0e9feec",
     "source": "https://newheightseducation.org/wp-content/uploads/2016/11/givingtuesday.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2016/11/nheg-radio-february-announcements.mp3": {
-    "sha256": "34b4f4261a29b44ff271fe05f7cdcc88e61f11f78b48b36fce3e9fca3fee1025",
-    "source": "https://newheightseducation.org/wp-content/uploads/2016/11/nheg-radio-february-announcements.mp3"
-  },
-  "newheightseducation.org/wp-content/uploads/2016/11/nheg-radio-march-announcements.mp3": {
-    "sha256": "08e2cf13bae446cbe33348e762bdf4677c1c202c216bdc6358dac67713b0a32c",
-    "source": "https://newheightseducation.org/wp-content/uploads/2016/11/nheg-radio-march-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2016/11/unraveling-reading-blog-cover.webp": {
     "sha256": "0df747c12e0394675cfe62fa85c178c557d849dca3a766ffba50c3e79c7a6024",
@@ -738,10 +710,6 @@
   "newheightseducation.org/wp-content/uploads/2017/01/briana-dincher-300x300.webp": {
     "sha256": "40c38f35aae60a21b47182b2b07f3d54b5714429b744b6ddbddca01853e30245",
     "source": null
-  },
-  "newheightseducation.org/wp-content/uploads/2017/01/charlotte-mcguire.jpg": {
-    "sha256": "bd13e0091b4050df3b04cda1d23a4971fe0b889ec947123cba244a16e83a623a",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/charlotte-mcguire.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2017/01/daniela-silva-100x100.webp": {
     "sha256": "84ecaea7e4bbb231a660f4e75cb36251dab21c933f4bfe8e20dd06252fceac3c",
@@ -971,14 +939,6 @@
     "sha256": "5e33dfd0acd937889e9f3ef75eb0d4e56889f82a51b3b02ea8748234385aa936",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/jane-goodalls-roots-shoots.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/01/jane-goodalls-roots-shoots.jpg": {
-    "sha256": "e473ec3c81a0d41574a18700ab4874995188e94eae6e5c89545437f28c860540",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/jane-goodalls-roots-shoots.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/01/latchkey-child.jpg": {
-    "sha256": "d00e45bbfc802d42aa7a41fde86de80b4473b45e07ab2dfaaed03064093f633c",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/latchkey-child.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/01/little-caesars-pizza-kit-logo-300x150.webp": {
     "sha256": "94bbab7207010c3a0a705abfa455076b16ea0dae92abebf6f795b6180b5c9fbe",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/little-caesars-pizza-kit-logo.jpg"
@@ -1098,10 +1058,6 @@
   "newheightseducation.org/wp-content/uploads/2017/01/one-nonprofits-journey-to-success-front-cover.webp": {
     "sha256": "c576da062ff6a4d09a0faeb055b2f547a9c7dc90df5547fb514250b5df85ff40",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/one-nonprofits-journey-to-success-front-cover.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/01/one-nonprofits-journey-to-success.jpg": {
-    "sha256": "a8efe32f1e21138fe784b0dda83d0447a0f7b19272970efa150e0a2d4615df7c",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/one-nonprofits-journey-to-success.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2017/01/pamela-clark-100x100.webp": {
     "sha256": "b496d4184b43923f44c5ea8213d90a23f4880d423bc1a492aa44677a36f2be1c",
@@ -1239,10 +1195,6 @@
     "sha256": "655df1e0e16846b87dbe759fdbd436a6715d6d5ed1f798a31efde01a1e19eceb",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/savneet-singh.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/01/savneet-singh.jpg": {
-    "sha256": "94208c7da92ade44a446e5bef6d655598e70fd4d08de2b2603a776683a7cba2b",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/savneet-singh.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/01/thanksgiving-turkey.webp": {
     "sha256": "82aad24d0a2b4f94b48742fa84b49603c74667e510940f889d7182adffc7df4f",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/thanksgiving-turkey.jpg"
@@ -1307,10 +1259,6 @@
     "sha256": "78db153a32fc435c785dfbcf8a01e0847403f28ec55a888fa06c3a3caa6748fb",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/unraveling-reading-banner.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/01/unraveling-reading-banner.jpg": {
-    "sha256": "b3511c82fb3d2e6e8a63e77b15820788bc7e1e1ba46e5989e491d054ac85dfdf",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/unraveling-reading-banner.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/01/unraveling-reading-front-cover-100x100.webp": {
     "sha256": "20bcd15a182f77b5361e27e7897b66d4d34433c26b0cf9c34b78efc9a29d28e1",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/unraveling-reading-front-cover.jpg"
@@ -1355,10 +1303,6 @@
     "sha256": "f5f897948ddb76ad4f9d54add0e2c06c175b2a776cbdb64f934f3534addcb46b",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/02/health-is-your-wealth.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/02/jane-goodall-institute.png": {
-    "sha256": "5ed2d976e823ae392a18dd31765cc7adfc7bc071dc077392d82cda12d3b70daf",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/02/jane-goodall-institute.png"
-  },
   "newheightseducation.org/wp-content/uploads/2017/02/jeff-ermoian-cover.webp": {
     "sha256": "f19f4464a26be71745ae1246ead360e6af1d5579b3f2f163d2d89c7458a35c34",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/02/jeff-ermoian-cover.png"
@@ -1387,18 +1331,6 @@
     "sha256": "4a39e49ded244e27c5449ed07d54d8c36e8520a80a63b2609183bc0424e9f767",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/02/pamela-clark-holding-health-is-your-wealth-review.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/03/neuroplasticity-in-montessori.jpg": {
-    "sha256": "0cf1669b1b32f556babeb4218e3c459041a94dc763aad2d177f646b240ba1a9f",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/03/neuroplasticity-in-montessori.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/03/nheg-10th-anniversary.jpg": {
-    "sha256": "16d59233d47ca62419c868a8ad9a30394a30e733007f9138149a6a5ea2c1f85c",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/03/nheg-10th-anniversary.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/03/valentines-day.jpg": {
-    "sha256": "5cc3a46d602e14dcab4341f17cf1e3af0e82ff1fedb8c3960288de9356c5aa6f",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/03/valentines-day.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/03/walmart-cover.webp": {
     "sha256": "4f9023d9c9bcda0536762cc0e0d4c5460f12f5f4a4cd76067703c7c8e0b75d55",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/03/walmart-cover.jpg"
@@ -1415,10 +1347,6 @@
     "sha256": "838c2be02d36962e1d4469d53f4f1ea0593e7adaf07c0f145d038fde8fcaf850",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/04/multimedias-impact-on-literacy.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/04/pamela-clark-2017-serveohio-award.jpg": {
-    "sha256": "905f8e567716251c37fee5431cc0513f62d75b38c4f5fca4af381e218b1e2e94",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/04/pamela-clark-2017-serveohio-award.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/04/pamelas-talk.webp": {
     "sha256": "43dd0012a99080da178989c43ecc1adae5421c12042fbe919052a50363ac1241",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/04/pamelas-talk.jpg"
@@ -1430,14 +1358,6 @@
   "newheightseducation.org/wp-content/uploads/2017/04/rsl-logo-vert.webp": {
     "sha256": "4af1d056864323d67be543b3fabc35c817b6f2e56493dc3662a89fe6e6c8bc25",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/04/rsl-logo-vert.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/04/savantism-and-multiple-intelligences.jpg": {
-    "sha256": "2743bd4eabffd8a6fb2ccb4f96ca3975c339f4a91d9f396f101055a7c680e2f3",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/04/savantism-and-multiple-intelligences.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/05/2017-stevie-awards-cover.jpg": {
-    "sha256": "15ab7d88cfe8ecb141b9be494aa4e2eb8c99a9dae7713da2e3d78b6bf3078e16",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/05/2017-stevie-awards-cover.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2017/05/bluehost.webp": {
     "sha256": "3c9e9685c5cea3a5a6ea0433d7b9d4ff52f1dd9dc51fa01e01590d1d424d4631",
@@ -1462,18 +1382,6 @@
   "newheightseducation.org/wp-content/uploads/2017/07/school-supplies.webp": {
     "sha256": "f3eaec6a71ca484923b19e0e36e5c7412f31e0d97e7349d3e0ac962e15f05667",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/07/school-supplies.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/08/anna-shi-cover.jpg": {
-    "sha256": "bcc1d0565f757074e2a0625bbaca25e102a623bfe32087c277d7b54c41e50bff",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/08/anna-shi-cover.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/08/disney-park-hopper-tickets-raffle.jpg": {
-    "sha256": "604433071e956690f28d82884e3d0fc44bb7ea9b881cc27ef6a94619f8b3d579",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/08/disney-park-hopper-tickets-raffle.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/08/frani-wyner.jpg": {
-    "sha256": "fbc6a14c40cdf8e93adfd8a7cf5d6aaa7ba7935ad530a2d3dae8a57edaca1fff",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/08/frani-wyner.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2017/08/nheg-brochure-inside-1024x791.webp": {
     "sha256": "220b5113ebaf6bc5c80d56993c98bfbe45d887c8ce719e570818ae5148714a90",
@@ -1507,10 +1415,6 @@
     "sha256": "1b74176326ac3ca5a0c3174fbb4362608b84bf8d60118f0dc34bf138a02e0964",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/08/nheg-brochure-outside.png"
   },
-  "newheightseducation.org/wp-content/uploads/2017/08/nheg-school-supplies.jpg": {
-    "sha256": "99112bd2488a0d17c85a1c27a1dd56ff02071c54d7ce6c1fa78f0f75d00be3a3",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/08/nheg-school-supplies.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/08/nheg-writing-contest.webp": {
     "sha256": "b3aa7c7661ccba10abf3b826fa7f4689e9622ef4b712148c9c86fbf3288be1c2",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/08/nheg-writing-contest.jpg"
@@ -1538,18 +1442,6 @@
   "newheightseducation.org/wp-content/uploads/2017/08/recognition-day-60x60.jpg": {
     "sha256": "ddefeb6847c2633f8d88a4d0ac6f53afa8c9d25b914f3b888adb5ad181627e78",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/08/recognition-day.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/08/recognition-day.jpg": {
-    "sha256": "2cf290213b14d98a6ab2a0116555682fa0c1063755a3df620bf3fd64ab0787e1",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/08/recognition-day.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/09/guidestar-exchange-platnium-participant.png": {
-    "sha256": "11c0d49047a3d485a790dd9b494246509ac4a91c37583ec4de6368bdbe3fe3d5",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/09/guidestar-exchange-platnium-participant.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/09/nheg-october-2017-announcements.mp3": {
-    "sha256": "4111d68e00caae8edd1dd4430efcad6aaf7cb1f6519ae3c309f9487d7bf7d928",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/09/nheg-october-2017-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2017/09/sheila-wright-cover.webp": {
     "sha256": "8fe278633ac659c1489917b24d104d9ffe662e035b49d6fc54ead30bf2600cc8",
@@ -1615,25 +1507,13 @@
     "sha256": "8e6f2fb015fe708df5deaeb1d87105f48a264d3a12db8178bb72db54f527f970",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/12/kyle-tucker-photo.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/12/nheg-photography-contest-winner.jpg": {
-    "sha256": "db6101cc3b9e14c1de3468d37d4a8e794dabb9a59c2f0bcfe72342ce8e779fbf",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/12/nheg-photography-contest-winner.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2018/01/2018-exam-dates.webp": {
     "sha256": "4ced5f0da84f8e698913eaa4de4a503fb09557bff2d09f07089dbb8a9a0ad219",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/01/2018-exam-dates.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/01/nheg-radio-january-announcements.mp3": {
-    "sha256": "8436c58e58df6ed74dbb667b2ca661911ff12de1ab4186fdcba5455d677896d3",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/01/nheg-radio-january-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2018/03/nheg-radio-march-announce-updates.mp3": {
     "sha256": "89d14c6ffaf992166e47390f7a7956785a6ce5d784272baf71d76e9c86cb309f",
     "source": null
-  },
-  "newheightseducation.org/wp-content/uploads/2018/03/nheg-tree-logo-white.png": {
-    "sha256": "19a216382fb6228b11057e6e85ce6737d334e91932e62118e0d8e90afff59fbe",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/03/nheg-tree-logo-white.png"
   },
   "newheightseducation.org/wp-content/uploads/2018/03/parker-solar-probe-1024x724.webp": {
     "sha256": "47f319508304492e90438ffe0a1d5e07bbecdd18efce90f148f45d44352dd4a1",
@@ -1655,25 +1535,13 @@
     "sha256": "69abd22db1c3cb2002c51f73376e5548d0e98d362a07efc0c8af00561dc347bf",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/03/parker-solar-probe-cover.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/03/parker-solar-probe.jpg": {
-    "sha256": "b9a9b557e9c17e677c3c65bd4b7b597719a90a74ab37d1b3838a4201bf02fd4f",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/03/parker-solar-probe.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2018/04/10-steps-to-a-successful-college-admission.webp": {
     "sha256": "35c735c7b62687c91ac23b7f134521e5b61c25685f8b11c20c049f7ce321b43e",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/04/10-steps-to-a-successful-college-admission.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/04/children-with-developmental-disorders.jpg": {
-    "sha256": "fad92d56548042536cc4a94a8d8a6393e86a58437701ba834e82e2fde6ff4bef",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/04/children-with-developmental-disorders.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2018/04/nheg-radio-cover.webp": {
     "sha256": "f6dc63bf7f585c2de139431db7a8dd3a32e8c68b4cd32870fb3cd076fb1f22dd",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/04/nheg-radio-cover.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2018/04/nheg-radio-may-announcements.mp3": {
-    "sha256": "7cfb63d52f4d52ea2a9ad19e86164a3d16935c56a7afab558533cde511d6323e",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/04/nheg-radio-may-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2018/04/nheg-recognition-day-2018.webp": {
     "sha256": "eedb4b519e46c4a22f8ede0783333c92338c0dd4a633cdd9a50986575cb456b6",
@@ -1709,10 +1577,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2018/05/2nd-annual-school-bag-giveaway-flyer-1-600x772.jpg": {
     "sha256": "ceccd3b72c2354f77409e4a080a269aaacedac9e65b841f5926957b755413621",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/05/2nd-annual-school-bag-giveaway-flyer-1.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2018/05/2nd-annual-school-bag-giveaway-flyer-1.jpg": {
-    "sha256": "7a43a88d14be2d8bb82205429b72e6ad08ad11cc69c56d099c68ab98ad8a6d7b",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/05/2nd-annual-school-bag-giveaway-flyer-1.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2018/05/2nd-annual-school-bag-giveaway.webp": {
@@ -1767,10 +1631,6 @@
     "sha256": "44a99969ceacd685c5b77bc5e3e8447d9b82ac6b1aa695f908aa3eb4f6451837",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/05/nheg-learning-annex-logo.png"
   },
-  "newheightseducation.org/wp-content/uploads/2018/05/nheg-learning-annex-logo.png": {
-    "sha256": "104f0f288bcfbf52c0994d55af1ec89be1ac230f5b0b6891ca7a6da8667c8427",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/05/nheg-learning-annex-logo.png"
-  },
   "newheightseducation.org/wp-content/uploads/2018/06/anime.webp": {
     "sha256": "ed067946b478a802ad32d7457a98d6263f696c846391a02a8e2fd64ff83ac3cf",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/06/anime.jpg"
@@ -1779,16 +1639,8 @@
     "sha256": "051f5fe029439671b0ff74978d4b9434bc683202db4305ff278aef2fb6c8a4ff",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/06/neuroscience-and-brain-child-development.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/06/nheg-june-radio-announcements..mp3": {
-    "sha256": "28888216d6256edcde31f7bbeb1fd2fd284217d47946073bf38ba77e8c1a6c73",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/06/nheg-june-radio-announcements..mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2018/07/developing-the-creative-potential-of-children-219x300.webp": {
     "sha256": "af55f0cceaa0291528bb49b531e4f70b3286dffa0fff0c6a4c14ca1be9db2e4b",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/07/developing-the-creative-potential-of-children.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2018/07/developing-the-creative-potential-of-children.jpg": {
-    "sha256": "9be4d5e8af519b6af618f9e2de0e11a68801c321513a2f01fba46e5e292cd857",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/07/developing-the-creative-potential-of-children.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2018/07/eventad_updated-233x300.jpg": {
@@ -1810,10 +1662,6 @@
   "newheightseducation.org/wp-content/uploads/2018/07/eventad_updated.webp": {
     "sha256": "abeea41f08f9fd3ea12449501a71cc2ba10040a2a972f554d321042e2128c057",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/07/eventad_updated.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2018/07/nheg-july-radio-announcements.mp3": {
-    "sha256": "d4064aebc5c63e2908bbb27027025a45441e6940656d92fdcae2c625426cbdd9",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/07/nheg-july-radio-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2018/07/nheg-school-sale-233x300.jpg": {
     "sha256": "43d9bdcfd558b5b1f3559914003577f252a0c475cb9553c0b8883ebf6dd72ee7",
@@ -1839,10 +1687,6 @@
     "sha256": "747bf00efe50c4a6d2f07f2bde35fb218e006220f86cf7399fdaec3dc6aa871d",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/08/2nd-annual-school-bag-giveaway-after-party.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/08/fetal-alcohol-syndrome-in-a-childs-school-education.jpg": {
-    "sha256": "c33259c6e59f8698d64d45569486ed415e9af0e8e7e9cda0e75ec9a2cf39079d",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/08/fetal-alcohol-syndrome-in-a-childs-school-education.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2018/08/healthy-brain-healthy-life.webp": {
     "sha256": "096cb4f67c7870b19d259dc103744f1e700ae4ee011f722874b3b7aa9e95af16",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/08/healthy-brain-healthy-life.jpg"
@@ -1859,10 +1703,6 @@
     "sha256": "41f7c9982c9f04884e3a7cf9545792c6f9b6b717b732b9cf0890e3c940ad4857",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/09/golden-bridge-award.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/09/making-writing-interesting-for-students.jpg": {
-    "sha256": "7379aa3dcc86407a28e29ba2b4ed17068e131eceddb0e3454b68843261dd1b8a",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/09/making-writing-interesting-for-students.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2018/10/eagle-river-rare-life-award-100x100.webp": {
     "sha256": "4fb4858b014233855270830a9a187c52ba4afd86c0741b2707b1184b6062d2bc",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/10/eagle-river-rare-life-award.jpg"
@@ -1878,10 +1718,6 @@
   "newheightseducation.org/wp-content/uploads/2018/10/givingtuesday.webp": {
     "sha256": "c09955650464bc2d4ab94d74614379517a36859ec506ab31c9ee305596250299",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/10/givingtuesday.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2018/10/nheg-radio-november-announcements.mp3": {
-    "sha256": "355962fa124c8a9ead3ac14751244b6b1def67996cd5530b50551ced89f6a414",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/10/nheg-radio-november-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2018/10/pamela-clark-holding-recognition-letter-100x100.webp": {
     "sha256": "4856b0f459f1cc24d14f5075701f9ea1f5d6cc689d759628e4e14d86ea37704b",
@@ -1935,10 +1771,6 @@
     "sha256": "75933dcbd05a5dde522905ad6daba50f0ef2ee526bb92ce1e6851539174b6d41",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/11/hard-drive.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/11/nheg-radio-december-announcements.mp3": {
-    "sha256": "493b12f5a7f5bebe68d24eaa6f50b32340ff5fbeb2f8892daf79244b86a915ab",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/11/nheg-radio-december-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2018/11/spanish-village.webp": {
     "sha256": "0853646b4242f35e1d352ef707581eadfe76c0dd6061461b37187de6362090d9",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/11/spanish-village.jpg"
@@ -1947,10 +1779,6 @@
     "sha256": "d15618993668bcef6e7b185299a67af01d7774703f1b5370493fc2cd7ee2d49f",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/12/allstate-foundation.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2018/12/january-2019-nheg-radio-announcements.mp3": {
-    "sha256": "3beae73c6fcd1fc5508f269b2a71eee6f668641e48cf4251c7863734620843e0",
-    "source": "https://newheightseducation.org/wp-content/uploads/2018/12/january-2019-nheg-radio-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2018/12/nshss-cover.webp": {
     "sha256": "fdcc81a3999de45fc6383ac8baba30709822b45b27c9ae5daec696e799d2196f",
     "source": "https://newheightseducation.org/wp-content/uploads/2018/12/nshss-cover.jpg"
@@ -1958,10 +1786,6 @@
   "newheightseducation.org/wp-content/uploads/2019/01/haryr-potter-hogwarts.webp": {
     "sha256": "7028fd1458c0180cf2a8957880a9571aed01c9ee229ede8ddd9ad83e10dccba6",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/01/haryr-potter-hogwarts.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/01/importance-of-safety-ii.jpg": {
-    "sha256": "d9eef6163af4971c546c331df44c13fbc4a1785d3232937e14afb9cd8a8b6c07",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/01/importance-of-safety-ii.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2019/01/jon-aitken-100x100.webp": {
     "sha256": "5e0bc038831f5b091d83d87441bba1771dbfdada8272239f52792b815f5f19f2",
@@ -1978,10 +1802,6 @@
   "newheightseducation.org/wp-content/uploads/2019/01/jon-aitken.webp": {
     "sha256": "8dc85a8d9e7858819bad0721f21f963b213e80f4aa4726d3ccd02c6c38ac29a5",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/01/jon-aitken.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/02/nheg-february-2019-radio-announcements.mp3": {
-    "sha256": "5820db1570e2363f13e4b53b8ee2536a16eb18db9e3a97ec3b00cb5286832958",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/02/nheg-february-2019-radio-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2019/03/georgia-woodbine-cover.webp": {
     "sha256": "16264baea934f2807fa7e148b946acda90f89ec6d4ccbc8b840d675755231b43",
@@ -2007,10 +1827,6 @@
     "sha256": "c55b15b33177535379e158f3b067169d3c3ad6e8242f9efb27b1c5c4f43c7cee",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/03/school-bag-give-away-cover.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2019/04/april-2019-nheg-radio-announcements.mp3": {
-    "sha256": "ff7a37981c9f58168ae780d4d80d9480a1959af26f0ac429d1a041c323c448bc",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/04/april-2019-nheg-radio-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum-distance-learning-gen-info-fy19-pdf-232x300.jpg": {
     "sha256": "aee01b32d8dadd8e40cb015572ca7cea09404e32b52adc8d4e7f54ef241d763d",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum-distance-learning-gen-info-fy19-pdf.jpg"
@@ -2027,24 +1843,12 @@
     "sha256": "f48cce8e307e138fd95e65b3142de470723ebfb1c47702dad749866152a0fed8",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum-distance-learning-gen-info-fy19-pdf.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum-distance-learning-gen-info-fy19-pdf.jpg": {
-    "sha256": "71854822ae7d079a796a8672a50b728c3d985b7b91233dd543c9baae53e5aeeb",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum-distance-learning-gen-info-fy19-pdf.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum.jpg": {
-    "sha256": "e58ac271141317dc1aa86d17c119a8ab54aef88a7e2c0d7eeaea3a7ddf7a4631",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/04/bullock-texas-state-history-museum.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2019/04/man-on-computer-300x200.jpg": {
     "sha256": "9fd026974640b63e151cbeac3338f60ab34ea5458cd52acdaf9b56f0efa44d0b",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/04/man-on-computer.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2019/04/man-on-computer-416x277.jpg": {
     "sha256": "2774b65c0b0dc99f77cf4d6f752ef6970707cdc0b4efcf01a0a21aaf3cb0f5e9",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/04/man-on-computer.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/04/man-on-computer.jpg": {
-    "sha256": "f84d7d284b5836468c561b98ea8f9552005717d182d9b479a6e4d02fc058108c",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/04/man-on-computer.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2019/04/nheg-recognition-day-2019.webp": {
@@ -2057,10 +1861,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2019/04/pvsa-recipeant-sapna-shukla-600x735.webp": {
     "sha256": "96bb900d6bf95672d18f28a07b2999d8a847a70fa44f313b463524e12e778227",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/04/pvsa-recipeant-sapna-shukla.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/04/pvsa-recipeant-sapna-shukla.jpg": {
-    "sha256": "c4613d01d5d64158d81e9b24d5fe84860daacaae703358130b1bd2e0ce590e59",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/04/pvsa-recipeant-sapna-shukla.jpg"
   },
   "newheightseducation.org/wp-content/uploads/2019/05/american-business-awards-bronze-2019-stevie-winner-100x100.webp": {
@@ -2083,17 +1883,9 @@
     "sha256": "eb528f9cd5492690dfefbddfd8928aef77eb36bf13794e7d04f0dbf00bea9904",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/05/american-business-awards-bronze-2019-stevie-winner.png"
   },
-  "newheightseducation.org/wp-content/uploads/2019/05/american-business-awards-bronze-2019-stevie-winner.png": {
-    "sha256": "e78edbb052fdf3da359a078801aa58e911958403b2a69f5b5156b67dae638e61",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/05/american-business-awards-bronze-2019-stevie-winner.png"
-  },
   "newheightseducation.org/wp-content/uploads/2019/05/nheg-june-2019-radio-announcements.mp3": {
     "sha256": "1bd1d5068eb32a5216e8e8d4b3b480380122fe5e28e5876c534520f4fc82ab78",
     "source": null
-  },
-  "newheightseducation.org/wp-content/uploads/2019/05/nheg-radio-announcements-may-2019.mp3": {
-    "sha256": "6ca59a016e7e061faa4193c82e2ccb765ca59d596a2c2f1d3d6c7f610fd9856a",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/05/nheg-radio-announcements-may-2019.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2019/05/pokemon-tcg.webp": {
     "sha256": "15aa4ecd9e17c852210ff0d27a66539a9a477052dd0cba0910b02e74e4ed8611",
@@ -2107,17 +1899,9 @@
     "sha256": "e1daef177bde521a7ce9db40b86507206d90153100c53bcbcc27de64bbfd3e69",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/05/voice-america-talk-radio-network.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2019/06/july-2019-nheg-radio-announcements.mp3": {
-    "sha256": "571eb52a4bf03aa90d4f568a989c958e9eb1ea38653ddb837896cd65c4eb4f51",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/06/july-2019-nheg-radio-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2019/06/school-bag-giveaway-2019-4.webp": {
     "sha256": "dabf1419db066a265c3275e52e0a3c2fd060254d5942c9f0dd511f456ba881e2",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/06/school-bag-giveaway-2019-4-scaled.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/07/august-2019-nheg-radio-announcements.mp3": {
-    "sha256": "f55ea5c83b84cfeacb2102d595930a114d10e5651c56c49b45ebe3a1a6689bbc",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/07/august-2019-nheg-radio-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2019/07/child-playing-with-toys.webp": {
     "sha256": "6dc0187dc035919ab2207ebd81fbddd00243a2a7b8fcb11c6d6f9d69b53f3c57",
@@ -2155,25 +1939,9 @@
     "sha256": "202a3cccf6a42e714c886834cb42d0f8bcbaf74b24931b8b6235eb9d664686a3",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/09/2019-gold-winner-the-golden-bridge-awards.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2019/09/october-2019-nheg-radio-announcements.mp3": {
-    "sha256": "c70eaaaf96b30c8c4d63f92bbf13fd3b106e868dadac3373893d0a05814c7e23",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/09/october-2019-nheg-radio-announcements.mp3"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/09/september-2019-nheg-radio-announcements.mp3": {
-    "sha256": "06fd367c8f7e8fce04ee64cc5715d1b0787dc206ab2d090d15c5524214afef31",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/09/september-2019-nheg-radio-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2019/09/the-golden-bridge-awards.webp": {
     "sha256": "995ec353188ec3fa61d0f1f66c2f7ca5950301780f7f489ed5277e014f366032",
     "source": "https://newheightseducation.org/wp-content/uploads/2019/09/the-golden-bridge-awards.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/11/november-2019-nheg-radio-announcements.mp3": {
-    "sha256": "a2995684ad69752cd2074e9d827aee5854942a1cc4bb20b234c75a54fba06127",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/11/november-2019-nheg-radio-announcements.mp3"
-  },
-  "newheightseducation.org/wp-content/uploads/2019/12/december-2019-nheg-radio-announcements.mp3": {
-    "sha256": "45b1db6d8785e60fca70ee757c426ea50279c95d0ac8852a34c2c652443df602",
-    "source": "https://newheightseducation.org/wp-content/uploads/2019/12/december-2019-nheg-radio-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2019/12/national-school-choice-week-100x100.webp": {
     "sha256": "2812d20e9998254576b24518a8e3ee963886798282b1b240b7018d1bfa02e871",
@@ -2255,10 +2023,6 @@
     "sha256": "97915285aa95c46db9bc6276cd57e69f2a6c235495cbc824c1f13afad132cd49",
     "source": "https://newheightseducation.org/wp-content/uploads/2020/01/books.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2020/01/january-2020-nheg-radio-announcements.mp3": {
-    "sha256": "665242f8fe1dd194e4216a50668d6e893b9d98c0dc78c7020e921d7dae85b6aa",
-    "source": "https://newheightseducation.org/wp-content/uploads/2020/01/january-2020-nheg-radio-announcements.mp3"
-  },
   "newheightseducation.org/wp-content/uploads/2020/02/3d-model-space-ship.webp": {
     "sha256": "bbde3a15af7698381f2b37b24e8ac9ca3a5f583fdc742878330c9f65674925d0",
     "source": "https://newheightseducation.org/wp-content/uploads/2020/02/3d-model-space-ship.jpg"
@@ -2266,10 +2030,6 @@
   "newheightseducation.org/wp-content/uploads/2020/02/enjoli-baker.webp": {
     "sha256": "d1fb362e797367a8175dabd748dc2e9c448e9545a1f9ecb9311991d14eb0d784",
     "source": "https://newheightseducation.org/wp-content/uploads/2020/02/enjoli-baker.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2020/02/february-2020-nheg-radio-announcements.mp3": {
-    "sha256": "72bc8c5ce67c2bed1f072f1ddab70a1b3428b02162143092bb9d7434bac3d030",
-    "source": "https://newheightseducation.org/wp-content/uploads/2020/02/february-2020-nheg-radio-announcements.mp3"
   },
   "newheightseducation.org/wp-content/uploads/2020/02/home-education-council-of-america.webp": {
     "sha256": "487b5fb747a9b7046a0aecf86da38cb4086bb8e404187d3fadd06279dda9137b",
@@ -2513,10 +2273,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2021/08/christmas-schooner-219x300.webp": {
     "sha256": "556ac85fa14d39e103beff87884baf745d50177f680016958c8a831361c6cf8a",
-    "source": "https://newheightseducation.org/wp-content/uploads/2021/08/christmas-schooner.webp"
-  },
-  "newheightseducation.org/wp-content/uploads/2021/08/christmas-schooner.webp": {
-    "sha256": "bfb0ccdfb65ff0b4e7c4151f92b5ef7b92d88d778f3d7bbe77a820b1b90f603e",
     "source": "https://newheightseducation.org/wp-content/uploads/2021/08/christmas-schooner.webp"
   },
   "newheightseducation.org/wp-content/uploads/2021/09/great-nonprofits-2021-top-rated.webp": {
@@ -16119,10 +15875,6 @@
     "sha256": "a546304995ba9146bd3f44bc2baac0db8d9da5fdfd29d25102eed0008b35b9ff",
     "source": "https://newheightseducation.org/wp-content/uploads/2022/09/express-mobile-sign-up.png"
   },
-  "newheightseducation.org/wp-content/uploads/2022/09/express-mobile-sign-up.png": {
-    "sha256": "bf24974cdb93dffd2f0b4739166bc8cb80765607bd13f5d5ddeb0f8ef0b6bd61",
-    "source": "https://newheightseducation.org/wp-content/uploads/2022/09/express-mobile-sign-up.png"
-  },
   "newheightseducation.org/wp-content/uploads/2022/09/f0681fea88154d7db04b292c6b61f50f-0001-scaled.webp": {
     "sha256": "e2de0558c56c7072e0331ee0c615dc93a782d79ca8f67e7ec5cd1708bf7a72db",
     "source": "https://newheightseducation.org/wp-content/uploads/2022/09/f0681fea88154d7db04b292c6b61f50f-0001.jpg"
@@ -16137,10 +15889,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2022/09/invite-to-join-150x150.png": {
     "sha256": "8f7beb61cddd7858aef7e9c3e6221e4fcefdfc8af792da8e9b7c6e4c20da20f3",
-    "source": "https://newheightseducation.org/wp-content/uploads/2022/09/invite-to-join.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2022/09/invite-to-join.png": {
-    "sha256": "5f3ff306c0a644768f1d284ad4a5daa231d7a9dc83a0f6d2de06835a8bdfc83c",
     "source": "https://newheightseducation.org/wp-content/uploads/2022/09/invite-to-join.png"
   },
   "newheightseducation.org/wp-content/uploads/2022/09/one-nonprofits-journey-to-success-book-cover2.webp": {
@@ -16239,18 +15987,6 @@
     "sha256": "f31ba8d6c9944578991e24cd7d74749162ec92a43290052ed68c55ca9a092705",
     "source": "https://newheightseducation.org/wp-content/uploads/2023/03/cheo.png"
   },
-  "newheightseducation.org/wp-content/uploads/2023/03/credential-inflation_college.webp": {
-    "sha256": "23eba1a0c93f861a9a3a44428f32c7ad891498804cc772ab168e010746e716e8",
-    "source": "https://newheightseducation.org/wp-content/uploads/2023/03/credential-inflation_college.webp"
-  },
-  "newheightseducation.org/wp-content/uploads/2023/03/homeschool-prom.jpg": {
-    "sha256": "e329247dc51324e392637d5d5b3a24cf99b837df6f8609c985ce1e463e5a9dd0",
-    "source": "https://newheightseducation.org/wp-content/uploads/2023/03/homeschool-prom.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2023/03/momanddaughter.webp": {
-    "sha256": "afead6aa3a9b596dd16df1aee281057872711c856b57a5dd6314076c14a62934",
-    "source": "https://newheightseducation.org/wp-content/uploads/2023/03/momanddaughter.webp"
-  },
   "newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714-100x100.webp": {
     "sha256": "2613eddcf785da4576d66992c4a2f15f64a9b0c810e797922908d9356613563c",
     "source": "https://newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714.png"
@@ -16263,10 +15999,6 @@
     "sha256": "37904d505a598292d14dd857aa53f95d6b737f16f60469d4804e19f54b1640f8",
     "source": "https://newheightseducation.org/wp-content/uploads/2023/03/profile-platinum2023-seal5714.png"
   },
-  "newheightseducation.org/wp-content/uploads/2023/03/slavery.webp": {
-    "sha256": "5358061bb3cae14c44a93fae34a91230d0edc431ca6d1d8986ccc1412845e2a8",
-    "source": "https://newheightseducation.org/wp-content/uploads/2023/03/slavery.webp"
-  },
   "newheightseducation.org/wp-content/uploads/2023/06/familytreedna.webp": {
     "sha256": "c93931a96a3ff018c56a555d34f907a8b76b6b8e7424581815aa5581895c13c7",
     "source": "https://newheightseducation.org/wp-content/uploads/2023/06/familytreedna.jpeg"
@@ -16274,10 +16006,6 @@
   "newheightseducation.org/wp-content/uploads/2023/07/civic-theatre.webp": {
     "sha256": "55d2d76f34296c3cbf34c10f3b59f1590738b68cc3960bd2bb1628660ab0f95d",
     "source": "https://newheightseducation.org/wp-content/uploads/2023/07/civic-theatre.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2023/07/yellowglassess.jpeg": {
-    "sha256": "8a40834e36121add8499a0995a0fb78e931bbfe27b87dc8f288e3f208827697e",
-    "source": "https://newheightseducation.org/wp-content/uploads/2023/07/yellowglassess.jpeg"
   },
   "newheightseducation.org/wp-content/uploads/2024/02/the-color-purple-flyer-in-the-wings-pdf.webp": {
     "sha256": "2f9d1bac9dc6605eddad6679e0994702d27b6a309ecb8fb0b783af9fc3d90022",
@@ -16327,10 +16055,6 @@
     "sha256": "ad69eb198ae04309c3e4949ca4ea3230751415da856355eea8e8b9b62080c198",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/08/iba24_silver_winner_x1080.webp"
   },
-  "newheightseducation.org/wp-content/uploads/2024/08/iba24_silver_winner_x1080.webp": {
-    "sha256": "e0032ccf1911916285b6dc33e8c5be385bdce2648393f16607f42a741bb7c744",
-    "source": "https://newheightseducation.org/wp-content/uploads/2024/08/iba24_silver_winner_x1080.webp"
-  },
   "newheightseducation.org/wp-content/uploads/2024/08/mail-300x111.jpg": {
     "sha256": "ea161305aea5cdf72a319202da142b5a2880b9cb3f3d149042f431e49dc49705",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/08/mail.jpg"
@@ -16343,10 +16067,6 @@
     "sha256": "3b5548f2634de8738fc8c1d736bbd86176d4a2478555e5f14c36bdbbcda80a38",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/10/nheg-2024-fwfundraiser-1.png"
   },
-  "newheightseducation.org/wp-content/uploads/2024/10/unraveling-reading-free-course.mp4": {
-    "sha256": "1df99b3ff87d357876e9da78961ca19287925850cf9f70d20e65e1655c5c4411",
-    "source": "https://newheightseducation.org/wp-content/uploads/2024/10/unraveling-reading-free-course.mp4"
-  },
   "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-bronze-100x100.webp": {
     "sha256": "d5d18432f9a2a8126da0c19f151b801f0ebbea9bb2ca9ca1b225358c2b4dc0f5",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-bronze.png"
@@ -16357,10 +16077,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-bronze-300x300.webp": {
     "sha256": "d8adc600c2116fdb3984af339e583be3e640a1dd1eca21dd639247300bcc7a6b",
-    "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-bronze.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-bronze.png": {
-    "sha256": "068f8d15f62398f2bc37d5c3c75daa62a89d6e1c9002231287fed70a945cb1f9",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-bronze.png"
   },
   "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-gold-100x100.webp": {
@@ -16375,10 +16091,6 @@
     "sha256": "781835b1af7cf66057c2d188ccf2ee6872be1739339224adfd9cc061a3383b4c",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-gold.png"
   },
-  "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-gold.png": {
-    "sha256": "bea60fe68589ef036d0ad5e864129c04b0d2ef4370e48ab723433a0d2f1b21a8",
-    "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-gold.png"
-  },
   "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-silver1-100x100.webp": {
     "sha256": "9dead9d0bc15c378bb1125b64ac3ee950d32658f9c2b2e74079093142cd3d373",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-silver1.png"
@@ -16391,10 +16103,6 @@
     "sha256": "a352c3fe746705c34633f49753743149f9817fa1108ac6055ae0d5627b18032f",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-silver1.png"
   },
-  "newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-silver1.png": {
-    "sha256": "ab654d88ca0c0137aa802c9aaa9be5278ac002a3bea4078655f132b60431f6db",
-    "source": "https://newheightseducation.org/wp-content/uploads/2024/11/2024_seal-of-transparency-silver1.png"
-  },
   "newheightseducation.org/wp-content/uploads/2024/11/candid-seal-platinum-2024-100x100.webp": {
     "sha256": "3f40d73bccc13173b7fae5631364610d03bad85d16280abce3cc63bbdcfdd715",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/candid-seal-platinum-2024.png"
@@ -16405,10 +16113,6 @@
   },
   "newheightseducation.org/wp-content/uploads/2024/11/candid-seal-platinum-2024-300x300.webp": {
     "sha256": "d6b0679ee69fba500cd05876551820c0ffcba2c70e669aefb6ebffe11434322e",
-    "source": "https://newheightseducation.org/wp-content/uploads/2024/11/candid-seal-platinum-2024.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2024/11/candid-seal-platinum-2024.png": {
-    "sha256": "b7e7d2bc98a555252a59731c5e7bfda7b61640b6352e0b79ee630622e5495387",
     "source": "https://newheightseducation.org/wp-content/uploads/2024/11/candid-seal-platinum-2024.png"
   },
   "newheightseducation.org/wp-content/uploads/2024/11/nheg-2024-fwfundraiser-1-1024x536.webp": {
@@ -16439,10 +16143,6 @@
     "sha256": "8feba8503b9e323153f526ad169db3b7d9dc4ea8d4ab2a43571e2421cbef962d",
     "source": "https://newheightseducation.org/wp-content/uploads/2025/03/42-street-pdf.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2025/03/42-street-pdf.jpg": {
-    "sha256": "8120abd722ed3e466cb40e072f3a3cec709ff74171f773dd4075955c96e40e72",
-    "source": "https://newheightseducation.org/wp-content/uploads/2025/03/42-street-pdf.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2025/03/korczaks-children-pdf-232x300.jpg": {
     "sha256": "fe1ab67f31fe1150ced27649d158ef224c1c5795cb253405aabfaeda4d0d471e",
     "source": "https://newheightseducation.org/wp-content/uploads/2025/03/korczaks-children-pdf.jpg"
@@ -16454,14 +16154,6 @@
   "newheightseducation.org/wp-content/uploads/2025/03/korczaks-children-pdf-768x994.jpg": {
     "sha256": "c60277542ace873eaf58931455a5a2c3578de63e0adeaeb6d388faae0cf9f5be",
     "source": "https://newheightseducation.org/wp-content/uploads/2025/03/korczaks-children-pdf.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2025/03/korczaks-children-pdf.jpg": {
-    "sha256": "7723cffc3d96b1d48690bb86e3f631de5f39e00bf2990f70553f2f711ffa7047",
-    "source": "https://newheightseducation.org/wp-content/uploads/2025/03/korczaks-children-pdf.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2025/03/nheg-pitch-presentation.mp4": {
-    "sha256": "729c579e6ff90a865733ff3dd0fd02f6bbc7dd402ae009f46cb6710abe6a8b5f",
-    "source": "https://newheightseducation.org/wp-content/uploads/2025/03/nheg-pitch-presentation.mp4"
   },
   "newheightseducation.org/wp-content/uploads/2025/03/review4-2025nh_trifoldbrochure-images-0-1024x791.jpg": {
     "sha256": "5af75bb5da460b1463722b72eb1ff432c96ef6afbb3b7d0984d0335724719f3e",
@@ -16558,10 +16250,6 @@
   "newheightseducation.org/wp-content/uploads/2025/06/nheg-show-promo-0625-1.webp": {
     "sha256": "973ba09ffbec4511f009c516f55b0a4662e9d12f5ab9e1f2e6d771e7116d3b7c",
     "source": "https://newheightseducation.org/wp-content/uploads/2025/06/nheg-show-promo-0625-1.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2025/07/nheg-catalog-2025-1.pdf": {
-    "sha256": "5d736e5a41834dd51db238173b2394e7f4f3b9e54412079854ca04620fa9d6ed",
-    "source": "https://newheightseducation.org/wp-content/uploads/2025/07/nheg-catalog-2025-1.pdf"
   },
   "newheightseducation.org/wp-content/uploads/2025/08/68c9cd0d-ee09-4934-9632-eabb85cc181f-scaled-300x300.webp": {
     "sha256": "96c81d421cc1a2eeed93c70cc60e45b2d3a3ea635beae67b7325a7f1a84672cd",
@@ -16742,10 +16430,6 @@
   "publications.newheightseducation.org/wp-content/uploads/2024/06/180x60-NHEG-Banner-2.webp": {
     "sha256": "874d52f06eb9f2c297284fe1b2f276fa2162c9e28a756bfe18df56d5a058bc1c",
     "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/180x60-NHEG-Banner-2.png"
-  },
-  "publications.newheightseducation.org/wp-content/uploads/2024/06/books-book-pages-read-literature-159866.jpeg": {
-    "sha256": "c87a59aa63e5477c6f615ca46413774aff3e77bd930d1442acde3bb71c8e760b",
-    "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/books-book-pages-read-literature-159866.jpeg"
   },
   "publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301920.webp": {
     "sha256": "308de7b6cb84cfa63b391e5a431eefe98f4e89b684fba127293acd133a93db80",
@@ -16939,10 +16623,6 @@
     "sha256": "7792c239a69353b4fe1d8145efa8a71af344e7770c44698fe1be7160c00e0fb3",
     "source": null
   },
-  "publications.newheightseducation.org/wp-content/uploads/2024/10/Characters.mp4": {
-    "sha256": "7480ffe9c098469d7d1e89f5d5dc993801c19fd11c8a233bfa3fd3a09ad9b938",
-    "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/Characters.mp4"
-  },
   "publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG2-1.webp": {
     "sha256": "6c1ae9f122f21058beaed5723919dfe70f63f2a517706efb860422e8208a2fe5",
     "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG2-1.png"
@@ -16970,10 +16650,6 @@
   "publications.newheightseducation.org/wp-content/uploads/2026/08/IBA26_Bronze_Winner_1600x900-300x300.webp": {
     "sha256": "a8bd430cff4d8a7c3d4547cb0efe6f6f77ff9f25e5b001d689ab61ed25208b9c",
     "source": "https://publications.newheightseducation.org/wp-content/uploads/2026/08/IBA26_Bronze_Winner_1600x900.webp"
-  },
-  "publications.newheightseducation.org/wp-content/uploads/2026/08/easytoons_logo.webp": {
-    "sha256": "d54cea2c5e5a72c81152ebe67bfac39b2655261f484e22a1807ec04869b9d2ec",
-    "source": "https://publications.newheightseducation.org/wp-content/uploads/2026/08/easytoons_logo.webp"
   },
   "publications.newheightseducation.org/wp-content/uploads/elementor/css/post-118__ver-1790906797.css": {
     "sha256": "7ad125cafc598996798252dc75a2ef36102f7c501a9360cf0c2a70663c995eb7",
@@ -17275,10 +16951,6 @@
     "sha256": "a288821f233e46e66f5b117521402255d9026fd3d74f0204eecba8941f59c516",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/02/shannon-williamson.jpg"
   },
-  "radio.newheightseducation.org/wp-content/uploads/2022/02/shannon-williamson.jpg": {
-    "sha256": "0b974ff555a0e92c2458f50f7aaa050fab8b3cc9744dd01eda2bf9ff630f0b81",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/02/shannon-williamson.jpg"
-  },
   "radio.newheightseducation.org/wp-content/uploads/2022/02/victoria-lowery-1024x1024.webp": {
     "sha256": "8084483321889da190fac0f58fd8632d30ad97e43de564f6a91d2c213a9bc784",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/02/victoria-lowery.jpg"
@@ -17543,10 +17215,6 @@
     "sha256": "bf41cbf0246bfee94266a573ffa193af76578cca752969f88bea1bf6a8f399a9",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/financial-literacy-logo.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2017/02/financial-literacy-logo.png": {
-    "sha256": "564f7cb618afb16ed4291159a39706f218cc15f9006cac9c8abce7175bb3212e",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/financial-literacy-logo.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2017/02/heather-ruggiero-1024x1024.webp": {
     "sha256": "71e5b795411622937bbc6c5b1526d94beb8e6b27b83a998176522e00864f283b",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/heather-ruggiero.jpg"
@@ -17557,10 +17225,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2017/02/heather-ruggiero-300x300.webp": {
     "sha256": "d9a96baa43f9498d9c5ad3245cf3ac01509dbf64cce8df49d7896a4f750492cc",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/heather-ruggiero.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2017/02/heather-ruggiero.jpg": {
-    "sha256": "90d3e0b2289896fea9e1a30ec17cd489c478169ca90878c021db77cdc75f580d",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/heather-ruggiero.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2017/02/natural-speller-1024x1024.webp": {
@@ -17579,10 +17243,6 @@
     "sha256": "8afd3ea2da0daa99444c8932f051ff4f9dd8423dfcfbb3c8d68786221b721313",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/natural-speller.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2017/02/natural-speller.png": {
-    "sha256": "fda981e307d8458ad72f3dfda85373e8103d5f611a2675daf4df13de030d8ac2",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/natural-speller.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2017/02/orphan-train-logo-1024x1024.webp": {
     "sha256": "7b50e0c41e1c09a3dfe63ca67ca3d95011a1d4227d5647b5d73bd441b3e0ef08",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/orphan-train-logo.png"
@@ -17593,10 +17253,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2017/02/orphan-train-logo-300x300.webp": {
     "sha256": "920220d5d24489fccff4f1fd867d36807ad6867fa8b2ebba4a36ef3caa587533",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/orphan-train-logo.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2017/02/orphan-train-logo.png": {
-    "sha256": "87e5f4a0283fdcfe81e571182f8a5ab0c25aa8d88d09547501a7e5e5d100319e",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/orphan-train-logo.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2017/02/pamela-clark-1024x1024.webp": {
@@ -17639,10 +17295,6 @@
     "sha256": "15f9f03f7654568e2a61cecfbab1d84a46211c8dafa003cdbc5abcf53cb68be4",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/sheila-wright-profile.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2017/02/sheila-wright-profile.jpg": {
-    "sha256": "ec0609b9e7c822aa8c8f4b135ec6e45ed2b0049fbe5e3b8a4483f09acdee7dbb",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/sheila-wright-profile.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2017/10/nheg-adult-advisory-group-v2-1024x1024.webp": {
     "sha256": "26dbf14086f05cef876e6ed4e222d39fc91fa94d66b90d359ec40dabaa6adad6",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/10/nheg-adult-advisory-group-v2.png"
@@ -17679,10 +17331,6 @@
     "sha256": "f4421a7879b5e6ad78aa11c04a9ef6daf005c53d38317d766bd124dc48dee6ec",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-advisory-group-logo.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-advisory-group-logo.png": {
-    "sha256": "7890d07d3de4f037176fb856f7c03fff2ab1b7af5fd21b8f2324abe5c4e7780f",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-advisory-group-logo.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-leadership-council-logo-1024x1024.webp": {
     "sha256": "ddb574141ba1e3e3c4f195b74bdf3c1cf2ec66edd3fb49a3f45d46d700860b93",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-leadership-council-logo.png"
@@ -17697,10 +17345,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-leadership-council-logo-300x300.webp": {
     "sha256": "470515a3e2ad70c3fe07ef1597190120fc97bec0f63cff9cd6446d5e0be19662",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-leadership-council-logo.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-leadership-council-logo.png": {
-    "sha256": "bb1abc3a2e78d3ad509a4f957e5cb19eed850fb78a3a710e87d3e63ad646965a",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2017/10/nheg-student-leadership-council-logo.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/act-logo-1024x576.webp": {
@@ -17731,10 +17375,6 @@
     "sha256": "7333b37ca82021f2fb38ff5f4c2d700bd1cbede309bc6d0439b046a62d0b0269",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/art.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/art.jpg": {
-    "sha256": "59c0dae44a3b79501a9d0bb16c14c02c7980e2676f909ecf51c87f8a6cf8cb90",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/art.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/chad-stewart-1024x1024.webp": {
     "sha256": "b297ad06981781416154ffadd852bb8f319ee3cba0714c6a30d9a1080c191518",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/chad-stewart.jpg"
@@ -17745,10 +17385,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/chad-stewart-300x300.webp": {
     "sha256": "6ba2db37057bff759d3608eccd44ddc3cfd298ef039d84aabfb552e778664247",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/chad-stewart.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/chad-stewart.jpg": {
-    "sha256": "fe85d934a98e43004b5f4d6f69b89cb6985de1eb9519a32b6b9c41c529c61cf7",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/chad-stewart.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/charter-school-families-logo-1024x1024.webp": {
@@ -17765,10 +17401,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/charter-school-families-logo-300x300.webp": {
     "sha256": "69c2b4928d5a7cb08a9075e839e3903fafcc2ef8278cd4ff373d1367d334ef18",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/charter-school-families-logo.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/charter-school-families-logo.png": {
-    "sha256": "1df493c371dddb0d071196fa450a84937ab80bd22a7dce44e88dcc05969c52ae",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/charter-school-families-logo.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/clt-logo-1024x576.webp": {
@@ -17827,10 +17459,6 @@
     "sha256": "279d4044665250bcabfcaddc2b0c957a0305bb5a13223972485ed6ac872a7034",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/english.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/english.jpg": {
-    "sha256": "7241283eca04c2e7efb84bd97f7167b6c12c572b0826226c7afca01beed9485e",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/english.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages-1024x427.jpg": {
     "sha256": "17cbde2818b5bdf59516cdb2ea256bde0dcd96648d023d8f35c49dd0fcedabf4",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages.jpg"
@@ -17841,10 +17469,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages-768x320.jpg": {
     "sha256": "adb24fba1c9a258c764884e56cb290eee486e6cdcef43b22c45d38d76792544d",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages.jpg": {
-    "sha256": "0e2e936f62549e3b44b4c7f51bff2bdacd5b5fdd0c2103a2facf1a1f14b53f33",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/generation-self-employed-cover-1024x683.webp": {
@@ -17895,10 +17519,6 @@
     "sha256": "93d4f565fcd6ff93edd9cea9b3d7ddda9f3c4d98e82d7bc5c6691089ed6ea6c5",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/home-school-families-logo.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/home-school-families-logo.png": {
-    "sha256": "6d15545aeeab483bd8f6101fa2711c01ec7da2d24027b3a050378f5f12c059ec",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/home-school-families-logo.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/math-1024x427.webp": {
     "sha256": "269c9a34342f258eafc3ced3d85e7203ebab1d4bba04923575837bfb87f47c14",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/math.jpg"
@@ -17925,10 +17545,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/music-768x320.jpg": {
     "sha256": "a0ac0792dba4251af2fc3ef4718f1134862188152db8f5dde4ae98564aacca4f",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/music.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/music.jpg": {
-    "sha256": "d6f6fe46b2d21545609b5c849f99a6539f1a993c6da755695303f3010bf41dc8",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/music.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/nheg-2014-2015-yearbook-cover-300x196.jpg": {
@@ -17971,10 +17587,6 @@
     "sha256": "6daf068fd18264be88c15c506565f33e7acf4e1ee5415e6af73e441e84d0a48e",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/performing-arts.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/performing-arts.jpg": {
-    "sha256": "53f846a57550edfac73292c20b44e9b8e177ced8adf48dae8e4f09b70e7a9363",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/performing-arts.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/physical-education-1024x427.jpg": {
     "sha256": "c616d9dfacb422f8b462a0eb631ad9d95b5b6258640b4abd31d3c57307387c7f",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/physical-education.jpg"
@@ -17985,10 +17597,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/physical-education-768x320.jpg": {
     "sha256": "850c4cf14e22e321b354dbc130b83869a3861d63f3b9d3704a0541d1f3b8ca64",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/physical-education.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/physical-education.jpg": {
-    "sha256": "d81d80c8543fb79bf3a982f1a5fcc1eaba55a1b34049b6e94289e7908015fd35",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/physical-education.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/public-school-families-logo-1024x1024.webp": {
@@ -18007,10 +17615,6 @@
     "sha256": "a2703e384dad7261161c002c0fb790eea5b3caf793ccc4e65b2fe8003a428ccd",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/public-school-families-logo.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/public-school-families-logo.png": {
-    "sha256": "8f797de85097cca54b68998ac287c205e0989e8a5cc2ef5f8451661e53803cea",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/public-school-families-logo.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/reading-cover-1024x427.jpg": {
     "sha256": "1015978e46bf01f92e5773a5649c7f942b9cd9b68330f1f50e004df1fd972627",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/reading-cover.jpg"
@@ -18021,10 +17625,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/reading-cover-768x320.jpg": {
     "sha256": "a73c33a0b6e686f0a5c59ba741da8a9990b64bf48c5083d04aaf10c93e96c36b",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/reading-cover.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/reading-cover.jpg": {
-    "sha256": "ee365254176fad157becceed54e86961a493161d4a154d49bcd1d3cbaf742c53",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/reading-cover.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/sat-logo-1024x576.webp": {
@@ -18071,10 +17671,6 @@
     "sha256": "8b949801dbb231d49fdd25b2d5047d54d04a40625c3d5d4577fd6ed214884be3",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/spelling.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/spelling.jpg": {
-    "sha256": "25ba2bbc758fbd66d9c92d37e97a47fe79f066138321926eb615a88b8fb901e2",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/spelling.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/the-animation-course-cover-1024x683.webp": {
     "sha256": "5aa3ade0c04aace99b279b7163cdde7d18f63e279efba842a1d1bf625f637797",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-animation-course-cover.jpg"
@@ -18087,10 +17683,6 @@
     "sha256": "96b22b57383eb34912d010fa20ddf055cff43bc1c4a262742df1ec9716b8f60e",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-animation-course-cover.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/the-animation-course-cover.jpg": {
-    "sha256": "842c1a80676c52aa251304263ea662981408a65bd0da9d6829ba3a5b585817e5",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-animation-course-cover.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover-1024x683.jpg": {
     "sha256": "ba173596fa9199de339a7f98a361c91b1e21d8e6c76abcf0c805eb95c0c5fc17",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover.jpg"
@@ -18101,10 +17693,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover-768x512.jpg": {
     "sha256": "e8a3f4e5ed12189b258174e432e4d2f58f7a16d9c7c96be636bc2a786dded781",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover.jpg": {
-    "sha256": "a16d40d44037bd80f68965f2b92c7215dd439ca17ae55833093b7fe8c538e404",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/04/veterans-and-emergency-responders-support-group-960x400.webp": {
@@ -18127,10 +17715,6 @@
     "sha256": "6a78b0ca5a15037d7f67c4ef0faab6944a36caa6c771eeb2661bfccf3598515f",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/veterans-and-emergency-responders-support-group-small.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/04/veterans-and-emergency-responders-support-group-small.jpg": {
-    "sha256": "2c84fc9856024ae9e1ad32f925b7e48c77e417a3fe4e6453b3cb39a6ba1b013d",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/veterans-and-emergency-responders-support-group-small.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/04/writing-1024x427.webp": {
     "sha256": "5c03b2a01e17db94b79608c26308911a222cff171b43120eb14a313422eb249a",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/writing.jpg"
@@ -18151,24 +17735,12 @@
     "sha256": "be1954e49bee3f13bfe5e0c51c6229fae8dd61e9f3907d459be0a538848f2b2f",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/05/clt.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/05/clt.png": {
-    "sha256": "59e7654c5ce96a4544870955d6935a1da8e90e5aa967c989da8eb83dd0cb3405",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/05/clt.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/05/clt10-300x126.webp": {
     "sha256": "0d1f0677e4678285c578e2c0a2445262a93a2b3c74866793e47abee924c9fb41",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/05/clt10.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/05/clt10.png": {
-    "sha256": "078b2be8b9fc26a2613b8d498901c3e9d86b25d264c9b1ff20f4962b644640bd",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/05/clt10.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/05/clt8-300x126.webp": {
     "sha256": "44219c1c91ef5aab2897a5ca8fc5d195b8ae0fe97d66e128dfd59f266b0d0307",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/05/clt8.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/05/clt8.png": {
-    "sha256": "1fd3488572410684204b2d43440f6064bb5d10512483c24aa64def18526947f1",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/05/clt8.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/06/holidays-around-the-world-150x150.webp": {
@@ -18179,20 +17751,12 @@
     "sha256": "e22c9f7fa3d8e74f2ce45977025386dd8baed4852d66bf0cb6cd5dc909807074",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/06/holidays-around-the-world.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/06/holidays-around-the-world.png": {
-    "sha256": "c57076ae0b407cb5f76d569305826b347c2b1cfe76209aaee85ae224c9ec9b02",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/06/holidays-around-the-world.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/06/learning-japanese-logo-150x150.webp": {
     "sha256": "395e952df51044b5c378c64b447f726e7b26e81ad197a7cb7d0a3ebd676c70f0",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/06/learning-japanese-logo.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/06/learning-japanese-logo-300x300.webp": {
     "sha256": "8330c0fbd076de7875f040e276eb4d5abf73d29bba8644c8e04e62ee4546bef5",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/06/learning-japanese-logo.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2018/06/learning-japanese-logo.png": {
-    "sha256": "3894759718e41a1ce3faa05790df965bc7b782af939e8dc2067104d00d314747",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/06/learning-japanese-logo.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2018/09/4.-clt-graphic-1-1024x854.webp": {
@@ -18207,10 +17771,6 @@
     "sha256": "e0f6bfb4f5f8874bc809822dd58fd066a6838dd9cbce1aabca0997bf7f2b8ea0",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/09/4.-clt-graphic-1.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/09/4.-clt-graphic-1.jpg": {
-    "sha256": "93d046914e4399832fc04f6208ceddc9779905fb66d5589791a8be3fedd43238",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/09/4.-clt-graphic-1.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2018/09/5.-clt-graphic-2-1024x854.webp": {
     "sha256": "00831659f357266ab51856e0ebb0aaac11f86bc6198ae1bbd5021c9486127cff",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/09/5.-clt-graphic-2.jpg"
@@ -18223,10 +17783,6 @@
     "sha256": "c3797c6ff648a0973662b7e7c645e273b0499b27839a32deaf48f3ddc9ca25dd",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2018/09/5.-clt-graphic-2.jpg"
   },
-  "school.newheightseducation.org/wp-content/uploads/2018/09/5.-clt-graphic-2.jpg": {
-    "sha256": "59a99ec688b72186017804abf64f5da4961200f92bd4c29b81f83e10f968ad6b",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/09/5.-clt-graphic-2.jpg"
-  },
   "school.newheightseducation.org/wp-content/uploads/2019/01/gemealogy-dna-150x150.webp": {
     "sha256": "a872feddb8cc646fb4c430bed1dcd6463ac173051ac5158f7d3b7f2bf8fabd17",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/01/gemealogy-dna.png"
@@ -18235,20 +17791,12 @@
     "sha256": "4df5b0cda4cb991d69ce60b354080d3f5b5b74534d5f303f87ddea656a0916bf",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/01/gemealogy-dna.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2019/01/gemealogy-dna.png": {
-    "sha256": "d290e2749911e4040dd9bba620559c7625b913a17f281526e42f4779f01eeda6",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/01/gemealogy-dna.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2019/02/home-school-questions-answers-150x150.webp": {
     "sha256": "5002abe2151d9fddc83622d3978101a83b5a1950762d839953b62c127c6c464f",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/02/home-school-questions-answers.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2019/02/home-school-questions-answers-300x300.webp": {
     "sha256": "b7c214e2353ea37b10fb1e24fbfc8c0d57e6243610123c536c378b1207f0dae2",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/02/home-school-questions-answers.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2019/02/home-school-questions-answers.png": {
-    "sha256": "ce5843298f8029bdeb0b20e8a570ae9b45616dc5f6a353d2cdea4bd883e1c0b0",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/02/home-school-questions-answers.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2019/02/learn-to-read-150x150.webp": {
@@ -18379,16 +17927,8 @@
     "sha256": "20de4ff91fc9a09a1e18e4e6509e240f9f084c556900f4b43666879ef3694817",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/11/interview-skills.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2019/11/interview-skills.png": {
-    "sha256": "6e05f1846eaa7a323ac2ed3bd8ddaf5465c442fbd0388d30d3224ea4a2037c93",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/11/interview-skills.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2019/12/blow-the-whistle-cover-200x300.jpg": {
     "sha256": "4cdd4a6a211b6bc71a59f39632bbab15cd37bfa7b630025dae3ae8338696f1b4",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/12/blow-the-whistle-cover.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2019/12/blow-the-whistle-cover.jpg": {
-    "sha256": "d4cbb86caa21fd308721458b84d5efedd9d8607a0b13c64dc7aa5e48178d8391",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/12/blow-the-whistle-cover.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2019/12/buffie-williams-150x150.webp": {
@@ -18401,10 +17941,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2019/12/find-love-in-the-darkness-blackriver-journal-cover-200x300.jpg": {
     "sha256": "eb929dabe889e8ad34981b86775c06ff6c91960ce8428cfc66b1b2e2b608e39c",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/12/find-love-in-the-darkness-blackriver-journal-cover.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2019/12/find-love-in-the-darkness-blackriver-journal-cover.jpg": {
-    "sha256": "d2d1e8c5d4bc668949f716eacbb8d883729a9a350df3c6b0fc6eb6b85c2d7abd",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/12/find-love-in-the-darkness-blackriver-journal-cover.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2019/12/nheg-baton-corps-150x150.webp": {
@@ -18433,10 +17969,6 @@
   },
   "school.newheightseducation.org/wp-content/uploads/2019/12/world-knowledge-cover-233x300.jpg": {
     "sha256": "056fbbec461d4455611cceb4edcefe30ea898b3aa2d9843297dcf838bb3b7a6b",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/12/world-knowledge-cover.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2019/12/world-knowledge-cover.jpg": {
-    "sha256": "54e6a31fe980f258748e6ad747e934f98bc4e6e81eb35b7ad995a31181e5cc9f",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/12/world-knowledge-cover.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2020/01/learning-chinese-150x150.webp": {
@@ -18567,20 +18099,12 @@
     "sha256": "33ee3d99f5c192af165c84a35216073e2bc8a96a434af02a610ba1ca6986e893",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2020/06/music-composers.png"
   },
-  "school.newheightseducation.org/wp-content/uploads/2020/06/music-composers.png": {
-    "sha256": "795cb1962802b9e02d2f9c88908c44911ac1883572dfa9532243b240700872de",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2020/06/music-composers.png"
-  },
   "school.newheightseducation.org/wp-content/uploads/2020/06/online-piano-course-150x150.webp": {
     "sha256": "ba3f58e3b6db08400480cab1894cf53f04332bcca422c9c842d5eefcf6b12d61",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2020/06/online-piano-course.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2020/06/online-piano-course-300x300.webp": {
     "sha256": "ff38846fe5743785bd73af1ae48bc1cead1060668566eb70bde5791dfd013592",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2020/06/online-piano-course.png"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2020/06/online-piano-course.png": {
-    "sha256": "fac4e334c5b9246c634416706dee80ecc61f2329630cb93e43294bd67c119a05",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2020/06/online-piano-course.png"
   },
   "school.newheightseducation.org/wp-content/uploads/2020/07/allene-yue-150x150.jpg": {
@@ -18854,10 +18378,6 @@
   "school.newheightseducation.org/wp-content/uploads/2022/10/img_4472-768x512.jpg": {
     "sha256": "3afe06d4a48b1c371e1643dc0d0e82fb1ad72316b8f156591685abb2093b71dd",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2022/10/img_4472.jpg"
-  },
-  "school.newheightseducation.org/wp-content/uploads/2022/10/nheg-student-vid.mp4": {
-    "sha256": "3bf36fc8d1983a2773ac53084ce276f43c472a4c63823ad7f2106a17c0c24f57",
-    "source": "https://school.newheightseducation.org/wp-content/uploads/2022/10/nheg-student-vid.mp4"
   },
   "school.newheightseducation.org/wp-content/uploads/2022/10/pamelas-grouping-one-109-1152x1536.webp": {
     "sha256": "e73337baaab860600ceef1b57097b0afbb58d4b0c1061426416907b008201fba",

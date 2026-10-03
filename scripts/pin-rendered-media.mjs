@@ -3,12 +3,14 @@
  * Lists every media-library file the pages render, directly, through the
  * stylesheets they load, or as a section hero background in
  * `src/app/theme-layout.css`. Maps each to its original in the live archive's
- * media manifests (#41), and pins its sha256 in
- * `__tests__/assets/media-rendered.json`. The test of the same name fails when
- * a rendered file changes or appears without a pin.
+ * media manifests (#41). Files served at the original's path are checked
+ * against the manifest's sha256 (reviewed recompressions are listed by hand in
+ * `__tests__/assets/media-recompressed.json`). Resized and WebP derivatives
+ * have no archived hash, so their sha256 is pinned in
+ * `__tests__/assets/media-rendered.json`.
  *
  * Run `node scripts/pin-rendered-media.mjs --write` after reviewing a change to
- * rendered media.
+ * rendered derivatives. It never writes the recompression list.
  */
 import { createHash } from 'node:crypto'
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -34,6 +36,10 @@ const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []
   )
+
+/** Whether `path` is served at the same path as its archived original. */
+export const isOriginalPath = (path, source) =>
+  source !== null && source.replace(/^https?:\/\//, '') === path
 
 /** Where a pinned path lives: hero backgrounds under src/app, the rest under _ffc-assets. */
 export const fileOf = (path) =>
@@ -99,8 +105,8 @@ export function renderedMedia() {
 if (process.argv.includes('--write')) {
   const pins = {}
   for (const [path, source] of renderedMedia()) {
-    pins[path] = { sha256: sha256(fileOf(path)), source }
+    if (!isOriginalPath(path, source)) pins[path] = { sha256: sha256(fileOf(path)), source }
   }
   writeFileSync(PINS, JSON.stringify(pins, null, 2) + '\n')
-  console.log(`Pinned ${Object.keys(pins).length} rendered media files.`)
+  console.log(`Pinned ${Object.keys(pins).length} rendered derivatives.`)
 }
