@@ -1,0 +1,84 @@
+{
+  "newheightseducation.org": {
+    "pages": 594,
+    "paginated": 160,
+    "failed": [
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/12/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/13/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/14/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/15/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/16/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/17/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/18/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/19/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/20/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/21/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/22/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/23/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/24/",
+        "status": 404
+      },
+      {
+        "url": "https://newheightseducation.org/author/m-anderson/page/25/",
+        "status": 404
+      }
+    ]
+  },
+  "school.newheightseducation.org": {
+    "pages": 111,
+    "paginated": 1,
+    "failed": []
+  },
+  "publications.newheightseducation.org": {
+    "pages": 270,
+    "paginated": 25,
+    "failed": [
+      {
+        "url": "https://publications.newheightseducation.org/local-portfolio/",
+        "status": 500
+      }
+    ]
+  },
+  "radio.newheightseducation.org": {
+    "pages": 23,
+    "paginated": 0,
+    "failed": []
+  }
+}
