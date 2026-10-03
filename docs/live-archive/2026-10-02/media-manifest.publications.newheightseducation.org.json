@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 975,
+    "title": "testimonial-skip-01",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2023/08/testimonial-skip-01.jpeg",
+    "bytes": 5997,
+    "sha256": "91b4530e0deaa66640f4624b517bd1e7c4e8044ace4ab97bf9275a1365963fbd"
+  },
+  {
+    "id": 1000,
+    "title": "testimonial-skip-02",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2023/08/testimonial-skip-02.jpeg",
+    "attachedTo": 167,
+    "bytes": 5379,
+    "sha256": "d58f7bc60977b6ed43631b5fc83fcff400e976282a95d37e68ee3a342f9fbb98"
+  },
+  {
+    "id": 1256,
+    "title": "post-images-03",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/03/post-images-03-scaled-1.jpg",
+    "bytes": 380064,
+    "sha256": "52f789a75582ec492305ddbe0c764995effc146e66c92fca52a02389d94e8560"
+  },
+  {
+    "id": 1257,
+    "title": "post-images-02",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/03/post-images-02-scaled-1.jpg",
+    "bytes": 373332,
+    "sha256": "d377f7f78ad97f6f9b1223f37d733d3836c31cc711e249e23b942302eedc4373"
+  },
+  {
+    "id": 1258,
+    "title": "post-images-01",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/03/post-images-01-scaled-1.jpg",
+    "bytes": 1180873,
+    "sha256": "4c7386e294ecefe7e15eb083dc24f2cf0e4f5f17e38fd6abfeff10c4873d435d"
+  },
+  {
+    "id": 5716,
+    "title": "EdGuide May-June 2024",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/NHEG-May-June-2024.pdf",
+    "bytes": 8976600,
+    "sha256": "263fffa85a8accfffef4d33bc2234b116ec448a9e3f30dd91bb366e756457fe3"
+  },
+  {
+    "id": 5725,
+    "title": "books-book-pages-read-literature-159866",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/books-book-pages-read-literature-159866.jpeg",
+    "bytes": 107223,
+    "sha256": "c87a59aa63e5477c6f615ca46413774aff3e77bd930d1442acde3bb71c8e760b"
+  },
+  {
+    "id": 5726,
+    "title": "pexels-photo-301926",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301926.jpeg",
+    "bytes": 63958,
+    "sha256": "5ed2f4226cfd531e12dd23c3910b137fc80133d3b78f633c418482c4abe377bc"
+  },
+  {
+    "id": 5727,
+    "title": "pexels-photo-301920",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301920.jpeg",
+    "bytes": 60497,
+    "sha256": "5cce7029efe36c7f28a40ddb8d416570ac43d4fa55b710f66e7d4b07a5c05084"
+  },
+  {
+    "id": 5728,
+    "title": "pexels-photo-256417",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-256417.jpeg",
+    "bytes": 111014,
+    "sha256": "80b2d97022d036dcc48afa32cee03696b865d124913be9fbf2c1e3250a2d498c"
+  },
+  {
+    "id": 5729,
+    "title": "pexels-photo-8828612",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-8828612.jpeg",
+    "bytes": 114787,
+    "sha256": "4000a1e488c71ab5af120e563d3accad84c3dbd5bdb619d44aaaeee282aab0e4"
+  },
+  {
+    "id": 5732,
+    "title": "Response XML",
+    "mime": "application/xml",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/wxr.xml",
+    "bytes": 930511,
+    "sha256": "bd4b78a647e6dc728f51fb4a6637d6b664268afbef928420b01051d90aa3fc76"
+  },
+  {
+    "id": 5733,
+    "title": "default.png",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/default.png",
+    "bytes": 168,
+    "sha256": "6dfe1e05661b087111ce1b280d4f082cbfd2b786a0941224da5af2ce1b29fb75"
+  },
+  {
+    "id": 5736,
+    "title": "home-bg.jpg",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/home-bg.jpg",
+    "bytes": 115040,
+    "sha256": "713f27e4a0f8dbc1faf27025952a786a52e4d392a2a96640e080357d4ec76c4d"
+  },
+  {
+    "id": 5737,
+    "title": "testimonial-skip-01.png",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/testimonial-skip-01.png",
+    "bytes": 115040,
+    "sha256": "713f27e4a0f8dbc1faf27025952a786a52e4d392a2a96640e080357d4ec76c4d"
+  },
+  {
+    "id": 5753,
+    "title": "our_tree_logo",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/our_tree_logo.jpg",
+    "bytes": 11399,
+    "sha256": "88a5ec421f7afbbf7902e2e13e910b7d9bc4d7c9fa9eb468ba904fe515b35512"
+  },
+  {
+    "id": 5766,
+    "title": "Screenshot 2024-06-23 152436",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/Screenshot-2024-06-23-152436.jpg",
+    "attachedTo": 5764,
+    "bytes": 153686,
+    "sha256": "e060733fa717d827c9bcfd5fff52682619f6e281704938eb9016f3ad694894e6"
+  },
+  {
+    "id": 5785,
+    "title": "nheg-logo-with-banner-tm-1",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/nheg-logo-with-banner-tm-1-scaled.jpg",
+    "bytes": 120734,
+    "sha256": "2c96aacdbfcef6b91acf1bd5b0f859ecef5cf251f4446103403fcedd01a65082"
+  },
+  {
+    "id": 5785,
+    "title": "nheg-logo-with-banner-tm-1",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/nheg-logo-with-banner-tm-1.jpg",
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/nheg-logo-with-banner-tm-1-scaled.jpg",
+    "bytes": 138374,
+    "sha256": "2cc1a99d668a0b9f0d0d444e43960a60e1cb44ec04dae6729beba8d4cba0e933"
+  },
+  {
+    "id": 5788,
+    "title": "Screenshot_27-6-2024_194949_",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/Screenshot_27-6-2024_194949_.jpeg",
+    "attachedTo": 5778,
+    "bytes": 396554,
+    "sha256": "a7d15bfc489ccb53b398528e2d37a0dee58e72d67ddd2767d801e739fe7bfbc6"
+  },
+  {
+    "id": 5793,
+    "title": "180&#215;60 NHEG Banner (2)",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/180x60-NHEG-Banner-2.png",
+    "bytes": 11256,
+    "sha256": "adc4a55aa6f910b4cc76db890c134312f32fe37c00b51113e757469146ad48d0"
+  },
+  {
+    "id": 5794,
+    "title": "cropped-180&#215;60-NHEG-Banner-2.png",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/cropped-180x60-NHEG-Banner-2.png",
+    "attachedTo": 5793,
+    "bytes": 9171,
+    "sha256": "b2b02055e3ade886cb55ceea389aa8e18aaef371efa98c06b79d27ebeda3d164"
+  },
+  {
+    "id": 5799,
+    "title": "EASYTOONS Issue 5, cover",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/EASYTOONS-Issue-5-cover.jpg",
+    "attachedTo": 5797,
+    "bytes": 71564,
+    "sha256": "046452d710c001d5c570619a26844e752f27e8fc6c039766362df1f990271cd0"
+  },
+  {
+    "id": 5806,
+    "title": "Screenshot 2024-06-29 113232",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/Screenshot-2024-06-29-113232.jpg",
+    "attachedTo": 5805,
+    "bytes": 117686,
+    "sha256": "bae39b3c499655c6db39d0ee9812ee7b1b2ff206ac86f6b14334a36670f61595"
+  },
+  {
+    "id": 5819,
+    "title": "Screenshot 2024-06-29 113456",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/Screenshot-2024-06-29-113456.jpg",
+    "attachedTo": 5818,
+    "bytes": 132675,
+    "sha256": "f13fecd77612d6f79ac66bf493fd47e7e409929432e33640755225dcae4d08e0"
+  },
+  {
+    "id": 5822,
+    "title": "Screenshot 2024-06-29 113829",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/Screenshot-2024-06-29-113829.jpg",
+    "attachedTo": 5821,
+    "bytes": 144165,
+    "sha256": "fded3bdfee38ba2831a9e819743bd3dee5fbc98f433ad428998fb38d54065764"
+  },
+  {
+    "id": 5825,
+    "title": "Screenshot 2024-06-29 114241",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/Screenshot-2024-06-29-114241.jpg",
+    "attachedTo": 5824,
+    "bytes": 155668,
+    "sha256": "ec38afb7831c327fa564a62f44e325d1d7ff8eeaddbf95b3c33232328a6915e0"
+  },
+  {
+    "id": 5831,
+    "title": "Screenshot 2024-07-04 153417",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/Screenshot-2024-07-04-153417.jpg",
+    "attachedTo": 5829,
+    "bytes": 135950,
+    "sha256": "93af66ae0fc5274f851295aa68309c1042815e5bcbc80a6fe912ebeba9801645"
+  },
+  {
+    "id": 5837,
+    "title": "Screenshot 2024-06-23 152436",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/Screenshot-2024-06-23-152436.jpg",
+    "attachedTo": 5836,
+    "bytes": 153686,
+    "sha256": "e060733fa717d827c9bcfd5fff52682619f6e281704938eb9016f3ad694894e6"
+  },
+  {
+    "id": 5838,
+    "title": "Screenshot 2024-07-04 154048",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/Screenshot-2024-07-04-154048.jpg",
+    "attachedTo": 5836,
+    "bytes": 174065,
+    "sha256": "13458f8d4601cd7acd53b995674fe680962bf71b1af98f937a89d34f70d138ae"
+  },
+  {
+    "id": 5844,
+    "title": "Screenshot 2024-07-05 164316",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/Screenshot-2024-07-05-164316.jpg",
+    "attachedTo": 5843,
+    "bytes": 168615,
+    "sha256": "387031cc259b0f944dfc023e46a4b3b69fc4ddf8ab68e6597e73b9c771c1dc0e"
+  },
+  {
+    "id": 5855,
+    "title": "Screenshot 2024-07-05 170130",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/Screenshot-2024-07-05-170130.jpg",
+    "attachedTo": 5854,
+    "bytes": 111274,
+    "sha256": "7571d3c555f727021f9674c764a969ee46291e36f1f10cf1b190919855bd56f5"
+  },
+  {
+    "id": 5861,
+    "title": "pamela-clark",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/pamela-clark.jpg",
+    "attachedTo": 118,
+    "bytes": 61767,
+    "sha256": "cd177185099b01dce090454d8ee8ef1dc55ca2a49ea5135fa99cdc75d61a6af6"
+  },
+  {
+    "id": 5862,
+    "title": "brochure-7-2-21-w_qr-2048&#215;1583",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/brochure-7-2-21-w_qr-2048x1583-1.png",
+    "attachedTo": 118,
+    "bytes": 1769332,
+    "sha256": "93b8a03eea71bfaaf1f81c15fd4ecc11a3bb46b8e203b1d3a2e6146dc7021b9d"
+  },
+  {
+    "id": 5886,
+    "title": "nheg-edguide-july-august-2023",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/nheg-edguide-july-august-2023.jpg",
+    "attachedTo": 5885,
+    "bytes": 55040,
+    "sha256": "82c6cb1dd920ba827fef6e5e083da2f3a3587a84bb488be871b6eb3180efdf00"
+  },
+  {
+    "id": 5887,
+    "title": "nheg-edguide-march-april-2023",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/nheg-edguide-march-april-2023.jpg",
+    "attachedTo": 5885,
+    "bytes": 74631,
+    "sha256": "248974c88ad6da29dcfbd48f469913a595f380c3b8979d73b0320a7c7af3ad79"
+  },
+  {
+    "id": 5888,
+    "title": "nheg-edguide-may-june-2023",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/nheg-edguide-may-june-2023.jpg",
+    "attachedTo": 5885,
+    "bytes": 39193,
+    "sha256": "b50a6c0cae36d59477a5d62878c72fff2023e99a268276abe9bac191b636c869"
+  },
+  {
+    "id": 5889,
+    "title": "nheg-edguide-september-october-2023",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/nheg-edguide-september-october-2023.jpg",
+    "attachedTo": 5885,
+    "bytes": 62613,
+    "sha256": "be04af41d831a661e67f5e0cdeb5a4cec107eb93ff6588e3ef20c45083cb11a4"
+  },
+  {
+    "id": 5902,
+    "title": "nheg-edguide-january-february-2023",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/07/nheg-edguide-january-february-2023.jpg",
+    "attachedTo": 5900,
+    "bytes": 50793,
+    "sha256": "0ddc5f72929adb7cbccce8aee8321a61e3bed32338dd6aeb2044b37ce97855ad"
+  },
+  {
+    "id": 5914,
+    "title": "NHEG-November-December2022",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-November-December2022.pdf",
+    "bytes": 6881020,
+    "sha256": "6a9d139fbd622db3f549b2d26f3899bd2db487d522288a126053b405f8cdd7a3"
+  },
+  {
+    "id": 5915,
+    "title": "NHEG-May-June2022",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-May-June2022.pdf",
+    "bytes": 4619641,
+    "sha256": "9a3aa04dfa5b1d794fd2d0da04ed4355330c7665b0082599e3a49c27476fff89"
+  },
+  {
+    "id": 5916,
+    "title": "NHEG-March-April2022",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-March-April2022.pdf",
+    "bytes": 4922245,
+    "sha256": "4fa37f4d463b0856d7d7c24ed7de807f57ba9044c2aa1b16b2388314c2184e11"
+  },
+  {
+    "id": 5917,
+    "title": "NHEG-July-August2022",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-July-August2022.pdf",
+    "bytes": 6053306,
+    "sha256": "30bbbb12f8df80caab488328403646380d302b4039efa980d711398ed71aa75b"
+  },
+  {
+    "id": 5918,
+    "title": "NHEG-January-February2022",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-January-February2022.pdf",
+    "bytes": 4542076,
+    "sha256": "5b77d721a3e5e3f69646e9fc9bd2deba2fe8413c39354ae45a4727905bba9c29"
+  },
+  {
+    "id": 5932,
+    "title": "NHEG-January-February2022 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-January-February2022-Cover.pdf",
+    "attachedTo": 5931,
+    "bytes": 133911,
+    "sha256": "c5d8927e95056cf7ea7036ff36e6815c0b96a83fb55b50664ee32fc429548c68"
+  },
+  {
+    "id": 5937,
+    "title": "NHEG-March-April2022 COVER",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-March-April2022-COVER.pdf",
+    "attachedTo": 5936,
+    "bytes": 4922245,
+    "sha256": "4fa37f4d463b0856d7d7c24ed7de807f57ba9044c2aa1b16b2388314c2184e11"
+  },
+  {
+    "id": 5941,
+    "title": "NHEG-May-June2022 COVER",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-May-June2022-COVER.pdf",
+    "attachedTo": 5940,
+    "bytes": 153063,
+    "sha256": "9cfd051251723bcb9b74d00740ea320e33115dc1513af289eea7d45acc986142"
+  },
+  {
+    "id": 5945,
+    "title": "NHEG-July-August2022 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-July-August2022-cover.pdf",
+    "attachedTo": 5944,
+    "bytes": 89032,
+    "sha256": "aafd3b42baafc49c6d75ff7ba88d4d39e558c366532cc1db4b5cad13a2f00941"
+  },
+  {
+    "id": 5950,
+    "title": "NHEG EDGuide September-October 2022 COVER",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-September-October-2022-COVER.pdf",
+    "attachedTo": 5949,
+    "bytes": 90939,
+    "sha256": "f731510af868fbca4e8c06f2683c33e598752d4ce55b71281cac2813a954cf30"
+  },
+  {
+    "id": 5955,
+    "title": "NHEG-November-December2022 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-November-December2022-Cover.pdf",
+    "attachedTo": 5954,
+    "bytes": 168177,
+    "sha256": "cdc2b0427fc2486bc6f5bf33f6f4d93b5705f589e9f61b68bed869bf43e6e1ea"
+  },
+  {
+    "id": 5964,
+    "title": "NHEG EDGuide Magazine January-February 2021 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-Magazine-January-February-2021-Cover.pdf",
+    "attachedTo": 5963,
+    "bytes": 2716452,
+    "sha256": "81dd5ee80462ce90017218c13e183a8d16262ce9f5ce0d47c70c092497e4fe30"
+  },
+  {
+    "id": 5970,
+    "title": "March-April2021 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/March-April2021-Cover.pdf",
+    "attachedTo": 5969,
+    "bytes": 1371321,
+    "sha256": "0c58dce25dcbdede81160cd28df1437d43d4bc3433766af3cd21f98ccaf191a7"
+  },
+  {
+    "id": 5977,
+    "title": "May-June 2021 (1)COVER",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/May-June-2021-1COVER.pdf",
+    "attachedTo": 5976,
+    "bytes": 121259,
+    "sha256": "c45db9d1505be0f8e82081a06dcbf9f1883233fed6056a3faffe2ff363046cd7"
+  },
+  {
+    "id": 5983,
+    "title": "July-August 2021 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/July-August-2021-cover.pdf",
+    "attachedTo": 5982,
+    "bytes": 88729,
+    "sha256": "e3761ca9d4d1220bca6261e5db468b5e243e723a4c92aae4c932bae78225455d"
+  },
+  {
+    "id": 5988,
+    "title": "September-October 2021 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/September-October-2021-cover.pdf",
+    "attachedTo": 5987,
+    "bytes": 135877,
+    "sha256": "3a3cc8ffac33b533d0d47729524bb113b5811a1e4e9f8767e7bbdf2dbe516b15"
+  },
+  {
+    "id": 5993,
+    "title": "November-December 2021 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/November-December-2021-cover.pdf",
+    "attachedTo": 5992,
+    "bytes": 255838,
+    "sha256": "f86354699e073ab3b054f00c52b70b51e065335f178e37b474c7bd04fec36998"
+  },
+  {
+    "id": 6000,
+    "title": "NHEG-Magazine-January-February Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-Magazine-January-February-Cover.pdf",
+    "attachedTo": 5999,
+    "bytes": 1227153,
+    "sha256": "b3cf878de2eda9c703a2c3721849dcd267414e808bc4aed2243a55079606602b"
+  },
+  {
+    "id": 6005,
+    "title": "NHEG &#8211; EDGuide &#8211; MAY- JUNE 2020 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-MAY-JUNE-2020-cover.pdf",
+    "attachedTo": 6004,
+    "bytes": 1077684,
+    "sha256": "8d88f9c358834aad949d28c118cabb3a42e8c66315b471a4b6e5657b2a9269f0"
+  },
+  {
+    "id": 6010,
+    "title": "NHEG-Magazine-July-August2020 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-Magazine-July-August2020-cover.pdf",
+    "attachedTo": 6009,
+    "bytes": 79876,
+    "sha256": "a9c4362d8518bf463d8b99c77fffbf4ce4a429ac1eed51fa65c361c153f31064"
+  },
+  {
+    "id": 6016,
+    "title": "NHEG-Magazine-September-October cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-Magazine-September-October-cover.pdf",
+    "attachedTo": 6015,
+    "bytes": 234456,
+    "sha256": "1fc18a57b131169790473688d71d875284dbc7bf858b8f170e118f8ac7294233"
+  },
+  {
+    "id": 6021,
+    "title": "NHEG-Magazine-November-December 2020 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-Magazine-November-December-2020-cover.pdf",
+    "attachedTo": 6020,
+    "bytes": 746011,
+    "sha256": "55bd48a9b694185e5a159edf85d576ba9f55812554e8a14e029ac693d8990545"
+  },
+  {
+    "id": 6028,
+    "title": "NHEG EDGuide Magazine January-February 2019 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-Magazine-January-February-2019-cover.pdf",
+    "attachedTo": 6027,
+    "bytes": 202689,
+    "sha256": "d91b18080c4b691114bfc2dda226c3e1f87e5c3641ff68583ab5502ac43effae"
+  },
+  {
+    "id": 6033,
+    "title": "NHEG EDGuide Magazine-March-April 2019 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-Magazine-March-April-2019-cover.pdf",
+    "attachedTo": 6032,
+    "bytes": 182574,
+    "sha256": "15806a100b58a8e9b57120d4d4ceb16ae1aa94a4a676aeebe752daf8fd681a47"
+  },
+  {
+    "id": 6038,
+    "title": "NHEG EDGuide Magazine-May-June 2019 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-Magazine-May-June-2019-cover.pdf",
+    "attachedTo": 6037,
+    "bytes": 27957065,
+    "sha256": "3e09ddc92af25eea56faa25df7c31db77b36dd1e6e0bf617987e592dd87999db"
+  },
+  {
+    "id": 6043,
+    "title": "NHEG EDGuide Magazine-July &#8211; August 2019 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-EDGuide-Magazine-July-August-2019-cover.pdf",
+    "attachedTo": 6042,
+    "bytes": 35225504,
+    "sha256": "77e1b6551f313c413c8f0dc9c8c821592f6bd3439bfcd69f21a6cf6c684b5431"
+  },
+  {
+    "id": 6048,
+    "title": "NHEG-Magazine-September-October cover 2019",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/08/NHEG-Magazine-September-October-cover-2019.pdf",
+    "attachedTo": 6047,
+    "bytes": 260613,
+    "sha256": "71860381e72d5a2090754a82078f3f43bbdf1277ec19215f70d51a40a02017fa"
+  },
+  {
+    "id": 6054,
+    "title": "NHEG-Magazine-September-Octomber cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-Magazine-September-Octomber-cover.pdf",
+    "attachedTo": 6053,
+    "bytes": 260613,
+    "sha256": "f8c5a64dd911ff2e3d19d44bab52caa4064eda7746363b0d8106b706d61693a0"
+  },
+  {
+    "id": 6055,
+    "title": "NHEG-Magazine-November-December cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-Magazine-November-December-cover.pdf",
+    "attachedTo": 6053,
+    "bytes": 545378,
+    "sha256": "49fd285cfcaf46d66c1c1afef67773ceb218547633eae1dd2ce43c81acb043cc"
+  },
+  {
+    "id": 6062,
+    "title": "NHEG EDGuide Magazine-January-February 2018 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-January-February-2018-cover.pdf",
+    "attachedTo": 6061,
+    "bytes": 1975772,
+    "sha256": "4d2f94be3c003ba02867b844b839fd96554539527de00fde0cea5c0313bb1b9f"
+  },
+  {
+    "id": 6067,
+    "title": "NHEG EDGuide Magazine-March &#8211; April 2018 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-March-April-2018-cover.pdf",
+    "attachedTo": 6066,
+    "bytes": 516706,
+    "sha256": "5ca5ed84c3fdd7bf6fc1ccefd48bf6eef9a4b4f2ae9ac1a1e1c47d6f7e8dda0e"
+  },
+  {
+    "id": 6072,
+    "title": "NHEG EDGuide Magazine-July-August 2018 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-July-August-2018-cover.pdf",
+    "attachedTo": 6071,
+    "bytes": 171583,
+    "sha256": "e3360d16495fa1ab5a8ca84b8379dbef2dc6b784d89c383b09fc308d6b059d15"
+  },
+  {
+    "id": 6077,
+    "title": "NHEG EDGuide Magazine-September-October 2018 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-September-October-2018-cover.pdf",
+    "attachedTo": 6076,
+    "bytes": 114534,
+    "sha256": "e70a54b1c9d7210250ff09d1ec8bbdde6cc3c236e5b28107b28d64b34ad2e220"
+  },
+  {
+    "id": 6082,
+    "title": "NHEG EDGuide magazine NOVEMBER-DECEMBER 2018 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-magazine-NOVEMBER-DECEMBER-2018-cover.pdf",
+    "attachedTo": 6081,
+    "bytes": 530073,
+    "sha256": "22bd13ac24ba8fc964cfeb3ff6723908f53e119123bbe6af60c1efffcb989648"
+  },
+  {
+    "id": 6083,
+    "title": "NHEG EDGuide magazine NOVEMBER-DECEMBER 2018 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-magazine-NOVEMBER-DECEMBER-2018-cover-1.pdf",
+    "attachedTo": 6081,
+    "bytes": 530073,
+    "sha256": "22bd13ac24ba8fc964cfeb3ff6723908f53e119123bbe6af60c1efffcb989648"
+  },
+  {
+    "id": 6091,
+    "title": "NHEG EDGuide January 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-January-2017-cover.pdf",
+    "attachedTo": 6090,
+    "bytes": 1054715,
+    "sha256": "d7bbc9d4b17ccf0a32a238b75d673a9f2c345fcbef0fd51672d26f947334c3ac"
+  },
+  {
+    "id": 6092,
+    "title": "NHEG EDGuide January 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-January-2017-cover-1.pdf",
+    "attachedTo": 6090,
+    "bytes": 1054715,
+    "sha256": "d7bbc9d4b17ccf0a32a238b75d673a9f2c345fcbef0fd51672d26f947334c3ac"
+  },
+  {
+    "id": 6097,
+    "title": "NHEG EDGuide Magazine &#8211; February 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-February-2017-cover.pdf",
+    "attachedTo": 6096,
+    "bytes": 553267,
+    "sha256": "4e43ff910ec08a6b28a75eae5cc7cc8fa3ae3918caaeb5a10100a95192be3f8a"
+  },
+  {
+    "id": 6102,
+    "title": "NHEG EDGuide Magazine March-April 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-March-April-2017-cover.pdf",
+    "attachedTo": 6101,
+    "bytes": 202663,
+    "sha256": "f10072f0db4feee0650a4a54c63acf22afc60b2eacb31c6d7e75b27d04a8b479"
+  },
+  {
+    "id": 6107,
+    "title": "NHEG EDGuide Magazine May-June 2017",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-May-June-2017-1.pdf",
+    "attachedTo": 6106,
+    "bytes": 27854534,
+    "sha256": "e122dba811bd2f15be42edf38401682051862d2b111c76baf3452de44fa916bc"
+  },
+  {
+    "id": 6108,
+    "title": "NHEG EDGuide Magazine May-June 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-May-June-2017-cover.pdf",
+    "attachedTo": 6106,
+    "bytes": 445253,
+    "sha256": "47f1238b88d0aa4a25014c4115b5f225a7c9daf3d5b984f5b1844012d3159337"
+  },
+  {
+    "id": 6114,
+    "title": "NHEG EDGuide Magazine July-August 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-July-August-2017-cover.pdf",
+    "attachedTo": 6113,
+    "bytes": 343931,
+    "sha256": "41add0fa7276fd6d903b0af91fe331b83b69724dd9c7d97e56cc22caafb6bc3f"
+  },
+  {
+    "id": 6119,
+    "title": "NHEG EDGuide Magazine July-August 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-July-August-2017-cover-1.pdf",
+    "attachedTo": 6118,
+    "bytes": 343931,
+    "sha256": "41add0fa7276fd6d903b0af91fe331b83b69724dd9c7d97e56cc22caafb6bc3f"
+  },
+  {
+    "id": 6120,
+    "title": "NHEG EDGuide September-October 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-September-October-2017-cover.pdf",
+    "attachedTo": 6118,
+    "bytes": 910938,
+    "sha256": "83277999d1e9b2a255f5bef5b4ab22897df60736e4ec51fd8edda63a1a776c83"
+  },
+  {
+    "id": 6125,
+    "title": "NHEG EDGuide Magazine-November-December 2017 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-Magazine-November-December-2017-cover.pdf",
+    "attachedTo": 6124,
+    "bytes": 1298366,
+    "sha256": "18500c89f66127f78b25eecb9ca81e5e4cc3e61f67243459905396ef609c839a"
+  },
+  {
+    "id": 6130,
+    "title": "hslda",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/hslda.jpg",
+    "bytes": 33357,
+    "sha256": "a95b825ecb0a2d98c7fba4105a326b00805bd1d44a0aa21de7ebb32c2b28e9bd"
+  },
+  {
+    "id": 6143,
+    "title": "holiday logo woth award dark (1) &#8211; Copy",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/holiday-logo-woth-award-dark-1-Copy.png",
+    "attachedTo": 6142,
+    "bytes": 249021,
+    "sha256": "8540778361e7f93dc3d8b6582d551b57f81c97209bc7bd6d13dd57d8f0e6554a"
+  },
+  {
+    "id": 6148,
+    "title": "january-2016-nheg-newsletter",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/january-2016-nheg-newsletter-1.pdf",
+    "attachedTo": 6147,
+    "bytes": 207063,
+    "sha256": "0029790d94b9916dc657e5811b4c7059df900f71a466bc85127ed113227ca900"
+  },
+  {
+    "id": 6155,
+    "title": "NHEG February 2016 newsletter cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-February-2016-newsletter-cover.pdf",
+    "attachedTo": 6154,
+    "bytes": 359456,
+    "sha256": "d7e3cc863297deffb4b564213fe21adeb3c1ccf4ca88a1883fc11a2f616d902b"
+  },
+  {
+    "id": 6160,
+    "title": "march-2016-nheg-newslettercover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/march-2016-nheg-newslettercover.pdf",
+    "attachedTo": 6159,
+    "bytes": 684307,
+    "sha256": "f1e4eaec124f0bd179727869954fb0f1e851d8f877e208855bf9afb034517cfe"
+  },
+  {
+    "id": 6165,
+    "title": "april-2016-nheg-newslettercover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/april-2016-nheg-newslettercover.pdf",
+    "attachedTo": 6164,
+    "bytes": 266491,
+    "sha256": "7bd3604e47a594b9a549c984b6a1f5e223863a353be35c207781d16acb4ca907"
+  },
+  {
+    "id": 6170,
+    "title": "may-2016-nheg-newslettercover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/may-2016-nheg-newslettercover.pdf",
+    "attachedTo": 6169,
+    "bytes": 320495,
+    "sha256": "171381e68c49d1f6f50f356e6be9dc439915501742f6064fdd084d3038c5e177"
+  },
+  {
+    "id": 6175,
+    "title": "june-2016-nheg-newslettercover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/june-2016-nheg-newslettercover.pdf",
+    "attachedTo": 6174,
+    "bytes": 464243,
+    "sha256": "acc93552adf7a0d9a0c221703c4da43f17610b95a148cb6ad57c64c31ba79bde"
+  },
+  {
+    "id": 6180,
+    "title": "september-2016-nheg-newsletter cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/september-2016-nheg-newsletter-cover.pdf",
+    "attachedTo": 6179,
+    "bytes": 188248,
+    "sha256": "847a9e2cc14a5afb9b6fc92e1298ee6db8e20325fc6c786fedc5a50c62fb164b"
+  },
+  {
+    "id": 6185,
+    "title": "NHEG EDGuide &#8211; October 2016 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-October-2016-cover.pdf",
+    "attachedTo": 6184,
+    "bytes": 40009577,
+    "sha256": "82d5b1f59c8900ed6fbf50efb6cbf408689dab4c4501b308981563e286f14b8d"
+  },
+  {
+    "id": 6190,
+    "title": "NHEG EDGuide &#8211; November 2016 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-November-2016-cover.pdf",
+    "attachedTo": 6189,
+    "bytes": 743108,
+    "sha256": "b78118c8ed29af21eec2c790026c047130b26bd02f5543caf884cc79c67a0a71"
+  },
+  {
+    "id": 6195,
+    "title": "NHEG EDGuide December 2016 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-December-2016-cover.pdf",
+    "attachedTo": 6194,
+    "bytes": 218444,
+    "sha256": "b45303d9041861d2b03cd6d9f92e76212e5d0c9918208d96b37a511aa1939a05"
+  },
+  {
+    "id": 6220,
+    "title": "EGuide banner with awards",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/EGuide-banner-with-awards-e1725247851836.png",
+    "attachedTo": 6219,
+    "bytes": 280162,
+    "sha256": "24c736ada83a85dedc1daca98dce5748bab5ff6b1d0fe88471bf783df0618b8f"
+  },
+  {
+    "id": 6224,
+    "title": "EGuide banner with awards",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/EGuide-banner-with-awards-1.png",
+    "attachedTo": 6219,
+    "bytes": 302097,
+    "sha256": "a5972e835e7993e17e9b22add0e1d6e6217c1134dd7f0b5f54ff38a805702ab8"
+  },
+  {
+    "id": 6228,
+    "title": "NHEG EDGuide January 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-January-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 1227064,
+    "sha256": "c98c371f97862811a672f319d3fd73397a7c99f23dc776437246d96fe940df01"
+  },
+  {
+    "id": 6229,
+    "title": "NHEG EDGuide February 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-February-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 1517979,
+    "sha256": "7f31905c5c006fe640a249101279c9fdc235cf4f6c3c213ba64ecf8750acd5f8"
+  },
+  {
+    "id": 6230,
+    "title": "NHEG EDGuide March 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-March-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 1660124,
+    "sha256": "431fe23f8f74029e3c1af353d536f366db2b710751558265daa120aa7ccdfff1"
+  },
+  {
+    "id": 6231,
+    "title": "NHEG EDGuide April 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-April-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 1881536,
+    "sha256": "5dfb75b45be736959dd7c46c8476f90335f2b71e2ef1892b2f80741027fce70c"
+  },
+  {
+    "id": 6232,
+    "title": "NHEG EDGuide June-July-Aug 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-June-July-Aug-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 3352256,
+    "sha256": "dcb95437f5caaadc1222cfc19d61e525a70969713c11b3aa031ffc87e42554aa"
+  },
+  {
+    "id": 6233,
+    "title": "NHEG EDGuide October 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-October-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 2974736,
+    "sha256": "254fd2c108588c944254130ecc1a4d028306c00528deb13daf5d424647447077"
+  },
+  {
+    "id": 6234,
+    "title": "NHEG EDGuide November 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-November-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 4908129,
+    "sha256": "7845026f589d0ffebcdc762c90239925eb9d1bf8fe00a9dbbd3eea34362ed273"
+  },
+  {
+    "id": 6235,
+    "title": "NHEG EDGuide December 2014",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-EDGuide-December-2014.pdf",
+    "attachedTo": 6227,
+    "bytes": 5394780,
+    "sha256": "db42e30f009e5b226dcad3a799880c01b7309edb77ba9cd729f90bbbae242d52"
+  },
+  {
+    "id": 6243,
+    "title": "NHEG-September-October 2024 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/NHEG-September-October-2024-cover.pdf",
+    "attachedTo": 6242,
+    "bytes": 156974,
+    "sha256": "9589ec030c7f86f412fa5bb9c2c142a43d809a65be12e536f42546f9df0d0090"
+  },
+  {
+    "id": 6247,
+    "title": "Edu-Workforce",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/Edu-Workforce-e1725519227312.png",
+    "attachedTo": 6246,
+    "bytes": 12175,
+    "sha256": "ab78a929d74a0f41ac2cdefd40605b23a94b9872f8893d86846f7bb79097fec7"
+  },
+  {
+    "id": 6250,
+    "title": "logo",
+    "mime": "image/gif",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/logo.gif",
+    "attachedTo": 6249,
+    "bytes": 3596,
+    "sha256": "2acc19206e8462f9c215a5afde1cec1d481a86851bda9fd6e847a438beac4441"
+  },
+  {
+    "id": 6253,
+    "title": "fee-header-logo",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/09/fee-header-logo-e1725605135255.png",
+    "attachedTo": 6252,
+    "bytes": 2899,
+    "sha256": "9be258c28613c90288af793c3dc86d3c7f55cec3f0352a51ed86f63cc422e5ff"
+  },
+  {
+    "id": 6325,
+    "title": "hillsdale-college-logo",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/hillsdale-college-logo.jpg",
+    "attachedTo": 6271,
+    "bytes": 4871,
+    "sha256": "d593b2e2bb599b253e4589b2a04eca94fe78a4660174f233bfd0182c91a5e249"
+  },
+  {
+    "id": 6339,
+    "title": "Copy of easytoons_logo (1)",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/Copy-of-easytoons_logo-1.png",
+    "attachedTo": 8,
+    "bytes": 60831,
+    "sha256": "f5cbd61211bfea0a99bdeab74908964e8ff23318d503907fd8d28237cbd5c5c6"
+  },
+  {
+    "id": 6352,
+    "title": "Copy of easytoons_logo (1)",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/Copy-of-easytoons_logo-1-1-e1729402322810.png",
+    "attachedTo": 8,
+    "bytes": 63316,
+    "sha256": "b1304e5c18c16b65debeffe1144bff43fa490379689c62cf7e434ee406eb9a09"
+  },
+  {
+    "id": 6367,
+    "title": "_MG_2057",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/MG_2057-scaled.jpg",
+    "attachedTo": 6271,
+    "bytes": 765593,
+    "sha256": "0ee92f49698ced3b05487ebd759de0bc56760aa85488ecc57308934fc2d6942a"
+  },
+  {
+    "id": 6367,
+    "title": "_MG_2057",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/MG_2057.jpg",
+    "attachedTo": 6271,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/MG_2057-scaled.jpg",
+    "bytes": 1887261,
+    "sha256": "b9b69881226b46a316b77ff9e311dca36dacad5cfbaa22776ae56e4c99cfda8f"
+  },
+  {
+    "id": 6371,
+    "title": "_MG_3954",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/MG_3954-scaled.jpg",
+    "attachedTo": 6271,
+    "bytes": 898132,
+    "sha256": "1bfeb479deee68ffcc7a5330ec26db29ca5a7fedb8ce9605b07f22244c168e0b"
+  },
+  {
+    "id": 6371,
+    "title": "_MG_3954",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/MG_3954.jpg",
+    "attachedTo": 6271,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/MG_3954-scaled.jpg",
+    "bytes": 1327787,
+    "sha256": "014028020b4a6c7eeed7454308c18a9f743618732ef20eb9fe7679d8c5266466"
+  },
+  {
+    "id": 6379,
+    "title": "fee-header-logo",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/fee-header-logo.webp",
+    "attachedTo": 6271,
+    "bytes": 2744,
+    "sha256": "b7a64a037b2e1c6fd2b0cb1c8ad6b5d0ad46031c250d6c36f410bf0490547439"
+  },
+  {
+    "id": 6380,
+    "title": "HSLDA LOGO",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/HSLDA-LOGO.jpg",
+    "attachedTo": 6271,
+    "bytes": 67175,
+    "sha256": "30facecf3de1c6a1f5f57aaf89cc4e782a11510591587765b087e85cad1b7b7f"
+  },
+  {
+    "id": 6381,
+    "title": "Hillsdale College",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/Hillsdale-College.jpg",
+    "attachedTo": 6271,
+    "bytes": 61203,
+    "sha256": "2774059ffcf127312e144fc5e5a8a3cb26d8e5aaab659df36cce6032cb0486ad"
+  },
+  {
+    "id": 6382,
+    "title": "fee-header-logo",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/fee-header-logo-1.webp",
+    "attachedTo": 6271,
+    "bytes": 2744,
+    "sha256": "b7a64a037b2e1c6fd2b0cb1c8ad6b5d0ad46031c250d6c36f410bf0490547439"
+  },
+  {
+    "id": 6383,
+    "title": "holiday logo woth award dark (1) &#8211; Copy",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/holiday-logo-woth-award-dark-1-Copy.png",
+    "attachedTo": 6271,
+    "bytes": 249021,
+    "sha256": "8540778361e7f93dc3d8b6582d551b57f81c97209bc7bd6d13dd57d8f0e6554a"
+  },
+  {
+    "id": 6402,
+    "title": "homeschool-world",
+    "mime": "image/gif",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/homeschool-world.gif",
+    "attachedTo": 6271,
+    "bytes": 5149,
+    "sha256": "b35548686aaf2f723df9a1ba67c35fe5dc95cd7b360c40d39511d87dd38946a1"
+  },
+  {
+    "id": 6412,
+    "title": "Screenshot_20-10-2024_32035_newheightseducation.org",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/Screenshot_20-10-2024_32035_newheightseducation.org_.jpeg",
+    "attachedTo": 6271,
+    "bytes": 2524610,
+    "sha256": "e2a3e35eb661d86b2f10440b61d3c29dc30a3ab328066fd7db9bfcf993070169"
+  },
+  {
+    "id": 6414,
+    "title": "NHEG-September-October 2024 partners and affiliate ad (1)",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-September-October-2024-partners-and-affiliate-ad-1.pdf",
+    "attachedTo": 6271,
+    "bytes": 274270,
+    "sha256": "b262d74cabefe7f7bc6ec0fce89e15d5bcfd0c69effc35272c0d6bd6420d7ea1"
+  },
+  {
+    "id": 6415,
+    "title": "NHEG-September-October 2024 partners and affiliate ad (1)",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-September-October-2024-partners-and-affiliate-ad-1.jpg",
+    "attachedTo": 6271,
+    "bytes": 1205883,
+    "sha256": "37f729aa33a973dee6fa5978ee1d252880695cfa42335f251e53f0ecc1825d10"
+  },
+  {
+    "id": 6416,
+    "title": "NHEG QR Codes &#8211; Copy",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-QR-Codes-Copy-scaled.jpg",
+    "attachedTo": 6271,
+    "bytes": 523975,
+    "sha256": "f4239f048097ab18471fd05599e9f3034060a4e29058f4ce080b200bbf3be909"
+  },
+  {
+    "id": 6416,
+    "title": "NHEG QR Codes &#8211; Copy",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-QR-Codes-Copy.jpg",
+    "attachedTo": 6271,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-QR-Codes-Copy-scaled.jpg",
+    "bytes": 758079,
+    "sha256": "a9ac61bb8a04d0c211f8539938a4a95257c335c7cc322780175c2070b5c03267"
+  },
+  {
+    "id": 6432,
+    "title": "NHEG-Logo-with-Banner-TM &#8211; Copy",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-Logo-with-Banner-TM-Copy-scaled.jpg",
+    "bytes": 120807,
+    "sha256": "f6bd88a7ae2a09a2857e29125e7a7dbf7388d303a1c5268fe107d3ee90ee206e"
+  },
+  {
+    "id": 6432,
+    "title": "NHEG-Logo-with-Banner-TM &#8211; Copy",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-Logo-with-Banner-TM-Copy.jpg",
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG-Logo-with-Banner-TM-Copy-scaled.jpg",
+    "bytes": 108563,
+    "sha256": "9edc69601346b07358667bd6de09e2d732d0ca9ff3e201812eac6ab2f983c751"
+  },
+  {
+    "id": 6446,
+    "title": "reading-for-a-reason-logo-768&#215;131",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/reading-for-a-reason-logo-768x131-1.png",
+    "bytes": 35672,
+    "sha256": "48f284b870e73535f87f9fe1e4cc0b57731cc68a0308979c08b5b9678c21de14"
+  },
+  {
+    "id": 6453,
+    "title": "NHEG2 (1)",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/NHEG2-1.png",
+    "bytes": 16387607,
+    "sha256": "a56aef4b407d091f26942e8b90b7bf94161710aee6373e9fcb45d4b828d56622"
+  },
+  {
+    "id": 6465,
+    "title": "Characters",
+    "mime": "video/mp4",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/10/Characters.mp4",
+    "attachedTo": 5774,
+    "bytes": 57537409,
+    "sha256": "7480ffe9c098469d7d1e89f5d5dc993801c19fd11c8a233bfa3fd3a09ad9b938"
+  },
+  {
+    "id": 6477,
+    "title": "NHEG-November-December 2024 (1)-images-0",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/11/NHEG-November-December-2024-1-images-0.jpg",
+    "attachedTo": 6474,
+    "bytes": 849792,
+    "sha256": "04969a33e3ffdbac7c28f0d6f98dba821cebfbd312a9743bc8063e53023cf671"
+  },
+  {
+    "id": 6485,
+    "title": "FINAL-2024 EASYToons Issue 7-images-0",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/11/FINAL-2024-EASYToons-Issue-7-images-0-scaled.jpg",
+    "attachedTo": 6484,
+    "bytes": 387000,
+    "sha256": "053bf60fbc2c41313e67d8899c107c87ff3faef92b38c34dfa494e8bf12a95b9"
+  },
+  {
+    "id": 6485,
+    "title": "FINAL-2024 EASYToons Issue 7-images-0",
+    "mime": "image/jpeg",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2024/11/FINAL-2024-EASYToons-Issue-7-images-0.jpg",
+    "attachedTo": 6484,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2024/11/FINAL-2024-EASYToons-Issue-7-images-0-scaled.jpg",
+    "bytes": 464109,
+    "sha256": "8bfdaf221323dc806dbbcd43ab0b6f0077cc813b9f1fdac746ba87f6e88e7445"
+  },
+  {
+    "id": 6509,
+    "title": "Untitled design (2)",
+    "mime": "image/png",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/01/Untitled-design-2-1.png",
+    "attachedTo": 6489,
+    "bytes": 8648038,
+    "sha256": "902448577853a960b359dba6c039f7f846299a64c96c4a927cff9bdc1104b4a5"
+  },
+  {
+    "id": 6519,
+    "title": "NHEG-March-April 2025 cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/03/NHEG-March-April-2025-cover.pdf",
+    "attachedTo": 6518,
+    "bytes": 112697,
+    "sha256": "5e15dfc7ce0a457b4226026acf92eba45c77e229fe076b5aca21c448dd993633"
+  },
+  {
+    "id": 6531,
+    "title": "Screenshot 2025-05-02 155834",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/04/Screenshot-2025-05-02-155834.webp",
+    "attachedTo": 6529,
+    "bytes": 72690,
+    "sha256": "27ce07012402062304bc8b9c01a3a056c1a522e629bbdd01eb08f64a3659b7b1"
+  },
+  {
+    "id": 6537,
+    "title": "Screenshot 2025-07-03 125151",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/07/Screenshot-2025-07-03-125151.webp",
+    "attachedTo": 6536,
+    "bytes": 200864,
+    "sha256": "c3177aaf0f995a8dc7b9b0b3002c45ba339659e9a0a5b380be10683950bfd2f0"
+  },
+  {
+    "id": 6544,
+    "title": "NHEG-September-October 2025",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/09/NHEG-September-October-2025.pdf",
+    "attachedTo": 6543,
+    "bytes": 105022,
+    "sha256": "a47c7cf5e0f62ccf258b1271680dcd665b574084621e1b8139fc78cf8817fba1"
+  },
+  {
+    "id": 6546,
+    "title": "NHEG EDGuide September-October-2025",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/09/NHEG-September-October-2025-1.pdf",
+    "attachedTo": 6543,
+    "bytes": 121562435,
+    "sha256": "18b58856fd2ed2e48ac88d0cc6c3c5baf4628f028684e48281c93a63f16ce6c8"
+  },
+  {
+    "id": 6547,
+    "title": "NHEG EDGuide September-October-2025",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/09/NHEG-September-October-2025-2.pdf",
+    "attachedTo": 6543,
+    "bytes": 121562435,
+    "sha256": "18b58856fd2ed2e48ac88d0cc6c3c5baf4628f028684e48281c93a63f16ce6c8"
+  },
+  {
+    "id": 6552,
+    "title": "NHEG EDGuide November-December 2025 (2)",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2.pdf",
+    "attachedTo": 6551,
+    "bytes": 113997470,
+    "sha256": "cfca65ce2305c23b4e2113c5464c0c161941795ba074a570bca6f36e4c930228"
+  },
+  {
+    "id": 6553,
+    "title": "NHEG-November-December 2025 (2)-images-0",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-0-scaled.webp",
+    "attachedTo": 6551,
+    "bytes": 2716594,
+    "sha256": "ee53e08594e7f2d3e6ce4f8df132c25c574c6061e430eba56ceacc02a455d1a0"
+  },
+  {
+    "id": 6553,
+    "title": "NHEG-November-December 2025 (2)-images-0",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-0.webp",
+    "attachedTo": 6551,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-0-scaled.webp",
+    "bytes": 4076468,
+    "sha256": "3069155ed82294cf041e8e6d93cebe6246621824939620787b24dff4dfe6e560"
+  },
+  {
+    "id": 6554,
+    "title": "NHEG-November-December 2025 (2)-images-0",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-0-scaled.webp",
+    "attachedTo": 6551,
+    "bytes": 2716594,
+    "sha256": "ee53e08594e7f2d3e6ce4f8df132c25c574c6061e430eba56ceacc02a455d1a0"
+  },
+  {
+    "id": 6554,
+    "title": "NHEG-November-December 2025 (2)-images-0",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-0.webp",
+    "attachedTo": 6551,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-0-scaled.webp",
+    "bytes": 4076468,
+    "sha256": "3069155ed82294cf041e8e6d93cebe6246621824939620787b24dff4dfe6e560"
+  },
+  {
+    "id": 6560,
+    "title": "NHEG-November-December 2025 (2)-images-27",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-27-scaled.webp",
+    "attachedTo": 6271,
+    "bytes": 1802112,
+    "sha256": "5afd81c8c8b2d1ad029b9ce76750974ceaeb25d6c306410533e8c0484ca513b4"
+  },
+  {
+    "id": 6560,
+    "title": "NHEG-November-December 2025 (2)-images-27",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-27.webp",
+    "attachedTo": 6271,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2025/11/NHEG-November-December-2025-2-images-27-scaled.webp",
+    "bytes": 5027072,
+    "sha256": "93984f407c936464af2106cce26278c235b19266760a3e39dbcb542896a63d02"
+  },
+  {
+    "id": 6562,
+    "title": "NHEG-January-February 2026 front page",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/01/NHEG-January-February-2026-front-page.pdf",
+    "attachedTo": 6561,
+    "bytes": 160422,
+    "sha256": "dc0155b7567d80515373844f45b07df70d2b8ccb6e5adfef11ee50854a68d473"
+  },
+  {
+    "id": 6575,
+    "title": "NHEG-March-April 2026 COVER",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/03/NHEG-March-April-2026-COVER.pdf",
+    "attachedTo": 6574,
+    "bytes": 550607,
+    "sha256": "259654e8b00f88bf71c25d66ad08e058d47302f7dda62b7b3b4d3ba83b075e65"
+  },
+  {
+    "id": 6598,
+    "title": "EGuide banner (1)",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/03/EGuide-banner-1.webp",
+    "bytes": 160634,
+    "sha256": "3a6f91dcef3998f3c2752d4f0bdf36374ac011081098c5cbd697e63f0b29b965"
+  },
+  {
+    "id": 6603,
+    "title": "NHEG-May-June 2026 (5)",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-5.pdf",
+    "attachedTo": 6602,
+    "bytes": 175342578,
+    "sha256": "0826dfc46fba3e66124f99f442a0facff8179105fb5a17792a55a082c3ceac31"
+  },
+  {
+    "id": 6604,
+    "title": "NHEG-May-June 2026 Magazine Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover.pdf",
+    "attachedTo": 6602,
+    "bytes": 115002,
+    "sha256": "05774436393713b2af2f889ad9f235025e419de581624af2fbaea323272cd940"
+  },
+  {
+    "id": 6606,
+    "title": "NHEG-May-June 2026 Magazine Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover-1.pdf",
+    "attachedTo": 6602,
+    "bytes": 115002,
+    "sha256": "05774436393713b2af2f889ad9f235025e419de581624af2fbaea323272cd940"
+  },
+  {
+    "id": 6607,
+    "title": "NHEG-May-June 2026 Magazine Cover",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover-scaled.webp",
+    "attachedTo": 6602,
+    "bytes": 4352598,
+    "sha256": "21bfa109c7aedd08d4adc74438cc425cb14a96d62a0e47cf7af2e4eb38caec69"
+  },
+  {
+    "id": 6607,
+    "title": "NHEG-May-June 2026 Magazine Cover",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover.webp",
+    "attachedTo": 6602,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover-scaled.webp",
+    "bytes": 2222538,
+    "sha256": "8c0268fdfd51be06013f43b568f72e11ab2f86b9927dd74ea6d5ce2eca546df3"
+  },
+  {
+    "id": 6608,
+    "title": "NHEG-May-June 2026 Magazine Cover",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover-scaled.webp",
+    "attachedTo": 6602,
+    "bytes": 4352598,
+    "sha256": "21bfa109c7aedd08d4adc74438cc425cb14a96d62a0e47cf7af2e4eb38caec69"
+  },
+  {
+    "id": 6608,
+    "title": "NHEG-May-June 2026 Magazine Cover",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover.webp",
+    "attachedTo": 6602,
+    "originalOf": "https://publications.newheightseducation.org/wp-content/uploads/2026/05/NHEG-May-June-2026-Magazine-Cover-scaled.webp",
+    "bytes": 2222538,
+    "sha256": "8c0268fdfd51be06013f43b568f72e11ab2f86b9927dd74ea6d5ce2eca546df3"
+  },
+  {
+    "id": 6613,
+    "title": "NHEG-July-August 2026 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/07/NHEG-July-August-2026-Cover.pdf",
+    "attachedTo": 6612,
+    "bytes": 124084,
+    "sha256": "aebbd289beb3f5c0089ec5a5a9d2c2d9c45dbbd325d9bd67844789685303527b"
+  },
+  {
+    "id": 6616,
+    "title": "NHEG-July-August 2026 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/07/NHEG-July-August-2026-Cover-1.pdf",
+    "attachedTo": 6612,
+    "bytes": 124084,
+    "sha256": "aebbd289beb3f5c0089ec5a5a9d2c2d9c45dbbd325d9bd67844789685303527b"
+  },
+  {
+    "id": 6618,
+    "title": "NHEG-July-August 2026 Cover.pdf",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/07/NHEG-July-August-2026-Cover.pdf.webp",
+    "attachedTo": 6612,
+    "bytes": 1842188,
+    "sha256": "8f6d7df2fbec2769371274ade2257b496b3443c32893f8e57968c328011032be"
+  },
+  {
+    "id": 6624,
+    "title": "IBA26_Bronze_Winner_1600x900",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/08/IBA26_Bronze_Winner_1600x900.webp",
+    "bytes": 180916,
+    "sha256": "312411a31f6d7ad36969cb370f45d3e2ac39ae8f287cd8a5f013aad834e7f694"
+  },
+  {
+    "id": 6632,
+    "title": "Copy of easytoons_logo (1)",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/08/Copy-of-easytoons_logo-1.webp",
+    "bytes": 28794,
+    "sha256": "d54cea2c5e5a72c81152ebe67bfac39b2655261f484e22a1807ec04869b9d2ec"
+  },
+  {
+    "id": 6633,
+    "title": "easytoons_logo",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/08/easytoons_logo.webp",
+    "bytes": 28794,
+    "sha256": "d54cea2c5e5a72c81152ebe67bfac39b2655261f484e22a1807ec04869b9d2ec"
+  },
+  {
+    "id": 6640,
+    "title": "NHEG-September-October 2026 Cover",
+    "mime": "application/pdf",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/09/NHEG-September-October-2026-Cover.pdf",
+    "attachedTo": 6639,
+    "bytes": 242524,
+    "sha256": "adccb96ff171effd7b3570b2818aca7d829017d7cac9a76ee892a792de7d1831"
+  },
+  {
+    "id": 6642,
+    "title": "Jacqueline Best Invite, place card, program (1)",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/09/Jacqueline-Best-Invite-place-card-program-1.webp",
+    "attachedTo": 6639,
+    "bytes": 1008412,
+    "sha256": "670d15022dfb7168dde3d933e4aad0609cea868ef63719894238eb575bb1c699"
+  },
+  {
+    "id": 6643,
+    "title": "NHEG EDGUIDE September &#8211; October 2026",
+    "mime": "image/webp",
+    "url": "https://publications.newheightseducation.org/wp-content/uploads/2026/09/NHEG-EDGUIDE-September-October-2026.webp",
+    "attachedTo": 6639,
+    "bytes": 1008412,
+    "sha256": "670d15022dfb7168dde3d933e4aad0609cea868ef63719894238eb575bb1c699"
+  }
+]
