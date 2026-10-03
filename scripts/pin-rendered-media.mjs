@@ -29,7 +29,7 @@ const UPLOAD_REF =
 
 const UPLOAD_PATH =
   /^(?:i0\.wp\.com\/)?(?:[a-z]+\.)?newheightseducation\.org\/wp-content\/uploads\//
-const STYLESHEET_REF = /%%BASE%%\/(_ffc-(?:assets|css)\/[^"'\s?#]+\.css)/g
+const STYLESHEET_REF = /%%BASE%%\/(_ffc-(?:assets|css)\/[^"'\s?#]+\.(?:css|bin))/g
 const CSS_URL = /url\(\s*(?:"([^"]*)"|'([^']*)'|([^)'"]*))\s*\)/gi
 
 const walk = (dir) =>

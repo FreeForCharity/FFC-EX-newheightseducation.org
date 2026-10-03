@@ -69,8 +69,12 @@ const cssUrls = (css) =>
     (m) => m[1] ?? m[2] ?? m[3]
   )
 
-/** Every URL a browser with JavaScript on would fetch as an asset for this page. */
-export function assetRefs(html) {
+/**
+ * Every URL a browser with JavaScript on would fetch as an asset for this page.
+ * `<link rel="stylesheet">` hrefs are also pushed onto `stylesheets`, whatever
+ * their extension.
+ */
+export function assetRefs(html, stylesheets = []) {
   let doc = html
   for (let prev; prev !== doc;) {
     prev = doc
@@ -87,6 +91,7 @@ export function assetRefs(html) {
       if (!rels.some((rel) => ASSET_LINK_RELS.has(rel))) continue
       const href = attr(tag, 'href')
       if (href) refs.push(href)
+      if (href && rels.includes('stylesheet')) stylesheets.push(decode(href))
       continue
     }
     for (const a of ['src', 'poster']) {
@@ -159,16 +164,18 @@ export function checkOut(outDir, basePath = '') {
     const rel = relative(outDir, file).split('\\').join('/')
     const route = rel.endsWith('index.html') ? rel.slice(0, -'index.html'.length) : rel
     const pagePath = `${basePath}/${route}`
-    for (const ref of assetRefs(readFileSync(file, 'utf8'))) {
+    const sheets = []
+    for (const ref of assetRefs(readFileSync(file, 'utf8'), sheets)) {
       const problem = checkRef(ref, { pagePath, basePath, exists })
-      if (problem) {
-        report(problem, `/${route}`)
+      if (problem) report(problem, `/${route}`)
+    }
+    for (const sheet of sheets) {
+      if (/^(https?:)?\/\//i.test(sheet) || checkRef(sheet, { pagePath, basePath, exists }))
         continue
-      }
-      if (/^(https?:)?\/\//i.test(ref)) continue
-      const sitePath = decodeURIComponent(new URL(ref, `https://site.invalid${pagePath}`).pathname)
-      if (sitePath.endsWith('.css') && !stylesheets.has(sitePath))
-        stylesheets.set(sitePath, `/${route}`)
+      const sitePath = decodeURIComponent(
+        new URL(sheet, `https://site.invalid${pagePath}`).pathname
+      )
+      if (!stylesheets.has(sitePath)) stylesheets.set(sitePath, `/${route}`)
     }
   }
   for (const [sitePath] of stylesheets) {
