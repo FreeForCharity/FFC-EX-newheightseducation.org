@@ -65,9 +65,11 @@ const metaContent = (html, key) => {
   }
 }
 
+// The path of an absolute http(s) URL with no query or fragment, else undefined.
 const pathOf = (url) => {
   try {
-    return new URL(url).pathname
+    const { protocol, search, hash, pathname } = new URL(url)
+    return /^https?:$/.test(protocol) && !search && !hash ? pathname : undefined
   } catch {
     return undefined
   }
