@@ -1,6 +1,5 @@
-import { join } from 'node:path'
 import pins from './media-rendered.json'
-import { manifest, renderedMedia, sha256 } from '../../scripts/pin-rendered-media.mjs'
+import { fileOf, manifest, renderedMedia, sha256 } from '../../scripts/pin-rendered-media.mjs'
 
 /**
  * Every media-library file the pages render is pinned by hash and mapped to its
@@ -11,7 +10,6 @@ import { manifest, renderedMedia, sha256 } from '../../scripts/pin-rendered-medi
  * `node scripts/pin-rendered-media.mjs --write`.
  */
 
-const ASSETS = join(__dirname, '..', '..', 'public', '_ffc-assets')
 const PINNED: Record<string, { sha256: string; source: string | null }> = pins
 const rendered = renderedMedia()
 const archived = new Map(manifest().map((entry) => [entry.url, entry]))
@@ -28,7 +26,7 @@ describe('rendered media', () => {
 
   it('serves each file with the hash it was reviewed at', () => {
     const changed = [...rendered.keys()].filter(
-      (path) => PINNED[path] && sha256(join(ASSETS, path)) !== PINNED[path].sha256
+      (path) => PINNED[path] && sha256(fileOf(path)) !== PINNED[path].sha256
     )
     expect(changed).toEqual([])
   })

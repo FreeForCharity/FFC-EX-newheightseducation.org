@@ -16743,6 +16743,18 @@
     "sha256": "874d52f06eb9f2c297284fe1b2f276fa2162c9e28a756bfe18df56d5a058bc1c",
     "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/180x60-NHEG-Banner-2.png"
   },
+  "publications.newheightseducation.org/wp-content/uploads/2024/06/books-book-pages-read-literature-159866.jpeg": {
+    "sha256": "c87a59aa63e5477c6f615ca46413774aff3e77bd930d1442acde3bb71c8e760b",
+    "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/books-book-pages-read-literature-159866.jpeg"
+  },
+  "publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301920.webp": {
+    "sha256": "308de7b6cb84cfa63b391e5a431eefe98f4e89b684fba127293acd133a93db80",
+    "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301920.jpeg"
+  },
+  "publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301926.webp": {
+    "sha256": "adf76f0e4b250581f5779a9f5fb80a5d1b5ad75d9b43864d7c907c98bbed20b1",
+    "source": "https://publications.newheightseducation.org/wp-content/uploads/2024/06/pexels-photo-301926.jpeg"
+  },
   "publications.newheightseducation.org/wp-content/uploads/2024/08/July-August-2021-cover-pdf.webp": {
     "sha256": "d37354477ad2cce93fed4a5749c069d5495cb008643c30576b35ab30d0f4d33b",
     "source": null
@@ -16985,6 +16997,106 @@
   },
   "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/css/robotoslab__ver-1742219237.css": {
     "sha256": "f724326705179a15b6a984640a669be942511c457de2b09a2d3d20c1f21381c5",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkahkawzu.woff2": {
+    "sha256": "900190befc0dfe4ae99fefcbe7f72425c48a61ebe3ff00bbe93b0287e0007c97",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkankawzu.woff2": {
+    "sha256": "a5ee960e6273ecaa1787150604d18a2be3fad74cf76936f916ed8b235a4106bb",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkbnka.woff2": {
+    "sha256": "9ec9eb9108f1752c30ba316606858d685a112a609d8bef1fb3d5d32c8e0b6507",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkbxkawzu.woff2": {
+    "sha256": "baac6db7ec159297d2fe9d313222d826e76b09fd72be43530b632059d482c02d",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkc3kawzu.woff2": {
+    "sha256": "fbeb2620ecd7451cd9f27a70e7ec39e1597cb33fd36be9424bf97a18c0e2e786",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkchkawzu.woff2": {
+    "sha256": "b9acf16c2906a6b95c31bf7cd8b417bfc32f83216a50d70c0cd41e57a1922f4a",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkcnkawzu.woff2": {
+    "sha256": "68ab4e107fc1d8d32d358b0e8c8182921e7934e4fc672f3805dfa9a16946a9fb",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkcxkawzu.woff2": {
+    "sha256": "a0435a376ff703ac8ceedd566f18e3b025d91f35349b21968a09d65080fac0b6",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkenkawzu.woff2": {
+    "sha256": "8754810078212d20cc4d3e96f6c4fd2d2252e06263617681ebd1cfae813b68b2",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3-ubgee.woff2": {
+    "sha256": "31c5962274d8bd31cbf72f45aaa615f33f230088491b4ee5d9f544fef10c418e",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3cubgee.woff2": {
+    "sha256": "d94ccab74005ea632c5680d33d34586634ded595035990fa2cfef2f1e1cccb55",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3gubgee.woff2": {
+    "sha256": "3a8eee8312b77ac2ef2dc2e01fdddf8ede8a4f72bf1a08d40745d8b432386fdf",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3iubgee.woff2": {
+    "sha256": "c06ca3fcbc5f7c37ebb7c86a69502009911ecd8183811bae02f9b1fbb0541ddb",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3kubgee.woff2": {
+    "sha256": "884933fb5789b478d2da68a4cb0bd5cc138d995f1fea9a957ba29cb3c00f1bf7",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3oubgee.woff2": {
+    "sha256": "38ca68052df6bb72126ff9cedd7d78d2afe62079e9149ddedf650ae8f4c744cf",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2": {
+    "sha256": "20b535fa80c8189e3b87d1803038389960203a886d502bc2ef1857affc2f38d2",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluamawcubgee.woff2": {
+    "sha256": "d758e85352971dffe51a5992405eb8f9b316b1bed82495445c328699ee400830",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluamaxkubgee.woff2": {
+    "sha256": "e921785496ed2d98c2257c88a6f838afa6acbee05cb8467048501bfe2a301461",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufa5qw54a.woff2": {
+    "sha256": "09b79394660831abe425de3d999cf89844c100f31a0da97d0c71f12a005afdbf",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufb5qw54a.woff2": {
+    "sha256": "7361486c87055d07878f8e758c916db8576c579ed3bdc209c19fd43063dd8e27",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufc5qw54a.woff2": {
+    "sha256": "4c2a824cab9799116baa8f7a85c7ca062fd67d1ee7b9bc6338ef3bcdae31fc16",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufd5qw54a.woff2": {
+    "sha256": "c5c268299cdaa725aa32d248338b0e9beadc9808da1124720204bac9b215d018",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufj5qw54a.woff2": {
+    "sha256": "b914dc874c479f977f20ff2ac7e5e75871a6b8119fe4b671065126d6873e93f0",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufn5qu.woff2": {
+    "sha256": "a8e429611131e3fdc2018ec943a36100dbabb4aaa788c8dead6bdcf927917293",
+    "source": null
+  },
+  "publications.newheightseducation.org/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufo5qw54a.woff2": {
+    "sha256": "1c0fd8b50a6f78fbcc46b942912284c79b85962667b7b63a0e0b229327521287",
     "source": null
   },
   "publications.newheightseducation.org/wp-content/uploads/uag-plugin/assets/0/uag-css-167__ver-1790906849.css": {
@@ -18862,5 +18974,137 @@
   "school.newheightseducation.org/wp-content/uploads/bfi_thumb/dummy-transparent-q6evblfkv63gva4o7vd57dbtxieepnkgfwp2ojba2w.webp": {
     "sha256": "e77a8ea19fbe2649c3964f1cb9b306d6eec9f24179ecd17801973c480c5c6521",
     "source": null
+  },
+  "theme-backgrounds/school/wp-content/uploads/2017/02/nheg-annex-cover.jpg": {
+    "sha256": "8e002478f76528b9ed4b4bd7f07545f2a816d909684ead53461c911888155ef4",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/02/nheg-annex-cover.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2017/04/financial-literacy-background.jpg": {
+    "sha256": "bd1352a7c3a892db27db4a2107e73d56baeb02b96956c9fd82362e9716e28ad9",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/04/financial-literacy-background.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2017/04/natural-speller-background.jpg": {
+    "sha256": "46affe17d8c53280218b2c648312fd7b740daeaf1f2a18a8ae662f5e7a2495a4",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/04/natural-speller-background.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2017/04/orphant-train-background.jpg": {
+    "sha256": "36882568ce352c5d0f2d01c67e93ac16755fa87ddf1c60168713d033681dfb72",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2017/04/orphant-train-background.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/act-logo.jpg": {
+    "sha256": "1cdc10960887009dd5f10bf8879a009de8d65ae113a4ff4f59428bbc6cdb4ba2",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/act-logo.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/art-resources.jpeg": {
+    "sha256": "36f02ebde210c95ce2fe6d2d099cbe915bab6a1f1b1c65b719c60293c05d5c09",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/art-resources.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/classroom-reources-cover.jpg": {
+    "sha256": "79b51e736b5b4c219981acdc308c4647271645fe2e9a028ee806bc75976a6c82",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/classroom-reources-cover.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/english-resources.jpeg": {
+    "sha256": "c1577b14bdf6958e112f051906d7d47d20143902c9743cbc331b322edc347c94",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/english-resources.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/foreign-languages-resources.jpg": {
+    "sha256": "f598576101e802d5dab2b3f1f1e290b0328f0b7951074b23d7c8a28ee222b9a3",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/foreign-languages-resources.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/ged-logo.jpg": {
+    "sha256": "df5022baf75379d1b8ccd9dee68c523e72bb5756b96c5cc429a300981406c52a",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/ged-logo.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/generation-self-employed-cover.jpeg": {
+    "sha256": "40051790059667fa08bbb22f8f35c9cdc8c60db594c0fa9a58e6bac149648a56",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/generation-self-employed-cover.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/gre-logo.jpg": {
+    "sha256": "fd6c0e3a385bf300a2bfd5eb12b78d2b53fc0a35a65839c51dfcb6f3afcf6501",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/gre-logo.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/math-resources.jpeg": {
+    "sha256": "3782ae1a6e642cb83ae9785a93761505f69a7aba179779fd58cb80bd37665648",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/math-resources.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/performing-arts-resources.jpg": {
+    "sha256": "967cd03c3a20edc9f214cfc98098e751ea523e6024cb27aa785cb0603f93a743",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/performing-arts-resources.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/physical-education-resources.jpeg": {
+    "sha256": "9be5f1d7e80af7df8aabab0b18c755722d032ced6263f50926e6f52fd3345811",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/physical-education-resources.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/psat-banner.jpg": {
+    "sha256": "fd4c308ea7cf10801e46d4c94c858badfbdb439ddf2239b6415e616dbb546007",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/psat-banner.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/reading-resources.jpeg": {
+    "sha256": "f2165d4e6283db67a0be1769d264bd790ab775497e588d7775adff17cf3bab55",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/reading-resources.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/sat-logo.jpg": {
+    "sha256": "48f3533a4d8aef507ee1db1b8e822e9bc5a6c195913f30d507683ac21ae8d35b",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/sat-logo.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/science-resources.jpg": {
+    "sha256": "f2dee4dddd79e3e4877d2c00cd8d2791241b00fa1da14066ae7137a918ee39b1",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/science-resources.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/spelling-resources.jpg": {
+    "sha256": "bbb6a41c2c750f523bdcecd157a9574e551e80f85aaf8779e7a4c8605510d665",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/spelling-resources.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/the-animation-course-cover.jpg": {
+    "sha256": "2729727da40836c35ad892c970b786315b322934076ce19c895d8f7104e48842",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-animation-course-cover.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/the-drawing-course-cover.jpg": {
+    "sha256": "9dd276706736930905f5b2482678b021e69948aff7973c049a8b618e6ad39100",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/the-drawing-course-cover.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/04/writing-resources.jpeg": {
+    "sha256": "eba0d6cc91a0c7df4f75edad3114d11eb208f0ef6bbeb163813390240c6248b0",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/04/writing-resources.jpeg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2018/06/japan-background.jpg": {
+    "sha256": "47987ac4c5e6a9938b4c97e2ba968ffeee181f5168bcfee1c031db9a7183ee5a",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2018/06/japan-background.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2019/01/genealogy-dna-course-cover.jpg": {
+    "sha256": "6c0f8dcd76003c3080d09488b9c23fde6e5616963c84732fd2a657d4be7cf045",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2019/01/genealogy-dna-course-cover.jpg"
+  },
+  "theme-backgrounds/school/wp-content/uploads/2019/07/sumflowers.png": {
+    "sha256": "1d50e876f4c74041fd5fd661e7b3c53210e7aa3d6994e056d65568b7bac8c7c5",
+    "source": null
+  },
+  "theme-backgrounds/school/wp-content/uploads/2020/01/great-wall-of-china.jpg": {
+    "sha256": "b1b0b020dd0e3bd346900121c22a597d9be83c63ab17887017f795541e1d35f2",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2020/01/great-wall-of-china.jpg"
+  },
+  "theme-backgrounds/wp-content/uploads/2016/09/nheg-home-cover.jpg": {
+    "sha256": "3a421dff9f4613b29bed320a239b80af1ea451634dc2b9ce458b98af77a50ab1",
+    "source": "https://newheightseducation.org/wp-content/uploads/2016/09/nheg-home-cover.jpg"
+  },
+  "theme-backgrounds/wp-content/uploads/2018/05/nheg-blog.jpg": {
+    "sha256": "c3f2e4e6d4fed5f893f73f63889abcdd6b63cb7ebdffdc78b0bb5a54e3dd4e42",
+    "source": "https://newheightseducation.org/wp-content/uploads/2018/05/nheg-blog.jpg"
+  },
+  "theme-backgrounds/wp-content/uploads/2018/05/white-house.jpg": {
+    "sha256": "59cb497b65ad3a69cd576455f12d57ac292bd39c5481d586d11a04edc262d8a8",
+    "source": "https://newheightseducation.org/wp-content/uploads/2018/05/white-house.jpg"
+  },
+  "theme-backgrounds/wp-content/uploads/2018/10/givingtuesday-1.jpg": {
+    "sha256": "0ead06446b780f67348f1831c8dd4d31adc12c8fc1c0c40794572ef008f014a0",
+    "source": "https://newheightseducation.org/wp-content/uploads/2018/10/givingtuesday-1.jpg"
+  },
+  "theme-backgrounds/wp-content/uploads/2019/03/school-bag-give-away-cover.jpg": {
+    "sha256": "8701bc6d9d6e2b084b9cdd69dc064bb8e44bdc15fbbf6ea759df5c57c11ca367",
+    "source": "https://newheightseducation.org/wp-content/uploads/2019/03/school-bag-give-away-cover.jpg"
+  },
+  "theme-backgrounds/wp-content/uploads/2020/11/storytelling.jpg": {
+    "sha256": "6d4ba57f519cd03430bda250dd1ce0906a42c604b247c181714e1d1b7e18240f",
+    "source": "https://newheightseducation.org/wp-content/uploads/2020/11/storytelling.jpg"
   }
 }
