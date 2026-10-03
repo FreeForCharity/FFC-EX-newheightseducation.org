@@ -11,7 +11,10 @@
  *      heading-hierarchy bug the template's legal pages historically shipped).
  *   2. Every indexable page has a self-referential <link rel="canonical">
  *      (per-page canonical, not the homepage's — the App Router inheritance
- *      trap).
+ *      trap) at the path it is served from, and `og:url` agrees with it.
+ *   3. Every indexable page has og:title, og:description, og:image and a
+ *      twitter:card.
+ *   4. sitemap.xml lists exactly the indexable pages.
  *
  * Run: `npm run build` first, then `node scripts/verify-build.mjs`
  * (or `npm run verify:build`). Exits non-zero on any violation.
@@ -26,6 +29,7 @@ const OUT = join(ROOT, 'out')
 
 // Error/utility pages are not indexable content, so the invariants don't apply.
 const SKIP = new Set(['404.html', '_not-found.html'])
+const SKIP_DIRS = new Set(['_ffc-assets', '404', '_not-found'])
 
 async function walkHtml(dir, results = []) {
   let entries
@@ -37,9 +41,9 @@ async function walkHtml(dir, results = []) {
   for (const entry of entries) {
     const full = join(dir, entry.name)
     if (entry.isDirectory()) {
-      // Captured third-party assets, not routes: an embedded player's own
-      // HTML has no <h1> and no canonical, and should not have.
-      if (entry.name === '_ffc-assets') continue
+      // Captured third-party assets and the error page's subpath copies:
+      // neither is an indexable route.
+      if (SKIP_DIRS.has(entry.name)) continue
       await walkHtml(full, results)
     } else if (entry.name.endsWith('.html') && !SKIP.has(entry.name)) {
       results.push(full)
@@ -49,6 +53,29 @@ async function walkHtml(dir, results = []) {
 }
 
 const errors = []
+const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '')
+const SOCIAL = ['og:title', 'og:description', 'og:image', 'twitter:card']
+
+const metaContent = (html, key) => {
+  for (const [tag] of html.matchAll(/<meta\b[^>]*>/gi)) {
+    if (new RegExp(`(?:property|name)="${key}"`, 'i').test(tag)) {
+      return tag.match(/content="([^"]*)"/i)?.[1]
+    }
+  }
+}
+
+const pathOf = (url) => {
+  try {
+    return new URL(url).pathname
+  } catch {
+    return undefined
+  }
+}
+
+const routeOf = (page) => {
+  const rel = relative(OUT, page).split('\\').join('/')
+  return `${BASE_PATH}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '/')}`
+}
 
 try {
   await stat(OUT)
@@ -72,20 +99,46 @@ for (const page of pages) {
     errors.push(`${rel}: expected exactly one <h1>, found ${h1Count}.`)
   }
 
-  if (!/<link[^>]+rel="canonical"/i.test(html)) {
+  const canonical = html.match(/<link[^>]+rel="canonical"[^>]*href="([^"]*)"/i)?.[1]
+  if (!canonical) {
     errors.push(`${rel}: missing <link rel="canonical">.`)
+  } else {
+    if (pathOf(canonical) !== routeOf(page)) {
+      errors.push(`${rel}: canonical ${canonical} is not the path it is served at.`)
+    }
+    if (metaContent(html, 'og:url') !== canonical) {
+      errors.push(`${rel}: og:url does not match the canonical.`)
+    }
   }
+
+  for (const key of SOCIAL) {
+    if (!metaContent(html, key)) errors.push(`${rel}: missing ${key}.`)
+  }
+}
+
+let sitemap = ''
+try {
+  sitemap = await readFile(join(OUT, 'sitemap.xml'), 'utf8')
+} catch {
+  errors.push('out/sitemap.xml: missing.')
+}
+if (sitemap) {
+  const listed = new Set([...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => pathOf(m[1])))
+  const served = new Set(pages.map(routeOf))
+  for (const route of served) if (!listed.has(route)) errors.push(`sitemap.xml: missing ${route}.`)
+  for (const route of listed)
+    if (!served.has(route)) errors.push(`sitemap.xml: lists ${route}, which is not a page.`)
 }
 
 if (errors.length) {
   console.error('\n❌ Built-output verification failed:')
   for (const e of errors) console.error('  - ' + e)
   console.error(
-    '\nFix the page source (one <h1> per page; a per-page alternates.canonical) and rebuild.'
+    '\nFix the page source (one <h1> per page; per-page alternates.canonical and openGraph) and rebuild.'
   )
   process.exit(1)
 }
 
 console.log(
-  `\n✅ Built-output verified — ${pages.length} pages each have one <h1> and a canonical.`
+  `\n✅ Built-output verified — ${pages.length} pages each have one <h1>, their own canonical and social tags, and are all in the sitemap.`
 )

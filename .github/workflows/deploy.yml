@@ -115,6 +115,11 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
 
+      - name: Verify canonicals, social tags and sitemap
+        run: pnpm run verify:build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.value }}
+
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v5
         with:
