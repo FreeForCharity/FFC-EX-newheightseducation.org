@@ -139,4 +139,49 @@ describe('checkOut', () => {
       'missing /_ffc-assets/gone.png': ['/about/', '/'],
     })
   })
+
+  it('checks the url() targets of each stylesheet a page loads, relative to the stylesheet', () => {
+    mkdirSync(join(out, '_ffc-assets', 'css'))
+    writeFileSync(
+      join(out, '_ffc-assets', 'css', 'site.css'),
+      `a{background:url(../logo.png)} b{background:url("../gone.png")} /* url(skip.png) */
+       i{background:url(//cdn.example.org/x.png)} u{background:url("data:,")} s{filter:url(#f)}`
+    )
+    writeFileSync(
+      join(out, 'index.html'),
+      '<link rel="stylesheet" href="/_ffc-assets/css/site.css">'
+    )
+    writeFileSync(
+      join(out, 'about', 'index.html'),
+      '<link rel="stylesheet" href="../_ffc-assets/css/site.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'missing ../gone.png': ['/_ffc-assets/css/site.css'],
+      'off-site //cdn.example.org/x.png': ['/_ffc-assets/css/site.css'],
+    })
+  })
+
+  it('follows stylesheets whatever their extension, but not other links', () => {
+    writeFileSync(join(out, '_ffc-assets', 'font.bin'), '@font-face{src:url(gone.woff2)}')
+    writeFileSync(join(out, '_ffc-assets', 'icon.bin'), 'url(also-gone.png)')
+    writeFileSync(
+      join(out, 'index.html'),
+      '<link rel="stylesheet" href="/_ffc-assets/font.bin"><link rel="icon" href="/_ffc-assets/icon.bin">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'missing gone.woff2': ['/_ffc-assets/font.bin'],
+    })
+  })
+
+  it('resolves stylesheet paths under the base path', () => {
+    mkdirSync(join(out, '_ffc-assets', 'css'))
+    writeFileSync(join(out, '_ffc-assets', 'css', 'site.css'), 'a{background:url(../gone.png)}')
+    writeFileSync(
+      join(out, 'index.html'),
+      '<link rel="stylesheet" href="/base/_ffc-assets/css/site.css">'
+    )
+    expect(Object.fromEntries(checkOut(out, '/base'))).toEqual({
+      'missing ../gone.png': ['/base/_ffc-assets/css/site.css'],
+    })
+  })
 })
