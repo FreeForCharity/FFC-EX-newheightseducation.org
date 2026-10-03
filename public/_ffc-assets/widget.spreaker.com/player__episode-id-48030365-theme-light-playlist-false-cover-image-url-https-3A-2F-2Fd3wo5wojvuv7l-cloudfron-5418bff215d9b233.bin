@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Spreaker</title>
+
+    <!-- No favicon -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+    <!-- Assets -->
+    </head>
+<body>
+    <div id="widget-container">
+
+            <style>
+            @-webkit-keyframes spinner_anim_default {
+    0%   { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, .25); }
+    100% { background: rgba(153, 153, 153, .25); }
+}
+
+@-webkit-keyframes spinner_anim_dark {
+    0%   { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, .25); }
+    100% { background: rgba(54, 54, 54, .25); }
+}
+
+@-moz-keyframes spinner_anim_default {
+    0%   { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, .25); }
+    100% { background: rgba(153, 153, 153, .25); }
+}
+
+@-moz-keyframes spinner_anim_dark {
+    0%   { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, .25); }
+    100% { background: rgba(54, 54, 54, .25); }
+}
+
+@-o-keyframes spinner_anim_default {
+    0%   { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, .25); }
+    100% { background: rgba(153, 153, 153, .25); }
+}
+
+@-o-keyframes spinner_anim_dark {
+    0%   { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, .25); }
+    100% { background: rgba(54, 54, 54, .25); }
+}
+
+@keyframes spinner_anim_default {
+    0%   { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, .25); }
+    40%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, 1); }
+    60%  { background: rgba(153, 153, 153, .25); }
+    100% { background: rgba(153, 153, 153, .25); }
+}
+
+@keyframes spinner_anim_dark {
+    0%   { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, .25); }
+    40%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, 1); }
+    60%  { background: rgba(54, 54, 54, .25); }
+    100% { background: rgba(54, 54, 54, .25); }
+}
+
+
+html,body{font-family:Inter,sans-serif;font-size:16px;line-height:22px;margin:0;padding:0;overflow:hidden}a,a:visited,a:hover{color:inherit;text-decoration:underline;font-weight:500}.widget{position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid}.widget.theme_light{background:#fff;color:#515254;border-color:#e1e1e1}.widget.theme_light a,.widget.theme_light a:visited,.widget.theme_light a:hover{color:#000}.widget.theme_dark{background:#000;color:#ccc;border-color:#767676}.widget.theme_dark a,.widget.theme_dark a:visited,.widget.theme_dark a:hover{color:#fff}
+.widget_loading{position:absolute;top:50%;-moz-transform:translateY(-50%);-webkit-transform:translateY(-50%);-o-transform:translateY(-50%);transform:translateY(-50%);left:12px;right:12px;text-align:center}.widget_loading_message{margin-bottom:12px}.widget_spinner{display:inline-block;position:relative;margin:0 15px;-webkit-animation:spinner_anim_default .9s linear .3s infinite;-moz-animation:spinner_anim_default .9s linear .3s infinite;-o-animation:spinner_anim_default .9s linear .3s infinite;animation:spinner_anim_default .9s linear .3s infinite}.widget_spinner,.widget_spinner::before,.widget_spinner::after{border-radius:50%;background-color:rgba(153,153,153,.25);background-size:9px 9px;height:9px;width:9px}.widget_spinner::before,.widget_spinner::after{content:"";display:block;position:absolute}.widget_spinner::before{left:-15px}.widget_spinner::after{right:-15px}.widget_spinner::before{-webkit-animation:spinner_anim_default .9s linear 0s infinite;-moz-animation:spinner_anim_default .9s linear 0s infinite;-o-animation:spinner_anim_default .9s linear 0s infinite;animation:spinner_anim_default .9s linear 0s infinite}.widget_spinner::after{-webkit-animation:spinner_anim_default .9s linear .6s infinite;-moz-animation:spinner_anim_default .9s linear .6s infinite;-o-animation:spinner_anim_default .9s linear .6s infinite;animation:spinner_anim_default .9s linear .6s infinite}.widget_spinner.dark,.widget_spinner.dark::before,.widget_spinner.dark::after{background-color:rgba(54,54,54,.25);-webkit-animation-name:spinner_anim_dark;-moz-animation-name:spinner_anim_dark;-o-animation-name:spinner_anim_dark;animation-name:spinner_anim_dark}
+        </style>
+    
+
+    <div class="widget theme_light">
+        <div class="widget_loading">
+            <div class="widget_loading_message">The player is loading ...</div>
+            <span class="widget_spinner dark"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+function supportsES5() {
+    "use strict";
+
+    // We get a false in most old browsers
+    var parseIntIgnoresLeadingZeros = (function() {
+        return parseInt('010', 10) === 10;
+    }());
+
+    // Returns false on IE9
+    var strictMode = (function () {
+        return !this;
+    }());
+
+    // We get a false in EJS
+    var DateISOString = (function() {
+        return !!(Date && Date.prototype && Date.prototype.toISOString);
+    }());
+
+    return !!(
+        parseIntIgnoresLeadingZeros &&
+        strictMode &&
+        DateISOString
+    );
+}
+
+if (!supportsES5()) {
+    window.location = "https:\/\/widget.spreaker.com\/player-unsupported";
+}
+</script>
+
+<script>
+window.spwidget = window.spwidget || function() { (spwidget.q = spwidget.q || []).push(arguments) };
+window.spwidget("render", "widget-container", "iframe", {"episode":{"episode_id":48030365,"type":"RECORDED","title":"Education in the News Show 5 with Host Pamela Clark","duration":3930670,"explicit":false,"show_id":4114185,"author_id":11666869,"image_url":"https:\/\/d3wo5wojvuv7l.cloudfront.net\/t_square_limited_160\/images.spreaker.com\/original\/b975bf9d5b186c1147f589dd79d4ce90.jpg","image_original_url":"https:\/\/d3wo5wojvuv7l.cloudfront.net\/images.spreaker.com\/original\/b975bf9d5b186c1147f589dd79d4ce90.jpg","image_transformation":"square_limited_100","published_at":"2021-12-29 23:00:00","auto_published_at":null,"public_auto_published_at":null,"download_enabled":true,"stream_id":null,"waveform_url":"https:\/\/d3770qakewhkht.cloudfront.net\/episode_48030365.gz.json?v=mTqDc5","slug":"education-in-the-news-show-5-with-host-pamela-clark","ai_generated":false,"site_url":"https:\/\/www.spreaker.com\/episode\/education-in-the-news-show-5-with-host-pamela-clark--48030365","download_url":"https:\/\/api.spreaker.com\/v2\/episodes\/48030365\/download.mp3","playback_url":"https:\/\/api.spreaker.com\/v2\/episodes\/48030365\/play.mp3","description":"In this podcast, Pamela discusses\/shares topics making headlines in the news on issues relevant to the educational community both nationally and globally.","description_html":"In this podcast, Pamela discusses\/shares topics making headlines in the news on issues relevant to the educational community both nationally and globally.","description_footer":"Become a supporter of this podcast: https:\/\/www.spreaker.com\/podcast\/new-heights-show-on-education--4114185\/support.","description_footer_html":"Become a supporter of this podcast: \u003Ca href=\u0022https:\/\/www.spreaker.com\/podcast\/new-heights-show-on-education--4114185\/support\u0022\u003Ehttps:\/\/www.spreaker.com\/podcast\/new-heights-show-on-education--4114185\/support\u003C\/a\u003E.","permalink":"education-in-the-news-holiday","episode_link":null,"transcript_url":null,"transcript_type":null,"rss_guid":"https:\/\/api.spreaker.com\/episode\/48030365","transcripts_generated":[],"image_post_url":null,"feed_chapters_enabled":false,"ai_generated_chapters_enabled":false,"likes_count":0,"messages_count":0,"chapters_count":0,"segments":[{"type":"episode","duration":3930670,"duration_reliable":true,"http_url":"https:\/\/api.spreaker.com\/v2\/episodes\/48030365\/play.mp3","http_url_expires_at":null}],"chapters":[]},"player":[],"pusher":{"enabled":false,"new_episode_channel":null},"layout":{"theme_name":"light","episode_image_position":"right","cover_image_url":"https:\/\/d3wo5wojvuv7l.cloudfront.net\/images.spreaker.com\/original\/b975bf9d5b186c1147f589dd79d4ce90.jpg","privacy_policy_url":"https:\/\/www.spreaker.com\/privacy","show_likes":true,"show_comments":true,"show_sharing":true,"show_download":false,"show_logo":true,"show_episode_description":true,"show_episode_site_url":true,"logo_url":"https:\/\/www.spreaker.com\/?utm_medium=app\u0026utm_source=widget\u0026utm_campaign=player-logo"},"application":{"application_id":50,"oauth_redirect_url":"https:\/\/widget.spreaker.com\/oauth2\/return","gdpr":null,"gdpr_consent":null,"us_privacy":null},"chapters":{"image_enabled":true}});
+</script>
+
+<script src="https://widget.spreaker.com/player-base-70044644c50bccbe24b2.js"></script>
+</body>
+</html>

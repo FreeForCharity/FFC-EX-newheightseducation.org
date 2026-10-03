@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'My account | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. Info@NewHeightsEducation.org Login This form has moved to email. We read every message…',
+      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Login This form has moved to email. We read every message…',
     canonical: '/my-account/',
   }),
   title: { absolute: 'My account | New Heights Educational Group, Inc.' },
