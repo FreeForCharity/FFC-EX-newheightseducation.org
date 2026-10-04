@@ -45,9 +45,14 @@ export function mainContent(html) {
   const end = [/<section id="mk-footer"/, /<div class="site-footer"/, /<footer\b/]
     .map((re) => html.search(re))
     .find((i) => i > (start ?? 0))
-  return html
-    .slice(start ?? 0, end ?? html.length)
-    .replace(/<(script|style|noscript)\b[\s\S]*?<\/\1>/g, '')
+  // Removed until none remain, so no nested remnant survives.
+  let content = html.slice(start ?? 0, end ?? html.length)
+  let previous
+  do {
+    previous = content
+    content = content.replace(/<(script|style|noscript)\b[\s\S]*?<\/\1\s*>/gi, '')
+  } while (content !== previous)
+  return content
     .replace(/<div class="ffc-contact-fallback"[^>]*>(?:(?!<\/div>)[^])*<\/div>/g, '')
     .replace(/<span class="ffc-sr-only">[^<]*<\/span>/g, '')
     .replace(/<div id="mk-breadcrumbs"[\s\S]*?<\/div>\s*<\/div>/g, '')
