@@ -46,8 +46,19 @@ async function check(page, origin, route, width) {
       issues.push(`${type} ${r.status()}: ${new URL(r.url()).pathname.slice(0, 120)}`)
     }
   }
+  const onFailed = (r) => {
+    const type = r.resourceType()
+    const error = r.failure()?.errorText ?? ''
+    if (
+      ['stylesheet', 'script', 'image', 'font'].includes(type) &&
+      !error.includes('ERR_ABORTED')
+    ) {
+      issues.push(`${type} failed (${error}): ${r.url().slice(0, 120)}`)
+    }
+  }
   page.on('console', onConsole)
   page.on('response', onResponse)
+  page.on('requestfailed', onFailed)
   try {
     await page.setViewportSize({ width, height: 900 })
     await page.goto(origin + route, { waitUntil: 'load', timeout: 60000 })
@@ -82,18 +93,24 @@ async function check(page, origin, route, width) {
           const hidden =
             img.closest('[hidden], [aria-hidden="true"]') ||
             getComputedStyle(img).display === 'none'
-          if (!hidden && img.complete && img.naturalWidth === 0)
-            found.push(`broken image: ${new URL(img.src).pathname.slice(-80)}`)
+          if (hidden) continue
+          const name = new URL(img.src).pathname.slice(-80)
+          if (img.complete && img.naturalWidth === 0) found.push(`broken image: ${name}`)
+          else if (img.complete && img.offsetParent !== null) {
+            const r = img.getBoundingClientRect()
+            if (r.width === 0 || r.height === 0) found.push(`zero-size image: ${name}`)
+          }
         }
         for (const v of window.__cspViolations ?? []) found.push(`csp: ${v}`)
         return found
       }))
     )
   } catch (err) {
-    issues.push(`load failed: ${String(err).slice(0, 100)}`)
+    issues.push(`load failed: ${String(err).split('\n')[0].slice(0, 100)}`)
   }
   page.off('console', onConsole)
   page.off('response', onResponse)
+  page.off('requestfailed', onFailed)
   return [...new Set(issues)]
 }
 

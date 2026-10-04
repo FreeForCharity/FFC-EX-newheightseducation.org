@@ -8,7 +8,7 @@
  *   node scripts/compare-archive-screenshots.mjs --baseline <unzipped screenshots dir> \
  *     --export http://localhost:3000 --out <dir>
  */
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { PNG } from 'pngjs'
 import { bandRatios, diffRatio } from './verify-visual.mjs'
@@ -66,10 +66,20 @@ export function sideBySide(live, exported, width = 600, gap = 16) {
 }
 
 async function main() {
-  const arg = (name) => process.argv[process.argv.indexOf(`--${name}`) + 1]
+  const arg = (name) => {
+    const i = process.argv.indexOf(`--${name}`)
+    const value = i >= 0 ? process.argv[i + 1] : undefined
+    return value && !value.startsWith('--') ? value : undefined
+  }
   const baseline = arg('baseline')
-  const origin = arg('export').replace(/\/$/, '')
+  const origin = arg('export')?.replace(/\/$/, '')
   const out = arg('out')
+  if (!baseline || !origin || !out || !existsSync(baseline)) {
+    console.error(
+      'usage: compare-archive-screenshots.mjs --baseline <screenshots dir> --export <origin> --out <dir>'
+    )
+    process.exit(2)
+  }
   mkdirSync(out, { recursive: true })
   const { URLS, VIEWPORTS, slug } = await import('./archive-live-screenshots.mjs')
   const { chromium } = await import('@playwright/test')
@@ -93,15 +103,18 @@ async function main() {
       const base = `${slug(url)}.${name}`
       try {
         await page.setViewportSize(viewport)
+        // The same settling as archive-live-screenshots.mjs, so both sides
+        // have their lazy images.
         await page.goto(origin + route, { waitUntil: 'load', timeout: 60000 })
         await page.evaluate(async () => {
           for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
             window.scrollTo(0, y)
-            await new Promise((r) => setTimeout(r, 120))
+            await new Promise((r) => setTimeout(r, 150))
           }
           window.scrollTo(0, 0)
         })
-        await page.waitForTimeout(500)
+        await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {})
+        await page.waitForTimeout(1500)
         const exported = PNG.sync.read(await page.screenshot({ fullPage: true }))
         const live = PNG.sync.read(readFileSync(join(baseline, `${base}.png`)))
         const { ratio } = await diffRatio(live, exported)
