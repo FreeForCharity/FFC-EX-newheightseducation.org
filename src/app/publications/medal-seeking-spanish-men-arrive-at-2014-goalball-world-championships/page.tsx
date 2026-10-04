@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Medal-seeking Spanish men arrive at 2014 Goalball World Championships - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical:
       '/publications/medal-seeking-spanish-men-arrive-at-2014-goalball-world-championships/',
   }),

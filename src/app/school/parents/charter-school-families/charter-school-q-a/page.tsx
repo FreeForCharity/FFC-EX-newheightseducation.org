@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Protected: Charter School Q & A - NHEG Online Learning Annex',
-    description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+    description: 'Protected: Charter School Q & A - NHEG Online Learning Annex',
     canonical: '/school/parents/charter-school-families/charter-school-q-a/',
   }),
   title: { absolute: 'Protected: Charter School Q & A - NHEG Online Learning Annex' },

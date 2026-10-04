@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home Schooling in Ohio Q & A - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Are you looking to home school your child in the state of Ohio? Our Ohio Home School Information & Resources will help prepare you for this adventure.',
     canonical: '/school/parents/home-school-families/home-schooling-in-ohio-q-a/',
   }),
   title: { absolute: 'Home Schooling in Ohio Q & A - NHEG Online Learning Annex' },

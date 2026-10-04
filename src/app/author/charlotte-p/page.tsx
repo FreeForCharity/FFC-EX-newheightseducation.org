@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Charlotte Picardo, Author at New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Charlotte.p" Home » Archives for…',
+      'Charlotte Picardo: Is education important for kids to succeed?, How can students stay motivated during their education?, The Rise of Online Learning…',
     canonical: '/author/charlotte-p/',
   }),
   title: { absolute: 'Charlotte Picardo, Author at New Heights Educational Group, Inc.' },

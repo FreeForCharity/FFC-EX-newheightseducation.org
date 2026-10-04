@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Educational Department Staff - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Rhone-Ann Huang – President Nina Le – Vice President – Secretary -Treasurer – Photographer – News Reporter – Recreation Leader',
     canonical: '/school/about/nheg-educational-department-staff/',
   }),
   title: { absolute: 'NHEG Educational Department Staff - NHEG Online Learning Annex' },

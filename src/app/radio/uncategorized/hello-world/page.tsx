@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Hello world! - NHEG Radio Show',
     description:
-      'This form has moved to email. We read every message. info@newheightseducation.org Hello world! Home » Hello world! Hello world! By NewHeightsEducation…',
+      'Welcome to WordPress. This is your first post. Edit or delete it, then start writing!',
     canonical: '/radio/uncategorized/hello-world/',
   }),
   title: { absolute: 'Hello world! - NHEG Radio Show' },

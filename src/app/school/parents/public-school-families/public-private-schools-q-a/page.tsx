@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Public & Private Schools Q & A - NHEG Online Learning Annex',
-    description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+    description: 'Public & Private Schools Q & A - NHEG Online Learning Annex',
     canonical: '/school/parents/public-school-families/public-private-schools-q-a/',
   }),
   title: { absolute: 'Public & Private Schools Q & A - NHEG Online Learning Annex' },

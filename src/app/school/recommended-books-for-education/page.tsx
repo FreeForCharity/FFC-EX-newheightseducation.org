@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Recommended Books for Education - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'New Heights Educational Group has created a list of Recommended Books for Education that we use to help tutor students who come through our doors. These…',
     canonical: '/school/recommended-books-for-education/',
   }),
   title: { absolute: 'Recommended Books for Education - NHEG Online Learning Annex' },

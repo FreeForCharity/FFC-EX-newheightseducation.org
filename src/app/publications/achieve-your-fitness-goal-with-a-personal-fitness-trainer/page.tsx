@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Achieve Your Fitness Goal with a Personal Fitness Trainer - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical: '/publications/achieve-your-fitness-goal-with-a-personal-fitness-trainer/',
   }),
   title: { absolute: 'Achieve Your Fitness Goal with a Personal Fitness Trainer - NHEG' },

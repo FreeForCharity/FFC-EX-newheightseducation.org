@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Food Poisoning - Causes And Home Remedies - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Food…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical: '/publications/food-poisoning-causes-and-home-remedies/',
   }),
   title: { absolute: 'Food Poisoning - Causes And Home Remedies - NHEG' },

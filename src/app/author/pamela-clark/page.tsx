@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela Clark',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Pamela Clark" Home » Archives for…',
+      'Pamela Clark: Platinum Seal of Transparency 2024, Endangered: The Mexican Grey Wolf, Nelson Medela, Malcolm X, Harriet Tubman, Snow Leopard: The Ghost of…',
     canonical: '/author/pamela-clark/',
   }),
   title: { absolute: 'Pamela Clark' },

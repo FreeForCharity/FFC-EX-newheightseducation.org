@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Uncategorized Archives - NHEG Radio Show',
-    description:
-      'This form has moved to email. We read every message. info@newheightseducation.org Uncategorized Home » Uncategorized 0 By NewHeightsEducation In…',
+    description: 'Uncategorized Archives: Hello world!.',
     canonical: '/radio/category/uncategorized/',
   }),
   title: { absolute: 'Uncategorized Archives - NHEG Radio Show' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Natural Born Leaders - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Natural Born Leaders (NBL) is a provider of online hands-on training programs for Early Childhood and Early Primary teachers and parents. It was founded…',
     canonical: '/school/natural-born-leaders/',
   }),
   title: { absolute: 'Natural Born Leaders - NHEG Online Learning Annex' },

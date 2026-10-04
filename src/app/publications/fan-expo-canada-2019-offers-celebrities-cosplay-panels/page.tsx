@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Fan Expo Canada 2019 offers celebrities, cosplay, panels - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Fan…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical: '/publications/fan-expo-canada-2019-offers-celebrities-cosplay-panels/',
   }),
   title: { absolute: 'Fan Expo Canada 2019 offers celebrities, cosplay, panels - NHEG' },

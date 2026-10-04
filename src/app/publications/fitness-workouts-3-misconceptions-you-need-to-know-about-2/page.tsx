@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Fitness Workouts: 3 Misconceptions You Need to Know about - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical: '/publications/fitness-workouts-3-misconceptions-you-need-to-know-about-2/',
   }),
   title: { absolute: 'Fitness Workouts: 3 Misconceptions You Need to Know about - NHEG' },

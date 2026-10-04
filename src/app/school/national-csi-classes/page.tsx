@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'National CSI Classes - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'If you love CSI and forensics, this online STEM camp is for you! Taught by current and former detectives (how cool is that!), this one week class is…',
     canonical: '/school/national-csi-classes/',
   }),
   title: { absolute: 'National CSI Classes - NHEG Online Learning Annex' },

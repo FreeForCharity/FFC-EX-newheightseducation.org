@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Personal & Professional Development Coaching - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Georgia Woodbine is one of the world’s leading authorities in personal and professional development and has helped to motivate and inspire an entire…',
     canonical: '/school/online-courses/personal-and-professional-development-coaching/',
   }),
   title: { absolute: 'Personal & Professional Development Coaching - NHEG Online Learning Annex' },

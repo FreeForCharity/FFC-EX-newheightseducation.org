@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Online Piano Course - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The Introduction to Piano course will help you get started on your musical path to learning piano. This brief course will provide you with all the basics…',
     canonical: '/school/online-courses/music-program/online-piano-course/',
   }),
   title: { absolute: 'Online Piano Course - NHEG Online Learning Annex' },

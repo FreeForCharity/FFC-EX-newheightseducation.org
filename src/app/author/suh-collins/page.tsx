@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Suh Collins, Author at New Heights Educational Group, Inc.',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Suh Collins" Home » Archives for Suh…',
+    description: 'Suh Collins: Leadership.',
     canonical: '/author/suh-collins/',
   }),
   title: { absolute: 'Suh Collins, Author at New Heights Educational Group, Inc.' },

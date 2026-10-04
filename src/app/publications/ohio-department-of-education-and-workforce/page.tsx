@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Ohio Department of Education and Workforce - NHEG',
-    description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Ohio…',
+    description: 'Ohio Department of Education and Workforce - NHEG',
     canonical: '/publications/ohio-department-of-education-and-workforce/',
   }),
   title: { absolute: 'Ohio Department of Education and Workforce - NHEG' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'PSAT - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The Preliminary SAT, also known as the PSAT/NMSQT ® (National Merit Scholarship Qualifying Test), is a preparatory version of the SAT exam . You can only…',
     canonical: '/school/students/college-entrance-exams/psat/',
   }),
   title: { absolute: 'PSAT - NHEG Online Learning Annex' },

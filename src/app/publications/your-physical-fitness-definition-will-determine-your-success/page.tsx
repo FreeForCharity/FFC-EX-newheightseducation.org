@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Your Physical Fitness Definition Will Determine Your Success - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Your…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical: '/publications/your-physical-fitness-definition-will-determine-your-success/',
   }),
   title: { absolute: 'Your Physical Fitness Definition Will Determine Your Success - NHEG' },

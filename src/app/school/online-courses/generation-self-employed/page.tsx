@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Generation Self Employed - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Hi, my name is David Lantz. I’m an author, speaker and teacher. Perhaps, like me, you’ve noticed that people are searching for a way to survive in our…',
     canonical: '/school/online-courses/generation-self-employed/',
   }),
   title: { absolute: 'Generation Self Employed - NHEG Online Learning Annex' },

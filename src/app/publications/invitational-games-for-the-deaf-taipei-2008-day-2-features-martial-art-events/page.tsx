@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title:
       "'Invitational Games for the Deaf, Taipei 2008' Day 2 features martial art events - NHEG",
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical:
       '/publications/invitational-games-for-the-deaf-taipei-2008-day-2-features-martial-art-events/',
   }),

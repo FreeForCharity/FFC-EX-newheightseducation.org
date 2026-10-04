@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title:
       'Myron Cope, Pittsburgh Steelers color commentator, retires after a 35 year career - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up Myron…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
     canonical:
       '/publications/myron-cope-pittsburgh-steelers-color-commentator-retires-after-a-35-year-career/',
   }),

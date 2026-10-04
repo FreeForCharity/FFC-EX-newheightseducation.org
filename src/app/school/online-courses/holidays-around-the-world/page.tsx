@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Holidays Around the World - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The Holidays Around the World courses will explore cultures, foods, history and beginnings of holidays from all over the world. Each course will take a…',
     canonical: '/school/online-courses/holidays-around-the-world/',
   }),
   title: { absolute: 'Holidays Around the World - NHEG Online Learning Annex' },

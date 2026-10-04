@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'teacher support Archives - NHEG',
-    description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description: 'teacher support Archives: NHEG EDGuide May – June 2026.',
     canonical: '/publications/tag/teacher-support/',
   }),
   title: { absolute: 'teacher support Archives - NHEG' },

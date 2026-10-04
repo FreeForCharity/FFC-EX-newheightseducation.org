@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NewHeightsEducation, Author at NHEG Radio Show',
-    description:
-      'This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "NewHeightsEducation" Home » Archives for…',
+    description: 'NewHeightsEducation: Hello world!.',
     canonical: '/radio/author/newheightseducation/',
   }),
   title: { absolute: 'NewHeightsEducation, Author at NHEG Radio Show' },

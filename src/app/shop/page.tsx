@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop: AAG Duffel Bag, AAG Unisex Hooded Zip Sweatshirt, AAG Unisex Jersey Short Sleeve Tee, Baton Corps Unisex Jersey Short Sleeve Tee, Color Guard…',
     canonical: '/shop/',
   }),
   title: { absolute: 'Shop | New Heights Educational Group, Inc.' },
