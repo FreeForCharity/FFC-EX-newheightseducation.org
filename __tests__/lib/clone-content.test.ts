@@ -32,7 +32,8 @@ describe('clone content in a production build', () => {
 
   it('inlines the fragments after every build, and reloads after a client-side navigation', () => {
     const pkg = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf8'))
-    expect(pkg.scripts.postbuild).toBe('node scripts/inline-clone-content.mjs')
+    // Inline first: the search index (#49) is built from the inlined pages.
+    expect(pkg.scripts.postbuild).toBe('node scripts/inline-clone-content.mjs && pagefind')
     const layout = readFileSync(join(process.cwd(), 'src', 'app', 'layout.tsx'), 'utf8')
     expect(layout).toMatch(/<CloneReload \/>/)
   })

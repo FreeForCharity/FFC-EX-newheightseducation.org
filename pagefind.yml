@@ -1,0 +1,20 @@
+# Static search over the export (#49), built by `postbuild`.
+site: out
+root_selector: main
+exclude_selectors:
+  - '#mk-header'
+  - '#mk-footer'
+  - '#mk-sidebar'
+  - '.site-header'
+  - '.site-footer'
+  - '#secondary'
+  - 'header'
+  - 'footer'
+  - 'nav'
+  - '.widget'
+  - '#glt-footer'
+  - '#flags'
+  - '#glt-translate-trigger'
+  - '.mk-fullscreen-search-overlay'
+  - '.blog-social-share'
+  - '.mk-pagination'
