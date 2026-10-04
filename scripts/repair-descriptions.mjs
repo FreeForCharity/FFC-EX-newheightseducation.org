@@ -11,7 +11,7 @@
  *
  * Then run prettier over src/app.
  */
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
@@ -122,6 +122,10 @@ async function main() {
     return value
   }
   const htmlDir = arg('html')
+  if (!statSync(htmlDir).isDirectory()) {
+    console.error('--html must name the unzipped live-html directory')
+    process.exit(2)
+  }
   const lib = await import(pathToFileURL(arg('converter')).href)
   const counts = { live: 0, content: 0, title: 0 }
   for (const file of walk(APP)) {
