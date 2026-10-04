@@ -544,3 +544,15 @@ body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin a,
 body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin .separator {
   color: #595959;
 }
+
+/* Jupiter positioned the product grid with Isotope. As floats, a card whose
+   title wraps two lines snags the next row, so lay the rows out in CSS. */
+.ffc-clone .grid--float .products.mk--row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ffc-clone .grid--float .products.mk--row::before,
+.ffc-clone .grid--float .products.mk--row::after {
+  content: none;
+}
