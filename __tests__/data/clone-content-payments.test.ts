@@ -51,12 +51,28 @@ const ZEFFY = 'https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa8
 
 describe('payment paths', () => {
   it.each(Object.entries(BUTTONS))('%s has its PayPal button back', (page, id) => {
-    const html = read(page)
-    expect(html).toMatch(
-      /<form class="ffc-paypal" action="https:\/\/www\.paypal\.com\/cgi-bin\/webscr"/
+    const form = paypalForm(read(page))
+    expect(form).toMatch(
+      /^<form class="ffc-paypal" action="https:\/\/www\.paypal\.com\/cgi-bin\/webscr" method="post"/
     )
-    expect(html).toContain(`name="hosted_button_id" value="${id}"`)
-    expect(html).toContain('name="cmd" value="_s-xclick"')
+    const hidden = Object.fromEntries(
+      [...form.matchAll(/<input type="hidden" name="([^"]+)" value="([^"]*)"/g)].map((m) => [
+        m[1],
+        m[2],
+      ])
+    )
+    expect(hidden).toEqual({
+      cmd: '_s-xclick',
+      hosted_button_id: id,
+      on0: FIELDS[page].on0,
+      currency_code: 'USD',
+    })
+    expect(form).toContain('<select name="os0">')
+    const options = [...form.matchAll(/<option value="([^"]*)">([^<]*)<\/option>/g)].map((m) => [
+      m[1],
+      m[2],
+    ])
+    expect(options).toEqual(FIELDS[page].options)
   })
 
   it('posts only to the reviewed PayPal buttons', () => {
