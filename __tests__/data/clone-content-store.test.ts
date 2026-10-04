@@ -86,6 +86,15 @@ describe('store catalog', () => {
     }
   )
 
+  it('shows no email block where the listings had a sort control', () => {
+    const offenders = all.filter(({ html }) =>
+      /<div class="ffc-contact-fallback"[^>]*>(?:(?!<\/div>)[^])*<\/div>\s*<div class="mk-product-loop/.test(
+        html
+      )
+    )
+    expect(offenders.map(({ page }) => page)).toEqual([])
+  })
+
   it('keeps the comment box on articles', () => {
     expect(read('publications/nheg-edguide-september-october-2026')).toContain('id="respond"')
   })
