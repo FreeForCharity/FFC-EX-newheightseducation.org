@@ -1,0 +1,101 @@
+#!/usr/bin/env node
+/**
+ * One-off (#54): turns the WooCommerce store into a read-only catalog. Each
+ * product keeps its price and gallery, and its add-to-cart form (already the
+ * "moved to email" block) becomes a link to NHEG's GiveBacks store. The
+ * header cart icons, the Cart and My account menu items and the login-only
+ * review form are removed, and
+ * the MemberHub store links, which redirect to GiveBacks, point there
+ * directly.
+ */
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+const CONTENT = join(import.meta.dirname, '..', 'src', 'clone-content')
+export const STORE = 'https://nheg.givebacks.com/store?category=NHEG%20Products'
+
+/** End offset of the element whose open tag starts at `start`. */
+function elementEnd(html, start, tag) {
+  const re = new RegExp(`<(/?)${tag}\\b[^>]*>`, 'gi')
+  re.lastIndex = start
+  let depth = 0
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    depth += m[1] ? -1 : 1
+    if (depth === 0) return m.index + m[0].length
+  }
+  throw new Error(`unclosed <${tag}> at ${start}`)
+}
+
+function removeAll(html, open, tag) {
+  let out = html
+  for (let m = open.exec(out); m; m = open.exec(out)) {
+    out = out.slice(0, m.index) + out.slice(elementEnd(out, m.index, tag))
+    open.lastIndex = m.index
+  }
+  open.lastIndex = 0
+  return out
+}
+
+const BUY =
+  '<p class="ffc-store-note">Order NHEG merchandise through our online store.</p>' +
+  `<p><a class="ffc-store-button" href="${STORE}" target="_blank" rel="noopener noreferrer">Buy from the NHEG store</a></p>`
+
+export function staticStore(page, html) {
+  let out = html
+    .replaceAll('nheg.memberhub.com', 'nheg.givebacks.com')
+    .replaceAll('nheg.memberhub.gives', 'nheg.givebacks.gives')
+  out = removeAll(out, /<div class="(?:shopping-cart-header|add-cart-responsive-state)\b/g, 'div')
+  out = removeAll(out, /<li\b[^>]*>(?=\s*<a\b[^>]*href="%%BASE%%\/(?:cart|my-account)\/")/g, 'li')
+  // A menu item whose only children were Cart and My account is no longer a
+  // dropdown: drop its empty submenu, its parent class and the mobile arrow.
+  out = out.replace(
+    /(<li\b[^>]*class="[^"]*?) menu-item-has-children([^"]*"[^>]*>\s*<a\b[^>]*>[^<]*<\/a>)(?:<span class="mk-nav-arrow[^"]*">(?:(?!<\/span>)[^])*<\/span>)?\s*<ul\b[^>]*class="sub-menu\s*"[^>]*>\s*<\/ul>/g,
+    '$1$2'
+  )
+  // Listing buttons lead to the product page: drop the cart affordance.
+  out = out
+    .replace(/aria-label="Select options for (&ldquo;[^"]*&rdquo;)"/g, 'aria-label="View $1"')
+    .replace(
+      /(class="product_loop_button[^"]*"[^>]*>)<svg\b[^>]*data-name="mk-moon-cart-plus"[\s\S]*?<\/svg>/g,
+      '$1'
+    )
+    .replace(/(<span class="product_loop_button_text">)Select options/g, '$1View product')
+    .replace(/(class="product_loop_button[^"]*?) add_to_cart_button/g, '$1')
+  // The loop link wraps the title's own link; browsers cannot nest links, so
+  // it renders empty. The title link already goes to the product.
+  out = out.replace(
+    /<a href="[^"]*" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">(?=\s*<div class="mk-shop-item-detail">)/g,
+    ''
+  )
+  // WooCommerce's tabs need its script; without it the panels are plain
+  // sections, so drop the tab roles that promise otherwise.
+  out = out
+    .replace(/(<ul class="tabs wc-tabs") role="tablist"/g, '$1')
+    .replace(/(<a href="#tab-[^"]*") role="tab" aria-controls="[^"]*"/g, '$1')
+    .replace(/(<div class="[^"]*wc-tab[^"]*"[^>]*?) role="tabpanel"/g, '$1')
+  if (page.startsWith('product/')) {
+    // Product reviews need a WordPress login.
+    out = removeAll(out, /<div id="respond"/g, 'div')
+    out = out.replace(/<div class="ffc-contact-fallback"[^>]*>.*?<\/div>/s, BUY)
+  }
+  return out
+}
+
+const walk = (dir) =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []
+  )
+
+if (process.argv[1] === import.meta.filename) {
+  let pages = 0
+  for (const file of walk(CONTENT)) {
+    const page = file.slice(CONTENT.length + 1)
+    const html = readFileSync(file, 'utf8')
+    const next = staticStore(page, html)
+    if (next !== html) {
+      writeFileSync(file, next)
+      pages++
+    }
+  }
+  console.log(`updated ${pages} pages`)
+}
