@@ -15,7 +15,7 @@ export const analyticsConfig = {
   gtmId: 'GTM-TQ5H8HPR',
 
   // Google Analytics 4 measurement ID, e.g. 'G-ABC1234567'.
-  gaMeasurementId: 'G-XXXXXXXXXX',
+  gaMeasurementId: 'G-QBJLJ7Q2R3',
 
   // Meta (Facebook) Pixel ID.
   metaPixelId: 'XXXXXXXXXXXXXXX',
