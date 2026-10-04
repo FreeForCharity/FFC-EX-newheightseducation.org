@@ -274,7 +274,7 @@ export function pageDescription({ live, loop, theme, title, n, max, lib }) {
     .map((m) => lib.decodeEntities(textOf(m[1])).replace(/\s+/g, ' ').trim())
     .filter(Boolean)
   const label = title.split(/\s[-|\u2013]\s|, Author at /)[0]
-  const listed = [...new Set(titles)].join(', ')
+  const listed = [...new Set(titles.map((t) => t.replace(/[.\s]+$/, '')))].join(', ')
   let text = listed ? `${label}, page ${n} of ${max}: ${listed}.` : `${label}, page ${n} of ${max}.`
   if (text.length > 155) text = `${text.slice(0, 154).replace(/[\s,]+\S*$/, '')}\u2026`
   return text
