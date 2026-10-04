@@ -8,7 +8,22 @@
         "http://localhost/shop/index.html",
         "http://localhost/cookie-policy/index.html",
         "http://localhost/privacy-policy/index.html",
-        "http://localhost/terms-of-service/index.html"
+        "http://localhost/terms-of-service/index.html",
+        "http://localhost/nheg-news/new-heights-educational-group-volunteer-stats/index.html",
+        "http://localhost/category/nheg-news/index.html",
+        "http://localhost/category/nheg-news/page/2/index.html",
+        "http://localhost/author/pamela-clark/index.html",
+        "http://localhost/tag/national-school-choice-week/index.html",
+        "http://localhost/product/aag-duffel-bag/index.html",
+        "http://localhost/volunteer-with-nheg/volunteer-form/index.html",
+        "http://localhost/publications/index.html",
+        "http://localhost/publications/nheg-edguide-september-october-2020/index.html",
+        "http://localhost/publications/books/nheg-edguide-march-2016/index.html",
+        "http://localhost/school/index.html",
+        "http://localhost/school/students/nheg-yearbook/index.html",
+        "http://localhost/radio/index.html",
+        "http://localhost/radio/manya-shukla/index.html",
+        "http://localhost/search/index.html"
       ],
       "numberOfRuns": 3,
       "settings": {

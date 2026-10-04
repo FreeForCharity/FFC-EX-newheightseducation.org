@@ -20,6 +20,7 @@ import CloneEnhance from './../components/clone-enhance'
 import CloneReload from './../components/clone-reload'
 import SearchOverlay from './../components/search-overlay'
 import Translate from './../components/translate'
+import EmbedFacade from './../components/embed-facade'
 // The slim attribution strip 706 generates for a captured site, not the
 // template's marketing footer. Every captured page brings New Heights
 // Educational Group's own footer -- their green strip with the logo, nine
@@ -172,6 +173,7 @@ export default function RootLayout({
         <CloneReload />
         <SearchOverlay />
         <Translate />
+        <EmbedFacade />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
