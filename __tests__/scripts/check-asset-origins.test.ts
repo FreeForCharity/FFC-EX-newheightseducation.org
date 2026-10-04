@@ -186,6 +186,20 @@ describe('checkOut', () => {
     })
   })
 
+  it('treats @import targets as stylesheets, inline and inside linked CSS', () => {
+    writeFileSync(join(out, '_ffc-assets', 'font.bin'), '@font-face{src:url(gone.woff2)}')
+    writeFileSync(join(out, '_ffc-assets', 'site.css'), "@import url('font.bin');a{color:red}")
+    writeFileSync(
+      join(out, 'index.html'),
+      '<style>@import url(\'/_ffc-assets/font.bin\');</style><link rel="stylesheet" href="/_ffc-assets/site.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'not served as text/css /_ffc-assets/font.bin': ['/'],
+      'not served as text/css font.bin': ['/_ffc-assets/site.css'],
+      'missing gone.woff2': ['/_ffc-assets/font.bin'],
+    })
+  })
+
   it('resolves stylesheet paths under the base path', () => {
     mkdirSync(join(out, '_ffc-assets', 'css'))
     writeFileSync(join(out, '_ffc-assets', 'css', 'site.css'), 'a{background:url(../gone.png)}')

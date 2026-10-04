@@ -54,6 +54,13 @@ describe('linked stylesheets', () => {
         .map((m) => m[0])
         .filter((tag) => /\brel=(['"])stylesheet\1/i.test(tag))
         .map((tag) => tag.match(/\bhref=(['"])([^'"]+)\1/i)?.[2] ?? '')
+        .concat(
+          [
+            ...fs
+              .readFileSync(f, 'utf8')
+              .matchAll(/@import\s+(?:url\(\s*)?(["']?)([^"'()\s;]+)\1/gi),
+          ].map((m) => m[2])
+        )
         .filter((href) => href.startsWith('%%BASE%%/') && !/\.css$/i.test(href))
         .map((href) => `${rel(f)}: ${href}`)
     )

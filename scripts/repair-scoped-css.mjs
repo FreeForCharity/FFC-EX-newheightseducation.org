@@ -9,7 +9,27 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-const PREFIX = /^(\s*(?:\/\*[\s\S]*?\*\/\s*)*)\.ffc-clone\s+(?=(?:\/\*[\s\S]*?\*\/\s*)*@)/
+/** Index of the first character at or after `i` that is not whitespace or a comment. */
+function skipBlank(text, i) {
+  for (;;) {
+    while (i < text.length && /\s/.test(text[i])) i++
+    if (!text.startsWith('/*', i)) return i
+    const end = text.indexOf('*/', i + 2)
+    if (end === -1) return text.length
+    i = end + 2
+  }
+}
+
+/** Removes a `.ffc-clone ` prefix that sits in front of an at-rule. */
+function unprefixAtRule(prelude) {
+  const start = skipBlank(prelude, 0)
+  if (!prelude.startsWith('.ffc-clone', start)) return prelude
+  const after = start + '.ffc-clone'.length
+  if (!/\s/.test(prelude[after] ?? '')) return prelude
+  return prelude[skipBlank(prelude, after)] === '@'
+    ? prelude.slice(0, start) + prelude.slice(after).replace(/^\s+/, '')
+    : prelude
+}
 
 export function repair(css) {
   let out = ''
@@ -33,7 +53,7 @@ export function repair(css) {
       continue
     }
     if (ch === '{') {
-      let prelude = buf.replace(PREFIX, '$1')
+      let prelude = unprefixAtRule(buf)
       const bare = prelude.replace(/\/\*[\s\S]*?\*\//g, '').trim()
       if (keyframes !== -1 && depth > keyframes) {
         prelude = prelude.replace(/\.ffc-clone\s+(?=[\d.]+%|from\b|to\b)/g, '')

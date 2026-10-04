@@ -106,6 +106,7 @@ export function assetRefs(html, stylesheets = []) {
   }
   for (const [, css] of doc.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style\b[^>]*>/gi)) {
     refs.push(...cssUrls(css))
+    stylesheets.push(...cssImports(css).map(decode))
   }
   return refs.map(decode).filter((ref) => ref && !/^(data|blob|about|javascript):/i.test(ref))
 }
@@ -146,6 +147,14 @@ function walkHtml(dir, results = []) {
   return results
 }
 
+/** Targets of a stylesheet's `@import` rules. */
+export const cssImports = (css) =>
+  [
+    ...css
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .matchAll(/@import\s+(?:url\(\s*)?(["']?)([^"'()\s;]+)\1/gi),
+  ].map((m) => m[2])
+
 /** URLs a stylesheet loads, ignoring data URIs and fragment-only references. */
 export const stylesheetRefs = (css) =>
   cssUrls(css.replace(/\/\*[\s\S]*?\*\//g, ''))
@@ -183,7 +192,12 @@ export function checkOut(outDir, basePath = '') {
   }
   for (const [sitePath] of stylesheets) {
     const file = join(outDir, basePath ? sitePath.slice(basePath.length) : sitePath)
-    for (const ref of stylesheetRefs(readFileSync(file, 'utf8'))) {
+    const css = readFileSync(file, 'utf8')
+    for (const ref of cssImports(css)) {
+      if (!/^(https?:)?\/\//i.test(ref) && !ref.split(/[?#]/)[0].endsWith('.css'))
+        report(`not served as text/css ${ref}`, sitePath)
+    }
+    for (const ref of stylesheetRefs(css)) {
       const problem = checkRef(ref, { pagePath: sitePath, basePath, exists })
       if (problem) report(problem, sitePath)
     }
