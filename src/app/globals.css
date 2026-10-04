@@ -740,18 +740,11 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
   display: none;
 }
 
-/* Spreaker episode players load on request too. */
+/* Spreaker episode players load on request too, in the theme's own video
+   box, as on the live site. */
 .ffc-clone .ffc-embed-facade--audio {
-  position: static;
-  display: block;
-  height: auto;
-  min-height: 3.5rem;
-  margin: 0.5rem 0;
-  border-radius: 4px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  line-height: 1.3;
   text-align: left;
-}
-
-.ffc-clone .ffc-embed-frame--audio {
-  position: static;
-  height: 200px;
 }

@@ -118,7 +118,8 @@ async function check(page, origin, route, width) {
 async function main() {
   const arg = (name) => {
     const i = process.argv.indexOf(`--${name}`)
-    return i >= 0 ? process.argv[i + 1] : undefined
+    const value = i >= 0 ? process.argv[i + 1] : undefined
+    return value && !value.startsWith('--') ? value : undefined
   }
   const origin = arg('export')?.replace(/\/$/, '')
   const outFile = arg('out')
@@ -129,7 +130,12 @@ async function main() {
     )
     process.exit(2)
   }
-  const routes = arg('routes')?.split(',') ?? routesOf(outDir)
+  const explicit = (arg('routes') ?? '')
+    .split(',')
+    .map((r) => r.trim())
+    .filter(Boolean)
+    .map((r) => `/${r}/`.replace(/\/+/g, '/'))
+  const routes = explicit.length ? explicit : routesOf(outDir)
   const { chromium } = await import('@playwright/test')
   const browser = await chromium.launch()
   const queue = routes.flatMap((route) => Object.entries(VIEWPORTS).map(([v, w]) => [route, v, w]))
