@@ -544,3 +544,36 @@ body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin a,
 body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin .separator {
   color: #595959;
 }
+
+/* Publications flipbooks: the issue cover and a link to its PDF (#51). */
+.ffc-clone .ffc-flipbook {
+  margin: 2rem auto;
+  max-width: 360px;
+  text-align: center;
+}
+
+.ffc-clone .ffc-flipbook-link {
+  display: block;
+  color: #185d2f;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.ffc-clone .ffc-flipbook-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.ffc-clone .ffc-flipbook-link:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 4px;
+}
+
+.ffc-clone .ffc-flipbook-missing {
+  margin: 2rem auto;
+  max-width: 36rem;
+  text-align: center;
+}
