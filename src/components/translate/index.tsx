@@ -49,6 +49,10 @@ function loadTranslate() {
   }
   const script = document.createElement('script')
   script.src = TRANSLATE_SRC
+  script.onerror = () => {
+    loading = false
+    script.remove()
+  }
   document.body.appendChild(script)
 }
 

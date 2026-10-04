@@ -69,6 +69,12 @@ export default function SearchOverlay() {
     }
 
     const onKey = (event: KeyboardEvent) => {
+      const astra = (event.target as Element | null)?.closest<HTMLElement>('.astra-search-icon')
+      if (event.key === ' ' && astra) {
+        event.preventDefault()
+        astra.click()
+        return
+      }
       if (event.key === 'Escape' && close()) event.preventDefault()
       if (event.key !== 'Escape') return
       const menu = document.querySelector<HTMLElement>(`.ast-search-menu-icon.${ASTRA_OPEN}`)
