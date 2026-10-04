@@ -589,3 +589,60 @@ body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin .separator {
   max-width: 36rem;
   text-align: center;
 }
+
+/* Static search (#49): the header icon, the overlay's close control and the
+   results page. */
+.ffc-clone button.mk-fullscreen-close {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-search-page {
+  max-width: 48rem;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.ffc-clone .ffc-search-heading {
+  margin-bottom: 1.5rem;
+  color: #185d2f;
+  font-size: 2rem;
+}
+
+/* The Translate control's consent notice and language list (#49). */
+.ffc-clone .ffc-translate-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 50px;
+  z-index: 200002;
+  max-width: 320px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ffc-clone .ffc-translate-panel p {
+  margin: 0 0 0.75rem;
+}
+
+.ffc-clone .ffc-translate-accept {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  background: #185d2f;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-translate-accept:focus-visible,
+.ffc-clone #glt-translate-trigger:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
