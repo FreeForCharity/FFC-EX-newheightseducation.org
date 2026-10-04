@@ -6,7 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education News - New Heights Educational Group, Inc. - Page 2',
-    description: '- Page 2',
+    description: 'Education News, page 2 of 2: College Credit Plus Process for 2017-18.',
     canonical: '/category/education-news/page/2/',
   }),
   title: { absolute: 'Education News - New Heights Educational Group, Inc. - Page 2' },

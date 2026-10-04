@@ -19,6 +19,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, posix } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { repairMagicQuotes } from './repair-magic-quotes.mjs'
 
 const ROOT = join(import.meta.dirname, '..')
 const CONTENT = join(ROOT, 'src', 'clone-content')
@@ -98,7 +99,7 @@ export function localize(html, route, { extraRoutes = new Set(), lib, missing = 
   // A link to a page or file the export does not have keeps its text, as the
   // converter's unlinkDeadPageLinks does.
   // The converter names generic links from the original URL, so before rewriting.
-  let out = lib.nameGenericLinks(html).html
+  let out = lib.nameGenericLinks(repairMagicQuotes(html)).html
   out = out.replace(
     /<a\b([^>]*?)\shref="([^"]*)"([^>]*)>([\s\S]*?)<\/a>/g,
     (tag, before, href, after, inner) => {
@@ -136,6 +137,20 @@ export function localize(html, route, { extraRoutes = new Set(), lib, missing = 
       : `${prefixOf(c.asset.split('/')[0])}/${c.asset.split('/').slice(1).join('/')}`
     const rel = posix.relative(route, target) || '.'
     return ` ${name}="${c.route ? `${rel}/`.replace(/\/\/$/, '/') : rel}"`
+  })
+  // Jupiter's lazy-image sets: the same form as the share inputs above.
+  out = out.replace(/\sdata-mk-image-src-set='([^']*)'/g, (attr, set) => {
+    const fixed = set.replace(
+      /(?:https?:)?\\?\/\\?\/(?:www\.)?(?:[a-z]+\.)?newheightseducation\.org[^"]*/g,
+      (url) => {
+        const c = classify(url.replace(/\\\//g, '/'))
+        if (!c?.asset) return url
+        if (existsSync(join(ASSETS, c.asset))) return `%%BASE%%/_ffc-assets/${c.asset}`
+        const target = `${prefixOf(c.asset.split('/')[0])}/${c.asset.split('/').slice(1).join('/')}`
+        return posix.relative(route, target)
+      }
+    )
+    return ` data-mk-image-src-set='${fixed}'`
   })
   out = lib.repairInlineShareButtons(out, route.replace(/^\/|\/$/g, '')).html
   out = lib.nameAnonymousLinks(out, SITE).html
@@ -207,11 +222,14 @@ export function themeOf(html) {
 function liveControl(theme, live, archive, max) {
   const block = live.match(CONTROLS[theme])?.[0]
   if (!block) throw new Error(`no ${theme} control in live ${archive}`)
-  return block.replace(/\shref="([^"]+)"/g, (attr, url) => {
-    const n = Number(url.match(/\/page\/(\d+)\/?$/)?.[1] ?? 1)
-    if (n > max) throw new Error(`${archive} links page ${n} past ${max}`)
-    return ` href="${pageHref(archive, n)}"`
-  })
+  return block
+    .replace(/(<a class="prev page-numbers")/g, '$1 aria-label="Previous page"')
+    .replace(/(<a class="next page-numbers")/g, '$1 aria-label="Next page"')
+    .replace(/\shref="([^"]+)"/g, (attr, url) => {
+      const n = Number(url.match(/\/page\/(\d+)\/?$/)?.[1] ?? 1)
+      if (n > max) throw new Error(`${archive} links page ${n} past ${max}`)
+      return ` href="${pageHref(archive, n)}"`
+    })
 }
 
 const ENTITIES = {
@@ -231,25 +249,32 @@ const tsString = (s) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`
  * and the titles it lists. Page 1's is derived text that can no longer be
  * accurate here.
  */
+/** Text of an HTML snippet: tags removed until none remain. */
+export function textOf(html) {
+  let text = html
+  let previous
+  do {
+    previous = text
+    text = text.replace(/<[^<>]*>/g, ' ')
+  } while (text !== previous)
+  return text.replace(/[<>]/g, ' ')
+}
+
 const TITLE_CLASS = { jupiter: 'the-title', woo: 'product-title', astra: 'entry-title' }
 
 export function pageDescription({ live, loop, theme, title, n, max, lib }) {
+  // Yoast's empty description still renders its " - Page N" suffix.
   const meta = lib.extractMetaDescription(live)
-  if (meta) return meta
+  if (meta && meta.replace(/\s*-\s*Page \d+$/, '').trim().length >= 20) return meta
   const heading = new RegExp(
     `<h[23]\\b[^>]*class="[^"]*\\b${TITLE_CLASS[theme]}\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/h[23]>`,
     'g'
   )
   const titles = [...loop.matchAll(heading)]
-    .map((m) =>
-      lib
-        .decodeEntities(m[1].replace(/<[^>]+>/g, ''))
-        .replace(/\s+/g, ' ')
-        .trim()
-    )
+    .map((m) => lib.decodeEntities(textOf(m[1])).replace(/\s+/g, ' ').trim())
     .filter(Boolean)
   const label = title.split(/\s[-|\u2013]\s|, Author at /)[0]
-  const listed = [...new Set(titles)].join(', ')
+  const listed = [...new Set(titles.map((t) => t.replace(/[.!?\s]+$/, '')))].join(', ')
   let text = listed ? `${label}, page ${n} of ${max}: ${listed}.` : `${label}, page ${n} of ${max}.`
   if (text.length > 155) text = `${text.slice(0, 154).replace(/[\s,]+\S*$/, '')}\u2026`
   return text
@@ -289,7 +314,15 @@ export function liveArchives(htmlDir) {
 
 async function main() {
   const args = process.argv.slice(2)
-  const arg = (name) => args[args.indexOf(`--${name}`) + 1]
+  const arg = (name) => {
+    const i = args.indexOf(`--${name}`)
+    const value = i >= 0 ? args[i + 1] : undefined
+    if (!value || value.startsWith('--') || !existsSync(value)) {
+      console.error(`--${name} must name an existing path`)
+      process.exit(2)
+    }
+    return value
+  }
   const htmlDir = arg('html')
   const lib = await import(pathToFileURL(arg('converter')).href)
   const archives = liveArchives(htmlDir)

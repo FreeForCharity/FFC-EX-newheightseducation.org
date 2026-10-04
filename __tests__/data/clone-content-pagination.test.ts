@@ -4,6 +4,7 @@
 import fs from 'fs'
 import path from 'path'
 import { CONTROLS, articleSpan, themeOf } from '../../scripts/paginate-archives.mjs'
+import { MAGIC_QUOTE } from '../../scripts/repair-magic-quotes.mjs'
 
 const CONTENT_DIR = path.join(process.cwd(), 'src', 'clone-content')
 const APP_DIR = path.join(process.cwd(), 'src', 'app')
@@ -34,9 +35,59 @@ const href = (archive: string, n: number) =>
 // which no archive on the live site linked either.
 const UNLISTED = new Set(['/radio/uncategorized/hello-world/'])
 
+// Each archive's last page in the live capture (#41), as listed in
+// live-html-2026-10-02.zip. author/m-anderson advertised 25, but pages 12 to
+// 25 returned 404 (crawl.json).
+const LAST_PAGE: Record<string, number> = {
+  'author/daniela-silva': 2,
+  'author/heatherruggiero': 2,
+  'author/khrista-cendana': 3,
+  'author/m-anderson': 11,
+  'author/pamela-clark': 6,
+  'author/sarika-g': 3,
+  'category/community-news': 3,
+  'category/education-news': 2,
+  'category/educational-articles': 6,
+  'category/nheg-news': 15,
+  'category/student-corner': 2,
+  'nheg-blog': 41,
+  'product-category/leadership-groups': 4,
+  'product-category/nheg-collections': 3,
+  'product-category/nheg-radio': 2,
+  'publications/author/newheightseducation': 12,
+  'publications/books': 9,
+  'publications/category/nheg-edguide': 7,
+  'school/online-courses/personal-development-coaching-courses': 2,
+  shop: 8,
+}
+
 describe('archive pagination', () => {
-  it('finds the paginated archives', () => {
-    expect(archives.size).toBe(20)
+  it('has exactly the archives and last pages the live site had', () => {
+    const generated = Object.fromEntries([...archives].map(([a, pages]) => [a, Math.max(...pages)]))
+    expect(generated).toEqual(LAST_PAGE)
+  })
+
+  it('has as many archive pages as the live crawl found on each host', () => {
+    const crawl: Record<string, { paginated: number }> = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'docs/live-archive/2026-10-02/crawl.json'), 'utf8')
+    )
+    // The homepage's /page/2/ to /page/64/ rendered the front page with no
+    // control linking to them, so they are left to the redirects (#59).
+    const HOMEPAGE_PAGES = 63
+    const hostOf = (archive: string) => {
+      const section = archive.split('/')[0]
+      return ['school', 'publications', 'radio'].includes(section)
+        ? `${section}.newheightseducation.org`
+        : 'newheightseducation.org'
+    }
+    const generated: Record<string, number> = {}
+    for (const [archive, pages] of archives) {
+      generated[hostOf(archive)] = (generated[hostOf(archive)] ?? 0) + pages.length
+    }
+    for (const [host, { paginated }] of Object.entries(crawl)) {
+      const skipped = host === 'newheightseducation.org' ? HOMEPAGE_PAGES : 0
+      expect([host, (generated[host] ?? 0) + skipped]).toEqual([host, paginated])
+    }
   })
 
   it.each([...archives].map(([a, pages]) => [a, pages] as const))(
@@ -106,5 +157,16 @@ describe('archive pagination', () => {
       for (const m of loop.matchAll(/href="%%BASE%%(\/[^"#?]*)/g)) linked.add(m[1])
     }
     expect(posts.filter((p) => !linked.has(p) && !UNLISTED.has(p))).toEqual([])
+  })
+
+  it('shows no magic-quote backslash before an apostrophe or quote', () => {
+    const offenders = files(CONTENT_DIR, '.html').filter((f) =>
+      new RegExp(MAGIC_QUOTE.source).test(fs.readFileSync(f, 'utf8'))
+    )
+    expect(offenders.map((f) => path.relative(CONTENT_DIR, f))).toEqual([])
+    const quotedClass = files(CONTENT_DIR, '.html').filter((f) =>
+      /\sclass="[^"]*&quot;/.test(fs.readFileSync(f, 'utf8'))
+    )
+    expect(quotedClass.map((f) => path.relative(CONTENT_DIR, f))).toEqual([])
   })
 })

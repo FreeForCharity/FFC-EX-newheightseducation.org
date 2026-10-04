@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Khrista Cendana, Author at New Heights Educational Group, Inc. | Page 2 of 3',
     description:
-      'Khrista Cendana, page 2 of 3: The Importance of Travel Safety – Part I, Making Writing Interesting For Students, Anime Education – What is Anime?…',
+      'Khrista Cendana, page 2 of 3: The Importance of Travel Safety – Part I, Making Writing Interesting For Students, Anime Education – What is Anime…',
     canonical: '/author/khrista-cendana/page/2/',
   }),
   title: {
