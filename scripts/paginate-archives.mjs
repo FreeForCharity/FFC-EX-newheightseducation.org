@@ -34,7 +34,23 @@ const prefixOf = (host) => {
 }
 
 /** Live URL -> site route (`/school/x/`) or asset path (`host/wp-content/...`). */
-export function classify(url) {
+export function classify(raw) {
+  const url = raw.replace(/&amp;|&#0?38;/g, '&')
+  const avatar = url.match(
+    /^(?:https?:)?\/\/(?:secure|www|\d)\.gravatar\.com\/avatar\/([0-9a-f]+)(?:\?([^"'\s]*))?$/i
+  )
+  if (avatar) {
+    const q = (avatar[2] ?? '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    return { asset: `secure.gravatar.com/avatar/${avatar[1]}${q ? `__${q}` : ''}.bin` }
+  }
+  // Jetpack's image CDN: the capture folded each query into the file name.
+  const cdn = url.match(
+    /^(?:https?:)?\/\/i[0-3]\.wp\.com\/((?:[a-z]+\.)?newheightseducation\.org\/[^?"'\s]+?)(\.[a-z0-9]+)(?:\?([^"'\s]*))?$/i
+  )
+  if (cdn) {
+    const q = (cdn[3] ?? '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    return { asset: `i0.wp.com/${cdn[1]}${q ? `__${q}` : ''}${cdn[2]}` }
+  }
   const m = url.match(
     /^(?:https?:)?\/\/(www\.)?((?:[a-z]+\.)?newheightseducation\.org)(\/[^"'\s]*)?$/i
   )
@@ -92,9 +108,20 @@ export function localize(html, route, { extraRoutes = new Set(), lib, missing = 
       return `<a${before} href="${t}"${after}>${inner}</a>`
     }
   )
-  out = out.replace(/\s(src|href)="((?:https?:)?\/\/[^"]+)"/g, (attr, name, url) => {
-    const t = tokenFor(url, { anchor: false })
-    return t ? ` ${name}="${t}"` : attr
+  out = out.replace(
+    /\s(src|href|data-src)=(["'])((?:https?:)?\/\/.+?)\2/g,
+    (attr, name, q, url) => {
+      const t = tokenFor(url, { anchor: false })
+      return t ? ` ${name}=${q}${t}${q}` : attr
+    }
+  )
+  out = out.replace(/\ssrcset=(["'])(.+?)\1/g, (attr, q, set) => {
+    const parts = set.split(/,\s+/).map((candidate) => {
+      const [url, ...rest] = candidate.trim().split(/\s+/)
+      const t = tokenFor(url, { anchor: false })
+      return t ? [t, ...rest].join(' ') : candidate.trim()
+    })
+    return ` srcset=${q}${parts.join(', ')}${q}`
   })
   // The share plugin's inputs: a file the export serves as a token, anything
   // else relative to this page, as the converter left them.
