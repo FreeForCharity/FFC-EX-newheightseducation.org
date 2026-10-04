@@ -137,5 +137,9 @@ describe('archive pagination', () => {
       new RegExp(MAGIC_QUOTE.source).test(fs.readFileSync(f, 'utf8'))
     )
     expect(offenders.map((f) => path.relative(CONTENT_DIR, f))).toEqual([])
+    const quotedClass = files(CONTENT_DIR, '.html').filter((f) =>
+      /\sclass="[^"]*&quot;/.test(fs.readFileSync(f, 'utf8'))
+    )
+    expect(quotedClass.map((f) => path.relative(CONTENT_DIR, f))).toEqual([])
   })
 })

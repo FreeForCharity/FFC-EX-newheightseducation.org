@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 10 of 12',
     description:
-      'NEWHEIGHTSEDUCATION, page 10 of 12: How much influence does package have on food marketing?, How Do I Tell Whether Food Is Recalled?, Food Poisoning –…',
+      'NEWHEIGHTSEDUCATION, page 10 of 12: How much influence does package have on food marketing, How Do I Tell Whether Food Is Recalled, Food Poisoning –…',
     canonical: '/publications/author/newheightseducation/page/10/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 10 of 12' },

@@ -13,7 +13,16 @@ const CONTENT = join(import.meta.dirname, '..', 'src', 'clone-content')
 
 export const MAGIC_QUOTE = /\\+(?=&(?:#8216|#8217|#8220|#8221|#0?39|quot);)/g
 
-export const repairMagicQuotes = (html) => html.replace(MAGIC_QUOTE, '')
+// The same escapes left literal quotes inside some class attributes.
+export const repairMagicQuotes = (html) =>
+  html.replace(MAGIC_QUOTE, '').replace(
+    /(\sclass=")([^"]*&quot;[^"]*)"/g,
+    (m, open, value) =>
+      `${open}${value
+        .replace(/&quot;/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()}"`
+  )
 
 const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>

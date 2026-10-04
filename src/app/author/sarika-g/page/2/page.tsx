@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Sarika Gauba, Author at New Heights Educational Group, Inc. | Page 2 of 3',
     description:
-      'Sarika Gauba, page 2 of 3: Prom Cruise Celebration, Exciting news for the High School Symposium and College Fair!, FEE Stories – Why College Degrees Are…',
+      'Sarika Gauba, page 2 of 3: Prom Cruise Celebration, Exciting news for the High School Symposium and College Fair, FEE Stories – Why College Degrees Are…',
     canonical: '/author/sarika-g/page/2/',
   }),
   title: { absolute: 'Sarika Gauba, Author at New Heights Educational Group, Inc. | Page 2 of 3' },
