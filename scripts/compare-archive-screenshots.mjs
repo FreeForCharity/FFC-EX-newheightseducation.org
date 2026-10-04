@@ -105,7 +105,8 @@ async function main() {
         await page.setViewportSize(viewport)
         // The same settling as archive-live-screenshots.mjs, so both sides
         // have their lazy images.
-        await page.goto(origin + route, { waitUntil: 'load', timeout: 60000 })
+        const res = await page.goto(origin + route, { waitUntil: 'load', timeout: 60000 })
+        if (!res || !res.ok()) throw new Error(`HTTP ${res?.status()}`)
         await page.evaluate(async () => {
           for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
             window.scrollTo(0, y)

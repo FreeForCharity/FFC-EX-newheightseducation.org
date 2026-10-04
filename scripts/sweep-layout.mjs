@@ -61,7 +61,8 @@ async function check(page, origin, route, width) {
   page.on('requestfailed', onFailed)
   try {
     await page.setViewportSize({ width, height: 900 })
-    await page.goto(origin + route, { waitUntil: 'load', timeout: 60000 })
+    const res = await page.goto(origin + route, { waitUntil: 'load', timeout: 60000 })
+    if (!res || !res.ok()) throw new Error(`HTTP ${res?.status()}`)
     await page.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += 800) {
         window.scrollTo(0, y)
