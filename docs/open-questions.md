@@ -21,5 +21,5 @@ Status as of 2026-10-04. Overall progress is on [#85: migration status](https://
 
 ## Waiting for a go-ahead
 
-1. **Legacy URL redirects** ([#59](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/59)) and **CNAME staging** ([#65](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/65)): approved to stage and hold, but deferred for now. Neither is merged, and DNS is not changed, without explicit authorization.
+1. **Legacy URL redirects** ([#59](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/59)) and **CNAME staging** ([#65](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/65)): staging was approved on 2026-10-04 and then deferred, so confirm the go-ahead again before starting either. Neither is merged, and DNS is not changed, without explicit authorization.
 2. **DNS move and Bluehost cancellation:** tracked on [FFC-Cloudflare-Automation#1342](https://github.com/FreeForCharity/FFC-Cloudflare-Automation/issues/1342). Bluehost must not be cancelled before the zone moves and mail is verified.
