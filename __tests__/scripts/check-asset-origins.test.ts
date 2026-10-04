@@ -169,7 +169,50 @@ describe('checkOut', () => {
       '<link rel="stylesheet" href="/_ffc-assets/font.bin"><link rel="icon" href="/_ffc-assets/icon.bin">'
     )
     expect(Object.fromEntries(checkOut(out))).toEqual({
+      'not served as text/css /_ffc-assets/font.bin': ['/'],
       'missing gone.woff2': ['/_ffc-assets/font.bin'],
+    })
+  })
+
+  it('flags a stylesheet whose extension Pages would not serve as text/css', () => {
+    writeFileSync(join(out, '_ffc-assets', 'theme.php'), 'a{color:red}')
+    writeFileSync(join(out, '_ffc-assets', 'theme.css'), 'a{color:red}')
+    writeFileSync(
+      join(out, 'index.html'),
+      '<link rel="stylesheet" href="/_ffc-assets/theme.php"><link rel="stylesheet" href="/_ffc-assets/theme.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'not served as text/css /_ffc-assets/theme.php': ['/'],
+    })
+  })
+
+  it('treats @import targets as stylesheets, inline and inside linked CSS', () => {
+    writeFileSync(join(out, '_ffc-assets', 'font.bin'), '@font-face{src:url(gone.woff2)}')
+    writeFileSync(join(out, '_ffc-assets', 'site.css'), "@import url('font.bin');a{color:red}")
+    writeFileSync(
+      join(out, 'index.html'),
+      '<style>@import url(\'/_ffc-assets/font.bin\');</style><link rel="stylesheet" href="/_ffc-assets/site.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'not served as text/css /_ffc-assets/font.bin': ['/'],
+      'not served as text/css font.bin': ['/_ffc-assets/site.css'],
+      'missing gone.woff2': ['/_ffc-assets/font.bin'],
+    })
+  })
+
+  it('checks inline imports like any asset, and follows nested imports', () => {
+    mkdirSync(join(out, '_ffc-assets', 'css'))
+    writeFileSync(join(out, '_ffc-assets', 'css', 'site.css'), '@import "nested.css";')
+    writeFileSync(join(out, '_ffc-assets', 'css', 'nested.css'), 'a{background:url(../gone.png)}')
+    writeFileSync(
+      join(out, 'index.html'),
+      '<style>@import "//cdn.example.org/f.css";@import "/_ffc-assets/none.css";</style>' +
+        '<link rel="stylesheet" href="/_ffc-assets/css/site.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'off-site //cdn.example.org/f.css': ['/'],
+      'missing /_ffc-assets/none.css': ['/'],
+      'missing ../gone.png': ['/_ffc-assets/css/nested.css'],
     })
   })
 
