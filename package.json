@@ -7,6 +7,7 @@
     "dev": "next dev --turbopack",
     "prebuild": "node scripts/fetch-events.mjs",
     "build": "next build",
+    "postbuild": "node scripts/inline-clone-content.mjs",
     "analyze": "ANALYZE=true next build --webpack",
     "preview": "pnpm exec serve out -l 3000",
     "lint": "eslint",

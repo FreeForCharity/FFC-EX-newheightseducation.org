@@ -17,6 +17,7 @@ import Header from './../components/header'
 // `dangerouslySetInnerHTML`, and a `<script>` arriving that way runs on a cold
 // load and silently does not on a client-side navigation.
 import CloneEnhance from './../components/clone-enhance'
+import CloneReload from './../components/clone-reload'
 // The slim attribution strip 706 generates for a captured site, not the
 // template's marketing footer. Every captured page brings New Heights
 // Educational Group's own footer -- their green strip with the logo, nine
@@ -166,6 +167,7 @@ export default function RootLayout({
         </a>
         <Header />
         <CloneEnhance />
+        <CloneReload />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
