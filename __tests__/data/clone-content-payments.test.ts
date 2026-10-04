@@ -45,18 +45,42 @@ const FIELDS: Record<string, { on0: string; options: [string, string][] }> = {
     ],
   },
 }
+const attr = (tag: string, name: string) =>
+  tag.match(new RegExp(`\\s${name}=(["'])([^"']*)\\1`, 'i'))?.[2]
 const paypalForm = (html: string) =>
   html.match(/<form class="ffc-paypal"[\s\S]*?<\/form>/)?.[0] ?? ''
 const ZEFFY = 'https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5'
 
 describe('payment paths', () => {
   it.each(Object.entries(BUTTONS))('%s has its PayPal button back', (page, id) => {
-    const html = read(page)
-    expect(html).toMatch(
-      /<form class="ffc-paypal" action="https:\/\/www\.paypal\.com\/cgi-bin\/webscr"/
+    const form = paypalForm(read(page))
+    expect(form).toMatch(
+      /^<form class="ffc-paypal" action="https:\/\/www\.paypal\.com\/cgi-bin\/webscr" method="post"/
     )
-    expect(html).toContain(`name="hosted_button_id" value="${id}"`)
-    expect(html).toContain('name="cmd" value="_s-xclick"')
+    // Every control the form submits, each attribute read on its own, as a
+    // sorted list so an extra, duplicated or reordered field also fails.
+    const controls = [...form.matchAll(/<(input|select|textarea)\b[^>]*>/gi)].map((m) => [
+      m[1].toLowerCase(),
+      attr(m[0], 'type') ?? '',
+      attr(m[0], 'name') ?? '',
+      attr(m[0], 'value') ?? '',
+    ])
+    expect(controls.sort()).toEqual(
+      [
+        ['input', 'hidden', 'cmd', '_s-xclick'],
+        ['input', 'hidden', 'hosted_button_id', id],
+        ['input', 'hidden', 'on0', FIELDS[page].on0],
+        ['input', 'hidden', 'currency_code', 'USD'],
+        ['select', '', 'os0', ''],
+      ].sort()
+    )
+    const options = [...form.matchAll(/<option\b([^>]*)>([^<]*)<\/option>/gi)].map((m) => [
+      attr(m[0], 'value') ?? '',
+      m[2],
+      /\bselected\b/i.test(m[1]),
+    ])
+    expect(options).toEqual(FIELDS[page].options.map(([v, t]) => [v, t, false]))
+    expect(form.match(/<option\b/gi)).toHaveLength(FIELDS[page].options.length)
   })
 
   it('posts only to the reviewed PayPal buttons', () => {
