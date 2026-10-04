@@ -53,6 +53,11 @@ describe('store catalog', () => {
     ).toEqual([])
   })
 
+  it('has no empty product link and no tab roles without the tab script', () => {
+    expect(offenders(/woocommerce-LoopProduct-link/)).toEqual([])
+    expect(offenders(/role="(?:tablist|tab|tabpanel)"/)).toEqual([])
+  })
+
   it('leaves no empty dropdown menu behind', () => {
     expect(offenders(/<ul\b[^>]*class="sub-menu\s*"[^>]*>\s*<\/ul>/)).toEqual([])
   })

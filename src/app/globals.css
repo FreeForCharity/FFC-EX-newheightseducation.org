@@ -532,3 +532,15 @@ body .ffc-clone #glt-translate-trigger a {
 .ffc-clone .woocommerce-product-gallery__image:not(:first-child) {
   display: none;
 }
+
+.ffc-clone .woocommerce-product-gallery {
+  opacity: 1 !important;
+}
+
+/* The captured breadcrumb grey fails contrast on its #f7f7f7 bar (#54). The
+   theme's rule has the same specificity and loads later, hence `body`. */
+body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin,
+body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin a,
+body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin .separator {
+  color: #595959;
+}

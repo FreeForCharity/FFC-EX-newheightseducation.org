@@ -61,6 +61,18 @@ export function staticStore(page, html) {
     )
     .replace(/(<span class="product_loop_button_text">)Select options/g, '$1View product')
     .replace(/(class="product_loop_button[^"]*?) add_to_cart_button/g, '$1')
+  // The loop link wraps the title's own link; browsers cannot nest links, so
+  // it renders empty. The title link already goes to the product.
+  out = out.replace(
+    /<a href="[^"]*" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">(?=\s*<div class="mk-shop-item-detail">)/g,
+    ''
+  )
+  // WooCommerce's tabs need its script; without it the panels are plain
+  // sections, so drop the tab roles that promise otherwise.
+  out = out
+    .replace(/(<ul class="tabs wc-tabs") role="tablist"/g, '$1')
+    .replace(/(<a href="#tab-[^"]*") role="tab" aria-controls="[^"]*"/g, '$1')
+    .replace(/(<div class="[^"]*wc-tab[^"]*"[^>]*?) role="tabpanel"/g, '$1')
   if (page.startsWith('product/')) {
     // Product reviews need a WordPress login.
     out = removeAll(out, /<div id="respond"/g, 'div')
