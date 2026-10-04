@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "Fitness: What's Wrong or Right With Fitness Magazines? - NHEG",
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/fitness-whats-wrong-or-right-with-fitness-magazines/',
   }),
   title: { absolute: "Fitness: What's Wrong or Right With Fitness Magazines? - NHEG" },

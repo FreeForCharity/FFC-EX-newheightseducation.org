@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Course Announcements - New Heights Educational Group, Inc.',
     description:
-      'Course Announcements: Check out our completely free 2023 course catalog, and free and discounted online course pages., Sign up for the Basic & Advanced…',
+      'Course Announcements: Check out our completely free 2023 course catalog, and free and discounted online course pages, Sign up for the Basic & Advanced…',
     canonical: '/category/course-announcements/',
   }),
   title: { absolute: 'Course Announcements - New Heights Educational Group, Inc.' },

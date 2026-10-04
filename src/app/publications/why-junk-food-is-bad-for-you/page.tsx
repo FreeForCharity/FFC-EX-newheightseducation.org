@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Why Junk Food Is Bad For You - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/why-junk-food-is-bad-for-you/',
   }),
   title: { absolute: 'Why Junk Food Is Bad For You - NHEG' },

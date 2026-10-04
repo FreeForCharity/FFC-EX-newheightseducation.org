@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title:
       'Samoan government temporarily shuts down for nationwide measles vaccination drive - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical:
       '/publications/samoan-government-temporarily-shuts-down-for-nationwide-measles-vaccination-drive/',
   }),

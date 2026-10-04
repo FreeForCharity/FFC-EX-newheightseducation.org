@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Mockumentary Mister America has world premiere - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/mockumentary-mister-america-has-world-premiere/',
   }),
   title: { absolute: 'Mockumentary Mister America has world premiere - NHEG' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc.',
     description:
-      'Michael Anderson: New Heights Educational Group Services, NHEG Recognition Day 2024, New Heights Educational Group Status., NHEG Recognition Day 2022…',
+      'Michael Anderson: New Heights Educational Group Services, NHEG Recognition Day 2024, New Heights Educational Group Status, NHEG Recognition Day 2022…',
     canonical: '/author/m-anderson/',
   }),
   title: { absolute: 'Michael Anderson, Author at New Heights Educational Group, Inc.' },

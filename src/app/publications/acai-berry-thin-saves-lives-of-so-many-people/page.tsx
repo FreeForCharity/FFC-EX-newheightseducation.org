@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Acai Berry Thin: Saves Lives of so many People - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/acai-berry-thin-saves-lives-of-so-many-people/',
   }),
   title: { absolute: 'Acai Berry Thin: Saves Lives of so many People - NHEG' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Importance of nutritional supplements for all. - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/importance-of-nutritional-supplements-for-all/',
   }),
   title: { absolute: 'Importance of nutritional supplements for all. - NHEG' },

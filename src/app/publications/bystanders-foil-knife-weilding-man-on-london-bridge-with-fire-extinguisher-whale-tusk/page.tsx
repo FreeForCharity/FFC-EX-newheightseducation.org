@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title:
       'Bystanders foil knife-weilding man on London Bridge with fire extinguisher, whale tusk - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical:
       '/publications/bystanders-foil-knife-weilding-man-on-london-bridge-with-fire-extinguisher-whale-tusk/',
   }),

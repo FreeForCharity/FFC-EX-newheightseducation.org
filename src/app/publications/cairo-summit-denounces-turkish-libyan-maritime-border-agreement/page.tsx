@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Cairo summit denounces Turkish-Libyan maritime border agreement - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/cairo-summit-denounces-turkish-libyan-maritime-border-agreement/',
   }),
   title: { absolute: 'Cairo summit denounces Turkish-Libyan maritime border agreement - NHEG' },

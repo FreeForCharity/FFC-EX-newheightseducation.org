@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'World Cuisine - Best Food in the World by Country - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/world-cuisine-best-food-in-the-world-by-country/',
   }),
   title: { absolute: 'World Cuisine - Best Food in the World by Country - NHEG' },

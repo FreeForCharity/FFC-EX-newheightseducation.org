@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title:
       'Snowmobiler Caleb Moore dies from injuries sustained during the Winter X Games XVII - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical:
       '/publications/snowmobiler-caleb-moore-dies-from-injuries-sustained-during-the-winter-x-games-xvii/',
   }),

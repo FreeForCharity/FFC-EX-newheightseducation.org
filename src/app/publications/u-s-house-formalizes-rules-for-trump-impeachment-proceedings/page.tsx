@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'U.S. House formalizes rules for Trump impeachment proceedings - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/u-s-house-formalizes-rules-for-trump-impeachment-proceedings/',
   }),
   title: { absolute: 'U.S. House formalizes rules for Trump impeachment proceedings - NHEG' },

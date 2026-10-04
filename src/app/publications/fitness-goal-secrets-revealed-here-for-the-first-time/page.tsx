@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Fitness Goal Secrets Revealed Here for the First Time - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/fitness-goal-secrets-revealed-here-for-the-first-time/',
   }),
   title: { absolute: 'Fitness Goal Secrets Revealed Here for the First Time - NHEG' },

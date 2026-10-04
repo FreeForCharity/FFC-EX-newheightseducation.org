@@ -35,7 +35,9 @@ describe('meta descriptions', () => {
 
   it('never leaves an HTML entity undecoded', () => {
     expect(
-      described.filter((p) => /&(?:[a-z]+|#\d+);/.test(p.description)).map((p) => p.page)
+      described
+        .filter((p) => /&(?:[a-z]+|#\d+|#x[0-9a-f]+);/i.test(p.description))
+        .map((p) => p.page)
     ).toEqual([])
   })
 })

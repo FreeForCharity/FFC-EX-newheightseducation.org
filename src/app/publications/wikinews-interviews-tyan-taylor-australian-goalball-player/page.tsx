@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Wikinews interviews Tyan Taylor, Australian goalball player - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/wikinews-interviews-tyan-taylor-australian-goalball-player/',
   }),
   title: { absolute: 'Wikinews interviews Tyan Taylor, Australian goalball player - NHEG' },

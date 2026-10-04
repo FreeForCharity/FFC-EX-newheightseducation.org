@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "Study: people infected by new coronavirus 'likely' hundreds more than confirmed - NHEG",
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical:
       '/publications/study-people-infected-by-new-coronavirus-likely-hundreds-more-than-confirmed/',
   }),

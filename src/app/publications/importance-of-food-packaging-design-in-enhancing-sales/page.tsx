@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Importance Of Food Packaging Design In Enhancing Sales - NHEG',
     description:
-      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management\\’s announcement of earlier…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/importance-of-food-packaging-design-in-enhancing-sales/',
   }),
   title: { absolute: 'Importance Of Food Packaging Design In Enhancing Sales - NHEG' },

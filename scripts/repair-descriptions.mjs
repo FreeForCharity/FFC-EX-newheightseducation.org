@@ -61,7 +61,8 @@ export function mainContent(html) {
 
 /** Text of an HTML snippet: tags removed until none remain. */
 export function textOf(html) {
-  let text = html
+  // WordPress's magic quotes left a backslash before some entities.
+  let text = html.replace(/\\+(?=&(?:#\d+|#x[0-9a-f]+|[a-z]+);)/gi, '')
   let previous
   do {
     previous = text
@@ -80,7 +81,13 @@ export function archiveDescription(fragment, title, lib) {
       /<h[23]\b[^>]*class="[^"]*\b(?:the-title|product-title|entry-title)\b[^"]*"[^>]*>([\s\S]*?)<\/h[23]>/g
     ),
   ]
-    .map((m) => lib.decodeEntities(textOf(m[1])).replace(/\s+/g, ' ').trim())
+    .map((m) =>
+      lib
+        .decodeEntities(textOf(m[1]))
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/[.\s]+$/, '')
+    )
     .filter(Boolean)
   if (!titles.length) return null
   const label = title.split(/\s[-|\u2013]\s|, Author at /)[0]
