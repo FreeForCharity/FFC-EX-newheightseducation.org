@@ -17,6 +17,7 @@ import Header from './../components/header'
 // `dangerouslySetInnerHTML`, and a `<script>` arriving that way runs on a cold
 // load and silently does not on a client-side navigation.
 import CloneEnhance from './../components/clone-enhance'
+import CloneReload from './../components/clone-reload'
 // The slim attribution strip 706 generates for a captured site, not the
 // template's marketing footer. Every captured page brings New Heights
 // Educational Group's own footer -- their green strip with the logo, nine
@@ -114,7 +115,7 @@ export default function RootLayout({
             third-party origins must be added to BOTH. */}
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://widgets.guidestar.org https://connect.facebook.net https://www.zeffy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; frame-src 'self' https://www.googletagmanager.com https://www.zeffy.com https://widgets.guidestar.org https://www.facebook.com https://forms.office.com https://forms.microsoft.com https://www.youtube.com https://www.youtube-nocookie.com https://docs.google.com https://calendar.google.com https://embed.ted.com https://w.soundcloud.com https://rumble.com https://www.canva.com; media-src 'self' blob: https:; object-src 'none'; base-uri 'self'; form-action 'self' https://www.zeffy.com https://forms.office.com; upgrade-insecure-requests"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://widgets.guidestar.org https://connect.facebook.net https://www.zeffy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; frame-src 'self' https://www.googletagmanager.com https://www.zeffy.com https://widgets.guidestar.org https://www.facebook.com https://forms.office.com https://forms.microsoft.com https://www.youtube.com https://www.youtube-nocookie.com https://docs.google.com https://calendar.google.com https://embed.ted.com https://w.soundcloud.com https://rumble.com https://www.canva.com; media-src 'self' blob: https:; object-src 'none'; base-uri 'self'; form-action 'self' https://www.zeffy.com https://forms.office.com https://www.paypal.com; upgrade-insecure-requests"
         />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="color-scheme" content="light" />
@@ -166,6 +167,7 @@ export default function RootLayout({
         </a>
         <Header />
         <CloneEnhance />
+        <CloneReload />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
