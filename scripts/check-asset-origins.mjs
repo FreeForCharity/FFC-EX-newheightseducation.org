@@ -175,6 +175,9 @@ export function checkOut(outDir, basePath = '') {
       const sitePath = decodeURIComponent(
         new URL(sheet, `https://site.invalid${pagePath}`).pathname
       )
+      // GitHub Pages picks the Content-Type from the extension, and browsers
+      // refuse a stylesheet that is not text/css (#44).
+      if (!sitePath.endsWith('.css')) report(`not served as text/css ${sheet}`, `/${route}`)
       if (!stylesheets.has(sitePath)) stylesheets.set(sitePath, `/${route}`)
     }
   }

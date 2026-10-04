@@ -169,7 +169,20 @@ describe('checkOut', () => {
       '<link rel="stylesheet" href="/_ffc-assets/font.bin"><link rel="icon" href="/_ffc-assets/icon.bin">'
     )
     expect(Object.fromEntries(checkOut(out))).toEqual({
+      'not served as text/css /_ffc-assets/font.bin': ['/'],
       'missing gone.woff2': ['/_ffc-assets/font.bin'],
+    })
+  })
+
+  it('flags a stylesheet whose extension Pages would not serve as text/css', () => {
+    writeFileSync(join(out, '_ffc-assets', 'theme.php'), 'a{color:red}')
+    writeFileSync(join(out, '_ffc-assets', 'theme.css'), 'a{color:red}')
+    writeFileSync(
+      join(out, 'index.html'),
+      '<link rel="stylesheet" href="/_ffc-assets/theme.php"><link rel="stylesheet" href="/_ffc-assets/theme.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'not served as text/css /_ffc-assets/theme.php': ['/'],
     })
   })
 
