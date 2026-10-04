@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Charlotte Picardo, Author at New Heights Educational Group, Inc.',
     description:
-      'Charlotte Picardo: Is education important for kids to succeed?, How can students stay motivated during their education?, The Rise of Online Learning…',
+      'Charlotte Picardo: Is education important for kids to succeed, How can students stay motivated during their education, The Rise of Online Learning During…',
     canonical: '/author/charlotte-p/',
   }),
   title: { absolute: 'Charlotte Picardo, Author at New Heights Educational Group, Inc.' },

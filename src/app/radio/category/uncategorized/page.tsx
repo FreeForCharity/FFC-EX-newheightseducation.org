@@ -7,7 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Uncategorized Archives - NHEG Radio Show',
-    description: 'Uncategorized Archives: Hello world!.',
+    description: 'Uncategorized Archives: Hello world.',
     canonical: '/radio/category/uncategorized/',
   }),
   title: { absolute: 'Uncategorized Archives - NHEG Radio Show' },

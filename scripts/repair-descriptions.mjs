@@ -86,7 +86,7 @@ export function archiveDescription(fragment, title, lib) {
         .decodeEntities(textOf(m[1]))
         .replace(/\s+/g, ' ')
         .trim()
-        .replace(/[.\s]+$/, '')
+        .replace(/[.!?\s]+$/, '')
     )
     .filter(Boolean)
   if (!titles.length) return null

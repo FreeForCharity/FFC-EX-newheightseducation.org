@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Khrista Cendana, Author at New Heights Educational Group, Inc.',
     description:
-      'Khrista Cendana: Is Volunteering Worth The Time?, Nintendo Switch Games For Learning, Education on Star Trek, Why Charter School?, Choosing The Right…',
+      'Khrista Cendana: Is Volunteering Worth The Time, Nintendo Switch Games For Learning, Education on Star Trek, Why Charter School, Choosing The Right…',
     canonical: '/author/khrista-cendana/',
   }),
   title: { absolute: 'Khrista Cendana, Author at New Heights Educational Group, Inc.' },
