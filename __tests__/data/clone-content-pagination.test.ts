@@ -4,6 +4,7 @@
 import fs from 'fs'
 import path from 'path'
 import { CONTROLS, articleSpan, themeOf } from '../../scripts/paginate-archives.mjs'
+import { MAGIC_QUOTE } from '../../scripts/repair-magic-quotes.mjs'
 
 const CONTENT_DIR = path.join(process.cwd(), 'src', 'clone-content')
 const APP_DIR = path.join(process.cwd(), 'src', 'app')
@@ -129,5 +130,12 @@ describe('archive pagination', () => {
       for (const m of loop.matchAll(/href="%%BASE%%(\/[^"#?]*)/g)) linked.add(m[1])
     }
     expect(posts.filter((p) => !linked.has(p) && !UNLISTED.has(p))).toEqual([])
+  })
+
+  it('shows no magic-quote backslash before an apostrophe or quote', () => {
+    const offenders = files(CONTENT_DIR, '.html').filter((f) =>
+      new RegExp(MAGIC_QUOTE.source).test(fs.readFileSync(f, 'utf8'))
+    )
+    expect(offenders.map((f) => path.relative(CONTENT_DIR, f))).toEqual([])
   })
 })

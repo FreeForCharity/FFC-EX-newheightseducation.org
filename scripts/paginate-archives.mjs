@@ -19,6 +19,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, posix } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { repairMagicQuotes } from './repair-magic-quotes.mjs'
 
 const ROOT = join(import.meta.dirname, '..')
 const CONTENT = join(ROOT, 'src', 'clone-content')
@@ -98,7 +99,7 @@ export function localize(html, route, { extraRoutes = new Set(), lib, missing = 
   // A link to a page or file the export does not have keeps its text, as the
   // converter's unlinkDeadPageLinks does.
   // The converter names generic links from the original URL, so before rewriting.
-  let out = lib.nameGenericLinks(html).html
+  let out = lib.nameGenericLinks(repairMagicQuotes(html)).html
   out = out.replace(
     /<a\b([^>]*?)\shref="([^"]*)"([^>]*)>([\s\S]*?)<\/a>/g,
     (tag, before, href, after, inner) => {
