@@ -55,18 +55,18 @@ describe('payment paths', () => {
     expect(form).toMatch(
       /^<form class="ffc-paypal" action="https:\/\/www\.paypal\.com\/cgi-bin\/webscr" method="post"/
     )
-    const hidden = Object.fromEntries(
-      [...form.matchAll(/<input type="hidden" name="([^"]+)" value="([^"]*)"/g)].map((m) => [
-        m[1],
-        m[2],
-      ])
+    // A sorted list rather than an object, so a duplicated field also fails.
+    const hidden = [...form.matchAll(/<input type="hidden" name="([^"]+)" value="([^"]*)"/g)]
+      .map((m) => [m[1], m[2]])
+      .sort()
+    expect(hidden).toEqual(
+      [
+        ['cmd', '_s-xclick'],
+        ['hosted_button_id', id],
+        ['on0', FIELDS[page].on0],
+        ['currency_code', 'USD'],
+      ].sort()
     )
-    expect(hidden).toEqual({
-      cmd: '_s-xclick',
-      hosted_button_id: id,
-      on0: FIELDS[page].on0,
-      currency_code: 'USD',
-    })
     expect(form).toContain('<select name="os0">')
     const options = [...form.matchAll(/<option value="([^"]*)">([^<]*)<\/option>/g)].map((m) => [
       m[1],
