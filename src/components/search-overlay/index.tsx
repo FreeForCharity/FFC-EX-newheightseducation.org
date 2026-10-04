@@ -74,7 +74,11 @@ export default function SearchOverlay() {
       const menu = document.querySelector<HTMLElement>(`.ast-search-menu-icon.${ASTRA_OPEN}`)
       if (menu) {
         menu.classList.remove(ASTRA_OPEN)
-        menu.querySelector<HTMLElement>('.astra-search-icon')?.focus()
+        const icon = menu.querySelector<HTMLElement>('.astra-search-icon')
+        icon?.setAttribute('aria-expanded', 'false')
+        const field = menu.querySelector<HTMLInputElement>('.search-field')
+        if (field) field.tabIndex = -1
+        icon?.focus()
       }
     }
 

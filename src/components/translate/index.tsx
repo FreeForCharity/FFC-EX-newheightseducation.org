@@ -128,6 +128,13 @@ export default function Translate() {
       event.preventDefault()
       setOpen(panel.hidden)
     }
+    const onFlagKey = (event: KeyboardEvent) => {
+      if (event.key !== ' ') return
+      const a = (event.target as Element | null)?.closest<HTMLAnchorElement>('a.nturl')
+      if (!a) return
+      event.preventDefault()
+      a.click()
+    }
     const onFlag = (event: MouseEvent) => {
       const a = (event.target as Element | null)?.closest<HTMLAnchorElement>('a.nturl')
       if (!a) return
@@ -145,11 +152,13 @@ export default function Translate() {
     trigger.addEventListener('click', onTrigger)
     trigger.addEventListener('keydown', onTrigger)
     flags.addEventListener('click', onFlag)
+    flags.addEventListener('keydown', onFlagKey)
     document.addEventListener('keydown', onKey)
     return () => {
       trigger.removeEventListener('click', onTrigger)
       trigger.removeEventListener('keydown', onTrigger)
       flags.removeEventListener('click', onFlag)
+      flags.removeEventListener('keydown', onFlagKey)
       document.removeEventListener('keydown', onKey)
       panel.remove()
     }
