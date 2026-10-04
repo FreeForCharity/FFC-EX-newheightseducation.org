@@ -46,3 +46,84 @@ describe('links to the retired subdomains', () => {
     expect(offenders).toEqual([])
   })
 })
+
+describe('linked stylesheets', () => {
+  it('end in .css, so GitHub Pages serves them as text/css (#44)', () => {
+    const offenders = fragments(CONTENT_DIR).flatMap((f) =>
+      [...fs.readFileSync(f, 'utf8').matchAll(/<link\b[^>]*>/gi)]
+        .map((m) => m[0])
+        .filter((tag) => /\brel=(['"])stylesheet\1/i.test(tag))
+        .map((tag) => tag.match(/\bhref=(['"])([^'"]+)\1/i)?.[2] ?? '')
+        .concat(
+          [
+            ...fs
+              .readFileSync(f, 'utf8')
+              .matchAll(/@import\s+(?:url\(\s*)?(["']?)([^"'()\s;]+)\1/gi),
+          ].map((m) => m[2])
+        )
+        .filter((href) => href.startsWith('%%BASE%%/') && !/\.css$/i.test(href))
+        .map((href) => `${rel(f)}: ${href}`)
+    )
+    expect(offenders).toEqual([])
+  })
+
+  // The template's own components share the page, so a captured stylesheet
+  // left global restyles them (the cookie banner on /school/, #44).
+  it('are scoped to the captured markup', () => {
+    const sheets = new Set(
+      fragments(CONTENT_DIR).flatMap((f) =>
+        [...fs.readFileSync(f, 'utf8').matchAll(/<link\b[^>]*>/gi)]
+          .map((m) => m[0])
+          .filter((tag) => /\brel=(['"])stylesheet\1/i.test(tag))
+          .map((tag) => tag.match(/\bhref=(['"])%%BASE%%\/([^'"]+)\1/i)?.[2])
+          .filter((href): href is string => Boolean(href))
+      )
+    )
+    expect(sheets.size).toBeGreaterThan(50)
+    const unscoped = [...sheets].flatMap((sheet) => {
+      const css = fs.readFileSync(path.join(process.cwd(), 'public', sheet), 'utf8')
+      const bad = unscopedSelectors(css)
+      return bad.length ? [`${sheet}: ${bad.slice(0, 3).join(' | ')}`] : []
+    })
+    expect(unscoped).toEqual([])
+  })
+})
+
+/**
+ * Selectors outside `@keyframes` that do not start with `.ffc-clone`, or that
+ * do only because a prefix was wrongly put on an at-rule or a keyframe step.
+ */
+function unscopedSelectors(css: string): string[] {
+  const bad: string[] = []
+  const text = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(["'])(?:\\.|(?!\1).)*\1/g, '""')
+  let depth = 0
+  let keyframes = -1
+  let start = 0
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === '{') {
+      const prelude = text.slice(start, i).trim()
+      if (prelude.startsWith('@')) {
+        if (/^@(-[a-z]+-)?keyframes\b/i.test(prelude) && keyframes === -1) keyframes = depth
+      } else if (keyframes === -1 || depth <= keyframes) {
+        for (const sel of prelude.split(',').map((s) => s.trim())) {
+          // A prefixed at-rule or keyframe step is malformed, not scoped.
+          if (
+            sel &&
+            (!/^\.ffc-clone(?![\w-])/.test(sel) ||
+              /@|^\.ffc-clone\s+(?:[\d.]+%|from|to)$/.test(sel))
+          )
+            bad.push(sel)
+        }
+      }
+      depth++
+      start = i + 1
+    } else if (text[i] === '}') {
+      depth--
+      if (keyframes !== -1 && depth <= keyframes) keyframes = -1
+      start = i + 1
+    } else if (text[i] === ';' && depth === 0) {
+      start = i + 1
+    }
+  }
+  return bad
+}
