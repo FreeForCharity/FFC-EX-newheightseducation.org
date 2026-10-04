@@ -35,9 +35,36 @@ const href = (archive: string, n: number) =>
 // which no archive on the live site linked either.
 const UNLISTED = new Set(['/radio/uncategorized/hello-world/'])
 
+// Each archive's last page in the live capture (#41), as listed in
+// live-html-2026-10-02.zip. author/m-anderson advertised 25, but pages 12 to
+// 25 returned 404 (crawl.json).
+const LAST_PAGE: Record<string, number> = {
+  'author/daniela-silva': 2,
+  'author/heatherruggiero': 2,
+  'author/khrista-cendana': 3,
+  'author/m-anderson': 11,
+  'author/pamela-clark': 6,
+  'author/sarika-g': 3,
+  'category/community-news': 3,
+  'category/education-news': 2,
+  'category/educational-articles': 6,
+  'category/nheg-news': 15,
+  'category/student-corner': 2,
+  'nheg-blog': 41,
+  'product-category/leadership-groups': 4,
+  'product-category/nheg-collections': 3,
+  'product-category/nheg-radio': 2,
+  'publications/author/newheightseducation': 12,
+  'publications/books': 9,
+  'publications/category/nheg-edguide': 7,
+  'school/online-courses/personal-development-coaching-courses': 2,
+  shop: 8,
+}
+
 describe('archive pagination', () => {
-  it('finds the paginated archives', () => {
-    expect(archives.size).toBe(20)
+  it('has exactly the archives and last pages the live site had', () => {
+    const generated = Object.fromEntries([...archives].map(([a, pages]) => [a, Math.max(...pages)]))
+    expect(generated).toEqual(LAST_PAGE)
   })
 
   it('has as many archive pages as the live crawl found on each host', () => {
