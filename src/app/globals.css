@@ -702,3 +702,40 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
   outline: 3px solid #000;
   outline-offset: -6px;
 }
+
+/* WPBakery's image carousel needs its script; show its items as a row. */
+.ffc-clone .vc_images_carousel {
+  height: auto !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_carousel-inner,
+.ffc-clone .vc_images_carousel .vc_carousel-slideline {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_carousel-slideline-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: auto !important;
+  transform: none !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_item {
+  flex: 0 1 120px;
+  width: auto !important;
+  height: auto !important;
+  visibility: visible !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_item img {
+  width: 100%;
+  height: auto;
+}
+
+.ffc-clone .vc_images_carousel .vc_carousel-control,
+.ffc-clone .vc_images_carousel .vc_carousel-indicators {
+  display: none;
+}
