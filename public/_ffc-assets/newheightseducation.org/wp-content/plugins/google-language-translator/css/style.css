@@ -3303,7 +3303,7 @@
     padding: 10px;
 }
 
-.ffc-clone /* Some Dashboard mobile styles */
+/* Some Dashboard mobile styles */
 
 @media only screen and (max-width:1023px) {
   .ffc-clone .metabox-holder {
