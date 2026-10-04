@@ -71,7 +71,7 @@ That is 14 Caldera forms in total; the three contact forms share one definition,
 
 ### E. A paid form service (Formspree, Tally, Jotform)
 
-- **Data:** a third party holds the data. Free tiers limit features such as file uploads or monthly submissions, and paid plans cost money every month. A plain link to the hosted form needs no site change; an embed adds the host to the CSP `frame-src`, and a direct form post adds it to `form-action`.
+- **Data:** a third party holds the data. Free tiers limit features such as file uploads or monthly submissions, and paid plans cost money every month. Every option still means replacing the interim block on each page. A plain link to the hosted form needs no CSP change; an embed adds the host to the CSP `frame-src`, and a direct form post adds it to `form-action`.
 - **Verdict:** no advantage over C for this site, plus cost and another vendor.
 
 ## Recommendation
