@@ -10,7 +10,7 @@ import { smokeBase, resolveLoc, parseLocs, pool } from './_helpers'
  */
 
 /** A spread of real pages: the front page, a captured leaf, and a template page. */
-const SAMPLE = ['', 'cart/', 'privacy-policy/']
+const SAMPLE = ['', 'shop/', 'privacy-policy/']
 
 test.describe('rendered invariants', () => {
   test.setTimeout(5 * 60 * 1000)
@@ -18,7 +18,7 @@ test.describe('rendered invariants', () => {
   /**
    * `verify:build` counts `<h1>` TAGS in the exported HTML. axe reads the
    * accessibility tree. Those disagree whenever the captured theme hides the
-   * heading: on this site `/cart`'s only `<h1>` is `display: none`, so the
+   * heading: on this site `/cart`'s only `<h1>` was `display: none`, so the
    * build check passed, `ensureSingleH1` saw a heading and skipped the page,
    * and a screen-reader user still arrives somewhere with no heading at all.
    *

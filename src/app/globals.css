@@ -493,7 +493,7 @@ body .ffc-clone #glt-translate-trigger a {
   }
 }
 
-/* Payment and donation controls that replace the WordPress forms (#55). */
+/* Payment, donation and store controls that replace the WordPress forms (#54, #55). */
 .ffc-clone .ffc-paypal {
   display: flex;
   flex-wrap: wrap;
@@ -507,7 +507,8 @@ body .ffc-clone #glt-translate-trigger a {
 }
 
 .ffc-clone .ffc-paypal__button,
-.ffc-clone .ffc-zeffy-button {
+.ffc-clone .ffc-zeffy-button,
+.ffc-clone .ffc-store-button {
   display: inline-block;
   padding: 0.6rem 1.25rem;
   border: 0;
@@ -520,7 +521,26 @@ body .ffc-clone #glt-translate-trigger a {
 }
 
 .ffc-clone .ffc-paypal__button:focus-visible,
-.ffc-clone .ffc-zeffy-button:focus-visible {
+.ffc-clone .ffc-zeffy-button:focus-visible,
+.ffc-clone .ffc-store-button:focus-visible {
   outline: 3px solid #000;
   outline-offset: 2px;
+}
+
+/* WooCommerce's gallery slider needs its script; without it every variant
+   photo stacks into one long column. Show the main photo only (#54). */
+.ffc-clone .woocommerce-product-gallery__image:not(:first-child) {
+  display: none;
+}
+
+.ffc-clone .woocommerce-product-gallery {
+  opacity: 1 !important;
+}
+
+/* The captured breadcrumb grey fails contrast on its #f7f7f7 bar (#54). The
+   theme's rule has the same specificity and loads later, hence `body`. */
+body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin,
+body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin a,
+body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin .separator {
+  color: #595959;
 }
