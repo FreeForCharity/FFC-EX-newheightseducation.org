@@ -19,11 +19,34 @@ const all = fragments().map((file) => ({
   html: fs.readFileSync(file, 'utf8'),
 }))
 
-// The live site's PayPal hosted buttons that still work (#55).
+// The live site's PayPal hosted buttons that still work (#55), with the exact
+// fields the live forms submitted.
 const BUTTONS: Record<string, string> = {
   'who-we-are/nheg-edguide': 'U8YWFU9M4TQVY',
   'school/students/school-senior-pictures': 'RH2HKX6TVNNKA',
 }
+const FIELDS: Record<string, { on0: string; options: [string, string][] }> = {
+  'who-we-are/nheg-edguide': {
+    on0: 'Magazine Ad',
+    options: [
+      ['1/2 page/2 issues', '1/2 page/2 issues $20.00 USD'],
+      ['Full page/2 issues', 'Full page/2 issues $30.00 USD'],
+      ['1/2 page/4 issues', '1/2 page/4 issues $36.00 USD'],
+      ['Full page/4 issues', 'Full page/4 issues $54.00 USD'],
+      ['1/2 page/6 issues', '1/2 page/6 issues $48.00 USD'],
+      ['Full page/6 issues', 'Full page/6 issues $72.00 USD'],
+    ],
+  },
+  'school/students/school-senior-pictures': {
+    on0: 'Payment',
+    options: [
+      ['Deposit', 'Deposit $50.00 USD'],
+      ['Remainder', 'Remainder $100.00 USD'],
+    ],
+  },
+}
+const paypalForm = (html: string) =>
+  html.match(/<form class="ffc-paypal"[\s\S]*?<\/form>/)?.[0] ?? ''
 const ZEFFY = 'https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5'
 
 describe('payment paths', () => {
