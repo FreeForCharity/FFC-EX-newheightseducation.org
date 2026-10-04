@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Student Projects - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Connecting, motivating and aiding teens while bringing awareness to mental health through free, educational and helpful resources.',
     canonical: '/school/students/student-projects/',
   }),
   title: { absolute: 'Student Projects - NHEG Online Learning Annex' },

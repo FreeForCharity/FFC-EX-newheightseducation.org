@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "Toronto's Anime North 2019 brings thousands of fans together - NHEG",
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/torontos-anime-north-2019-brings-thousands-of-fans-together/',
   }),
   title: { absolute: "Toronto's Anime North 2019 brings thousands of fans together - NHEG" },

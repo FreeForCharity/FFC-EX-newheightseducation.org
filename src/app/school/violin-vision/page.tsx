@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Violin Vision - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Violin Vision is a course dedicated to educating scholars on playing the violin and sight reading music. The course has been divided according to the…',
     canonical: '/school/violin-vision/',
   }),
   title: { absolute: 'Violin Vision - NHEG Online Learning Annex' },

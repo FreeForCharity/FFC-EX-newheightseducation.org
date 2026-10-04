@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Savneet Singh',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Savneet Singh" Home » Archives for…',
+      'Savneet Singh: Games and Learning, Collaborative Learning in Online Environment, Bite-size Information for Teaching and Training, Online Learning Tips…',
     canonical: '/author/savneet-singh/',
   }),
   title: { absolute: 'Savneet Singh' },

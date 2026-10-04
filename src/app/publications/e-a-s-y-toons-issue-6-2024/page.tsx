@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'E.A.S.Y.Toons Issue 6 (2024) - NHEG',
-    description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description: 'E.A.S.Y.Toons Issue 6 (2024) - NHEG',
     canonical: '/publications/e-a-s-y-toons-issue-6-2024/',
   }),
   title: { absolute: 'E.A.S.Y.Toons Issue 6 (2024) - NHEG' },

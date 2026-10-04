@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Kashif Mahmood, Author at NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Kashif Mahmood: NHEG EDGuide September – October 2026, NHEG EDGuide July – August 2026, NHEG EDGuide May – June 2026, NHEG EDGuide March – April 2026…',
     canonical: '/publications/author/kashifmahmood/',
   }),
   title: { absolute: 'Kashif Mahmood, Author at NHEG' },

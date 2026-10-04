@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'NEWHEIGHTSEDUCATION: NHEG EDGuide July-August 2025, NHEG EDGuide May – June 2025, NHEG EDGuide March – April 2025, NHEG EDGuide January – February 2025…',
     canonical: '/publications/author/newheightseducation/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG' },

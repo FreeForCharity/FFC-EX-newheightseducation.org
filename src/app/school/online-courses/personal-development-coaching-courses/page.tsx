@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Personal Development Coaching Courses - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Buffie Williams is a former Navy spouse, author and service entrepreneur. She is the owner of AWAKEN Holistic Counseling & Psychotherapy Services, LLC…',
     canonical: '/school/online-courses/personal-development-coaching-courses/',
   }),
   title: { absolute: 'Personal Development Coaching Courses - NHEG Online Learning Annex' },

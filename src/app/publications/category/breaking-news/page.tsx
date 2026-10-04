@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Breaking News Archives - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Breaking News Archives: FEE Educational Articles, Homeschool World, Ohio Department of Education and Workforce, New Heights Show on Education…',
     canonical: '/publications/category/breaking-news/',
   }),
   title: { absolute: 'Breaking News Archives - NHEG' },

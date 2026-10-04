@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title:
       'Stampede during funeral procession of Qasem Soleimani causes deaths, delays burial - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical:
       '/publications/stampede-during-funeral-procession-of-qasem-soleimani-causes-deaths-delays-burial/',
   }),

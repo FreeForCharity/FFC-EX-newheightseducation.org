@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Discounted & Free Online Classes - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'NHEG is providing students discounted and free online classes that they can take in their free time or incorporate into their current studies. This…',
     canonical: '/school/online-courses/discounted-and-free-online-classes/',
   }),
   title: { absolute: 'Discounted & Free Online Classes - NHEG Online Learning Annex' },

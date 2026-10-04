@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Daniela Silva',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Daniela Silva" Home » Archives for…',
+      'Daniela Silva: From the world of imagination: a day in the park with preschool students, Memories of a childhood rich in stimulus and its importance for…',
     canonical: '/author/daniela-silva/',
   }),
   title: { absolute: 'Daniela Silva' },

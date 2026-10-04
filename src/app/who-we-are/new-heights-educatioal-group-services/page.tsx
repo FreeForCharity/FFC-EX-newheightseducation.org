@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Educational Group Services - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org We Help Educate Our Youth: Tutoring and Pre-Recorded Courses New…',
+      'New Heights Educational Group offers tutoring for those who want or need a boost in learning. You’ll find a list of our current classes and rates…',
     canonical: '/who-we-are/new-heights-educatioal-group-services/',
   }),
   title: {

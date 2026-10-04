@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Learning Chinese - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The 10-week course will take place for an hour, twice a week and will be open for middle school to adult students who wish to learn to speak and write…',
     canonical: '/school/online-courses/learning-chinese/',
   }),
   title: { absolute: 'Learning Chinese - NHEG Online Learning Annex' },

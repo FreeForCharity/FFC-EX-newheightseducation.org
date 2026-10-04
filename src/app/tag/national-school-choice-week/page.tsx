@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'National School Choice Week - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Tag Archives for: "National School Choice Week" Home »…',
+      'National School Choice Week: National School Choice Week 2018, Pamela’s Talk: National School Choice Week, National School Choice Week.',
     canonical: '/tag/national-school-choice-week/',
   }),
   title: { absolute: 'National School Choice Week - New Heights Educational Group, Inc.' },

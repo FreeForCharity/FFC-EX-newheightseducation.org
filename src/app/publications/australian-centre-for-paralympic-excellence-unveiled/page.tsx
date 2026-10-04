@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Australian Centre for Paralympic Excellence unveiled - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/australian-centre-for-paralympic-excellence-unveiled/',
   }),
   title: { absolute: 'Australian Centre for Paralympic Excellence unveiled - NHEG' },
