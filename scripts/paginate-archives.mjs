@@ -231,6 +231,17 @@ const tsString = (s) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`
  * and the titles it lists. Page 1's is derived text that can no longer be
  * accurate here.
  */
+/** Text of an HTML snippet: tags removed until none remain. */
+export function textOf(html) {
+  let text = html
+  let previous
+  do {
+    previous = text
+    text = text.replace(/<[^<>]*>/g, ' ')
+  } while (text !== previous)
+  return text.replace(/[<>]/g, ' ')
+}
+
 const TITLE_CLASS = { jupiter: 'the-title', woo: 'product-title', astra: 'entry-title' }
 
 export function pageDescription({ live, loop, theme, title, n, max, lib }) {
@@ -241,12 +252,7 @@ export function pageDescription({ live, loop, theme, title, n, max, lib }) {
     'g'
   )
   const titles = [...loop.matchAll(heading)]
-    .map((m) =>
-      lib
-        .decodeEntities(m[1].replace(/<[^>]+>/g, ''))
-        .replace(/\s+/g, ' ')
-        .trim()
-    )
+    .map((m) => lib.decodeEntities(textOf(m[1])).replace(/\s+/g, ' ').trim())
     .filter(Boolean)
   const label = title.split(/\s[-|\u2013]\s|, Author at /)[0]
   const listed = [...new Set(titles)].join(', ')
