@@ -25,6 +25,15 @@ export function imageSize(file) {
         continue
       }
       const marker = b[i + 1]
+      // 0xFF fill bytes may pad a marker; RST, SOI and TEM carry no length.
+      if (marker === 0xff) {
+        i++
+        continue
+      }
+      if (marker === 0x01 || (marker >= 0xd0 && marker <= 0xd8)) {
+        i += 2
+        continue
+      }
       if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
         return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)]
       }
