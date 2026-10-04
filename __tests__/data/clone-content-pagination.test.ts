@@ -39,6 +39,29 @@ describe('archive pagination', () => {
     expect(archives.size).toBe(20)
   })
 
+  it('has as many archive pages as the live crawl found on each host', () => {
+    const crawl: Record<string, { paginated: number }> = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), 'docs/live-archive/2026-10-02/crawl.json'), 'utf8')
+    )
+    // The homepage's /page/2/ to /page/64/ rendered the front page with no
+    // control linking to them, so they are left to the redirects (#59).
+    const HOMEPAGE_PAGES = 63
+    const hostOf = (archive: string) => {
+      const section = archive.split('/')[0]
+      return ['school', 'publications', 'radio'].includes(section)
+        ? `${section}.newheightseducation.org`
+        : 'newheightseducation.org'
+    }
+    const generated: Record<string, number> = {}
+    for (const [archive, pages] of archives) {
+      generated[hostOf(archive)] = (generated[hostOf(archive)] ?? 0) + pages.length
+    }
+    for (const [host, { paginated }] of Object.entries(crawl)) {
+      const skipped = host === 'newheightseducation.org' ? HOMEPAGE_PAGES : 0
+      expect([host, (generated[host] ?? 0) + skipped]).toEqual([host, paginated])
+    }
+  })
+
   it.each([...archives].map(([a, pages]) => [a, pages] as const))(
     '%s has every page from 2 to its last',
     (archive, pages) => {

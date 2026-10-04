@@ -137,6 +137,20 @@ export function localize(html, route, { extraRoutes = new Set(), lib, missing = 
     const rel = posix.relative(route, target) || '.'
     return ` ${name}="${c.route ? `${rel}/`.replace(/\/\/$/, '/') : rel}"`
   })
+  // Jupiter's lazy-image sets: the same form as the share inputs above.
+  out = out.replace(/\sdata-mk-image-src-set='([^']*)'/g, (attr, set) => {
+    const fixed = set.replace(
+      /(?:https?:)?\\?\/\\?\/(?:www\.)?(?:[a-z]+\.)?newheightseducation\.org[^"]*/g,
+      (url) => {
+        const c = classify(url.replace(/\\\//g, '/'))
+        if (!c?.asset) return url
+        if (existsSync(join(ASSETS, c.asset))) return `%%BASE%%/_ffc-assets/${c.asset}`
+        const target = `${prefixOf(c.asset.split('/')[0])}/${c.asset.split('/').slice(1).join('/')}`
+        return posix.relative(route, target)
+      }
+    )
+    return ` data-mk-image-src-set='${fixed}'`
+  })
   out = lib.repairInlineShareButtons(out, route.replace(/^\/|\/$/g, '')).html
   out = lib.nameAnonymousLinks(out, SITE).html
   out = lib.removeDeadNamelessControls(out).html
@@ -207,11 +221,14 @@ export function themeOf(html) {
 function liveControl(theme, live, archive, max) {
   const block = live.match(CONTROLS[theme])?.[0]
   if (!block) throw new Error(`no ${theme} control in live ${archive}`)
-  return block.replace(/\shref="([^"]+)"/g, (attr, url) => {
-    const n = Number(url.match(/\/page\/(\d+)\/?$/)?.[1] ?? 1)
-    if (n > max) throw new Error(`${archive} links page ${n} past ${max}`)
-    return ` href="${pageHref(archive, n)}"`
-  })
+  return block
+    .replace(/(<a class="prev page-numbers")/g, '$1 aria-label="Previous page"')
+    .replace(/(<a class="next page-numbers")/g, '$1 aria-label="Next page"')
+    .replace(/\shref="([^"]+)"/g, (attr, url) => {
+      const n = Number(url.match(/\/page\/(\d+)\/?$/)?.[1] ?? 1)
+      if (n > max) throw new Error(`${archive} links page ${n} past ${max}`)
+      return ` href="${pageHref(archive, n)}"`
+    })
 }
 
 const ENTITIES = {
@@ -245,8 +262,9 @@ export function textOf(html) {
 const TITLE_CLASS = { jupiter: 'the-title', woo: 'product-title', astra: 'entry-title' }
 
 export function pageDescription({ live, loop, theme, title, n, max, lib }) {
+  // Yoast's empty description still renders its " - Page N" suffix.
   const meta = lib.extractMetaDescription(live)
-  if (meta) return meta
+  if (meta && meta.replace(/\s*-\s*Page \d+$/, '').trim().length >= 20) return meta
   const heading = new RegExp(
     `<h[23]\\b[^>]*class="[^"]*\\b${TITLE_CLASS[theme]}\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/h[23]>`,
     'g'
