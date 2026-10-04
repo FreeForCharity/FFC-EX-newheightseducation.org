@@ -739,3 +739,19 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
 .ffc-clone .vc_images_carousel .vc_carousel-indicators {
   display: none;
 }
+
+/* Spreaker episode players load on request too. */
+.ffc-clone .ffc-embed-facade--audio {
+  position: static;
+  display: block;
+  height: auto;
+  min-height: 3.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.ffc-clone .ffc-embed-frame--audio {
+  position: static;
+  height: 200px;
+}
