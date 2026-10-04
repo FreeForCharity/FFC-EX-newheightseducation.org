@@ -112,7 +112,15 @@ const walk = (dir) =>
 
 async function main() {
   const args = process.argv.slice(2)
-  const arg = (name) => args[args.indexOf(`--${name}`) + 1]
+  const arg = (name) => {
+    const i = args.indexOf(`--${name}`)
+    const value = i >= 0 ? args[i + 1] : undefined
+    if (!value || value.startsWith('--') || !existsSync(value)) {
+      console.error(`--${name} must name an existing path`)
+      process.exit(2)
+    }
+    return value
+  }
   const htmlDir = arg('html')
   const lib = await import(pathToFileURL(arg('converter')).href)
   const counts = { live: 0, content: 0, title: 0 }
