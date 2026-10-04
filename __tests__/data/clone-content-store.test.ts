@@ -18,6 +18,7 @@ const all = fragments().map((file) => ({
   page: path.relative(CONTENT_DIR, file),
   html: fs.readFileSync(file, 'utf8'),
 }))
+const read = (page: string) => fs.readFileSync(path.join(CONTENT_DIR, `${page}.html`), 'utf8')
 const offenders = (re: RegExp) => all.filter(({ html }) => re.test(html)).map(({ page }) => page)
 
 // The store is a read-only catalog that sends buyers to NHEG's GiveBacks
@@ -46,7 +47,23 @@ describe('store catalog', () => {
     expect(
       offenders(/mk-shoping-cart-link|shopping-cart-header|add-cart-responsive-state/)
     ).toEqual([])
-    expect(offenders(/id="respond"|class="must-log-in"/)).toEqual([])
+    expect(offenders(/class="must-log-in"/)).toEqual([])
+    expect(
+      all.filter(({ page, html }) => page.startsWith('product/') && html.includes('id="respond"'))
+    ).toEqual([])
+  })
+
+  it('keeps the comment box on articles', () => {
+    expect(read('publications/nheg-edguide-september-october-2026')).toContain('id="respond"')
+  })
+
+  it('labels every listing button as viewing the product, with no cart affordance', () => {
+    expect(offenders(/Select options|mk-moon-cart-plus|add_to_cart_button/)).toEqual([])
+    const buttons = all.flatMap(({ html }) =>
+      [...html.matchAll(/<span class="product_loop_button_text">([^<]*)/g)].map((m) => m[1])
+    )
+    expect(buttons.length).toBeGreaterThan(400)
+    expect([...new Set(buttons)]).toEqual(['View product'])
   })
 
   it('links the GiveBacks store directly, not through the old MemberHub domain', () => {

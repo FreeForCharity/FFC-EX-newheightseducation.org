@@ -45,14 +45,19 @@ export function staticStore(page, html) {
     .replaceAll('nheg.memberhub.com', 'nheg.givebacks.com')
     .replaceAll('nheg.memberhub.gives', 'nheg.givebacks.gives')
   out = removeAll(out, /<div class="(?:shopping-cart-header|add-cart-responsive-state)\b/g, 'div')
-  // Product reviews need a WordPress login.
-  out = removeAll(out, /<div id="respond"/g, 'div')
   out = removeAll(out, /<li\b[^>]*>(?=\s*<a\b[^>]*href="%%BASE%%\/(?:cart|my-account)\/")/g, 'li')
-  out = out.replace(
-    /aria-label="Select options for (&ldquo;[^"]*&rdquo;)"/g,
-    'aria-label="View $1"'
-  )
+  // Listing buttons lead to the product page: drop the cart affordance.
+  out = out
+    .replace(/aria-label="Select options for (&ldquo;[^"]*&rdquo;)"/g, 'aria-label="View $1"')
+    .replace(
+      /(class="product_loop_button[^"]*"[^>]*>)<svg\b[^>]*data-name="mk-moon-cart-plus"[\s\S]*?<\/svg>/g,
+      '$1'
+    )
+    .replace(/(<span class="product_loop_button_text">)Select options/g, '$1View product')
+    .replace(/(class="product_loop_button[^"]*?) add_to_cart_button/g, '$1')
   if (page.startsWith('product/')) {
+    // Product reviews need a WordPress login.
+    out = removeAll(out, /<div id="respond"/g, 'div')
     out = out.replace(/<div class="ffc-contact-fallback"[^>]*>.*?<\/div>/s, BUY)
   }
   return out
