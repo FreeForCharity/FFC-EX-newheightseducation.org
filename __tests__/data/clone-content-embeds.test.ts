@@ -31,6 +31,17 @@ describe('third-party embeds and widgets (#57)', () => {
     }
   })
 
+  it('loads Spreaker episode players only on request', () => {
+    expect(offenders(/<iframe\b[^>]*src="https:\/\/widget\.spreaker\.com\//)).toEqual([])
+    const players = all.flatMap(({ html }) => [
+      ...html.matchAll(
+        /class="ffc-embed-facade ffc-embed-facade--audio" data-ffc-embed="([^"]+)"/g
+      ),
+    ])
+    expect(players.length).toBeGreaterThan(900)
+    for (const [, src] of players) expect(src).toMatch(/^https:\/\/widget\.spreaker\.com\/player\?/)
+  })
+
   it('has no Twitter feed widget, which the live site already showed empty', () => {
     expect(offenders(/widget_twitter|twitter\.com\/\/statuses\//)).toEqual([])
   })

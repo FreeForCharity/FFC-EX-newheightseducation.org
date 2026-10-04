@@ -53,13 +53,13 @@ export const URLS = [
   `${RADIO}/uncategorized/hello-world/`,
 ]
 
-const VIEWPORTS = {
+export const VIEWPORTS = {
   desktop: { width: 1440, height: 900 },
   tablet: { width: 768, height: 1024 },
   mobile: { width: 390, height: 844 },
 }
 
-const slug = (url) => {
+export const slug = (url) => {
   const { host, pathname, search } = new URL(url)
   return `${host}${pathname}${search}`.replace(/[^a-z0-9]+/gi, '_').replace(/_$/, '')
 }

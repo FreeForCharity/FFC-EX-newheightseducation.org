@@ -739,3 +739,12 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
 .ffc-clone .vc_images_carousel .vc_carousel-indicators {
   display: none;
 }
+
+/* Spreaker episode players load on request too, in the theme's own video
+   box, as on the live site. */
+.ffc-clone .ffc-embed-facade--audio {
+  overflow: hidden;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  text-align: left;
+}
