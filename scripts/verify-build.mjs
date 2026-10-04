@@ -16,6 +16,8 @@
  *      twitter:card.
  *   4. sitemap.xml lists exactly the indexable pages, and robots.txt points
  *      at it under the base path.
+ *   5. The whole export stays under SIZE_BUDGET, below the 1 GB GitHub Pages
+ *      site limit.
  *
  * Run: `npm run build` first, then `node scripts/verify-build.mjs`
  * (or `npm run verify:build`). Exits non-zero on any violation.
@@ -30,6 +32,18 @@ const ROOT = join(SCRIPT_DIR, '..')
 // Error/utility pages are not indexable content, so the invariants don't apply.
 const SKIP = new Set(['404.html', '_not-found.html'])
 const SKIP_DIRS = new Set(['_ffc-assets', '404', '_not-found'])
+export const SIZE_BUDGET = 950 * 1024 * 1024
+
+/** Total bytes of every file under `dir`. */
+export async function exportSize(dir) {
+  let total = 0
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name)
+    if (entry.isDirectory()) total += await exportSize(full)
+    else if (entry.isFile()) total += (await stat(full)).size
+  }
+  return total
+}
 
 async function walkHtml(dir, results = []) {
   let entries
@@ -75,8 +89,13 @@ export const pathOf = (url) => {
 const readOptional = (file) => readFile(file, 'utf8').catch(() => undefined)
 
 /** Every violation in the static export at `out`, served under `basePath`. */
-export async function verifyBuild(out, basePath = '') {
+export async function verifyBuild(out, basePath = '', budget = SIZE_BUDGET) {
   const errors = []
+  const size = await exportSize(out)
+  if (size > budget) {
+    const mb = (n) => `${(n / 1024 / 1024).toFixed(1)} MB`
+    errors.push(`out/: ${mb(size)} exceeds the ${mb(budget)} budget (Pages caps a site at 1 GB).`)
+  }
   const routeOf = (page) => {
     const rel = relative(out, page).split('\\').join('/')
     return `${basePath}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '/')}`
@@ -142,7 +161,7 @@ export async function verifyBuild(out, basePath = '') {
     }
   }
 
-  return { pages: pages.length, errors }
+  return { pages: pages.length, size, errors }
 }
 
 async function main() {
@@ -155,7 +174,7 @@ async function main() {
   }
 
   const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '')
-  const { pages, errors } = await verifyBuild(out, basePath)
+  const { pages, size, errors } = await verifyBuild(out, basePath)
   if (pages === 0) {
     console.error('\n❌ No HTML pages found under out/. Did the build succeed?')
     process.exit(1)
@@ -170,7 +189,7 @@ async function main() {
   }
 
   console.log(
-    `\n✅ Built-output verified — ${pages} pages each have one <h1>, their own canonical and social tags, and are all in the sitemap.`
+    `\n✅ Built-output verified — ${pages} pages each have one <h1>, their own canonical and social tags, and are all in the sitemap; ${Math.round(size / 1024 / 1024)} MB total.`
   )
 }
 

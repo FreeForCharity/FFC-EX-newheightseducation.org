@@ -2,6 +2,7 @@
 // FFC-Cloudflare-Automation/assets/clone-content-lib.ts, not this copy.
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { CLONE_MARKER } from '@/lib/clone-marker'
 import { siteConfig } from '@/lib/site.config'
 
 // Read at module scope: `output: 'export'` runs every route at build time, so
@@ -38,6 +39,16 @@ export function loadCloneContent(name: string): string {
   // a future caller cannot walk out of the content directory.
   if (!/^[a-z0-9][a-z0-9\-_/]*$/.test(name) || name.includes('..')) {
     throw new Error(`refusing to load clone content for an unexpected name: ${name}`)
+  }
+  // In a production build each route renders a marker, and
+  // scripts/inline-clone-content.mjs swaps it for the fragment in out/. Rendered
+  // directly, every fragment was serialized twice more, into the page's inline
+  // RSC payload and its .txt, putting the export over the 1 GB Pages limit (#43).
+  if (process.env.NODE_ENV === 'production') {
+    const args = [name, basePath, siteUrlEncoded].map((v) =>
+      encodeURIComponent(v).replace(/-/g, '%2D')
+    )
+    return `<!--${CLONE_MARKER}${args.join(' ')}-->`
   }
   const raw = readFileSync(join(CONTENT_DIR, `${name}.html`), 'utf8')
   return raw.split('%%BASE%%').join(basePath).split('%%SITEURL_ENC%%').join(siteUrlEncoded)
