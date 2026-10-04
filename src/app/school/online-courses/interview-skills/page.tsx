@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Interview Skills - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'This class will instruct students on how to apply for a job and what is expected of them during the hiring process. This class is free to the public and…',
     canonical: '/school/online-courses/interview-skills/',
   }),
   title: { absolute: 'Interview Skills - NHEG Online Learning Annex' },

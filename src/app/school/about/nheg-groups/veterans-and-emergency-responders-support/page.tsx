@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Veterans and Emergency Responders - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'When it comes to education, New Heights Educational Group understands what family life is like for service members, veterans and emergency responders.',
     canonical: '/school/about/nheg-groups/veterans-and-emergency-responders-support/',
   }),
   title: { absolute: 'Veterans and Emergency Responders - NHEG Online Learning Annex' },

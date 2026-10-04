@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Protected: Curriculum and Resources for Tutors - NHEG Online Learning Annex',
-    description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+    description: 'Protected: Curriculum and Resources for Tutors - NHEG Online Learning Annex',
     canonical: '/school/teachers/curriculum-and-resources-for-tutors/',
   }),
   title: {

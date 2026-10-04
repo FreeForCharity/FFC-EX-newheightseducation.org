@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Home School Guidance Programs - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Home School Guidance Programs NHEG Home School Guidance Programs…',
+      'NHEG Home School Guidance Programs include a Free Q&A Center and Home School Families page on our learning annex. The links are shared below.',
     canonical: '/nheg-educational-programs/home-school-guidance-programs/',
   }),
   title: { absolute: 'Home School Guidance Programs - New Heights Educational Group, Inc.' },

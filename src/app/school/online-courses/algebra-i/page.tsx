@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Algebra I - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Algebra 1 is a high-school level course that is typically taken in the 9th grade, and it prepares students for more advanced mathematics. In this course…',
     canonical: '/school/online-courses/algebra-i/',
   }),
   title: { absolute: 'Algebra I - NHEG Online Learning Annex' },

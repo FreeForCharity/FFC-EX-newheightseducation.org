@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Assessment - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'This is an overview on how New Heights Educational Group works with students and their individual NHEG Assessments in order to track the students’ growth.',
     canonical: '/school/parents/nheg-assessment/',
   }),
   title: { absolute: 'NHEG Assessment - NHEG Online Learning Annex' },

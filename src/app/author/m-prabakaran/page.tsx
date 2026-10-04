@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Madhumitha Prabakaran, Author at New Heights Educational Group, Inc.',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.prabakaran" Home » Archives for…',
+    description: 'Madhumitha Prabakaran: Electronic Basics, Healthy Brain, Healthy Life.',
     canonical: '/author/m-prabakaran/',
   }),
   title: { absolute: 'Madhumitha Prabakaran, Author at New Heights Educational Group, Inc.' },

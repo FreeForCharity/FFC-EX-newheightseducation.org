@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Popular Products Archive - NHEG',
-    description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description: 'Popular Products Archive - NHEG',
     canonical: '/publications/popular-products-archive/',
   }),
   title: { absolute: 'Popular Products Archive - NHEG' },

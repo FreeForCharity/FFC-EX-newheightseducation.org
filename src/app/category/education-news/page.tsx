@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education News - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Education News Home » Education News 0 By Pamela Clark In…',
+      'Education News: Endangered: The Mexican Grey Wolf, Partnership with CollegeXpress, Pokemon TCG, Bullock Texas State History Museum, Safety For Kids…',
     canonical: '/category/education-news/',
   }),
   title: { absolute: 'Education News - New Heights Educational Group, Inc.' },

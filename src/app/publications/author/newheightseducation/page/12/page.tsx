@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 12 of 12',
     description:
-      'NEWHEIGHTSEDUCATION, page 12 of 12: Stampede during funeral procession of Qasem Soleimani causes deaths, delays burial, Toronto\\’s Anime North 2019…',
+      'NEWHEIGHTSEDUCATION, page 12 of 12: Stampede during funeral procession of Qasem Soleimani causes deaths, delays burial, Toronto’s Anime North 2019 brings…',
     canonical: '/publications/author/newheightseducation/page/12/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 12 of 12' },

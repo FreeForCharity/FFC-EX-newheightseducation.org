@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pre-Algebra - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Pre-Algebra course is taught by Meghna Kilaparthi. It is an online course with recorded lectures that will help you strengthen your mathematic and, more…',
     canonical: '/school/pre-algebra/',
   }),
   title: { absolute: 'Pre-Algebra - NHEG Online Learning Annex' },

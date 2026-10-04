@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Course Announcements - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Course Announcements Home » Course Announcements 0 By Sarika Gauba…',
+      'Course Announcements: Check out our completely free 2023 course catalog, and free and discounted online course pages, Sign up for the Basic & Advanced…',
     canonical: '/category/course-announcements/',
   }),
   title: { absolute: 'Course Announcements - New Heights Educational Group, Inc.' },

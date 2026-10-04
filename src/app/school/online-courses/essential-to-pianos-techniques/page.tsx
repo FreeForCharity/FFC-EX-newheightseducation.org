@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Essential to Piano’s Techniques - NHEG Online Learning Annex',
-    description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+    description: 'Essential to Piano’s Techniques - NHEG Online Learning Annex',
     canonical: '/school/online-courses/essential-to-pianos-techniques/',
   }),
   title: { absolute: 'Essential to Piano’s Techniques - NHEG Online Learning Annex' },

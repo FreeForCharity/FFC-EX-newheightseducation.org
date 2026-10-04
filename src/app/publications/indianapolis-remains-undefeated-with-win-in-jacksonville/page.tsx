@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Indianapolis remains undefeated with win in Jacksonville - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/indianapolis-remains-undefeated-with-win-in-jacksonville/',
   }),
   title: { absolute: 'Indianapolis remains undefeated with win in Jacksonville - NHEG' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'New Heights Educational Group Publications – Inspire & Empower - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'A comprehensive award-winning guide to current educational topics, stories and news, along with highlights of the accomplishments, activities and…',
     canonical: '/publications/',
   }),
   title: { absolute: 'New Heights Educational Group Publications – Inspire & Empower - NHEG' },

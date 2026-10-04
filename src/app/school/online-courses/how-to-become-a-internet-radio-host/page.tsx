@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'How to Become a Internet Radio Host - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Ever dream of being heard in many places at one time? Are you often told that you have a voice that sounds “made for the radio”? We have an opportunity…',
     canonical: '/school/online-courses/how-to-become-a-internet-radio-host/',
   }),
   title: { absolute: 'How to Become a Internet Radio Host - NHEG Online Learning Annex' },

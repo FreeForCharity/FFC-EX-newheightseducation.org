@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Financial Literacy - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Taught by Heather Ruggiero , our Financial Literacy course is a self-directed class that helps you build a better understanding of your finances. This…',
     canonical: '/school/online-courses/financial-literacy/',
   }),
   title: { absolute: 'Financial Literacy - NHEG Online Learning Annex' },

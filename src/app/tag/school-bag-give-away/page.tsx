@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'School Bag Give Away - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Tag Archives for: "School Bag Give Away" Home » School…',
+      'School Bag Give Away: Update on Our Recent School Bag Giveaway, 2nd Annual School Bag Giveaway After Party, Get Your School Bag Today – We Have 70+ Bags…',
     canonical: '/tag/school-bag-give-away/',
   }),
   title: { absolute: 'School Bag Give Away - New Heights Educational Group, Inc.' },

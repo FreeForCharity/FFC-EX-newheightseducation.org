@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Orphan Train Movement - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The National Orphan Train Movement was a supervised welfare program that transported orphaned and homeless children from crowded Eastern cities of the…',
     canonical: '/school/online-courses/orphan-train-movement/',
   }),
   title: { absolute: 'Orphan Train Movement - NHEG Online Learning Annex' },

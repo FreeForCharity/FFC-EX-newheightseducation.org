@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG School Sale - New Heights Educational Group, Inc.',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org NHEG School Sale Home » NHEG School Sale NHEG School Sale By…',
+    description: 'NHEG School Sale - New Heights Educational Group, Inc.',
     canonical: '/nheg-news/nheg-school-sale/',
   }),
   title: { absolute: 'NHEG School Sale - New Heights Educational Group, Inc.' },

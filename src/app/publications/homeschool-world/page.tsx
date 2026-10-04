@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Homeschool World - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'A website with massive amounts of information on home-schooling, events, active groups, getting started and much more.',
     canonical: '/publications/homeschool-world/',
   }),
   title: { absolute: 'Homeschool World - NHEG' },

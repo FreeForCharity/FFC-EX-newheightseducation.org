@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Chemistry - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Welcome to the NHEG Chemistry Online Course. In this course, we will help to provide you with a better understanding of Chemistry and how it is used.',
     canonical: '/school/online-courses/chemistry/',
   }),
   title: { absolute: 'Chemistry - NHEG Online Learning Annex' },
