@@ -55,11 +55,11 @@ describe('verifyBuild', () => {
 
   it('passes a root build and a subpath build', async () => {
     site()
-    expect(await verifyBuild(out)).toEqual({ pages: 2, errors: [] })
+    expect(await verifyBuild(out)).toMatchObject({ pages: 2, errors: [] })
     rmSync(out, { recursive: true, force: true })
     mkdirSync(out)
     site('/base')
-    expect(await verifyBuild(out, '/base')).toEqual({ pages: 2, errors: [] })
+    expect(await verifyBuild(out, '/base')).toMatchObject({ pages: 2, errors: [] })
   })
 
   it('skips error pages and captured assets', async () => {
@@ -120,6 +120,18 @@ describe('verifyBuild', () => {
     expect((await verifyBuild(out, '/base')).errors).toEqual([
       'robots.txt: missing.',
       'sitemap.xml: missing.',
+    ])
+  })
+
+  it('fails an export over the size budget', async () => {
+    site()
+    write('_ffc-assets/video.mp4', 'x'.repeat(2048))
+    const { size, errors } = await verifyBuild(out, '', 1024 * 1024)
+    expect(size).toBeGreaterThan(2048)
+    expect(errors).toEqual([])
+    write('_ffc-assets/big.mp4', 'x'.repeat(1024 * 1024))
+    expect((await verifyBuild(out, '', 1024 * 1024)).errors).toEqual([
+      'out/: 1.0 MB exceeds the 1.0 MB budget (Pages caps a site at 1 GB).',
     ])
   })
 })
