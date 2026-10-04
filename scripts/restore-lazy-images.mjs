@@ -14,6 +14,9 @@
  * them to the archive. Images none of these can supply keep the placeholder
  * and are listed in `__tests__/data/lazy-images-unresolved.json`. Safe to re-run.
  *
+ * Conversion needs libwebp's `cwebp` and `gif2webp` (`apt install webp`,
+ * `brew install webp`).
+ *
  *   node scripts/restore-lazy-images.mjs --cache <dir> --media <zip>...
  */
 import { execFileSync } from 'node:child_process'
@@ -27,6 +30,7 @@ import {
 } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, posix } from 'node:path'
+import { imageSize } from './image-size.mjs'
 import { manifest } from './pin-rendered-media.mjs'
 
 const ROOT = join(import.meta.dirname, '..')
@@ -65,20 +69,14 @@ export const isPlaceholder = (src) => /\/bfi_thumb\/dummy-transparent-/.test(src
 
 const stemOf = (p) => p.replace(/\.[a-z0-9]+$/i, '')
 
-function size(file) {
-  const out = execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', file], {
-    encoding: 'utf8',
-  })
-  return [/pixelWidth: (\d+)/, /pixelHeight: (\d+)/].map((re) => Number(out.match(re)[1]))
-}
-
 function toWebp(input, output, maxWidth) {
   mkdirSync(dirname(output), { recursive: true })
   if (/\.gif$/i.test(input)) {
     execFileSync('gif2webp', ['-quiet', '-q', '75', input, '-o', output])
     return
   }
-  const resize = maxWidth && size(input)[0] > maxWidth ? ['-resize', String(maxWidth), '0'] : []
+  const resize =
+    maxWidth && imageSize(input)[0] > maxWidth ? ['-resize', String(maxWidth), '0'] : []
   execFileSync('cwebp', ['-quiet', '-q', '75', ...resize, input, '-o', output])
 }
 
@@ -137,7 +135,7 @@ function createResolver({ cache, media }) {
     if (existsSync(join(ASSETS, path))) result = path
     else if (existsSync(join(ASSETS, webp))) result = webp
     else if (cached && existsSync(cached)) {
-      const [w, h] = size(cached)
+      const [w, h] = imageSize(cached)
       const out = original ? `${stemOf(original).replace(/-scaled$/, '')}-${w}x${h}.webp` : webp
       if (!existsSync(join(ASSETS, out))) toWebp(cached, join(ASSETS, out), 1600)
       result = out
@@ -146,7 +144,7 @@ function createResolver({ cache, media }) {
       if (src) {
         const tmpOut = join(tmp, 'resized.webp')
         toWebp(src, tmpOut, 800)
-        const [w, h] = size(tmpOut)
+        const [w, h] = imageSize(tmpOut)
         const out = `${stemOf(original).replace(/-scaled$/, '')}-${w}x${h}.webp`
         if (!existsSync(join(ASSETS, out))) {
           mkdirSync(dirname(join(ASSETS, out)), { recursive: true })
@@ -201,7 +199,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const resolve = createResolver({ cache, media })
   const dimsMemo = new Map()
   const dims = (p) => {
-    if (!dimsMemo.has(p)) dimsMemo.set(p, size(join(ASSETS, p)))
+    if (!dimsMemo.has(p)) dimsMemo.set(p, imageSize(join(ASSETS, p)))
     return dimsMemo.get(p)
   }
   const unresolved = new Map()
