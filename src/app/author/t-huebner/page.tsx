@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Thomas Huebner, Author at New Heights Educational Group, Inc.',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "t.huebner" Home » Archives for…',
+    description: 'Thomas Huebner: Multimedia’s Impact on Literacy.',
     canonical: '/author/t-huebner/',
   }),
   title: { absolute: 'Thomas Huebner, Author at New Heights Educational Group, Inc.' },

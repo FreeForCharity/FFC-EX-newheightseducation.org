@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Learning Japanese - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'NHEG’s eight-week Japanese course offers the opportunity to take a live course for one hour, twice a week and is open for middle school to adult students…',
     canonical: '/school/online-courses/learning-japanese/',
   }),
   title: { absolute: 'Learning Japanese - NHEG Online Learning Annex' },

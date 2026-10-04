@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Mastering the First Impression: Your intriguing post title goes here - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'The initial impression your blog post makes is crucial, and that’s where your introduction comes into play. Hook your readers with a captivating opening…',
     canonical: '/publications/post-3/',
   }),
   title: {

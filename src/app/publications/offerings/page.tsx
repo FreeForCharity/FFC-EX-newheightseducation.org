@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Offerings - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Explore a wide array of magazines that cater to various interests and age groups, designed to enrich minds and inspire hearts.',
     canonical: '/publications/offerings/',
   }),
   title: { absolute: 'Offerings - NHEG' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Manya Shukla – Host of Empowering HR within the Workforce - NHEG Radio Show',
     description:
-      'This form has moved to email. We read every message. info@newheightseducation.org Empowering HR in the workforce with Host Manya Shukla Empowering HR…',
+      'Empowering HR within the Workforce is the podcast by Manya Shukla where we explore the latest trends in human resources, workforce development…',
     canonical: '/radio/manya-shukla/',
   }),
   title: {

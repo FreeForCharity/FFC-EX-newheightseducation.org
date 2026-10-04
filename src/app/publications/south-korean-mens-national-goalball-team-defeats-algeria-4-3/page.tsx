@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "South Korean men's national goalball team defeats Algeria 4-3 - NHEG",
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up South…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/south-korean-mens-national-goalball-team-defeats-algeria-4-3/',
   }),
   title: { absolute: "South Korean men's national goalball team defeats Algeria 4-3 - NHEG" },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Music Composers - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'This course will guide you through the lives of spectacular musical composers of the past. This will include composers from the Baroque period, the…',
     canonical: '/school/online-courses/music-program/music-composers/',
   }),
   title: { absolute: 'Music Composers - NHEG Online Learning Annex' },

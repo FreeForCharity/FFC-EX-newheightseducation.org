@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Contact Us - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Contact the New Heights Educational Group Learning Annex with your questions, comments, or other information about our classes or tutoring services. We…',
     canonical: '/school/contact-us/',
   }),
   title: { absolute: 'Contact Us - NHEG Online Learning Annex' },

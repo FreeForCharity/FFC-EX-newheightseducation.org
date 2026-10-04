@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Student Gallery - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'Here are pictures of students who use or have used our services or have taken one of our online courses here at New Heights Educational Group. If you are…',
     canonical: '/school/students/student-gallery/',
   }),
   title: { absolute: 'Student Gallery - NHEG Online Learning Annex' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Learn to Read - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The NHEG Learn to Read online course aims to educate parents/tutors/teachers/guides on how to help their students practice reading skills and fluency…',
     canonical: '/school/online-courses/learn-to-read/',
   }),
   title: { absolute: 'Learn to Read - NHEG Online Learning Annex' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Getting Mentally Fit so You Can Be Physically Fit - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'Employees of two Thomas Cook travel agency offices in Dublin, Ireland have occupied their offices in response to management’s announcement of earlier…',
     canonical: '/publications/getting-mentally-fit-so-you-can-be-physically-fit/',
   }),
   title: { absolute: 'Getting Mentally Fit so You Can Be Physically Fit - NHEG' },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Teaching Harry Potter In School - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Teaching Harry Potter In School Home » Teaching Harry Potter In…',
+      'Why do you want to teach Harry Potter in your classroom? Is it because the series is popular among kids and adults? Are you a fan of Harry Potter and…',
     canonical: '/educational-articles/teaching-harry-potter-in-school/',
   }),
   title: { absolute: 'Teaching Harry Potter In School - New Heights Educational Group, Inc.' },

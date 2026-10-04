@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'E.A.S.Y.Toons Issue 6 (2024) - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'E.A.S.Y.Toons Issue 6 (2024), an issue from NHEG Publications, with its cover and a link to the PDF.',
     canonical: '/publications/books/e-a-s-y-toons-issue-6-2024/',
   }),
   title: { absolute: 'E.A.S.Y.Toons Issue 6 (2024) - NHEG' },

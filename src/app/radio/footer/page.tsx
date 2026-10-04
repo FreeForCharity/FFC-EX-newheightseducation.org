@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Footer - NHEG Radio Show',
     description:
-      'This form has moved to email. We read every message. info@newheightseducation.org Educational support services. Such services include the following…',
+      'Educational support services. Such services include the following: assisting families in the selection of schools; organization of educational…',
     canonical: '/radio/footer/',
   }),
   title: { absolute: 'Footer - NHEG Radio Show' },

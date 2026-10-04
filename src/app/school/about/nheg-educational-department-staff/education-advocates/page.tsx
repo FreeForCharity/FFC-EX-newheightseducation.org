@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education Advocates - NHEG Online Learning Annex',
     description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+      'The role of Education Advocates is to make sure students have equal access to educational resources so they can reach their dreams. Of course, this also…',
     canonical: '/school/about/nheg-educational-department-staff/education-advocates/',
   }),
   title: { absolute: 'Education Advocates - NHEG Online Learning Annex' },

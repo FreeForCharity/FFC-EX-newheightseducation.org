@@ -7,8 +7,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'E.A.S.YToons Video Trailer - NHEG',
-    description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+    description: 'E.A.S.YToons Video Trailer - NHEG',
     canonical: '/publications/e-a-s-ytoons-video-trailer/',
   }),
   title: { absolute: 'E.A.S.YToons Video Trailer - NHEG' },

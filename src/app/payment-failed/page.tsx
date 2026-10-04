@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Payment Failed - New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org We’re sorry, but your transaction failed to process. Please try…',
+      'We’re sorry, but your transaction failed to process. Please try again or contact site support.',
     canonical: '/payment-failed/',
   }),
   title: { absolute: 'Payment Failed - New Heights Educational Group, Inc.' },
