@@ -16,6 +16,7 @@ type Source = {
   source: string | null
   local?: string
   bytes?: number
+  sha256?: string
 }
 type Asset = { page: string; asset: string; url: string; bytes: number; sha256: string }
 
@@ -45,6 +46,7 @@ describe('publications flipbooks', () => {
     for (const s of withPdf) {
       const a = assetFor.get(s.page)
       expect(a?.bytes).toBe(s.bytes)
+      expect(a?.sha256).toBe(s.sha256)
       expect(a?.url).toBe(RELEASE + a?.asset)
     }
   })

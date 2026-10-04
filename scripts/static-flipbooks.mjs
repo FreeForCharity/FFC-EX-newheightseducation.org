@@ -8,9 +8,9 @@
  *
  *   node scripts/static-flipbooks.mjs
  */
-import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { imageSize } from './image-size.mjs'
 
 const ROOT = join(import.meta.dirname, '..')
 const ARCHIVE = join(ROOT, 'docs', 'live-archive', '2026-10-02')
@@ -31,13 +31,6 @@ function titleOf(slug) {
   const m = tsx.match(/title: \{ absolute: '((?:[^'\\]|\\.)*)' \}/)
   if (!m) throw new Error(`no title for ${slug}`)
   return m[1].replace(/\\(.)/g, '$1').replace(/ - NHEG$/, '')
-}
-
-function dimensions(file) {
-  const out = execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', file], {
-    encoding: 'utf8',
-  })
-  return [/pixelWidth: (\d+)/, /pixelHeight: (\d+)/].map((re) => Number(out.match(re)[1]))
 }
 
 export function flipbookMarkup({ title, href, local, bytes, cover }) {
@@ -69,7 +62,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const coverFile = join(ROOT, 'public', coverPath)
     let cover = null
     if (existsSync(coverFile)) {
-      const [width, height] = dimensions(coverFile)
+      const [width, height] = imageSize(coverFile)
       cover = { path: coverPath, width, height }
     }
     const local = Boolean(book.local && existsSync(join(ROOT, 'public', book.local)))
