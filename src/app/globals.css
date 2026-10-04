@@ -646,3 +646,96 @@ body .ffc-clone #mk-breadcrumbs .mk-breadcrumbs-inner.light-skin .separator {
   outline: 3px solid #000;
   outline-offset: 2px;
 }
+
+/* Contrast (#16, #57): the theme's #999 and #a3a3a3 meta text is below
+   4.5:1. The theme's selectors run up to three classes deep, so these
+   colour-only overrides are marked important. */
+body .ffc-clone .mk-blog-meta-wrapper,
+body .ffc-clone .mk-blog-meta-wrapper span,
+body .ffc-clone .mk-blog-meta-wrapper time,
+body .ffc-clone .mk-blog-author,
+body .ffc-clone .mk-post-date,
+body .ffc-clone .mk-post-cat,
+body .ffc-clone .post-list-info .post-list-title,
+body .ffc-clone .post-list-info time,
+body .ffc-clone .tweet-time,
+body .ffc-clone .woocommerce-result-count,
+body .ffc-clone .post-list-info a,
+body .ffc-clone .mk-pagination .page-number {
+  color: #666 !important;
+}
+
+body .ffc-clone .page-subtitle {
+  color: #595959 !important;
+}
+
+/* Byline links are told apart from the text around them by more than colour. */
+body .ffc-clone .mk-blog-author a,
+body .ffc-clone .mk-post-cat a {
+  text-decoration: underline;
+}
+
+body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
+  background-color: #1462c8;
+}
+
+/* Canva presentations load on request (#57). */
+.ffc-clone .ffc-embed-facade,
+.ffc-clone .ffc-embed-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.ffc-clone .ffc-embed-facade {
+  padding: 1rem;
+  background: #185d2f;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-embed-facade:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: -6px;
+}
+
+/* WPBakery's image carousel needs its script; show its items as a row. */
+.ffc-clone .vc_images_carousel {
+  height: auto !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_carousel-inner,
+.ffc-clone .vc_images_carousel .vc_carousel-slideline {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_carousel-slideline-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: auto !important;
+  transform: none !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_item {
+  flex: 0 1 120px;
+  width: auto !important;
+  height: auto !important;
+  visibility: visible !important;
+}
+
+.ffc-clone .vc_images_carousel .vc_item img {
+  width: 100%;
+  height: auto;
+}
+
+.ffc-clone .vc_images_carousel .vc_carousel-control,
+.ffc-clone .vc_images_carousel .vc_carousel-indicators {
+  display: none;
+}
