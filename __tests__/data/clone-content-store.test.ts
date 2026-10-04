@@ -53,6 +53,10 @@ describe('store catalog', () => {
     ).toEqual([])
   })
 
+  it('leaves no empty dropdown menu behind', () => {
+    expect(offenders(/<ul\b[^>]*class="sub-menu\s*"[^>]*>\s*<\/ul>/)).toEqual([])
+  })
+
   it('keeps the comment box on articles', () => {
     expect(read('publications/nheg-edguide-september-october-2026')).toContain('id="respond"')
   })
