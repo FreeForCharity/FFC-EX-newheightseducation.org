@@ -105,10 +105,12 @@ export function assetRefs(html, stylesheets = []) {
     refs.push(...cssUrls(decode(style)))
   }
   for (const [, css] of doc.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style\b[^>]*>/gi)) {
-    refs.push(...cssUrls(css))
+    refs.push(...cssUrls(css), ...cssImports(css))
     stylesheets.push(...cssImports(css).map(decode))
   }
-  return refs.map(decode).filter((ref) => ref && !/^(data|blob|about|javascript):/i.test(ref))
+  return [...new Set(refs.map(decode))].filter(
+    (ref) => ref && !/^(data|blob|about|javascript):/i.test(ref)
+  )
 }
 
 /**
@@ -169,6 +171,16 @@ export function checkOut(outDir, basePath = '') {
     if (!problems.has(problem)) problems.set(problem, [])
     problems.get(problem).push(where)
   }
+  /** Queues a local stylesheet for its own checks; `from` resolves relative paths. */
+  const enqueue = (sheet, from, where) => {
+    if (/^(https?:)?\/\//i.test(sheet) || checkRef(sheet, { pagePath: from, basePath, exists }))
+      return
+    const sitePath = decodeURIComponent(new URL(sheet, `https://site.invalid${from}`).pathname)
+    // GitHub Pages picks the Content-Type from the extension, and browsers
+    // refuse a stylesheet that is not text/css (#44).
+    if (!sitePath.endsWith('.css')) report(`not served as text/css ${sheet}`, where)
+    if (!stylesheets.has(sitePath)) stylesheets.set(sitePath, where)
+  }
   for (const file of walkHtml(outDir)) {
     const rel = relative(outDir, file).split('\\').join('/')
     const route = rel.endsWith('index.html') ? rel.slice(0, -'index.html'.length) : rel
@@ -178,29 +190,19 @@ export function checkOut(outDir, basePath = '') {
       const problem = checkRef(ref, { pagePath, basePath, exists })
       if (problem) report(problem, `/${route}`)
     }
-    for (const sheet of sheets) {
-      if (/^(https?:)?\/\//i.test(sheet) || checkRef(sheet, { pagePath, basePath, exists }))
-        continue
-      const sitePath = decodeURIComponent(
-        new URL(sheet, `https://site.invalid${pagePath}`).pathname
-      )
-      // GitHub Pages picks the Content-Type from the extension, and browsers
-      // refuse a stylesheet that is not text/css (#44).
-      if (!sitePath.endsWith('.css')) report(`not served as text/css ${sheet}`, `/${route}`)
-      if (!stylesheets.has(sitePath)) stylesheets.set(sitePath, `/${route}`)
-    }
+    for (const sheet of sheets) enqueue(sheet, pagePath, `/${route}`)
   }
+  // A Map iterates entries added during the loop, so imported sheets are
+  // traversed too.
   for (const [sitePath] of stylesheets) {
     const file = join(outDir, basePath ? sitePath.slice(basePath.length) : sitePath)
     const css = readFileSync(file, 'utf8')
-    for (const ref of cssImports(css)) {
-      if (!/^(https?:)?\/\//i.test(ref) && !ref.split(/[?#]/)[0].endsWith('.css'))
-        report(`not served as text/css ${ref}`, sitePath)
-    }
-    for (const ref of stylesheetRefs(css)) {
+    const imports = cssImports(css)
+    for (const ref of new Set([...stylesheetRefs(css), ...imports])) {
       const problem = checkRef(ref, { pagePath: sitePath, basePath, exists })
       if (problem) report(problem, sitePath)
     }
+    for (const ref of imports) enqueue(ref, sitePath, sitePath)
   }
   return problems
 }

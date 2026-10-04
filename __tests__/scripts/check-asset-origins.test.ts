@@ -200,6 +200,22 @@ describe('checkOut', () => {
     })
   })
 
+  it('checks inline imports like any asset, and follows nested imports', () => {
+    mkdirSync(join(out, '_ffc-assets', 'css'))
+    writeFileSync(join(out, '_ffc-assets', 'css', 'site.css'), '@import "nested.css";')
+    writeFileSync(join(out, '_ffc-assets', 'css', 'nested.css'), 'a{background:url(../gone.png)}')
+    writeFileSync(
+      join(out, 'index.html'),
+      '<style>@import "//cdn.example.org/f.css";@import "/_ffc-assets/none.css";</style>' +
+        '<link rel="stylesheet" href="/_ffc-assets/css/site.css">'
+    )
+    expect(Object.fromEntries(checkOut(out))).toEqual({
+      'off-site //cdn.example.org/f.css': ['/'],
+      'missing /_ffc-assets/none.css': ['/'],
+      'missing ../gone.png': ['/_ffc-assets/css/nested.css'],
+    })
+  })
+
   it('resolves stylesheet paths under the base path', () => {
     mkdirSync(join(out, '_ffc-assets', 'css'))
     writeFileSync(join(out, '_ffc-assets', 'css', 'site.css'), 'a{background:url(../gone.png)}')
