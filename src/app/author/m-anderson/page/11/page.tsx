@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 11 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 11 of 11: Men’s Ultra Cotton Tank Top, Kids Fine Jersey Tee, NHEG Launches New History on Civil Rights Show, Heroes of Liberty…',
     canonical: '/author/m-anderson/page/11/',
   }),
   title: {

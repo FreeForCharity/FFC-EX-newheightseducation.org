@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 7 of 12',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'NEWHEIGHTSEDUCATION, page 7 of 12: E.A.S.Y.Toons Issue 3, E.A.S.Y.Toons Issue 4, E.A.S.Y.Toons Issue 5 (2023), E.A.S.Y.Toons Issue 6 (2024), NHEG EdGuide…',
     canonical: '/publications/author/newheightseducation/page/7/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 7 of 12' },

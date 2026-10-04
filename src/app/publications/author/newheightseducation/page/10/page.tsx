@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 10 of 12',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'NEWHEIGHTSEDUCATION, page 10 of 12: How much influence does package have on food marketing?, How Do I Tell Whether Food Is Recalled?, Food Poisoning –…',
     canonical: '/publications/author/newheightseducation/page/10/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 10 of 12' },

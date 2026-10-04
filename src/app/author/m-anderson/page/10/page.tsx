@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 10 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 10 of 11: Premium Fleece Joggers, Men’s Ultra Cotton Tank Top, Women’s Cut & Sew Racerback Dress, Women’s Ideal Racerback Tank…',
     canonical: '/author/m-anderson/page/10/',
   }),
   title: {

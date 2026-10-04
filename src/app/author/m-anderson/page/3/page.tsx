@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 3 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 3 of 11: Organic T-Shirt Dress, Women’s Cut & Sew Racerback Dress, NHEG Volunteer of the Year Single Loop Necklace, NHEG Volunteer…',
     canonical: '/author/m-anderson/page/3/',
   }),
   title: {

@@ -6,8 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Personal Development Coaching Courses - NHEG Online Learning Annex - Page 2',
-    description:
-      'Login This form has moved to email. We read every message. info@newheightseducation.org Create Account This form has moved to email. We read every message…',
+    description: 'Personal Development Coaching Courses, page 2 of 2.',
     canonical: '/school/online-courses/personal-development-coaching-courses/page/2/',
   }),
   title: {

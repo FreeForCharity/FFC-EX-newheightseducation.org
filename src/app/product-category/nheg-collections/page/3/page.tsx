@@ -6,7 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Collections - New Heights Educational Group, Inc. - Page 3',
-    description: 'Please allow three – four weeks to receive your order.',
+    description: 'Please allow three – four weeks to receive your order. - Page 3',
     canonical: '/product-category/nheg-collections/page/3/',
   }),
   title: { absolute: 'NHEG Collections - New Heights Educational Group, Inc. - Page 3' },

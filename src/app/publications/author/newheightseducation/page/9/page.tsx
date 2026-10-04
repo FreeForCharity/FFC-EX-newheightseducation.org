@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 9 of 12',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'NEWHEIGHTSEDUCATION, page 9 of 12: Your Physical Fitness Definition Will Determine Your Success, Fitness Workouts: 3 Misconceptions You Need to Know…',
     canonical: '/publications/author/newheightseducation/page/9/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 9 of 12' },

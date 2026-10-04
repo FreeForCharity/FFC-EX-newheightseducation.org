@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | Page 3 of 8 | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop, page 3 of 8: NHEG Backpack (Made in USA), NHEG Custom Pin Buttons, NHEG Duffel Bag, NHEG Latte mug, NHEG Metal Pin, NHEG Mousepad, NHEG Mousepad –…',
     canonical: '/shop/page/3/',
   }),
   title: { absolute: 'Shop | Page 3 of 8 | New Heights Educational Group, Inc.' },

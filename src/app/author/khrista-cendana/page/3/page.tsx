@@ -6,8 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Khrista Cendana, Author at New Heights Educational Group, Inc. | Page 3 of 3',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Khrista Cendana" Home » Archives for…',
+    description: 'Khrista Cendana, page 3 of 3: Public vs Private Schools.',
     canonical: '/author/khrista-cendana/page/3/',
   }),
   title: {

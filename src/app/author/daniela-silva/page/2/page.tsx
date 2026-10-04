@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Daniela Silva',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Daniela Silva" Home » Archives for…',
+      'Daniela Silva, page 2 of 2: Developing the Potential in Children with Attention-Hyperactivity Disorder, Homeschooling: A New Perspective of Educating…',
     canonical: '/author/daniela-silva/page/2/',
   }),
   title: { absolute: 'Daniela Silva' },

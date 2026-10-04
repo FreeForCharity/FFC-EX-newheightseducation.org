@@ -6,8 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Education News - New Heights Educational Group, Inc. - Page 2',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Education News Home » Education News 0 By Pamela Clark In…',
+    description: '- Page 2',
     canonical: '/category/education-news/page/2/',
   }),
   title: { absolute: 'Education News - New Heights Educational Group, Inc. - Page 2' },

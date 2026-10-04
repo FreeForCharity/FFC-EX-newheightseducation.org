@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'dFlip Book Archive - Page 3 of 9 - NHEG',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up dFlip…',
+      'dFlip Book Archive, page 3 of 9: 2015 Newsletter, 2015 Newsletters, NHEG EdGuide December 2016, NHEG EdGuide November 2016, NHEG EdGuide October 2016…',
     canonical: '/publications/books/page/3/',
   }),
   title: { absolute: 'dFlip Book Archive - Page 3 of 9 - NHEG' },

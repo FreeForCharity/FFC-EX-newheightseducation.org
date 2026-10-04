@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG News - New Heights Educational Group, Inc. - Page 11',
     description:
-      'Our NHEG News archive consist of articles relating to various updates to our organization as well as promoting any upcoming events that are part of in Ohio.',
+      'Our NHEG News archive consist of articles relating to various updates to our organization as well as promoting any upcoming events that are part of in Ohio. - Page 11',
     canonical: '/category/nheg-news/page/11/',
   }),
   title: { absolute: 'NHEG News - New Heights Educational Group, Inc. - Page 11' },

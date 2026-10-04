@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 11 of 12',
     description:
-      'NHEG PUBLICATIONS This form has moved to email. We read every message. info@newheightseducation.org Sign up Sign up NHEG PUBLICATIONS Sign up Sign up…',
+      'NEWHEIGHTSEDUCATION, page 11 of 12: Wikinews interviews Tyan Taylor, Australian goalball player, Belgian men\\’s goalball team departs for Finland for…',
     canonical: '/publications/author/newheightseducation/page/11/',
   }),
   title: { absolute: 'NEWHEIGHTSEDUCATION, Author at NHEG - Page 11 of 12' },

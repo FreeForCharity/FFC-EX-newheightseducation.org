@@ -6,8 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Sarika Gauba, Author at New Heights Educational Group, Inc. | Page 3 of 3',
-    description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "sarika.g" Home » Archives for Sarika…',
+    description: 'Sarika Gauba, page 3 of 3: The Christmas Schooner Auditions.',
     canonical: '/author/sarika-g/page/3/',
   }),
   title: { absolute: 'Sarika Gauba, Author at New Heights Educational Group, Inc. | Page 3 of 3' },

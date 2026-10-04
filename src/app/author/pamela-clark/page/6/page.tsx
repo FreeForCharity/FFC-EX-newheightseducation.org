@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela Clark',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Pamela Clark" Home » Archives for…',
+      'Pamela Clark, page 6 of 6: NHEG for #GivingTuesday, Conversations with Curt: NHEG 10th Anniversary Interview, Looking for Library Space, Who Are the New…',
     canonical: '/author/pamela-clark/page/6/',
   }),
   title: { absolute: 'Pamela Clark' },

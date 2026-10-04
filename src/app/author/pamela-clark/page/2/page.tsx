@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela Clark',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Pamela Clark" Home » Archives for…',
+      'Pamela Clark, page 2 of 6: NHEG Graphic Design Dept. Promotion and Goodbye, National School Choice Week, OCD at School and It’s Impact on the Student…',
     canonical: '/author/pamela-clark/page/2/',
   }),
   title: { absolute: 'Pamela Clark' },

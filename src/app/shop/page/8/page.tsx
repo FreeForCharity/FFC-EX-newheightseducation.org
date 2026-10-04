@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | Page 8 of 8 | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop, page 8 of 8: Women’s Cut & Sew Racerback Dress, Women’s Ideal Racerback Tank.',
     canonical: '/shop/page/8/',
   }),
   title: { absolute: 'Shop | Page 8 of 8 | New Heights Educational Group, Inc.' },

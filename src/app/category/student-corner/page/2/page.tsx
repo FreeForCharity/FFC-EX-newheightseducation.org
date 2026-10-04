@@ -6,8 +6,7 @@ import { pageMetadata } from '@/lib/page-metadata'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Student Corner - New Heights Educational Group, Inc. - Page 2',
-    description:
-      'The NHEG Student Corner are articles written by students looking to not only give back to NHEG but increase their education through writing.',
+    description: '- Page 2',
     canonical: '/category/student-corner/page/2/',
   }),
   title: { absolute: 'Student Corner - New Heights Educational Group, Inc. - Page 2' },

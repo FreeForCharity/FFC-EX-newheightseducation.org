@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 4 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 4 of 11: SLC Unisex Jersey Short Sleeve Tee, SAG Unisex Jersey Short Sleeve Tee, AAG Unisex Jersey Short Sleeve Tee, NHEG Unisex…',
     canonical: '/author/m-anderson/page/4/',
   }),
   title: {

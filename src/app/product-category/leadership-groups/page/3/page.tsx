@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Leadership Groups - New Heights Educational Group, Inc. - Page 3',
     description:
-      'Adult and Student Leadership Collections Please allow three – four weeks to receive your order.',
+      'Adult and Student Leadership Collections Please allow three – four weeks to receive your order. - Page 3',
     canonical: '/product-category/leadership-groups/page/3/',
   }),
   title: { absolute: 'NHEG Leadership Groups - New Heights Educational Group, Inc. - Page 3' },

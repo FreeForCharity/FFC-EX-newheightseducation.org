@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Community News - New Heights Educational Group, Inc. - Page 2',
     description:
-      'Our community news articles are written to help recognize our students, staff and other members of the community in their achievements. Of course, we wish to mention various events that are happening in the many communities in the state of Ohio.',
+      'Our community news articles are written to help recognize our students, staff and other members of the community in their achievements. Of course, we wish to mention various events that are happening in the many communities in the state of Ohio. - Page 2',
     canonical: '/category/community-news/page/2/',
   }),
   title: { absolute: 'Community News - New Heights Educational Group, Inc. - Page 2' },

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 9 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 9 of 11: Kids Fine Jersey Tee, Ultra Cotton Long Sleeve Tee, Unisex Jersey Short Sleeve Tee, Unisex Heavy Cotton Tee, Women’s Cut…',
     canonical: '/author/m-anderson/page/9/',
   }),
   title: {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | Page 7 of 8 | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop, page 7 of 8: SLC Unisex Heavy Cotton Tee, SLC Unisex Hooded Zip Sweatshirt, SLC Unisex Jersey Short Sleeve Tee, Ultra Cotton Long Sleeve Tee…',
     canonical: '/shop/page/7/',
   }),
   title: { absolute: 'Shop | Page 7 of 8 | New Heights Educational Group, Inc.' },

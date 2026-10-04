@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | Page 4 of 8 | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop, page 4 of 8: NHEG SAG Box Chain Bracelet, NHEG SAG Custom Pin Buttons, NHEG SAG Matte Onyx Bracelet, NHEG SAG Metal Pin, NHEG SLC AND NHEG SAG…',
     canonical: '/shop/page/4/',
   }),
   title: { absolute: 'Shop | Page 4 of 8 | New Heights Educational Group, Inc.' },

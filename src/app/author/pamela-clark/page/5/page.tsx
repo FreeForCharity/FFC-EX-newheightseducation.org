@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Pamela Clark',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "Pamela Clark" Home » Archives for…',
+      'Pamela Clark, page 5 of 6: NHEG Receives Grant from Jane Goodall Institute, Health Is Your Wealth Book Review, NHEG Volunteer News, NHEG Awarded the…',
     canonical: '/author/pamela-clark/page/5/',
   }),
   title: { absolute: 'Pamela Clark' },

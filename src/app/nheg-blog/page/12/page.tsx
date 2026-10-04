@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Blog - Latest News & Videos | New Heights Educational Group',
     description:
-      'Source of news/updates from our organization, communities, education based websites, and educational articles written by both teachers and students of NHEG.',
+      'The NHEG Blog is your source of news/updates from our organization, surrounding communities, education based websites, and educational articles written by both teachers and students of NHEG.',
     canonical: '/nheg-blog/page/12/',
   }),
   title: { absolute: 'NHEG Blog - Latest News & Videos | New Heights Educational Group' },

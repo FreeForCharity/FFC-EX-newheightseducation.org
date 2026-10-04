@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Heather Ruggiero, Author at New Heights Educational Group, Inc. | Page 2 of 2',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "HeatherRuggiero" Home » Archives for…',
+      'Heather Ruggiero, page 2 of 2: New Heights Educational Group (NHEG) WINS SILVER STEVIE® AWARD IN 2024 INTERNATIONAL BUSINESS AWARDS®, Recognition Day…',
     canonical: '/author/heatherruggiero/page/2/',
   }),
   title: {

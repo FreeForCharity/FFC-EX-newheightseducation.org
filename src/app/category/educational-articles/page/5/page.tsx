@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Educational Articles - New Heights Educational Group, Inc. - Page 5',
     description:
-      'Our educational articles archives consist of education based articles written by teachers, students and other members of the community.',
+      'Our educational articles archives consist of education based articles written by teachers, students and other members of the community. - Page 5',
     canonical: '/category/educational-articles/page/5/',
   }),
   title: { absolute: 'Educational Articles - New Heights Educational Group, Inc. - Page 5' },

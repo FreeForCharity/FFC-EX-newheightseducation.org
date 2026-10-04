@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'NHEG Radio - New Heights Educational Group, Inc. - Page 2',
     description:
-      'New Heights Show on Education Collections Please allow three – four weeks to receive your order.',
+      'New Heights Show on Education Collections Please allow three – four weeks to receive your order. - Page 2',
     canonical: '/product-category/nheg-radio/page/2/',
   }),
   title: { absolute: 'NHEG Radio - New Heights Educational Group, Inc. - Page 2' },

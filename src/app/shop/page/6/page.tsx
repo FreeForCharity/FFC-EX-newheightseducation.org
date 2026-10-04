@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | Page 6 of 8 | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop, page 6 of 8: SAG Unisex Heavy Cotton Tee, SAG Unisex Hooded Zip Sweatshirt, SAG Unisex Jersey Short Sleeve Tee, Show Latte mug, Show Mug 11oz, Show…',
     canonical: '/shop/page/6/',
   }),
   title: { absolute: 'Shop | Page 6 of 8 | New Heights Educational Group, Inc.' },

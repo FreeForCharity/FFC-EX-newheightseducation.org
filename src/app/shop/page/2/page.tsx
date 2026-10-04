@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Shop | Page 2 of 8 | New Heights Educational Group, Inc.',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Shop Home » Shop ALL PRODUCTS This form has moved to email. We…',
+      'Shop, page 2 of 8: Men’s Ultra Cotton Tank Top, New Heights Show on Education Backpack (Made in USA), New Heights Show on Education Box Chain Bracelet…',
     canonical: '/shop/page/2/',
   }),
   title: { absolute: 'Shop | Page 2 of 8 | New Heights Educational Group, Inc.' },

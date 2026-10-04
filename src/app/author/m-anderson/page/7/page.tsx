@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 7 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 7 of 11: New Heights Show on Education Backpack (Made in USA), NHEG Backpack (Made in USA), NHEG SLC AND NHEG SAG Weekender Bag…',
     canonical: '/author/m-anderson/page/7/',
   }),
   title: {

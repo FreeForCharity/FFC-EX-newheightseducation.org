@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Michael Anderson, Author at New Heights Educational Group, Inc. | Page 5 of 11',
     description:
-      '0 Cart This form has moved to email. We read every message. info@newheightseducation.org Archives Author Archive for: "m.anderson" Home » Archives for…',
+      'Michael Anderson, page 5 of 11: NHEG Mousepad (Mountain Redesign), NHEG Mousepad – Color, NHEG Mousepad – White, Show on Education Unisex Hooded Zip…',
     canonical: '/author/m-anderson/page/5/',
   }),
   title: {
