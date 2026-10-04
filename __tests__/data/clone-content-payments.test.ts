@@ -45,6 +45,8 @@ const FIELDS: Record<string, { on0: string; options: [string, string][] }> = {
     ],
   },
 }
+const attr = (tag: string, name: string) =>
+  tag.match(new RegExp(`\\s${name}=(["'])([^"']*)\\1`, 'i'))?.[2]
 const paypalForm = (html: string) =>
   html.match(/<form class="ffc-paypal"[\s\S]*?<\/form>/)?.[0] ?? ''
 const ZEFFY = 'https://www.zeffy.com/donation-form/48e1112a-8e9f-4c73-8b19-0caa89669ff5'
@@ -55,24 +57,30 @@ describe('payment paths', () => {
     expect(form).toMatch(
       /^<form class="ffc-paypal" action="https:\/\/www\.paypal\.com\/cgi-bin\/webscr" method="post"/
     )
-    // A sorted list rather than an object, so a duplicated field also fails.
-    const hidden = [...form.matchAll(/<input type="hidden" name="([^"]+)" value="([^"]*)"/g)]
-      .map((m) => [m[1], m[2]])
-      .sort()
-    expect(hidden).toEqual(
+    // Every control the form submits, each attribute read on its own, as a
+    // sorted list so an extra, duplicated or reordered field also fails.
+    const controls = [...form.matchAll(/<(input|select|textarea)\b[^>]*>/gi)].map((m) => [
+      m[1].toLowerCase(),
+      attr(m[0], 'type') ?? '',
+      attr(m[0], 'name') ?? '',
+      attr(m[0], 'value') ?? '',
+    ])
+    expect(controls.sort()).toEqual(
       [
-        ['cmd', '_s-xclick'],
-        ['hosted_button_id', id],
-        ['on0', FIELDS[page].on0],
-        ['currency_code', 'USD'],
+        ['input', 'hidden', 'cmd', '_s-xclick'],
+        ['input', 'hidden', 'hosted_button_id', id],
+        ['input', 'hidden', 'on0', FIELDS[page].on0],
+        ['input', 'hidden', 'currency_code', 'USD'],
+        ['select', '', 'os0', ''],
       ].sort()
     )
-    expect(form).toContain('<select name="os0">')
-    const options = [...form.matchAll(/<option value="([^"]*)">([^<]*)<\/option>/g)].map((m) => [
-      m[1],
+    const options = [...form.matchAll(/<option\b([^>]*)>([^<]*)<\/option>/gi)].map((m) => [
+      attr(m[0], 'value') ?? '',
       m[2],
+      /\bselected\b/i.test(m[1]),
     ])
-    expect(options).toEqual(FIELDS[page].options)
+    expect(options).toEqual(FIELDS[page].options.map(([v, t]) => [v, t, false]))
+    expect(form.match(/<option\b/gi)).toHaveLength(FIELDS[page].options.length)
   })
 
   it('posts only to the reviewed PayPal buttons', () => {
