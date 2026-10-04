@@ -57,6 +57,30 @@ describe('store catalog', () => {
     expect(offenders(/<ul\b[^>]*class="sub-menu\s*"[^>]*>\s*<\/ul>/)).toEqual([])
   })
 
+  it.each(['menu-item', 'responsive-menu-item'])(
+    'keeps every top-level %s on the home page, with NHEG Store as a plain link',
+    (prefix) => {
+      const html = read('index')
+      const labels = [
+        ...html.matchAll(new RegExp(`<li id="${prefix}-\\d+"[^>]*>\\s*<a\\b[^>]*>([^<]*)`, 'g')),
+      ].map((m) => m[1].trim())
+      for (const label of [
+        'Programs',
+        'Volunteer',
+        'Events',
+        'Support NHEG',
+        'Radio Show',
+        'Contact Us',
+        'NHEG Store',
+        'Blog',
+      ])
+        expect(labels).toContain(label)
+      expect(labels).not.toContain('Cart')
+      expect(labels).not.toContain('My account')
+      expect(html).not.toMatch(new RegExp(`id="${prefix}-12523"[^>]*menu-item-has-children`))
+    }
+  )
+
   it('keeps the comment box on articles', () => {
     expect(read('publications/nheg-edguide-september-october-2026')).toContain('id="respond"')
   })

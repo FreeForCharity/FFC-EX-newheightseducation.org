@@ -49,7 +49,7 @@ export function staticStore(page, html) {
   // A menu item whose only children were Cart and My account is no longer a
   // dropdown: drop its empty submenu, its parent class and the mobile arrow.
   out = out.replace(
-    /(<li\b[^>]*class="[^"]*?) menu-item-has-children([^"]*"[^>]*>\s*<a\b[^>]*>[^<]*<\/a>)(?:<span class="mk-nav-arrow[^"]*">[\s\S]*?<\/span>)?\s*<ul\b[^>]*class="sub-menu\s*"[^>]*>\s*<\/ul>/g,
+    /(<li\b[^>]*class="[^"]*?) menu-item-has-children([^"]*"[^>]*>\s*<a\b[^>]*>[^<]*<\/a>)(?:<span class="mk-nav-arrow[^"]*">(?:(?!<\/span>)[^])*<\/span>)?\s*<ul\b[^>]*class="sub-menu\s*"[^>]*>\s*<\/ul>/g,
     '$1$2'
   )
   // Listing buttons lead to the product page: drop the cart affordance.
