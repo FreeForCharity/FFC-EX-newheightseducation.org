@@ -3,6 +3,16 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import CookieConsent from '../../src/components/cookie-consent'
 
+// These tests cover the template's placeholder behavior; the site's real GA4
+// ID would load gtag.js. The configured path is in CookieConsent.consent-order.
+jest.mock('../../src/lib/analytics.config', () => {
+  const actual = jest.requireActual('../../src/lib/analytics.config')
+  return {
+    ...actual,
+    analyticsConfig: { ...actual.analyticsConfig, gaMeasurementId: 'G-XXXXXXXXXX' },
+  }
+})
+
 // Extend Jest matchers
 expect.extend(toHaveNoViolations)
 
