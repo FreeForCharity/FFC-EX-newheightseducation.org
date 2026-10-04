@@ -67,6 +67,12 @@ export function staticStore(page, html) {
     /<a href="[^"]*" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">(?=\s*<div class="mk-shop-item-detail">)/g,
     ''
   )
+  // The archive's sort control posted to WordPress; the capture left the
+  // email block in its place.
+  out = out.replace(
+    /<div class="ffc-contact-fallback"[^>]*>(?:(?!<\/div>)[^])*<\/div>(?=\s*<div class="mk-product-loop)/g,
+    ''
+  )
   // WooCommerce's tabs need its script; without it the panels are plain
   // sections, so drop the tab roles that promise otherwise.
   out = out
