@@ -82,7 +82,10 @@ describe('linked stylesheets', () => {
   })
 })
 
-/** Selectors outside `@keyframes` that do not start with `.ffc-clone`. */
+/**
+ * Selectors outside `@keyframes` that do not start with `.ffc-clone`, or that
+ * do only because a prefix was wrongly put on an at-rule or a keyframe step.
+ */
 function unscopedSelectors(css: string): string[] {
   const bad: string[] = []
   const text = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(["'])(?:\\.|(?!\1).)*\1/g, '""')
@@ -96,7 +99,13 @@ function unscopedSelectors(css: string): string[] {
         if (/^@(-[a-z]+-)?keyframes\b/i.test(prelude) && keyframes === -1) keyframes = depth
       } else if (keyframes === -1 || depth <= keyframes) {
         for (const sel of prelude.split(',').map((s) => s.trim())) {
-          if (sel && !/^\.ffc-clone(?![\w-])/.test(sel)) bad.push(sel)
+          // A prefixed at-rule or keyframe step is malformed, not scoped.
+          if (
+            sel &&
+            (!/^\.ffc-clone(?![\w-])/.test(sel) ||
+              /@|^\.ffc-clone\s+(?:[\d.]+%|from|to)$/.test(sel))
+          )
+            bad.push(sel)
         }
       }
       depth++
