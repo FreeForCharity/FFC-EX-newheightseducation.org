@@ -24,8 +24,10 @@ import {
   existsSync,
   mkdirSync,
   mkdtempSync,
-  readdirSync,
   readFileSync,
+  readdirSync,
+  renameSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -73,6 +75,22 @@ function toWebp(input, output, maxWidth) {
   mkdirSync(dirname(output), { recursive: true })
   if (/\.gif$/i.test(input)) {
     execFileSync('gif2webp', ['-quiet', '-q', '75', input, '-o', output])
+    // gif2webp cannot resize; an oversized one is resized as a still.
+    if (!maxWidth || imageSize(output)[0] <= maxWidth) return
+    const still = `${output}.tmp.webp`
+    renameSync(output, still)
+    execFileSync('cwebp', [
+      '-quiet',
+      '-q',
+      '75',
+      '-resize',
+      String(maxWidth),
+      '0',
+      still,
+      '-o',
+      output,
+    ])
+    rmSync(still)
     return
   }
   const resize =
