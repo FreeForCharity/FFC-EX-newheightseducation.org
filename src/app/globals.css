@@ -718,8 +718,10 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
   outline-offset: -6px;
 }
 
-/* WPBakery's image carousel needs its script; show its items as a row. */
+/* WPBakery's logo carousel: a strip of ten logos at desktop width as on the
+   live site, scrolled by its arrows (ThemeWidgets) or by swiping (#106). */
 .ffc-clone .vc_images_carousel {
+  position: relative;
   height: auto !important;
 }
 
@@ -731,18 +733,30 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
 
 .ffc-clone .vc_images_carousel .vc_carousel-slideline-inner {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  flex-wrap: nowrap;
   width: auto !important;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   transform: none !important;
 }
 
 .ffc-clone .vc_images_carousel .vc_item {
-  flex: 0 1 120px;
+  flex: 0 0 10%;
   width: auto !important;
   height: auto !important;
   visibility: visible !important;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 767px) {
+  .ffc-clone .vc_images_carousel .vc_item {
+    flex-basis: 25%;
+  }
+}
+
+.ffc-clone .vc_images_carousel .vc_item .vc_inner {
+  padding-inline: 10px;
 }
 
 .ffc-clone .vc_images_carousel .vc_item img {
@@ -750,9 +764,50 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
   height: auto;
 }
 
-.ffc-clone .vc_images_carousel .vc_carousel-control,
 .ffc-clone .vc_images_carousel .vc_carousel-indicators {
   display: none;
+}
+
+.ffc-clone .ffc-logo-strip .vc_carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  background: rgb(0 0 0 / 0.45);
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-logo-strip .vc_left {
+  left: 0;
+}
+
+.ffc-clone .ffc-logo-strip .vc_right {
+  right: 0;
+}
+
+.ffc-clone .ffc-logo-strip .vc_carousel-control::before {
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  font-size: 22px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.ffc-clone .ffc-logo-strip .vc_left::before {
+  content: '‹';
+}
+
+.ffc-clone .ffc-logo-strip .vc_right::before {
+  content: '›';
+}
+
+.ffc-clone .ffc-logo-strip .vc_carousel-control:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
 }
 
 /* Spreaker episode players load on request too, in the theme's own video
@@ -936,4 +991,92 @@ html.ffc-motion .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_anima
   margin: 0;
   color: #fff;
   text-align: center;
+}
+
+/* Slideshows (#106, ThemeWidgets): WPBakery's flexslider fades, Jupiter's
+   swipe slideshow slides. Spectra's single testimonial needs no script. */
+.ffc-clone .ffc-slider-fade {
+  height: auto !important;
+}
+
+.ffc-clone .ffc-slider-fade > .slides {
+  display: grid;
+}
+
+.ffc-clone .ffc-slider-fade > .slides > li {
+  display: block !important;
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s;
+}
+
+.ffc-clone .ffc-slider-fade > .slides > li.flex-active-slide {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ffc-clone .ffc-slider-fade .slides img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ffc-clone .ffc-slider-fade .flex-control-paging li {
+  margin: 0 7px;
+}
+
+.ffc-clone .ffc-slider-fade .flex-direction-nav a:focus-visible {
+  opacity: 1;
+}
+
+.ffc-clone .ffc-slider-swipe {
+  position: relative;
+  height: auto !important;
+  overflow-x: clip;
+}
+
+.ffc-clone .ffc-slider-swipe .mk-slider-holder {
+  display: flex;
+  align-items: flex-start;
+  transition-property: transform, height;
+  transition-timing-function: ease;
+}
+
+.ffc-clone .ffc-slider-swipe .mk-slider-holder > div {
+  position: static !important;
+  flex: 0 0 calc(100% / var(--ffc-per-view, 1));
+  width: auto !important;
+  transform: none !important;
+}
+
+.ffc-clone .swiper-arrows[hidden] {
+  display: none;
+}
+
+.ffc-clone .ffc-slider-pause {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 0.55);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-slider-pause:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+.ffc-clone .uagb-slick-carousel .uagb-tm__items {
+  visibility: visible;
 }
