@@ -818,6 +818,32 @@ html.ffc-motion .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_anima
   outline-offset: 2px;
 }
 
+.ffc-clone .mk-toggle-trigger[role='button'] {
+  display: inline-flex;
+  min-width: 24px;
+  min-height: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ffc-clone .ffc-toggle-button {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-toggle-button:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
 .ffc-clone .woocommerce-Tabs-panel[hidden] {
   display: none !important;
 }

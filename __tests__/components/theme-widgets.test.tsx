@@ -49,7 +49,9 @@ describe('ThemeWidgets', () => {
     const box = document.querySelector<HTMLElement>('.single-share-box')!
     expect(trigger.getAttribute('role')).toBe('button')
     expect(trigger.getAttribute('aria-controls')).toBe(box.id)
-    fireEvent.click(trigger)
+    const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true, cancelable: true })
+    trigger.dispatchEvent(space)
+    expect(space.defaultPrevented).toBe(true)
     expect(trigger.getAttribute('aria-expanded')).toBe('true')
     expect(box.style.display).toBe('block')
     fireEvent.keyDown(trigger, { key: 'Escape' })
@@ -67,10 +69,11 @@ describe('ThemeWidgets', () => {
     expect(dialog.querySelector('figcaption')!.textContent).toBe('Civic')
   })
 
-  it('toggles WPBakery toggles from the keyboard', () => {
-    const title = document.querySelector<HTMLElement>('.vc_toggle_title')!
-    fireEvent.keyDown(title, { key: 'Enter' })
-    expect(title.getAttribute('aria-expanded')).toBe('true')
+  it('makes each WPBakery toggle question a button inside its heading', () => {
+    const button = document.querySelector<HTMLElement>('.vc_toggle_title h3 > button')!
+    expect(button.textContent).toBe('Q')
+    fireEvent.click(button)
+    expect(button.getAttribute('aria-expanded')).toBe('true')
     expect(document.querySelector('.vc_toggle')!.classList).toContain('vc_toggle_active')
   })
 

@@ -165,13 +165,28 @@ async function check(page, origin, route, width) {
             (panel) => getComputedStyle(panel).display !== 'none'
           )
           if (shown.length !== 1) found.push(`product tabs: ${shown.length} panels shown`)
+          const other = tabs.querySelector('a[role="tab"][aria-selected="false"]')
+          if (other) {
+            other.click()
+            const panel = document.getElementById(other.getAttribute('aria-controls') ?? '')
+            if (!panel || getComputedStyle(panel).display === 'none')
+              found.push('product tabs: a tab does not switch')
+          }
+        }
+        const thumbs = document.querySelectorAll('.ffc-clone .ffc-gallery-thumb')
+        if (thumbs.length > 1) {
+          thumbs[1].click()
+          const slide = document.querySelectorAll('.woocommerce-product-gallery__image')[1]
+          if (!slide || getComputedStyle(slide).display === 'none')
+            found.push('product gallery: a thumbnail does not switch the photo')
         }
         const title = document.querySelector('.ffc-clone .vc_toggle_title')
         if (title) {
-          title.click()
+          const control = title.querySelector('button') ?? title
+          control.click()
           const content = title.parentElement.querySelector('.vc_toggle_content')
           if (getComputedStyle(content).display === 'none') found.push('vc_toggle: does not open')
-          title.click()
+          control.click()
         }
         return found
       }))

@@ -47,19 +47,25 @@ function wireToggles() {
   document.querySelectorAll<HTMLElement>('.ffc-clone .vc_toggle_title').forEach((title) => {
     const content = title.parentElement?.querySelector<HTMLElement>('.vc_toggle_content')
     if (!content) return
-    asButton(title)
-    title.setAttribute('aria-controls', idFor(content, 'ffc-toggle'))
-    title.setAttribute(
+    if (title.querySelector('.ffc-toggle-button')) return
+    const heading = title.querySelector<HTMLElement>('h1, h2, h3, h4, h5, h6') ?? title
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.className = 'ffc-toggle-button'
+    button.append(...heading.childNodes)
+    heading.append(button)
+    button.setAttribute('aria-controls', idFor(content, 'ffc-toggle'))
+    button.setAttribute(
       'aria-expanded',
       String(!!title.closest('.vc_toggle')?.classList.contains('vc_toggle_active'))
     )
   })
 }
 
-function setToggle(title: HTMLElement, open: boolean) {
-  const content = document.getElementById(title.getAttribute('aria-controls') ?? '')
-  title.closest('.vc_toggle')?.classList.toggle('vc_toggle_active', open)
-  title.setAttribute('aria-expanded', String(open))
+function setToggle(button: HTMLElement, open: boolean) {
+  const content = document.getElementById(button.getAttribute('aria-controls') ?? '')
+  button.closest('.vc_toggle')?.classList.toggle('vc_toggle_active', open)
+  button.setAttribute('aria-expanded', String(open))
   if (content) content.style.display = open ? 'block' : 'none'
 }
 
@@ -266,7 +272,9 @@ export default function ThemeWidgets() {
         setShare(share, share.getAttribute('aria-expanded') !== 'true')
         return
       }
-      const title = target.closest<HTMLElement>('.ffc-clone .vc_toggle_title[aria-controls]')
+      const title = target
+        .closest<HTMLElement>('.ffc-clone .vc_toggle_title')
+        ?.querySelector<HTMLElement>('.ffc-toggle-button')
       if (title) {
         event.preventDefault()
         setToggle(title, title.getAttribute('aria-expanded') !== 'true')
@@ -330,8 +338,9 @@ export default function ThemeWidgets() {
       if (
         (event.key === 'Enter' || event.key === ' ') &&
         target.getAttribute('role') === 'button' &&
-        target.matches('.mk-toggle-trigger, .vc_toggle_title')
+        target.matches('.mk-toggle-trigger')
       ) {
+        event.preventDefault()
         onActivate(event)
         return
       }

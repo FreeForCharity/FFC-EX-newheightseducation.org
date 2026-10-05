@@ -89,9 +89,10 @@ test.describe('theme widgets (#106)', () => {
 
   test('WPBakery toggles open from the keyboard', async ({ page }) => {
     await page.goto('./support-nheg/giving-tuesday-november-27-2018/')
-    const title = page.locator('.vc_toggle_title').first()
+    const title = page.locator('.vc_toggle_title h3 > button').first()
     const content = page.locator('.vc_toggle_content').first()
     await expect(content).toBeHidden()
+    await expect(page.getByRole('heading', { name: 'What is #GivingTuesday?' })).toBeVisible()
     await title.focus()
     await page.keyboard.press('Enter')
     await expect(content).toBeVisible()
