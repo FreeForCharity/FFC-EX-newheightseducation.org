@@ -141,6 +141,56 @@ async function check(page, origin, route, width) {
       issues.push('back-to-top (Jupiter): does not appear')
     if (top.astTop !== null && top.height > 1300 && (top.astTop || !mid.astTop))
       issues.push('back-to-top (Astra): does not appear')
+    issues.push(
+      ...(await page.evaluate(() => {
+        const found = []
+        const trigger = document.querySelector('.ffc-clone .mk-toggle-trigger')
+        if (trigger) {
+          trigger.click()
+          const box = document.getElementById(trigger.getAttribute('aria-controls') ?? '')
+          if (!box || getComputedStyle(box).display === 'none')
+            found.push('share box: does not open')
+          trigger.click()
+        }
+        const link = document.querySelector('.ffc-clone a.mk-lightbox')
+        if (link) {
+          link.click()
+          const dialog = document.querySelector('dialog.ffc-lightbox')
+          if (!dialog?.open) found.push('lightbox: does not open')
+          dialog?.close()
+        }
+        const tabs = document.querySelector('.ffc-clone .woocommerce-tabs')
+        if (tabs) {
+          const shown = [...tabs.querySelectorAll('.woocommerce-Tabs-panel')].filter(
+            (panel) => getComputedStyle(panel).display !== 'none'
+          )
+          if (shown.length !== 1) found.push(`product tabs: ${shown.length} panels shown`)
+          const other = tabs.querySelector('a[role="tab"][aria-selected="false"]')
+          if (other) {
+            other.click()
+            const panel = document.getElementById(other.getAttribute('aria-controls') ?? '')
+            if (!panel || getComputedStyle(panel).display === 'none')
+              found.push('product tabs: a tab does not switch')
+          }
+        }
+        const thumbs = document.querySelectorAll('.ffc-clone .ffc-gallery-thumb')
+        if (thumbs.length > 1) {
+          thumbs[1].click()
+          const slide = document.querySelectorAll('.woocommerce-product-gallery__image')[1]
+          if (!slide || getComputedStyle(slide).display === 'none')
+            found.push('product gallery: a thumbnail does not switch the photo')
+        }
+        const title = document.querySelector('.ffc-clone .vc_toggle_title')
+        if (title) {
+          const control = title.querySelector('button') ?? title
+          control.click()
+          const content = title.parentElement.querySelector('.vc_toggle_content')
+          if (getComputedStyle(content).display === 'none') found.push('vc_toggle: does not open')
+          control.click()
+        }
+        return found
+      }))
+    )
     await page.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += 700) {
         window.scrollTo({ top: y, behavior: 'instant' })
