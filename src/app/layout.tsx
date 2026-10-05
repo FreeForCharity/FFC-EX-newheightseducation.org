@@ -22,6 +22,7 @@ import SearchOverlay from './../components/search-overlay'
 import Translate from './../components/translate'
 import EmbedFacade from './../components/embed-facade'
 import ThemeMotion from './../components/theme-motion'
+import ThemeWidgets from './../components/theme-widgets'
 // The slim attribution strip 706 generates for a captured site, not the
 // template's marketing footer. Every captured page brings New Heights
 // Educational Group's own footer -- their green strip with the logo, nine
@@ -179,6 +180,7 @@ export default function RootLayout({
         <Translate />
         <EmbedFacade />
         <ThemeMotion />
+        <ThemeWidgets />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>

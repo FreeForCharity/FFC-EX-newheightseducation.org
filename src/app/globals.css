@@ -792,3 +792,122 @@ html.ffc-motion .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_anima
   height: var(--ffc-sticky-h) !important;
   line-height: var(--ffc-sticky-h) !important;
 }
+
+/* Theme widgets (#106, ThemeWidgets): product gallery, tabs and the image
+   lightbox. Without JavaScript the gallery shows its first photo. */
+.ffc-clone .ffc-gallery .woocommerce-product-gallery__image:not(.ffc-current) {
+  display: none !important;
+}
+
+.ffc-clone .ffc-gallery .woocommerce-product-gallery__image.ffc-current {
+  display: block !important;
+  width: 100% !important;
+}
+
+.ffc-clone .ffc-gallery-thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.ffc-clone .ffc-gallery-thumb:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+.ffc-clone .woocommerce-Tabs-panel[hidden] {
+  display: none !important;
+}
+
+.ffc-lightbox {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.ffc-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ffc-lightbox::backdrop {
+  background: rgb(0 0 0 / 0.85);
+}
+
+.ffc-lightbox figure {
+  margin: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.ffc-lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+
+.ffc-lightbox figcaption {
+  margin-top: 0.75rem;
+}
+
+.ffc-lightbox button {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 0.6);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ffc-lightbox button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.ffc-lightbox [hidden] {
+  display: none;
+}
+
+.ffc-lightbox__close {
+  top: 12px;
+  right: 12px;
+}
+
+.ffc-lightbox__prev,
+.ffc-lightbox__next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ffc-lightbox__prev {
+  left: 12px;
+}
+
+.ffc-lightbox__next {
+  right: 12px;
+}
+
+.ffc-lightbox__count {
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+  left: 0;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+}
