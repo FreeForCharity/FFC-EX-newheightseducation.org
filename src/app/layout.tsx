@@ -38,6 +38,7 @@ import { siteConfig, siteUrl, twitterSite, cardDescription } from '@/lib/site.co
 import { assetPath } from '@/lib/assetPath'
 import { openSans, lato, faustina } from '@/lib/fonts'
 import { AT_POLYFILL_JS } from '@/lib/at-polyfill'
+import { FULL_HEIGHT_ROWS_JS } from '@/lib/full-height-rows'
 import { CONSENT_MODE_BOOTSTRAP } from '@/lib/consent-mode'
 import { OG_IMAGE } from '@/lib/page-metadata'
 import OrganizationSchema from '@/components/seo/OrganizationSchema'
@@ -177,6 +178,7 @@ export default function RootLayout({
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
+        <script dangerouslySetInnerHTML={{ __html: FULL_HEIGHT_ROWS_JS }} />
         <Footer />
         <CookieConsent />
       </body>

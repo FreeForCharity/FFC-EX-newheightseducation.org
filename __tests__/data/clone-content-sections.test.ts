@@ -89,6 +89,22 @@ describe('linked stylesheets', () => {
   })
 })
 
+/** A selector list split on its top-level commas. */
+function splitSelectors(prelude: string): string[] {
+  const out: string[] = []
+  let depth = 0
+  let start = 0
+  for (let i = 0; i < prelude.length; i++) {
+    if (prelude[i] === '(') depth++
+    else if (prelude[i] === ')') depth--
+    else if (prelude[i] === ',' && depth === 0) {
+      out.push(prelude.slice(start, i).trim())
+      start = i + 1
+    }
+  }
+  return [...out, prelude.slice(start).trim()]
+}
+
 /**
  * Selectors outside `@keyframes` that do not start with `.ffc-clone`, or that
  * do only because a prefix was wrongly put on an at-rule or a keyframe step.
@@ -105,11 +121,13 @@ function unscopedSelectors(css: string): string[] {
       if (prelude.startsWith('@')) {
         if (/^@(-[a-z]+-)?keyframes\b/i.test(prelude) && keyframes === -1) keyframes = depth
       } else if (keyframes === -1 || depth <= keyframes) {
-        for (const sel of prelude.split(',').map((s) => s.trim())) {
+        for (const sel of splitSelectors(prelude)) {
           // A prefixed at-rule or keyframe step is malformed, not scoped.
           if (
             sel &&
-            (!/^\.ffc-clone(?![\w-])/.test(sel) ||
+            (!/^(?:\.ffc-clone|:is\(\.ffc-clone\.[\w-]+, \.ffc-clone \.[\w-]+\))(?![\w-])/.test(
+              sel
+            ) ||
               /@|^\.ffc-clone\s+(?:[\d.]+%|from|to)$/.test(sel))
           )
             bad.push(sel)
