@@ -14,6 +14,21 @@
   --ffc-radius-xl: 20px;
 }
 
+/* Tailwind's preflight makes media blocks; the captured themes were written
+   for the browser default, so an icon inside a button broke onto its own line
+   (#62). Theme rules still win: this sits in the base layer. */
+@layer base {
+  .ffc-clone :where(img, svg, video, canvas, audio, iframe, embed, object) {
+    display: inline;
+    vertical-align: baseline;
+  }
+}
+
+/* Astra sizes the header button by its content; a shrinking flex row wrapped it. */
+.ffc-clone .ast-custom-button {
+  white-space: nowrap;
+}
+
 html,
 body {
   scroll-behavior: smooth !important;

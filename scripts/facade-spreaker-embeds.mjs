@@ -3,7 +3,10 @@
  * Loads the Spreaker episode players on request (#57, #63). The radio pages
  * and posts embed 967 of them, up to 13 on one page, and each loads its own
  * player at once; a host page reached 7.6 MB. Each iframe becomes a button
- * that components/embed-facade swaps for the player. Safe to re-run.
+ * that components/embed-facade swaps for the player. The radio home's
+ * `a.spreaker-player` links, which Spreaker's loader script turned into
+ * players, get the same button with the player URL their data attributes
+ * describe. Safe to re-run.
  *
  *   node scripts/facade-spreaker-embeds.mjs
  */
@@ -23,6 +26,30 @@ export function facadeSpreakerEmbeds(html) {
   })
 }
 
+const SPREAKER_LINK = /<a class="spreaker-player"([^>]*)>([^<]*)<\/a>/g
+
+/** The player URL Spreaker's loader builds from a link's data attributes. */
+export function spreakerLinkUrl(attrs) {
+  const data = Object.fromEntries(
+    [...attrs.matchAll(/\sdata-([\w-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]])
+  )
+  const params = [data.resource]
+  for (const [key, value] of Object.entries(data)) {
+    if (['resource', 'width', 'height'].includes(key)) continue
+    params.push(`${key.replace(/-/g, '_')}=${encodeURIComponent(value)}`)
+  }
+  return { url: `https://widget.spreaker.com/player?${params.join('&')}`, height: data.height }
+}
+
+export function facadeSpreakerLinks(html) {
+  return html.replace(SPREAKER_LINK, (all, attrs, text) => {
+    const { url, height } = spreakerLinkUrl(attrs)
+    const title = text.replace(/^Listen to "?|"? on Spreaker\.?$/g, '').trim() || 'Spreaker player'
+    const style = /^\d+px$/.test(height ?? '') ? ` style="height:${height}"` : ''
+    return `<button type="button" class="ffc-embed-facade ffc-embed-facade--audio" data-ffc-embed="${url.replace(/&/g, '&amp;')}" data-ffc-embed-title="${title}" data-ffc-embed-height="${height ?? ''}"${style}>Play: ${title}</button>`
+  })
+}
+
 const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []
@@ -32,7 +59,7 @@ if (process.argv[1] === import.meta.filename) {
   let pages = 0
   for (const file of walk(CONTENT)) {
     const html = readFileSync(file, 'utf8')
-    const next = facadeSpreakerEmbeds(html)
+    const next = facadeSpreakerLinks(facadeSpreakerEmbeds(html))
     if (next !== html) {
       writeFileSync(file, next)
       pages++

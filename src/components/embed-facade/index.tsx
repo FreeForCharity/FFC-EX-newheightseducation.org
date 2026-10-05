@@ -23,6 +23,8 @@ export default function EmbedFacade() {
       if (spreaker) {
         frame.className = 'ffc-embed-frame ffc-embed-frame--audio'
         frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups')
+        const height = button.dataset.ffcEmbedHeight
+        if (height && /^\d+px$/.test(height)) frame.style.height = height
       } else {
         frame.className = 'ffc-embed-frame'
         frame.allow = 'fullscreen'

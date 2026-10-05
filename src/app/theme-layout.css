@@ -11,7 +11,7 @@
   left: calc(50% - 50vw);
 }
 
-.ffc-clone .vc_row:is([data-mk-full-width='true'], [data-vc-full-width='true']) {
+.ffc-clone :is(.vc_row, .vc_section):is([data-mk-full-width='true'], [data-vc-full-width='true']) {
   margin-inline: 0;
 }
 

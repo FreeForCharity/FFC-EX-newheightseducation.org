@@ -35,7 +35,7 @@ test.describe('full-width rows and hero', () => {
     })
   }
 
-  test('home hero paints its bundled background and fills the desktop viewport', async ({
+  test('home hero paints its bundled background and fills the rest of the first screen', async ({
     page,
   }) => {
     await page.setViewportSize(VIEWPORTS[0])
@@ -45,7 +45,11 @@ test.describe('full-width rows and hero', () => {
     expect(bg).toMatch(/_next\/static\/media\/nheg-home-cover/)
     const url = bg.match(/url\("?([^")]+)"?\)/)![1]
     expect((await page.request.get(url)).status()).toBe(200)
-    const box = await hero.boundingBox()
-    expect(box!.height).toBeGreaterThanOrEqual(VIEWPORTS[0].height - 1)
+    // WPBakery's fullHeightRow: 100vh less the section's offset (#62).
+    const { top, height } = await hero.evaluate((el) => {
+      const r = el.getBoundingClientRect()
+      return { top: r.top + window.scrollY, height: r.height }
+    })
+    expect(height).toBeGreaterThanOrEqual(VIEWPORTS[0].height - top - 1)
   })
 })
