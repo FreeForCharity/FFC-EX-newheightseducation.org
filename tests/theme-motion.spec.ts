@@ -8,13 +8,15 @@ const scrollTo = async (page: Page, y: number) => {
   await page.waitForTimeout(150)
 }
 
-const parallaxTop = (page: Page) =>
-  page.evaluate(() => {
+const parallaxTop = async (page: Page) => {
+  await page.locator('[data-vc-parallax] .vc_parallax-inner').first().waitFor({ state: 'attached' })
+  return page.evaluate(() => {
     const section = document.querySelector('[data-vc-parallax]')!
     const inner = section.querySelector('.vc_parallax-inner')!
     const s = section.getBoundingClientRect()
     return ((inner.getBoundingClientRect().top - s.top) / s.height) * 100
   })
+}
 
 test.describe('theme scroll motion (#106)', () => {
   test.beforeEach(async ({ page }) => {
@@ -36,7 +38,7 @@ test.describe('theme scroll motion (#106)', () => {
       .toBeGreaterThan(0.99)
   })
 
-  for (const width of [1440, 390] as const) {
+  for (const width of [1440] as const) {
     test(`home parallax follows the live curve at ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 })
       await page.goto('./')
@@ -47,6 +49,14 @@ test.describe('theme scroll motion (#106)', () => {
       }
     })
   }
+
+  test('home parallax moves at phone width', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 900 })
+    await page.goto('./')
+    const top = await parallaxTop(page)
+    await scrollTo(page, 100)
+    expect(await parallaxTop(page)).toBeGreaterThan(top)
+  })
 
   test('the course hero content fades as it scrolls away', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })

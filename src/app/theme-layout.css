@@ -19,8 +19,10 @@
   padding-inline: calc(50vw - 50%);
 }
 
-html body .ffc-clone .vc_row-o-full-height:is(.vc_section, .vc_row) {
-  min-height: 100vh;
+@media (min-width: 769px) {
+  html body .ffc-clone .vc_row-o-full-height:is(.vc_section, .vc_row) {
+    min-height: 100vh;
+  }
 }
 
 .ffc-clone [data-vc-parallax-image] {

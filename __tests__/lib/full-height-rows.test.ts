@@ -11,12 +11,12 @@ describe('FULL_HEIGHT_ROWS_JS', () => {
     return row.style.minHeight
   }
 
-  it('fills what is left of the first screen at every width', () => {
+  it('fills what is left of the first screen on desktop', () => {
     expect(parseFloat(run(1440, 270))).toBeCloseTo(70)
-    expect(parseFloat(run(390, 90))).toBeCloseTo(90)
   })
 
-  it('leaves rows below the fold alone', () => {
+  it('leaves phones and rows below the fold alone', () => {
+    expect(run(390, 90)).toBe('')
     expect(run(1440, 1200)).toBe('')
   })
 })
