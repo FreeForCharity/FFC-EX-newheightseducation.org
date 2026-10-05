@@ -21,6 +21,7 @@ import CloneReload from './../components/clone-reload'
 import SearchOverlay from './../components/search-overlay'
 import Translate from './../components/translate'
 import EmbedFacade from './../components/embed-facade'
+import ThemeMotion from './../components/theme-motion'
 // The slim attribution strip 706 generates for a captured site, not the
 // template's marketing footer. Every captured page brings New Heights
 // Educational Group's own footer -- their green strip with the logo, nine
@@ -39,6 +40,7 @@ import { assetPath } from '@/lib/assetPath'
 import { openSans, lato, faustina } from '@/lib/fonts'
 import { AT_POLYFILL_JS } from '@/lib/at-polyfill'
 import { FULL_HEIGHT_ROWS_JS } from '@/lib/full-height-rows'
+import { MOTION_READY_JS } from '@/lib/motion-ready'
 import { CONSENT_MODE_BOOTSTRAP } from '@/lib/consent-mode'
 import { OG_IMAGE } from '@/lib/page-metadata'
 import OrganizationSchema from '@/components/seo/OrganizationSchema'
@@ -102,12 +104,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         {/* .at() polyfill for pre-ES2022 browsers — must run before any other
             script. Source + rationale live in src/lib/at-polyfill.ts, and
             __tests__/lib/at-polyfill.test.ts asserts its semantics. */}
         <script dangerouslySetInnerHTML={{ __html: AT_POLYFILL_JS }} />
+        <script dangerouslySetInnerHTML={{ __html: MOTION_READY_JS }} />
         {/* Baseline CSP for hosts that cannot serve _headers (GitHub Pages).
             Note: frame-ancestors, sandbox, and report-uri are IGNORED by the
             browser when delivered via <meta http-equiv> per the CSP spec.
@@ -175,6 +178,7 @@ export default function RootLayout({
         <SearchOverlay />
         <Translate />
         <EmbedFacade />
+        <ThemeMotion />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>

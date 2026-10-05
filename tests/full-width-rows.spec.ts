@@ -41,7 +41,9 @@ test.describe('full-width rows and hero', () => {
     await page.setViewportSize(VIEWPORTS[0])
     await page.goto('./')
     const hero = page.locator('[data-vc-parallax-image]').first()
-    const bg = await hero.evaluate((el) => getComputedStyle(el).backgroundImage)
+    const bg = await hero.evaluate(
+      (el) => getComputedStyle(el.querySelector('.vc_parallax-inner') ?? el).backgroundImage
+    )
     expect(bg).toMatch(/_next\/static\/media\/nheg-home-cover/)
     const url = bg.match(/url\("?([^")]+)"?\)/)![1]
     expect((await page.request.get(url)).status()).toBe(200)
