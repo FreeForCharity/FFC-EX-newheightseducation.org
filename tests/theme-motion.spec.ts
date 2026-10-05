@@ -8,13 +8,15 @@ const scrollTo = async (page: Page, y: number) => {
   await page.waitForTimeout(150)
 }
 
-const parallaxTop = (page: Page) =>
-  page.evaluate(() => {
+const parallaxTop = async (page: Page) => {
+  await page.locator('[data-vc-parallax] .vc_parallax-inner').first().waitFor({ state: 'attached' })
+  return page.evaluate(() => {
     const section = document.querySelector('[data-vc-parallax]')!
     const inner = section.querySelector('.vc_parallax-inner')!
     const s = section.getBoundingClientRect()
     return ((inner.getBoundingClientRect().top - s.top) / s.height) * 100
   })
+}
 
 test.describe('theme scroll motion (#106)', () => {
   test.beforeEach(async ({ page }) => {
