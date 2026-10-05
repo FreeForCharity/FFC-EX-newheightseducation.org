@@ -207,6 +207,11 @@ export default function ThemeMotion() {
       document.removeEventListener('click', onClick)
       document.removeEventListener('keydown', onKey)
       if (frame) window.cancelAnimationFrame(frame)
+      for (const { section, inner } of layers) {
+        inner.remove()
+        section.classList.remove('ffc-parallax')
+      }
+      fades.forEach((grid) => (grid.style.opacity = ''))
     }
   }, [])
 

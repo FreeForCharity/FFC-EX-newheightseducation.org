@@ -84,6 +84,16 @@ describe('ThemeMotion', () => {
     Object.assign(window, { IntersectionObserver: observer })
   })
 
+  it('removes its parallax layer on unmount so a remount can rebuild it', () => {
+    document.documentElement.classList.add('ffc-motion')
+    const first = render(<ThemeMotion />)
+    first.unmount()
+    expect(document.querySelector('.vc_parallax-inner')).toBeNull()
+    expect(document.querySelector('section')!.classList).not.toContain('ffc-parallax')
+    render(<ThemeMotion />)
+    expect(document.querySelectorAll('.vc_parallax-inner')).toHaveLength(1)
+  })
+
   it('leaves content and backgrounds alone without html.ffc-motion', () => {
     render(<ThemeMotion />)
     expect(document.querySelector('.vc_parallax-inner')).toBeNull()

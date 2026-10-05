@@ -104,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         {/* .at() polyfill for pre-ES2022 browsers — must run before any other
             script. Source + rationale live in src/lib/at-polyfill.ts, and
