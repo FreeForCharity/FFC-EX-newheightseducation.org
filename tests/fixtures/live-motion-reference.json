@@ -1,0 +1,74 @@
+{
+  "measured": "2026-10-04, live Bluehost site, Chromium, viewport height 900",
+  "parallax": {
+    "keyframes": "inner height speed*100%; top -(speed-1)*100% when the inner enters below, 0% when it leaves above",
+    "home": {
+      "path": "/",
+      "speed": 1.5,
+      "topPercentAtScroll": {
+        "1440": { "0": -30.58, "300": -23.63, "600": -16.68, "900": -9.73, "1200": -2.78 },
+        "390": { "0": -30.88, "300": -23.78, "600": -16.68, "900": -9.58, "1200": -2.48 }
+      }
+    },
+    "course": {
+      "path": "/school/online-courses/animation-course/",
+      "speed": 2,
+      "topPercentAtScroll": {
+        "1440": { "0": -71.44, "300": -60.36, "600": -49.28, "900": -38.2, "1200": -27.11 }
+      }
+    }
+  },
+  "fade": {
+    "keyframes": ".mk-grid data-30p-top-bottom=opacity:1, data-5p-top-bottom=opacity:0",
+    "course1440OpacityAtScroll": { "300": 1, "600": 0.667, "900": 0 }
+  },
+  "fullHeightRow": {
+    "note": "applied at every width",
+    "home": { "390": [91, 809], "768": [91, 809], "1024": [61, 839] },
+    "school": { "390": [91, 809], "768": [91, 809], "1024": [126, 774] }
+  },
+  "stickyHeader": {
+    "class": "a-sticky on header.mk-header, desktop only (holder position fixed)",
+    "home1440": { "onAfterScroll": 72, "innerHeight": [61, 56] },
+    "course1440": { "onAfterScroll": 128, "innerHeight": [91, 56], "holderTopWhenSticky": -32 }
+  },
+  "backToTop": {
+    "jupiter": { "selector": ".mk-go-top", "activeAfterScroll": 400, "bottomRight": [15, 15] },
+    "astra": { "selector": "#ast-scroll-top", "visibleAfterScroll": 300, "bottomRight": [30, 30] }
+  },
+  "shareBox": { "trigger": ".mk-toggle-trigger", "box": ".single-share-box", "openHeight": 56 },
+  "lightbox": { "trigger": "a.mk-lightbox", "live": "fancybox overlay, page stays" },
+  "productTabs": { "panels": 3, "visibleAtOnce": 1 },
+  "productGallery": { "thumbnails": 6, "zoom": true },
+  "sliders": {
+    "servicesFlexslider": {
+      "path": "/who-we-are/new-heights-educatioal-group-services/",
+      "size": { "1440": [690, 535], "390": [360, 280] },
+      "slides": 2,
+      "intervalSeconds": 3,
+      "controls": ["paging", "direction"]
+    },
+    "storeSwipe": {
+      "path": "/nheg-store/",
+      "perView": { "1440": 3, "1024": 3, "768": 3, "390": 1 },
+      "firstHeight": { "1440": 385, "1024": 289, "768": 230, "390": 350 },
+      "autoplayObserved": false,
+      "arrows": true
+    },
+    "offeringsTestimonials": {
+      "path": "/publications/offerings/",
+      "height": { "1440": 249, "390": 251 },
+      "slides": 2,
+      "rotationObservedIn10s": false,
+      "dots": 0,
+      "arrows": 0
+    },
+    "radioLogos": {
+      "path": "/radio/",
+      "1440": { "height": 71, "visible": 10, "itemWidth": 138 },
+      "390": { "height": 8, "note": "broken on live too" },
+      "interval": 0,
+      "arrows": true
+    }
+  }
+}
