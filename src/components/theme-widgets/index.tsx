@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect } from 'react'
+import { wireSliders } from './sliders'
 
 /**
  * The click behaviour the themes' scripts gave the live site (#106): Jupiter's
  * blog share box and image lightbox, WooCommerce's product tabs and gallery,
- * and WPBakery's toggles. Without JavaScript the links still go to the image
+ * WPBakery's toggles and the themes' slideshows (./sliders). Without JavaScript the links still go to the image
  * and every tab panel stays readable.
  */
 
@@ -261,6 +262,7 @@ export default function ThemeWidgets() {
     wireToggles()
     wireTabs()
     const offGalleries = wireGalleries()
+    const offSliders = wireSliders()
     const viewer = lightbox()
 
     const onActivate = (event: Event) => {
@@ -375,6 +377,7 @@ export default function ThemeWidgets() {
       document.removeEventListener('keydown', onKey)
       viewer.teardown()
       offGalleries()
+      offSliders()
     }
   }, [])
 
