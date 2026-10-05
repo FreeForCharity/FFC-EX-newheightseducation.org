@@ -85,6 +85,61 @@ describe('wireSliders', () => {
     off()
   })
 
+  const swipe = () => {
+    document.body.innerHTML = `
+      <div class="ffc-clone">
+        <div class="swiper-navigation nav-4">
+          <a class="swiper-arrows" data-direction="prev"></a>
+          <a class="swiper-arrows" data-direction="next"></a>
+        </div>
+        <div data-mk-component="SwipeSlideshow" data-swipeSlideshow-config='{"slidesPerView":"1","displayTime":"7000","transitionTime":"700","nav":".nav-4"}'>
+          <div class="mk-slider-holder"><div><a href="#a">a</a></div><div><a href="#b">b</a></div><div>c</div></div>
+        </div>
+      </div>`
+    Object.assign(window, { innerWidth: 1440 })
+    return wireSliders()
+  }
+  const holder = () => document.querySelector<HTMLElement>('.mk-slider-holder')!.style.transform
+
+  it('stays paused while a slide keeps focus after the pointer leaves', () => {
+    const off = swipe()
+    const root = document.querySelector<HTMLElement>('[data-mk-component]')!
+    const link = root.querySelector<HTMLElement>('a')!
+    root.dispatchEvent(new MouseEvent('mouseenter'))
+    link.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
+    root.dispatchEvent(new MouseEvent('mouseleave'))
+    jest.advanceTimersByTime(7000)
+    expect(holder()).toBe('translateX(0%)')
+    off()
+  })
+
+  it('stays paused while the pointer stays after focus leaves', () => {
+    const off = swipe()
+    const root = document.querySelector<HTMLElement>('[data-mk-component]')!
+    const link = root.querySelector<HTMLElement>('a')!
+    link.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
+    root.dispatchEvent(new MouseEvent('mouseenter'))
+    link.dispatchEvent(new FocusEvent('focusout', { bubbles: true }))
+    jest.advanceTimersByTime(7000)
+    expect(holder()).toBe('translateX(0%)')
+    root.dispatchEvent(new MouseEvent('mouseleave'))
+    jest.advanceTimersByTime(7000)
+    expect(holder()).toBe('translateX(-100%)')
+    off()
+  })
+
+  it('pauses while the store arrows outside the slideshow are hovered', () => {
+    const off = swipe()
+    const nav = document.querySelector<HTMLElement>('.nav-4')!
+    nav.dispatchEvent(new MouseEvent('mouseenter'))
+    jest.advanceTimersByTime(14000)
+    expect(holder()).toBe('translateX(0%)')
+    nav.dispatchEvent(new MouseEvent('mouseleave'))
+    jest.advanceTimersByTime(7000)
+    expect(holder()).toBe('translateX(-100%)')
+    off()
+  })
+
   it('does not autoplay under reduced motion', () => {
     reduce(true)
     document.body.innerHTML = `

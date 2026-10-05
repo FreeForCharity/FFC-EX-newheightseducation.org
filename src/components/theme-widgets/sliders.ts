@@ -86,14 +86,18 @@ interface Engine {
   perView: () => number
   render: (index: number) => void
   interval: number
+  /** Controls outside the root, such as the store's arrows, that also pause it. */
+  extra?: HTMLElement[]
 }
 
 function run(engine: Engine): Teardown {
   const { root, count, perView, render, interval } = engine
+  const scope = [root, ...(engine.extra ?? [])]
   let index = 0
   let timer = 0
   let paused = false
-  let hovering = false
+  const hovered = new Set<HTMLElement>()
+  let focused = false
   let pauseButton: HTMLButtonElement | null = null
 
   const draw = () => {
@@ -110,7 +114,7 @@ function run(engine: Engine): Teardown {
   }
   const start = () => {
     stop()
-    if (!interval || paused || hovering || document.hidden || reducedMotion()) return
+    if (!interval || paused || hovered.size || focused || document.hidden || reducedMotion()) return
     timer = window.setInterval(() => go(1), interval)
   }
   if (interval && !reducedMotion()) {
@@ -130,22 +134,45 @@ function run(engine: Engine): Teardown {
     })
     root.append(pauseButton)
   }
-  const enter = () => {
-    hovering = true
-    stop()
-  }
-  const leave = () => {
-    hovering = false
-    start()
-  }
-  const focusOut = (e: FocusEvent) => {
-    if (!root.contains(e.relatedTarget as Node | null)) leave()
+  const listeners = new AbortController()
+  const on = { signal: listeners.signal }
+  const inScope = (node: Node | null) => !!node && scope.some((el) => el.contains(node))
+  for (const el of scope) {
+    el.addEventListener(
+      'mouseenter',
+      () => {
+        hovered.add(el)
+        stop()
+      },
+      on
+    )
+    el.addEventListener(
+      'mouseleave',
+      () => {
+        hovered.delete(el)
+        start()
+      },
+      on
+    )
+    el.addEventListener(
+      'focusin',
+      () => {
+        focused = true
+        stop()
+      },
+      on
+    )
+    el.addEventListener(
+      'focusout',
+      (e) => {
+        if (inScope(e.relatedTarget as Node | null)) return
+        focused = false
+        start()
+      },
+      on
+    )
   }
   root.setAttribute('aria-live', 'off')
-  root.addEventListener('mouseenter', enter)
-  root.addEventListener('mouseleave', leave)
-  root.addEventListener('focusin', enter)
-  root.addEventListener('focusout', focusOut)
   document.addEventListener('visibilitychange', start)
   const onResize = () => go(0)
   window.addEventListener('resize', onResize)
@@ -154,10 +181,7 @@ function run(engine: Engine): Teardown {
   ;(root as HTMLElement & { ffcGo?: (by: number) => void }).ffcGo = go
   return () => {
     stop()
-    root.removeEventListener('mouseenter', enter)
-    root.removeEventListener('mouseleave', leave)
-    root.removeEventListener('focusin', enter)
-    root.removeEventListener('focusout', focusOut)
+    listeners.abort()
     document.removeEventListener('visibilitychange', start)
     window.removeEventListener('resize', onResize)
     pauseButton?.remove()
@@ -275,6 +299,7 @@ function wireSwipe(root: HTMLElement): Teardown | null {
     count: slides.length,
     perView,
     interval: slides.length > 1 ? config.displayTime : 0,
+    extra: nav ? [nav] : [],
     render: (index) => {
       const view = perView()
       root.style.setProperty('--ffc-per-view', String(view))
