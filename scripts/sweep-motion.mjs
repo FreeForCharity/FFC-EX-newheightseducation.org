@@ -120,7 +120,11 @@ async function check(page, origin, route, width) {
             )
             if (!s || window.innerWidth < 922) return null
             const room = s.parentElement.getBoundingClientRect().bottom - 50 - s.offsetHeight
-            return { top: s.getBoundingClientRect().top, room }
+            return {
+              top: s.getBoundingClientRect().top,
+              room,
+              tall: s.offsetHeight > window.innerHeight - 50 + 1,
+            }
           })(),
         }
       }, y)
@@ -149,6 +153,7 @@ async function check(page, origin, route, width) {
       issues.push('back-to-top (Jupiter): does not appear')
     if (top.astTop !== null && top.height > 1300 && (top.astTop || !mid.astTop))
       issues.push('back-to-top (Astra): does not appear')
+    if (mid.sidebar?.tall) issues.push('sticky sidebar: taller than the viewport')
     if (mid.sidebar && mid.sidebar.room > 2 && Math.abs(mid.sidebar.top - 50) > 2)
       issues.push('sticky sidebar: does not stick')
     issues.push(
