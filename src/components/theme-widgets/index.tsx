@@ -2,11 +2,13 @@
 
 import { useEffect } from 'react'
 import { wireSliders } from './sliders'
+import { wireShareAll } from './share-all'
 
 /**
  * The click behaviour the themes' scripts gave the live site (#106): Jupiter's
  * blog share box and image lightbox, WooCommerce's product tabs and gallery,
- * WPBakery's toggles and the themes' slideshows (./sliders). Without JavaScript the links still go to the image
+ * WPBakery's toggles, the themes' slideshows (./sliders) and SocialSnap's
+ * share-all popup (./share-all). Without JavaScript the links still go to the image
  * and every tab panel stays readable.
  */
 
@@ -107,8 +109,25 @@ function selectTab(tab: HTMLAnchorElement, focus: boolean) {
   if (focus) tab.focus()
 }
 
+interface Slider {
+  viewport: HTMLElement
+  wrapper: HTMLElement
+}
+
+const sliders = new WeakMap<Element, Slider>()
+
+/** Fits the photo viewport to the current photo, as flexslider's smoothHeight did. */
+function fitGallery(gallery: Element) {
+  const slider = sliders.get(gallery)
+  const current = gallery.querySelector<HTMLElement>(
+    '.woocommerce-product-gallery__image.ffc-current'
+  )
+  if (slider && current) slider.viewport.style.height = `${current.offsetHeight}px`
+}
+
 function wireGalleries(): Teardown {
   const built: HTMLElement[] = []
+  const unwrap: (() => void)[] = []
   document
     .querySelectorAll<HTMLElement>('.ffc-clone .woocommerce-product-gallery')
     .forEach((gallery) => {
@@ -118,7 +137,37 @@ function wireGalleries(): Teardown {
       if (!slides.length) return
       gallery.classList.add('ffc-gallery')
       slides[0].classList.add('ffc-current')
+      const trigger = document.createElement('button')
+      trigger.type = 'button'
+      trigger.className = 'woocommerce-product-gallery__trigger'
+      trigger.setAttribute('aria-label', 'View full-size image')
+      trigger.textContent = '🔍'
+      gallery.prepend(trigger)
+      built.push(trigger)
       if (slides.length < 2) return
+      const wrapper = gallery.querySelector<HTMLElement>('.woocommerce-product-gallery__wrapper')
+      if (wrapper) {
+        const viewport = document.createElement('div')
+        viewport.className = 'ffc-gallery-viewport'
+        wrapper.before(viewport)
+        viewport.append(wrapper)
+        gallery.classList.add('ffc-gallery--slide')
+        sliders.set(gallery, { viewport, wrapper })
+        slides.slice(1).forEach((slide) => slide.setAttribute('inert', ''))
+        const fit = () => fitGallery(gallery)
+        viewport.addEventListener('load', fit, true)
+        window.addEventListener('resize', fit)
+        fit()
+        unwrap.push(() => {
+          viewport.removeEventListener('load', fit, true)
+          window.removeEventListener('resize', fit)
+          viewport.before(wrapper)
+          viewport.remove()
+          wrapper.style.transform = ''
+          gallery.classList.remove('ffc-gallery--slide')
+          slides.forEach((slide) => slide.removeAttribute('inert'))
+        })
+      }
       const thumbs = document.createElement('ol')
       thumbs.className = 'flex-control-nav flex-control-thumbs'
       slides.forEach((slide, i) => {
@@ -144,6 +193,7 @@ function wireGalleries(): Teardown {
     })
   return () => {
     built.forEach((el) => el.remove())
+    unwrap.forEach((off) => off())
     document.querySelectorAll('.ffc-gallery').forEach((g) => g.classList.remove('ffc-gallery'))
     document
       .querySelectorAll('.ffc-current')
@@ -157,7 +207,11 @@ function showSlide(button: HTMLElement) {
   const index = Number(button.dataset.ffcSlide)
   gallery.querySelectorAll('.woocommerce-product-gallery__image').forEach((slide, i) => {
     slide.classList.toggle('ffc-current', i === index)
+    slide.toggleAttribute('inert', i !== index)
   })
+  const slider = sliders.get(gallery)
+  if (slider) slider.wrapper.style.transform = `translate3d(${-100 * index}%, 0, 0)`
+  fitGallery(gallery)
   gallery.querySelectorAll<HTMLElement>('.ffc-gallery-thumb').forEach((thumb, i) => {
     if (i === index) thumb.setAttribute('aria-current', 'true')
     else thumb.removeAttribute('aria-current')
@@ -263,6 +317,7 @@ export default function ThemeWidgets() {
     wireTabs()
     const offGalleries = wireGalleries()
     const offSliders = wireSliders()
+    const offShareAll = wireShareAll()
     const viewer = lightbox()
 
     const onActivate = (event: Event) => {
@@ -293,9 +348,11 @@ export default function ThemeWidgets() {
         showSlide(thumb)
         return
       }
-      const product = target.closest<HTMLAnchorElement>(
-        '.ffc-clone .woocommerce-product-gallery__image a'
-      )
+      const zoom = target.closest<HTMLElement>('.ffc-clone .woocommerce-product-gallery__trigger')
+      const product =
+        zoom?.parentElement?.querySelector<HTMLAnchorElement>(
+          '.woocommerce-product-gallery__image.ffc-current a'
+        ) ?? target.closest<HTMLAnchorElement>('.ffc-clone .woocommerce-product-gallery__image a')
       if (product) {
         event.preventDefault()
         const links = [
@@ -303,7 +360,7 @@ export default function ThemeWidgets() {
             .closest('.woocommerce-product-gallery')!
             .querySelectorAll<HTMLAnchorElement>('.woocommerce-product-gallery__image a'),
         ]
-        viewer.open(links.map(pictureOf), links.indexOf(product), product)
+        viewer.open(links.map(pictureOf), links.indexOf(product), zoom ?? product)
         return
       }
       const link = target.closest<HTMLAnchorElement>('.ffc-clone a.mk-lightbox')
@@ -378,6 +435,7 @@ export default function ThemeWidgets() {
       viewer.teardown()
       offGalleries()
       offSliders()
+      offShareAll()
     }
   }, [])
 

@@ -879,6 +879,43 @@ html.ffc-motion .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_anima
   width: 100% !important;
 }
 
+/* As live, the gallery fades in once ready and slides between photos in
+   0.5s while its height follows the photo (flexslider, smoothHeight). */
+html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
+  opacity: 0 !important;
+}
+
+.ffc-clone .ffc-gallery-viewport {
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+.ffc-clone .ffc-gallery--slide .woocommerce-product-gallery__wrapper {
+  display: flex !important;
+  align-items: flex-start;
+  transition: transform 0.5s cubic-bezier(0.795, -0.035, 0, 1);
+}
+
+.ffc-clone .ffc-gallery.ffc-gallery--slide .woocommerce-product-gallery__image {
+  display: block !important;
+  flex: 0 0 100%;
+  width: 100% !important;
+}
+
+.ffc-clone button.woocommerce-product-gallery__trigger {
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ffc-clone button.woocommerce-product-gallery__trigger:focus-visible {
+  opacity: 1;
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
 .ffc-clone .ffc-gallery-thumb {
   display: block;
   width: 100%;
@@ -1099,4 +1136,43 @@ html.ffc-motion .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_anima
 
 .ffc-clone .uagb-slick-carousel .uagb-tm__items {
   visibility: visible;
+}
+
+/* SocialSnap's share-all popups (#106, ThemeWidgets) are modal dialogs here;
+   the plugin's overlay styles replace the browser's dialog box. */
+.ffc-clone dialog.ss-popup-overlay {
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ffc-clone dialog.ss-popup-overlay::backdrop {
+  background: transparent;
+}
+
+/* White labels on SocialSnap's Facebook and Mix colours fall short of 4.5:1
+   (4.2 and 2.5); Facebook's current blue and a darker orange pass. */
+.ffc-clone .ss-popup-overlay .ss-facebook-color {
+  --ss-button-color: #0866ff;
+}
+
+.ffc-clone .ss-popup-overlay .ss-mix-color {
+  --ss-button-color: #b85200;
+}
+
+.ffc-clone .ss-popup-overlay .ss-popup .ss-close-modal {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.ffc-clone .ss-popup-overlay a:focus-visible,
+.ffc-clone .ss-popup-overlay button:focus-visible,
+.ffc-clone .ss-share-all:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
 }
