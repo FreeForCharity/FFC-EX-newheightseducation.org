@@ -114,6 +114,14 @@ async function check(page, origin, route, width) {
             return a ? getComputedStyle(a).display !== 'none' : null
           })(),
           height: document.documentElement.scrollHeight,
+          sidebar: (() => {
+            const s = document.querySelector(
+              '.ffc-clone.ast-sticky-sidebar #secondary .sidebar-main'
+            )
+            if (!s || window.innerWidth < 922) return null
+            const room = s.parentElement.getBoundingClientRect().bottom - 50 - s.offsetHeight
+            return { top: s.getBoundingClientRect().top, room }
+          })(),
         }
       }, y)
     const top = await at(0)
@@ -141,6 +149,8 @@ async function check(page, origin, route, width) {
       issues.push('back-to-top (Jupiter): does not appear')
     if (top.astTop !== null && top.height > 1300 && (top.astTop || !mid.astTop))
       issues.push('back-to-top (Astra): does not appear')
+    if (mid.sidebar && mid.sidebar.room > 2 && Math.abs(mid.sidebar.top - 50) > 2)
+      issues.push('sticky sidebar: does not stick')
     issues.push(
       ...(await page.evaluate(() => {
         const found = []

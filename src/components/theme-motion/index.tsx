@@ -15,6 +15,10 @@ import { useEffect } from 'react'
 
 export const GO_TOP_AFTER = 400
 export const AST_TOP_AFTER = 300
+/** WPBakery's waypoint fires when an element's top reaches 85% of the viewport. */
+export const REVEAL_ROOT_MARGIN = '0px 0px -15% 0px'
+/** Jupiter drops its scroll-in at this width and below, so content just shows. */
+export const JUPITER_STILL_MAX = 1024
 
 const clamp = (n: number) => Math.min(1, Math.max(0, n))
 
@@ -36,6 +40,11 @@ export function fadeOpacity(bottom: number, vh: number) {
 type Teardown = () => void
 
 function wireReveal(): Teardown | null {
+  if (window.matchMedia?.(`(max-width: ${JUPITER_STILL_MAX}px)`).matches) {
+    document
+      .querySelectorAll('.ffc-clone .mk-animate-element')
+      .forEach((el) => el.classList.remove('mk-animate-element'))
+  }
   const targets = document.querySelectorAll<HTMLElement>(
     '.ffc-clone .mk-animate-element:not(.mk-in-viewport), .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_animation)'
   )
@@ -58,7 +67,7 @@ function wireReveal(): Teardown | null {
         observer.unobserve(entry.target)
       }
     },
-    { rootMargin: '0px 0px -10% 0px' }
+    { rootMargin: REVEAL_ROOT_MARGIN }
   )
   targets.forEach((el) => observer.observe(el))
   return () => observer.disconnect()

@@ -38,6 +38,74 @@ test.describe('theme scroll motion (#106)', () => {
       .toBeGreaterThan(0.99)
   })
 
+  test('home buttons fade in down once they reach 85% of the viewport', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto('./')
+    await expect(page.locator('html')).toHaveAttribute('data-ffc-motion-ready', '')
+    const button = page.locator('.wpb_animate_when_almost_visible', {
+      hasText: 'Listen to Our Radio Show',
+    })
+    const top = await button.evaluate((el) => el.getBoundingClientRect().top + window.scrollY)
+    await scrollTo(page, top - 900 * (reference.reveal.wpbOffset + 0.03))
+    await page.waitForTimeout(300)
+    await expect(button).not.toHaveClass(/wpb_start_animation/)
+    expect(await button.evaluate((el) => getComputedStyle(el).opacity)).toBe('0')
+
+    const samples = await page.evaluate(
+      async (y) => {
+        window.scrollTo({ top: y, behavior: 'instant' })
+        const el = [...document.querySelectorAll('.wpb_animate_when_almost_visible')].find((e) =>
+          e.textContent?.includes('Listen to Our Radio Show')
+        )!
+        const out: [number, number][] = []
+        const start = performance.now()
+        while (performance.now() - start < 1500) {
+          await new Promise((r) => requestAnimationFrame(r))
+          const cs = getComputedStyle(el)
+          out.push([Number(cs.opacity), new DOMMatrix(cs.transform).m42])
+        }
+        return out
+      },
+      top - 900 * (reference.reveal.wpbOffset - 0.03)
+    )
+    expect(samples.some(([o, ty]) => o > 0.05 && o < 0.95 && ty < -1)).toBe(true)
+    expect(samples.at(-1)).toEqual([1, 0])
+  })
+
+  test('Jupiter scroll-ins show without animating at 1024px and below', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto(COURSE)
+    await expect(page.locator('html')).toHaveAttribute('data-ffc-motion-ready', '')
+    await expect(page.locator('.mk-animate-element')).toHaveCount(0)
+    const hero = page.locator('.ffc-clone .fade-in').first()
+    expect(
+      await hero.evaluate((el) => [
+        getComputedStyle(el).opacity,
+        getComputedStyle(el).animationName,
+      ])
+    ).toEqual(['1', 'none'])
+  })
+
+  test('the Astra sidebar sticks and scrolls inside itself, as live', async ({ page }) => {
+    const live = reference.stickySidebar
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto('./publications/books/')
+    const height = await page.locator('.ffc-clone').evaluate((el) => el.scrollHeight)
+    expect(Math.abs(height - live.pageHeight)).toBeLessThan(20)
+    const sidebarTop = () =>
+      page.evaluate(() => document.querySelector('.sidebar-main')!.getBoundingClientRect().top)
+    for (const y of ['400', '600'] as const) {
+      await scrollTo(page, Number(y))
+      expect(Math.round(await sidebarTop()), `scrollY ${y}`).toBe(live.sidebarTopAtScroll[y])
+    }
+    expect(
+      await page.evaluate(() => {
+        const s = document.querySelector('.sidebar-main')!
+        return s.scrollHeight > s.clientHeight && s.clientHeight <= window.innerHeight - 50
+      })
+    ).toBe(true)
+  })
+
   for (const width of [1440] as const) {
     test(`home parallax follows the live curve at ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 })

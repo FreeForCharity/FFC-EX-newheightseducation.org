@@ -825,8 +825,28 @@ html:not(.ffc-motion) .ffc-clone .mk-animate-element {
   opacity: 1;
 }
 
+@media (max-width: 1024px) {
+  html.ffc-motion .ffc-clone .mk-animate-element {
+    opacity: 1;
+    animation: none;
+  }
+}
+
 html.ffc-motion .ffc-clone .wpb_animate_when_almost_visible:not(.wpb_start_animation) {
   opacity: 0;
+}
+
+/* Astra's body{overflow-x:hidden} lands on the .ffc-clone root, where it makes
+   a scroll container and stops its sticky sidebar sticking. Its script also
+   capped the sidebar at the viewport height. */
+.ffc-clone.ast-desktop {
+  overflow-x: clip;
+}
+
+@media (min-width: 922px) {
+  :is(.ffc-clone.ast-sticky-sidebar, .ffc-clone .ast-sticky-sidebar) #secondary .sidebar-main {
+    max-height: calc(100vh - 50px);
+  }
 }
 
 .ffc-clone .ffc-parallax {
