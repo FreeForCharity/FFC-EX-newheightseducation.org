@@ -187,5 +187,28 @@
       "interval": 0,
       "arrows": true
     }
+  },
+  "reveal": {
+    "measured": "2026-10-05, live Bluehost site, Chromium",
+    "wpbOffset": 0.85,
+    "wpbNote": "vc-waypoints offset 85%: home button 3 not started with its top at 87% of the viewport, started at 84%, at 1440 and 390",
+    "wpbFadeInDown": "opacity 0 to 1 and translateY -50px to 0 over 1s",
+    "jupiterStillMaxWidth": 1024,
+    "jupiterNote": "Jupiter removes mk-animate-element at load at 1024px and below (touch or not), so the content shows without animating; 1025px and up animates"
+  },
+  "stickySidebar": {
+    "measured": "2026-10-05, /publications/books/ at 1440x900",
+    "top": 50,
+    "maxHeight": "calc(100vh - 50px)",
+    "sidebarTopAtScroll": {
+      "0": 161,
+      "200": 50,
+      "400": 50,
+      "600": 50,
+      "757": -85
+    },
+    "pageHeight": 1657,
+    "pageHeightNote": "document height on live; the export adds its own footer below .ffc-clone, so compare the clone",
+    "note": "757 is the bottom of the page; the sidebar scrolls inside itself (content 4266px tall)"
   }
 }
