@@ -131,12 +131,18 @@ test.describe('theme widgets (#106)', () => {
       `mailto:?body=${shared}&subject=Why%20Junk%20Food%20Is%20Bad%20For%20You`
     )
     await expect(links.nth(0)).toBeFocused()
+    await expect(dialog).toHaveCSS('opacity', '1')
+    await expect(dialog.locator('.ss-popup')).toHaveCSS('opacity', '1')
     expect(await blocking(page, '#ss-all-networks-popup')).toEqual([])
     await links.nth(6).click()
     const copy = page.getByRole('dialog', { name: 'Copy link' })
     await expect(copy.locator('input')).toHaveValue(
       'https://publications.newheightseducation.org/why-junk-food-is-bad-for-you/'
     )
+    await expect(copy.getByRole('status')).toHaveText('')
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write'])
+    await copy.getByRole('button', { name: 'Copy' }).click()
+    await expect(copy.getByRole('status')).toHaveText('Copied')
     await page.keyboard.press('Escape')
     await expect(copy).toBeHidden()
     await expect(dialog).toBeHidden()

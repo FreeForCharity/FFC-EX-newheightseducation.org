@@ -1154,6 +1154,16 @@ html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
   background: transparent;
 }
 
+/* White labels on SocialSnap's Facebook and Mix colours fall short of 4.5:1
+   (4.2 and 2.5); Facebook's current blue and a darker orange pass. */
+.ffc-clone .ss-popup-overlay .ss-facebook-color {
+  --ss-button-color: #0866ff;
+}
+
+.ffc-clone .ss-popup-overlay .ss-mix-color {
+  --ss-button-color: #b85200;
+}
+
 .ffc-clone .ss-popup-overlay .ss-popup .ss-close-modal {
   border: 0;
   background: none;

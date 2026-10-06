@@ -195,14 +195,17 @@ export function wireShareAll(): Teardown {
   field.setAttribute('aria-label', 'Link to this page')
   const copyButton = el('button', 'ss-button', 'Copy')
   copyButton.type = 'button'
-  const copied = el('span', 'ss-share-network-tooltip', 'Copied')
+  const copied = el('span', 'ss-share-network-tooltip')
   copied.setAttribute('role', 'status')
   copyButton.append(copied)
   copyButton.addEventListener(
     'click',
     () => {
       field.select()
-      const ok = () => copyButton.classList.add('ss-visible-tooltip')
+      const ok = () => {
+        copied.textContent = 'Copied'
+        copyButton.classList.add('ss-visible-tooltip')
+      }
       if (navigator.clipboard?.writeText) navigator.clipboard.writeText(page.url).then(ok, () => {})
       else if (document.execCommand?.('copy')) ok()
     },
@@ -230,6 +233,7 @@ export function wireShareAll(): Teardown {
             () => {
               field.value = page.url
               copyButton.classList.remove('ss-visible-tooltip')
+              copied.textContent = ''
               show(copy.dialog)
               copyButton.focus()
             },
