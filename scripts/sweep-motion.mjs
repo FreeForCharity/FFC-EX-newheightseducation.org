@@ -180,6 +180,21 @@ async function check(page, origin, route, width) {
           if (!slide || getComputedStyle(slide).display === 'none')
             found.push('product gallery: a thumbnail does not switch the photo')
         }
+        const gallery = document.querySelector('.ffc-clone .woocommerce-product-gallery')
+        if (gallery && !gallery.querySelector('.woocommerce-product-gallery__trigger'))
+          found.push('product gallery: no zoom button')
+        if (
+          document.querySelector(
+            '.ffc-clone .ss-social-icons-container a[href*="facebook.com/sharer"]'
+          )
+        ) {
+          const more = document.querySelector('.ffc-clone .ss-share-all')
+          more?.click()
+          const popup = document.querySelector('#ss-all-networks-popup')
+          if (!popup?.open) found.push('share-all: does not open')
+          popup?.close()
+          popup?.classList.remove('ss-visible', 'ss-animate-popup')
+        }
         const title = document.querySelector('.ffc-clone .vc_toggle_title')
         if (title) {
           const control = title.querySelector('button') ?? title

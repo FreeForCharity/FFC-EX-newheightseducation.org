@@ -86,6 +86,22 @@
     "box": ".single-share-box",
     "openHeight": 56
   },
+  "shareAll": {
+    "measured": "2026-10-05, /publications/why-junk-food-is-bad-for-you/",
+    "networks": ["Facebook", "X (Twitter)", "LinkedIn", "Mix", "Email", "Print", "Copy Link"],
+    "mix": "https://mix.com/add?url={url}",
+    "email": "mailto:?body={url}&subject={title}",
+    "popup": {
+      "1440": [360, 330, 720, 241],
+      "390": [20, 238, 351, 425]
+    },
+    "networkSize": {
+      "1440": [228, 46],
+      "390": [315, 46]
+    },
+    "overlay": "rgba(202, 202, 202, 0.75), opacity 0.3s",
+    "copyLink": "second \"Copy link\" popup with the URL and a Copy button; Escape closes both"
+  },
   "lightbox": {
     "trigger": "a.mk-lightbox",
     "live": "fancybox overlay, page stays"
@@ -96,7 +112,21 @@
   },
   "productGallery": {
     "thumbnails": 6,
-    "zoom": true
+    "zoom": true,
+    "slide": {
+      "measured": "2026-10-05, /product/nheg-latte-mug/ at 1440",
+      "transitionMs": 500,
+      "easing": "cubic-bezier(0.795, -0.035, 0, 1)",
+      "wrapperXAfterThumb3": -946,
+      "viewportHeight": 473
+    },
+    "fadeInMs": 250,
+    "zoomButton": {
+      "offset": [405, 18],
+      "size": [50, 50],
+      "opacityAtRest": 0,
+      "opacityOnHover": 1
+    }
   },
   "sliders": {
     "servicesFlexslider": {
