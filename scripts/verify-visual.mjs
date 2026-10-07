@@ -194,8 +194,9 @@ const flag = (name) => process.argv.includes(`--${name}`)
  * diff by at least that much and the threshold would have to be raised until
  * it could no longer detect anything.
  */
-const MASK_SELECTORS = [
+export const MASK_SELECTORS = [
   '.ffc-footer',
+  '[aria-label="Cookie consent notice"]',
   '[data-ffc-cookie-consent]',
   '#ffc-cookie-consent',
   '[class*="cookie" i][class*="consent" i]',
@@ -309,7 +310,8 @@ async function main() {
     // clip fits: a configuration the real run never uses.
     viewport: { width, height },
     deviceScaleFactor: 1,
-    reducedMotion: 'reduce',
+    // Live ignores reduced motion, so asking for it would compare live's motion with the export's still frames.
+    reducedMotion: 'no-preference',
   })
   const page = await context.newPage()
   mkdirSync(diffDir, { recursive: true })
