@@ -88,6 +88,11 @@ export const pathOf = (url) => {
 
 const readOptional = (file) => readFile(file, 'utf8').catch(() => undefined)
 
+/** A legacy URL redirect page: not content, so the page invariants skip it. */
+export const isRedirectStub = (html) =>
+  /<meta[^>]+http-equiv="refresh"/i.test(html) &&
+  /<meta[^>]+name="robots"[^>]+content="noindex"/i.test(html)
+
 /** Every violation in the static export at `out`, served under `basePath`. */
 export async function verifyBuild(out, basePath = '', budget = SIZE_BUDGET) {
   const errors = []
@@ -101,7 +106,10 @@ export async function verifyBuild(out, basePath = '', budget = SIZE_BUDGET) {
     return `${basePath}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '/')}`
   }
 
-  const pages = await walkHtml(out)
+  const pages = []
+  for (const page of await walkHtml(out)) {
+    if (!isRedirectStub(await readFile(page, 'utf8'))) pages.push(page)
+  }
   for (const page of pages) {
     const rel = relative(out, page).split('\\').join('/')
     const html = await readFile(page, 'utf8')
