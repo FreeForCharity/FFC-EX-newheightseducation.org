@@ -1579,6 +1579,10 @@
     "sha256": "d4559d927576bf0d64720b3a322f40061973634cd7b4aa2908f82b9d39800fe9",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/03/nheg-10th-anniversary.jpg"
   },
+  "newheightseducation.org/wp-content/uploads/2017/03/nheg-recognition-day-2017.jpg": {
+    "sha256": "3247d0050e3f9aae400eb535805c863f618ae1d613f153f87de32e00075b19cb",
+    "source": null
+  },
   "newheightseducation.org/wp-content/uploads/2017/03/valentines-day-792x350.webp": {
     "sha256": "8fe0b4a7a799a9471cb1df4906fc085e53f9afc9671d29da055e9fb07a5d43f9",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/03/valentines-day.jpg"
@@ -2205,6 +2209,10 @@
   },
   "newheightseducation.org/wp-content/uploads/2018/11/freddie-bandola-jr.-300x300.jpg": {
     "sha256": "7aba5ed053686582b076270f628ddf19c0a3076bedc264f2539494c1289536f2",
+    "source": null
+  },
+  "newheightseducation.org/wp-content/uploads/2018/11/freddie-bandola-jr..jpg": {
+    "sha256": "eaa8ab6be01508cc65e4e898a69f34d578d5c6734b1ce48cbae1a23dc73def9d",
     "source": null
   },
   "newheightseducation.org/wp-content/uploads/2018/11/freddie-bandola-jr..webp": {
