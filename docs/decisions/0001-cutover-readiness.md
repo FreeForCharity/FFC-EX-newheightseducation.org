@@ -37,9 +37,10 @@
 
 - **C1. Site parity signed off.** Fix the restore list from the 2026-10-07 review, then get sign-off on #62 and #63.
 - **C2. Move the zone off Bluehost before anything else changes.**
-  - Copy every record listed in the appendix into Cloudflare as DNS-only (grey cloud), at TTL 300.
+  - Export the **complete** zone from Bluehost (cPanel Zone Editor export), not just the names in the appendix, which are a sample. Recreate every record in Cloudflare as DNS-only (grey cloud), at TTL 300, except Bluehost's own NS and SOA. Then reconcile the export against Cloudflare record by record before changing the delegation.
   - Change the nameservers at the registrar.
   - Wait until `dig NS newheightseducation.org` returns Cloudflare from several resolvers.
+  - Then wait at least another 4 hours before the window. Resolvers may still hold the web records (apex A, `www`, subdomains) they cached from Bluehost at TTL 14400, and the new TTL 300 only applies once those copies expire.
   - Bluehost's nameserver TTL is 21600 (6 hours), and the `.org` delegation can take up to 48 hours.
   - Tracked on [FFC-Cloudflare-Automation#1342](https://github.com/FreeForCharity/FFC-Cloudflare-Automation/issues/1342).
 - **C3. Fix mail authentication during the zone move.**
@@ -51,7 +52,7 @@
   - `public/CNAME`, `siteConfig.url = 'https://newheightseducation.org'`, and both `security.txt` Canonical lines.
   - CI green; the PR held, not merged.
 - **C5. A repo admin is available during the window to bind the domain,** or grants a role that can, confirmed beforehand with a no-op write.
-- **C6. Plan the subdomain redirects.** In Cloudflare, proxy `school`, `publications` and `radio` and add the three Single Redirect rules from `docs/cutover/redirects.md`. These hosts don't point at Pages, so proxying them doesn't affect the apex certificate.
+- **C6. Plan the subdomain redirects.** In Cloudflare, proxy `school`, `publications` and `radio` and add the three Single Redirect rules from `docs/cutover/redirects.md`, as 302 until sign-off. These hosts don't point at Pages, so proxying them doesn't affect the apex certificate.
 - **C7. Record authorization and the window time on #68.**
 
 ## Window runbook
@@ -79,7 +80,10 @@ If the certificate stalls, follow TEP's certificate recovery: re-bind at most tw
 
 ## Rollback
 
-- Point the apex A record back to `50.87.236.5`, and `www` back to the CNAME to the apex. At TTL 300, most visitors return within about 5 minutes.
+- Point the apex A record back to `50.87.236.5`, and `www` back to the CNAME to the apex.
+- Turn off the three subdomain redirect rules, and return `school`, `publications` and `radio` to DNS-only A records at `50.87.236.5`. Check each host and one deep link on each.
+- At TTL 300, most visitors are back within about 5 minutes.
+- The subdomain rules use **302 (temporary)** during the window, so browsers don't cache them past a rollback. They switch to 301 only after sign-off.
 - Leave the Pages binding as it is.
 - This works **only while Bluehost hosting is still active,** so don't cancel Bluehost until the new site has been stable for an agreed period.
 

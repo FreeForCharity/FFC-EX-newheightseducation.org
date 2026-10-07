@@ -27,11 +27,11 @@ The apex stays a DNS-only (grey cloud) GitHub Pages record, as `CLOUDFLARE_SETUP
 
 The three legacy subdomains are different: they will not point at GitHub Pages, so they can be **proxied** (orange cloud) without touching the apex certificate. Cloudflare then issues their edge certificate and a Single Redirect rule per host sends them on. Applied only with the cutover authorization on [#68: cutover](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/68).
 
-| Proxied record                          | Redirect rule (wildcard pattern)                 | Target                                              | Status                 |
-| --------------------------------------- | ------------------------------------------------ | --------------------------------------------------- | ---------------------- |
-| `school` (A `192.0.2.1`, proxied)       | `https://school.newheightseducation.org/*`       | `https://newheightseducation.org/school/${1}`       | 301, query string kept |
-| `publications` (A `192.0.2.1`, proxied) | `https://publications.newheightseducation.org/*` | `https://newheightseducation.org/publications/${1}` | 301, query string kept |
-| `radio` (A `192.0.2.1`, proxied)        | `https://radio.newheightseducation.org/*`        | `https://newheightseducation.org/radio/${1}`        | 301, query string kept |
+| Proxied record                          | Redirect rule (wildcard pattern)                 | Target                                              | Status                                                   |
+| --------------------------------------- | ------------------------------------------------ | --------------------------------------------------- | -------------------------------------------------------- |
+| `school` (A `192.0.2.1`, proxied)       | `https://school.newheightseducation.org/*`       | `https://newheightseducation.org/school/${1}`       | 302 in the window, 301 after sign-off; query string kept |
+| `publications` (A `192.0.2.1`, proxied) | `https://publications.newheightseducation.org/*` | `https://newheightseducation.org/publications/${1}` | 302 in the window, 301 after sign-off; query string kept |
+| `radio` (A `192.0.2.1`, proxied)        | `https://radio.newheightseducation.org/*`        | `https://newheightseducation.org/radio/${1}`        | 302 in the window, 301 after sign-off; query string kept |
 
 `192.0.2.1` is a documentation address: a proxied record needs a target, but the redirect answers before any origin is contacted. `www` needs no rule: with `www` as a DNS-only CNAME to `freeforcharity.github.io.`, GitHub Pages redirects it to the apex itself once its certificate covers both names.
 
