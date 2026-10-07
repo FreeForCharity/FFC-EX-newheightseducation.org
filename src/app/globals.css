@@ -910,7 +910,10 @@ html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
   transition: opacity 0.2s;
 }
 
-.ffc-clone button.woocommerce-product-gallery__trigger:focus-visible {
+:is(.ffc-clone.woocommerce, .ffc-clone .woocommerce)
+  div.product
+  div.images
+  button.woocommerce-product-gallery__trigger:focus-visible {
   opacity: 1;
   outline: 3px solid #000;
   outline-offset: 2px;
