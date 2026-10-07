@@ -103,9 +103,13 @@ test.describe('theme widgets (#106)', () => {
   test('the gallery zoom button opens the current photo and takes focus back', async ({ page }) => {
     await page.goto(PRODUCT)
     await page.locator('.ffc-gallery-thumb').nth(1).click()
+    await page.mouse.move(0, 0)
     const zoom = page.getByRole('button', { name: 'View full-size image' })
     await expect(zoom).toHaveCSS('opacity', '0')
-    await zoom.focus()
+    for (let i = 0; i < 10 && !(await zoom.evaluate((el) => el === document.activeElement)); i++) {
+      await page.keyboard.press('Shift+Tab')
+    }
+    await expect(zoom).toBeFocused()
     await expect(zoom).toHaveCSS('opacity', '1')
     await page.keyboard.press('Enter')
     await expect(page.locator('.ffc-lightbox__count')).toHaveText('2 / 6')
