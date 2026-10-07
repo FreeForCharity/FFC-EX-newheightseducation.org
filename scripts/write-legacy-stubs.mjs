@@ -29,7 +29,7 @@ export const STUBS = {
     EVENTS.map((s) => [`/parents/events/${s}/`, [`/events/${s}/`, 'this event']])
   ),
   ...Object.fromEntries(
-    EVENTS.filter((s) => s !== 'recognition-day').map((s) => [
+    EVENTS.map((s) => [
       `/nheg-parents/nheg-home-charter-school-events/${s}/`,
       [`/events/${s}/`, 'this event'],
     ])
@@ -49,6 +49,11 @@ export const STUBS = {
   ],
   '/nheg-radio-show/': ['/category/nheg-radio-show/', 'the NHEG Radio Show'],
   '/feed/': ['/nheg-blog/', 'the NHEG blog'],
+  '/animation-course/': ['/school/online-courses/animation-course/', 'the Animation Course'],
+  '/who-we-are/nheg-groups/veterans-and-emergency-responders-support/': [
+    '/school/about/nheg-groups/veterans-and-emergency-responders-support/',
+    'this group',
+  ],
 }
 
 /** `to` relative to the directory `from` is served at. */
