@@ -1179,3 +1179,43 @@ html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
   outline: 3px solid #000;
   outline-offset: 2px;
 }
+
+.ffc-rumble {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.ffc-rumble iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* WPBakery's full-width script shifts the home hero row left on live (#62). */
+section.vc_custom_1706661090185 > .vc_row {
+  position: relative;
+  left: -20px;
+}
+
+@media (min-width: 1024px) {
+  section.vc_custom_1706661090185 > .vc_row {
+    left: -5px;
+  }
+}
+
+@media (min-width: 1140px) {
+  section.vc_custom_1706661090185 > .vc_row {
+    left: calc(-5px - (100% - 1140px) / 2);
+  }
+}
+
+/* A Read More link alone in its paragraph is not a link in running text. */
+body .ffc-clone p.read-more a:link,
+body .ffc-clone p.read-more a:visited {
+  text-decoration: none;
+}
+
+/* Live publications load only Lato 700, so its 400-weight titles render bold. */
+body .ffc-clone .ast-article-post .entry-title {
+  font-weight: 700;
+}
