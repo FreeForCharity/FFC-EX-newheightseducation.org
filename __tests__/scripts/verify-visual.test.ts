@@ -7,6 +7,7 @@ import {
   median,
   sourceUrlFor,
   MAX_DIFF_RATIO,
+  MASK_SELECTORS,
 } from '../../scripts/verify-visual.mjs'
 
 /**
@@ -263,5 +264,11 @@ describe('bandRatios', () => {
     expect(r).toHaveLength(2)
     expect(r[0]).toBe(0)
     expect(r[1]).toBeGreaterThan(0)
+  })
+})
+
+describe('MASK_SELECTORS', () => {
+  it('hides the site cookie consent banner', () => {
+    expect(MASK_SELECTORS).toContain('[aria-label="Cookie consent notice"]')
   })
 })
