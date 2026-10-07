@@ -48,6 +48,7 @@ export const STUBS = {
     'this post',
   ],
   '/nheg-radio-show/': ['/category/nheg-radio-show/', 'the NHEG Radio Show'],
+  '/feed/': ['/nheg-blog/', 'the NHEG blog'],
 }
 
 /** `to` relative to the directory `from` is served at. */
