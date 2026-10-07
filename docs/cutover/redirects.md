@@ -39,7 +39,7 @@ The subdomain sections already live at those paths in the export, so a path-pres
 
 These were already broken on the live site, so there is no page to send them to. They are listed for NHEG on [#22: broken internal links at source](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/22).
 
-- `/who-we-are/nheg-magazine`, `/who-we-are/advertise-with-nheg` and `/?page_id=203` (the footer and "Advertise With NHEG" links)
+- `/who-we-are/nheg-magazine` and `/who-we-are/advertise-with-nheg` (the footer links)
 - `/nheg-sitemap`
 - `/education-news/classic-learning-test-2018-information/`
 - `/nheg-radio-show/<host>/` pages
