@@ -30,8 +30,8 @@ describe('webp rewrite', () => {
   it('repoints whole paths only', async () => {
     const { rewrite } = await import('../../scripts/webp-remaining-images.mjs')
     const map = new Map([['a.org/x.jpg', 'a.org/x.webp']])
-    expect(rewrite('url(/a.org/x.jpg) "a.org/x.jpg?v=1" a.org/x.jpgx', map)).toBe(
-      'url(/a.org/x.webp) "a.org/x.webp?v=1" a.org/x.jpgx'
+    expect(rewrite('url(/a.org/x.jpg) "a.org/x.jpg?v=1" a.org/x.jpgx "b.a.org/x.jpg"', map)).toBe(
+      'url(/a.org/x.webp) "a.org/x.webp?v=1" a.org/x.jpgx "b.a.org/x.jpg"'
     )
   })
 })

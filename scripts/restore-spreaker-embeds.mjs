@@ -6,6 +6,9 @@
  * loading="lazy", and the radio home's `a.spreaker-player` links, which need
  * Spreaker's loader script, become the iframe that script built.
  *
+ * One-shot: it reads the old markup from git history, so it needs a full
+ * clone, and has already run.
+ *
  *   node scripts/restore-spreaker-embeds.mjs
  */
 import { execFileSync } from 'node:child_process'

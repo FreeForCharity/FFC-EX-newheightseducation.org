@@ -39,7 +39,10 @@ const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 /** Points `ref`-relative paths at their WebP twin. `map` is original path to twin path. */
 export function rewrite(text, map) {
   if (!map.size) return text
-  const re = new RegExp(`(${[...map.keys()].map(escapeRe).join('|')})(?=["'\\s?#),]|$)`, 'g')
+  const re = new RegExp(
+    `(?<=^|[/"'(\\s])(${[...map.keys()].map(escapeRe).join('|')})(?=["'\\s?#),]|$)`,
+    'g'
+  )
   return text.replace(re, (path) => map.get(path))
 }
 
