@@ -35,62 +35,126 @@
       "outputDir": ".lighthouseci"
     },
     "assert": {
-      "assertions": {
-        "categories:performance": [
-          "warn",
-          {
-            "minScore": 0.9
+      "assertMatrix": [
+        {
+          "matchingUrlPattern": "/radio/[^/]+/index\\.html$",
+          "assertions": {
+            "categories:performance": [
+              "warn",
+              {
+                "minScore": 0.9
+              }
+            ],
+            "categories:accessibility": [
+              "error",
+              {
+                "minScore": 0.98
+              }
+            ],
+            "categories:best-practices": [
+              "warn",
+              {
+                "minScore": 0.96
+              }
+            ],
+            "categories:seo": [
+              "error",
+              {
+                "minScore": 0.98
+              }
+            ],
+            "resource-summary:total:size": [
+              "warn",
+              {
+                "maxNumericValue": 3500000
+              }
+            ],
+            "resource-summary:media:size": [
+              "error",
+              {
+                "maxNumericValue": 1000000
+              }
+            ],
+            "resource-summary:script:size": [
+              "warn",
+              {
+                "maxNumericValue": 1200000
+              }
+            ],
+            "resource-summary:image:size": [
+              "warn",
+              {
+                "maxNumericValue": 1000000
+              }
+            ],
+            "resource-summary:font:size": [
+              "warn",
+              {
+                "maxNumericValue": 500000
+              }
+            ]
           }
-        ],
-        "categories:accessibility": [
-          "error",
-          {
-            "minScore": 0.98
+        },
+        {
+          "matchingUrlPattern": "^(?!.*/radio/[^/]+/index\\.html$)",
+          "assertions": {
+            "categories:performance": [
+              "warn",
+              {
+                "minScore": 0.9
+              }
+            ],
+            "categories:accessibility": [
+              "error",
+              {
+                "minScore": 0.98
+              }
+            ],
+            "categories:best-practices": [
+              "warn",
+              {
+                "minScore": 0.96
+              }
+            ],
+            "categories:seo": [
+              "error",
+              {
+                "minScore": 0.98
+              }
+            ],
+            "resource-summary:total:size": [
+              "error",
+              {
+                "maxNumericValue": 3500000
+              }
+            ],
+            "resource-summary:media:size": [
+              "error",
+              {
+                "maxNumericValue": 1000000
+              }
+            ],
+            "resource-summary:script:size": [
+              "warn",
+              {
+                "maxNumericValue": 1200000
+              }
+            ],
+            "resource-summary:image:size": [
+              "warn",
+              {
+                "maxNumericValue": 1000000
+              }
+            ],
+            "resource-summary:font:size": [
+              "warn",
+              {
+                "maxNumericValue": 500000
+              }
+            ]
           }
-        ],
-        "categories:best-practices": [
-          "warn",
-          {
-            "minScore": 0.96
-          }
-        ],
-        "categories:seo": [
-          "error",
-          {
-            "minScore": 0.98
-          }
-        ],
-        "resource-summary:total:size": [
-          "error",
-          {
-            "maxNumericValue": 3500000
-          }
-        ],
-        "resource-summary:media:size": [
-          "error",
-          {
-            "maxNumericValue": 1000000
-          }
-        ],
-        "resource-summary:script:size": [
-          "warn",
-          {
-            "maxNumericValue": 1200000
-          }
-        ],
-        "resource-summary:image:size": [
-          "warn",
-          {
-            "maxNumericValue": 1000000
-          }
-        ],
-        "resource-summary:font:size": [
-          "warn",
-          {
-            "maxNumericValue": 500000
-          }
-        ]
-      }
+        }
+      ]
     }
   }
 }

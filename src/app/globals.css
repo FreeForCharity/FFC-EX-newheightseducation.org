@@ -810,97 +810,6 @@ body .ffc-clone [data-ss-ss-network-id='facebook'] .ss-share-network-content {
   outline-offset: 2px;
 }
 
-/* Spreaker and Rumble players load on request too, drawn like the players
-   live shows until then (#62, #63). */
-.ffc-clone .ffc-embed-facade--audio {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  overflow: hidden;
-  padding: 0.75rem;
-  background: #111;
-  color: #fff;
-  font-size: 0.875rem;
-  line-height: 1.3;
-  text-align: left;
-}
-
-.ffc-clone .ffc-embed-facade--audio:not([data-ffc-embed-height])::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0;
-  height: 2rem;
-  background:
-    linear-gradient(#f5b700, #f5b700) bottom / 100% 3px no-repeat,
-    repeating-linear-gradient(90deg, #9a9a9a 0 2px, transparent 2px 5px) left bottom 3px / 100%
-      1.25rem no-repeat,
-    #111;
-}
-
-.ffc-clone .ffc-embed-facade--audio::before,
-.ffc-clone .ffc-embed-facade--video::before {
-  content: '';
-  flex: none;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23fff'/%3E%3C/svg%3E")
-      center / 55% no-repeat,
-    #f5b700;
-}
-
-.ffc-clone .ffc-embed-facade--audio[data-ffc-embed-height] {
-  padding: 1rem 7rem 1rem 1rem;
-  border: 1px solid #e1e1e1;
-  background: #fff;
-  color: #222;
-  font-size: 1.125rem;
-}
-
-.ffc-clone .ffc-embed-facade--audio[data-ffc-embed-height]::before {
-  width: 4rem;
-  height: 4rem;
-}
-
-.ffc-clone .ffc-embed-facade--audio[data-ffc-embed-height]::after {
-  content: 'Spreaker';
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: #767676;
-  font-size: 1rem;
-}
-
-.ffc-clone .ffc-embed-facade[data-ffc-embed-height],
-.ffc-clone .ffc-embed-frame--inline {
-  position: relative;
-  inset: auto;
-  width: 100%;
-}
-
-.ffc-clone .ffc-rumble {
-  position: relative;
-}
-
-.ffc-clone .ffc-embed-facade--video {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background: #000;
-  color: #fff;
-  font-size: 0.9375rem;
-  text-align: center;
-}
-
-.ffc-clone .ffc-embed-facade--video::before {
-  width: 4rem;
-  height: 4rem;
-  background-color: #85c742;
-}
-
 /* Scroll motion (#106, ThemeMotion). The themes' hidden pre-animation states
    apply only while html.ffc-motion promises a reveal. */
 html:not(.ffc-motion) .ffc-clone .mk-animate-element {
@@ -1267,6 +1176,12 @@ html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
   width: 100%;
 }
 
+.ffc-rumble iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* WPBakery's full-width script shifts the home hero row left on live (#62). */
 section.vc_custom_1706661090185 > .vc_row {
   position: relative;
@@ -1292,6 +1207,7 @@ body .ffc-clone p.read-more a:visited {
 }
 
 /* Live publications load only Lato 700, so its 400-weight titles render bold. */
-body .ffc-clone .ast-article-post .entry-title {
+body .ffc-clone .ast-article-post .entry-title,
+body .ffc-clone .ast-article-post .entry-title a {
   font-weight: 700;
 }
