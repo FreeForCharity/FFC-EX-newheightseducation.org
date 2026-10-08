@@ -31,26 +31,25 @@ describe('third-party embeds and widgets (#57)', () => {
     }
   })
 
-  it('shows the Spreaker players live shows, loaded lazily (#63)', () => {
-    expect(offenders(/ffc-embed-facade--audio|class="spreaker-player"/)).toEqual([])
+  it('loads Spreaker episode players only on request', () => {
+    expect(offenders(/<iframe\b[^>]*src="https:\/\/widget\.spreaker\.com\//)).toEqual([])
     const players = all.flatMap(({ html }) => [
-      ...html.matchAll(/<iframe\b[^>]*src="https:\/\/widget\.spreaker\.com\/player\?[^>]*>/g),
+      ...html.matchAll(
+        /class="ffc-embed-facade ffc-embed-facade--audio" data-ffc-embed="([^"]+)"/g
+      ),
     ])
     expect(players.length).toBeGreaterThan(900)
-    for (const [tag] of players) {
-      expect(tag).toContain('loading="lazy"')
-      expect(tag).not.toContain('secret=')
-    }
+    for (const [, src] of players) expect(src).toMatch(/^https:\/\/widget\.spreaker\.com\/player\?/)
   })
 
-  it('embeds every Rumble video as a lazy iframe (#62)', () => {
+  it('shows every Rumble video, loaded on request (#62)', () => {
     expect(offenders(/id="rumble_/)).toEqual([])
     const videos = all.flatMap(({ html }) => [
       ...html.matchAll(
-        /<div class="ffc-rumble"><iframe src="https:\/\/rumble\.com\/embed\/\w+\/" title="([^"]+)" loading="lazy"/g
+        /<div class="ffc-rumble"><button type="button" class="ffc-embed-facade ffc-embed-facade--video" data-ffc-embed="https:\/\/rumble\.com\/embed\/\w+\/" data-ffc-embed-title="([^"]+)"/g
       ),
     ])
-    expect(videos.length).toBe(65)
+    expect(videos).toHaveLength(65)
     for (const [, title] of videos) expect(title).not.toBe('Rumble video')
   })
 

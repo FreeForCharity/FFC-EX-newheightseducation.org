@@ -18,13 +18,23 @@ test.describe('parity with the live site (#62, #63)', () => {
     })
   }
 
-  test('home and school show the Rumble video', async ({ page }) => {
+  test('home and school show the Rumble video, which plays in place', async ({ page }) => {
+    await page.route(/rumble\.com/, (route) =>
+      route.fulfill({ status: 200, contentType: 'text/html', body: '<p>video</p>' })
+    )
     for (const path of ['./', './school/']) {
       await page.goto(path)
-      const video = page.locator('.ffc-rumble iframe[src="https://rumble.com/embed/v1o3tv6/"]')
+      const video = page.locator(
+        '.ffc-rumble button[data-ffc-embed="https://rumble.com/embed/v1o3tv6/"]'
+      )
       await expect(video).toHaveCount(1)
       await video.scrollIntoViewIfNeeded()
       expect((await video.boundingBox())?.height).toBeGreaterThan(200)
+      await video.click()
+      await expect(page.locator('.ffc-rumble iframe.ffc-embed-frame')).toHaveAttribute(
+        'src',
+        'https://rumble.com/embed/v1o3tv6/'
+      )
     }
   })
 
@@ -32,12 +42,15 @@ test.describe('parity with the live site (#62, #63)', () => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('./radio/')
     const players = page.locator(
-      'iframe[src^="https://widget.spreaker.com/player?show_id=4114185"]'
+      'button.ffc-embed-facade--audio[data-ffc-embed*="show_id=4114185"]'
     )
     await expect(players).toHaveCount(2)
-    expect((await players.first().boundingBox())?.y).toBeGreaterThan(600)
-    await expect(players.nth(1)).toHaveAttribute('src', /playlist=show/)
-    await expect(page.locator('.ffc-embed-facade--audio')).toHaveCount(0)
+    const logo = await page.locator('.ffc-clone img').first().boundingBox()
+    const top = await players.first().boundingBox()
+    expect(top!.y).toBeGreaterThanOrEqual(logo!.y + logo!.height)
+    expect(Math.round(top!.height)).toBe(200)
+    await expect(players.nth(1)).toHaveAttribute('data-ffc-embed', /playlist=show/)
+    expect(Math.round((await players.nth(1).boundingBox())!.height)).toBe(350)
   })
 
   test('publication cards have bold titles and plain Read More links', async ({ page }) => {

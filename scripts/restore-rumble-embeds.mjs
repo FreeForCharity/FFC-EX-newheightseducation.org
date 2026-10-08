@@ -2,8 +2,10 @@
 /**
  * Restores the Rumble videos (#62). Live filled each empty
  * `<div id="rumble_<id>">` with Rumble's script player; the export has no
- * script, so each becomes the lazy embed iframe /radio/ already uses. Titles
- * come from Rumble's oEmbed, saved in the live archive. Safe to re-run.
+ * script, so each becomes a button drawn like Rumble's player that
+ * components/embed-facade swaps for its embed iframe, keeping page weight in
+ * budget. Titles come from Rumble's oEmbed, saved in the live archive. Safe
+ * to re-run.
  *
  *   node scripts/restore-rumble-embeds.mjs
  */
@@ -16,13 +18,15 @@ export const TITLES = JSON.parse(
   readFileSync(join(ROOT, 'docs', 'live-archive', '2026-10-02', 'rumble-videos.json'), 'utf8')
 )
 
-const PLACEHOLDER = /<div id="rumble_(\w+)"><\/div>/g
+const PLACEHOLDER =
+  /<div id="rumble_(\w+)"><\/div>|<div class="ffc-rumble"><iframe src="https:\/\/rumble\.com\/embed\/(\w+)\/"[^>]*><\/iframe><\/div>/g
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
 export function restoreRumble(html, titles = TITLES) {
-  return html.replace(PLACEHOLDER, (all, id) => {
+  return html.replace(PLACEHOLDER, (all, div, iframe) => {
+    const id = div || iframe
     const title = escape(titles[id] || 'Rumble video')
-    return `<div class="ffc-rumble"><iframe src="https://rumble.com/embed/${id}/" title="${title}" loading="lazy" allowfullscreen></iframe></div>`
+    return `<div class="ffc-rumble"><button type="button" class="ffc-embed-facade ffc-embed-facade--video" data-ffc-embed="https://rumble.com/embed/${id}/" data-ffc-embed-title="${title}">Play: ${title}</button></div>`
   })
 }
 
