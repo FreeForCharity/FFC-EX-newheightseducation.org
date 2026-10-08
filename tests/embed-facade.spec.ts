@@ -18,16 +18,14 @@ test('the Canva button loads the presentation in place', async ({ page }) => {
   await expect(frame).toHaveAttribute('title', 'New Heights Show on Education')
 })
 
-test('a Spreaker button loads its episode player in place', async ({ page }) => {
+test('Spreaker episode players are real iframes that load lazily (#62)', async ({ page }) => {
   await page.route(/spreaker\.com/, (route) =>
     route.fulfill({ status: 200, contentType: 'text/html', body: '<p>player</p>' })
   )
   await page.goto('/radio/manya-shukla/')
-  const button = page.locator('button.ffc-embed-facade--audio').first()
-  await button.scrollIntoViewIfNeeded()
-  await button.click()
-  await expect(page.locator('iframe.ffc-embed-frame--audio').first()).toHaveAttribute(
-    'src',
-    /^https:\/\/widget\.spreaker\.com\/player\?episode_id=/
-  )
+  const player = page
+    .locator('iframe[src^="https://widget.spreaker.com/player?episode_id="]')
+    .first()
+  await expect(player).toHaveAttribute('loading', 'lazy')
+  await expect(page.locator('button.ffc-embed-facade--audio')).toHaveCount(0)
 })
