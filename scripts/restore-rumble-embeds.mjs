@@ -2,10 +2,9 @@
 /**
  * Restores the Rumble videos (#62). Live filled each empty
  * `<div id="rumble_<id>">` with Rumble's script player; the export has no
- * script, so each becomes a button drawn like Rumble's player that
- * components/embed-facade swaps for its embed iframe, keeping page weight in
- * budget. Titles come from Rumble's oEmbed, saved in the live archive. Safe
- * to re-run.
+ * script, so each becomes Rumble's lazy embed iframe, which /radio/ already
+ * uses. Titles come from Rumble's oEmbed, saved in the live archive. Safe to
+ * re-run.
  *
  *   node scripts/restore-rumble-embeds.mjs
  */
@@ -19,14 +18,15 @@ export const TITLES = JSON.parse(
 )
 
 const PLACEHOLDER =
-  /<div id="rumble_(\w+)"><\/div>|<div class="ffc-rumble"><iframe src="https:\/\/rumble\.com\/embed\/(\w+)\/"[^>]*><\/iframe><\/div>/g
+  /<div id="rumble_(\w+)"><\/div>|<div class="ffc-rumble"><(?:iframe src="https:\/\/rumble\.com\/embed\/(\w+)\/"[^>]*><\/iframe>|button type="button" class="ffc-embed-facade ffc-embed-facade--video" data-ffc-embed="https:\/\/rumble\.com\/embed\/(\w+)\/"[^>]*>.*?<\/button>)<\/div>/g
+
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
 export function restoreRumble(html, titles = TITLES) {
-  return html.replace(PLACEHOLDER, (all, div, iframe) => {
-    const id = div || iframe
+  return html.replace(PLACEHOLDER, (all, div, iframe, button) => {
+    const id = div || iframe || button
     const title = escape(titles[id] || 'Rumble video')
-    return `<div class="ffc-rumble"><button type="button" class="ffc-embed-facade ffc-embed-facade--video" data-ffc-embed="https://rumble.com/embed/${id}/" data-ffc-embed-title="${title}">Play: ${title}</button></div>`
+    return `<div class="ffc-rumble"><iframe src="https://rumble.com/embed/${id}/" title="${title}" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`
   })
 }
 

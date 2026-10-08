@@ -111,7 +111,7 @@ const Header: React.FC = () => {
             >
               <Link href="/" onClick={handleLinkClick} className="block">
                 <Image
-                  src={assetPath('/Images/nheg-logo.jpg')}
+                  src={assetPath('/Images/nheg-logo.webp')}
                   alt={siteConfig.name}
                   width={1536}
                   height={307}

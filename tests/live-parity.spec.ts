@@ -18,23 +18,12 @@ test.describe('parity with the live site (#62, #63)', () => {
     })
   }
 
-  test('home and school show the Rumble video, which plays in place', async ({ page }) => {
-    await page.route(/rumble\.com/, (route) =>
-      route.fulfill({ status: 200, contentType: 'text/html', body: '<p>video</p>' })
-    )
+  test('home and school show the Rumble video as a real player', async ({ page }) => {
     for (const path of ['./', './school/']) {
       await page.goto(path)
-      const video = page.locator(
-        '.ffc-rumble button[data-ffc-embed="https://rumble.com/embed/v1o3tv6/"]'
-      )
+      const video = page.locator('.ffc-rumble iframe[src="https://rumble.com/embed/v1o3tv6/"]')
       await expect(video).toHaveCount(1)
-      await video.scrollIntoViewIfNeeded()
       expect((await video.boundingBox())?.height).toBeGreaterThan(200)
-      await video.click()
-      await expect(page.locator('.ffc-rumble iframe.ffc-embed-frame')).toHaveAttribute(
-        'src',
-        'https://rumble.com/embed/v1o3tv6/'
-      )
     }
   })
 

@@ -42,11 +42,11 @@ describe('third-party embeds and widgets (#57)', () => {
     for (const [, src] of players) expect(src).toMatch(/^https:\/\/widget\.spreaker\.com\/player\?/)
   })
 
-  it('shows every Rumble video, loaded on request (#62)', () => {
+  it('embeds every Rumble video as a titled lazy iframe (#62)', () => {
     expect(offenders(/id="rumble_/)).toEqual([])
     const videos = all.flatMap(({ html }) => [
       ...html.matchAll(
-        /<div class="ffc-rumble"><button type="button" class="ffc-embed-facade ffc-embed-facade--video" data-ffc-embed="https:\/\/rumble\.com\/embed\/\w+\/" data-ffc-embed-title="([^"]+)"/g
+        /<div class="ffc-rumble"><iframe src="https:\/\/rumble\.com\/embed\/\w+\/" title="([^"]+)" loading="lazy"/g
       ),
     ])
     expect(videos).toHaveLength(65)
