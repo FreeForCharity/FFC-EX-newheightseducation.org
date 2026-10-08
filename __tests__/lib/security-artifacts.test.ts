@@ -4,8 +4,9 @@ import { join } from 'node:path'
 import { siteConfig } from '@/lib/site.config'
 
 // Ported from FFC-EX-theeverythingproject.org.
-const GITHUB_PAGES_PROJECT_PATH = '/FFC-EX-newheightseducation.org'
 const root = process.cwd()
+// Matches deploy.yml: with public/CNAME the site serves at the domain root.
+const PROJECT_PATH = existsSync(join(root, 'public/CNAME')) ? '' : '/FFC-EX-newheightseducation.org'
 const read = (path: string) => readFileSync(join(root, path), 'utf8')
 const payload = (body: string) =>
   body
@@ -46,8 +47,7 @@ describe('deployable security artifacts', () => {
     expect(payload(read('public/security.txt'))).toBe(wellKnown)
     expect(wellKnown).toContain(`Contact: mailto:${siteConfig.contactEmail}`)
     expect(wellKnown).toContain('Preferred-Languages: en')
-    // No public/CNAME: the site is served under the GitHub Pages project path.
-    const base = `${siteConfig.url}${GITHUB_PAGES_PROJECT_PATH}`
+    const base = `${siteConfig.url}${PROJECT_PATH}`
     expect(wellKnown).toContain(`Canonical: ${base}/.well-known/security.txt`)
     expect(wellKnown).toContain(`Canonical: ${base}/security.txt`)
     expect(wellKnown).toContain(`Policy: ${base}${siteConfig.vulnerabilityDisclosurePath}`)
