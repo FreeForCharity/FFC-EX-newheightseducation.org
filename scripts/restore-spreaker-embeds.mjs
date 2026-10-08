@@ -33,8 +33,15 @@ export function spreakerLinkIframe(link) {
     if (['resource', 'width', 'height'].includes(key)) continue
     params.push(`${key.replace(/-/g, '_')}=${encodeURIComponent(value)}`)
   }
-  const title = link.replace(/<[^>]+>/g, '').replace(/^Listen to "?|"? on Spreaker\.?$/g, '')
-  return `<iframe src="https://widget.spreaker.com/player?${params.join('&amp;')}" title="${title.trim()}" width="${data.width || '100%'}" height="${(data.height || '200px').replace('px', '')}" frameborder="0" loading="lazy"></iframe>`
+  const text = link.match(/>([^<]*)<\/a>$/)?.[1] ?? ''
+  const title = text
+    .replace(/^Listen to "?|"? on Spreaker\.?$/g, '')
+    .trim()
+    .replace(/&(?!amp;|quot;|#\d+;)/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+  return `<iframe src="https://widget.spreaker.com/player?${params.join('&amp;')}" title="${title}" width="${data.width || '100%'}" height="${(data.height || '200px').replace('px', '')}" frameborder="0" loading="lazy"></iframe>`
 }
 
 export function lazyIframe(iframe) {
