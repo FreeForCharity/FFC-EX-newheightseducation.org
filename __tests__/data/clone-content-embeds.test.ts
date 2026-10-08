@@ -42,6 +42,17 @@ describe('third-party embeds and widgets (#57)', () => {
     for (const [, src] of players) expect(src).toMatch(/^https:\/\/widget\.spreaker\.com\/player\?/)
   })
 
+  it('shows every Rumble video, loaded on request (#62)', () => {
+    expect(offenders(/id="rumble_/)).toEqual([])
+    const videos = all.flatMap(({ html }) => [
+      ...html.matchAll(
+        /<div class="ffc-rumble"><button type="button" class="ffc-embed-facade ffc-embed-facade--video" data-ffc-embed="https:\/\/rumble\.com\/embed\/\w+\/" data-ffc-embed-title="([^"]+)"/g
+      ),
+    ])
+    expect(videos).toHaveLength(65)
+    for (const [, title] of videos) expect(title).not.toBe('Rumble video')
+  })
+
   it('has no Twitter feed widget, which the live site already showed empty', () => {
     expect(offenders(/widget_twitter|twitter\.com\/\/statuses\//)).toEqual([])
   })

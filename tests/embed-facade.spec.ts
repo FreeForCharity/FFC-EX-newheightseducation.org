@@ -10,7 +10,7 @@ test('the Canva button loads the presentation in place', async ({ page }) => {
   await page.goto('/radio/')
   await page.waitForLoadState('networkidle')
   expect(canva).toEqual([])
-  const button = page.locator('button.ffc-embed-facade:not(.ffc-embed-facade--audio)')
+  const button = page.locator('button.ffc-embed-facade[data-ffc-embed^="https://www.canva.com/"]')
   await button.scrollIntoViewIfNeeded()
   await button.click()
   const frame = page.locator('iframe.ffc-embed-frame')
