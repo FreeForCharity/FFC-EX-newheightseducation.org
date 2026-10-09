@@ -54,6 +54,17 @@ export const STUBS = {
     '/school/about/nheg-groups/veterans-and-emergency-responders-support/',
     'this group',
   ],
+  ...Object.fromEntries(
+    ['donation-confirmation', 'donation-failed', 'donation-history', 'donor-dashboard-2'].map(
+      (s) => [`/${s}/`, ['/support-nheg/', 'Support NHEG']]
+    )
+  ),
+  '/volunteer-with-nheg/volunteer-portal/': ['/volunteer-with-nheg/', 'Volunteer with NHEG'],
+  '/community-news/heartfelt-thanks-special-offer-and-exciting-news-🌟/': [
+    '/community-news/heartfelt-thanks-special-offer-and-exciting-news-f0-9f-8c-9f/',
+    'this post',
+  ],
+  '/school/caldera_forms_preview/': ['/school/caldera-forms-preview/', 'this page'],
 }
 
 /** `to` relative to the directory `from` is served at. */
