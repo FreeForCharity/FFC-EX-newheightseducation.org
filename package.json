@@ -24,6 +24,7 @@
     "check:site-config": "node scripts/check-site-config.mjs",
     "check:rebrand": "node scripts/rebrand-check.mjs",
     "verify:build": "node scripts/verify-build.mjs",
+    "og:card": "node scripts/generate-og-card.mjs",
     "check:bundle": "node scripts/check-bundle-size.mjs",
     "check:assets": "node scripts/check-asset-origins.mjs",
     "smoke": "node scripts/smoke-check.mjs",
