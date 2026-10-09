@@ -763,13 +763,28 @@ jobs:
             if (isApex && !placeholder && donationSurfaces.length === 0 && donationScope !== 'none') {
               complianceFailures.push('No donation capability detected (no Zeffy, PayPal, or other donation provider found). Wire a Zeffy campaign, or declare {"donationScope": "none"} in .github/smoke.config.json (or set SMOKE_DONATION_SCOPE=none) only if this site intentionally takes no donations.');
             }
+            // <bot-challenge>
+            // A Cloudflare challenge of the CI runner is not a broken donation
+            // page: Zeffy began answering every non-browser request with one on
+            // 2026-10-09, while donors pass it in a browser. Only POSITIVE
+            // evidence counts (a cf-mitigated header or interstitial marker),
+            // never a bare 403, so a real error still fails. Same rule and
+            // markers as FFC-IN-freeforcharity.org's scripts/smoke-test.mjs.
+            const CF_CHALLENGE_MARKERS = ['just a moment', 'attention required', 'checking your browser', 'cf-chl', 'cdn-cgi/challenge', 'challenge-platform', 'enable javascript and cookies'];
+            const isBotChallenge = (cfMitigated, body) =>
+              /challenge/i.test(cfMitigated || '') || CF_CHALLENGE_MARKERS.some((m) => (body || '').toLowerCase().includes(m));
+            // </bot-challenge>
             // Every surface must be reachable, whatever the provider.
             for (const s of donationSurfaces) {
               if (s.kind === 'page') { donationChecks.push({ ...s, status: 200 }); continue; }
               try {
                 const r = await fetch(s.url.startsWith('http') ? s.url : 'https:' + s.url, { method: 'GET', redirect: 'follow' });
-                donationChecks.push({ ...s, status: r.status });
-                if (r.status >= 400) {
+                const body = r.status >= 400 ? await r.text().catch(() => '') : '';
+                const challenged = r.status >= 400 && isBotChallenge(r.headers.get('cf-mitigated'), body);
+                donationChecks.push({ ...s, status: r.status, ...(challenged ? { challenged: true } : {}) });
+                if (challenged) {
+                  console.log(`::warning::${s.provider} donation ${s.kind} skipped (Cloudflare challenge of CI runner, HTTP ${r.status}): ${s.url}`);
+                } else if (r.status >= 400) {
                   complianceFailures.push(`${s.provider} donation ${s.kind} unreachable (${r.status}): ${s.url}`);
                 }
               } catch (e) {

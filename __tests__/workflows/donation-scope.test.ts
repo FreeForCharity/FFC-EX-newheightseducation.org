@@ -342,3 +342,34 @@ describe('the contract has exactly one implementation', () => {
     expect(step).not.toMatch(/SCOPE.*tr '\[:upper:\]'/)
   })
 })
+
+describe('a Cloudflare challenge of the CI runner is not an unreachable donation page', () => {
+  const match = workflow.match(/\/\/ <bot-challenge>\n([\s\S]*?)\n[ \t]*\/\/ <\/bot-challenge>/)
+  if (!match) throw new Error('Could not find the <bot-challenge> block in post-deploy-smoke.yml')
+  const isBotChallenge = new Function(`${match[1]}\nreturn isBotChallenge`)() as (
+    cfMitigated: string | null,
+    body: string
+  ) => boolean
+
+  it('recognises the Cloudflare block page Zeffy serves to CI', () => {
+    const body = '<!DOCTYPE html><head><title>Attention Required! | Cloudflare</title>'
+    expect(isBotChallenge(null, body)).toBe(true)
+  })
+
+  it('recognises the managed challenge, by header or by body', () => {
+    expect(isBotChallenge('challenge', '')).toBe(true)
+    expect(isBotChallenge(null, '<title>Just a moment...</title>')).toBe(true)
+  })
+
+  it('still fails a bare 403 or a real error page', () => {
+    expect(isBotChallenge(null, '<h1>403 Forbidden</h1>')).toBe(false)
+    expect(isBotChallenge(null, '')).toBe(false)
+    expect(isBotChallenge(null, 'Campaign not found')).toBe(false)
+  })
+
+  it('records a challenged surface as a warning, not a compliance failure', () => {
+    const loop = workflow.slice(workflow.indexOf('// </bot-challenge>'))
+    expect(loop).toMatch(/if \(challenged\) \{\s*console\.log\(`::warning::/)
+    expect(loop).toMatch(/\} else if \(r\.status >= 400\) \{\s*complianceFailures\.push/)
+  })
+})
