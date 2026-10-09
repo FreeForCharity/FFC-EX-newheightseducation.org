@@ -38,6 +38,15 @@ The full list of every old address and where it goes is in [`url-map.csv`](./url
 
 Older moves the old site already made (renamed events, books and programs) carry on working too. They're listed in [`redirects.md`](./redirects.md).
 
+## Menu links that were already broken
+
+Some menu items on the old site pointed at pages that were never published, so they showed "page not found" there too. On the new site they open the home page (or the school home page) instead. We left them as they are, because only NHEG knows where they should go:
+
+- Advertise With NHEG (main menu)
+- School menu: NHEG Contests, Academic Contests, NHEG Forms, Adult Advisory Group, Learn Spanish, ESL For Spanish Speakers (coming soon), Color Guard, Baton Corps
+
+Tell us where each should point, or whether to remove it. These are tracked in [#22](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/22).
+
 ## What works differently now
 
 - **Forms** are email links to info@newheightseducation.org, as agreed.

@@ -162,18 +162,21 @@ if (process.argv[1] === import.meta.filename) {
           join(archive, host, new URL(p.url).pathname, 'index.html'),
         ].find(existsSync)
         const html = file ? readFileSync(file, 'utf8') : ''
-        return { url: p.url, live: { words: words(html), assets: assets(html) } }
+        return { url: p.url, archived: !!file, live: { words: words(html), assets: assets(html) } }
       })
     const common = {
       words: boilerplate(pages.map((p) => p.live.words)),
       assets: boilerplate(pages.map((p) => p.live.assets)),
     }
 
-    for (const { url, live } of pages) {
+    for (const { url, archived, live } of pages) {
       const { path, how } = mapUrl(url)
       const name = contentNameFor(path)
       let check
-      if (name === null) {
+      if (!archived) {
+        flagged++
+        check = 'NO ARCHIVED COPY'
+      } else if (name === null) {
         unmapped++
         check = 'NOT FOUND'
       } else if (how === 'stub' || !name) {
