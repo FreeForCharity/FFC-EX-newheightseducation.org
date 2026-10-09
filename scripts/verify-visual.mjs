@@ -39,10 +39,8 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { PNG } from 'pngjs'
-// pixelmatch is pinned to the v5 line deliberately: v7 is ESM-only, and under
-// the jest transform a module that imports it cannot be loaded at all -- so
-// pinning v7 would mean the comparison logic below could not be unit-tested.
-// The two versions take the same arguments.
+// pixelmatch 7 is ESM-only; jest.config.js lets the transform compile it so
+// the comparison logic below stays unit-tested.
 import pixelmatch from 'pixelmatch'
 // Reused rather than reimplemented. Two functions that disagree about which
 // routes came from the source would compare different populations and be
