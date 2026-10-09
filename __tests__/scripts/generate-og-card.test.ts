@@ -1,5 +1,6 @@
 import { spawnSync } from 'node:child_process'
 import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 /**
  * The generator is an ESM script, so these run it through node the way the
@@ -7,7 +8,8 @@ import { join } from 'node:path'
  * transform pipeline.
  */
 function evaluate(expression: string): unknown {
-  const script = join(process.cwd(), 'scripts', 'generate-og-card.mjs')
+  // A file: URL, since import() rejects C:\\ paths on Windows.
+  const script = pathToFileURL(join(process.cwd(), 'scripts', 'generate-og-card.mjs')).href
   const result = spawnSync(
     'node',
     [
@@ -58,6 +60,15 @@ describe('social card palette', () => {
     expect(palette.title).not.toBe('#ffffff')
   })
 
+  it('keeps every colour at 3:1 or more on mid-tone and theme backgrounds', () => {
+    for (const bg of ['#ff6900', '#1e5631', '#ffffff', '#0b1020', '#7f7f7f']) {
+      const ratios = evaluate(
+        `Object.values(m.cardPalette('${bg}')).map((c) => m.contrastRatio(c, '${bg}'))`
+      ) as number[]
+      for (const ratio of ratios) expect(ratio).toBeGreaterThanOrEqual(3)
+    }
+  })
+
   it('computes WCAG relative luminance', () => {
     expect(evaluate("m.relativeLuminance('#ffffff')")).toBeCloseTo(1, 5)
     expect(evaluate("m.relativeLuminance('#000000')")).toBeCloseTo(0, 5)
@@ -74,6 +85,15 @@ describe('social card palette', () => {
 })
 
 describe('committed social card', () => {
+  // Renders from the current siteConfig, so a broken generator or a card left
+  // stale after a config change both fail here.
+  it('matches a fresh render from siteConfig', () => {
+    const { readFileSync } = jest.requireActual<typeof import('node:fs')>('node:fs')
+    const committed = readFileSync(join(process.cwd(), 'public', 'og-card.png'))
+    const fresh = evaluate(`(await m.renderCard()).toString('base64')`) as string
+    expect(Buffer.from(fresh, 'base64').equals(committed)).toBe(true)
+  }, 60000)
+
   it('is the 1200x630 PNG every page shares', () => {
     const { readFileSync } = jest.requireActual<typeof import('node:fs')>('node:fs')
     const png = readFileSync(join(process.cwd(), 'public', 'og-card.png'))

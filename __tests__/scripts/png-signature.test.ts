@@ -1,13 +1,15 @@
 import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 /**
  * ESM module, so this runs it through node the way the other script tests do
  * rather than importing it into jest's transform pipeline.
  */
 function evaluate(expression: string): unknown {
-  const script = join(process.cwd(), 'scripts', 'png-signature.mjs')
+  // A file: URL, since import() rejects C:\\ paths on Windows.
+  const script = pathToFileURL(join(process.cwd(), 'scripts', 'png-signature.mjs')).href
   const result = spawnSync(
     'node',
     [

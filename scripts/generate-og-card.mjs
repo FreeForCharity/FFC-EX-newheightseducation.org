@@ -80,9 +80,25 @@ export function cardPalette(backgroundHex) {
   // contrast; above it dark text reads better (e.g. a brand colour like #ff6900).
   const isLight = luminance !== null && luminance > 0.179
 
-  return isLight
+  const palette = isLight
     ? { title: '#0b1020', accent: '#0f766e', body: '#374151', footnote: '#4b5563' }
     : { title: '#ffffff', accent: '#5eead4', body: '#c7cbe0', footnote: '#9aa1c0' }
+
+  // A mid-tone background can leave the softer colours below 3:1, the WCAG
+  // minimum for large text; those fall back to the title colour.
+  if (luminance === null) return palette
+  return Object.fromEntries(
+    Object.entries(palette).map(([key, hex]) => [
+      key,
+      contrastRatio(hex, backgroundHex) >= 3 ? hex : palette.title,
+    ])
+  )
+}
+
+/** WCAG contrast ratio of two `#rrggbb` colours. */
+export function contrastRatio(a, b) {
+  const [hi, lo] = [relativeLuminance(a), relativeLuminance(b)].sort((x, y) => y - x)
+  return (hi + 0.05) / (lo + 0.05)
 }
 
 const el = React.createElement
@@ -143,15 +159,14 @@ export function cardElement(siteConfig, description) {
   )
 }
 
-// Guarded so the exports above can be imported by a test without rendering.
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+/** Renders the card for the repo's siteConfig and returns the PNG bytes. */
+export async function renderCard() {
   // Imported from the TypeScript source rather than duplicated: the card must
   // say what the site says, and a second copy of the brand strings is exactly
-  // how the two drift apart.
+  // how the two drift apart. A file: URL, since import() rejects C:\ paths.
   const { siteConfig, cardDescription } = await import(
-    path.join(ROOT, 'src', 'lib', 'site.config.ts')
+    pathToFileURL(path.join(ROOT, 'src', 'lib', 'site.config.ts')).href
   )
-
   const response = new ImageResponse(cardElement(siteConfig, cardDescription()), {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
@@ -165,7 +180,12 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   if (!isPng(bytes)) {
     throw new Error('ImageResponse did not return a PNG')
   }
+  return bytes
+}
 
+// Guarded so the exports above can be imported by a test without rendering.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const bytes = await renderCard()
   await writeFile(OUTPUT, bytes)
   console.log(
     `Wrote ${path.relative(ROOT, OUTPUT)} (${CARD_WIDTH}x${CARD_HEIGHT}, ${bytes.length} bytes)`
