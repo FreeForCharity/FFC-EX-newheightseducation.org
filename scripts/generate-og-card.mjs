@@ -105,7 +105,8 @@ export function contrastRatio(a, b) {
 const el = React.createElement
 
 export function cardBackground(themeColor) {
-  return relativeLuminance(themeColor) === null ? '#0b1020' : themeColor
+  if (relativeLuminance(themeColor) === null) return '#0b1020'
+  return `#${String(themeColor).trim().replace(/^#/, '')}`
 }
 
 export function cardElement(siteConfig, description) {

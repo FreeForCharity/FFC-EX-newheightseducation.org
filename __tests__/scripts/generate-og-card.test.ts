@@ -58,6 +58,8 @@ describe('social card palette', () => {
   it('renders an unparseable colour on the dark background its palette assumes', () => {
     expect(evaluate("m.cardBackground('not-a-colour')")).toBe('#0b1020')
     expect(evaluate("m.cardBackground('#ffffff')")).toBe('#ffffff')
+    // site.config.ts accepts the hashless form; CSS does not.
+    expect(evaluate("m.cardBackground('ff6900')")).toBe('#ff6900')
   })
 
   it('uses dark text on a mid-luminance brand colour such as #ff6900', () => {
