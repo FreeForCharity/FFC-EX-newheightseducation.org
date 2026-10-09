@@ -766,24 +766,35 @@ jobs:
             // <bot-challenge>
             // A Cloudflare challenge of the CI runner is not a broken donation
             // page: Zeffy began answering every non-browser request with one on
-            // 2026-10-09, while donors pass it in a browser. Only POSITIVE
-            // evidence counts (a cf-mitigated header or interstitial marker),
-            // never a bare 403, so a real error still fails. Same rule and
-            // markers as FFC-IN-freeforcharity.org's scripts/smoke-test.mjs.
-            const CF_CHALLENGE_MARKERS = ['just a moment', 'attention required', 'checking your browser', 'cf-chl', 'cdn-cgi/challenge', 'challenge-platform', 'enable javascript and cookies'];
-            const isBotChallenge = (cfMitigated, body) =>
-              /challenge/i.test(cfMitigated || '') || CF_CHALLENGE_MARKERS.some((m) => (body || '').toLowerCase().includes(m));
+            // 2026-10-09, while donors pass it in a browser. It needs positive
+            // Cloudflare evidence on a 403/429/503: the exact cf-mitigated
+            // header, a challenge-only token, or an interstitial title together
+            // with Cloudflare branding. A bare 403, a provider's own error page
+            // or a Cloudflare 52x origin error still fails.
+            const CF_CHALLENGE_TOKENS = ['cf-chl', 'cdn-cgi/challenge', 'challenge-platform'];
+            const CF_INTERSTITIAL_TITLES = ['just a moment', 'attention required', 'checking your browser'];
+            const isBotChallenge = (status, cfMitigated, body) => {
+              if (![403, 429, 503].includes(status)) return false;
+              if (String(cfMitigated || '').trim().toLowerCase() === 'challenge') return true;
+              const b = String(body || '').toLowerCase();
+              if (CF_CHALLENGE_TOKENS.some((t) => b.includes(t))) return true;
+              return b.includes('cloudflare') && CF_INTERSTITIAL_TITLES.some((t) => b.includes(t));
+            };
+            // Workflow-command data: % CR LF must be escaped or a URL can inject commands.
+            const escapeCommandData = (v) => String(v).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
             // </bot-challenge>
             // Every surface must be reachable, whatever the provider.
             for (const s of donationSurfaces) {
               if (s.kind === 'page') { donationChecks.push({ ...s, status: 200 }); continue; }
               try {
-                const r = await fetch(s.url.startsWith('http') ? s.url : 'https:' + s.url, { method: 'GET', redirect: 'follow' });
+                // One deadline bounds both the request and the error-body read.
+                const signal = AbortSignal.timeout(20000);
+                const r = await fetch(s.url.startsWith('http') ? s.url : 'https:' + s.url, { method: 'GET', redirect: 'follow', signal });
                 const body = r.status >= 400 ? await r.text().catch(() => '') : '';
-                const challenged = r.status >= 400 && isBotChallenge(r.headers.get('cf-mitigated'), body);
+                const challenged = isBotChallenge(r.status, r.headers.get('cf-mitigated'), body);
                 donationChecks.push({ ...s, status: r.status, ...(challenged ? { challenged: true } : {}) });
                 if (challenged) {
-                  console.log(`::warning::${s.provider} donation ${s.kind} skipped (Cloudflare challenge of CI runner, HTTP ${r.status}): ${s.url}`);
+                  console.log(`::warning::${escapeCommandData(`${s.provider} donation ${s.kind} skipped (Cloudflare challenge of CI runner, HTTP ${r.status}): ${s.url}`)}`);
                 } else if (r.status >= 400) {
                   complianceFailures.push(`${s.provider} donation ${s.kind} unreachable (${r.status}): ${s.url}`);
                 }

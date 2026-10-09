@@ -346,30 +346,54 @@ describe('the contract has exactly one implementation', () => {
 describe('a Cloudflare challenge of the CI runner is not an unreachable donation page', () => {
   const match = workflow.match(/\/\/ <bot-challenge>\n([\s\S]*?)\n[ \t]*\/\/ <\/bot-challenge>/)
   if (!match) throw new Error('Could not find the <bot-challenge> block in post-deploy-smoke.yml')
-  const isBotChallenge = new Function(`${match[1]}\nreturn isBotChallenge`)() as (
-    cfMitigated: string | null,
-    body: string
-  ) => boolean
+  const { isBotChallenge, escapeCommandData } = new Function(
+    `${match[1]}\nreturn { isBotChallenge, escapeCommandData }`
+  )() as {
+    isBotChallenge: (status: number, cfMitigated: string | null, body: string) => boolean
+    escapeCommandData: (v: string) => string
+  }
+  const ZEFFY_BLOCK =
+    '<title>Attention Required! | Cloudflare</title><div class="cf-wrapper"><div class="cf-error-details">'
 
   it('recognises the Cloudflare block page Zeffy serves to CI', () => {
-    const body = '<!DOCTYPE html><head><title>Attention Required! | Cloudflare</title>'
-    expect(isBotChallenge(null, body)).toBe(true)
+    expect(isBotChallenge(403, null, ZEFFY_BLOCK)).toBe(true)
   })
 
-  it('recognises the managed challenge, by header or by body', () => {
-    expect(isBotChallenge('challenge', '')).toBe(true)
-    expect(isBotChallenge(null, '<title>Just a moment...</title>')).toBe(true)
+  it('recognises the managed challenge by its exact header or a challenge-only token', () => {
+    expect(isBotChallenge(403, 'challenge', '')).toBe(true)
+    expect(isBotChallenge(503, ' Challenge ', '')).toBe(true)
+    expect(
+      isBotChallenge(403, null, '<script src="/cdn-cgi/challenge-platform/h/b/orchestrate">')
+    ).toBe(true)
   })
 
-  it('still fails a bare 403 or a real error page', () => {
-    expect(isBotChallenge(null, '<h1>403 Forbidden</h1>')).toBe(false)
-    expect(isBotChallenge(null, '')).toBe(false)
-    expect(isBotChallenge(null, 'Campaign not found')).toBe(false)
+  it('still fails anything without positive Cloudflare evidence', () => {
+    expect(isBotChallenge(403, null, '<h1>403 Forbidden</h1>')).toBe(false)
+    expect(isBotChallenge(403, null, '')).toBe(false)
+    expect(isBotChallenge(404, null, 'Campaign not found')).toBe(false)
+    // A provider's own page using a generic phrase, without Cloudflare.
+    expect(isBotChallenge(403, null, '<title>Attention required: campaign closed</title>')).toBe(
+      false
+    )
+    // A header that merely contains the word.
+    expect(isBotChallenge(403, 'no-challenge', '')).toBe(false)
   })
 
-  it('records a challenged surface as a warning, not a compliance failure', () => {
+  it('still fails a Cloudflare origin error or a challenge-looking non-block status', () => {
+    expect(isBotChallenge(522, null, '<title>Connection timed out | Cloudflare</title>')).toBe(
+      false
+    )
+    expect(isBotChallenge(500, 'challenge', ZEFFY_BLOCK)).toBe(false)
+  })
+
+  it('escapes a URL so it cannot inject a workflow command', () => {
+    expect(escapeCommandData('a%b\r\n::stop-commands::x')).toBe('a%25b%0D%0A::stop-commands::x')
+  })
+
+  it('bounds the request and records a challenge as an escaped warning, not a failure', () => {
     const loop = workflow.slice(workflow.indexOf('// </bot-challenge>'))
-    expect(loop).toMatch(/if \(challenged\) \{\s*console\.log\(`::warning::/)
+    expect(loop).toContain('AbortSignal.timeout(')
+    expect(loop).toMatch(/if \(challenged\) \{\s*console\.log\(`::warning::\$\{escapeCommandData\(/)
     expect(loop).toMatch(/\} else if \(r\.status >= 400\) \{\s*complianceFailures\.push/)
   })
 })
