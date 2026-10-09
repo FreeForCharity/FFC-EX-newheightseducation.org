@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { siteConfig, siteUrl, twitterSite } from '@/lib/site.config'
-import { assetPath } from '@/lib/assetPath'
 
 // Page-level metadata builder. Next.js merges metadata shallowly per
 // top-level key, so a page that sets only `title`/`description` inherits the
@@ -11,13 +10,15 @@ import { assetPath } from '@/lib/assetPath'
 
 /**
  * The site's social-card image, shared by the root layout and every
- * pageMetadata() call so the OG image is defined exactly once.
+ * pageMetadata() call so the OG image is defined exactly once. Rendered from
+ * siteConfig by `pnpm og:card`. Absolute via siteUrl(): metadataBase already
+ * carries the basePath, so an assetPath() URL would repeat it.
  */
 export const OG_IMAGE = {
-  url: assetPath('/Images/og-image.png'),
+  url: siteUrl('/og-card.png'),
   width: 1200,
   height: 630,
-  alt: siteConfig.name,
+  alt: `${siteConfig.name}: ${siteConfig.tagline}`,
 }
 
 export function pageMetadata(input: {
