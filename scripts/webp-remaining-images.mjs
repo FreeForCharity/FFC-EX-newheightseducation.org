@@ -19,7 +19,7 @@ const ROOTS = [
   [join(ROOT, 'src', 'app', 'theme-backgrounds'), join(ROOT, 'src', 'app')],
   [join(ROOT, 'public', 'Images'), join(ROOT, 'public')],
 ]
-const KEEP = new Set(['Images/og-image.png'])
+const KEEP = new Set()
 const SOURCES = [
   join(ROOT, 'src', 'clone-content'),
   join(ROOT, 'public', '_ffc-css'),

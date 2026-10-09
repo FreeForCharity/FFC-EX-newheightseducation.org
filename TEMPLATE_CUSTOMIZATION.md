@@ -39,7 +39,7 @@ charity's name, URL, contact email, social links, etc.
 
 - **Hero/section copy** — lives in component files under `src/components/home-page/` and `src/data/`.
 - **GitHub Pages base path** — chosen automatically by `deploy.yml` and `lighthouse.yml` based on whether `public/CNAME` exists. With a CNAME the build uses an empty basePath (custom-domain root). Without a CNAME the build uses `/<repo-name>` for github.io subpath deploys. No manual workflow edit required when you rename the repo.
-- **OG/Twitter card image** — `layout.tsx` points at `/Images/og-image.png` (1200×630 landscape, the size social cards expect). To rebrand, replace `public/Images/og-image.png` with your own 1200×630 image (keep the filename). The square `/web-app-manifest-512x512.png` is still used separately for the PWA icon and the JSON-LD logo.
+- **OG/Twitter card image**: `public/og-card.png` (1200×630, the size social cards expect) is rendered from `siteConfig` by `pnpm og:card` (Node 24). After changing `name`, `tagline`, `shortDescription` (or `description` when it is empty), `ein`, `supportedBy.name` or `themeColor` in `src/lib/site.config.ts`, rerun it and commit the PNG; a test fails while the committed card is stale. The square `/web-app-manifest-512x512.png` is still used separately for the PWA icon and the JSON-LD logo.
 
 After editing, **run `pnpm run check:drift`** to confirm nothing else still
 references the old placeholder values.
