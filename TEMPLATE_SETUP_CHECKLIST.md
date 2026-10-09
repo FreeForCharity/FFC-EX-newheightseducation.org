@@ -137,11 +137,11 @@ You don't have to edit either workflow when you rename the repo.
       `assetPath('/Images/logo.webp')`. Swap `public/Images/logo.webp`
       for your charity's logo (keep the filename, or update the path in
       the header).
-- [ ] Replace the OG / Twitter card image — `layout.tsx` references
-      `/Images/og-image.png` (1200×630 landscape). Drop your own
-      1200×630 image at `public/Images/og-image.png` (keep the
-      filename). The square `web-app-manifest-512x512.png` stays as the
-      PWA / app icon and JSON-LD logo.
+- [ ] Regenerate the OG / Twitter card: after editing `name`, `tagline`,
+      `shortDescription` or `themeColor` in `src/lib/site.config.ts`,
+      run `pnpm og:card` (Node 24) to re-render `public/og-card.png`
+      (1200×630) and commit it. The square `web-app-manifest-512x512.png`
+      stays as the PWA / app icon and JSON-LD logo.
 - [ ] Replace branded images and SVGs under `public/Images/` and
       `public/Svgs/`
 - [ ] Update color scheme in `src/app/globals.css`

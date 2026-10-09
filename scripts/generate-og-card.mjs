@@ -24,16 +24,18 @@
  * also writes the file with NO extension (`out/opengraph-image`), which
  * GitHub Pages does not serve as image/png.
  *
- * A file in public/ referenced through assetPath() has neither problem: that
- * helper is this template's single answer to the base path and is already
- * what every other asset uses.
+ * A file in public/ referenced as an absolute siteUrl() has neither problem.
+ * Not assetPath(): metadataBase already carries the base path, so an
+ * assetPath() URL repeats it (src/lib/page-metadata.ts).
  *
  * The font is ImageResponse's bundled sans face -- deliberately no font file
- * and no network fetch, so this runs in CI and offline.
+ * and no network fetch, so this runs in CI and offline. It imports
+ * site.config.ts directly, so it needs a Node that strips TypeScript types
+ * (24, as CI uses).
  */
 import { writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import React from 'react'
 import { ImageResponse } from 'next/og.js'
 import { isPng } from './png-signature.mjs'
@@ -75,7 +77,7 @@ export function relativeLuminance(hex) {
 export function cardPalette(backgroundHex) {
   const luminance = relativeLuminance(backgroundHex)
   // 0.179 is the luminance at which dark and white text have equal WCAG
-  // contrast; above it dark text reads better (e.g. this site's #ff6900).
+  // contrast; above it dark text reads better (e.g. a brand colour like #ff6900).
   const isLight = luminance !== null && luminance > 0.179
 
   return isLight
@@ -142,7 +144,7 @@ export function cardElement(siteConfig, description) {
 }
 
 // Guarded so the exports above can be imported by a test without rendering.
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   // Imported from the TypeScript source rather than duplicated: the card must
   // say what the site says, and a second copy of the brand strings is exactly
   // how the two drift apart.
