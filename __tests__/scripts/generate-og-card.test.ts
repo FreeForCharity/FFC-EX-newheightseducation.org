@@ -55,6 +55,11 @@ describe('social card palette', () => {
     )
   })
 
+  it('renders an unparseable colour on the dark background its palette assumes', () => {
+    expect(evaluate("m.cardBackground('not-a-colour')")).toBe('#0b1020')
+    expect(evaluate("m.cardBackground('#ffffff')")).toBe('#ffffff')
+  })
+
   it('uses dark text on a mid-luminance brand colour such as #ff6900', () => {
     const palette = evaluate("m.cardPalette('#ff6900')") as Record<string, string>
     expect(palette.title).not.toBe('#ffffff')

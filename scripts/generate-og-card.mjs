@@ -2,8 +2,9 @@
 /**
  * Renders public/og-card.png -- the 1200x630 social card.
  *
- * Run after changing name, tagline, shortDescription or themeColor in
- * site.config.ts:
+ * Run after changing name, tagline, shortDescription (or description when it
+ * is empty), ein, supportedBy.name or themeColor in site.config.ts; the
+ * fresh-render test fails until the committed card matches:
  *
  *   pnpm run og:card
  *
@@ -103,8 +104,15 @@ export function contrastRatio(a, b) {
 
 const el = React.createElement
 
+export function cardBackground(themeColor) {
+  return relativeLuminance(themeColor) === null ? '#0b1020' : themeColor
+}
+
 export function cardElement(siteConfig, description) {
   const palette = cardPalette(siteConfig.themeColor)
+  // An unparseable themeColor renders on the dark background its palette
+  // assumes, rather than a transparent or failed card.
+  const background = cardBackground(siteConfig.themeColor)
 
   return el(
     'div',
@@ -116,7 +124,7 @@ export function cardElement(siteConfig, description) {
         width: '100%',
         height: '100%',
         padding: '72px 80px',
-        backgroundColor: siteConfig.themeColor,
+        backgroundColor: background,
         color: palette.title,
       },
     },
