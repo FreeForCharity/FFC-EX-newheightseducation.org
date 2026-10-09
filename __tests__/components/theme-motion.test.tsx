@@ -5,6 +5,8 @@ import ThemeMotion, {
   fadeOpacity,
   GO_TOP_AFTER,
   AST_TOP_AFTER,
+  REVEAL_ROOT_MARGIN,
+  JUPITER_STILL_MAX,
 } from '@/components/theme-motion'
 import reference from '../../tests/fixtures/live-motion-reference.json'
 
@@ -82,6 +84,40 @@ describe('ThemeMotion', () => {
     expect(document.querySelector('section')!.classList).toContain('ffc-parallax')
     expect(document.documentElement.hasAttribute('data-ffc-motion-ready')).toBe(true)
     Object.assign(window, { IntersectionObserver: observer })
+  })
+
+  it('reveals at 85% of the viewport, where the live waypoints fired', () => {
+    const observer = window.IntersectionObserver
+    const options: IntersectionObserverInit[] = []
+    Object.assign(window, {
+      IntersectionObserver: class {
+        constructor(_: unknown, init: IntersectionObserverInit) {
+          options.push(init)
+        }
+        observe() {}
+        disconnect() {}
+      },
+    })
+    document.documentElement.classList.add('ffc-motion')
+    render(<ThemeMotion />)
+    expect(REVEAL_ROOT_MARGIN).toBe(
+      `0px 0px -${Math.round((1 - reference.reveal.wpbOffset) * 100)}% 0px`
+    )
+    expect(options[0].rootMargin).toBe(REVEAL_ROOT_MARGIN)
+    Object.assign(window, { IntersectionObserver: observer })
+  })
+
+  it('shows Jupiter scroll-ins without animating at 1024px and below, as live', () => {
+    const matchMedia = window.matchMedia
+    window.matchMedia = ((query: string) => ({
+      matches: query === `(max-width: ${JUPITER_STILL_MAX}px)`,
+    })) as typeof window.matchMedia
+    document.documentElement.classList.add('ffc-motion')
+    render(<ThemeMotion />)
+    expect(JUPITER_STILL_MAX).toBe(reference.reveal.jupiterStillMaxWidth)
+    expect(document.querySelector('.mk-animate-element')).toBeNull()
+    expect(document.querySelector('.fade-in')!.classList).not.toContain('mk-in-viewport')
+    window.matchMedia = matchMedia
   })
 
   it('removes its parallax layer on unmount so a remount can rebuild it', () => {

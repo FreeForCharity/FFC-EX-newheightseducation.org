@@ -86,6 +86,22 @@
     "box": ".single-share-box",
     "openHeight": 56
   },
+  "shareAll": {
+    "measured": "2026-10-05, /publications/why-junk-food-is-bad-for-you/",
+    "networks": ["Facebook", "X (Twitter)", "LinkedIn", "Mix", "Email", "Print", "Copy Link"],
+    "mix": "https://mix.com/add?url={url}",
+    "email": "mailto:?body={url}&subject={title}",
+    "popup": {
+      "1440": [360, 330, 720, 241],
+      "390": [20, 238, 351, 425]
+    },
+    "networkSize": {
+      "1440": [228, 46],
+      "390": [315, 46]
+    },
+    "overlay": "rgba(202, 202, 202, 0.75), opacity 0.3s",
+    "copyLink": "second \"Copy link\" popup with the URL and a Copy button; Escape closes both"
+  },
   "lightbox": {
     "trigger": "a.mk-lightbox",
     "live": "fancybox overlay, page stays"
@@ -96,7 +112,21 @@
   },
   "productGallery": {
     "thumbnails": 6,
-    "zoom": true
+    "zoom": true,
+    "slide": {
+      "measured": "2026-10-05, /product/nheg-latte-mug/ at 1440",
+      "transitionMs": 500,
+      "easing": "cubic-bezier(0.795, -0.035, 0, 1)",
+      "wrapperXAfterThumb3": -946,
+      "viewportHeight": 473
+    },
+    "fadeInMs": 250,
+    "zoomButton": {
+      "offset": [405, 18],
+      "size": [50, 50],
+      "opacityAtRest": 0,
+      "opacityOnHover": 1
+    }
   },
   "sliders": {
     "servicesFlexslider": {
@@ -157,5 +187,28 @@
       "interval": 0,
       "arrows": true
     }
+  },
+  "reveal": {
+    "measured": "2026-10-05, live Bluehost site, Chromium",
+    "wpbOffset": 0.85,
+    "wpbNote": "vc-waypoints offset 85%: home button 3 not started with its top at 87% of the viewport, started at 84%, at 1440 and 390",
+    "wpbFadeInDown": "opacity 0 to 1 and translateY -50px to 0 over 1s",
+    "jupiterStillMaxWidth": 1024,
+    "jupiterNote": "Jupiter removes mk-animate-element at load at 1024px and below (touch or not), so the content shows without animating; 1025px and up animates"
+  },
+  "stickySidebar": {
+    "measured": "2026-10-05, /publications/books/ at 1440x900",
+    "top": 50,
+    "maxHeight": "calc(100vh - 50px)",
+    "sidebarTopAtScroll": {
+      "0": 161,
+      "200": 50,
+      "400": 50,
+      "600": 50,
+      "757": -85
+    },
+    "pageHeight": 1657,
+    "pageHeightNote": "document height on live; the export adds its own footer below .ffc-clone, so compare the clone",
+    "note": "757 is the bottom of the page; the sidebar scrolls inside itself (content 4266px tall)"
   }
 }

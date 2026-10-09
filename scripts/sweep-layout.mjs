@@ -7,19 +7,21 @@
  *
  *   node scripts/sweep-layout.mjs --export http://localhost:3000 --out <file> [--routes a,b]
  */
-import { readdirSync, writeFileSync } from 'node:fs'
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
+import { isRedirectStub } from './verify-build.mjs'
 
 export const VIEWPORTS = { desktop: 1440, tablet: 768, mobile: 390 }
 
-/** Routes of a built export: every directory holding an index.html. */
+/** Routes of a built export: every directory holding an index.html that is not a redirect. */
 export function routesOf(outDir) {
   const out = []
   const walk = (dir) => {
     for (const e of readdirSync(dir, { withFileTypes: true })) {
       if (e.isDirectory() && !e.name.startsWith('_') && e.name !== 'pagefind')
         walk(join(dir, e.name))
-      else if (e.name === 'index.html') out.push(`/${relative(outDir, dir)}/`.replace(/\/+/g, '/'))
+      else if (e.name === 'index.html' && !isRedirectStub(readFileSync(join(dir, e.name), 'utf8')))
+        out.push(`/${relative(outDir, dir)}/`.replace(/\/+/g, '/'))
     }
   }
   walk(outDir)

@@ -114,6 +114,18 @@ async function check(page, origin, route, width) {
             return a ? getComputedStyle(a).display !== 'none' : null
           })(),
           height: document.documentElement.scrollHeight,
+          sidebar: (() => {
+            const s = document.querySelector(
+              '.ffc-clone.ast-sticky-sidebar #secondary .sidebar-main'
+            )
+            if (!s || window.innerWidth < 922) return null
+            const room = s.parentElement.getBoundingClientRect().bottom - 50 - s.offsetHeight
+            return {
+              top: s.getBoundingClientRect().top,
+              room,
+              tall: s.offsetHeight > window.innerHeight - 50 + 1,
+            }
+          })(),
         }
       }, y)
     const top = await at(0)
@@ -141,6 +153,9 @@ async function check(page, origin, route, width) {
       issues.push('back-to-top (Jupiter): does not appear')
     if (top.astTop !== null && top.height > 1300 && (top.astTop || !mid.astTop))
       issues.push('back-to-top (Astra): does not appear')
+    if (mid.sidebar?.tall) issues.push('sticky sidebar: taller than the viewport')
+    if (mid.sidebar && mid.sidebar.room > 2 && Math.abs(mid.sidebar.top - 50) > 2)
+      issues.push('sticky sidebar: does not stick')
     issues.push(
       ...(await page.evaluate(() => {
         const found = []
@@ -179,6 +194,21 @@ async function check(page, origin, route, width) {
           const slide = document.querySelectorAll('.woocommerce-product-gallery__image')[1]
           if (!slide || getComputedStyle(slide).display === 'none')
             found.push('product gallery: a thumbnail does not switch the photo')
+        }
+        const gallery = document.querySelector('.ffc-clone .woocommerce-product-gallery')
+        if (gallery && !gallery.querySelector('.woocommerce-product-gallery__trigger'))
+          found.push('product gallery: no zoom button')
+        if (
+          document.querySelector(
+            '.ffc-clone .ss-social-icons-container a[href*="facebook.com/sharer"]'
+          )
+        ) {
+          const more = document.querySelector('.ffc-clone .ss-share-all')
+          more?.click()
+          const popup = document.querySelector('#ss-all-networks-popup')
+          if (!popup?.open) found.push('share-all: does not open')
+          popup?.close()
+          popup?.classList.remove('ss-visible', 'ss-animate-popup')
         }
         const title = document.querySelector('.ffc-clone .vc_toggle_title')
         if (title) {

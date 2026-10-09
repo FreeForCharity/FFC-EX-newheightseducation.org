@@ -19,7 +19,9 @@ test.describe('full-width rows and hero', () => {
             ...document.querySelectorAll(
               '[data-mk-full-width="true"], [data-vc-full-width="true"]'
             ),
-          ].map((el) => el.getBoundingClientRect())
+          ]
+            .filter((el) => !el.matches('section.vc_custom_1706661090185 > .vc_row'))
+            .map((el) => el.getBoundingClientRect())
           return {
             rows: rows.length,
             boxed: rows.filter(

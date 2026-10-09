@@ -1,7 +1,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { pathOf, verifyBuild } from '../../scripts/verify-build.mjs'
+import { isRedirectStub, pathOf, verifyBuild } from '../../scripts/verify-build.mjs'
 
 const ORIGIN = 'https://example.org'
 
@@ -52,6 +52,15 @@ describe('verifyBuild', () => {
     out = mkdtempSync(join(tmpdir(), 'verify-build-'))
   })
   afterEach(() => rmSync(out, { recursive: true, force: true }))
+
+  it('skips legacy URL redirect pages', async () => {
+    site()
+    write(
+      'cart/index.html',
+      '<meta name="robots" content="noindex" /><meta http-equiv="refresh" content="0; url=../shop/" />'
+    )
+    expect(await verifyBuild(out)).toMatchObject({ pages: 2, errors: [] })
+  })
 
   it('passes a root build and a subpath build', async () => {
     site()
@@ -133,5 +142,15 @@ describe('verifyBuild', () => {
     expect((await verifyBuild(out, '', 1024 * 1024)).errors).toEqual([
       'out/: 1.0 MB exceeds the 1.0 MB budget (Pages caps a site at 1 GB).',
     ])
+  })
+})
+
+describe('isRedirectStub', () => {
+  it('needs both a refresh and noindex', () => {
+    const refresh = '<meta http-equiv="refresh" content="0; url=../x/" />'
+    const noindex = '<meta name="robots" content="noindex" />'
+    expect(isRedirectStub(refresh + noindex)).toBe(true)
+    expect(isRedirectStub(refresh)).toBe(false)
+    expect(isRedirectStub(noindex)).toBe(false)
   })
 })

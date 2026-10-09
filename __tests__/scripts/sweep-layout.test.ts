@@ -18,6 +18,18 @@ describe('routesOf', () => {
     expect(routesOf(out)).toEqual(['/', '/about/', '/about/team/'])
     rmSync(out, { recursive: true, force: true })
   })
+
+  it('skips legacy URL redirect pages', () => {
+    const out = mkdtempSync(join(tmpdir(), 'sweep-'))
+    mkdirSync(join(out, 'cart'), { recursive: true })
+    writeFileSync(join(out, 'index.html'), '')
+    writeFileSync(
+      join(out, 'cart', 'index.html'),
+      '<meta name="robots" content="noindex" /><meta http-equiv="refresh" content="0; url=../shop/" />'
+    )
+    expect(routesOf(out)).toEqual(['/'])
+    rmSync(out, { recursive: true, force: true })
+  })
 })
 
 describe('groupFindings', () => {
