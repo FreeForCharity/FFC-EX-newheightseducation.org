@@ -68,7 +68,7 @@
     "jest-environment-jsdom": "^30.5.2",
     "linkinator": "^8.1.0",
     "pagefind": "^1.5.2",
-    "pixelmatch": "^5.3.0",
+    "pixelmatch": "^7.2.0",
     "pngjs": "^7.0.0",
     "prettier": "^3.9.9",
     "serve": "^14.2.6",
