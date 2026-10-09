@@ -39,5 +39,18 @@ const customJestConfig = {
   },
 }
 
+// pixelmatch 7 is ESM-only, so it joins next/jest's allow-list of packages
+// the transform compiles (next/jest skips the rest of node_modules).
+const ESM_PACKAGES = 'pixelmatch'
+
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig)
+module.exports = async () => {
+  const config = await createJestConfig(customJestConfig)()
+  config.transformIgnorePatterns = config.transformIgnorePatterns.map((pattern) =>
+    pattern.replaceAll('(geist|', `(geist|${ESM_PACKAGES}|`)
+  )
+  if (!config.transformIgnorePatterns.some((pattern) => pattern.includes(ESM_PACKAGES))) {
+    throw new Error('jest.config.js: next/jest changed its transformIgnorePatterns format')
+  }
+  return config
+}
