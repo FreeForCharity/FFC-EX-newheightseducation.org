@@ -23,7 +23,7 @@ We saved a copy of all four old websites on 2 October 2026: 998 pages. For every
 - it has a page on the new site, and
 - its words, pictures and documents (PDFs, Word files, spreadsheets) are there.
 
-All 998 pass. Along the way we found 56 document links that had lost their link during the move, mostly on the school's parent pages, the Chinese and Japanese course pages, and the EDGuide issues. We put them back.
+All 998 pass. Along the way we found 57 document links that had lost their link during the move, mostly on the school's parent pages, the Chinese and Japanese course pages, and the EDGuide issues. We put them back.
 
 The full list of every old address and where it goes is in [`url-map.csv`](./url-map.csv). It opens in Excel or Google Sheets.
 
@@ -47,7 +47,7 @@ Older moves the old site already made (renamed events, books and programs) carry
 
 ## One thing we need from you
 
-These 8 pages needed a password on the old site, so we never saw what was on them. On the new site they show only their title.
+These 8 pages needed a password on the old site, so we never saw what was on them. On the new site, the first 7 show only their title, and the Volunteer Portal sends visitors to Volunteer with NHEG.
 
 - School: Charter School Q&A
 - School: Japanese course student page
@@ -56,6 +56,6 @@ These 8 pages needed a password on the old site, so we never saw what was on the
 - School: Curriculum and Resources for Tutors
 - School: Baton Corps (private)
 - School: Elias Buchhop student page
-- Volunteer Portal (now sends visitors to Volunteer with NHEG)
+- Volunteer Portal
 
-The new site can't password-protect pages. For each one, should we remove it, or would you like to send us its content to publish openly?
+The new site can't password-protect pages. For each one, should we remove it, or would you like to send us its content to publish openly? We're tracking this in [#132](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/132).

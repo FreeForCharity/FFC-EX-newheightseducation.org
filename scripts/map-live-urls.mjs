@@ -31,7 +31,7 @@ export const HOSTS = {
 /** Words of features removed on purpose: share buttons, comments, forms, cart, password prompts. */
 export const REMOVED_WORDS = new Set(
   (
-    'feed networks mix email print copy link copied twitter company order your address will not published ' +
+    'via share linkedin facebook pinterest feed networks mix email print copy link copied twitter company order your address will not published ' +
     'required fields are marked type here name website save and browser the time comment comments ' +
     'reply cancel must logged post leave first last details let know how get back feel free ask ' +
     'question simply questions submit consent collecting contacting about choose option options select ' +
@@ -43,8 +43,6 @@ export const REMOVED_WORDS = new Set(
 
 /** Images a ruling removed: PayPal buttons (#55) and tracking pixels. */
 const REMOVED_ASSETS = new Set(['btn_buynowcc_lg', 'pixel'])
-
-export const MAX_MISSING_WORDS = 3
 
 /** The path an old URL lands on here, and how. */
 export function mapUrl(url, stubs = STUBS) {
@@ -66,36 +64,43 @@ export function contentNameFor(route, root = ROOT) {
 const stripTags = (html) =>
   html
     // Forms became email links (#53) and the store lost its option pickers (#54).
-    .replace(/<(script|style|noscript|svg|form|select)\b[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<(head|title|script|style|noscript|svg|form|select)\b[\s\S]*?<\/\1>/gi, ' ')
     // The dead Twitter feed (#45) and schema.org metadata nobody sees.
+    // Spreaker links became players; leftover shortcodes and bare URLs aren't content.
+    .replace(/<a class="spreaker-player"[^>]*>[^<]*<\/a>/gi, ' ')
+    .replace(/\[[a-z_]+ [^\]]*\]|https?:\/\/[^\s<"]+/gi, ' ')
     .replace(/<a [^>]*class="tweet-time"[\s\S]*?<\/a>|<span itemprop="[^"]*">[^<]*<\/span>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/&[#\w]+;/g, ' ')
 
+/** Each word and how many times it appears. */
 export function words(html) {
-  return new Set(
-    stripTags(html)
-      .toLowerCase()
-      .match(/[a-z0-9']{3,}/g) ?? []
-  )
+  const counts = new Map()
+  for (const w of stripTags(html)
+    .toLowerCase()
+    .match(/[a-z0-9']{3,}/g) ?? [])
+    counts.set(w, (counts.get(w) ?? 0) + 1)
+  return counts
 }
 
-/** File stems of images and PDFs, ignoring WordPress size suffixes and format. */
+/** File names, ignoring WordPress size suffixes and image format. */
 export function assets(html) {
   const stems = new Set()
   // Empty lightbox anchors show nothing.
   const visible = html.replace(/<a\s[^>]*>(?:&nbsp;|\s)*<\/a>/gi, ' ')
   for (const [, url] of visible.matchAll(
-    /(?<![.\w])(?:src|href|data-src)=["']([^"']+\.(?:jpe?g|png|gif|webp|pdf))["']/gi
+    /(?<![.\w])(?:src|href|data-src)=["']([^"']+\.(?:jpe?g|png|gif|webp|pdf|docx?|pptx?|xlsx?|xlsm|zip))["']/gi
   )) {
     const name = decodeURIComponent(url.split('/').pop()).toLowerCase()
     const file = RENAMED.get(name) ?? name
-    const pdf = file.endsWith('.pdf')
-    const stem = file
-      .replace(/\.\w+$/, '')
-      .replace(/-\d+x\d+$/, '')
-      .replace(/-scaled$/, '')
-    if (!stem.startsWith('dummy-transparent')) stems.add(pdf ? `${stem}.pdf` : stem)
+    const image = /\.(?:jpe?g|png|gif|webp)$/.test(file)
+    const stem = image
+      ? file
+          .replace(/\.\w+$/, '')
+          .replace(/-\d+x\d+$/, '')
+          .replace(/-scaled$/, '')
+      : file
+    if (!stem.startsWith('dummy-transparent')) stems.add(stem)
   }
   return stems
 }
@@ -103,15 +108,18 @@ export function assets(html) {
 /** Items on most of a host's pages: header, menus, footer. */
 export function boilerplate(sets, share = 0.5) {
   const counts = new Map()
-  for (const set of sets) for (const item of set) counts.set(item, (counts.get(item) ?? 0) + 1)
+  for (const set of sets)
+    for (const item of set.keys()) counts.set(item, (counts.get(item) ?? 0) + 1)
   return new Set([...counts].filter(([, n]) => n > sets.length * share).map(([item]) => item))
 }
 
 /** What of a live page's own content the export is missing. */
 export function compare(live, exported, common) {
-  const words = [...live.words].filter(
-    (w) => !common.words.has(w) && !exported.words.has(w) && !REMOVED_WORDS.has(w)
-  )
+  const words = [...live.words]
+    .filter(
+      ([w, n]) => !common.words.has(w) && !REMOVED_WORDS.has(w) && (exported.words.get(w) ?? 0) < n
+    )
+    .map(([w]) => w)
   const files = [...live.assets].filter(
     (a) => !common.assets.has(a) && !exported.assets.has(a) && !REMOVED_ASSETS.has(a)
   )
@@ -122,7 +130,7 @@ export function compare(live, exported, common) {
 export function verdict({ words, files }, path) {
   // Product option pictures went with the option pickers (#54).
   const lost = path.startsWith('/product/') ? [] : files
-  if (words.length <= MAX_MISSING_WORDS && !lost.length) return 'ok'
+  if (!words.length && !lost.length) return 'ok'
   return [
     'CHECK',
     words.length && `words: ${words.join(' ')}`,
@@ -186,5 +194,5 @@ if (process.argv[1] === import.meta.filename) {
   console.log(`${rows.length} live pages, ${unmapped} not found, ${flagged} to check`)
   for (const r of rows.filter((r) => r[3] !== 'ok' && !['redirect', 'app page'].includes(r[3])))
     console.log(`${r[1]}  ${r[3]}`)
-  process.exitCode = unmapped ? 1 : 0
+  process.exitCode = unmapped || flagged ? 1 : 0
 }

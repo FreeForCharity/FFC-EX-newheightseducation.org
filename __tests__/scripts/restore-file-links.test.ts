@@ -59,6 +59,12 @@ describe('restorePage', () => {
     expect(skipped).toEqual([`Gone (${url}/gone.pdf): no copy`])
   })
 
+  it('re-links bold link text', () => {
+    const live = `<p><a href="${url}/two.pdf"><strong>Two</strong></a></p>`
+    const { html } = restorePage(live, '<p><strong>Two</strong></p>', new Map(), exists)
+    expect(html).toBe(`<p><strong><a href="%%BASE%%/${LOCAL}/two.pdf">Two</a></strong></p>`)
+  })
+
   it('is idempotent', () => {
     const live = `<p><a href="${url}/two.pdf">Two</a></p>`
     const once = restorePage(live, '<p>Two</p>', new Map(), exists).html

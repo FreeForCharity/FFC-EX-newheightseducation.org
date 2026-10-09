@@ -14,7 +14,7 @@ import { HOSTS, contentNameFor, mapUrl } from './map-live-urls.mjs'
 const ROOT = join(import.meta.dirname, '..')
 const ARCHIVE_DOCS = join(ROOT, 'docs', 'live-archive', '2026-10-02')
 const FILE_LINK =
-  /<a\s([^>]*?)href="(https?:\/\/[^"]+\.(?:pdf|docx?|zip|pptx?|xlsx?|xlsm|jpe?g|png))"([^>]*)>([^<]+)<\/a>/gi
+  /<a\s([^>]*?)href="(https?:\/\/[^"]+\.(?:pdf|docx?|zip|pptx?|xlsx?|xlsm|jpe?g|png))"([^>]*)>(?:<strong>)?([^<]+)(?:<\/strong>)?<\/a>/gi
 
 /** Live file url -> where it is served from now, or null. */
 export function fileTarget(url, released, exists = (p) => existsSync(join(ROOT, 'public', p))) {
