@@ -324,6 +324,7 @@ body {
    what lets the vertical padding count toward the box at all. */
 .ffc-clone .et_pb_widget a,
 .ffc-clone .rsswidget {
+  box-sizing: border-box;
   display: inline-block;
   min-height: 24px;
   min-width: 24px;
@@ -924,7 +925,14 @@ html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
   outline-offset: 2px;
 }
 
+/* The page title's h1 became .ffc-h1, which lifted the theme's h1-h6 rule
+   to the same weight as .page-title and let it win; live sizes it by 120%. */
+.ffc-clone .page-title.ffc-h1 {
+  line-height: 120%;
+}
+
 .ffc-clone .mk-toggle-trigger[role='button'] {
+  box-sizing: border-box;
   display: inline-flex;
   min-width: 24px;
   min-height: 24px;
