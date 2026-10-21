@@ -14,19 +14,29 @@
   --ffc-radius-xl: 20px;
 }
 
-/* Tailwind's preflight makes media blocks; the captured themes were written
-   for the browser default, so an icon inside a button broke onto its own line
-   (#62). Theme rules still win: this sits in the base layer. */
+/* Tailwind's preflight makes media blocks and border-box sizing; the captured
+   themes were written for the browser defaults, so an icon inside a button
+   broke onto its own line (#62), Jupiter's padded dropdowns shrank and
+   wrapped, and form controls took the page font. `revert` returns them to
+   the browser defaults live had. Astra sets its own border-box, which live
+   relies on. Theme rules still win: this sits in the base layer. */
 @layer base {
   .ffc-clone :where(img, svg, video, canvas, audio, iframe, embed, object) {
     display: inline;
     vertical-align: baseline;
   }
-}
-
-/* Astra sizes the header button by its content; a shrinking flex row wrapped it. */
-.ffc-clone .ast-custom-button {
-  white-space: nowrap;
+  .ffc-clone:not(.wp-theme-astra),
+  .ffc-clone:not(.wp-theme-astra) :where(*, ::before, ::after) {
+    box-sizing: revert;
+  }
+  .ffc-clone:not(.wp-theme-astra) :where(button, input, select, optgroup, textarea) {
+    font: revert;
+    letter-spacing: revert;
+    color: revert;
+    border-radius: revert;
+    background-color: revert;
+    padding: revert;
+  }
 }
 
 html,
@@ -324,6 +334,7 @@ body {
    what lets the vertical padding count toward the box at all. */
 .ffc-clone .et_pb_widget a,
 .ffc-clone .rsswidget {
+  box-sizing: border-box;
   display: inline-block;
   min-height: 24px;
   min-width: 24px;
@@ -924,7 +935,14 @@ html.ffc-motion .ffc-clone .woocommerce-product-gallery:not(.ffc-gallery) {
   outline-offset: 2px;
 }
 
+/* The page title's h1 became .ffc-h1, which lifted the theme's h1-h6 rule
+   to the same weight as .page-title and let it win; live sizes it by 120%. */
+.ffc-clone .page-title.ffc-h1 {
+  line-height: 120%;
+}
+
 .ffc-clone .mk-toggle-trigger[role='button'] {
+  box-sizing: border-box;
   display: inline-flex;
   min-width: 24px;
   min-height: 24px;

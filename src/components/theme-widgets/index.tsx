@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { wireSliders } from './sliders'
 import { wireShareAll } from './share-all'
+import { wireAstraMenu } from './astra-menu'
 
 /**
  * The click behaviour the themes' scripts gave the live site (#106): Jupiter's
@@ -36,6 +37,13 @@ function wireShareBoxes() {
     trigger.setAttribute('aria-expanded', 'false')
     trigger.setAttribute('aria-controls', idFor(box, 'ffc-share'))
   })
+}
+
+/** Jupiter's script marks each nested parent item, which places its arrow at the right edge. */
+function markSubmenuParents() {
+  document
+    .querySelectorAll('.ffc-clone .main-navigation-ul .sub-menu > li.menu-item-has-children')
+    .forEach((li) => li.classList.add('with-menu'))
 }
 
 function setShare(trigger: HTMLElement, open: boolean) {
@@ -313,11 +321,13 @@ const pictureOf = (link: HTMLAnchorElement): Picture => ({
 export default function ThemeWidgets() {
   useEffect(() => {
     wireShareBoxes()
+    markSubmenuParents()
     wireToggles()
     wireTabs()
     const offGalleries = wireGalleries()
     const offSliders = wireSliders()
     const offShareAll = wireShareAll()
+    const offAstraMenu = wireAstraMenu()
     const viewer = lightbox()
 
     const onActivate = (event: Event) => {
@@ -436,6 +446,7 @@ export default function ThemeWidgets() {
       offGalleries()
       offSliders()
       offShareAll()
+      offAstraMenu?.()
     }
   }, [])
 
