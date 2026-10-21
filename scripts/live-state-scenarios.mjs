@@ -2,7 +2,9 @@
  * What compare-live-states.mjs drives on both sides. `state` entries are read
  * on each side (`ROOT` is the live body / the export's .ffc-clone), `clip` is
  * the region screenshotted and whose visible links must match, `maxDiff` the
- * pixel limit (omit it to record the score without judging it).
+ * pixel limit (omit it to record the score without judging it). `scroll: false`
+ * skips the lazy-image scroll pass, which leaves Jupiter's sticky header in a
+ * different state on each side.
  */
 const PUBLICATIONS = 'https://publications.newheightseducation.org'
 const SCHOOL = 'https://school.newheightseducation.org'
@@ -26,7 +28,7 @@ const ASTRA_PAGES = {
 const SMALL = ['phone', 'tablet']
 
 const astra = Object.entries(ASTRA_PAGES).flatMap(([name, url]) => {
-  const base = { url, clip: ['#masthead'], state: ASTRA_STATE, maxDiff: 0.005 }
+  const base = { url, clip: ['#masthead'], state: ASTRA_STATE, maxDiff: 0.005, scroll: false }
   return [
     { ...base, name: `${name}-menu-closed`, viewports: [...SMALL, 'desktop'] },
     { ...base, name: `${name}-menu-open`, viewports: SMALL, steps: [{ click: ASTRA_TOGGLE }] },
@@ -73,6 +75,7 @@ const jupiterDropdown = (name, url, ids) => {
       state: ids.map((i) => ({ sel: `#menu-item-${i} > .sub-menu` })),
       steps: ids.map((i) => ({ hover: `#menu-item-${i}` })),
       maxDiff: 0.005,
+      scroll: false,
     },
     {
       name: `${name}-phone`,
@@ -85,6 +88,7 @@ const jupiterDropdown = (name, url, ids) => {
         ...ids.map((i) => ({ click: `#responsive-menu-item-${i} > .mk-nav-arrow` })),
       ],
       maxDiff: 0.005,
+      scroll: false,
     },
   ]
 }

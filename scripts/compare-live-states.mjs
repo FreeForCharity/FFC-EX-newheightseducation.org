@@ -127,13 +127,14 @@ async function run(browser, scenario, side) {
     await page.addStyleTag({
       content: `html,body{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}`,
     })
-    await page.evaluate(async () => {
-      for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
-        window.scrollTo({ top: y, behavior: 'instant' })
-        await new Promise((r) => setTimeout(r, 100))
-      }
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    })
+    if (scenario.scroll !== false)
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
+          window.scrollTo({ top: y, behavior: 'instant' })
+          await new Promise((r) => setTimeout(r, 100))
+        }
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+      })
     await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {})
     await page.evaluate(
       (sels) =>
