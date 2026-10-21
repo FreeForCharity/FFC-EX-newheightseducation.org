@@ -179,14 +179,14 @@ async function run(browser, scenario, side) {
         height: bottom - Math.max(0, y),
       }
     }, scenario.clip ?? [])
-    const shot =
-      scenario.clip?.length && box
-        ? await page.screenshot({
-            clip: box,
-            fullPage: box.y + box.height > VIEWPORTS[scenario.viewport].height,
-            animations: 'disabled',
-          })
-        : await page.screenshot({ fullPage: !!scenario.fullPage, animations: 'disabled' })
+    if (scenario.clip?.length && !box) throw new Error(`nothing rendered for ${scenario.clip}`)
+    const shot = box
+      ? await page.screenshot({
+          clip: box,
+          fullPage: box.y + box.height > VIEWPORTS[scenario.viewport].height,
+          animations: 'disabled',
+        })
+      : await page.screenshot({ fullPage: !!scenario.fullPage, animations: 'disabled' })
     const paint = scenario.paintFrom
       ? await page.evaluate(
           ([sel, origin]) =>
@@ -227,6 +227,10 @@ async function main() {
   const { SCENARIOS } = await import('./live-state-scenarios.mjs')
   const only = arg('only')
   const runs = expandScenarios(SCENARIOS).filter((s) => !only || s.id.includes(only))
+  if (!runs.length) {
+    console.error(`no scenario matches --only ${only}`)
+    process.exit(2)
+  }
   const { chromium } = await import('@playwright/test')
   const browser = await chromium.launch()
   const report = []
@@ -240,8 +244,12 @@ async function main() {
         paintRects(right.png, rects)
       )
       const diffs = stateDiff(left.state, right.state)
-      const result = { id: scenario.id, ratio: Number(ratio.toFixed(4)), diffs }
-      result.verdict = verdict(result, scenario.maxDiff)
+      const result = {
+        id: scenario.id,
+        ratio: Number(ratio.toFixed(4)),
+        diffs,
+        verdict: verdict({ diffs, ratio }, scenario.maxDiff),
+      }
       report.push(result)
       writeFileSync(
         join(out, `${scenario.id}.side.png`),
