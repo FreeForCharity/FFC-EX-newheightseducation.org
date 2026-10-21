@@ -73,6 +73,22 @@ test.describe('parity with the live site (#62, #63)', () => {
     expect(Math.abs(box!.width - 70)).toBeLessThanOrEqual(2)
   })
 
+  test('checked links are no longer struck through (#26)', async ({ page }) => {
+    await page.goto('./school/online-courses/discounted-and-free-online-classes/')
+    await expect(page.locator('.ffc-clone a.broken_link')).toHaveCount(0)
+    const struck = await page
+      .locator('.ffc-clone a')
+      .evaluateAll(
+        (links) =>
+          links.filter((a) => getComputedStyle(a).textDecorationLine.includes('line-through'))
+            .length
+      )
+    expect(struck).toBe(0)
+    await expect(
+      page.locator('a[href="https://www.izzit.org/lessons/lesson.php?lesson=first_amendment"]')
+    ).toHaveCount(1)
+  })
+
   test('publication cards have bold titles and plain Read More links', async ({ page }) => {
     await page.goto('./publications/books/')
     const title = page.locator('article .entry-title a').first()
