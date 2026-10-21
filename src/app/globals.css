@@ -24,11 +24,6 @@
   }
 }
 
-/* Astra sizes the header button by its content; a shrinking flex row wrapped it. */
-.ffc-clone .ast-custom-button {
-  white-space: nowrap;
-}
-
 html,
 body {
   scroll-behavior: smooth !important;
