@@ -124,17 +124,17 @@ async function run(browser, scenario, side) {
   try {
     const res = await page.goto(urlFor(scenario, side), { waitUntil: 'load', timeout: 60000 })
     if (!res || res.status() >= 400) throw new Error(`HTTP ${res?.status()}`)
+    await page.addStyleTag({
+      content: `html,body{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}`,
+    })
     await page.evaluate(async () => {
       for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
-        window.scrollTo(0, y)
+        window.scrollTo({ top: y, behavior: 'instant' })
         await new Promise((r) => setTimeout(r, 100))
       }
-      window.scrollTo(0, 0)
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     })
     await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {})
-    await page.addStyleTag({
-      content: `*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}`,
-    })
     await page.evaluate(
       (sels) =>
         sels.forEach((s) =>
@@ -154,6 +154,13 @@ async function run(browser, scenario, side) {
     }
     if (!scenario.steps?.some((s) => s.hover)) await page.mouse.move(0, 0)
     await page.waitForTimeout(800)
+    await page.waitForFunction(
+      () =>
+        new Promise((resolve) => {
+          const y = window.scrollY
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve(window.scrollY === y)))
+        })
+    )
     const state = await snapshot(page, side, scenario)
     const box = await page.evaluate((sels) => {
       const rects = sels
@@ -174,7 +181,11 @@ async function run(browser, scenario, side) {
     }, scenario.clip ?? [])
     const shot =
       scenario.clip?.length && box
-        ? await page.screenshot({ clip: box, fullPage: true, animations: 'disabled' })
+        ? await page.screenshot({
+            clip: box,
+            fullPage: box.y + box.height > VIEWPORTS[scenario.viewport].height,
+            animations: 'disabled',
+          })
         : await page.screenshot({ fullPage: !!scenario.fullPage, animations: 'disabled' })
     const paint = scenario.paintFrom
       ? await page.evaluate(
@@ -224,7 +235,10 @@ async function main() {
       const left = await run(browser, scenario, a)
       const right = await run(browser, scenario, b)
       const rects = [...left.paint, ...right.paint]
-      const { ratio } = await diffRatio(paintRects(left.png, rects), paintRects(right.png, rects))
+      const { ratio, diff } = await diffRatio(
+        paintRects(left.png, rects),
+        paintRects(right.png, rects)
+      )
       const diffs = stateDiff(left.state, right.state)
       const result = { id: scenario.id, ratio: Number(ratio.toFixed(4)), diffs }
       result.verdict = verdict(result, scenario.maxDiff)
@@ -233,6 +247,8 @@ async function main() {
         join(out, `${scenario.id}.side.png`),
         PNG.sync.write(sideBySide(left.png, right.png))
       )
+      if (diff && ratio > 0)
+        writeFileSync(join(out, `${scenario.id}.diff.png`), PNG.sync.write(diff))
       console.log(`${result.verdict.padEnd(14)} ${result.id}  diff ${(ratio * 100).toFixed(2)}%`)
       for (const d of diffs)
         console.log(`    ${d.key}: ${JSON.stringify(d.a)} | ${JSON.stringify(d.b)}`)

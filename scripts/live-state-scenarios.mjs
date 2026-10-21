@@ -62,29 +62,32 @@ const astra = Object.entries(ASTRA_PAGES).flatMap(([name, url]) => {
   ]
 })
 
-const jupiterDropdown = (name, url, id) => [
-  {
-    name: `${name}-hover`,
-    url,
-    viewports: ['desktop'],
-    clip: [`#menu-item-${id}`, `#menu-item-${id} > .sub-menu`],
-    state: [{ sel: `#menu-item-${id} > .sub-menu` }],
-    steps: [{ hover: `#menu-item-${id}` }],
-    maxDiff: 0.005,
-  },
-  {
-    name: `${name}-phone`,
-    url,
-    viewports: ['phone'],
-    clip: ['.mk-responsive-wrap'],
-    state: [{ sel: '.mk-responsive-wrap' }, { sel: `#responsive-menu-item-${id} > .sub-menu` }],
-    steps: [
-      { click: '.mk-nav-responsive-link' },
-      { click: `#responsive-menu-item-${id} > .mk-nav-arrow` },
-    ],
-    maxDiff: 0.005,
-  },
-]
+const jupiterDropdown = (name, url, ids) => {
+  const id = ids.at(-1)
+  return [
+    {
+      name: `${name}-hover`,
+      url,
+      viewports: ['desktop'],
+      clip: [`#menu-item-${ids[0]}`, ...ids.map((i) => `#menu-item-${i} > .sub-menu`)],
+      state: ids.map((i) => ({ sel: `#menu-item-${i} > .sub-menu` })),
+      steps: ids.map((i) => ({ hover: `#menu-item-${i}` })),
+      maxDiff: 0.005,
+    },
+    {
+      name: `${name}-phone`,
+      url,
+      viewports: ['phone'],
+      clip: ['.mk-responsive-wrap'],
+      state: [{ sel: '.mk-responsive-wrap' }, { sel: `#responsive-menu-item-${id} > .sub-menu` }],
+      steps: [
+        { click: '.mk-nav-responsive-link' },
+        ...ids.map((i) => ({ click: `#responsive-menu-item-${i} > .mk-nav-arrow` })),
+      ],
+      maxDiff: 0.005,
+    },
+  ]
+}
 
 const COURSES = [
   'online-courses/',
@@ -127,7 +130,7 @@ const courses = COURSES.map((path) => ({
 
 export const SCENARIOS = [
   ...astra,
-  ...jupiterDropdown('apex-publications-menu', `${APEX}/contact-us/`, 13244),
-  ...jupiterDropdown('school-courses-menu', `${SCHOOL}/online-courses/`, 7482),
+  ...jupiterDropdown('apex-publications-menu', `${APEX}/contact-us/`, [13244]),
+  ...jupiterDropdown('school-courses-menu', `${SCHOOL}/online-courses/`, [189, 7482]),
   ...courses,
 ]
