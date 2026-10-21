@@ -39,6 +39,13 @@ function wireShareBoxes() {
   })
 }
 
+/** Jupiter's script marks each nested parent item, which places its arrow at the right edge. */
+function markSubmenuParents() {
+  document
+    .querySelectorAll('.ffc-clone .main-navigation-ul .sub-menu > li.menu-item-has-children')
+    .forEach((li) => li.classList.add('with-menu'))
+}
+
 function setShare(trigger: HTMLElement, open: boolean) {
   const box = document.getElementById(trigger.getAttribute('aria-controls') ?? '')
   if (!box) return
@@ -314,6 +321,7 @@ const pictureOf = (link: HTMLAnchorElement): Picture => ({
 export default function ThemeWidgets() {
   useEffect(() => {
     wireShareBoxes()
+    markSubmenuParents()
     wireToggles()
     wireTabs()
     const offGalleries = wireGalleries()
