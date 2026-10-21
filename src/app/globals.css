@@ -16,8 +16,10 @@
 
 /* Tailwind's preflight makes media blocks and border-box sizing; the captured
    themes were written for the browser defaults, so an icon inside a button
-   broke onto its own line (#62) and Jupiter's padded dropdowns shrank and
-   wrapped. Astra sets its own border-box, which live relies on. Theme rules still win: this sits in the base layer. */
+   broke onto its own line (#62), Jupiter's padded dropdowns shrank and
+   wrapped, and form controls took the page font. `revert` returns them to
+   the browser defaults live had. Astra sets its own border-box, which live
+   relies on. Theme rules still win: this sits in the base layer. */
 @layer base {
   .ffc-clone :where(img, svg, video, canvas, audio, iframe, embed, object) {
     display: inline;
@@ -25,7 +27,15 @@
   }
   .ffc-clone:not(.wp-theme-astra),
   .ffc-clone:not(.wp-theme-astra) :where(*, ::before, ::after) {
-    box-sizing: content-box;
+    box-sizing: revert;
+  }
+  .ffc-clone:not(.wp-theme-astra) :where(button, input, select, optgroup, textarea) {
+    font: revert;
+    letter-spacing: revert;
+    color: revert;
+    border-radius: revert;
+    background-color: revert;
+    padding: revert;
   }
 }
 

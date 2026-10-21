@@ -28,7 +28,7 @@ function buildHeader() {
             <ul class="main-header-menu">
               <li class="menu-item"><a href="/a/">About</a></li>
               <li class="menu-item menu-item-has-children">
-                <a href="/edguide/">NHEG EDGuide</a>
+                <a href="/edguide/" aria-expanded="false">NHEG EDGuide<span class="dropdown-menu-toggle" aria-expanded="false"></span></a>
                 <button class="ast-menu-toggle" aria-expanded="false"></button>
                 <ul class="sub-menu"><li><a href="/2025/">2025 NHEG EDGuide</a></li></ul>
               </li>
@@ -86,9 +86,12 @@ describe('wireAstraMenu', () => {
     expect(item.classList.contains('ast-submenu-expanded')).toBe(true)
     expect(arrow.getAttribute('aria-expanded')).toBe('true')
     expect(sub.style.display).toBe('block')
+    expect(item.querySelector(':scope > a')!.getAttribute('aria-expanded')).toBe('true')
+    expect(item.querySelector('.dropdown-menu-toggle')!.getAttribute('aria-expanded')).toBe('true')
     toggle.click()
     expect(item.classList.contains('ast-submenu-expanded')).toBe(false)
     expect(sub.style.display).toBe('none')
+    expect(item.querySelector(':scope > a')!.getAttribute('aria-expanded')).toBe('false')
   })
 
   it('closes on Escape and returns focus to the hamburger', () => {

@@ -70,6 +70,8 @@ describe('stateDiff and verdict', () => {
     expect(verdict({ diffs: [{ key: 'x' }], ratio: 0 }, 0.005)).toBe('state-mismatch')
     expect(verdict({ diffs: [], ratio: 0.2 }, 0.005)).toBe('pixels')
     expect(verdict({ diffs: [], ratio: 0.2 }, undefined)).toBe('ok')
+    expect(verdict({ diffs: [], ratio: 0, sameSize: false }, 0.005)).toBe('size')
+    expect(verdict({ diffs: [], ratio: 0, sameSize: false }, undefined)).toBe('ok')
   })
 })
 

@@ -21,6 +21,9 @@ export function wireAstraMenu(): Teardown | null {
     const item = arrow.parentElement!
     const sub = item.querySelector<HTMLElement>(':scope > .sub-menu')
     item.classList.toggle('ast-submenu-expanded', open)
+    item
+      .querySelectorAll(':scope > a, :scope > a .dropdown-menu-toggle')
+      .forEach((el) => el.setAttribute('aria-expanded', String(open)))
     arrow.setAttribute('aria-expanded', String(open))
     if (sub) sub.style.display = open ? 'block' : 'none'
   }

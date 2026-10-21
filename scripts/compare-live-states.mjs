@@ -54,9 +54,10 @@ export function stateDiff(a, b) {
   return out
 }
 
-/** Pass/fail for one run: state and links must match, pixels under the limit when one is set. */
-export function verdict({ diffs, ratio }, maxDiff) {
+/** Pass/fail for one run: state and links must match; with a limit, size must match and pixels stay under it. */
+export function verdict({ diffs, ratio, sameSize = true }, maxDiff) {
   if (diffs.length) return 'state-mismatch'
+  if (typeof maxDiff === 'number' && !sameSize) return 'size'
   if (typeof maxDiff === 'number' && ratio > maxDiff) return 'pixels'
   return 'ok'
 }
@@ -249,7 +250,15 @@ async function main() {
         id: scenario.id,
         ratio: Number(ratio.toFixed(4)),
         diffs,
-        verdict: verdict({ diffs, ratio }, scenario.maxDiff),
+        sizes: [left.png, right.png].map((png) => `${png.width}x${png.height}`),
+        verdict: verdict(
+          {
+            diffs,
+            ratio,
+            sameSize: left.png.width === right.png.width && left.png.height === right.png.height,
+          },
+          scenario.maxDiff
+        ),
       }
       report.push(result)
       writeFileSync(
