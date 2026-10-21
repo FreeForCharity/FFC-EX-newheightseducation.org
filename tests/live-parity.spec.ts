@@ -44,6 +44,35 @@ test.describe('parity with the live site (#62, #63)', () => {
     expect(Math.round((await players.nth(1).boundingBox())!.height)).toBe(350)
   })
 
+  test('the publications phone menu opens, expands EDGuide and closes, as live', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('./publications/')
+    const header = page.locator('#ast-mobile-header')
+    const top = header.locator('.main-header-menu > li > a')
+    const years = header.locator('.menu-item-has-children > .sub-menu a')
+    await expect(top.first()).toBeHidden()
+    await header.locator('.menu-toggle').click()
+    await expect(top).toHaveCount(6)
+    for (const link of await top.all()) await expect(link).toBeVisible()
+    await expect(years.first()).toBeHidden()
+    await header.locator('.menu-item-has-children > .ast-menu-toggle').click()
+    await expect(years).toHaveCount(12)
+    for (const link of await years.all()) await expect(link).toBeVisible()
+    await header.locator('.menu-toggle').click()
+    await expect(top.first()).toBeHidden()
+  })
+
+  // Measured on the live site on 2026-10-20: the button wraps to fit, as live.
+  test('the publications header button sits where live puts it at 1280px', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('./publications/')
+    const box = await page.locator('#ast-desktop-header .ast-custom-button').boundingBox()
+    expect(Math.abs(box!.x - 1175)).toBeLessThanOrEqual(2)
+    expect(Math.abs(box!.width - 70)).toBeLessThanOrEqual(2)
+  })
+
   test('publication cards have bold titles and plain Read More links', async ({ page }) => {
     await page.goto('./publications/books/')
     const title = page.locator('article .entry-title a').first()

@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { repairBodyClassCss } from '../../scripts/repair-body-class-css.mjs'
+import { RUNTIME_CLASSES, repairBodyClassCss } from '../../scripts/repair-body-class-css.mjs'
 
 const body = new Set(['home', 'ast-page-builder-template'])
 
@@ -22,6 +22,18 @@ describe('repairBodyClassCss', () => {
     expect(repairBodyClassCss(css, body)).toBe(css)
     const once = repairBodyClassCss('.ffc-clone .home .a{x:y}', body)
     expect(repairBodyClassCss(once, body)).toBe(once)
+  })
+
+  it("matches Astra's runtime classes on the root, also when compounded", () => {
+    const runtime = new Set(RUNTIME_CLASSES)
+    expect(
+      repairBodyClassCss(
+        '.ffc-clone .ast-main-header-nav-open.ast-header-break-point .ast-mobile-header-content{display:block}',
+        runtime
+      )
+    ).toBe(
+      ':is(.ffc-clone.ast-main-header-nav-open, .ffc-clone .ast-main-header-nav-open).ast-header-break-point .ast-mobile-header-content{display:block}'
+    )
   })
 
   it("drops Popup Maker's unguarded scrollbar padding", () => {

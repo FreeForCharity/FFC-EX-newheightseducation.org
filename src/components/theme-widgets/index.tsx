@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { wireSliders } from './sliders'
 import { wireShareAll } from './share-all'
+import { wireAstraMenu } from './astra-menu'
 
 /**
  * The click behaviour the themes' scripts gave the live site (#106): Jupiter's
@@ -318,6 +319,7 @@ export default function ThemeWidgets() {
     const offGalleries = wireGalleries()
     const offSliders = wireSliders()
     const offShareAll = wireShareAll()
+    const offAstraMenu = wireAstraMenu()
     const viewer = lightbox()
 
     const onActivate = (event: Event) => {
@@ -436,6 +438,7 @@ export default function ThemeWidgets() {
       offGalleries()
       offSliders()
       offShareAll()
+      offAstraMenu?.()
     }
   }, [])
 

@@ -19,6 +19,9 @@ const APP = join(ROOT, 'src', 'app')
 const CONTENT = join(ROOT, 'src', 'clone-content')
 const ASSETS = join(ROOT, 'public', '_ffc-assets')
 
+/** Classes Astra's script adds to the body at runtime, which no capture carries. */
+export const RUNTIME_CLASSES = ['ast-header-break-point', 'ast-main-header-nav-open']
+
 const POPUP_PADDING =
   /\.ffc-clone\s*>\s*:not\(\[aria-modal=["']?true["']?\]\)\s*\{\s*padding-right:\s*15px;?\s*\}/g
 
@@ -49,6 +52,7 @@ export function bodyClassesOf(files) {
 
 if (process.argv[1] === import.meta.filename) {
   const bodyClasses = bodyClassesOf(walk(APP, (n) => n === 'page.tsx'))
+  RUNTIME_CLASSES.forEach((c) => bodyClasses.add(c))
   let changed = 0
   for (const file of [
     ...walk(ASSETS, (n) => n.endsWith('.css')),
