@@ -71,6 +71,22 @@ export const STUBS = {
     'NHEG Groups',
   ],
   '/school/elias-buchhop-student-page/': ['/school/', 'the Learning Annex'],
+  '/school/parents/charter-school-families/charter-school-q-a/': [
+    '/school/parents/charter-school-families/',
+    'Charter School Families',
+  ],
+  '/school/online-courses/genealogy-dna-course/genealogy-and-dna-student-page/': [
+    '/school/online-courses/genealogy-dna-course/',
+    'the Genealogy & DNA Course',
+  ],
+  '/school/online-courses/learning-japanese/japanese-course-student-page/': [
+    '/school/online-courses/learning-japanese/',
+    'Learning Japanese',
+  ],
+  '/school/online-courses/learn-spanish-pre-recorded/spanish-student-page/': [
+    '/school/online-courses/',
+    'Online Courses',
+  ],
 }
 
 /** `to` relative to the directory `from` is served at. */
