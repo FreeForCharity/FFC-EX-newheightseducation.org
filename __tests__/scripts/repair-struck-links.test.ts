@@ -5,11 +5,12 @@ import { STRIKE_STYLE, parseTable, repairStruckLinks } from '../../scripts/repai
 
 const table = parseTable(
   [
-    'url,result,new_url,note',
+    'url,result,new_url,note,home_url',
     'https://old.example/a?x=1&y=2,moved,https://new.example/a?x=1&y=2,',
     'https://old.example/,moved,https://new.example/,text is the url',
     'https://ok.example/,works,,',
     'https://gone.example/,dead,,404',
+    'https://site.example/old/page,dead,,404,https://site.example/',
     'https://wall.example/,unverified,,"bot wall, kept"',
   ].join('\n')
 )
@@ -19,6 +20,9 @@ describe('parseTable', () => {
     expect(table.get('https://wall.example/')).toEqual({ result: 'unverified', newUrl: '' })
     expect(() => parseTable('url,result,new_url,note\nhttps://x/,maybe,,')).toThrow('bad result')
     expect(() => parseTable('url,result,new_url,note\nhttps://x/,moved,,')).toThrow('moved')
+    expect(() =>
+      parseTable('url,result,new_url,note,home_url\nhttps://x/,works,,,https://x/')
+    ).toThrow('home url')
   })
 })
 
@@ -45,6 +49,15 @@ describe('repairStruckLinks', () => {
       table
     )
     expect(html).toBe('<p>See <strong>Gone</strong>.</p>')
+    expect(counts.dead).toBe(1)
+  })
+
+  it('points a dead link whose site still loads at its home page', () => {
+    const { html, counts } = repairStruckLinks(
+      '<a href="https://site.example/old/page" target="_blank" class="broken_link">Site</a>',
+      table
+    )
+    expect(html).toBe('<a href="https://site.example/" target="_blank">Site</a>')
     expect(counts.dead).toBe(1)
   })
 
