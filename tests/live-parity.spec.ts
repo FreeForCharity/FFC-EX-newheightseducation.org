@@ -96,23 +96,6 @@ test.describe('parity with the live site (#62, #63)', () => {
     ).toBeVisible()
   })
 
-  test('the four password pages show their content, unlocked (#132)', async ({ page }) => {
-    const pages = [
-      ['./school/parents/charter-school-families/charter-school-q-a/', 'What is a Charter School?'],
-      [
-        './school/online-courses/genealogy-dna-course/genealogy-and-dna-student-page/',
-        'Welcome Genealogy and DNA Students',
-      ],
-      ['./school/online-courses/learning-japanese/japanese-course-student-page/', 'Hiragana'],
-      ['./school/online-courses/learn-spanish-pre-recorded/spanish-student-page/', 'ESL Syllabus'],
-    ]
-    for (const [path, text] of pages) {
-      await page.goto(path)
-      await expect(page.locator('h1')).not.toContainText('Protected')
-      await expect(page.locator('.theme-content').getByText(text).first()).toBeVisible()
-    }
-  })
-
   test('the private password pages send visitors to their parent pages (#132)', async ({
     page,
   }) => {
@@ -120,6 +103,22 @@ test.describe('parity with the live site (#62, #63)', () => {
       ['./school/teachers/curriculum-and-resources-for-tutors/', /\/school\/teachers\/$/],
       ['./school/about/nheg-groups/nheg-baton-corp/baton-corps-private/', /\/nheg-groups\/$/],
       ['./school/elias-buchhop-student-page/', /\/school\/$/],
+      [
+        './school/parents/charter-school-families/charter-school-q-a/',
+        /\/charter-school-families\/$/,
+      ],
+      [
+        './school/online-courses/genealogy-dna-course/genealogy-and-dna-student-page/',
+        /\/genealogy-dna-course\/$/,
+      ],
+      [
+        './school/online-courses/learning-japanese/japanese-course-student-page/',
+        /\/learning-japanese\/$/,
+      ],
+      [
+        './school/online-courses/learn-spanish-pre-recorded/spanish-student-page/',
+        /\/school\/online-courses\/$/,
+      ],
     ] as const
     for (const [path, target] of redirects) {
       await page.goto(path)

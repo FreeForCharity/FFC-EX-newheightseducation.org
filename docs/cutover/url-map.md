@@ -29,13 +29,13 @@ The full list of every old address and where it goes is in [`url-map.csv`](./url
 
 ## Pages that moved somewhere else
 
-| Old page                                                                     | Now goes to                              | Why                                        |
-| ---------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| Donor dashboard, donation history, donation confirmation and failed pages    | Support NHEG page                        | Donations now go through Zeffy             |
-| Cart and My Account                                                          | The store                                | Buying happens on NHEG's GiveBacks store   |
-| Volunteer Portal                                                             | Volunteer with NHEG                      | It was password protected (see below)      |
-| Curriculum and Resources for Tutors, Baton Corps (private), one student page | Their parent pages                       | They were password protected (see below)   |
-| "Heartfelt thanks... exciting news 🌟" post                                  | The same post, address without the emoji | Web addresses can't reliably hold an emoji |
+| Old page                                                                  | Now goes to                              | Why                                        |
+| ------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------ |
+| Donor dashboard, donation history, donation confirmation and failed pages | Support NHEG page                        | Donations now go through Zeffy             |
+| Cart and My Account                                                       | The store                                | Buying happens on NHEG's GiveBacks store   |
+| Volunteer Portal                                                          | Volunteer with NHEG                      | It was password protected (see below)      |
+| The 7 password pages on the Learning Annex                                | Their parent pages                       | They were password protected (see below)   |
+| "Heartfelt thanks... exciting news 🌟" post                               | The same post, address without the emoji | Web addresses can't reliably hold an emoji |
 
 Older moves the old site already made (renamed events, books and programs) carry on working too. They're listed in [`redirects.md`](./redirects.md).
 
@@ -57,15 +57,15 @@ Tell us where each should point, or whether to remove it. These are tracked in [
 
 ## Pages that had a password
 
-The new site can't password-protect pages. NHEG decided what happens to each of the 8 ([#132](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/132)):
+The new site can't password-protect pages. None of the 8 are published, at NHEG's request ([#132](https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/issues/132)):
 
-| Page                                        | On the new site                                                                                |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| School: Charter School Q&A                  | Published openly, with its full content                                                        |
-| School: Japanese course student page        | Published openly; its linked documents were checked for student information and none was found |
-| School: Spanish course student page         | Published openly; it holds no student information                                              |
-| School: Genealogy and DNA student page      | Published openly, with its full content                                                        |
-| School: Curriculum and Resources for Tutors | Not published; goes to the Teachers page. NHEG will share it another way                       |
-| School: Baton Corps (private)               | Not published; goes to NHEG Groups                                                             |
-| School: student page for one student        | Not published; goes to the Learning Annex home page                                            |
-| Volunteer Portal                            | Not published; goes to Volunteer with NHEG                                                     |
+| Page                                        | On the new site                                                          |
+| ------------------------------------------- | ------------------------------------------------------------------------ |
+| School: Charter School Q&A                  | Not published; goes to Charter School Families                           |
+| School: Japanese course student page        | Not published; goes to Learning Japanese                                 |
+| School: Spanish course student page         | Not published; goes to Online Courses                                    |
+| School: Genealogy and DNA student page      | Not published; goes to the Genealogy & DNA Course                        |
+| School: Curriculum and Resources for Tutors | Not published; goes to the Teachers page. NHEG will share it another way |
+| School: Baton Corps (private)               | Not published; goes to NHEG Groups                                       |
+| School: student page for one student        | Not published; goes to the Learning Annex home page                      |
+| Volunteer Portal                            | Not published; goes to Volunteer with NHEG                               |
