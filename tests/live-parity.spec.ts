@@ -89,6 +89,44 @@ test.describe('parity with the live site (#62, #63)', () => {
     ).toHaveCount(1)
   })
 
+  test('dead struck links point at their site home page (#26)', async ({ page }) => {
+    await page.goto('./school/parents/charter-school-families/ohio-charter-public-schools/')
+    await expect(
+      page.locator('.ffc-clone a[href="https://education.ohio.gov/"]').first()
+    ).toBeVisible()
+  })
+
+  test('the four password pages show their content, unlocked (#132)', async ({ page }) => {
+    const pages = [
+      ['./school/parents/charter-school-families/charter-school-q-a/', 'What is a Charter School?'],
+      [
+        './school/online-courses/genealogy-dna-course/genealogy-and-dna-student-page/',
+        'Welcome Genealogy and DNA Students',
+      ],
+      ['./school/online-courses/learning-japanese/japanese-course-student-page/', 'Hiragana'],
+      ['./school/online-courses/learn-spanish-pre-recorded/spanish-student-page/', 'ESL Syllabus'],
+    ]
+    for (const [path, text] of pages) {
+      await page.goto(path)
+      await expect(page.locator('h1')).not.toContainText('Protected')
+      await expect(page.locator('.theme-content').getByText(text).first()).toBeVisible()
+    }
+  })
+
+  test('the private password pages send visitors to their parent pages (#132)', async ({
+    page,
+  }) => {
+    const redirects = [
+      ['./school/teachers/curriculum-and-resources-for-tutors/', /\/school\/teachers\/$/],
+      ['./school/about/nheg-groups/nheg-baton-corp/baton-corps-private/', /\/nheg-groups\/$/],
+      ['./school/elias-buchhop-student-page/', /\/school\/$/],
+    ] as const
+    for (const [path, target] of redirects) {
+      await page.goto(path)
+      await expect(page).toHaveURL(target)
+    }
+  })
+
   test('publication cards have bold titles and plain Read More links', async ({ page }) => {
     await page.goto('./publications/books/')
     const title = page.locator('article .entry-title a').first()

@@ -6,11 +6,12 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Protected: Charter School Q & A - NHEG Online Learning Annex',
-    description: 'Protected: Charter School Q & A - NHEG Online Learning Annex',
+    title: 'Charter School Q & A - NHEG Online Learning Annex',
+    description:
+      'A charter school is an independently run public school granted greater flexibility in its operations in return for greater accountability for performance…',
     canonical: '/school/parents/charter-school-families/charter-school-q-a/',
   }),
-  title: { absolute: 'Protected: Charter School Q & A - NHEG Online Learning Annex' },
+  title: { absolute: 'Charter School Q & A - NHEG Online Learning Annex' },
 }
 
 export default function Page() {

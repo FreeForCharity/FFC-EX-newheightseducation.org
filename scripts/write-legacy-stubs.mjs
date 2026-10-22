@@ -65,6 +65,12 @@ export const STUBS = {
     'this post',
   ],
   '/school/caldera_forms_preview/': ['/school/caldera-forms-preview/', 'this page'],
+  '/school/teachers/curriculum-and-resources-for-tutors/': ['/school/teachers/', 'Teachers'],
+  '/school/about/nheg-groups/nheg-baton-corp/baton-corps-private/': [
+    '/school/about/nheg-groups/',
+    'NHEG Groups',
+  ],
+  '/school/elias-buchhop-student-page/': ['/school/', 'the Learning Annex'],
 }
 
 /** `to` relative to the directory `from` is served at. */

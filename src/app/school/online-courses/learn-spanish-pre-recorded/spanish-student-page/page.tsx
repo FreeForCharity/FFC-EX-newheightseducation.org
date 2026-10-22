@@ -6,11 +6,12 @@ import { pageMetadata } from '@/lib/page-metadata'
 // or the converter in FFC-Cloudflare-Automation, rather than this file.
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Protected: Spanish Student Page - NHEG Online Learning Annex',
-    description: 'Protected: Spanish Student Page - NHEG Online Learning Annex',
+    title: 'Spanish Student Page - NHEG Online Learning Annex',
+    description:
+      'Looking to learn Spanish or supplement classes you may be taking or teaching yourself to learn Spanish? Then sign up for NHEG’s Spanish course Today!',
     canonical: '/school/online-courses/learn-spanish-pre-recorded/spanish-student-page/',
   }),
-  title: { absolute: 'Protected: Spanish Student Page - NHEG Online Learning Annex' },
+  title: { absolute: 'Spanish Student Page - NHEG Online Learning Annex' },
 }
 
 export default function Page() {

@@ -20123,8 +20123,16 @@
     "sha256": "9be219e66918ce0221e6ddd851ee3773ff91d8de0e49d51885226acaf8f233d7",
     "source": null
   },
+  "school.newheightseducation.org/wp-content/uploads/2016/11/leah-sedy-150x150.webp": {
+    "sha256": "48f9a5ce9717aabd8933d0e0ad03729aae288979b925b44e11d185dd4fd2fba9",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2016/11/leah-sedy.jpg"
+  },
   "school.newheightseducation.org/wp-content/uploads/2016/11/leah-sedy-300x300.webp": {
     "sha256": "aa83e008dc49b22247e85c4a7f0ced361b3be554d6304b9071ddb72be091e9b8",
+    "source": "https://school.newheightseducation.org/wp-content/uploads/2016/11/leah-sedy.jpg"
+  },
+  "school.newheightseducation.org/wp-content/uploads/2016/11/leah-sedy.webp": {
+    "sha256": "810c8018b599423ac874841c89cbea22f1fc1b8c3bbfa63311b836bf6ab57492",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2016/11/leah-sedy.jpg"
   },
   "school.newheightseducation.org/wp-content/uploads/2017/02/david-lantz.webp": {
@@ -20922,6 +20930,18 @@
   "school.newheightseducation.org/wp-content/uploads/2019/05/clt-total-concordance-table-791x1024.webp": {
     "sha256": "28c3af242e0050fa4fa4cffde0a30d0e3644cc94343588dcb60dc2d3ee88b1be",
     "source": "https://school.newheightseducation.org/wp-content/uploads/2019/05/clt-total-concordance-table.jpg"
+  },
+  "school.newheightseducation.org/wp-content/uploads/2019/07/esl-150x150.webp": {
+    "sha256": "8b47b0012d1474da4b846a1fbb2230232e9ae6d0c68e1877cf6037cda42772f9",
+    "source": null
+  },
+  "school.newheightseducation.org/wp-content/uploads/2019/07/esl-300x300.webp": {
+    "sha256": "ad6a34fc3d1818ca034969a6334e18f75cebbfcc13191e9df470c2d749762c9e",
+    "source": null
+  },
+  "school.newheightseducation.org/wp-content/uploads/2019/07/esl.png": {
+    "sha256": "448d042634b66d6fec2c3d939c065b243614d15358785c164fc117ae51424b24",
+    "source": null
   },
   "school.newheightseducation.org/wp-content/uploads/2019/10/classic-learning-test-logo-771x771.webp": {
     "sha256": "b14f49afeed65e62f75f2eab4fbfdc5248ee3cbe2a67d1550444aea97094d88d",

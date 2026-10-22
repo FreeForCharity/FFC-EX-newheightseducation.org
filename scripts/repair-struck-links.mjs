@@ -4,7 +4,8 @@
  * (`class="broken_link"` plus a line-through style), and the export copied
  * them. Each link was checked in a browser on 2026-10-20; the results are in
  * docs/cutover/struck-links.csv. A moved link gets its new address, a dead one
- * is unlinked and keeps its text, and the strikethrough goes everywhere.
+ * points at its site's home page (the NHEG owner's call, 2026-10-21) or, when
+ * the whole site is gone, keeps only its text. The strikethrough goes everywhere.
  *
  *   node scripts/repair-struck-links.mjs
  */
@@ -23,17 +24,18 @@ const RESULTS = new Set(['moved', 'works', 'dead', 'unverified'])
 const unescape = (s) => s.replace(/&amp;/g, '&')
 const escape = (s) => s.replace(/&/g, '&amp;')
 
-/** `url,result,new_url,note` rows, keyed by url. */
+/** `url,result,new_url,note,home_url` rows, keyed by url. */
 export function parseTable(csv) {
   const table = new Map()
   for (const line of csv.trim().split('\n').slice(1)) {
     const cells = [...line.matchAll(/("(?:[^"]|"")*"|[^,]*)(?:,|$)/g)]
       .map((m) => m[1].replace(/^"|"$/g, '').replace(/""/g, '"'))
-      .slice(0, 4)
-    const [url, result, newUrl] = cells
+      .slice(0, 5)
+    const [url, result, newUrl, , homeUrl] = cells
     if (!RESULTS.has(result)) throw new Error(`bad result "${result}" for ${url}`)
     if (result === 'moved' && !newUrl) throw new Error(`moved without a new url: ${url}`)
-    table.set(url, { result, newUrl })
+    if (homeUrl && result !== 'dead') throw new Error(`home url on a ${result} link: ${url}`)
+    table.set(url, { result, newUrl: result === 'dead' ? homeUrl : newUrl })
   }
   return table
 }
@@ -51,8 +53,8 @@ export function repairStruckLinks(html, table) {
         const row = table.get(href)
         if (!row) throw new Error(`no result for struck link ${href}`)
         counts[row.result]++
-        if (row.result === 'dead') return inner
-        if (row.result !== 'moved') return `<a${attrs}>${inner}</a>`
+        if (row.result === 'dead' && !row.newUrl) return inner
+        if (row.result !== 'moved' && row.result !== 'dead') return `<a${attrs}>${inner}</a>`
         const text =
           inner.trim() === href || inner.trim() === escape(href) ? escape(row.newUrl) : inner
         return `<a${attrs.replace(/\bhref="[^"]*"/, `href="${escape(row.newUrl)}"`)}>${text}</a>`
