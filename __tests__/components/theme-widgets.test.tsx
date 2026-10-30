@@ -20,6 +20,7 @@ describe('ThemeWidgets', () => {
         </div>
         <a class="mk-lightbox" title="Civic" href="/a.webp">&nbsp;</a>
         <div class="vc_toggle"><div class="vc_toggle_title"><h3>Q</h3></div><div class="vc_toggle_content">A</div></div>
+        <div class="mk-toggle fancy-style"><span class="mk-toggle-title"><svg></svg>Letter from Ann</span><div class="mk-toggle-pane"><p>Dear Ms. Clark</p></div></div>
         <div class="woocommerce-tabs">
           <ul class="tabs">
             <li><a href="#tab-description">Description</a></li>
@@ -84,6 +85,35 @@ describe('ThemeWidgets', () => {
     fireEvent.click(button)
     expect(button.getAttribute('aria-expanded')).toBe('true')
     expect(document.querySelector('.vc_toggle')!.classList).toContain('vc_toggle_active')
+  })
+
+  it('opens and closes each Jupiter toggle pane from its title, by click or keyboard', () => {
+    const title = document.querySelector<HTMLElement>('.mk-toggle-title')!
+    const pane = document.querySelector<HTMLElement>('.mk-toggle-pane')!
+    expect(title.getAttribute('role')).toBe('button')
+    expect(title.getAttribute('tabindex')).toBe('0')
+    expect(title.getAttribute('aria-controls')).toBe(pane.id)
+    expect(title.getAttribute('aria-expanded')).toBe('false')
+    fireEvent.click(title)
+    expect(title.getAttribute('aria-expanded')).toBe('true')
+    expect(title.classList).toContain('active-toggle')
+    expect(pane.style.display).toBe('block')
+    const enter = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true })
+    title.dispatchEvent(enter)
+    expect(enter.defaultPrevented).toBe(true)
+    expect(title.getAttribute('aria-expanded')).toBe('false')
+    expect(title.classList).not.toContain('active-toggle')
+    expect(pane.style.display).toBe('')
+  })
+
+  it('leaves a Jupiter toggle with an empty title inert, since a button needs a name', () => {
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      '<div class="ffc-clone"><div class="mk-toggle"><span class="mk-toggle-title" id="empty"><svg></svg> </span><div class="mk-toggle-pane"></div></div></div>'
+    )
+    view.unmount()
+    render(<ThemeWidgets />)
+    expect(document.getElementById('empty')!.hasAttribute('role')).toBe(false)
   })
 
   it('makes the product tabs a tablist with one panel shown', () => {

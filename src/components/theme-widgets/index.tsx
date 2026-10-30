@@ -7,7 +7,7 @@ import { wireAstraMenu } from './astra-menu'
 
 /**
  * The click behaviour the themes' scripts gave the live site (#106): Jupiter's
- * blog share box and image lightbox, WooCommerce's product tabs and gallery,
+ * blog share box, toggles and image lightbox, WooCommerce's product tabs and gallery,
  * WPBakery's toggles, the themes' slideshows (./sliders) and SocialSnap's
  * share-all popup (./share-all). Without JavaScript the links still go to the image
  * and every tab panel stays readable.
@@ -78,6 +78,29 @@ function setToggle(button: HTMLElement, open: boolean) {
   button.closest('.vc_toggle')?.classList.toggle('vc_toggle_active', open)
   button.setAttribute('aria-expanded', String(open))
   if (content) content.style.display = open ? 'block' : 'none'
+}
+
+/**
+ * Jupiter's toggles, such as the letters on /who-we-are/letters-of-support/.
+ * The theme hides each pane until its title is clicked. The title itself
+ * becomes the button, because the theme's styles place its arrow as a direct
+ * child of the title. A title with no text stays inert, as a button needs a name.
+ */
+function wireJupiterToggles() {
+  document.querySelectorAll<HTMLElement>('.ffc-clone .mk-toggle-title').forEach((title) => {
+    const pane = title.parentElement?.querySelector<HTMLElement>(':scope > .mk-toggle-pane')
+    if (!pane || !title.textContent?.trim()) return
+    asButton(title)
+    title.setAttribute('aria-controls', idFor(pane, 'ffc-toggle'))
+    title.setAttribute('aria-expanded', String(title.classList.contains('active-toggle')))
+  })
+}
+
+function setJupiterToggle(title: HTMLElement, open: boolean) {
+  const pane = document.getElementById(title.getAttribute('aria-controls') ?? '')
+  title.classList.toggle('active-toggle', open)
+  title.setAttribute('aria-expanded', String(open))
+  if (pane) pane.style.display = open ? 'block' : ''
 }
 
 function wireTabs() {
@@ -323,6 +346,7 @@ export default function ThemeWidgets() {
     wireShareBoxes()
     markSubmenuParents()
     wireToggles()
+    wireJupiterToggles()
     wireTabs()
     const offGalleries = wireGalleries()
     const offSliders = wireSliders()
@@ -345,6 +369,12 @@ export default function ThemeWidgets() {
       if (title) {
         event.preventDefault()
         setToggle(title, title.getAttribute('aria-expanded') !== 'true')
+        return
+      }
+      const jupiter = target.closest<HTMLElement>('.ffc-clone .mk-toggle-title[aria-controls]')
+      if (jupiter) {
+        event.preventDefault()
+        setJupiterToggle(jupiter, jupiter.getAttribute('aria-expanded') !== 'true')
         return
       }
       const tab = target.closest<HTMLAnchorElement>('.ffc-clone a[role="tab"]')
@@ -407,7 +437,7 @@ export default function ThemeWidgets() {
       if (
         (event.key === 'Enter' || event.key === ' ') &&
         target.getAttribute('role') === 'button' &&
-        target.matches('.mk-toggle-trigger')
+        target.matches('.mk-toggle-trigger, .mk-toggle-title')
       ) {
         event.preventDefault()
         onActivate(event)
