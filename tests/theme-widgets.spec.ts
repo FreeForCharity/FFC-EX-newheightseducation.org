@@ -164,4 +164,18 @@ test.describe('theme widgets (#106)', () => {
     await expect(content).toBeVisible()
     await expect(title).toHaveAttribute('aria-expanded', 'true')
   })
+
+  test('each letter of support opens from its name, by click or keyboard', async ({ page }) => {
+    await page.goto('./who-we-are/letters-of-support/')
+    const title = page.getByRole('button', { name: 'Letter from Danielle Andersen' })
+    const letter = page.getByText('On behalf of the Fort Wayne Civic Theatre')
+    await expect(letter).toBeHidden()
+    await title.click()
+    await expect(letter).toBeVisible()
+    await expect(title).toHaveAttribute('aria-expanded', 'true')
+    await title.press('Enter')
+    await expect(letter).toBeHidden()
+    await expect(title).toHaveAttribute('aria-expanded', 'false')
+    expect(await blocking(page, '.mk-toggle')).toEqual([])
+  })
 })
