@@ -743,25 +743,9 @@
     "sha256": "550b339de445b7e3ec6a8bd18e1fa9011b5925682d2a04f380ac1a1247be215c",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/amazon-logo-white.jpg"
   },
-  "newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-large-300x150.webp": {
-    "sha256": "94c234895f7b536321d1b53555f567f4da6e2e00ff483a2fa37639837cd09363",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-large.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-large-330x165.webp": {
-    "sha256": "d6ac4784cf23d34aba735db048be7c2fef2f71548cc1fac7b797da719fd569bd",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-large.jpg"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-large.webp": {
-    "sha256": "b904f97069935a50c50d4ae1a7b7fb51e89822a8f5a48bd3fe1616aa449ae7ff",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-large.jpg"
-  },
   "newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-small.webp": {
     "sha256": "14eb960ce9245a37aebed46cabcb4abfa5601f4b09199c463315f947dac69c53",
     "source": "https://newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo-small.png"
-  },
-  "newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo.webp": {
-    "sha256": "29b8f66cca4fe318c63a75a10a1ba610f54ad0a6d9bddf118dddda317746e1e6",
-    "source": "https://newheightseducation.org/wp-content/uploads/2017/01/amazon-smile-logo.png"
   },
   "newheightseducation.org/wp-content/uploads/2017/01/americas-promise-alliance-logo-200x100.webp": {
     "sha256": "6574a29e6fbae793177bc22587ea40c8801f8b48e7c4cda043cec56b6fb5c463",
@@ -19919,18 +19903,6 @@
     "sha256": "69892ca77ad08fcda6b7085a53cc3d27004a102bd1144495bb66118394155e46",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/anchor-logo.jpg"
   },
-  "radio.newheightseducation.org/wp-content/uploads/2022/03/audea.webp": {
-    "sha256": "a3ab9dca4f60d063bed471b15c9423415060c23207c565bd8a513ebe9a455f98",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/audea.jpg"
-  },
-  "radio.newheightseducation.org/wp-content/uploads/2022/03/blubrry-logo.webp": {
-    "sha256": "ad33e43b91daa7e15f4f2c92aa89f9323eef5e9386604da22faf16083ea140ed",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/blubrry-logo.jpg"
-  },
-  "radio.newheightseducation.org/wp-content/uploads/2022/03/buzz-sprout-logo.webp": {
-    "sha256": "d00fbb75eeecc2db47bbdf615a765bffd9b6c1248d47f04c12a7105cc95fab9c",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/buzz-sprout-logo.jpg"
-  },
   "radio.newheightseducation.org/wp-content/uploads/2022/03/castbox-logo.webp": {
     "sha256": "ddede3d413d914d9afd063d2f609094fcec5b3ad4612dafaf1b91f4358d7f06d",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/castbox-logo.jpg"
@@ -19987,14 +19959,6 @@
     "sha256": "7511099a18438d9894db9380c88f8c6c227fb40d98b048ea6bc269ad8e99924b",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/podcast-index-logo.jpg"
   },
-  "radio.newheightseducation.org/wp-content/uploads/2022/03/radio-public-logo.webp": {
-    "sha256": "6e243d20ca306813d2119d832be0296e463f32eee40c7470660996e144ea7921",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/radio-public-logo.jpg"
-  },
-  "radio.newheightseducation.org/wp-content/uploads/2022/03/reason-logo.webp": {
-    "sha256": "dfebeb9c63813169dd9bfa8c83db722f812dd7cdfeba0e7472152bb0d35a7e5d",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/reason-logo.jpg"
-  },
   "radio.newheightseducation.org/wp-content/uploads/2022/03/subscribe-on-android-logo.webp": {
     "sha256": "53909f3d697b73c22ec9a2433088d5e300f9ed84a3f8074867235b4d8c59b407",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/03/subscribe-on-android-logo.jpg"
@@ -20015,10 +19979,6 @@
     "sha256": "c7ff428125ac668ab75cc6b123b0a425955804b7b8982cf556500762a0b28913",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/04/apple-podcast-logo.jpg"
   },
-  "radio.newheightseducation.org/wp-content/uploads/2022/04/breaker-logo.webp": {
-    "sha256": "fda1d7b2d37b4071ef9b4b9f9ba9e2198995e462ef3b8f73ebd4c23c83c12c4b",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/04/breaker-logo.jpg"
-  },
   "radio.newheightseducation.org/wp-content/uploads/2022/04/iheart-radio-logo.webp": {
     "sha256": "754eed653ac148bb0f3baf84ec502ebbd672571e6453d567d7ed079c6b8cbc85",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/04/iheart-radio-logo.jpg"
@@ -20034,10 +19994,6 @@
   "radio.newheightseducation.org/wp-content/uploads/2022/04/spotify-logo.webp": {
     "sha256": "b9d9ba86e7bb39ca2d7f53e65d08b68f4b0426a2fa59c292615c6270a9156667",
     "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/04/spotify-logo.jpg"
-  },
-  "radio.newheightseducation.org/wp-content/uploads/2022/04/stitcher-logo.webp": {
-    "sha256": "d2b8a6c744882da45a4ddb003cf2dd429770603e2889def386359fcd505e3d68",
-    "source": "https://radio.newheightseducation.org/wp-content/uploads/2022/04/stitcher-logo.jpg"
   },
   "radio.newheightseducation.org/wp-content/uploads/2022/04/tumblr-logo.webp": {
     "sha256": "f229b2e1d43a9e48970dcea63d01a3a5e3d2454d19503509b76edbe1048f9f4b",

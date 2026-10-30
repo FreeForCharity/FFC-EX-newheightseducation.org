@@ -184,7 +184,6 @@ export const siteConfig: SiteConfig = {
     { label: 'Facebook', href: 'https://www.facebook.com/NewHeightsEducationalGroup' },
     { label: 'X (Twitter)', href: 'https://x.com/newheightseduc1' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/10828913' },
-    { label: 'YouTube', href: 'https://www.youtube.com/channel/UCcpyuCpFRzYzfHYznRlX_zw' },
   ],
   ein: '26-1424214',
   // 2006, confirmed by NHEG (#25). 2014 was Free For Charity's own founding
