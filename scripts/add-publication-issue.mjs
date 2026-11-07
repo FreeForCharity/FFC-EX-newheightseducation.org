@@ -90,6 +90,16 @@ const longDate = (iso) =>
   })
 const hashOf = (buf) => createHash('sha256').update(buf).digest('hex')
 
+/** Temporary directories, removed when the process exits however it ends: they hold full-size PDF copies. */
+const temps = []
+function tempDir() {
+  if (!temps.length)
+    process.on('exit', () => temps.forEach((d) => rmSync(d, { recursive: true, force: true })))
+  const dir = mkdtempSync(join(tmpdir(), 'issue-'))
+  temps.push(dir)
+  return dir
+}
+
 const run = (cmd, args) =>
   execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
 
@@ -158,7 +168,7 @@ function releaseState(slug) {
  * with the right file counts as success.
  */
 function upload(pdf, slug, title, asset, sha256) {
-  const named = join(mkdtempSync(join(tmpdir(), 'issue-')), asset)
+  const named = join(tempDir(), asset)
   copyFileSync(pdf, named)
   try {
     run('gh', [
@@ -572,7 +582,7 @@ if (isMain) {
   }
 
   // ---- Prepare the PDF and cover in a work directory.
-  const work = mkdtempSync(join(tmpdir(), 'issue-'))
+  const work = tempDir()
   let file, sourceBytes, sourceSha256
   if (release) {
     // A release's file is what the pages must describe: a published one can't
