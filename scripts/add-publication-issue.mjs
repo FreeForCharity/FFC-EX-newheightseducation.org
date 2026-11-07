@@ -298,12 +298,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error(`slug must be kebab-case: ${slug}`)
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`date must be YYYY-MM-DD: ${date}`)
   // Only issues this script added may be regenerated; archived pages are never overwritten.
-  const addedSlugs = existsSync(MANIFEST)
-    ? JSON.parse(readFileSync(MANIFEST, 'utf8')).map((e) => e.slug)
-    : []
+  const prior = (existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : []).find(
+    (e) => e.slug === slug
+  )
   const taken =
     existsSync(join(BOOKS, `${slug}.html`)) || existsSync(join(APP_BOOKS, slug, 'page.tsx'))
-  if (taken && !addedSlugs.includes(slug)) {
+  if (taken && !prior) {
     throw new Error(`${slug} is an archived issue page; choose a new slug`)
   }
   if (!values['skip-upload'] && releaseExists(slug)) {
@@ -317,7 +317,14 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const file = compress(pdf, work)
   const bytes = statSync(file).size
   const sha256 = createHash('sha256').update(readFileSync(file)).digest('hex')
-  const asset = assetName(title)
+  // A published release can't change, so regenerating its pages must keep
+  // linking the exact file it holds, whatever the title now says.
+  if (prior && releaseExists(slug) && prior.sha256 !== sha256) {
+    throw new Error(
+      `${file} is not the PDF published for ${slug}; pass the published file (${prior.url}), or use a new slug for a corrected PDF`
+    )
+  }
+  const asset = prior?.asset ?? assetName(title)
   const url = releaseUrl(slug, asset)
   const cover = renderCover(file, slug, work)
   pinCover(cover)
