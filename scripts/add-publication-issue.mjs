@@ -46,12 +46,14 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   rmSync,
   statSync,
   writeFileSync,
 } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
 import { flipbookMarkup } from './static-flipbooks.mjs'
 import { imageSize } from './image-size.mjs'
@@ -512,7 +514,10 @@ function pinsWith(cover) {
   return JSON.stringify(sorted, null, 2) + '\n'
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Compared as resolved file URLs, so a checkout path with spaces or symlinks still runs.
+const isMain =
+  process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href
+if (isMain) {
   const { values } = parseArgs({
     options: {
       pdf: { type: 'string' },
