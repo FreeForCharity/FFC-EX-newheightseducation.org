@@ -297,7 +297,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error(`slug must be kebab-case: ${slug}`)
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`date must be YYYY-MM-DD: ${date}`)
-  if (slug === TEMPLATE) throw new Error('refusing to overwrite the template issue')
+  // Only issues this script added may be regenerated; archived pages are never overwritten.
+  const addedSlugs = existsSync(MANIFEST)
+    ? JSON.parse(readFileSync(MANIFEST, 'utf8')).map((e) => e.slug)
+    : []
+  const taken =
+    existsSync(join(BOOKS, `${slug}.html`)) || existsSync(join(APP_BOOKS, slug, 'page.tsx'))
+  if (taken && !addedSlugs.includes(slug)) {
+    throw new Error(`${slug} is an archived issue page; choose a new slug`)
+  }
   if (!values['skip-upload'] && releaseExists(slug)) {
     throw new Error(
       `release ${releaseTag(slug)} already exists and is immutable: pass --skip-upload to regenerate its pages, or use a new slug for a corrected PDF`
