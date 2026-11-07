@@ -7,6 +7,7 @@ import {
   archiveDescription,
   archiveTsx,
   astraControl,
+  cardOwner,
   cardsOf,
 } from '../../scripts/add-publication-issue.mjs'
 
@@ -116,6 +117,19 @@ describe('publications flipbooks', () => {
       const { cards } = cardsOf(html, tsxFile)
       expect(archiveTsx(tsx, n, max, archiveDescription(cards, n, max))).toBe(tsx)
     })
+  })
+
+  it('never treats an archived card as an added issue, whatever the slug', () => {
+    const cards = listingPages().flatMap((html) => cardsOf(html, 'archive').cards)
+    const archived = cards.find((c) => c.startsWith('<article\nclass="post-'))!
+    const id = archived.match(/^<article\nclass="(post-\d+) /)![1]
+    // Spelled like the archived card's class: refused, never overwritten.
+    expect(cardOwner(archived, id)).toBe('clash')
+    expect(cardOwner(archived, id.replace('post-', ''))).toBeNull()
+    for (const a of added) {
+      const own = cards.filter((c) => cardOwner(c, a.slug) === 'issue')
+      expect(own).toHaveLength(1)
+    }
   })
 
   it('keeps every archive page at the live length, so added issues shift cards onward', () => {

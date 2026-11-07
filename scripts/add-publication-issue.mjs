@@ -415,6 +415,17 @@ export function archiveTsx(tsx, n, max, description) {
 }
 
 /**
+ * Whose a listing card is, for `slug`: 'issue' when it has both the class and
+ * the id this script writes, 'clash' when it shares only the class (archived
+ * cards use "post-<id>" for their class and id, so a slug like "post-6637"
+ * would otherwise replace one), or null.
+ */
+export function cardOwner(card, slug) {
+  if (!card.startsWith(`<article\nclass="${slug} `)) return null
+  return card.includes(` id="post-${slug}" `) ? 'issue' : 'clash'
+}
+
+/**
  * Archive page changes. A new issue goes first on page 1 and each full page
  * passes its last card to the next, so every page keeps the live site's
  * length; when the last page overflows, the next page is created from it. An
@@ -430,7 +441,10 @@ function listingChanges(slug, title, date) {
     if (!ASTRA_CONTROL.test(html)) throw new Error(`${pageHtmlFile(n)}: no pagination control`)
     return { n, html, tsx: readFileSync(pageTsxFile(n), 'utf8'), ...cardsOf(html, pageHtmlFile(n)) }
   })
-  const mine = (c) => c.startsWith(`<article\nclass="${slug} `)
+  const mine = (c) => cardOwner(c, slug) === 'issue'
+  if (pages.some((p) => p.cards.some((c) => cardOwner(c, slug) === 'clash'))) {
+    throw new Error(`${slug} collides with an archived listing card; choose a new slug`)
+  }
   const listed = pages.find((p) => p.cards.some(mine))
   if (listed) {
     listed.cards = listed.cards.map((c) => (mine(c) ? card : c))
