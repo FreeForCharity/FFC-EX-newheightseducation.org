@@ -16,17 +16,20 @@
  *   2. renders page 1 to a 600 px wide WebP cover in dflip-thumbs/;
  *   3. writes the issue page, cloned from the newest captured issue page;
  *   4. lists it first on /publications/books/, shifting one card from each
- *      archive page onto the next so every page keeps the live site's length,
- *      and puts it at the top of every "Recent Posts" sidebar;
+ *      archive page onto the next so every page keeps the live site's length
+ *      (adding /page/N+1/ when the last page overflows, and keeping every
+ *      page's pagination control, title and description in step), and puts it
+ *      at the top of every "Recent Posts" sidebar;
  *   5. records it in src/data/publication-issues.json, which the tests check,
  *      and pins the new cover's hash in __tests__/assets/media-rendered.json; and
  *   6. publishes the PDF as its own release, `publication-<slug>`, since issue
  *      PDFs are too large for GitHub Pages to serve (#51). Releases in this
  *      repo are immutable, so each is created with its PDF attached.
  *
- * Every change is computed and checked before any file is written, and the
- * release is published last, so a failure leaves neither partial files nor
- * anything public behind, and the same command can simply be retried.
+ * Every change is computed and checked before any file is written. Files are
+ * then written and the release published last; if either fails, every file is
+ * restored and an unpublished draft release is deleted, so the repository is
+ * left as it was and the same command can simply be retried.
  *
  * Requires `gs`, `pdfinfo`, `pdftoppm`, `cwebp` and an authenticated `gh`.
  * Re-running with the same slug rebuilds that issue's pages in place from the
@@ -43,6 +46,7 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  rmSync,
   statSync,
   writeFileSync,
 } from 'node:fs'
@@ -129,23 +133,110 @@ function releaseExists(slug) {
   }
 }
 
-function upload(pdf, slug, title, asset) {
-  const named = join(mkdtempSync(join(tmpdir(), 'issue-')), asset)
-  copyFileSync(pdf, named)
-  // Passing the file to `create` uploads it before the release is published.
-  run('gh', [
+/** The release's draft state and asset digests, or null when there is none. */
+function releaseState(slug) {
+  if (!releaseExists(slug)) return null
+  const out = run('gh', [
     'release',
-    'create',
+    'view',
     releaseTag(slug),
-    named,
     '--repo',
     REPO,
-    '--title',
-    `${title} (PDF)`,
-    '--notes',
-    `PDF for ${title}, added with scripts/add-publication-issue.mjs.`,
-    '--latest=false',
+    '--json',
+    'isDraft,assets',
   ])
+  const { isDraft, assets } = JSON.parse(out)
+  return { isDraft, digests: Object.fromEntries(assets.map((a) => [a.name, a.digest ?? null])) }
+}
+
+/**
+ * Publishes the issue's release with its PDF. `gh release create` uploads to a
+ * draft and then publishes it; if it fails part way, a draft (never public) is
+ * deleted so the run can be retried, while a release that did get published
+ * with the right file counts as success.
+ */
+function upload(pdf, slug, title, asset, sha256) {
+  const named = join(mkdtempSync(join(tmpdir(), 'issue-')), asset)
+  copyFileSync(pdf, named)
+  try {
+    run('gh', [
+      'release',
+      'create',
+      releaseTag(slug),
+      named,
+      '--repo',
+      REPO,
+      '--title',
+      `${title} (PDF)`,
+      '--notes',
+      `PDF for ${title}, added with scripts/add-publication-issue.mjs.`,
+      '--latest=false',
+    ])
+  } catch (err) {
+    const state = releaseState(slug)
+    if (state && !state.isDraft && state.digests[asset] === `sha256:${sha256}`) return
+    if (state?.isDraft) {
+      run('gh', ['release', 'delete', releaseTag(slug), '--repo', REPO, '--yes', '--cleanup-tag'])
+    } else if (state) {
+      throw new Error(
+        `release ${releaseTag(slug)} was published without ${asset} as expected; fix it by hand before retrying (${String(err.stderr ?? err.message).trim()})`
+      )
+    }
+    throw new Error(
+      `publishing ${releaseTag(slug)} failed: ${String(err.stderr ?? err.message).trim()}`
+    )
+  }
+}
+
+/**
+ * Writes every file, then runs `publish`. If anything fails, each file is put
+ * back as it was and directories this run created are removed, so the
+ * repository is left exactly as before and the same command can be retried.
+ */
+function applyWrites(writes, publish) {
+  const before = new Map([...writes.keys()].map((f) => [f, existsSync(f) ? readFileSync(f) : null]))
+  const written = []
+  const created = []
+  try {
+    for (const [f, data] of writes) {
+      let dir = dirname(f)
+      let top = null
+      while (!existsSync(dir)) {
+        top = dir
+        dir = dirname(dir)
+      }
+      if (top) created.push(top)
+      mkdirSync(dirname(f), { recursive: true })
+      // Recorded first: a write that fails part way may still have changed the file.
+      written.push(f)
+      writeFileSync(f, data)
+    }
+    publish()
+  } catch (err) {
+    // Undo every step even if one fails, then report what could not be undone.
+    const stuck = []
+    const attempt = (what, fn) => {
+      try {
+        fn()
+      } catch (e) {
+        stuck.push(`${what}: ${e.message}`)
+      }
+    }
+    for (const f of written.reverse()) {
+      const data = before.get(f)
+      const unchanged = data !== null && existsSync(f) && readFileSync(f).equals(data)
+      if (!unchanged) {
+        attempt(f, () => (data === null ? rmSync(f, { force: true }) : writeFileSync(f, data)))
+      }
+    }
+    for (const dir of created.reverse()) {
+      attempt(dir, () => rmSync(dir, { recursive: true, force: true }))
+    }
+    if (stuck.length) {
+      err.message += `\nCould not undo:\n  ${stuck.join('\n  ')}\nRestore these by hand (git checkout / git clean) before retrying.`
+    }
+    throw err
+  }
 }
 
 /** The template issue's page component with only the issue's identity swapped. */
@@ -203,22 +294,87 @@ class="${slug} dflip type-dflip status-publish hentry ast-grid-common-col ast-fu
 `
 }
 
-/** The archive pages in order: /publications/books/, then /books/page/2/ and on. */
-function listingPages() {
+const ARCHIVE = 'publications/books'
+const pageHtmlFile = (n) =>
+  n === 1 ? join(CONTENT, `${ARCHIVE}.html`) : join(BOOKS, 'page', `${n}.html`)
+const pageTsxFile = (n) =>
+  n === 1 ? join(APP_BOOKS, 'page.tsx') : join(APP_BOOKS, 'page', String(n), 'page.tsx')
+const pageHref = (n) => (n === 1 ? `%%BASE%%/${ARCHIVE}/` : `%%BASE%%/${ARCHIVE}/page/${n}/`)
+
+/** How many archive pages there are: /publications/books/, then /page/2/ to /page/N/. */
+function archivePageCount() {
   const numbered = readdirSync(join(BOOKS, 'page'))
     .map((f) => Number(f.match(/^(\d+)\.html$/)?.[1]))
     .filter(Boolean)
     .sort((a, b) => a - b)
-  return [
-    join(CONTENT, 'publications/books.html'),
-    ...numbered.map((n) => join(BOOKS, 'page', `${n}.html`)),
-  ]
+  if (numbered.some((n, i) => n !== i + 2)) throw new Error('archive pages are not numbered 2..N')
+  return numbered.length + 1
+}
+
+/**
+ * Astra's archive control as WordPress's paginate_links renders it, one page
+ * either side of the current one. It reproduces every captured control.
+ */
+export function astraControl(n, max) {
+  const out = []
+  if (n > 1) {
+    out.push(
+      `<a class="prev page-numbers" aria-label="Previous page" href="${pageHref(n - 1)}"><span class="ast-left-arrow" aria-hidden="true">&larr;</span> Previous</a>`
+    )
+  }
+  let dots = false
+  for (let i = 1; i <= max; i++) {
+    if (i === n) {
+      out.push(`<span aria-current="page" class="page-numbers current">${i}</span>`)
+      dots = true
+    } else if (i === 1 || i === max || Math.abs(i - n) <= 1) {
+      out.push(`<a class="page-numbers" href="${pageHref(i)}">${i}</a>`)
+      dots = true
+    } else if (dots) {
+      out.push('<span class="page-numbers dots">&hellip;</span>')
+      dots = false
+    }
+  }
+  if (n < max) {
+    out.push(
+      `<a class="next page-numbers" aria-label="Next page" href="${pageHref(n + 1)}">Next <span class="ast-right-arrow" aria-hidden="true">&rarr;</span></a>`
+    )
+  }
+  return `<div class='ast-pagination'><nav class="navigation pagination" aria-label="Post pagination">\n\t\t\t\t<div class="nav-links">${out.join('\n')}</div>\n\t\t</nav></div>`
+}
+const ASTRA_CONTROL = /<div class='ast-pagination'>[\s\S]*?<\/nav><\/div>/
+
+const ENTITY = { amp: '&', quot: '"', hellip: '…' }
+const decodeEntities = (s) =>
+  s.replace(/&(#\d+|amp|quot|hellip);/g, (m, e) =>
+    e[0] === '#' ? String.fromCodePoint(Number(e.slice(1))) : (ENTITY[e] ?? m)
+  )
+
+/**
+ * An archive page's meta description, listing the issues it shows, in the
+ * wording paginate-archives.mjs gave pages 2..N. Page 1 keeps the capture's
+ * wording, which has no "page 1 of N". It reproduces every captured description.
+ */
+export function archiveDescription(cards, n, max) {
+  const titles = cards.map((c) => {
+    const h2 = c.match(/<h2 class="entry-title[^"]*"[^>]*>([\s\S]*?)<\/h2>/)
+    return decodeEntities(h2[1].replace(/<[^>]*>/g, ' '))
+      .replace(/\s+/g, ' ')
+      .trim()
+  })
+  const listed = [...new Set(titles.map((t) => t.replace(/[.!?\s]+$/, '')))].join(', ')
+  let text =
+    n === 1
+      ? `dFlip Book Archive: ${listed}.`
+      : `dFlip Book Archive, page ${n} of ${max}: ${listed}.`
+  if (text.length > 155) text = `${text.slice(0, 154).replace(/[\s,]+\S*$/, '')}…`
+  return text
 }
 
 /** Each card on an archive page, with where it sits in the page's HTML. */
 const CARD = /<article\nclass="[^"]*"[\s\S]*?<\/article><!-- #post-[^ ]+ -->\n/g
 
-function cardsOf(html, file) {
+export function cardsOf(html, file) {
   const cards = [...html.matchAll(CARD)]
   if (!cards.length) throw new Error(`${file}: no archive cards found`)
   const start = cards[0].index
@@ -229,17 +385,38 @@ function cardsOf(html, file) {
   return { cards: cards.map((m) => m[0]), start, end }
 }
 
+const tsLiteral = (s) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`
+
+/** An archive page component with its page number, page count and description set. */
+export function archiveTsx(tsx, n, max, description) {
+  const out = tsx
+    .replace(
+      /description:\s*'(?:[^'\\]|\\.)*',/,
+      () => `description:\n      ${tsLiteral(description)},`
+    )
+    .replace(/Page \d+ of \d+/g, `Page ${n} of ${max}`)
+  if (n === 1) return out
+  return out
+    .replace(/canonical: '[^']*'/, `canonical: '/${ARCHIVE}/page/${n}/'`)
+    .replace(/ paged paged-\d+/, ` paged paged-${n}`)
+    .replace(/loadCloneContent\('[^']*'\)/, `loadCloneContent('${ARCHIVE}/page/${n}')`)
+}
+
 /**
  * Archive page changes. A new issue goes first on page 1 and each full page
  * passes its last card to the next, so every page keeps the live site's
- * length. An issue already listed is updated where it is, so regenerating an
- * older issue never moves it above newer ones.
+ * length; when the last page overflows, the next page is created from it. An
+ * issue already listed is updated where it is, so regenerating an older issue
+ * never moves it above newer ones. Every page's control, title and description
+ * is then made to match its cards and the page count.
  */
 function listingChanges(slug, title, date) {
   const card = listingArticle(slug, title, date)
-  const pages = listingPages().map((file) => {
-    const html = readFileSync(file, 'utf8')
-    return { file, html, ...cardsOf(html, file) }
+  const pages = Array.from({ length: archivePageCount() }, (_, i) => {
+    const n = i + 1
+    const html = readFileSync(pageHtmlFile(n), 'utf8')
+    if (!ASTRA_CONTROL.test(html)) throw new Error(`${pageHtmlFile(n)}: no pagination control`)
+    return { n, html, tsx: readFileSync(pageTsxFile(n), 'utf8'), ...cardsOf(html, pageHtmlFile(n)) }
   })
   const mine = (c) => c.startsWith(`<article\nclass="${slug} `)
   const listed = pages.find((p) => p.cards.some(mine))
@@ -248,24 +425,30 @@ function listingChanges(slug, title, date) {
   } else {
     const perPage = pages[0].cards.length
     let carry = card
-    for (const [i, page] of pages.entries()) {
-      page.cards.unshift(carry)
-      carry = page.cards.length > perPage ? page.cards.pop() : null
-      if (!carry) break
-      if (i === pages.length - 1) {
-        throw new Error(
-          `the last archive page is full; /publications/books/page/${pages.length + 1}/ must be added first`
-        )
+    for (let i = 0; carry; i++) {
+      if (i === pages.length) {
+        // The next page starts as a copy of the last, holding only the overflow.
+        const last = pages.at(-1)
+        pages.push({ ...last, n: last.n + 1, cards: [] })
       }
+      pages[i].cards.unshift(carry)
+      carry = pages[i].cards.length > perPage ? pages[i].cards.pop() : null
     }
   }
-  return {
-    added: !listed,
-    changes: pages.map((p) => [
-      p.file,
-      p.html.slice(0, p.start) + p.cards.join('') + p.html.slice(p.end),
-    ]),
+  const max = pages.length
+  const changes = []
+  for (const p of pages) {
+    const html = (p.html.slice(0, p.start) + p.cards.join('') + p.html.slice(p.end)).replace(
+      ASTRA_CONTROL,
+      () => astraControl(p.n, max)
+    )
+    changes.push([pageHtmlFile(p.n), html])
+    changes.push([
+      pageTsxFile(p.n),
+      archiveTsx(p.tsx, p.n, max, archiveDescription(p.cards, p.n, max)),
+    ])
   }
+  return { added: !listed, changes }
 }
 
 const RECENT = /(Recent Posts<\/h2><ul class="wp-block-latest-posts__list[^"]*">)([\s\S]*?)(<\/ul>)/
@@ -290,7 +473,12 @@ function sidebarChanges(slug, title, isNew, pending) {
   const item = `<li><a class="wp-block-latest-posts__post-title" href="${href}">${listingTitle(title)}</a></li>`
   const mine = (li) => li.includes(`href="${href}"`)
   const changes = []
-  for (const file of htmlFiles(CONTENT)) {
+  // Pending writes include pages this run creates, such as a new /page/N/.
+  const files = new Set([
+    ...htmlFiles(CONTENT),
+    ...[...pending.keys()].filter((f) => f.startsWith(CONTENT) && f.endsWith('.html')),
+  ])
+  for (const file of files) {
     const html = pending.get(file) ?? readFileSync(file, 'utf8')
     const next = html.replace(RECENT, (_, open, body, close) => {
       const items = body.match(/<li>[\s\S]*?<\/li>/g) ?? []
@@ -448,11 +636,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   writes.set(PINS, pinsWith(cover))
 
   // ---- Write, then publish last so a failure leaves nothing public behind.
-  for (const [f, data] of writes) {
-    mkdirSync(dirname(f), { recursive: true })
-    writeFileSync(f, data)
-  }
-  if (!isPublished && !values['skip-upload']) upload(file, slug, title, asset)
+  applyWrites(writes, () => {
+    if (!isPublished && !values['skip-upload']) upload(file, slug, title, asset, sha256)
+  })
 
   const mb = (n) => `${(n / 1e6).toFixed(1)} MB`
   console.log(

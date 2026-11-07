@@ -3,6 +3,12 @@
  */
 import fs from 'fs'
 import path from 'path'
+import {
+  archiveDescription,
+  archiveTsx,
+  astraControl,
+  cardsOf,
+} from '../../scripts/add-publication-issue.mjs'
 
 const ROOT = process.cwd()
 const ARCHIVE = path.join(ROOT, 'docs', 'live-archive', '2026-10-02')
@@ -95,6 +101,22 @@ describe('publications flipbooks', () => {
       expect(cards[0]).toContain(`<a href="%%BASE%%/publications/books/${slug}/" rel="bookmark">`)
     }
   )
+
+  it('keeps each archive page control and description in step with its cards', () => {
+    const pages = listingPages()
+    const max = pages.length
+    pages.forEach((html, i) => {
+      const n = i + 1
+      expect(html).toContain(astraControl(n, max))
+      const tsxFile =
+        n === 1
+          ? path.join(ROOT, 'src/app/publications/books/page.tsx')
+          : path.join(ROOT, `src/app/publications/books/page/${n}/page.tsx`)
+      const tsx = fs.readFileSync(tsxFile, 'utf8')
+      const { cards } = cardsOf(html, tsxFile)
+      expect(archiveTsx(tsx, n, max, archiveDescription(cards, n, max))).toBe(tsx)
+    })
+  })
 
   it('keeps every archive page at the live length, so added issues shift cards onward', () => {
     const counts = listingPages().map(
