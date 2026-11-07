@@ -61,10 +61,22 @@ const LAST_PAGE: Record<string, number> = {
   shop: 8,
 }
 
+// Issues added after the capture (scripts/add-publication-issue.mjs) go first
+// in publications/books and push cards onward, 10 to a page, so they can add
+// pages past the live 85 issues' 9.
+const ADDED_ISSUES: unknown[] = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), 'src/data/publication-issues.json'), 'utf8')
+)
+const BOOKS_EXTRA_PAGES =
+  Math.max(9, Math.ceil((85 + ADDED_ISSUES.length) / 10)) - LAST_PAGE['publications/books']
+
 describe('archive pagination', () => {
-  it('has exactly the archives and last pages the live site had', () => {
+  it('has exactly the archives and last pages the live site had, plus added issues', () => {
     const generated = Object.fromEntries([...archives].map(([a, pages]) => [a, Math.max(...pages)]))
-    expect(generated).toEqual(LAST_PAGE)
+    expect(generated).toEqual({
+      ...LAST_PAGE,
+      'publications/books': LAST_PAGE['publications/books'] + BOOKS_EXTRA_PAGES,
+    })
   })
 
   it('has as many archive pages as the live crawl found on each host', () => {
@@ -86,7 +98,8 @@ describe('archive pagination', () => {
     }
     for (const [host, { paginated }] of Object.entries(crawl)) {
       const skipped = host === 'newheightseducation.org' ? HOMEPAGE_PAGES : 0
-      expect([host, (generated[host] ?? 0) + skipped]).toEqual([host, paginated])
+      const extra = host === 'publications.newheightseducation.org' ? BOOKS_EXTRA_PAGES : 0
+      expect([host, (generated[host] ?? 0) + skipped]).toEqual([host, paginated + extra])
     }
   })
 
