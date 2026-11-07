@@ -298,7 +298,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(2)
   }
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error(`slug must be kebab-case: ${slug}`)
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`date must be YYYY-MM-DD: ${date}`)
+  // The round trip rejects dates that don't exist, such as 2026-02-31.
+  const parsed = /^\d{4}-\d{2}-\d{2}$/.test(date) && new Date(`${date}T12:00:00Z`)
+  if (!parsed || isNaN(parsed) || parsed.toISOString().slice(0, 10) !== date) {
+    throw new Error(`date must be a real YYYY-MM-DD date: ${date}`)
+  }
+  // One line of printable text; it lands in TSX string literals and HTML.
+  if (!title.trim() || title !== title.trim() || /[\p{Cc}\p{Cf}]/u.test(title)) {
+    throw new Error('title must be one non-empty line without leading/trailing spaces')
+  }
   // Only issues this script added may be regenerated; archived pages are never overwritten.
   const prior = (existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : []).find(
     (e) => e.slug === slug
