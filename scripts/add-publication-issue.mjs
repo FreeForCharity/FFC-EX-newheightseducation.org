@@ -125,12 +125,14 @@ function renderCover(pdf, slug, dir) {
   return { path, width, height }
 }
 
+/** Only a definite "not found" counts as absent; any other gh failure stops the run. */
 function releaseExists(slug) {
   try {
     run('gh', ['release', 'view', releaseTag(slug), '--repo', REPO])
     return true
-  } catch {
-    return false
+  } catch (err) {
+    if (/release not found/i.test(String(err.stderr))) return false
+    throw new Error(`could not check release ${releaseTag(slug)}: ${String(err.stderr).trim()}`)
   }
 }
 
