@@ -212,18 +212,29 @@ class="${slug} dflip type-dflip status-publish hentry ast-grid-common-col ast-fu
 `
 }
 
-/** Lists the issue first on /publications/books/ (page 1 gains one card). */
+/**
+ * Lists a new issue first on /publications/books/ (page 1 gains one card). An
+ * issue already listed is updated where it is, so regenerating an older issue
+ * never moves it above newer ones.
+ */
 function addToListing(slug, title, date) {
   const file = join(CONTENT, 'publications/books.html')
+  const html = readFileSync(file, 'utf8')
+  const card = listingArticle(slug, title, date)
   const own = new RegExp(`<article\\nclass="${slug} [\\s\\S]*?</article><!-- #post-${slug} -->\\n`)
-  let html = readFileSync(file, 'utf8').replace(own, '')
+  if (own.test(html)) {
+    writeFileSync(
+      file,
+      html.replace(own, () => card)
+    )
+    return
+  }
   const anchor = '<div class="ast-row"><article\n'
   if (!html.includes(anchor)) throw new Error('books.html: listing anchor not found')
-  html = html.replace(
-    anchor,
-    () => `<div class="ast-row">${listingArticle(slug, title, date)}<article\n`
+  writeFileSync(
+    file,
+    html.replace(anchor, () => `<div class="ast-row">${card}<article\n`)
   )
-  writeFileSync(file, html)
 }
 
 const RECENT = /(Recent Posts<\/h2><ul class="wp-block-latest-posts__list[^"]*">)([\s\S]*?)(<\/ul>)/
@@ -237,18 +248,25 @@ const htmlFiles = (dir) =>
         : []
   )
 
-/** Puts the issue at the top of every "Recent Posts" sidebar, keeping its length. */
-function addToRecentPosts(slug, title) {
+/**
+ * Puts a new issue at the top of every "Recent Posts" sidebar, keeping its
+ * length. When regenerating (`isNew` false) an entry is only updated in place,
+ * so an older issue never displaces newer ones or returns once it has dropped off.
+ */
+function addToRecentPosts(slug, title, isNew) {
   const href = `%%BASE%%/publications/books/${slug}/`
   const item = `<li><a class="wp-block-latest-posts__post-title" href="${href}">${listingTitle(title)}</a></li>`
+  const mine = (li) => li.includes(`href="${href}"`)
   let changed = 0
   for (const file of htmlFiles(CONTENT)) {
     const html = readFileSync(file, 'utf8')
     const next = html.replace(RECENT, (_, open, body, close) => {
       const items = body.match(/<li>[\s\S]*?<\/li>/g) ?? []
       const tail = body.slice(body.lastIndexOf('</li>') + 5)
-      const others = items.filter((li) => !li.includes(`href="${href}"`))
-      return open + [item, ...others].slice(0, items.length).join('') + tail + close
+      const list = isNew
+        ? [item, ...items.filter((li) => !mine(li))].slice(0, items.length)
+        : items.map((li) => (mine(li) ? item : li))
+      return open + list.join('') + tail + close
     })
     if (next !== html) {
       writeFileSync(file, next)
@@ -260,7 +278,8 @@ function addToRecentPosts(slug, title) {
 
 function record(entry) {
   const list = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : []
-  const next = [entry, ...list.filter((e) => e.slug !== entry.slug)]
+  const at = list.findIndex((e) => e.slug === entry.slug)
+  const next = at < 0 ? [entry, ...list] : list.map((e, i) => (i === at ? entry : e))
   writeFileSync(MANIFEST, JSON.stringify(next, null, 2) + '\n')
 }
 
@@ -313,9 +332,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     (e) => e.slug === slug
   )
   const taken =
-    existsSync(join(BOOKS, `${slug}.html`)) || existsSync(join(APP_BOOKS, slug, 'page.tsx'))
+    existsSync(join(BOOKS, `${slug}.html`)) ||
+    existsSync(join(APP_BOOKS, slug, 'page.tsx')) ||
+    existsSync(join(ROOT, 'public', THUMBS, `${slug}.webp`))
   if (taken && !prior) {
-    throw new Error(`${slug} is an archived issue page; choose a new slug`)
+    throw new Error(`${slug} would overwrite an archived page or cover; choose a new slug`)
   }
   const isPublished = releaseExists(slug)
   if (isPublished && !prior) {
@@ -370,7 +391,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   writePageTsx(slug, title)
   writeContent(slug, title, flipbookMarkup({ title, href: url, local: false, bytes, cover }))
   addToListing(slug, title, published)
-  const sidebars = addToRecentPosts(slug, title)
+  const sidebars = addToRecentPosts(slug, title, !prior)
   record({
     slug,
     title,
