@@ -44,6 +44,19 @@ type Added = {
 const added: Added[] = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'src', 'data', 'publication-issues.json'), 'utf8')
 )
+/** /publications/books/ and its numbered pages, in order. */
+const listingPages = () => {
+  const numbered = fs
+    .readdirSync(path.join(BOOKS, 'page'))
+    .map((f) => Number(f.match(/^(\d+)\.html$/)?.[1]))
+    .filter(Boolean)
+    .sort((a, b) => a - b)
+  return [
+    path.join(BOOKS, '..', 'books.html'),
+    ...numbered.map((n) => path.join(BOOKS, 'page', `${n}.html`)),
+  ].map((f) => fs.readFileSync(f, 'utf8'))
+}
+
 // Releases are immutable, so each added issue has its own, created with its PDF.
 const addedRelease = (slug: string) =>
   `https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/releases/download/publication-${slug}/`
@@ -73,14 +86,28 @@ describe('publications flipbooks', () => {
       expect(figure).toContain(`<img src="%%BASE%%/${a.cover}"`)
       expect(served(a.cover)).toBe(true)
       // The archive card itself, not just a link: the Recent Posts sidebar on
-      // the same page links the issue too.
-      const books = fs.readFileSync(path.join(BOOKS, '..', 'books.html'), 'utf8')
-      const cards =
-        books.match(new RegExp(`<article\\nclass="${slug} [\\s\\S]*?</article>`, 'g')) ?? []
+      // the same pages links the issue too. Older issues move to later pages.
+      const cards = listingPages().flatMap(
+        (html) =>
+          html.match(new RegExp(`<article\\nclass="${slug} [\\s\\S]*?</article>`, 'g')) ?? []
+      )
       expect(cards).toHaveLength(1)
       expect(cards[0]).toContain(`<a href="%%BASE%%/publications/books/${slug}/" rel="bookmark">`)
     }
   )
+
+  it('keeps every archive page at the live length, so added issues shift cards onward', () => {
+    const counts = listingPages().map(
+      (html) => (html.match(/<\/article><!-- #post-/g) ?? []).length
+    )
+    const perPage = counts[0]
+    expect(perPage).toBe(10)
+    expect(counts.slice(0, -1).every((n) => n === perPage)).toBe(true)
+    expect(counts.at(-1)).toBeGreaterThan(0)
+    expect(counts.at(-1)).toBeLessThanOrEqual(perPage)
+    const total = counts.reduce((a, b) => a + b, 0)
+    expect(total).toBe(sources.length + added.length)
+  })
 
   it('lists every PDF in the release with its archived size and hash', () => {
     const withPdf = sources.filter((s) => s.source)
