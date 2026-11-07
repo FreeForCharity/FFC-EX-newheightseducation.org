@@ -553,18 +553,27 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (taken && !prior) {
     throw new Error(`${slug} would overwrite an archived page or cover; choose a new slug`)
   }
-  const isPublished = releaseExists(slug)
-  if (isPublished && !prior) {
+  // `gh release view` also sees drafts, which visitors can't download from.
+  const release = releaseState(slug)
+  if (release && !prior) {
     throw new Error(`release ${releaseTag(slug)} exists but is not recorded; choose a new slug`)
+  }
+  const isPublished = Boolean(release && !release.isDraft)
+  const isDraft = Boolean(release?.isDraft)
+  if (isDraft && release.digests[prior.asset] !== `sha256:${prior.sha256}`) {
+    throw new Error(
+      `draft release ${releaseTag(slug)} does not hold the recorded ${prior.asset}; delete the draft (gh release delete ${releaseTag(slug)} --cleanup-tag) and rerun`
+    )
   }
 
   // ---- Prepare the PDF and cover in a work directory.
   const work = mkdtempSync(join(tmpdir(), 'issue-'))
   let file, sourceBytes, sourceSha256
-  if (isPublished) {
-    // A published release can't change, so its pages are rebuilt from the exact
-    // file it holds (Ghostscript output differs run to run, so the source PDF
-    // can't be recompressed into it). A --pdf given must be that file or its source.
+  if (release) {
+    // A release's file is what the pages must describe: a published one can't
+    // change, and a draft holding the recorded PDF is about to be published.
+    // Ghostscript output differs run to run, so the source PDF can't be
+    // recompressed into it. A --pdf given must be that file or its source.
     if (pdf) {
       const given = hashOf(readFileSync(pdf))
       if (given !== prior.sha256 && given !== prior.sourceSha256) {
@@ -637,7 +646,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
   // ---- Write, then publish last so a failure leaves nothing public behind.
   applyWrites(writes, () => {
-    if (!isPublished && !values['skip-upload']) upload(file, slug, title, asset, sha256)
+    if (values['skip-upload'] || isPublished) return
+    if (isDraft) {
+      run('gh', ['release', 'edit', releaseTag(slug), '--repo', REPO, '--draft=false'])
+    } else {
+      upload(file, slug, title, asset, sha256)
+    }
   })
 
   const mb = (n) => `${(n / 1e6).toFixed(1)} MB`
