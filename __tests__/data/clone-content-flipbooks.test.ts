@@ -121,7 +121,10 @@ describe('publications flipbooks', () => {
 
   it('never treats an archived card as an added issue, whatever the slug', () => {
     const cards = listingPages().flatMap((html) => cardsOf(html, 'archive').cards)
-    const archived = cards.find((c) => c.startsWith('<article\nclass="post-'))!
+    // A captured card: numeric "post-<id>" class that equals its own id. An
+    // added issue's id is "post-<slug>", so it can never match this.
+    const archived = cards.find((c) => /^<article\nclass="(post-\d+) [^"]*" id="\1"/.test(c))!
+    expect(archived).toBeDefined()
     const id = archived.match(/^<article\nclass="(post-\d+) /)![1]
     // Spelled like the archived card's class: refused, never overwritten.
     expect(cardOwner(archived, id)).toBe('clash')
