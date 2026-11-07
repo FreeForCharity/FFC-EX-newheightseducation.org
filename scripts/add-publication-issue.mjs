@@ -675,5 +675,7 @@ if (isMain) {
   )
   console.log(url)
   if (!isPublished && values['skip-upload'])
-    console.log(`Not published. Release ${releaseTag(slug)} must carry ${file} as ${asset}.`)
+    console.log(
+      `Not published: the download link will not work yet. Run the same command without --skip-upload to publish ${releaseTag(slug)}.`
+    )
 }
