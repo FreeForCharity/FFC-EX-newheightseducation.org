@@ -1,0 +1,299 @@
+#!/usr/bin/env node
+/**
+ * Adds a new publications issue (an EDGuide magazine or E.A.S.Y.Toons comic)
+ * to the site. The 2026-10-02 capture froze the WordPress site, so there is no
+ * upload screen: each new issue goes through this script instead.
+ *
+ *   node scripts/add-publication-issue.mjs \
+ *     --pdf ~/Downloads/NHEG-November-December-2026.pdf \
+ *     --slug nheg-edguide-november-december-2026 \
+ *     --title "NHEG EDGuide November - December 2026" \
+ *     --date 2026-11-06
+ *
+ * It:
+ *   1. compresses the PDF with Ghostscript (`/ebook`, RGB) when it is large,
+ *      keeping whichever file is smaller;
+ *   2. renders page 1 to a 600 px wide WebP cover in dflip-thumbs/;
+ *   3. uploads the PDF to the `publications-pdfs-added` release, since issue
+ *      PDFs are too large for GitHub Pages to serve (#51);
+ *   4. writes the issue page, cloned from the newest captured issue page;
+ *   5. lists it first on /publications/books/ and at the top of every
+ *      "Recent Posts" sidebar; and
+ *   6. records it in src/data/publication-issues.json, which the tests check.
+ *
+ * Requires `gs`, `pdfinfo`, `pdftoppm`, `cwebp` and an authenticated `gh`.
+ * Re-running with the same slug replaces that issue rather than adding it
+ * twice. --skip-upload does everything except the release upload.
+ * Afterwards run `node scripts/pin-rendered-media.mjs` to pin the new cover.
+ */
+import { execFileSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+} from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { parseArgs } from 'node:util'
+import { flipbookMarkup } from './static-flipbooks.mjs'
+import { imageSize } from './image-size.mjs'
+
+const ROOT = join(import.meta.dirname, '..')
+const REPO = 'FreeForCharity/FFC-EX-newheightseducation.org'
+const CONTENT = join(ROOT, 'src/clone-content')
+const BOOKS = join(CONTENT, 'publications/books')
+const APP_BOOKS = join(ROOT, 'src/app/publications/books')
+const THUMBS = '_ffc-assets/publications.newheightseducation.org/wp-content/uploads/dflip-thumbs'
+const MANIFEST = join(ROOT, 'src/data/publication-issues.json')
+export const RELEASE_TAG = 'publications-pdfs-added'
+/** The newest captured issue; every added page is cloned from its markup. */
+const TEMPLATE = 'nheg-edguide-september-october-2026'
+/** PDFs at or below this size are already compact enough to leave alone. */
+const COMPRESS_ABOVE = 15e6
+
+const releaseUrl = (asset) => `https://github.com/${REPO}/releases/download/${RELEASE_TAG}/${asset}`
+/** "NHEG EDGuide November - December 2026" -> "NHEG-EDGuide-November-December-2026.pdf" */
+const assetName = (title) => `${title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '')}.pdf`
+const escapeHtml = (s) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+/** Listings render " - " in titles as an en dash entity, as WordPress did. */
+const listingTitle = (title) => escapeHtml(title).replace(/ - /g, ' &#8211; ')
+const tsString = (s) => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'")
+const longDate = (iso) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+
+const run = (cmd, args) =>
+  execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] })
+
+function compress(src, dir) {
+  if (statSync(src).size <= COMPRESS_ABOVE) return src
+  const out = join(dir, 'compressed.pdf')
+  run('gs', [
+    '-q',
+    '-dNOPAUSE',
+    '-dBATCH',
+    '-dSAFER',
+    '-sDEVICE=pdfwrite',
+    '-dCompatibilityLevel=1.6',
+    '-dPDFSETTINGS=/ebook',
+    '-sColorConversionStrategy=RGB',
+    '-dDetectDuplicateImages=true',
+    `-sOutputFile=${out}`,
+    src,
+  ])
+  return statSync(out).size < statSync(src).size ? out : src
+}
+
+const pageCount = (pdf) => Number(run('pdfinfo', [pdf]).match(/^Pages:\s+(\d+)/m)[1])
+
+function renderCover(pdf, slug, dir) {
+  const png = join(dir, 'cover')
+  run('pdftoppm', ['-f', '1', '-l', '1', '-singlefile', '-scale-to', '600', '-png', pdf, png])
+  const path = `${THUMBS}/${slug}.webp`
+  run('cwebp', [
+    '-quiet',
+    '-q',
+    '80',
+    '-resize',
+    '600',
+    '0',
+    `${png}.png`,
+    '-o',
+    join(ROOT, 'public', path),
+  ])
+  const [width, height] = imageSize(join(ROOT, 'public', path))
+  return { path, width, height }
+}
+
+function upload(pdf, asset) {
+  const named = join(mkdtempSync(join(tmpdir(), 'issue-')), asset)
+  copyFileSync(pdf, named)
+  try {
+    run('gh', ['release', 'view', RELEASE_TAG, '--repo', REPO])
+  } catch {
+    run('gh', [
+      'release',
+      'create',
+      RELEASE_TAG,
+      '--repo',
+      REPO,
+      '--title',
+      'Publications PDFs, added after the site move',
+      '--notes',
+      'Issue PDFs published after the 2026-10-02 capture, added with scripts/add-publication-issue.mjs.',
+      '--latest=false',
+    ])
+  }
+  run('gh', ['release', 'upload', RELEASE_TAG, named, '--repo', REPO, '--clobber'])
+}
+
+/** The template issue's page component with only the issue's identity swapped. */
+function writePageTsx(slug, title) {
+  const tsx = readFileSync(join(APP_BOOKS, TEMPLATE, 'page.tsx'), 'utf8')
+    .replace(
+      /\/\/ Generated by workflow 706[^\n]*\n\/\/[^\n]*\n/,
+      '// Added after the capture by scripts/add-publication-issue.mjs. Re-run that\n// script to change this issue rather than editing this file.\n'
+    )
+    .replace(/title: '[^']*',/, `title: '${tsString(title)} - NHEG',`)
+    .replace(/description: '[^']*',/, `description: '${tsString(title)}',`)
+    .replace(/canonical: '[^']*',/, `canonical: '/publications/books/${slug}/',`)
+    .replace(/title: \{ absolute: '[^']*' \}/, `title: { absolute: '${tsString(title)} - NHEG' }`)
+    .replace(/ postid-\d+/, '')
+    .replaceAll(`publications/books/${TEMPLATE}`, `publications/books/${slug}`)
+  mkdirSync(join(APP_BOOKS, slug), { recursive: true })
+  writeFileSync(join(APP_BOOKS, slug, 'page.tsx'), tsx)
+}
+
+const FLIPBOOK = /<figure class="ffc-flipbook">[\s\S]*?<\/figure>/
+
+function writeContent(slug, title, figure) {
+  let html = readFileSync(join(BOOKS, `${TEMPLATE}.html`), 'utf8')
+  if (!FLIPBOOK.test(html)) throw new Error(`no flipbook in ${TEMPLATE}`)
+  html = html
+    .replace(
+      /^<h1 class="ffc-sr-only">[^<]*<\/h1>/,
+      () => `<h1 class="ffc-sr-only">${escapeHtml(title)} - NHEG</h1>`
+    )
+    .replace(FLIPBOOK, () => figure)
+  writeFileSync(join(BOOKS, `${slug}.html`), html)
+}
+
+/** One archive card, matching the captured listing markup. */
+function listingArticle(slug, title, date) {
+  const href = `%%BASE%%/publications/books/${slug}/`
+  const t = listingTitle(title)
+  return `<article
+class="${slug} dflip type-dflip status-publish hentry ast-grid-common-col ast-full-width ast-article-post remove-featured-img-padding" id="post-${slug}" itemtype="https://schema.org/CreativeWork" itemscope="itemscope">
+		<div class="ast-post-format- ast-no-thumb blog-layout-4 ast-article-inner">
+	<div class="post-content ast-grid-common-col" >
+		<div class="ast-blog-featured-section post-thumb ast-blog-single-element"></div><h2 class="entry-title ast-blog-single-element" itemprop="headline"><a href="${href}" rel="bookmark">${t}</a></h2>		<header class="entry-header ast-blog-single-element ast-blog-meta-container">
+			<div class="entry-meta"><span class="posted-on"><span class="published" itemprop="datePublished"> ${date} </span></span></div>		</header><!-- .entry-header -->
+					<div class="ast-excerpt-container ast-blog-single-element">
+							</div>
+		<p class="ast-blog-single-element ast-read-more-container read-more"> <a class="" href="${href}"> <span class="screen-reader-text">${t}</span> Read More »</a></p>		<div class="entry-content clear"
+		itemprop="text"		>
+					</div><!-- .entry-content .clear -->
+	</div><!-- .post-content -->
+</div> <!-- .blog-layout-4 -->
+</article><!-- #post-${slug} -->
+`
+}
+
+/** Lists the issue first on /publications/books/ (page 1 gains one card). */
+function addToListing(slug, title, date) {
+  const file = join(CONTENT, 'publications/books.html')
+  const own = new RegExp(`<article\\nclass="${slug} [\\s\\S]*?</article><!-- #post-${slug} -->\\n`)
+  let html = readFileSync(file, 'utf8').replace(own, '')
+  const anchor = '<div class="ast-row"><article\n'
+  if (!html.includes(anchor)) throw new Error('books.html: listing anchor not found')
+  html = html.replace(
+    anchor,
+    () => `<div class="ast-row">${listingArticle(slug, title, date)}<article\n`
+  )
+  writeFileSync(file, html)
+}
+
+const RECENT = /(Recent Posts<\/h2><ul class="wp-block-latest-posts__list[^"]*">)([\s\S]*?)(<\/ul>)/
+
+const htmlFiles = (dir) =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory()
+      ? htmlFiles(join(dir, e.name))
+      : e.name.endsWith('.html')
+        ? [join(dir, e.name)]
+        : []
+  )
+
+/** Puts the issue at the top of every "Recent Posts" sidebar, keeping its length. */
+function addToRecentPosts(slug, title) {
+  const href = `%%BASE%%/publications/books/${slug}/`
+  const item = `<li><a class="wp-block-latest-posts__post-title" href="${href}">${listingTitle(title)}</a></li>`
+  let changed = 0
+  for (const file of htmlFiles(CONTENT)) {
+    const html = readFileSync(file, 'utf8')
+    const next = html.replace(RECENT, (_, open, body, close) => {
+      const items = body.match(/<li>[\s\S]*?<\/li>/g) ?? []
+      const tail = body.slice(body.lastIndexOf('</li>') + 5)
+      const others = items.filter((li) => !li.includes(`href="${href}"`))
+      return open + [item, ...others].slice(0, items.length).join('') + tail + close
+    })
+    if (next !== html) {
+      writeFileSync(file, next)
+      changed++
+    }
+  }
+  return changed
+}
+
+function record(entry) {
+  const list = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : []
+  const next = [entry, ...list.filter((e) => e.slug !== entry.slug)]
+  writeFileSync(MANIFEST, JSON.stringify(next, null, 2) + '\n')
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const { values } = parseArgs({
+    options: {
+      pdf: { type: 'string' },
+      slug: { type: 'string' },
+      title: { type: 'string' },
+      date: { type: 'string' },
+      'skip-upload': { type: 'boolean', default: false },
+    },
+  })
+  const { pdf, slug, title, date } = values
+  if (!pdf || !slug || !title || !date) {
+    console.error(
+      'usage: add-publication-issue.mjs --pdf FILE --slug SLUG --title TITLE --date YYYY-MM-DD [--skip-upload]'
+    )
+    process.exit(2)
+  }
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error(`slug must be kebab-case: ${slug}`)
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`date must be YYYY-MM-DD: ${date}`)
+  if (slug === TEMPLATE) throw new Error('refusing to overwrite the template issue')
+
+  const work = mkdtempSync(join(tmpdir(), 'issue-'))
+  const sourceBytes = statSync(pdf).size
+  const file = compress(pdf, work)
+  const bytes = statSync(file).size
+  const sha256 = createHash('sha256').update(readFileSync(file)).digest('hex')
+  const asset = assetName(title)
+  const url = releaseUrl(asset)
+  const cover = renderCover(file, slug, work)
+  if (!values['skip-upload']) upload(file, asset)
+
+  const published = longDate(date)
+  writePageTsx(slug, title)
+  writeContent(slug, title, flipbookMarkup({ title, href: url, local: false, bytes, cover }))
+  addToListing(slug, title, published)
+  const sidebars = addToRecentPosts(slug, title)
+  record({
+    slug,
+    title,
+    date: published,
+    asset,
+    url,
+    bytes,
+    sha256,
+    pages: pageCount(file),
+    sourceBytes,
+    cover: cover.path,
+  })
+
+  const mb = (n) => `${(n / 1e6).toFixed(1)} MB`
+  console.log(`Added ${title}: ${mb(sourceBytes)} -> ${mb(bytes)}; ${sidebars} sidebars updated.`)
+  console.log(url)
+  if (values['skip-upload'])
+    console.log(`Not uploaded. Upload ${file} to ${RELEASE_TAG} as ${asset}.`)
+}

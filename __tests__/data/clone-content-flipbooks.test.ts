@@ -31,14 +31,50 @@ const slugOf = (page: string) => new URL(page).pathname.replace(/^\/books\/|\/$/
 const read = (slug: string) => fs.readFileSync(path.join(BOOKS, `${slug}.html`), 'utf8')
 const served = (p: string) => fs.existsSync(path.join(ROOT, 'public', p))
 
+// Issues published after the site move, added with scripts/add-publication-issue.mjs.
+type Added = {
+  slug: string
+  title: string
+  asset: string
+  url: string
+  bytes: number
+  sha256: string
+  cover: string
+}
+const added: Added[] = JSON.parse(
+  fs.readFileSync(path.join(ROOT, 'src', 'data', 'publication-issues.json'), 'utf8')
+)
+const ADDED_RELEASE =
+  'https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/releases/download/publications-pdfs-added/'
+
 describe('publications flipbooks', () => {
-  it('covers all 85 book pages', () => {
+  it('covers all 85 archived book pages and every added issue', () => {
     expect(sources).toHaveLength(85)
     const pages = fs.readdirSync(BOOKS).filter((f) => f.endsWith('.html'))
     expect(pages.map((f) => f.replace(/\.html$/, '')).sort()).toEqual(
-      sources.map((s) => slugOf(s.page)).sort()
+      [...sources.map((s) => slugOf(s.page)), ...added.map((a) => a.slug)].sort()
     )
   })
+
+  it.each(added.map((a) => [a.slug, a] as const))(
+    'added issue %s links its released PDF and is listed',
+    (slug, a) => {
+      expect(a.url).toBe(ADDED_RELEASE + a.asset)
+      expect(a.sha256).toMatch(/^[0-9a-f]{64}$/)
+      expect(
+        fs.existsSync(path.join(ROOT, 'src', 'app', 'publications', 'books', slug, 'page.tsx'))
+      ).toBe(true)
+      const figures = read(slug).match(/<figure class="ffc-flipbook">[\s\S]*?<\/figure>/g) ?? []
+      expect(figures).toHaveLength(1)
+      const figure = figures[0] ?? ''
+      expect(figure.match(/href="([^"]+)"/g)).toEqual([`href="${a.url}"`])
+      expect(figure).toContain(`(PDF, ${(a.bytes / 1e6).toFixed(1)} MB)</span>`)
+      expect(figure).toContain(`<img src="%%BASE%%/${a.cover}"`)
+      expect(served(a.cover)).toBe(true)
+      const books = fs.readFileSync(path.join(BOOKS, '..', 'books.html'), 'utf8')
+      expect(books).toContain(`href="%%BASE%%/publications/books/${slug}/"`)
+    }
+  )
 
   it('lists every PDF in the release with its archived size and hash', () => {
     const withPdf = sources.filter((s) => s.source)
