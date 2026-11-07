@@ -44,8 +44,9 @@ type Added = {
 const added: Added[] = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'src', 'data', 'publication-issues.json'), 'utf8')
 )
-const ADDED_RELEASE =
-  'https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/releases/download/publications-pdfs-added/'
+// Releases are immutable, so each added issue has its own, created with its PDF.
+const addedRelease = (slug: string) =>
+  `https://github.com/FreeForCharity/FFC-EX-newheightseducation.org/releases/download/publication-${slug}/`
 
 describe('publications flipbooks', () => {
   it('covers all 85 archived book pages and every added issue', () => {
@@ -59,7 +60,7 @@ describe('publications flipbooks', () => {
   it.each(added.map((a) => [a.slug, a] as const))(
     'added issue %s links its released PDF and is listed',
     (slug, a) => {
-      expect(a.url).toBe(ADDED_RELEASE + a.asset)
+      expect(a.url).toBe(addedRelease(slug) + a.asset)
       expect(a.sha256).toMatch(/^[0-9a-f]{64}$/)
       expect(
         fs.existsSync(path.join(ROOT, 'src', 'app', 'publications', 'books', slug, 'page.tsx'))

@@ -14,16 +14,20 @@
  *   1. compresses the PDF with Ghostscript (`/ebook`, RGB) when it is large,
  *      keeping whichever file is smaller;
  *   2. renders page 1 to a 600 px wide WebP cover in dflip-thumbs/;
- *   3. uploads the PDF to the `publications-pdfs-added` release, since issue
- *      PDFs are too large for GitHub Pages to serve (#51);
+ *   3. publishes the PDF as its own release, `publication-<slug>`, since issue
+ *      PDFs are too large for GitHub Pages to serve (#51). Releases in this
+ *      repo are immutable, so each issue's release is created with its PDF
+ *      attached and never changed afterwards;
  *   4. writes the issue page, cloned from the newest captured issue page;
  *   5. lists it first on /publications/books/ and at the top of every
  *      "Recent Posts" sidebar; and
  *   6. records it in src/data/publication-issues.json, which the tests check.
  *
  * Requires `gs`, `pdfinfo`, `pdftoppm`, `cwebp` and an authenticated `gh`.
- * Re-running with the same slug replaces that issue rather than adding it
- * twice. --skip-upload does everything except the release upload.
+ * Re-running with the same slug rewrites that issue's pages rather than adding
+ * it twice; it refuses to publish over an existing release, so a corrected PDF
+ * needs a new slug. --skip-upload does everything except publishing the release,
+ * which is also how to regenerate the pages of an issue already published.
  * Afterwards run `node scripts/pin-rendered-media.mjs` to pin the new cover.
  */
 import { execFileSync } from 'node:child_process'
@@ -51,13 +55,14 @@ const BOOKS = join(CONTENT, 'publications/books')
 const APP_BOOKS = join(ROOT, 'src/app/publications/books')
 const THUMBS = '_ffc-assets/publications.newheightseducation.org/wp-content/uploads/dflip-thumbs'
 const MANIFEST = join(ROOT, 'src/data/publication-issues.json')
-export const RELEASE_TAG = 'publications-pdfs-added'
+const releaseTag = (slug) => `publication-${slug}`
 /** The newest captured issue; every added page is cloned from its markup. */
 const TEMPLATE = 'nheg-edguide-september-october-2026'
 /** PDFs at or below this size are already compact enough to leave alone. */
 const COMPRESS_ABOVE = 15e6
 
-const releaseUrl = (asset) => `https://github.com/${REPO}/releases/download/${RELEASE_TAG}/${asset}`
+const releaseUrl = (slug, asset) =>
+  `https://github.com/${REPO}/releases/download/${releaseTag(slug)}/${asset}`
 /** "NHEG EDGuide November - December 2026" -> "NHEG-EDGuide-November-December-2026.pdf" */
 const assetName = (title) => `${title.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '')}.pdf`
 const escapeHtml = (s) =>
@@ -116,26 +121,31 @@ function renderCover(pdf, slug, dir) {
   return { path, width, height }
 }
 
-function upload(pdf, asset) {
+function upload(pdf, slug, title, asset) {
+  const tag = releaseTag(slug)
+  let exists = true
+  try {
+    run('gh', ['release', 'view', tag, '--repo', REPO])
+  } catch {
+    exists = false
+  }
+  if (exists) throw new Error(`release ${tag} already exists and is immutable; use a new slug`)
   const named = join(mkdtempSync(join(tmpdir(), 'issue-')), asset)
   copyFileSync(pdf, named)
-  try {
-    run('gh', ['release', 'view', RELEASE_TAG, '--repo', REPO])
-  } catch {
-    run('gh', [
-      'release',
-      'create',
-      RELEASE_TAG,
-      '--repo',
-      REPO,
-      '--title',
-      'Publications PDFs, added after the site move',
-      '--notes',
-      'Issue PDFs published after the 2026-10-02 capture, added with scripts/add-publication-issue.mjs.',
-      '--latest=false',
-    ])
-  }
-  run('gh', ['release', 'upload', RELEASE_TAG, named, '--repo', REPO, '--clobber'])
+  // Passing the file to `create` uploads it before the release is published.
+  run('gh', [
+    'release',
+    'create',
+    tag,
+    named,
+    '--repo',
+    REPO,
+    '--title',
+    `${title} (PDF)`,
+    '--notes',
+    `PDF for ${title}, added with scripts/add-publication-issue.mjs.`,
+    '--latest=false',
+  ])
 }
 
 /** The template issue's page component with only the issue's identity swapped. */
@@ -269,9 +279,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const bytes = statSync(file).size
   const sha256 = createHash('sha256').update(readFileSync(file)).digest('hex')
   const asset = assetName(title)
-  const url = releaseUrl(asset)
+  const url = releaseUrl(slug, asset)
   const cover = renderCover(file, slug, work)
-  if (!values['skip-upload']) upload(file, asset)
+  if (!values['skip-upload']) upload(file, slug, title, asset)
 
   const published = longDate(date)
   writePageTsx(slug, title)
@@ -295,5 +305,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`Added ${title}: ${mb(sourceBytes)} -> ${mb(bytes)}; ${sidebars} sidebars updated.`)
   console.log(url)
   if (values['skip-upload'])
-    console.log(`Not uploaded. Upload ${file} to ${RELEASE_TAG} as ${asset}.`)
+    console.log(`Not published. Release ${releaseTag(slug)} must carry ${file} as ${asset}.`)
 }
