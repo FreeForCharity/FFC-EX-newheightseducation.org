@@ -28,10 +28,10 @@
  * nothing public behind.
  *
  * Requires `gs`, `pdfinfo`, `pdftoppm`, `cwebp` and an authenticated `gh`.
- * Re-running with the same slug rewrites that issue's pages rather than adding
- * it twice; it refuses to publish over an existing release, so a corrected PDF
- * needs a new slug. --skip-upload does everything except publishing the release,
- * which is also how to regenerate the pages of an issue already published.
+ * Re-running with the same slug rebuilds that issue's pages from the PDF on its
+ * release (--pdf is then optional) rather than adding it twice. Releases are
+ * never changed, so a corrected PDF needs a new slug. --skip-upload does
+ * everything except publishing a new issue's release.
  */
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
@@ -291,9 +291,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     },
   })
   const { pdf, slug, title, date } = values
-  if (!pdf || !slug || !title || !date) {
+  if (!slug || !title || !date) {
     console.error(
-      'usage: add-publication-issue.mjs --pdf FILE --slug SLUG --title TITLE --date YYYY-MM-DD [--skip-upload]'
+      'usage: add-publication-issue.mjs [--pdf FILE] --slug SLUG --title TITLE --date YYYY-MM-DD [--skip-upload]\n' +
+        '--pdf is required for a new issue; for one already published it is optional.'
     )
     process.exit(2)
   }
@@ -316,24 +317,50 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (taken && !prior) {
     throw new Error(`${slug} is an archived issue page; choose a new slug`)
   }
-  if (!values['skip-upload'] && releaseExists(slug)) {
-    throw new Error(
-      `release ${releaseTag(slug)} already exists and is immutable: pass --skip-upload to regenerate its pages, or use a new slug for a corrected PDF`
-    )
+  const isPublished = releaseExists(slug)
+  if (isPublished && !prior) {
+    throw new Error(`release ${releaseTag(slug)} exists but is not recorded; choose a new slug`)
   }
 
   const work = mkdtempSync(join(tmpdir(), 'issue-'))
-  const sourceBytes = statSync(pdf).size
-  const file = compress(pdf, work)
-  const bytes = statSync(file).size
-  const sha256 = createHash('sha256').update(readFileSync(file)).digest('hex')
-  // A published release can't change, so regenerating its pages must keep
-  // linking the exact file it holds, whatever the title now says.
-  if (prior && releaseExists(slug) && prior.sha256 !== sha256) {
-    throw new Error(
-      `${file} is not the PDF published for ${slug}; pass the published file (${prior.url}), or use a new slug for a corrected PDF`
-    )
+  const hashOf = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
+  let file, sourceBytes, sourceSha256
+  if (isPublished) {
+    // A published release can't change, so its pages are rebuilt from the exact
+    // file it holds (Ghostscript output differs run to run, so the source PDF
+    // can't be recompressed into it). A --pdf given must be that file or its source.
+    if (pdf) {
+      const given = hashOf(pdf)
+      if (given !== prior.sha256 && given !== prior.sourceSha256) {
+        throw new Error(
+          `${pdf} is neither the PDF published for ${slug} nor its source; use a new slug for a corrected PDF`
+        )
+      }
+    }
+    run('gh', [
+      'release',
+      'download',
+      releaseTag(slug),
+      '--repo',
+      REPO,
+      '--pattern',
+      prior.asset,
+      '--dir',
+      work,
+    ])
+    file = join(work, prior.asset)
+    if (hashOf(file) !== prior.sha256) {
+      throw new Error(`${prior.url} does not match the sha256 recorded for ${slug}`)
+    }
+    ;({ sourceBytes, sourceSha256 } = prior)
+  } else {
+    if (!pdf) throw new Error(`--pdf is required: ${slug} has no published release yet`)
+    sourceBytes = statSync(pdf).size
+    sourceSha256 = hashOf(pdf)
+    file = compress(pdf, work)
   }
+  const bytes = statSync(file).size
+  const sha256 = hashOf(file)
   const asset = prior?.asset ?? assetName(title)
   const url = releaseUrl(slug, asset)
   const cover = renderCover(file, slug, work)
@@ -354,14 +381,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     sha256,
     pages: pageCount(file),
     sourceBytes,
+    sourceSha256,
     cover: cover.path,
   })
   // Last, so any failure above leaves nothing public behind.
-  if (!values['skip-upload']) upload(file, slug, title, asset)
+  if (!isPublished && !values['skip-upload']) upload(file, slug, title, asset)
 
   const mb = (n) => `${(n / 1e6).toFixed(1)} MB`
   console.log(`Added ${title}: ${mb(sourceBytes)} -> ${mb(bytes)}; ${sidebars} sidebars updated.`)
   console.log(url)
-  if (values['skip-upload'])
+  if (!isPublished && values['skip-upload'])
     console.log(`Not published. Release ${releaseTag(slug)} must carry ${file} as ${asset}.`)
 }

@@ -72,8 +72,13 @@ describe('publications flipbooks', () => {
       expect(figure).toContain(`(PDF, ${(a.bytes / 1e6).toFixed(1)} MB)</span>`)
       expect(figure).toContain(`<img src="%%BASE%%/${a.cover}"`)
       expect(served(a.cover)).toBe(true)
+      // The archive card itself, not just a link: the Recent Posts sidebar on
+      // the same page links the issue too.
       const books = fs.readFileSync(path.join(BOOKS, '..', 'books.html'), 'utf8')
-      expect(books).toContain(`href="%%BASE%%/publications/books/${slug}/"`)
+      const cards =
+        books.match(new RegExp(`<article\\nclass="${slug} [\\s\\S]*?</article>`, 'g')) ?? []
+      expect(cards).toHaveLength(1)
+      expect(cards[0]).toContain(`<a href="%%BASE%%/publications/books/${slug}/" rel="bookmark">`)
     }
   )
 
