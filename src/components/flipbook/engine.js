@@ -184,6 +184,7 @@ export class Flipbook {
     this.sound = true
     this.single = false
     this.anim = null
+    this.queue = [] // turns clicked while another was animating
     this.cache = new Map()
     this.loader = new ImageBitmapLoader().setOptions({ imageOrientation: 'flipY' })
     this.buildDom(title)
@@ -671,6 +672,7 @@ export class Flipbook {
     }
     // A jump cancels any turn in progress, including its single-page fade.
     this.anim = null
+    this.queue.length = 0
     this.front.material.opacity = 1
     this.left = target
     this.book.position.x = this.offsetFor(target)
@@ -685,7 +687,16 @@ export class Flipbook {
   // Start a turn. The page is driven by a virtual cursor (cx, cy) in page
   // units: cx 1 = outer edge, -1 = fully over; cy 1 = corner row, 0 = middle.
   flip(dir, cursor) {
-    if (this.anim) return this.finishNow()
+    // A click during a turn queues the next turn instead of cutting this one
+    // short, so fast clicking still animates every page. A click the other
+    // way replaces the queue, and at most a few turns wait.
+    if (this.anim) {
+      if (cursor) return
+      const q = this.queue
+      if (q.length && q[q.length - 1] !== dir) q.length = 0
+      if (q.length < 3) q.push(dir)
+      return
+    }
     const step = this.single ? 1 : 2
     const L = this.left
     if (dir > 0 && !this.hasNext()) return
@@ -791,6 +802,8 @@ export class Flipbook {
     if (!A.cancel) this.left = A.target
     this.book.position.x = this.offsetFor(this.left)
     this.after()
+    const next = this.queue.shift()
+    if (next) this.flip(next)
   }
   finishNow() {
     const A = this.anim
@@ -920,7 +933,6 @@ export class Flipbook {
     const cv = this.renderer.domElement
     let down = null
     cv.addEventListener('pointerdown', (e) => {
-      if (this.anim && !this.anim.drag) this.finishNow()
       const b = this.toBook(e)
       down = { x: e.clientX, y: e.clientY, b, moved: false, pan: { ...this.pan } }
       cv.setPointerCapture(e.pointerId)
