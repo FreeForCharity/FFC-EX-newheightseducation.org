@@ -16,7 +16,6 @@ import {
   PCFSoftShadowMap,
   PerspectiveCamera,
   PlaneGeometry,
-  RepeatWrapping,
   Scene,
   ShadowMaterial,
   SRGBColorSpace,
@@ -311,7 +310,18 @@ export class Flipbook {
     const flat = (side) => {
       const g = new PlaneGeometry(W, H, P.segments, 48)
       g.translate(W / 2, 0, 0)
-      const m = new Mesh(g, Object.assign(mat(), { side: side > 0 ? FrontSide : BackSide }))
+      // A turning sheet starts and ends at exactly the depth of the page
+      // beneath it. Pushing resting pages back in the depth test keeps the
+      // turning sheet on top, so the page underneath never flickers through.
+      const m = new Mesh(
+        g,
+        Object.assign(mat(), {
+          side: side > 0 ? FrontSide : BackSide,
+          polygonOffset: true,
+          polygonOffsetFactor: 1,
+          polygonOffsetUnits: 4,
+        })
+      )
       m.receiveShadow = true
       m.castShadow = true
       this.book.add(m)
@@ -532,8 +542,9 @@ export class Flipbook {
     const key = n + 'm' + (src === this.cache.get(n + 'h')?.t ? 'h' : 'l')
     let e = this.cache.get(key)
     if (!e || e.src !== src || e.t.image !== src.image) {
+      // Same image and sampling settings as the source, so the GPU reuses its
+      // upload; only the UV transform (a uniform) mirrors it.
       const t = src.clone()
-      t.wrapS = RepeatWrapping
       t.repeat.x = -1
       t.offset.x = 1
       t.needsUpdate = !!src.image
