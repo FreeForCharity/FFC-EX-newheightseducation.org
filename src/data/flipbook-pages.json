@@ -1,0 +1,345 @@
+{
+  "commit": "f3a0bfa4a3eaf0112071bd4384faa19fd2dc6f06",
+  "issues": {
+    "2015-newsletter-2": {
+      "pages": 34,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-3": {
+      "pages": 33,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-4": {
+      "pages": 40,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-5": {
+      "pages": 51,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-6": {
+      "pages": 44,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-7": {
+      "pages": 43,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-8": {
+      "pages": 40,
+      "aspect": 0.7733
+    },
+    "2015-newsletter-9": {
+      "pages": 38,
+      "aspect": 0.7733
+    },
+    "2015-newsletter": {
+      "pages": 25,
+      "aspect": 0.7733
+    },
+    "2015-newsletters": {
+      "pages": 18,
+      "aspect": 0.7733
+    },
+    "e-a-s-y-toons-issue-1": {
+      "pages": 20,
+      "aspect": 0.7733
+    },
+    "e-a-s-y-toons-issue-2": {
+      "pages": 12,
+      "aspect": 0.7733
+    },
+    "e-a-s-y-toons-issue-3": {
+      "pages": 14,
+      "aspect": 0.7733
+    },
+    "e-a-s-y-toons-issue-4": {
+      "pages": 14,
+      "aspect": 0.7733
+    },
+    "e-a-s-y-toons-issue-5-2023": {
+      "pages": 20,
+      "aspect": 0.7733
+    },
+    "e-a-s-y-toons-issue-6-2024": {
+      "pages": 14,
+      "aspect": 0.7733
+    },
+    "e-a-s-ytoons-issue-7": {
+      "pages": 20,
+      "aspect": 0.7733
+    },
+    "edguide-march-april-2023": {
+      "pages": 116,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-april-2016": {
+      "pages": 60,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-december-2016": {
+      "pages": 82,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-february-2016": {
+      "pages": 44,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-february-2017": {
+      "pages": 92,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-january-2016": {
+      "pages": 23,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-january-2017": {
+      "pages": 76,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-january-february-2018": {
+      "pages": 88,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-january-february-2019": {
+      "pages": 118,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-january-february-2020": {
+      "pages": 154,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-january-february-2022": {
+      "pages": 74,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-january-february-2023": {
+      "pages": 150,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-january-february-2024": {
+      "pages": 134,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-january-february-2025": {
+      "pages": 190,
+      "aspect": 0.7067
+    },
+    "nheg-edguide-january-february-2026": {
+      "pages": 188,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-2017": {
+      "pages": 66,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-2018": {
+      "pages": 126,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-2019": {
+      "pages": 136,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-july-august-2020": {
+      "pages": 186,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-july-august-2022": {
+      "pages": 120,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-2023": {
+      "pages": 136,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-2024": {
+      "pages": 168,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-2026": {
+      "pages": 178,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-july-august-25": {
+      "pages": 180,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-june-2016": {
+      "pages": 62,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-march-2016": {
+      "pages": 65,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-march-april-2017": {
+      "pages": 47,
+      "aspect": 0.7758
+    },
+    "nheg-edguide-march-april-2018": {
+      "pages": 92,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-march-april-2019": {
+      "pages": 126,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-march-april-2022": {
+      "pages": 82,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-march-april-2024": {
+      "pages": 150,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-march-april-2025": {
+      "pages": 192,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-march-april-2026": {
+      "pages": 152,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-may-2016": {
+      "pages": 64,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-may-june-2017": {
+      "pages": 78,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-may-june-2019": {
+      "pages": 128,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-may-june-2022": {
+      "pages": 90,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-may-june-2023": {
+      "pages": 122,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-may-june-2024": {
+      "pages": 170,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-may-june-2025": {
+      "pages": 170,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-may-june2020": {
+      "pages": 82,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-2016": {
+      "pages": 71,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-november-december-2017": {
+      "pages": 82,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-december-2018": {
+      "pages": 96,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-december-2023": {
+      "pages": 122,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-december-2024": {
+      "pages": 198,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-december-2025": {
+      "pages": 178,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-december-2026": {
+      "pages": 184,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-november-december2019": {
+      "pages": 138,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-november-december2020": {
+      "pages": 174,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-november-december2022-2": {
+      "pages": 144,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-october-2016": {
+      "pages": 75,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-september-2016": {
+      "pages": 58,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-september-october-2017": {
+      "pages": 82,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-september-october-2018": {
+      "pages": 134,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-september-october-2019": {
+      "pages": 134,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-september-october-2020": {
+      "pages": 186,
+      "aspect": 0.7733
+    },
+    "nheg-edguide-september-october-2022": {
+      "pages": 106,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-september-october-2023-2": {
+      "pages": 116,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-september-october-2024": {
+      "pages": 202,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-september-october-2025": {
+      "pages": 178,
+      "aspect": 0.7075
+    },
+    "nheg-edguide-september-october-2026": {
+      "pages": 156,
+      "aspect": 0.7075
+    },
+    "nheg-edguidejan-feb2021": {
+      "pages": 134,
+      "aspect": 0.7075
+    },
+    "nheg-edguidejuly-august-2021": {
+      "pages": 150,
+      "aspect": 0.7075
+    },
+    "nheg-edguidemarch-april2021": {
+      "pages": 148,
+      "aspect": 0.7075
+    },
+    "nheg-edguidemay-june2021": {
+      "pages": 152,
+      "aspect": 0.7075
+    },
+    "nheg-edguidenovember-december-2021": {
+      "pages": 152,
+      "aspect": 0.7075
+    },
+    "nheg-edguideseptember-october2021": {
+      "pages": 154,
+      "aspect": 0.7075
+    }
+  }
+}
