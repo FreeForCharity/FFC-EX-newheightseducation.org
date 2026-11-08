@@ -21,10 +21,10 @@ export function pageUrls(slug: string, count: number, commit = manifest.commit) 
 export const rawFallback = (url: string) =>
   url.replace(`https://cdn.jsdelivr.net/gh/${REPO}@`, `https://raw.githubusercontent.com/${REPO}/`)
 
-function webglAvailable() {
+function webgl2Available() {
   try {
     const c = document.createElement('canvas')
-    return !!(c.getContext('webgl2') || c.getContext('webgl'))
+    return !!c.getContext('webgl2') // three.js r170 needs WebGL2
   } catch {
     return false
   }
@@ -33,7 +33,8 @@ function webglAvailable() {
 /**
  * On a publication issue page, replaces the cover-and-PDF-link block with the
  * page-turning viewer. The block stays as it is when the issue has no page
- * images or the browser has no WebGL, so the PDF link always works.
+ * images, the browser has no WebGL2, or the viewer fails to start, so the PDF
+ * link always works.
  */
 export default function Flipbook() {
   const pathname = usePathname()
@@ -41,7 +42,7 @@ export default function Flipbook() {
     const slug = pathname.match(/\/publications\/books\/([^/]+)\/?$/)?.[1]
     const issue = slug ? issues[slug] : undefined
     const figure = document.querySelector<HTMLElement>('figure.ffc-flipbook')
-    if (!slug || !issue || !figure || !webglAvailable()) return
+    if (!slug || !issue || !figure || !webgl2Available()) return
     let book: { destroy?: () => void } | undefined
     let cancelled = false
     const holder = document.createElement('div')
@@ -50,13 +51,18 @@ export default function Flipbook() {
       if (cancelled) return
       const link = figure.querySelector<HTMLAnchorElement>('a[href]')
       figure.replaceWith(holder)
-      book = new Viewer(holder, {
-        pages: pageUrls(slug, issue.pages),
-        aspect: issue.aspect,
-        title: document.title,
-        pdf: link?.href ?? '',
-        fallback: rawFallback,
-      })
+      try {
+        book = new Viewer(holder, {
+          pages: pageUrls(slug, issue.pages),
+          aspect: issue.aspect,
+          title: document.title,
+          pdf: link?.href ?? '',
+          fallback: rawFallback,
+        })
+      } catch {
+        // The viewer could not start: put the cover and PDF link back.
+        holder.replaceWith(figure)
+      }
     })
     return () => {
       cancelled = true

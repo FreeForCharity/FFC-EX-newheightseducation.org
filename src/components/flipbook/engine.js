@@ -185,8 +185,9 @@ export class Flipbook {
     this.buildDom(title)
     this.buildScene()
     this.bindEvents()
+    const start = this.pageFromHash() ?? 1 // before autoMode can rewrite the hash
     this.autoMode()
-    this.go(this.pageFromHash() ?? 1, false)
+    this.go(start, false)
     this.resize()
   }
 
@@ -229,9 +230,21 @@ export class Flipbook {
     grid.innerHTML = this.pages
       .map(
         (p, i) =>
-          `<button data-p="${i + 1}"><img loading="lazy" decoding="async" src="${p.th}" alt=""><span>${i + 1}</span></button>`
+          `<button data-p="${i + 1}"><img loading="lazy" decoding="async" src="${p.th}" data-alt="${this.fallback?.(p.th) ?? ''}" alt=""><span>${i + 1}</span></button>`
       )
       .join('')
+    // If the CDN fails, show each thumbnail from the backup host instead.
+    grid.addEventListener(
+      'error',
+      (e) => {
+        const img = e.target
+        if (img.tagName === 'IMG' && img.dataset.alt) {
+          img.src = img.dataset.alt
+          img.dataset.alt = ''
+        }
+      },
+      true
+    )
   }
 
   // ---------- 3D scene ----------
@@ -659,7 +672,7 @@ export class Flipbook {
     if (this.anim) return this.finishNow()
     const step = this.single ? 1 : 2
     const L = this.left
-    if (dir > 0 && L + 1 > this.n) return
+    if (dir > 0 && !this.hasNext()) return
     if (dir < 0 && L - step < (this.single ? 1 : 0)) return
     const front = this.single ? (dir > 0 ? L : L - 1) : dir > 0 ? L + 1 : L - 1
     const back = this.single ? 0 : dir > 0 ? L + 2 : L
@@ -775,8 +788,13 @@ export class Flipbook {
     const shown = this.single ? L : L + 1 <= this.n ? L + 1 : L
     this.pageLabel.textContent = `${shown}/${this.n}`
     this.$('.fb-prev').hidden = this.single ? L <= 1 : L <= 0
-    this.$('.fb-next').hidden = L + 1 > this.n
+    this.$('.fb-next').hidden = !this.hasNext()
     history.replaceState(null, '', `#page=${shown}`)
+  }
+  // Whether a later page or spread exists. In double mode the last spread is
+  // spreadOf(n): for an odd count it holds the final page on the right.
+  hasNext() {
+    return this.single ? this.left + 1 <= this.n : this.left + 2 <= this.spreadOf(this.n)
   }
   pageFromHash() {
     const m = location.hash.match(/page=(\d+)/)
@@ -841,7 +859,10 @@ export class Flipbook {
       }
       if (a === 'first') this.go(1, false)
       if (a === 'last') this.go(this.n, false)
-      if (a === 'mode') this.setSingle(!this.single)
+      if (a === 'mode') {
+        this.userMode = true
+        this.setSingle(!this.single)
+      }
       if (a === 'sound') {
         this.sound = !this.sound
         b.innerHTML = `${icon(this.sound ? 'volume-2' : 'volume-x')}<span>Turn sound ${this.sound ? 'off' : 'on'}</span>`
@@ -855,10 +876,10 @@ export class Flipbook {
       { signal: this.abort.signal }
     )
     const inp = this.pageInput
-    this.$('.fb-page').onclick = () => {
+    this.$('.fb-page').onclick = () => inp.focus()
+    inp.onfocus = () => {
       inp.value = ''
       this.root.classList.add('fb-typing')
-      inp.focus()
     }
     inp.onblur = () => this.root.classList.remove('fb-typing')
     inp.onkeydown = (e) => {

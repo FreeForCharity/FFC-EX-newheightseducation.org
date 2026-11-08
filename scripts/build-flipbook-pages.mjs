@@ -175,5 +175,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       `${k + 1}/${list.length} ${i.slug}: ${manifest[i.slug].pages} pages, ${((Date.now() - t) / 1000).toFixed(0)}s`
     )
   }
-  writeFileSync(join(outRoot, 'index.json'), JSON.stringify(manifest, null, 1) + '\n')
+  // Index every issue in the folder, so building one issue keeps the others.
+  for (const d of readdirSync(outRoot)) {
+    const f = join(outRoot, d, 'pages.json')
+    if (!manifest[d] && existsSync(f)) manifest[d] = JSON.parse(readFileSync(f, 'utf8'))
+  }
+  const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
+  writeFileSync(join(outRoot, 'index.json'), JSON.stringify(sorted, null, 1) + '\n')
 }
