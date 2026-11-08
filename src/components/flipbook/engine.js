@@ -4,6 +4,7 @@ import {
   BackSide,
   BoxGeometry,
   CanvasTexture,
+  DataTexture,
   DirectionalLight,
   FrontSide,
   Group,
@@ -15,7 +16,6 @@ import {
   PCFSoftShadowMap,
   PerspectiveCamera,
   PlaneGeometry,
-  RepeatWrapping,
   Scene,
   ShadowMaterial,
   SRGBColorSpace,
@@ -183,6 +183,7 @@ export class Flipbook {
     this.sound = true
     this.single = false
     this.anim = null
+    this.queue = [] // turns clicked while another was animating
     this.cache = new Map()
     this.loader = new ImageBitmapLoader().setOptions({ imageOrientation: 'flipY' })
     this.buildDom(title)
@@ -291,15 +292,36 @@ export class Flipbook {
     this.book = new Group()
     scene.add(this.book)
 
+    // Every page material always has a map (a 1x1 blank until the image
+    // arrives), so swapping pages never changes the shader and never makes
+    // the GPU compile a new one in the middle of a turn.
+    this.blank = new DataTexture(new Uint8Array([244, 244, 244, 255]), 1, 1)
+    this.blank.needsUpdate = true
     const mat = () =>
-      new MeshPhongMaterial({ color: 0xffffff, shininess: P.shininess, specular: 0x111111 })
+      new MeshPhongMaterial({
+        color: 0xffffff,
+        map: this.blank,
+        shininess: P.shininess,
+        specular: 0x111111,
+      })
     // Static pages on each side of the spine.
     // Resting pages use the same bent strip as a turning sheet, posed where
     // a turn ends, so a finished turn hands over without any jump.
     const flat = (side) => {
       const g = new PlaneGeometry(W, H, P.segments, 48)
       g.translate(W / 2, 0, 0)
-      const m = new Mesh(g, Object.assign(mat(), { side: side > 0 ? FrontSide : BackSide }))
+      // A turning sheet starts and ends at exactly the depth of the page
+      // beneath it. Pushing resting pages back in the depth test keeps the
+      // turning sheet on top, so the page underneath never flickers through.
+      const m = new Mesh(
+        g,
+        Object.assign(mat(), {
+          side: side > 0 ? FrontSide : BackSide,
+          polygonOffset: true,
+          polygonOffsetFactor: 1,
+          polygonOffsetUnits: 4,
+        })
+      )
       m.receiveShadow = true
       m.castShadow = true
       this.book.add(m)
@@ -489,9 +511,14 @@ export class Flipbook {
       this.cache.set(key, e)
       const url = hi ? this.pages[n - 1].hi : this.pages[n - 1].lo
       const done = (bmp) => {
+        // Drop images that arrive after the viewer closed or the page was
+        // evicted, so nothing is uploaded that no cleanup would release.
+        if (this.dead || this.cache.get(key) !== e) return bmp.close?.()
         t.image = bmp
         t.needsUpdate = true
         e.ready = true
+        // Upload to the GPU now, not on the first frame of a turn.
+        this.renderer.initTexture(t)
         this.refresh()
       }
       // If the CDN fails, try the backup host once.
@@ -518,11 +545,13 @@ export class Flipbook {
     const key = n + 'm' + (src === this.cache.get(n + 'h')?.t ? 'h' : 'l')
     let e = this.cache.get(key)
     if (!e || e.src !== src || e.t.image !== src.image) {
+      // Same image and sampling settings as the source, so the GPU reuses its
+      // upload; only the UV transform (a uniform) mirrors it.
       const t = src.clone()
-      t.wrapS = RepeatWrapping
       t.repeat.x = -1
       t.offset.x = 1
       t.needsUpdate = !!src.image
+      if (src.image) this.renderer.initTexture(t)
       e = { t, src, ready: true }
       this.cache.set(key, e)
     }
@@ -530,9 +559,9 @@ export class Flipbook {
     return e.t
   }
   setMap(mesh, t) {
-    mesh.material.map = t
-    mesh.material.color.set(t ? 0xffffff : 0xf4f4f4)
-    mesh.material.needsUpdate = true
+    // A texture whose image has not arrived shows the blank instead of a
+    // stale or black frame.
+    mesh.material.map = t?.image ? t : this.blank
   }
   prefetch() {
     for (let d = -4; d <= 6; d++) this.tex(this.left + d)
@@ -573,10 +602,7 @@ export class Flipbook {
     if (a) {
       this.front.visible = this.back.visible = true
       this.setMap(this.front, this.bestTex(a.front))
-      this.back.material.map = this.mirrored(a.back)
-      this.back.material.color.set(this.back.material.map ? 0xffffff : 0xf4f4f4)
-      this.back.material.needsUpdate = true
-      if (a.back > this.n || a.back < 1) this.back.visible = !this.single && false
+      this.setMap(this.back, this.mirrored(a.back))
       this.back.visible = a.back >= 1 && a.back <= this.n
     } else {
       this.front.visible = this.back.visible = false
@@ -660,6 +686,7 @@ export class Flipbook {
     }
     // A jump cancels any turn in progress, including its single-page fade.
     this.anim = null
+    this.queue.length = 0
     this.front.material.opacity = 1
     this.left = target
     this.book.position.x = this.offsetFor(target)
@@ -674,7 +701,16 @@ export class Flipbook {
   // Start a turn. The page is driven by a virtual cursor (cx, cy) in page
   // units: cx 1 = outer edge, -1 = fully over; cy 1 = corner row, 0 = middle.
   flip(dir, cursor) {
-    if (this.anim) return this.finishNow()
+    // A click during a turn queues the next turn instead of cutting this one
+    // short, so fast clicking still animates every page. A click the other
+    // way replaces the queue, and at most a few turns wait.
+    if (this.anim) {
+      if (cursor) return
+      const q = this.queue
+      if (q.length && q[q.length - 1] !== dir) q.length = 0
+      if (q.length < 3) q.push(dir)
+      return
+    }
     const step = this.single ? 1 : 2
     const L = this.left
     if (dir > 0 && !this.hasNext()) return
@@ -734,7 +770,11 @@ export class Flipbook {
     this.book.position.x = A.x0 + (A.x1 - A.x0) * k
     if (this.single) {
       const o = 1 - Math.max(0, Math.min(1, (k - 0.5) * 2))
-      this.front.material.transparent = true
+      const m = this.front.material
+      if (!m.transparent) {
+        m.transparent = true
+        m.needsUpdate = true // switch to the blending shader once
+      }
       this.front.material.opacity = o
     }
     this.dirty = true
@@ -780,6 +820,8 @@ export class Flipbook {
     if (!A.cancel) this.left = A.target
     this.book.position.x = this.offsetFor(this.left)
     this.after()
+    const next = this.queue.shift()
+    if (next) this.flip(next)
   }
   finishNow() {
     const A = this.anim
@@ -909,7 +951,6 @@ export class Flipbook {
     const cv = this.renderer.domElement
     let down = null
     cv.addEventListener('pointerdown', (e) => {
-      if (this.anim && !this.anim.drag) this.finishNow()
       const b = this.toBook(e)
       down = { x: e.clientX, y: e.clientY, b, moved: false, pan: { ...this.pan } }
       cv.setPointerCapture(e.pointerId)
