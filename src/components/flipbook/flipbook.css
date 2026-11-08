@@ -1,0 +1,232 @@
+.ffc-flipbook-viewer.fb {
+  position: relative;
+  width: 100%;
+  height: min(88vh, 900px);
+  min-height: 420px;
+  background: #e9f6ea;
+  overflow: hidden;
+  font:
+    14px/1.2 system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  color: #333;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.ffc-flipbook-viewer.fb .fb-stage {
+  position: absolute;
+  inset: 0;
+}
+.ffc-flipbook-viewer.fb .fb-stage canvas {
+  display: block;
+}
+/* The theme styles every button; start the viewer's from nothing. */
+.ffc-flipbook-viewer.fb button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.ffc-flipbook-viewer.fb button:hover,
+.ffc-flipbook-viewer.fb button:focus {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  text-decoration: none;
+}
+.ffc-flipbook-viewer.fb button:focus-visible {
+  outline: 2px solid #1a73e8;
+  outline-offset: -2px;
+}
+.ffc-flipbook-viewer.fb button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+.ffc-flipbook-viewer.fb svg {
+  width: 20px;
+  height: 20px;
+}
+.ffc-flipbook-viewer.fb .fb-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  /* Dark rather than the old viewer's white, which was nearly invisible on
+     the pale background (about 1.1:1 contrast). */
+  color: #444;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.ffc-flipbook-viewer.fb .fb-arrow:hover {
+  opacity: 1;
+}
+.ffc-flipbook-viewer.fb .fb-arrow svg {
+  width: 34px;
+  height: 34px;
+  stroke-width: 1.5;
+}
+.ffc-flipbook-viewer.fb .fb-prev {
+  left: 16px;
+}
+.ffc-flipbook-viewer.fb .fb-next {
+  right: 16px;
+}
+.ffc-flipbook-viewer.fb .fb-arrow[hidden] {
+  display: none;
+}
+.ffc-flipbook-viewer.fb .fb-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  height: 42px;
+  padding: 0;
+}
+.ffc-flipbook-viewer.fb .fb-bar > button,
+.ffc-flipbook-viewer.fb .fb-more > button {
+  width: 40px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  color: #555;
+}
+.ffc-flipbook-viewer.fb .fb-bar button:hover:not(:disabled) {
+  color: #111;
+}
+.ffc-flipbook-viewer.fb .fb-bar button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.ffc-flipbook-viewer.fb .fb-page {
+  position: relative;
+  min-width: 60px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: #f3f3f3;
+  border-radius: 6px 0 0 6px;
+  color: #666; /* the old viewer used #888, too faint to pass contrast checks */
+  font-family: Georgia, serif;
+  font-size: 13px;
+  cursor: text;
+  padding: 0 4px;
+}
+.ffc-flipbook-viewer.fb .fb-page input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font: inherit;
+  color: #333;
+  opacity: 0;
+}
+.ffc-flipbook-viewer.fb.fb-typing .fb-page input {
+  opacity: 1;
+}
+.ffc-flipbook-viewer.fb.fb-typing .fb-page span {
+  opacity: 0;
+}
+.ffc-flipbook-viewer.fb .fb-more {
+  position: relative;
+}
+.ffc-flipbook-viewer.fb .fb-menu {
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  padding: 6px 0;
+  min-width: 210px;
+}
+.ffc-flipbook-viewer.fb .fb-menu > * {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 9px 16px;
+  color: #444;
+  text-decoration: none;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.ffc-flipbook-viewer.fb .fb-menu > *:hover {
+  background: #f3f3f3;
+}
+.ffc-flipbook-viewer.fb .fb-menu svg {
+  width: 18px;
+  height: 18px;
+}
+.ffc-flipbook-viewer.fb .fb-thumbs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.ffc-flipbook-viewer.fb .fb-thumbs[hidden] {
+  display: none;
+}
+.ffc-flipbook-viewer.fb .fb-thumbs header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+.ffc-flipbook-viewer.fb .fb-grid {
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 14px;
+}
+.ffc-flipbook-viewer.fb .fb-grid button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #777;
+}
+.ffc-flipbook-viewer.fb .fb-grid img {
+  width: 100%;
+  aspect-ratio: 595/842;
+  object-fit: cover;
+  background: #eee;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.ffc-flipbook-viewer.fb .fb-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 64px;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+.ffc-flipbook-viewer.fb.fb-zoomed .fb-stage {
+  cursor: grab;
+}

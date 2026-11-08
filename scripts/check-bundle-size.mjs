@@ -25,9 +25,12 @@ const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(SCRIPT_DIR, '..')
 const CHUNKS_DIR = join(ROOT, 'out', '_next', 'static', 'chunks')
 
-// Current gzipped JS is ~237 KB. 300 KB leaves ~25% headroom: enough that
-// routine changes pass, tight enough that a large bloat regression fails.
-const BUDGET_GZIP_KB = 300
+// Current gzipped JS is ~331 KB. Of that, ~125 KB is three.js for the
+// publication flipbook viewer, a chunk loaded only on issue pages after the
+// page has rendered (src/components/flipbook); its renderer cannot be
+// tree-shaken smaller. 360 KB keeps ~30 KB of headroom: enough that routine
+// changes pass, tight enough that a large bloat regression fails.
+const BUDGET_GZIP_KB = 360
 
 async function walkJs(dir, results = []) {
   let entries
