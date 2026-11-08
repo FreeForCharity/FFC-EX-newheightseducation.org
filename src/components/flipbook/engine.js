@@ -511,6 +511,9 @@ export class Flipbook {
       this.cache.set(key, e)
       const url = hi ? this.pages[n - 1].hi : this.pages[n - 1].lo
       const done = (bmp) => {
+        // Drop images that arrive after the viewer closed or the page was
+        // evicted, so nothing is uploaded that no cleanup would release.
+        if (this.dead || this.cache.get(key) !== e) return bmp.close?.()
         t.image = bmp
         t.needsUpdate = true
         e.ready = true
@@ -767,7 +770,11 @@ export class Flipbook {
     this.book.position.x = A.x0 + (A.x1 - A.x0) * k
     if (this.single) {
       const o = 1 - Math.max(0, Math.min(1, (k - 0.5) * 2))
-      this.front.material.transparent = true
+      const m = this.front.material
+      if (!m.transparent) {
+        m.transparent = true
+        m.needsUpdate = true // switch to the blending shader once
+      }
       this.front.material.opacity = o
     }
     this.dirty = true

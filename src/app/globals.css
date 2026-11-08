@@ -1246,13 +1246,3 @@ body .ffc-clone .ast-article-post .entry-title,
 body .ffc-clone .ast-article-post .entry-title a {
   font-weight: 700;
 }
-
-/* Cloned header: keep the "Signup" button at its natural width. As a flex
-   item it could shrink when the menu filled the row, wrapping one letter per
-   line at mid widths. */
-.site-header-section > .ast-header-button-1 {
-  flex-shrink: 0;
-}
-.ast-custom-button {
-  white-space: nowrap;
-}
