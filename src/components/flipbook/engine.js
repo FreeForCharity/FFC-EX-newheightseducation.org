@@ -4,6 +4,7 @@ import {
   BackSide,
   BoxGeometry,
   CanvasTexture,
+  DataTexture,
   DirectionalLight,
   FrontSide,
   Group,
@@ -291,8 +292,18 @@ export class Flipbook {
     this.book = new Group()
     scene.add(this.book)
 
+    // Every page material always has a map (a 1x1 blank until the image
+    // arrives), so swapping pages never changes the shader and never makes
+    // the GPU compile a new one in the middle of a turn.
+    this.blank = new DataTexture(new Uint8Array([244, 244, 244, 255]), 1, 1)
+    this.blank.needsUpdate = true
     const mat = () =>
-      new MeshPhongMaterial({ color: 0xffffff, shininess: P.shininess, specular: 0x111111 })
+      new MeshPhongMaterial({
+        color: 0xffffff,
+        map: this.blank,
+        shininess: P.shininess,
+        specular: 0x111111,
+      })
     // Static pages on each side of the spine.
     // Resting pages use the same bent strip as a turning sheet, posed where
     // a turn ends, so a finished turn hands over without any jump.
@@ -492,6 +503,8 @@ export class Flipbook {
         t.image = bmp
         t.needsUpdate = true
         e.ready = true
+        // Upload to the GPU now, not on the first frame of a turn.
+        this.renderer.initTexture(t)
         this.refresh()
       }
       // If the CDN fails, try the backup host once.
@@ -523,6 +536,7 @@ export class Flipbook {
       t.repeat.x = -1
       t.offset.x = 1
       t.needsUpdate = !!src.image
+      if (src.image) this.renderer.initTexture(t)
       e = { t, src, ready: true }
       this.cache.set(key, e)
     }
@@ -530,9 +544,9 @@ export class Flipbook {
     return e.t
   }
   setMap(mesh, t) {
-    mesh.material.map = t
-    mesh.material.color.set(t ? 0xffffff : 0xf4f4f4)
-    mesh.material.needsUpdate = true
+    // A texture whose image has not arrived shows the blank instead of a
+    // stale or black frame.
+    mesh.material.map = t?.image ? t : this.blank
   }
   prefetch() {
     for (let d = -4; d <= 6; d++) this.tex(this.left + d)
@@ -573,10 +587,7 @@ export class Flipbook {
     if (a) {
       this.front.visible = this.back.visible = true
       this.setMap(this.front, this.bestTex(a.front))
-      this.back.material.map = this.mirrored(a.back)
-      this.back.material.color.set(this.back.material.map ? 0xffffff : 0xf4f4f4)
-      this.back.material.needsUpdate = true
-      if (a.back > this.n || a.back < 1) this.back.visible = !this.single && false
+      this.setMap(this.back, this.mirrored(a.back))
       this.back.visible = a.back >= 1 && a.back <= this.n
     } else {
       this.front.visible = this.back.visible = false
