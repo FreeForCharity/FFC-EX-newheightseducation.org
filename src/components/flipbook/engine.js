@@ -45,6 +45,9 @@ const P = {
   boardExtra: 0.02,
 }
 
+// Visitors who ask for less motion get page turns without the animation.
+const reducedMotion = () =>
+  typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
 const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2)
 const smooth = (t) => t * t * (3 - 2 * t)
 const smoothstepR = (a, b, x) => {
@@ -651,11 +654,13 @@ export class Flipbook {
   go(p, animate = true) {
     p = Math.max(1, Math.min(this.n, p | 0))
     const target = this.spreadOf(p)
-    if (target === this.left) return
-    if (animate && Math.abs(target - this.left) <= (this.single ? 1 : 2)) {
+    if (target === this.left && !this.anim) return
+    if (animate && !this.anim && Math.abs(target - this.left) <= (this.single ? 1 : 2)) {
       return this.flip(target > this.left ? 1 : -1)
     }
+    // A jump cancels any turn in progress, including its single-page fade.
     this.anim = null
+    this.front.material.opacity = 1
     this.left = target
     this.book.position.x = this.offsetFor(target)
     this.after()
@@ -695,6 +700,7 @@ export class Flipbook {
     if (!cursor) this.playSound()
     this.refresh()
     this.drawAt()
+    if (!cursor && reducedMotion()) this.finishNow()
   }
   // Curve angle (degrees turned) for a cursor position.
   curveFor(cx) {
@@ -1007,6 +1013,7 @@ export class Flipbook {
     A.cancel = !done
     A.t0 = performance.now()
     if (done) this.playSound()
+    if (reducedMotion()) this.finishNow()
   }
 
   setZoom(z) {
@@ -1034,12 +1041,16 @@ export class Flipbook {
   }
   toggleThumbs(force) {
     const t = this.$('.fb-thumbs')
-    t.hidden = force === undefined ? !t.hidden : !force
+    const hide = force === undefined ? !t.hidden : !force
+    if (hide && t.contains(document.activeElement)) this.$('.fb-bar [data-a=thumbs]').focus()
+    t.hidden = hide
     if (!t.hidden)
       t.querySelector(`[data-p="${Math.max(1, this.left)}"]`)?.scrollIntoView({ block: 'center' })
   }
   closeMenus() {
-    this.$('.fb-menu').hidden = true
+    const m = this.$('.fb-menu')
+    if (!m.hidden && m.contains(document.activeElement)) this.$('[data-a=more]').focus()
+    m.hidden = true
   }
   toggleFull() {
     if (document.fullscreenElement) document.exitFullscreen()
