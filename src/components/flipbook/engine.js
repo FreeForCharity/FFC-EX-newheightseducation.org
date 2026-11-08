@@ -1,5 +1,28 @@
 // NHEG flipbook viewer: a 3D page-turning book (three.js), built for this site.
-import * as THREE from 'three'
+import {
+  AmbientLight,
+  BackSide,
+  BoxGeometry,
+  CanvasTexture,
+  DirectionalLight,
+  FrontSide,
+  Group,
+  ImageBitmapLoader,
+  MathUtils,
+  Mesh,
+  MeshBasicMaterial,
+  MeshPhongMaterial,
+  PCFSoftShadowMap,
+  PerspectiveCamera,
+  PlaneGeometry,
+  RepeatWrapping,
+  Scene,
+  ShadowMaterial,
+  SRGBColorSpace,
+  Texture,
+  Vector3,
+  WebGLRenderer,
+} from 'three'
 import ICONS from './icons.js'
 
 // Look-and-feel parameters, chosen to match the old site's viewer.
@@ -158,7 +181,7 @@ export class Flipbook {
     this.single = false
     this.anim = null
     this.cache = new Map()
-    this.loader = new THREE.ImageBitmapLoader().setOptions({ imageOrientation: 'flipY' })
+    this.loader = new ImageBitmapLoader().setOptions({ imageOrientation: 'flipY' })
     this.buildDom(title)
     this.buildScene()
     this.bindEvents()
@@ -214,18 +237,18 @@ export class Flipbook {
   // ---------- 3D scene ----------
   buildScene() {
     const { W, H } = this
-    const renderer = (this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }))
+    const renderer = (this.renderer = new WebGLRenderer({ antialias: true, alpha: true }))
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
     renderer.shadowMap.enabled = true
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap
-    renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.shadowMap.type = PCFSoftShadowMap
+    renderer.outputColorSpace = SRGBColorSpace
     this.stage.append(renderer.domElement)
     this.maxAniso = renderer.capabilities.getMaxAnisotropy()
 
-    const scene = (this.scene = new THREE.Scene())
-    this.camera = new THREE.PerspectiveCamera(P.fov, 1, 4, 5e4)
-    scene.add(new THREE.AmbientLight(0xffffff, P.ambient * Math.PI))
-    const light = (this.light = new THREE.DirectionalLight(0xffffff, P.light * Math.PI))
+    const scene = (this.scene = new Scene())
+    this.camera = new PerspectiveCamera(P.fov, 1, 4, 5e4)
+    scene.add(new AmbientLight(0xffffff, P.ambient * Math.PI))
+    const light = (this.light = new DirectionalLight(0xffffff, P.light * Math.PI))
     light.position.set(...P.lightPos)
     light.castShadow = true
     light.shadow.mapSize.set(1024, 1024)
@@ -241,29 +264,26 @@ export class Flipbook {
     })
     scene.add(light)
 
-    const ground = new THREE.Mesh(
-      new THREE.PlaneGeometry(4000, 4000),
-      new THREE.ShadowMaterial({ opacity: P.shadowOpacity })
+    const ground = new Mesh(
+      new PlaneGeometry(4000, 4000),
+      new ShadowMaterial({ opacity: P.shadowOpacity })
     )
     ground.position.z = -6
     ground.receiveShadow = true
     scene.add(ground)
 
-    this.book = new THREE.Group()
+    this.book = new Group()
     scene.add(this.book)
 
     const mat = () =>
-      new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: P.shininess, specular: 0x111111 })
+      new MeshPhongMaterial({ color: 0xffffff, shininess: P.shininess, specular: 0x111111 })
     // Static pages on each side of the spine.
     // Resting pages use the same bent strip as a turning sheet, posed where
     // a turn ends, so a finished turn hands over without any jump.
     const flat = (side) => {
-      const g = new THREE.PlaneGeometry(W, H, P.segments, 48)
+      const g = new PlaneGeometry(W, H, P.segments, 48)
       g.translate(W / 2, 0, 0)
-      const m = new THREE.Mesh(
-        g,
-        Object.assign(mat(), { side: side > 0 ? THREE.FrontSide : THREE.BackSide })
-      )
+      const m = new Mesh(g, Object.assign(mat(), { side: side > 0 ? FrontSide : BackSide }))
       m.receiveShadow = true
       m.castShadow = true
       this.book.add(m)
@@ -275,12 +295,9 @@ export class Flipbook {
 
     // Stacks of sheets under each page, so the book has visible thickness.
     const stack = (side) => {
-      const g = new THREE.BoxGeometry(W, H, 1)
+      const g = new BoxGeometry(W, H, 1)
       g.translate((side * W) / 2, 0, -0.5)
-      const m = new THREE.Mesh(
-        g,
-        new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: P.shininess })
-      )
+      const m = new Mesh(g, new MeshPhongMaterial({ color: 0xffffff, shininess: P.shininess }))
       m.castShadow = m.receiveShadow = true
       this.book.add(m)
       return m
@@ -301,10 +318,10 @@ export class Flipbook {
     gr.addColorStop(1, 'rgba(0,0,0,0)')
     cx.fillStyle = gr
     cx.fillRect(0, 0, 256, 1)
-    const gt = new THREE.CanvasTexture(c)
-    this.gutter = new THREE.Mesh(
-      new THREE.PlaneGeometry(W * 0.16, H),
-      new THREE.MeshBasicMaterial({ map: gt, transparent: true, depthWrite: false })
+    const gt = new CanvasTexture(c)
+    this.gutter = new Mesh(
+      new PlaneGeometry(W * 0.16, H),
+      new MeshBasicMaterial({ map: gt, transparent: true, depthWrite: false })
     )
     this.book.add(this.gutter)
 
@@ -312,12 +329,9 @@ export class Flipbook {
     const board = (side) => {
       const bw = W * (1 + P.boardExtra),
         bh = H * (1 + 2 * P.boardExtra)
-      const g = new THREE.BoxGeometry(bw, bh, 2)
+      const g = new BoxGeometry(bw, bh, 2)
       g.translate((side * bw) / 2, 0, -2)
-      const m = new THREE.Mesh(
-        g,
-        new THREE.MeshPhongMaterial({ color: P.boardColor, shininess: P.shininess })
-      )
+      const m = new Mesh(g, new MeshPhongMaterial({ color: P.boardColor, shininess: P.shininess }))
       m.receiveShadow = true
       m.castShadow = true
       this.book.add(m)
@@ -328,10 +342,10 @@ export class Flipbook {
 
     // The turning sheet: one finely divided strip, bent on the CPU each frame.
     this.sheetRows = 48
-    const g = (this.sheetGeo = new THREE.PlaneGeometry(W, H, P.segments, this.sheetRows))
+    const g = (this.sheetGeo = new PlaneGeometry(W, H, P.segments, this.sheetRows))
     g.translate(W / 2, 0, 0)
-    this.front = new THREE.Mesh(g, Object.assign(mat(), { side: THREE.FrontSide }))
-    this.back = new THREE.Mesh(g, Object.assign(mat(), { side: THREE.BackSide }))
+    this.front = new Mesh(g, Object.assign(mat(), { side: FrontSide }))
+    this.back = new Mesh(g, Object.assign(mat(), { side: BackSide }))
     for (const m of [this.front, this.back]) {
       m.castShadow = m.receiveShadow = true
       m.visible = false
@@ -451,9 +465,9 @@ export class Flipbook {
     const key = n + (hi ? 'h' : 'l')
     let e = this.cache.get(key)
     if (!e) {
-      const t = new THREE.Texture()
+      const t = new Texture()
       t.flipY = false
-      t.colorSpace = THREE.SRGBColorSpace
+      t.colorSpace = SRGBColorSpace
       t.anisotropy = this.maxAniso
       e = { t, ready: false }
       this.cache.set(key, e)
@@ -489,7 +503,7 @@ export class Flipbook {
     let e = this.cache.get(key)
     if (!e || e.src !== src || e.t.image !== src.image) {
       const t = src.clone()
-      t.wrapS = THREE.RepeatWrapping
+      t.wrapS = RepeatWrapping
       t.repeat.x = -1
       t.offset.x = 1
       t.needsUpdate = !!src.image
@@ -596,7 +610,7 @@ export class Flipbook {
     const vh = Math.max(50, h - pad - 40),
       vw = Math.max(50, w - pad - 140)
     // Distance at which the book exactly fits, from the camera's field of view.
-    const tan = Math.tan(THREE.MathUtils.degToRad(P.fov / 2))
+    const tan = Math.tan(MathUtils.degToRad(P.fov / 2))
     const fitH = (bookH / (2 * tan)) * (h / vh)
     const fitW = (bookW / (2 * tan * this.camera.aspect)) * (w / vw)
     this.baseDist = Math.max(fitH, fitW)
@@ -604,7 +618,7 @@ export class Flipbook {
   }
   applyCamera() {
     const d = this.baseDist / this.zoom
-    const tan = Math.tan(THREE.MathUtils.degToRad(P.fov / 2))
+    const tan = Math.tan(MathUtils.degToRad(P.fov / 2))
     const h = this.stage.clientHeight || 1
     // Lift the book a little so the toolbar sits under it, as on the old site.
     const up = (20 / h) * 2 * this.baseDist * tan
@@ -885,7 +899,7 @@ export class Flipbook {
       down.moved = true
       if (this.zoom > 1) {
         const k =
-          (((2 * this.baseDist) / this.zoom) * Math.tan(THREE.MathUtils.degToRad(P.fov / 2))) /
+          (((2 * this.baseDist) / this.zoom) * Math.tan(MathUtils.degToRad(P.fov / 2))) /
           this.stage.clientHeight
         this.pan.x = down.pan.x - dx * k
         this.pan.y = down.pan.y + dy * k
@@ -914,7 +928,7 @@ export class Flipbook {
   }
   toBook(e) {
     const r = this.renderer.domElement.getBoundingClientRect()
-    const v = new THREE.Vector3(
+    const v = new Vector3(
       ((e.clientX - r.left) / r.width) * 2 - 1,
       -((e.clientY - r.top) / r.height) * 2 + 1,
       0.5
