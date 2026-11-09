@@ -71,7 +71,7 @@
     "jest-axe": "^11.0.0",
     "jest-environment-jsdom": "^30.5.2",
     "linkinator": "^8.1.0",
-    "pagefind": "^1.5.2",
+    "pagefind": "^1.6.0",
     "pixelmatch": "^8.0.0",
     "pngjs": "^7.0.0",
     "prettier": "^3.9.10",
