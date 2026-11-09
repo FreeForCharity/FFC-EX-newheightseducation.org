@@ -142,6 +142,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # The site is ~600 MB, and GitHub's file sync sometimes runs past
+          # the 10-minute default (four timeouts in a row on 2026-11-09).
+          timeout: 1800000
 
       - name: Checkout (for smoke-check script)
         uses: actions/checkout@v7
