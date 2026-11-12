@@ -50,7 +50,7 @@ describe('third-party embeds and widgets (#57)', () => {
         /<div class="ffc-rumble"><iframe src="https:\/\/rumble\.com\/embed\/\w+\/" title="([^"]+)" loading="lazy"/g
       ),
     ])
-    expect(videos).toHaveLength(76)
+    expect(videos).toHaveLength(77)
     for (const [, title] of videos) expect(title).not.toBe('Rumble video')
   })
 
