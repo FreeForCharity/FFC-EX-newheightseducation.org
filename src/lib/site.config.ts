@@ -160,11 +160,10 @@ export const siteConfig: SiteConfig = {
     'New Heights Educational Group, Inc., promotes literacy for children and adults by offering a range of educational support services. Such services include the following: assisting families in the selection of schools; organization of educational activities; and acquisition of materials.',
   shortDescription:
     'Promoting literacy for children and adults through educational support services for home, charter and public school families.',
-  // Bare origin only (drift-check enforced). The template deploys to the
-  // GitHub Pages default URL; the /FFC-IN-FFC_Single_Page_Template subpath
-  // comes from NEXT_PUBLIC_BASE_PATH, which siteUrl() folds in at build time.
-  // A fork with a custom domain sets its own origin here (and no basePath).
-  url: 'https://freeforcharity.github.io',
+  // Bare origin only (drift-check enforced). The custom-domain cutover is
+  // staged: public/CNAME carries newheightseducation.org, so the deploy
+  // builds with an empty basePath and this origin must move with it.
+  url: 'https://newheightseducation.org',
   twitterHandle: '@newheightseduc1',
   contactEmail: 'info@newheightseducation.org',
   keywords: [

@@ -130,7 +130,7 @@ describe('social card URL', () => {
       const { OG_IMAGE } =
         jest.requireActual<typeof import('@/lib/page-metadata')>('@/lib/page-metadata')
       expect(OG_IMAGE.url).toBe(
-        'https://freeforcharity.github.io/FFC-EX-newheightseducation.org/og-card.png'
+        'https://newheightseducation.org/FFC-EX-newheightseducation.org/og-card.png'
       )
     })
   })
