@@ -12,7 +12,7 @@
 Contact: mailto:info@newheightseducation.org
 Expires: 2027-01-01T00:00:00.000Z
 Preferred-Languages: en
-Canonical: https://freeforcharity.github.io/FFC-EX-newheightseducation.org/.well-known/security.txt
-Canonical: https://freeforcharity.github.io/FFC-EX-newheightseducation.org/security.txt
-Policy: https://freeforcharity.github.io/FFC-EX-newheightseducation.org/vulnerability-disclosure-policy
-Acknowledgments: https://freeforcharity.github.io/FFC-EX-newheightseducation.org/security-acknowledgements
+Canonical: https://newheightseducation.org/.well-known/security.txt
+Canonical: https://newheightseducation.org/security.txt
+Policy: https://newheightseducation.org/vulnerability-disclosure-policy
+Acknowledgments: https://newheightseducation.org/security-acknowledgements
