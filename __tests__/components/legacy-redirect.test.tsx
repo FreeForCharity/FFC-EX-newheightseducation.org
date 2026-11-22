@@ -22,6 +22,6 @@ describe('LegacyRedirect', () => {
   })
 
   it('keeps redirect stubs out of search indexes', () => {
-    expect(legacyRedirectMetadata('X').robots).toEqual({ index: false, follow: true })
+    expect(legacyRedirectMetadata('X').robots).toEqual({ index: false })
   })
 })

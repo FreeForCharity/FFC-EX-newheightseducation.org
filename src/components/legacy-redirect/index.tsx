@@ -12,18 +12,18 @@ export function legacyTarget(to: string): string {
 }
 
 export function legacyRedirectMetadata(title: string): Metadata {
-  return { title, robots: { index: false, follow: true } }
+  return { title, robots: { index: false } }
 }
 
 export default function LegacyRedirect({ to, label }: { to: string; label: string }) {
   const href = legacyTarget(to)
   return (
-    <main className="mx-auto max-w-2xl px-4 py-16 text-center">
+    <div className="mx-auto max-w-2xl px-4 py-16 text-center">
       <meta httpEquiv="refresh" content={`0;url=${href}`} />
       <h1 className="text-2xl font-semibold">This page has moved</h1>
       <p className="mt-4">
         Continue to <a href={href}>{label}</a>.
       </p>
-    </main>
+    </div>
   )
 }
